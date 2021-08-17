@@ -1,0 +1,28 @@
+{
+	"protocolName": "TestProto",
+	"shortName": "expro",
+	"filterName": "exprotocol",
+	"port": 2222,
+	"transportProtocol": "udp",
+	"totalLength": 25,
+	"parts": [
+		{
+			"name": "identify",
+			"abbName": "id",
+			"length": 12,
+			"type": 2
+		},
+		{
+			"name": "function",
+			"abbName": "func",
+			"length": 4,
+			"type": 2
+		},
+		{
+			"name": "data_left",
+			"abbName": "dleft",
+			"length": 4,
+			"type": 0
+		}
+	]
+}

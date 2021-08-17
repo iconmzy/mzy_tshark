@@ -1,0 +1,431 @@
+{
+	"BUILD_DIR" : "/root/CLionProjects/wire_shark/wsutil/wsutil_autogen",
+	"CMAKE_BINARY_DIR" : "/root/CLionProjects/wire_shark",
+	"CMAKE_CURRENT_BINARY_DIR" : "/root/CLionProjects/wire_shark/wsutil",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/root/CLionProjects/wire_shark/wsutil",
+	"CMAKE_EXECUTABLE" : "/opt/cmake-3.20.3/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/root/CLionProjects/wire_shark/wsutil/CMakeLists.txt",
+		"/opt/cmake-3.20.3/Modules/CheckIncludeFile.c.in",
+		"/opt/cmake-3.20.3/Modules/CheckIncludeFile.c.in"
+	],
+	"CMAKE_SOURCE_DIR" : "/root/CLionProjects/wire_shark",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/root/CLionProjects/wire_shark/wsutil/adler32.h",
+			"MU",
+			"EWIEGA46WW/moc_adler32.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/base32.h",
+			"MU",
+			"EWIEGA46WW/moc_base32.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/bitswap.h",
+			"MU",
+			"EWIEGA46WW/moc_bitswap.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/buffer.h",
+			"MU",
+			"EWIEGA46WW/moc_buffer.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/codecs.h",
+			"MU",
+			"EWIEGA46WW/moc_codecs.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/copyright_info.h",
+			"MU",
+			"EWIEGA46WW/moc_copyright_info.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/cpu_info.h",
+			"MU",
+			"EWIEGA46WW/moc_cpu_info.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crash_info.h",
+			"MU",
+			"EWIEGA46WW/moc_crash_info.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc10.h",
+			"MU",
+			"EWIEGA46WW/moc_crc10.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc11.h",
+			"MU",
+			"EWIEGA46WW/moc_crc11.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc16-plain.h",
+			"MU",
+			"EWIEGA46WW/moc_crc16-plain.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc16.h",
+			"MU",
+			"EWIEGA46WW/moc_crc16.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc32.h",
+			"MU",
+			"EWIEGA46WW/moc_crc32.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc5.h",
+			"MU",
+			"EWIEGA46WW/moc_crc5.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc6.h",
+			"MU",
+			"EWIEGA46WW/moc_crc6.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc7.h",
+			"MU",
+			"EWIEGA46WW/moc_crc7.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/crc8.h",
+			"MU",
+			"EWIEGA46WW/moc_crc8.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/curve25519.h",
+			"MU",
+			"EWIEGA46WW/moc_curve25519.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/eax.h",
+			"MU",
+			"EWIEGA46WW/moc_eax.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/filesystem.h",
+			"MU",
+			"EWIEGA46WW/moc_filesystem.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/frequency-utils.h",
+			"MU",
+			"EWIEGA46WW/moc_frequency-utils.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/g711.h",
+			"MU",
+			"EWIEGA46WW/moc_g711.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/inet_addr.h",
+			"MU",
+			"EWIEGA46WW/moc_inet_addr.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/interface.h",
+			"MU",
+			"EWIEGA46WW/moc_interface.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/jsmn.h",
+			"MU",
+			"EWIEGA46WW/moc_jsmn.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/json_dumper.h",
+			"MU",
+			"EWIEGA46WW/moc_json_dumper.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/mpeg-audio.h",
+			"MU",
+			"EWIEGA46WW/moc_mpeg-audio.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/nstime.h",
+			"MU",
+			"EWIEGA46WW/moc_nstime.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/os_version_info.h",
+			"MU",
+			"EWIEGA46WW/moc_os_version_info.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/please_report_bug.h",
+			"MU",
+			"EWIEGA46WW/moc_please_report_bug.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/plugins.h",
+			"MU",
+			"EWIEGA46WW/moc_plugins.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/privileges.h",
+			"MU",
+			"EWIEGA46WW/moc_privileges.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/report_message.h",
+			"MU",
+			"EWIEGA46WW/moc_report_message.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/rsa.h",
+			"MU",
+			"EWIEGA46WW/moc_rsa.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/sober128.h",
+			"MU",
+			"EWIEGA46WW/moc_sober128.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/socket.h",
+			"MU",
+			"EWIEGA46WW/moc_socket.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/str_util.h",
+			"MU",
+			"EWIEGA46WW/moc_str_util.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/strnatcmp.h",
+			"MU",
+			"EWIEGA46WW/moc_strnatcmp.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/strtoi.h",
+			"MU",
+			"EWIEGA46WW/moc_strtoi.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/tempfile.h",
+			"MU",
+			"EWIEGA46WW/moc_tempfile.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/time_util.h",
+			"MU",
+			"EWIEGA46WW/moc_time_util.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/type_util.h",
+			"MU",
+			"EWIEGA46WW/moc_type_util.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/unicode-utils.h",
+			"MU",
+			"EWIEGA46WW/moc_unicode-utils.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/ws_mempbrk.h",
+			"MU",
+			"EWIEGA46WW/moc_ws_mempbrk.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/ws_pipe.h",
+			"MU",
+			"EWIEGA46WW/moc_ws_pipe.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/wsgcrypt.h",
+			"MU",
+			"EWIEGA46WW/moc_wsgcrypt.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/wsjson.h",
+			"MU",
+			"EWIEGA46WW/moc_wsjson.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/xtea.h",
+			"MU",
+			"EWIEGA46WW/moc_xtea.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/root/CLionProjects/wire_shark/wsutil/wsutil_autogen/include",
+	"MOC_COMPILATION_FILE" : "/root/CLionProjects/wire_shark/wsutil/wsutil_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"DATA_DIR=\"/usr/local/share/wireshark\"",
+		"EXTCAP_DIR=\"/usr/local/lib64/wireshark/extcap\"",
+		"G_DISABLE_DEPRECATED",
+		"G_DISABLE_SINGLE_INCLUDES",
+		"PLUGIN_DIR=\"/usr/local/lib64/wireshark/plugins\"",
+		"WS_BUILD_DLL",
+		"wsutil_EXPORTS"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/root/CLionProjects/wire_shark",
+		"/usr/include/glib-2.0",
+		"/usr/lib64/glib-2.0/include",
+		"/usr/include",
+		"/usr/include/c++/4.8.5",
+		"/usr/include/c++/4.8.5/x86_64-redhat-linux",
+		"/usr/include/c++/4.8.5/backward",
+		"/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include",
+		"/usr/local/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/opt/cmake-3.20.3/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/root/CLionProjects/wire_shark/wsutil/wsutil_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/root/CLionProjects/wire_shark/wsutil/CMakeFiles/wsutil_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib64/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/usr/lib64/qt5/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 9,
+	"SETTINGS_FILE" : "/root/CLionProjects/wire_shark/wsutil/CMakeFiles/wsutil_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/root/CLionProjects/wire_shark/wsutil/adler32.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/base32.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/bitswap.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/buffer.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/codecs.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/copyright_info.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/cpu_info.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crash_info.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc10.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc11.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc16-plain.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc16.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc32.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc5.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc6.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc7.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/crc8.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/curve25519.c", "MU", null ],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/dot11decrypt_wep.c",
+			"MU",
+			null
+		],
+		[ "/root/CLionProjects/wire_shark/wsutil/eax.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/filesystem.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/frequency-utils.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/g711.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/inet_addr.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/interface.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/jsmn.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/json_dumper.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/mpeg-audio.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/nstime.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/os_version_info.c", "MU", null ],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/please_report_bug.c",
+			"MU",
+			null
+		],
+		[ "/root/CLionProjects/wire_shark/wsutil/plugins.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/privileges.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/report_message.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/rsa.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/sober128.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/socket.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/str_util.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/strnatcmp.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/strtoi.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/tempfile.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/time_util.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/type_util.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/unicode-utils.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/ws_mempbrk.c", "MU", null ],
+		[
+			"/root/CLionProjects/wire_shark/wsutil/ws_mempbrk_sse42.c",
+			"MU",
+			null
+		],
+		[ "/root/CLionProjects/wire_shark/wsutil/ws_pipe.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/wsgcrypt.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/wsjson.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wsutil/xtea.c", "MU", null ]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

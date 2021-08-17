@@ -1,0 +1,32 @@
+{
+	"BUILD_DIR" : "/root/CLionProjects/wire_shark/ui/qt/qtui_autogen",
+	"CMAKE_BINARY_DIR" : "/root/CLionProjects/wire_shark",
+	"CMAKE_CURRENT_BINARY_DIR" : "/root/CLionProjects/wire_shark/ui/qt",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/root/CLionProjects/wire_shark/ui/qt",
+	"CMAKE_SOURCE_DIR" : "/root/CLionProjects/wire_shark",
+	"INCLUDE_DIR" : "/root/CLionProjects/wire_shark/ui/qt/qtui_autogen/include",
+	"INPUTS" : 
+	[
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_de.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_en.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_es.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_fr.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_it.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_ja_JP.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_pl.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_ru.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_sv.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_uk.qm",
+		"/root/CLionProjects/wire_shark/ui/qt/wireshark_zh_CN.qm"
+	],
+	"LOCK_FILE" : "/root/CLionProjects/wire_shark/ui/qt/CMakeFiles/qtui_autogen.dir/AutoRcc_i18n_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--format-version", "1", "-name", "i18n" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_i18n.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib64/qt5/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/root/CLionProjects/wire_shark/ui/qt/CMakeFiles/qtui_autogen.dir/AutoRcc_i18n_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/root/CLionProjects/wire_shark/ui/qt/i18n.qrc",
+	"VERBOSITY" : 0
+}

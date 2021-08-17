@@ -1,0 +1,32 @@
+{
+	"BUILD_DIR" : "/root/CLionProjects/wire_shark/ui/qt/qtui_autogen",
+	"CMAKE_BINARY_DIR" : "/root/CLionProjects/wire_shark",
+	"CMAKE_CURRENT_BINARY_DIR" : "/root/CLionProjects/wire_shark/ui/qt",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/root/CLionProjects/wire_shark/ui/qt",
+	"CMAKE_SOURCE_DIR" : "/root/CLionProjects/wire_shark",
+	"INCLUDE_DIR" : "/root/CLionProjects/wire_shark/ui/qt/qtui_autogen/include",
+	"INPUTS" : 
+	[
+		"/root/CLionProjects/wire_shark/image/languages/ru.svg",
+		"/root/CLionProjects/wire_shark/image/languages/fr.svg",
+		"/root/CLionProjects/wire_shark/image/languages/es.svg",
+		"/root/CLionProjects/wire_shark/image/languages/ja_JP.svg",
+		"/root/CLionProjects/wire_shark/image/languages/en.svg",
+		"/root/CLionProjects/wire_shark/image/languages/sv.svg",
+		"/root/CLionProjects/wire_shark/image/languages/uk.svg",
+		"/root/CLionProjects/wire_shark/image/languages/pl.svg",
+		"/root/CLionProjects/wire_shark/image/languages/de.svg",
+		"/root/CLionProjects/wire_shark/image/languages/it.svg",
+		"/root/CLionProjects/wire_shark/image/languages/zh_CN.svg"
+	],
+	"LOCK_FILE" : "/root/CLionProjects/wire_shark/ui/qt/CMakeFiles/qtui_autogen.dir/AutoRcc_languages_NQCY4LEWD2_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--format-version", "1", "-name", "languages" ],
+	"OUTPUT_CHECKSUM" : "NQCY4LEWD2",
+	"OUTPUT_NAME" : "qrc_languages.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib64/qt5/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/root/CLionProjects/wire_shark/ui/qt/CMakeFiles/qtui_autogen.dir/AutoRcc_languages_NQCY4LEWD2_Used.txt",
+	"SOURCE" : "/root/CLionProjects/wire_shark/image/languages/languages.qrc",
+	"VERBOSITY" : 0
+}

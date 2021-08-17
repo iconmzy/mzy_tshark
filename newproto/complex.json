@@ -1,0 +1,47 @@
+{
+    "protocolName": "scoreboard",
+    "port": 1127,
+    "transportProtocol": "UDP",
+    "totalLength": 25,
+    "parts": [
+        {
+            "name": "identify",
+            "length": 17,
+            "type": 3,
+            "parts": [
+                {
+                    "name": "dir1",
+                    "length": 12,
+                    "type": 2
+                },
+                {
+                    "name": "dir2",
+                    "length": 10,
+                    "type": 2
+                }
+            ]
+        },
+        {
+            "name": "function",
+            "length": 2,
+            "type": 3,
+            "parts": [
+                {
+                    "name": "dir3",
+                    "length": 123,
+                    "type": 2
+                }
+            ]
+        },
+        {
+            "name": "data_left",
+            "length": 20,
+            "type": 1
+        },
+        {
+            "name": "data_right",
+            "length": 5,
+            "type": 0
+        }
+    ]
+}

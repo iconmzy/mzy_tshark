@@ -1,0 +1,28 @@
+{
+	"protocolName": "E1 X1 P1",
+	"shortName": "expro",
+	"filterName": "exp",
+	"port": 1127,
+	"transportProtocol": "udp",
+	"totalLength": 25,
+	"parts": [
+		{
+			"name": "identify",
+			"abbName": "id",
+			"length": 16,
+			"type": 2
+		},
+		{
+			"name": "function",
+			"abbName": "func",
+			"length": 1,
+			"type": 0
+		},
+		{
+			"name": "data_left",
+			"abbName": "dleft",
+			"length": 3,
+			"type": 0
+		}
+	]
+}

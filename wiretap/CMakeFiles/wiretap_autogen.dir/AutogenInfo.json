@@ -1,0 +1,557 @@
+{
+	"BUILD_DIR" : "/root/CLionProjects/wire_shark/wiretap/wiretap_autogen",
+	"CMAKE_BINARY_DIR" : "/root/CLionProjects/wire_shark",
+	"CMAKE_CURRENT_BINARY_DIR" : "/root/CLionProjects/wire_shark/wiretap",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/root/CLionProjects/wire_shark/wiretap",
+	"CMAKE_EXECUTABLE" : "/opt/cmake-3.20.3/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/root/CLionProjects/wire_shark/wiretap/CMakeLists.txt",
+		"/root/CLionProjects/wire_shark/wiretap/ascend.y.in"
+	],
+	"CMAKE_SOURCE_DIR" : "/root/CLionProjects/wire_shark",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/root/CLionProjects/wire_shark/wiretap/5views.h",
+			"MU",
+			"EWIEGA46WW/moc_5views.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/aethra.h",
+			"MU",
+			"EWIEGA46WW/moc_aethra.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/ascendtext.h",
+			"MU",
+			"EWIEGA46WW/moc_ascendtext.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/atm.h",
+			"MU",
+			"EWIEGA46WW/moc_atm.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/ber.h",
+			"MU",
+			"EWIEGA46WW/moc_ber.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/btsnoop.h",
+			"MU",
+			"EWIEGA46WW/moc_btsnoop.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/busmaster.h",
+			"MU",
+			"EWIEGA46WW/moc_busmaster.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/camins.h",
+			"MU",
+			"EWIEGA46WW/moc_camins.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/candump.h",
+			"MU",
+			"EWIEGA46WW/moc_candump.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/capsa.h",
+			"MU",
+			"EWIEGA46WW/moc_capsa.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/catapult_dct2000.h",
+			"MU",
+			"EWIEGA46WW/moc_catapult_dct2000.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/commview.h",
+			"MU",
+			"EWIEGA46WW/moc_commview.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/cosine.h",
+			"MU",
+			"EWIEGA46WW/moc_cosine.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/csids.h",
+			"MU",
+			"EWIEGA46WW/moc_csids.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/daintree-sna.h",
+			"MU",
+			"EWIEGA46WW/moc_daintree-sna.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/dbs-etherwatch.h",
+			"MU",
+			"EWIEGA46WW/moc_dbs-etherwatch.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/dct3trace.h",
+			"MU",
+			"EWIEGA46WW/moc_dct3trace.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/dpa400.h",
+			"MU",
+			"EWIEGA46WW/moc_dpa400.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/erf.h",
+			"MU",
+			"EWIEGA46WW/moc_erf.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/eyesdn.h",
+			"MU",
+			"EWIEGA46WW/moc_eyesdn.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/file_wrappers.h",
+			"MU",
+			"EWIEGA46WW/moc_file_wrappers.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/hcidump.h",
+			"MU",
+			"EWIEGA46WW/moc_hcidump.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/i4btrace.h",
+			"MU",
+			"EWIEGA46WW/moc_i4btrace.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/ipfix.h",
+			"MU",
+			"EWIEGA46WW/moc_ipfix.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/iptrace.h",
+			"MU",
+			"EWIEGA46WW/moc_iptrace.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/iseries.h",
+			"MU",
+			"EWIEGA46WW/moc_iseries.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/json.h",
+			"MU",
+			"EWIEGA46WW/moc_json.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/k12.h",
+			"MU",
+			"EWIEGA46WW/moc_k12.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/lanalyzer.h",
+			"MU",
+			"EWIEGA46WW/moc_lanalyzer.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/libpcap.h",
+			"MU",
+			"EWIEGA46WW/moc_libpcap.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/log3gpp.h",
+			"MU",
+			"EWIEGA46WW/moc_log3gpp.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/logcat.h",
+			"MU",
+			"EWIEGA46WW/moc_logcat.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/logcat_text.h",
+			"MU",
+			"EWIEGA46WW/moc_logcat_text.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/merge.h",
+			"MU",
+			"EWIEGA46WW/moc_merge.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/mime_file.h",
+			"MU",
+			"EWIEGA46WW/moc_mime_file.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/mp2t.h",
+			"MU",
+			"EWIEGA46WW/moc_mp2t.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/mp4.h",
+			"MU",
+			"EWIEGA46WW/moc_mp4.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/mpeg.h",
+			"MU",
+			"EWIEGA46WW/moc_mpeg.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/mplog.h",
+			"MU",
+			"EWIEGA46WW/moc_mplog.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/netmon.h",
+			"MU",
+			"EWIEGA46WW/moc_netmon.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/netscaler.h",
+			"MU",
+			"EWIEGA46WW/moc_netscaler.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/netscreen.h",
+			"MU",
+			"EWIEGA46WW/moc_netscreen.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/nettl.h",
+			"MU",
+			"EWIEGA46WW/moc_nettl.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/nettrace_3gpp_32_423.h",
+			"MU",
+			"EWIEGA46WW/moc_nettrace_3gpp_32_423.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/network_instruments.h",
+			"MU",
+			"EWIEGA46WW/moc_network_instruments.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/netxray.h",
+			"MU",
+			"EWIEGA46WW/moc_netxray.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/ngsniffer.h",
+			"MU",
+			"EWIEGA46WW/moc_ngsniffer.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/packetlogger.h",
+			"MU",
+			"EWIEGA46WW/moc_packetlogger.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/pcap-common.h",
+			"MU",
+			"EWIEGA46WW/moc_pcap-common.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/pcapng.h",
+			"MU",
+			"EWIEGA46WW/moc_pcapng.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/peekclassic.h",
+			"MU",
+			"EWIEGA46WW/moc_peekclassic.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/peektagged.h",
+			"MU",
+			"EWIEGA46WW/moc_peektagged.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/pppdump.h",
+			"MU",
+			"EWIEGA46WW/moc_pppdump.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/radcom.h",
+			"MU",
+			"EWIEGA46WW/moc_radcom.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/rfc7468.h",
+			"MU",
+			"EWIEGA46WW/moc_rfc7468.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/ruby_marshal.h",
+			"MU",
+			"EWIEGA46WW/moc_ruby_marshal.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/snoop.h",
+			"MU",
+			"EWIEGA46WW/moc_snoop.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/stanag4607.h",
+			"MU",
+			"EWIEGA46WW/moc_stanag4607.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/systemd_journal.h",
+			"MU",
+			"EWIEGA46WW/moc_systemd_journal.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/tnef.h",
+			"MU",
+			"EWIEGA46WW/moc_tnef.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/toshiba.h",
+			"MU",
+			"EWIEGA46WW/moc_toshiba.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/visual.h",
+			"MU",
+			"EWIEGA46WW/moc_visual.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/vms.h",
+			"MU",
+			"EWIEGA46WW/moc_vms.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/vwr.h",
+			"MU",
+			"EWIEGA46WW/moc_vwr.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/wtap.h",
+			"MU",
+			"EWIEGA46WW/moc_wtap.cpp",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/wtap_opttypes.h",
+			"MU",
+			"EWIEGA46WW/moc_wtap_opttypes.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/root/CLionProjects/wire_shark/wiretap/wiretap_autogen/include",
+	"MOC_COMPILATION_FILE" : "/root/CLionProjects/wire_shark/wiretap/wiretap_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"G_DISABLE_DEPRECATED",
+		"G_DISABLE_SINGLE_INCLUDES",
+		"WS_BUILD_DLL",
+		"wiretap_EXPORTS"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/root/CLionProjects/wire_shark",
+		"/root/CLionProjects/wire_shark/wiretap",
+		"/usr/include/glib-2.0",
+		"/usr/lib64/glib-2.0/include",
+		"/usr/include",
+		"/usr/include/c++/4.8.5",
+		"/usr/include/c++/4.8.5/x86_64-redhat-linux",
+		"/usr/include/c++/4.8.5/backward",
+		"/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include",
+		"/usr/local/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/opt/cmake-3.20.3/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/root/CLionProjects/wire_shark/wiretap/wiretap_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/root/CLionProjects/wire_shark/wiretap/CMakeFiles/wiretap_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib64/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/usr/lib64/qt5/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 9,
+	"SETTINGS_FILE" : "/root/CLionProjects/wire_shark/wiretap/CMakeFiles/wiretap_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/root/CLionProjects/wire_shark/wiretap/5views.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/aethra.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/ascendtext.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/atm.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/ber.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/btsnoop.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/busmaster.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/camins.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/candump.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/capsa.c", "MU", null ],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/catapult_dct2000.c",
+			"MU",
+			null
+		],
+		[ "/root/CLionProjects/wire_shark/wiretap/commview.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/cosine.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/csids.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/daintree-sna.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/dbs-etherwatch.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/dct3trace.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/dpa400.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/erf.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/eyesdn.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/file_access.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/file_wrappers.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/hcidump.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/i4btrace.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/ipfix.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/iptrace.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/iseries.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/json.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/k12.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/lanalyzer.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/libpcap.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/log3gpp.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/logcat.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/logcat_text.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/merge.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/mime_file.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/mp2t.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/mp4.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/mpeg.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/mplog.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/netmon.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/netscaler.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/netscreen.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/nettl.c", "MU", null ],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/nettrace_3gpp_32_423.c",
+			"MU",
+			null
+		],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/network_instruments.c",
+			"MU",
+			null
+		],
+		[ "/root/CLionProjects/wire_shark/wiretap/netxray.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/ngsniffer.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/packetlogger.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/pcap-common.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/pcapng.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/peekclassic.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/peektagged.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/pppdump.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/radcom.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/rfc7468.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/ruby_marshal.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/snoop.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/stanag4607.c", "MU", null ],
+		[
+			"/root/CLionProjects/wire_shark/wiretap/systemd_journal.c",
+			"MU",
+			null
+		],
+		[ "/root/CLionProjects/wire_shark/wiretap/tnef.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/toshiba.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/visual.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/vms.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/vwr.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/wtap.c", "MU", null ],
+		[ "/root/CLionProjects/wire_shark/wiretap/wtap_opttypes.c", "MU", null ]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}
