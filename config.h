@@ -242,7 +242,7 @@
 #define HAVE_OPUS 1
 
 /* Define to 1 if you have the speexdsp library. */
-#define HAVE_SPEEXDSP 1
+/* #undef HAVE_SPEEXDSP */
 
 /* Define to 1 if you have the lixbml2 library. */
 #define HAVE_LIBXML2 1

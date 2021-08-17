@@ -479,7 +479,7 @@ codesign_file () {
 		--sign "Developer ID Application: $CODE_SIGN_IDENTITY" \
 		--force \
 		--options runtime \
-		--entitlements "/root/CLionProjects/tshark_test/packaging/macosx/entitlements.plist" \
+		--entitlements "/root/CLionProjects/tshark/packaging/macosx/entitlements.plist" \
 		--timestamp \
 		--verbose \
 		"$1"

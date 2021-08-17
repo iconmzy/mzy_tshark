@@ -24,7 +24,7 @@
 */
 #include <stdio.h>
 /************ Begin %include sections from the grammar ************************/
-#line 1 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 1 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 
 
 /* mate_grammar.lemon
@@ -1094,7 +1094,7 @@ static void yy_destructor(
     case 60: /* DOTED_IP */
     case 61: /* COLONIZED */
 {
-#line 177 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 177 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 
 	(void) mc; /* Mark unused, similar to Q_UNUSED */
 	g_free((yypminor->yy0));
@@ -1633,7 +1633,7 @@ static YYACTIONTYPE yy_reduce(
         YYMINORTYPE yylhsminor;
       case 0: /* dbgfile_default ::= FILENAME_KW QUOTED SEMICOLON */
 {  yy_destructor(yypParser,6,&yymsp[-2].minor);
-#line 266 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 266 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->dbg_facility = ws_fopen(yymsp[-1].minor.yy0,"w"); if (mc->dbg_facility == NULL) report_open_failure(yymsp[-1].minor.yy0,errno,TRUE); }
 #line 1639 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1641,7 +1641,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 1: /* dbgfile_default ::= FILENAME_KW NAME SEMICOLON */
 {  yy_destructor(yypParser,6,&yymsp[-2].minor);
-#line 267 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 267 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->dbg_facility = ws_fopen(yymsp[-1].minor.yy0,"w"); if (mc->dbg_facility == NULL) report_open_failure(yymsp[-1].minor.yy0,errno,TRUE);  }
 #line 1647 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1649,7 +1649,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 2: /* dbglevel_default ::= LEVEL_KW INTEGER SEMICOLON */
 {  yy_destructor(yypParser,9,&yymsp[-2].minor);
-#line 270 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 270 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->dbg_lvl = (int) strtol(yymsp[-1].minor.yy0,NULL,10); }
 #line 1655 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1657,7 +1657,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 3: /* pdu_dbglevel_default ::= PDU_KW LEVEL_KW INTEGER SEMICOLON */
 {  yy_destructor(yypParser,11,&yymsp[-3].minor);
-#line 273 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 273 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->dbg_pdu_lvl = (int) strtol(yymsp[-1].minor.yy0,NULL,10); }
 #line 1663 "./mate_grammar.c"
   yy_destructor(yypParser,9,&yymsp[-2].minor);
@@ -1666,7 +1666,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 4: /* gop_dbglevel_default ::= GOP_KW LEVEL_KW INTEGER SEMICOLON */
 {  yy_destructor(yypParser,12,&yymsp[-3].minor);
-#line 276 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 276 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->dbg_gop_lvl = (int) strtol(yymsp[-1].minor.yy0,NULL,10); }
 #line 1672 "./mate_grammar.c"
   yy_destructor(yypParser,9,&yymsp[-2].minor);
@@ -1675,7 +1675,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 5: /* gog_dbglevel_default ::= GOG_KW LEVEL_KW INTEGER SEMICOLON */
 {  yy_destructor(yypParser,13,&yymsp[-3].minor);
-#line 279 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 279 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->dbg_gog_lvl = (int) strtol(yymsp[-1].minor.yy0,NULL,10); }
 #line 1681 "./mate_grammar.c"
   yy_destructor(yypParser,9,&yymsp[-2].minor);
@@ -1684,7 +1684,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 6: /* pdu_last_extracted_default ::= LAST_EXTRACTED_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,15,&yymsp[-2].minor);
-#line 291 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 291 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.pdu.last_extracted = yymsp[-1].minor.yy182; }
 #line 1690 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1692,7 +1692,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 7: /* pdu_drop_unassigned_default ::= DROP_UNASSIGNED_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,16,&yymsp[-2].minor);
-#line 294 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 294 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.pdu.drop_unassigned = yymsp[-1].minor.yy182; }
 #line 1698 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1700,7 +1700,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 8: /* pdu_discard_default ::= DISCARD_PDU_DATA_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,17,&yymsp[-2].minor);
-#line 297 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 297 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.pdu.discard = yymsp[-1].minor.yy182; }
 #line 1706 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1709,7 +1709,7 @@ static YYACTIONTYPE yy_reduce(
       case 9: /* gop_expiration_default ::= EXPIRATION_KW time_value SEMICOLON */
       case 15: /* gog_expiration_default ::= EXPIRATION_KW time_value SEMICOLON */ yytestcase(yyruleno==15);
 {  yy_destructor(yypParser,18,&yymsp[-2].minor);
-#line 303 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 303 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.gop.expiration = yymsp[-1].minor.yy255; }
 #line 1715 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1717,7 +1717,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 10: /* gop_idle_timeout_default ::= IDLE_TIMEOUT_KW time_value SEMICOLON */
 {  yy_destructor(yypParser,19,&yymsp[-2].minor);
-#line 306 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 306 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.gop.idle_timeout = yymsp[-1].minor.yy255; }
 #line 1723 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1725,7 +1725,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 11: /* gop_lifetime_default ::= LIFETIME_KW time_value SEMICOLON */
 {  yy_destructor(yypParser,20,&yymsp[-2].minor);
-#line 309 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 309 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.gop.lifetime = yymsp[-1].minor.yy255; }
 #line 1731 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1733,7 +1733,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 12: /* gop_drop_unassigned_default ::= DROP_UNASSIGNED_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,16,&yymsp[-2].minor);
-#line 312 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 312 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.gop.drop_unassigned = yymsp[-1].minor.yy182; }
 #line 1739 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1741,7 +1741,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 13: /* gop_tree_mode_default ::= SHOW_TREE_KW gop_tree_mode SEMICOLON */
 {  yy_destructor(yypParser,21,&yymsp[-2].minor);
-#line 315 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 315 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.gop.pdu_tree_mode = (gop_pdu_tree_t)yymsp[-1].minor.yy256; }
 #line 1747 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1749,7 +1749,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 14: /* gop_show_times_default ::= SHOW_TIMES_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,22,&yymsp[-2].minor);
-#line 318 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 318 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.gop.show_times = yymsp[-1].minor.yy182; }
 #line 1755 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1757,7 +1757,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 16: /* gog_goptree_default ::= GOP_TREE_KW gop_tree_type SEMICOLON */
 {  yy_destructor(yypParser,23,&yymsp[-2].minor);
-#line 327 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 327 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.gog.gop_tree_mode = yymsp[-1].minor.yy256; }
 #line 1763 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1765,7 +1765,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 17: /* gog_show_times_default ::= SHOW_TIMES_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,22,&yymsp[-2].minor);
-#line 330 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 330 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { mc->defaults.gog.show_times = yymsp[-1].minor.yy182; }
 #line 1771 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -1773,7 +1773,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 18: /* transform_decl ::= TRANSFORM_KW NAME transform_body SEMICOLON */
 {  yy_destructor(yypParser,24,&yymsp[-3].minor);
-#line 337 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 337 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	AVPL_Transf* c;
 
@@ -1794,14 +1794,14 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 19: /* transform_body ::= OPEN_BRACE transform_statements CLOSE_BRACE */
 {  yy_destructor(yypParser,4,&yymsp[-2].minor);
-#line 352 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 352 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy11 = yymsp[-1].minor.yy11; }
 #line 1800 "./mate_grammar.c"
   yy_destructor(yypParser,5,&yymsp[0].minor);
 }
         break;
       case 20: /* transform_statements ::= transform_statements transform_statement */
-#line 354 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 354 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	AVPL_Transf* c;
 
@@ -1813,13 +1813,13 @@ static YYACTIONTYPE yy_reduce(
   yymsp[-1].minor.yy11 = yylhsminor.yy11;
         break;
       case 21: /* transform_statements ::= transform_statement */
-#line 362 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 362 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy11 = yymsp[0].minor.yy11; }
 #line 1819 "./mate_grammar.c"
   yymsp[0].minor.yy11 = yylhsminor.yy11;
         break;
       case 22: /* transform_statement ::= transform_match transform_action SEMICOLON */
-#line 364 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 364 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yylhsminor.yy11 = new_transform_elem(yymsp[-2].minor.yy146->avpl,yymsp[-1].minor.yy85->avpl,yymsp[-2].minor.yy146->match_mode,yymsp[-1].minor.yy85->replace_mode);
 }
@@ -1829,7 +1829,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 23: /* transform_match ::= MATCH_KW match_mode avpl */
 {  yy_destructor(yypParser,25,&yymsp[-2].minor);
-#line 368 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 368 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yymsp[-2].minor.yy146 = (transf_match_t *)g_malloc(sizeof(transf_match_t));
 	yymsp[-2].minor.yy146->match_mode = yymsp[-1].minor.yy274;
@@ -1839,7 +1839,7 @@ static YYACTIONTYPE yy_reduce(
 }
         break;
       case 24: /* transform_match ::= */
-#line 374 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 374 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yymsp[1].minor.yy146 = (transf_match_t *)g_malloc(sizeof(transf_match_t));
 	yymsp[1].minor.yy146->match_mode = AVPL_STRICT;
@@ -1849,7 +1849,7 @@ static YYACTIONTYPE yy_reduce(
 #line 1850 "./mate_grammar.c"
         break;
       case 25: /* transform_action ::= */
-#line 381 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 381 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yymsp[1].minor.yy85 = (transf_action_t *)g_malloc(sizeof(transf_action_t));
 	yymsp[1].minor.yy85->replace_mode = AVPL_INSERT;
@@ -1858,7 +1858,7 @@ static YYACTIONTYPE yy_reduce(
 #line 1859 "./mate_grammar.c"
         break;
       case 26: /* transform_action ::= action_mode avpl */
-#line 386 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 386 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yylhsminor.yy85 = (transf_action_t *)g_malloc(sizeof(transf_action_t));
 	yylhsminor.yy85->replace_mode = yymsp[-1].minor.yy143;
@@ -1868,53 +1868,53 @@ static YYACTIONTYPE yy_reduce(
   yymsp[-1].minor.yy85 = yylhsminor.yy85;
         break;
       case 27: /* match_mode ::= */
-#line 392 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 392 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy274 = AVPL_STRICT; }
 #line 1874 "./mate_grammar.c"
         break;
       case 28: /* match_mode ::= STRICT_KW */
 {  yy_destructor(yypParser,26,&yymsp[0].minor);
-#line 393 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 393 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy274 = AVPL_STRICT; }
 #line 1880 "./mate_grammar.c"
 }
         break;
       case 29: /* match_mode ::= EVERY_KW */
 {  yy_destructor(yypParser,27,&yymsp[0].minor);
-#line 394 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 394 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy274 = AVPL_EVERY; }
 #line 1887 "./mate_grammar.c"
 }
         break;
       case 30: /* match_mode ::= LOOSE_KW */
 {  yy_destructor(yypParser,28,&yymsp[0].minor);
-#line 395 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 395 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy274 = AVPL_LOOSE; }
 #line 1894 "./mate_grammar.c"
 }
         break;
       case 31: /* action_mode ::= REPLACE_KW */
 {  yy_destructor(yypParser,29,&yymsp[0].minor);
-#line 397 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 397 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy143 = AVPL_REPLACE; }
 #line 1901 "./mate_grammar.c"
 }
         break;
       case 32: /* action_mode ::= INSERT_KW */
 {  yy_destructor(yypParser,30,&yymsp[0].minor);
-#line 398 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 398 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy143 = AVPL_INSERT; }
 #line 1908 "./mate_grammar.c"
 }
         break;
       case 33: /* action_mode ::= */
-#line 399 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 399 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy143 = AVPL_INSERT; }
 #line 1914 "./mate_grammar.c"
         break;
       case 34: /* pdu_decl ::= PDU_KW NAME PROTO_KW field TRANSPORT_KW proto_stack OPEN_BRACE payload_statement extraction_statements transform_list_statement criteria_statement pdu_drop_unassigned_statement discard_pdu_data_statement last_extracted_statement CLOSE_BRACE SEMICOLON */
 {  yy_destructor(yypParser,11,&yymsp[-15].minor);
-#line 415 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 415 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 
 	mate_cfg_pdu* cfg  = new_pducfg(mc, yymsp[-14].minor.yy0);
@@ -1972,26 +1972,26 @@ static YYACTIONTYPE yy_reduce(
 }
         break;
       case 35: /* payload_statement ::= */
-#line 464 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 464 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy147 = NULL; }
 #line 1978 "./mate_grammar.c"
         break;
       case 36: /* payload_statement ::= PAYLOAD_KW proto_stack SEMICOLON */
 {  yy_destructor(yypParser,33,&yymsp[-2].minor);
-#line 465 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 465 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy147 = yymsp[-1].minor.yy147; }
 #line 1984 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 37: /* criteria_statement ::= */
-#line 467 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 467 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy231 = NULL; }
 #line 1991 "./mate_grammar.c"
         break;
       case 38: /* criteria_statement ::= CRITERIA_KW accept_mode match_mode avpl SEMICOLON */
 {  yy_destructor(yypParser,34,&yymsp[-4].minor);
-#line 468 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 468 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yymsp[-4].minor.yy231 = (pdu_criteria_t *)g_malloc(sizeof(pdu_criteria_t));
 	yymsp[-4].minor.yy231->criterium_avpl = yymsp[-1].minor.yy70;
@@ -2003,39 +2003,39 @@ static YYACTIONTYPE yy_reduce(
 }
         break;
       case 39: /* accept_mode ::= */
-#line 475 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 475 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy148 = ACCEPT_MODE; }
 #line 2009 "./mate_grammar.c"
         break;
       case 40: /* accept_mode ::= ACCEPT_KW */
 {  yy_destructor(yypParser,35,&yymsp[0].minor);
-#line 476 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 476 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy148 = ACCEPT_MODE; }
 #line 2015 "./mate_grammar.c"
 }
         break;
       case 41: /* accept_mode ::= REJECT_KW */
 {  yy_destructor(yypParser,36,&yymsp[0].minor);
-#line 477 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 477 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy148 = REJECT_MODE; }
 #line 2022 "./mate_grammar.c"
 }
         break;
       case 42: /* extraction_statements ::= extraction_statements extraction_statement */
-#line 479 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 479 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy179 = yymsp[-1].minor.yy179; yylhsminor.yy179->last = yylhsminor.yy179->last->next = yymsp[0].minor.yy179; }
 #line 2028 "./mate_grammar.c"
   yymsp[-1].minor.yy179 = yylhsminor.yy179;
         break;
       case 43: /* extraction_statements ::= extraction_statement */
-#line 480 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 480 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy179 = yymsp[0].minor.yy179; yylhsminor.yy179->last = yylhsminor.yy179; }
 #line 2034 "./mate_grammar.c"
   yymsp[0].minor.yy179 = yylhsminor.yy179;
         break;
       case 44: /* extraction_statement ::= EXTRACT_KW NAME FROM_KW field SEMICOLON */
 {  yy_destructor(yypParser,37,&yymsp[-4].minor);
-#line 482 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 482 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yymsp[-4].minor.yy179 = (extraction_t *)g_malloc(sizeof(extraction_t));
 	yymsp[-4].minor.yy179->as = yymsp[-3].minor.yy0;
@@ -2050,45 +2050,45 @@ static YYACTIONTYPE yy_reduce(
       case 45: /* pdu_drop_unassigned_statement ::= DROP_UNASSIGNED_KW true_false SEMICOLON */
       case 55: /* gop_drop_unassigned_statement ::= DROP_UNASSIGNED_KW true_false SEMICOLON */ yytestcase(yyruleno==55);
 {  yy_destructor(yypParser,16,&yymsp[-2].minor);
-#line 490 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 490 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy182 = yymsp[-1].minor.yy182; }
 #line 2056 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 46: /* pdu_drop_unassigned_statement ::= */
-#line 491 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 491 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy182 =  mc->defaults.pdu.drop_unassigned; }
 #line 2063 "./mate_grammar.c"
         break;
       case 47: /* discard_pdu_data_statement ::= DISCARD_PDU_DATA_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,17,&yymsp[-2].minor);
-#line 493 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 493 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy182 = yymsp[-1].minor.yy182; }
 #line 2069 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 48: /* discard_pdu_data_statement ::= */
-#line 494 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 494 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy182 =  mc->defaults.pdu.discard; }
 #line 2076 "./mate_grammar.c"
         break;
       case 49: /* last_extracted_statement ::= LAST_PDU_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,39,&yymsp[-2].minor);
-#line 496 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 496 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy182 = yymsp[-1].minor.yy182; }
 #line 2082 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 50: /* last_extracted_statement ::= */
-#line 497 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 497 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy182 = mc->defaults.pdu.last_extracted; }
 #line 2089 "./mate_grammar.c"
         break;
       case 51: /* proto_stack ::= proto_stack SLASH field */
-#line 499 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 499 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	int* hfidp = (int *)g_malloc(sizeof(int));
 
@@ -2101,7 +2101,7 @@ static YYACTIONTYPE yy_reduce(
   yymsp[-2].minor.yy147 = yylhsminor.yy147;
         break;
       case 52: /* proto_stack ::= field */
-#line 507 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 507 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	int* hfidp = (int *)g_malloc(sizeof(int));
 	*hfidp = yymsp[0].minor.yy210->id;
@@ -2113,7 +2113,7 @@ static YYACTIONTYPE yy_reduce(
   yymsp[0].minor.yy147 = yylhsminor.yy147;
         break;
       case 53: /* field ::= NAME */
-#line 515 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 515 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yylhsminor.yy210 = proto_registrar_get_byname(yymsp[0].minor.yy0);
 }
@@ -2122,7 +2122,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 54: /* gop_decl ::= GOP_KW NAME ON_KW pdu_name MATCH_KW avpl OPEN_BRACE gop_start_statement gop_stop_statement extra_statement transform_list_statement gop_expiration_statement idle_timeout_statement lifetime_statement gop_drop_unassigned_statement show_goptree_statement show_times_statement CLOSE_BRACE SEMICOLON */
 {  yy_destructor(yypParser,12,&yymsp[-18].minor);
-#line 533 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 533 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 		mate_cfg_gop* cfg;
 
@@ -2157,13 +2157,13 @@ static YYACTIONTYPE yy_reduce(
 }
         break;
       case 56: /* gop_drop_unassigned_statement ::= */
-#line 560 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 560 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy182 =  mc->defaults.gop.drop_unassigned; }
 #line 2163 "./mate_grammar.c"
         break;
       case 57: /* gop_start_statement ::= START_KW avpl SEMICOLON */
 {  yy_destructor(yypParser,42,&yymsp[-2].minor);
-#line 562 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 562 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy70 = yymsp[-1].minor.yy70; }
 #line 2169 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -2171,13 +2171,13 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 58: /* gop_start_statement ::= */
       case 60: /* gop_stop_statement ::= */ yytestcase(yyruleno==60);
-#line 563 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 563 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy70 = NULL; }
 #line 2177 "./mate_grammar.c"
         break;
       case 59: /* gop_stop_statement ::= STOP_KW avpl SEMICOLON */
 {  yy_destructor(yypParser,43,&yymsp[-2].minor);
-#line 565 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 565 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy70 = yymsp[-1].minor.yy70; }
 #line 2183 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -2185,34 +2185,34 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 61: /* show_goptree_statement ::= SHOW_TREE_KW gop_tree_mode SEMICOLON */
 {  yy_destructor(yypParser,21,&yymsp[-2].minor);
-#line 568 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 568 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy256 = yymsp[-1].minor.yy256; }
 #line 2191 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 62: /* show_goptree_statement ::= */
-#line 569 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 569 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy256 = (gop_tree_mode_t)mc->defaults.gop.pdu_tree_mode; }
 #line 2198 "./mate_grammar.c"
         break;
       case 63: /* show_times_statement ::= SHOW_TIMES_KW true_false SEMICOLON */
 {  yy_destructor(yypParser,22,&yymsp[-2].minor);
-#line 571 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 571 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy182 = yymsp[-1].minor.yy182; }
 #line 2204 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 64: /* show_times_statement ::= */
-#line 572 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 572 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy182 = mc->defaults.gop.show_times; }
 #line 2211 "./mate_grammar.c"
         break;
       case 65: /* gop_expiration_statement ::= EXPIRATION_KW time_value SEMICOLON */
       case 83: /* gog_expiration_statement ::= EXPIRATION_KW time_value SEMICOLON */ yytestcase(yyruleno==83);
 {  yy_destructor(yypParser,18,&yymsp[-2].minor);
-#line 574 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 574 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy255 = yymsp[-1].minor.yy255; }
 #line 2218 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -2221,13 +2221,13 @@ static YYACTIONTYPE yy_reduce(
       case 66: /* gop_expiration_statement ::= */
       case 68: /* idle_timeout_statement ::= */ yytestcase(yyruleno==68);
       case 70: /* lifetime_statement ::= */ yytestcase(yyruleno==70);
-#line 575 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 575 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy255 = mc->defaults.gop.lifetime; }
 #line 2227 "./mate_grammar.c"
         break;
       case 67: /* idle_timeout_statement ::= IDLE_TIMEOUT_KW time_value SEMICOLON */
 {  yy_destructor(yypParser,19,&yymsp[-2].minor);
-#line 577 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 577 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy255 = yymsp[-1].minor.yy255; }
 #line 2233 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -2235,7 +2235,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 69: /* lifetime_statement ::= LIFETIME_KW time_value SEMICOLON */
 {  yy_destructor(yypParser,20,&yymsp[-2].minor);
-#line 580 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 580 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy255 = yymsp[-1].minor.yy255; }
 #line 2241 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
@@ -2243,48 +2243,48 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 71: /* gop_tree_mode ::= NO_TREE_KW */
 {  yy_destructor(yypParser,44,&yymsp[0].minor);
-#line 583 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 583 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy256 = (gop_tree_mode_t)GOP_NO_TREE; }
 #line 2249 "./mate_grammar.c"
 }
         break;
       case 72: /* gop_tree_mode ::= PDU_TREE_KW */
 {  yy_destructor(yypParser,45,&yymsp[0].minor);
-#line 584 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 584 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy256 = (gop_tree_mode_t)GOP_PDU_TREE; }
 #line 2256 "./mate_grammar.c"
 }
         break;
       case 73: /* gop_tree_mode ::= FRAME_TREE_KW */
 {  yy_destructor(yypParser,46,&yymsp[0].minor);
-#line 585 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 585 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy256 = (gop_tree_mode_t)GOP_FRAME_TREE; }
 #line 2263 "./mate_grammar.c"
 }
         break;
       case 74: /* gop_tree_mode ::= BASIC_TREE_KW */
 {  yy_destructor(yypParser,47,&yymsp[0].minor);
-#line 586 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 586 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy256 = (gop_tree_mode_t)GOP_BASIC_PDU_TREE; }
 #line 2270 "./mate_grammar.c"
 }
         break;
       case 75: /* true_false ::= TRUE_KW */
 {  yy_destructor(yypParser,48,&yymsp[0].minor);
-#line 588 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 588 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy182 = TRUE; }
 #line 2277 "./mate_grammar.c"
 }
         break;
       case 76: /* true_false ::= FALSE_KW */
 {  yy_destructor(yypParser,49,&yymsp[0].minor);
-#line 589 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 589 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy182 = FALSE; }
 #line 2284 "./mate_grammar.c"
 }
         break;
       case 77: /* pdu_name ::= NAME */
-#line 591 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 591 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	mate_cfg_pdu* c;
 	if (( c =  (mate_cfg_pdu *)g_hash_table_lookup(mc->pducfgs,yymsp[0].minor.yy0) )) {
@@ -2298,7 +2298,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 78: /* time_value ::= FLOATING */
       case 79: /* time_value ::= INTEGER */ yytestcase(yyruleno==79);
-#line 601 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 601 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yylhsminor.yy255 = (float) g_ascii_strtod(yymsp[0].minor.yy0,NULL);
 }
@@ -2307,7 +2307,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 80: /* gog_decl ::= GOG_KW NAME OPEN_BRACE gog_key_statements extra_statement transform_list_statement gog_expiration_statement gog_goptree_statement show_times_statement CLOSE_BRACE SEMICOLON */
 {  yy_destructor(yypParser,13,&yymsp[-10].minor);
-#line 619 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 619 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 		mate_cfg_gog* cfg = NULL;
 
@@ -2334,45 +2334,45 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 81: /* gog_goptree_statement ::= GOP_TREE_KW gop_tree_type SEMICOLON */
 {  yy_destructor(yypParser,23,&yymsp[-2].minor);
-#line 638 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 638 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy256 = yymsp[-1].minor.yy256; }
 #line 2340 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 82: /* gog_goptree_statement ::= */
-#line 639 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 639 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy256 = mc->defaults.gog.gop_tree_mode; }
 #line 2347 "./mate_grammar.c"
         break;
       case 84: /* gog_expiration_statement ::= */
-#line 642 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 642 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy255 = mc->defaults.gog.expiration; }
 #line 2352 "./mate_grammar.c"
         break;
       case 85: /* gop_tree_type ::= NULL_TREE_KW */
 {  yy_destructor(yypParser,51,&yymsp[0].minor);
-#line 644 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 644 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy256 = GOP_NULL_TREE; }
 #line 2358 "./mate_grammar.c"
 }
         break;
       case 86: /* gop_tree_type ::= FULL_TREE_KW */
 {  yy_destructor(yypParser,52,&yymsp[0].minor);
-#line 645 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 645 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy256 = GOP_FULL_TREE; }
 #line 2365 "./mate_grammar.c"
 }
         break;
       case 87: /* gop_tree_type ::= BASIC_TREE_KW */
 {  yy_destructor(yypParser,47,&yymsp[0].minor);
-#line 646 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 646 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[0].minor.yy256 = GOP_BASIC_TREE; }
 #line 2372 "./mate_grammar.c"
 }
         break;
       case 88: /* gog_key_statements ::= gog_key_statements gog_key_statement */
-#line 648 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 648 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	loal_append(yymsp[-1].minor.yy77,yymsp[0].minor.yy70);
 	yylhsminor.yy77 = yymsp[-1].minor.yy77;
@@ -2381,7 +2381,7 @@ static YYACTIONTYPE yy_reduce(
   yymsp[-1].minor.yy77 = yylhsminor.yy77;
         break;
       case 89: /* gog_key_statements ::= gog_key_statement */
-#line 653 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 653 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yylhsminor.yy77 = new_loal("");
 	loal_append(yylhsminor.yy77,yymsp[0].minor.yy70);
@@ -2391,7 +2391,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 90: /* gog_key_statement ::= MEMBER_KW gop_name avpl SEMICOLON */
 {  yy_destructor(yypParser,53,&yymsp[-3].minor);
-#line 659 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 659 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	rename_avpl(yymsp[-1].minor.yy70,yymsp[-2].minor.yy212);
 	yymsp[-3].minor.yy70 = yymsp[-1].minor.yy70;
@@ -2401,7 +2401,7 @@ static YYACTIONTYPE yy_reduce(
 }
         break;
       case 91: /* gop_name ::= NAME */
-#line 664 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 664 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	mate_cfg_gop* c;
 	if (( c = (mate_cfg_gop *)g_hash_table_lookup(mc->gopcfgs,yymsp[0].minor.yy0) )) {
@@ -2415,32 +2415,32 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 92: /* extra_statement ::= EXTRA_KW avpl SEMICOLON */
 {  yy_destructor(yypParser,54,&yymsp[-2].minor);
-#line 676 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 676 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy70 = yymsp[-1].minor.yy70; }
 #line 2421 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 93: /* extra_statement ::= */
-#line 677 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 677 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy70 = new_avpl(""); }
 #line 2428 "./mate_grammar.c"
         break;
       case 94: /* transform_list_statement ::= TRANSFORM_KW transform_list SEMICOLON */
 {  yy_destructor(yypParser,24,&yymsp[-2].minor);
-#line 679 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 679 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy147 = yymsp[-1].minor.yy147; }
 #line 2434 "./mate_grammar.c"
   yy_destructor(yypParser,2,&yymsp[0].minor);
 }
         break;
       case 95: /* transform_list_statement ::= */
-#line 680 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 680 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[1].minor.yy147 = g_ptr_array_new(); }
 #line 2441 "./mate_grammar.c"
         break;
       case 96: /* transform_list ::= transform_list COMMA transform */
-#line 682 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 682 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yylhsminor.yy147 = yymsp[-2].minor.yy147;
 	g_ptr_array_add(yymsp[-2].minor.yy147,yymsp[0].minor.yy11);
@@ -2450,7 +2450,7 @@ static YYACTIONTYPE yy_reduce(
   yymsp[-2].minor.yy147 = yylhsminor.yy147;
         break;
       case 97: /* transform_list ::= transform */
-#line 687 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 687 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	yylhsminor.yy147 = g_ptr_array_new();
 	g_ptr_array_add(yylhsminor.yy147,yymsp[0].minor.yy11);
@@ -2459,7 +2459,7 @@ static YYACTIONTYPE yy_reduce(
   yymsp[0].minor.yy147 = yylhsminor.yy147;
         break;
       case 98: /* transform ::= NAME */
-#line 692 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 692 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 	AVPL_Transf* t;
 
@@ -2474,7 +2474,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 99: /* avpl ::= OPEN_PARENS avps CLOSE_PARENS */
 {  yy_destructor(yypParser,56,&yymsp[-2].minor);
-#line 702 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 702 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-2].minor.yy70 = yymsp[-1].minor.yy70; }
 #line 2480 "./mate_grammar.c"
   yy_destructor(yypParser,57,&yymsp[0].minor);
@@ -2482,39 +2482,39 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 100: /* avpl ::= OPEN_PARENS CLOSE_PARENS */
 {  yy_destructor(yypParser,56,&yymsp[-1].minor);
-#line 703 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 703 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yymsp[-1].minor.yy70 = new_avpl(""); }
 #line 2488 "./mate_grammar.c"
   yy_destructor(yypParser,57,&yymsp[0].minor);
 }
         break;
       case 101: /* avps ::= avps COMMA avp */
-#line 705 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 705 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy70 = yymsp[-2].minor.yy70; if ( ! insert_avp(yymsp[-2].minor.yy70,yymsp[0].minor.yy226) ) delete_avp(yymsp[0].minor.yy226); }
 #line 2495 "./mate_grammar.c"
   yy_destructor(yypParser,55,&yymsp[-1].minor);
   yymsp[-2].minor.yy70 = yylhsminor.yy70;
         break;
       case 102: /* avps ::= avp */
-#line 706 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 706 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy70 = new_avpl(""); if ( ! insert_avp(yylhsminor.yy70,yymsp[0].minor.yy226) ) delete_avp(yymsp[0].minor.yy226); }
 #line 2502 "./mate_grammar.c"
   yymsp[0].minor.yy70 = yylhsminor.yy70;
         break;
       case 103: /* avp ::= NAME AVP_OPERATOR value */
-#line 708 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 708 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy226 = new_avp(yymsp[-2].minor.yy0,yymsp[0].minor.yy212,*yymsp[-1].minor.yy0); }
 #line 2508 "./mate_grammar.c"
   yymsp[-2].minor.yy226 = yylhsminor.yy226;
         break;
       case 104: /* avp ::= NAME */
-#line 709 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 709 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy226 = new_avp(yymsp[0].minor.yy0,"",'?'); }
 #line 2514 "./mate_grammar.c"
   yymsp[0].minor.yy226 = yylhsminor.yy226;
         break;
       case 105: /* avp ::= NAME OPEN_BRACE avp_oneoff CLOSE_BRACE */
-#line 710 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 710 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy226 = new_avp(yymsp[-3].minor.yy0,yymsp[-1].minor.yy212,'|'); }
 #line 2520 "./mate_grammar.c"
   yy_destructor(yypParser,4,&yymsp[-2].minor);
@@ -2522,14 +2522,14 @@ static YYACTIONTYPE yy_reduce(
   yymsp[-3].minor.yy226 = yylhsminor.yy226;
         break;
       case 106: /* avp_oneoff ::= avp_oneoff PIPE value */
-#line 712 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 712 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy212 = g_strdup_printf("%s|%s",yymsp[-2].minor.yy212,yymsp[0].minor.yy212); }
 #line 2528 "./mate_grammar.c"
   yy_destructor(yypParser,59,&yymsp[-1].minor);
   yymsp[-2].minor.yy212 = yylhsminor.yy212;
         break;
       case 107: /* avp_oneoff ::= value */
-#line 713 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 713 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy212 = g_strdup(yymsp[0].minor.yy212); }
 #line 2535 "./mate_grammar.c"
   yymsp[0].minor.yy212 = yylhsminor.yy212;
@@ -2539,20 +2539,20 @@ static YYACTIONTYPE yy_reduce(
       case 110: /* value ::= FLOATING */ yytestcase(yyruleno==110);
       case 111: /* value ::= INTEGER */ yytestcase(yyruleno==111);
       case 112: /* value ::= DOTED_IP */ yytestcase(yyruleno==112);
-#line 715 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 715 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy212 = g_strdup(yymsp[0].minor.yy0); }
 #line 2545 "./mate_grammar.c"
   yymsp[0].minor.yy212 = yylhsminor.yy212;
         break;
       case 113: /* value ::= COLONIZED */
-#line 720 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 720 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 { yylhsminor.yy212 = recolonize(mc,yymsp[0].minor.yy0); }
 #line 2551 "./mate_grammar.c"
   yymsp[0].minor.yy212 = yylhsminor.yy212;
         break;
       case 123: /* decl ::= DONE_KW SEMICOLON */
 {  yy_destructor(yypParser,1,&yymsp[-1].minor);
-#line 259 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 259 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 }
 #line 2559 "./mate_grammar.c"
@@ -2561,7 +2561,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 124: /* debug_decl ::= DEBUG_KW OPEN_BRACE dbgfile_default dbglevel_default pdu_dbglevel_default gop_dbglevel_default gog_dbglevel_default CLOSE_BRACE SEMICOLON */
 {  yy_destructor(yypParser,3,&yymsp[-8].minor);
-#line 264 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 264 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 }
 #line 2568 "./mate_grammar.c"
@@ -2572,7 +2572,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 130: /* defaults_decl ::= DEFAULT_KW OPEN_BRACE pdu_defaults gop_defaults gog_defaults CLOSE_BRACE SEMICOLON */
 {  yy_destructor(yypParser,14,&yymsp[-6].minor);
-#line 286 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 286 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 }
 #line 2579 "./mate_grammar.c"
@@ -2583,7 +2583,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 131: /* pdu_defaults ::= PDU_KW OPEN_BRACE pdu_last_extracted_default pdu_drop_unassigned_default pdu_discard_default CLOSE_BRACE SEMICOLON */
 {  yy_destructor(yypParser,11,&yymsp[-6].minor);
-#line 288 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 288 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 }
 #line 2590 "./mate_grammar.c"
@@ -2594,7 +2594,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 136: /* gop_defaults ::= GOP_KW OPEN_BRACE gop_expiration_default gop_idle_timeout_default gop_lifetime_default gop_drop_unassigned_default gop_tree_mode_default gop_show_times_default CLOSE_BRACE SEMICOLON */
 {  yy_destructor(yypParser,12,&yymsp[-9].minor);
-#line 300 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 300 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 }
 #line 2601 "./mate_grammar.c"
@@ -2605,7 +2605,7 @@ static YYACTIONTYPE yy_reduce(
         break;
       case 144: /* gog_defaults ::= GOG_KW OPEN_BRACE gog_expiration_default gop_tree_mode_default gog_goptree_default gog_show_times_default CLOSE_BRACE SEMICOLON */
 {  yy_destructor(yypParser,13,&yymsp[-7].minor);
-#line 321 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 321 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 {
 }
 #line 2612 "./mate_grammar.c"
@@ -2685,7 +2685,7 @@ static void yy_parse_failed(
   /* Here code is inserted which will be executed whenever the
   ** parser fails */
 /************ Begin %parse_failure code ***************************************/
-#line 188 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 188 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 
 	configuration_error(mc,"Parse Error");
 #line 2692 "./mate_grammar.c"
@@ -2707,7 +2707,7 @@ static void yy_syntax_error(
   MateParserCTX_FETCH
 #define TOKEN yyminor
 /************ Begin %syntax_error code ****************************************/
-#line 184 "/root/CLionProjects/tshark_test/plugins/epan/mate/mate_grammar.lemon"
+#line 184 "/root/CLionProjects/tshark/plugins/epan/mate/mate_grammar.lemon"
 
 	configuration_error(mc,"Syntax Error before %s",yyminor);
 #line 2714 "./mate_grammar.c"

@@ -20,8 +20,8 @@ import os.path
 
 ws_version = '3.4.5'
 ws_volname = 'Wireshark ' + ws_version
-ws_srcdir = '/root/CLionProjects/tshark_test'
-ws_bindir = '/root/CLionProjects/tshark_test'
+ws_srcdir = '/root/CLionProjects/tshark'
+ws_bindir = '/root/CLionProjects/tshark'
 ws_app = 'Wireshark.app'
 ws_readme = 'Read me first.html'
 ws_install_chmodbpf = 'Install ChmodBPF.pkg'
