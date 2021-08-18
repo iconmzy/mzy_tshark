@@ -95,7 +95,7 @@ dkms.conf
 *.out
 *.app
 
-/cmake-build-debug/
+#/cmake-build-debug/
 /CMakeFiles/
 !/capchild/CMakeFiles/
 将删除 capchild/CMakeFiles/capchild.dir/capchild_autogen/

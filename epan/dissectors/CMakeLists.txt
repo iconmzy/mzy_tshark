@@ -5,7 +5,7 @@
 # Copyright 1998 Gerald Combs
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
-#
+
 
 ADD_CUSTOM_CMAKE_INCLUDE()
 
@@ -234,7 +234,7 @@ set_target_properties(dissectors-corba PROPERTIES
 )
 
 if(WIN32 AND CMAKE_GENERATOR STREQUAL "Visual Studio 12 2013 Win64")
-	# CORBA IDL dissectors are triggering a MSVC 2013 x64 /O2 bug leading to a NULL pointer dereference (see bug 12495)
+#	 CORBA IDL dissectors are triggering a MSVC 2013 x64 /O2 bug leading to a NULL pointer dereference (see bug 12495)
 	target_compile_options(dissectors-corba PRIVATE $<$<CONFIG:Release>:/Ox> $<$<CONFIG:RelWithDebInfo>:/Ox>)
 endif()
 
@@ -2003,10 +2003,10 @@ set(ALL_DISSECTOR_SRC
 	${CORBA_IDL_DISSECTOR_SRC}
 )
 
-#
+
 # We pass the arguments to make-dissectors in a file to avoid limitations
 # with the number of arguments handled by main().
-#
+
 file(GENERATE
 	OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/dissectors.in.txt"
 	CONTENT "$<JOIN:${ALL_DISSECTOR_SRC},\n>\n"
@@ -2035,7 +2035,7 @@ set_source_files_properties(
 )
 
 add_library(dissectors OBJECT
-	#Included so that Visual Studio can properly put header files in solution
+#	Included so that Visual Studio can properly put header files in solution
 	${DISSECTOR_HEADER_FILES}
 
 
@@ -2067,7 +2067,7 @@ CHECKAPI(
 	  ${DISSECTOR_HEADERS}
 )
 
-#
+
 # Editor modelines  -  https://www.wireshark.org/tools/modelines.html
 #
 # Local variables:
@@ -2078,4 +2078,4 @@ CHECKAPI(
 #
 # vi: set shiftwidth=8 tabstop=8 noexpandtab:
 # :indentSize=8:tabSize=8:noTabs=false:
-#
+

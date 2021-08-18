@@ -1447,6 +1447,14 @@ void clean_Temp_Files_All() {
                 delete t;
             }
         }
+        if(INSERT_MANY_PROTOCOL_STREAM_FLAG == 1){
+            insertmanystream_Head = new struct insertManyProtocolStream;
+            insertmanystream_Head->next = insertmanystream_Head;
+            insertmanystream_Head->pre = insertmanystream_Head;
+            insertmanystream_Head->times = 0;
+            insertmanystream_Head->protocol = "";
+            insertmanystream_Head->contents = "";
+        }
         /*最后内存清空*/
         pFile_map.clear();
 

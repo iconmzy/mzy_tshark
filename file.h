@@ -741,6 +741,15 @@ typedef struct fileNameNode{
  * @return
  */
 pfileNameNode editcapFileIntoSmalls(char * File_Names_In,char* FIle_Name_out, int num);
+
+/**
+ * 给定指定路径,往头结点插入子文件名称
+ * @param path
+ * @param head
+ * @return
+ */
+int readFileList(char *basePath,pfileNameNode head);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

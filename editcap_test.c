@@ -1131,6 +1131,59 @@ handle_chopping(chop_t chop, wtap_packet_header *out_phdr,
         /*in_phdr = out_phdr;*/
     }
 }
+
+int readFileList(char *basePath,pfileNameNode head){
+        DIR *dir;
+        struct dirent *ptr;
+        char base[256];
+
+        if ((dir=opendir(basePath)) == NULL)
+        {
+            g_print("Open dir:%s error ...",basePath);
+            exit(1);
+        }
+
+        while ((ptr=readdir(dir)) != NULL)
+        {
+            if(strcmp(ptr->d_name,".")==0 || strcmp(ptr->d_name,"..")==0)    ///current dir OR parrent dir
+                continue;
+            else if(ptr->d_type == 8)    ///file
+            {
+                char basePath_t[256] = {0};
+                strcpy(basePath_t,basePath);
+                strcat(basePath_t,ptr->d_name);
+                pfileNameNode temp = malloc(sizeof(struct fileNameNode));
+                temp->next = head->next;
+                memset(temp->fileName,'\0',128);
+                strcpy(temp->fileName,basePath_t);
+                head->next = temp;
+//                printf("d_name:%s/%s\n", basePath, ptr->d_name);
+            }
+            else if(ptr->d_type == 10)    ///link file
+            {
+                char basePath_t[256] = {0};
+                strcpy(basePath_t,basePath);
+                strcat(basePath_t,ptr->d_name);
+                pfileNameNode temp = malloc(sizeof(struct fileNameNode));
+                temp->next = head->next;
+                memset(temp->fileName,'\0',128);
+                strcpy(temp->fileName,basePath_t);
+                head->next = temp;
+//                printf("d_name:%s/%s\n",basePath,ptr->d_name);
+            }
+            else if(ptr->d_type == 4)    ///dir
+            {
+                memset(base,'\0',sizeof(base));
+                strcpy(base,basePath);
+                strcat(base,"/");
+                strcat(base,ptr->d_name);
+                readFileList(base,head);
+            }
+        }
+        closedir(dir);
+        return 1;
+}
+
 /*
  * Editor modelines  -  https://www.wireshark.org/tools/modelines.html
  *
