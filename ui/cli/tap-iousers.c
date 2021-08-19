@@ -110,8 +110,8 @@ iousers_draw(void *arg)
 					char *src, *dst, *src_port, *dst_port;
 					src_port = get_conversation_port(NULL, iui->src_port, iui->etype, TRUE);
 					dst_port = get_conversation_port(NULL, iui->dst_port, iui->etype, TRUE);
-					src = wmem_strconcat(NULL, src_addr, ":", src_port, NULL);
-					dst = wmem_strconcat(NULL, dst_addr, ":", dst_port, NULL);
+//					src = wmem_strconcat(NULL, src_addr, ":", src_port, NULL);
+//					dst = wmem_strconcat(NULL, dst_addr, ":", dst_port, NULL);
 //					printf("%-26s <-> %-26s  %6" G_GINT64_MODIFIER "u %-9s"
 //					       "  %6" G_GINT64_MODIFIER "u %-9s"
 //					       "  %6" G_GINT64_MODIFIER "u %-9s  ",
@@ -123,7 +123,9 @@ iousers_draw(void *arg)
 //					);
 					if(WRITE_IN_CONVERSATIONS_FLAG){
                         do_write_in_conversation_handler("src",src);
+                        do_write_in_conversation_handler("src_port",src_port);
                         do_write_in_conversation_handler("dst",dst);
+                        do_write_in_conversation_handler("dst_port",dst_port);
                         char *recv_Frames = my_itoa(iui->rx_frames);
                         char *send_Frames = my_itoa(iui->tx_frames);
                         char *total_Frames = my_itoa(iui->tx_frames+iui->rx_frames);

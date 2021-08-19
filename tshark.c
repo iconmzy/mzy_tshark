@@ -2454,7 +2454,6 @@ int main(int argc, char *argv[])
                 exit(0);
             } else{
                 /*路径正常*/
-
                 readFileList(cf_name,headOfDirPath);
                 pfileNameNode temp = headOfDirPath->next;
                 gboolean mutex = TRUE;

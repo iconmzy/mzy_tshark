@@ -5,20 +5,17 @@ JSON_ADD_PROTO_PATH:/root/CLionProjects/tshark_test/newproto/json
 
 #配置是否写入解析文件
 WRITE_IN_FILES_CONFIG:0
-#配置协议解析输出文件的位置
+#配置协议解析输出文件的位置 不超过255字节
 EXPORT_PATH:../temp
 
 #配置是否统计会话信息
 WRITE_IN_CONVERSATIONS_FLAG:1
-#配置会话统计信息存放路径 不超过255字节
-WRITE_IN_CONVERSATIONS_PATH:../conversation
 
 #配置是否组包
 PACKET_PROTOCOL_FLAG:1
 #配置所需组包协议，英文逗号隔开
 PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp
-#配置组包输出路径 不超过255字节
-PACKET_PROTOCOL_PATH:./out
+
 
 #配置是否写入数据库
 WRITE_IN_DATABASE_FLAG:0

@@ -1277,16 +1277,16 @@ gboolean readConfigFilesStatus(){
                 loadFile_ConfigFile(CONFIG_FILES_PATH, &fileData, &lines);
                 parseFile_ConfigFile(fileData, lines, &info);
 
-                packet_protocol_path = getInfo_ConfigFile("PACKET_PROTOCOL_PATH", info, lines);
-                if (packet_protocol_path != NULL) {
-                    strcpy(PACKET_PROTOCOL_PATH,packet_protocol_path);
-                    int len = strlen(PACKET_PROTOCOL_PATH);
-                    if(PACKET_PROTOCOL_PATH[len-1] != '/'){
-                        strcat(PACKET_PROTOCOL_PATH,"/");
-                    }
-                } else {
-                    strcpy(PACKET_PROTOCOL_PATH,"./");
-                }
+//                packet_protocol_path = getInfo_ConfigFile("PACKET_PROTOCOL_PATH", info, lines);
+//                if (packet_protocol_path != NULL) {
+//                    strcpy(PACKET_PROTOCOL_PATH,packet_protocol_path);
+//                    int len = strlen(PACKET_PROTOCOL_PATH);
+//                    if(PACKET_PROTOCOL_PATH[len-1] != '/'){
+//                        strcat(PACKET_PROTOCOL_PATH,"/");
+//                    }
+//                } else {
+//                    strcpy(PACKET_PROTOCOL_PATH,"./");
+//                }
 
                 packet_protocol_types = getInfo_ConfigFile("PACKET_PROTOCOL_TYPES", info, lines);
                 if (packet_protocol_types != NULL) {
@@ -1337,16 +1337,16 @@ gboolean readConfigFilesStatus(){
                     WRITE_IN_CONVERSATIONS_FLAG = 0;
                 }
 
-                write_in_conversation_path = getInfo_ConfigFile("WRITE_IN_CONVERSATIONS_PATH", info, lines);
-                if (write_in_conversation_path != NULL) {
-                   strcpy(WRITE_IN_CONVERSATIONS_PATH,write_in_conversation_path);
-                    int len = strlen(WRITE_IN_CONVERSATIONS_PATH);
-                    if(WRITE_IN_CONVERSATIONS_PATH[len-1] != '/'){
-                        strcat(WRITE_IN_CONVERSATIONS_PATH,"/");
-                    }
-                } else {
-                    strcpy(WRITE_IN_CONVERSATIONS_PATH,"./");
-                }
+//                write_in_conversation_path = getInfo_ConfigFile("WRITE_IN_CONVERSATIONS_PATH", info, lines);
+//                if (write_in_conversation_path != NULL) {
+//                   strcpy(WRITE_IN_CONVERSATIONS_PATH,write_in_conversation_path);
+//                    int len = strlen(WRITE_IN_CONVERSATIONS_PATH);
+//                    if(WRITE_IN_CONVERSATIONS_PATH[len-1] != '/'){
+//                        strcat(WRITE_IN_CONVERSATIONS_PATH,"/");
+//                    }
+//                } else {
+//                    strcpy(WRITE_IN_CONVERSATIONS_PATH,"./");
+//                }
 
                 export_path = getInfo_ConfigFile("EXPORT_PATH", info, lines);
                 if(export_path != NULL){
@@ -1355,6 +1355,14 @@ gboolean readConfigFilesStatus(){
                     if(EXPORT_PATH[len-1] != '/'){
                         strcat(EXPORT_PATH,"/");
                     }
+                    /*统一将路径全部初始化掉*/
+                    strcat(WRITE_IN_CONVERSATIONS_PATH,EXPORT_PATH);
+                    strcat(WRITE_IN_CONVERSATIONS_PATH,"conversation/");
+
+                    strcat(PACKET_PROTOCOL_PATH,EXPORT_PATH);
+                    strcat(PACKET_PROTOCOL_PATH,"export/");
+
+                    strcat(EXPORT_PATH,"dissectors/");
                 } else{
                     strcpy(EXPORT_PATH,"./");
                 }
