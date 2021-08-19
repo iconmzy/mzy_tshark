@@ -410,6 +410,7 @@ void deleteSPACE_before_end(std::string &str){
     return;
 }
 
+
 /**
  * 返回找到的tcp链接四元组结构体指针
  * @param temp 四元组结构体指针
@@ -502,7 +503,32 @@ int kmp(std::string s,std::string t)
     else
         return -1;
 }
-
+void allToBytes(char* m_srcbytes) {
+    std::string m_t = m_srcbytes;
+    if(kmp(m_t,"bytes") != -1){
+        m_srcbytes[kmp(m_t,"bytes")] = '\0';
+    } else if(kmp(m_t,"kB") != -1){
+            m_srcbytes[kmp(m_t,"kB")] = '\0';
+            int m_num = std::atoi(m_srcbytes);
+            m_num *= 1024;
+            memset(m_srcbytes,'\0',24);
+            strcpy(m_srcbytes,my_itoa(m_num));
+    } else if( kmp(m_t,"mB")!= -1){
+        m_srcbytes[kmp(m_t,"mB")] = '\0';
+        int m_num = std::atoi(m_srcbytes);
+        m_num *= 1024*1024;
+        memset(m_srcbytes,'\0',24);
+        strcpy(m_srcbytes,my_itoa(m_num));
+    } else if(kmp(m_t,"gB") != -1){
+        m_srcbytes[kmp(m_t,"gB")] = '\0';
+        long int m_num = std::atoi(m_srcbytes);
+        m_num *= 1024*1024*1024;
+        memset(m_srcbytes,'\0',24);
+        strcpy(m_srcbytes,my_itoa(m_num));
+    } else{
+        return;
+    }
+}
 /**
  * 返回指向对应协议名的结构体指针 为找到返回NULL
  * @param head  头结点

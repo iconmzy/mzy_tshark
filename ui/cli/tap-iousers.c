@@ -27,6 +27,7 @@ typedef struct _io_users_t {
 	conv_hash_t hash;
 } io_users_t;
 
+
 static void
 iousers_draw(void *arg)
 {
@@ -98,6 +99,14 @@ iousers_draw(void *arg)
 
 			if (tot_frames == last_frames) {
 				char *rx_bytes, *tx_bytes, *total_bytes;
+                long int m_rx_bytes,m_tx_bytes,m_total_bytes;
+                long  int m_rx_frame,m_tx_frames,m_total_frames;
+                m_rx_bytes = iui->rx_bytes;
+                m_tx_bytes = iui->tx_bytes;
+                m_total_bytes = iui->rx_bytes + iui->tx_bytes;
+                m_rx_frame = iui->rx_frames;
+                m_tx_frames = iui->tx_frames;
+                m_total_frames = m_rx_frame + m_tx_frames;
 
 				rx_bytes = format_size_wmem(NULL, iui->rx_bytes, (format_size_flags_e)(format_size_unit_bytes|format_size_suffix_no_space));
 				tx_bytes = format_size_wmem(NULL, iui->tx_bytes, (format_size_flags_e)(format_size_unit_bytes|format_size_suffix_no_space));
@@ -126,15 +135,12 @@ iousers_draw(void *arg)
                         do_write_in_conversation_handler("src_port",src_port);
                         do_write_in_conversation_handler("dst",dst_addr);
                         do_write_in_conversation_handler("dst_port",dst_port);
-                        char *recv_Frames = my_itoa(iui->rx_frames);
-                        char *send_Frames = my_itoa(iui->tx_frames);
-                        char *total_Frames = my_itoa(iui->tx_frames+iui->rx_frames);
-                        do_write_in_conversation_handler("recv_Frames",recv_Frames);
-                        do_write_in_conversation_handler("recv_Bytes",rx_bytes);
-                        do_write_in_conversation_handler("send_Frames",send_Frames);
-                        do_write_in_conversation_handler("send_Bytes",tx_bytes);
-                        do_write_in_conversation_handler("total_Frames",total_Frames);
-                        do_write_in_conversation_handler("total_Bytes",total_bytes);
+                        do_write_in_conversation_handler("recv_Frames",my_itoa(m_rx_frame));
+                        do_write_in_conversation_handler("recv_Bytes",my_itoa(m_rx_bytes));
+                        do_write_in_conversation_handler("send_Frames",my_itoa(m_tx_frames));
+                        do_write_in_conversation_handler("send_Bytes",my_itoa(m_tx_bytes));
+                        do_write_in_conversation_handler("total_Frames",my_itoa(m_total_frames));
+                        do_write_in_conversation_handler("total_Bytes",my_itoa(m_total_bytes));
 					}
 
 					wmem_free(NULL, src_port);

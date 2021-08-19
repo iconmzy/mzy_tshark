@@ -43,7 +43,7 @@ WS_DLL_PUBLIC char write_Json_Files_Init_Status;
 
 WS_DLL_PUBLIC char* my_itoa(long int n);
 WS_DLL_PUBLIC void float2char(float slope,char*buffer,int n);
-
+WS_DLL_PUBLIC void allToBytes(char* m_srcbytes);
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];
 //是否允许新增协议相关
