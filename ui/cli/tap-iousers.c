@@ -247,21 +247,28 @@ iousers_draw(void *arg)
 				default:
 //					printf("%14.9f",nstime_to_sec(&iui->start_time));
                         tm_time = gmtime(&iui->start_abs_time.secs);
-                        nsec_tm = iui->start_abs_time.nsecs;
-                        strcat(abs_start,my_itoa(tm_time->tm_year+1900));
-                        strcat(abs_start,"y");
-                        strcat(abs_start,my_itoa(tm_time->tm_mon+1));
-                        strcat(abs_start,"m");
-                        strcat(abs_start,my_itoa(tm_time->tm_mday));
-                        strcat(abs_start,"d ");
-                        strcat(abs_start,my_itoa(tm_time->tm_hour +8));
-                        strcat(abs_start,"h");
-                        strcat(abs_start,my_itoa(tm_time->tm_min));
-                        strcat(abs_start,"m");
-                        strcat(abs_start,my_itoa(tm_time->tm_sec));
-                        strcat(abs_start,".");
-                        strcat(abs_start,my_itoa(nsec_tm));
-                        strcat(abs_start,"s");
+//                        nsec_tm = iui->start_abs_time.nsecs;
+//                        strcat(abs_start,my_itoa(tm_time->tm_year+1900));
+//                        strcat(abs_start,"y");
+//                        strcat(abs_start,my_itoa(tm_time->tm_mon+1));
+//                        strcat(abs_start,"m");
+//                        strcat(abs_start,my_itoa(tm_time->tm_mday));
+//                        strcat(abs_start,"d ");
+//                        strcat(abs_start,my_itoa(tm_time->tm_hour +8));
+//                        strcat(abs_start,"h");
+//                        strcat(abs_start,my_itoa(tm_time->tm_min));
+//                        strcat(abs_start,"m");
+//                        strcat(abs_start,my_itoa(tm_time->tm_sec));
+
+//                        strcat(abs_start,my_itoa((int)iui->start_abs_time.secs));
+//                        strcat(abs_start,".");
+//                        strcat(abs_start,my_itoa(nsec_tm));
+//                        strcat(abs_start,"s");
+
+//                        sprintf(abs_start, "%d.%d", (int)iui->start_abs_time.secs, nsec_tm);  // 格式化数据写入字符串
+                        // 将时间戳的秒部分转换为 yyyy-MM-dd HH-mm-SS
+                        sprintf(abs_start, "%4d-%02d-%02d %02d:%02d:%02d", tm_time->tm_year + 1900, tm_time->tm_mon + 1,
+                                tm_time->tm_mday, tm_time->tm_hour + 8, tm_time->tm_min, tm_time->tm_sec);
 
                         do_write_in_conversation_handler("start_abs_time",abs_start);
 
