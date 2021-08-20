@@ -10,6 +10,7 @@ tshark二次开发
 ## 安装教程
 
 安装文件 `tshark.tar.gz`
+
 运行环境：Linux平台
 
 ### 第一步，解压
@@ -35,12 +36,11 @@ tar -zxvf tshark.tar.gz
 yum install libpcap*
 ```
 
-## 使用说明
+## 更新记录
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 2021年8月20日
 
 #### TODO
-[x] 添加授权码功能
+[ x ] 添加授权码功能
+
 [ ] 更名
