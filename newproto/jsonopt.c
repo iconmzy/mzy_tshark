@@ -239,6 +239,10 @@ int CountJsonFile(char *dirPath)
 	DIR *dirp;
 	struct dirent *direntp;
 	dirp = opendir(dirPath);
+	if(dirp == NULL){
+	    printf("新增协议JSON路径错误！\n");
+	    _exit(-1);
+	}
 	int num = 0;
 	while ((direntp = readdir(dirp)) != NULL)
 	{
