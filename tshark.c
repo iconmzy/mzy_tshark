@@ -1638,7 +1638,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if (PACKET_PROTOCOL_FLAG) {
+    if (PACKET_PROTOCOL_FLAG) {  // 是否组包
         char t[24] = {0};
         int len = strlen(PACKET_PROTOCOL_TYPES);
         int j = 0;
@@ -1659,7 +1659,7 @@ int main(int argc, char *argv[]) {
             }
         }
     }
-    if (WRITE_IN_CONVERSATIONS_FLAG) {
+    if (WRITE_IN_CONVERSATIONS_FLAG) {  // 是否统计会话信息
         char *arg_t = "conv,tcp";
         if (!process_stat_cmd_arg(arg_t)) {
             list_stat_cmd_args();
@@ -3746,11 +3746,11 @@ process_cap_file_second_pass(capture_file *cf, wtap_dumper *pdh,
     return status;
 }
 
-static pass_status_t
-process_cap_file_single_pass(capture_file *cf, wtap_dumper *pdh,
-                             int max_packet_count, gint64 max_byte_count,
-                             int *err, gchar **err_info,
-                             volatile guint32 *err_framenum) {
+
+static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper *pdh,
+                                                  int max_packet_count, gint64 max_byte_count,
+                                                  int *err, gchar **err_info,
+                                                  volatile guint32 *err_framenum) {
     wtap_rec rec;
     Buffer buf;
     gboolean create_proto_tree = FALSE;
@@ -4100,6 +4100,17 @@ process_cap_file(capture_file *cf, char *save_file, int out_file_type,
     return status;
 }
 
+int ALL_PACKET_COUNT = 0;  // 全局变量统计总共处理了多少个packet，PACKET和FRAME含义相同
+/**
+ * 处理每一帧数据
+ * @param cf
+ * @param edt 存放解析结果的结构体
+ * @param offset 偏移量
+ * @param rec
+ * @param buf 缓存
+ * @param tap_flags
+ * @return
+ */
 static gboolean
 process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
                            wtap_rec *rec, Buffer *buf, guint tap_flags) {
@@ -4107,8 +4118,9 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
     column_info *cinfo = NULL;
     gboolean passed;
 
-    /* Count this packet. */
-    cf->count++;
+    /* Count this packet. 对处理的帧计数 */
+    cf->count++;  // 仅仅针对一个文件
+    ALL_PACKET_COUNT++;  // 全局变量统计总共处理了多少个packet
 
     /* If we're not running a display filter and we're not printing any
        packet information, we don't need to do a dissection. This means
@@ -4159,14 +4171,16 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
 
 
         if (DISPLAY_PACKET_INFO_FLAG) {
-            if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {
+            if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
                 if (cf->count % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
-                    g_print("have processed %d packets!", cf->count);
+//                    g_print("have processed %d packets!", cf->count);
+                    g_print("have processed %d packets!", ALL_PACKET_COUNT);
                     g_print("\r");
                     fflush(stdout);
                 }
             } else {
-                g_print("have processed %d packets!", cf->count);
+//                g_print("have processed %d packets!", cf->count);
+                g_print("have processed %d packets!", ALL_PACKET_COUNT);
                 g_print("\r");
                 fflush(stdout);
             }
