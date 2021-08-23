@@ -503,32 +503,6 @@ int kmp(std::string s,std::string t)
     else
         return -1;
 }
-void allToBytes(char* m_srcbytes) {
-    std::string m_t = m_srcbytes;
-    if(kmp(m_t,"bytes") != -1){
-        m_srcbytes[kmp(m_t,"bytes")] = '\0';
-    } else if(kmp(m_t,"kB") != -1){
-            m_srcbytes[kmp(m_t,"kB")] = '\0';
-            int m_num = std::atoi(m_srcbytes);
-            m_num *= 1024;
-            memset(m_srcbytes,'\0',24);
-            strcpy(m_srcbytes,my_itoa(m_num));
-    } else if( kmp(m_t,"mB")!= -1){
-        m_srcbytes[kmp(m_t,"mB")] = '\0';
-        int m_num = std::atoi(m_srcbytes);
-        m_num *= 1024*1024;
-        memset(m_srcbytes,'\0',24);
-        strcpy(m_srcbytes,my_itoa(m_num));
-    } else if(kmp(m_t,"gB") != -1){
-        m_srcbytes[kmp(m_t,"gB")] = '\0';
-        long int m_num = std::atoi(m_srcbytes);
-        m_num *= 1024*1024*1024;
-        memset(m_srcbytes,'\0',24);
-        strcpy(m_srcbytes,my_itoa(m_num));
-    } else{
-        return;
-    }
-}
 /**
  * 返回指向对应协议名的结构体指针 为找到返回NULL
  * @param head  头结点
@@ -1053,7 +1027,13 @@ gboolean dissect_edt_into_files(epan_dissect_t* edt){
 
     /*获取文件来源*/
     if(read_Pcap_From_File_Flag == 1){
-        cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,read_File_Path);
+        if(strlen(file_Name_t) == 0){
+            /*存在文件名*/
+            strcpy(read_File_Path,file_Name_t);
+            cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,read_File_Path);
+        } else{
+            cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,read_File_Path);
+        }
     } else{
         cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,"onLine");
     }

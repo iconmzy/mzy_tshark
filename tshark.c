@@ -181,7 +181,7 @@ capture_file cfile;
 char read_File_Path[256] = {0};
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
-
+char file_Name_t[128] = {0};
 
 static guint32 cum_bytes;
 static frame_data ref_frame;
@@ -2359,6 +2359,9 @@ int main(int argc, char *argv[]) {
                     gboolean mutex = TRUE;
                     while (temp != NULL) {
                         cf_name = temp->fileName;
+                        /*将缓存的文件名字初始化*/
+                        memset(file_Name_t,'\0',128);
+                        strcpy(file_Name_t,cf_name);
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             continue;
                         }
@@ -2382,6 +2385,7 @@ int main(int argc, char *argv[]) {
 #endif
                         /*直接清理最终缓存*/
                         clean_Temp_Files_All();
+
 
                         if (temp->next == NULL) {
                             draw_taps = TRUE;

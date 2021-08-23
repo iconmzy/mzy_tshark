@@ -38,12 +38,12 @@ WS_DLL_PUBLIC gboolean DISPLAY_PACKET_INFO_FLAG;
 WS_DLL_PUBLIC gboolean EDIT_FILES_DISSECT_FLAG;
 
 WS_DLL_PUBLIC char read_File_Path[256];
+WS_DLL_PUBLIC char file_Name_t[128];
 WS_DLL_PUBLIC gboolean read_Pcap_From_File_Flag;
 WS_DLL_PUBLIC char write_Json_Files_Init_Status;
 
 WS_DLL_PUBLIC char* my_itoa(long int n);
 WS_DLL_PUBLIC void float2char(float slope,char*buffer,int n);
-WS_DLL_PUBLIC void allToBytes(char* m_srcbytes);
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];
 //是否允许新增协议相关
