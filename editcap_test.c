@@ -1137,11 +1137,17 @@ int readFileList(char *basePath,pfileNameNode head){
         struct dirent *ptr;
         char base[256];
 
+        int len = strlen(basePath);
+        if (basePath[len - 1] != '/') {
+            strcat(basePath, "/");
+        }
+
         if ((dir=opendir(basePath)) == NULL)
         {
             g_print("Open dir:%s error ...",basePath);
             exit(1);
         }
+
 
         while ((ptr=readdir(dir)) != NULL)
         {
@@ -1175,7 +1181,10 @@ int readFileList(char *basePath,pfileNameNode head){
             {
                 memset(base,'\0',sizeof(base));
                 strcpy(base,basePath);
-                strcat(base,"/");
+                int len = strlen(base);
+                if (base[len - 1] != '/') {
+                    strcat(base, "/");
+                }
                 strcat(base,ptr->d_name);
                 readFileList(base,head);
             }

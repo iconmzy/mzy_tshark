@@ -42,6 +42,7 @@ gboolean WRITE_IN_FILES_CONFIG = 1;
 gboolean DISPLAY_PACKET_INFO_FLAG = 0;
 gboolean WRITE_IN_CONVERSATIONS_FLAG = 1;
 gboolean EDIT_FILES_DISSECT_FLAG = 0;
+gboolean file_Name_From_Dir_Flag = 0;
 
 char WRITE_IN_CONVERSATIONS_PATH[256] = {0};
 gboolean PACKET_PROTOCOL_FLAG = 0;
@@ -1069,10 +1070,9 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 
     /*获取文件来源*/
     if(read_Pcap_From_File_Flag == 1){
-        if(strlen(file_Name_t) == 0){
-            /*存在文件名*/
-            strcpy(read_File_Path,file_Name_t);
-            cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,read_File_Path);
+        if(file_Name_From_Dir_Flag){
+            /*当前读取文件夹来*/
+            cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,file_Name_t);
         } else{
             cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,read_File_Path);
         }
@@ -1392,17 +1392,6 @@ gboolean readConfigFilesStatus() {
                     WRITE_IN_CONVERSATIONS_FLAG = 0;
                 }
 
-//                write_in_conversation_path = getInfo_ConfigFile("WRITE_IN_CONVERSATIONS_PATH", info, lines);
-//                if (write_in_conversation_path != NULL) {
-//                   strcpy(WRITE_IN_CONVERSATIONS_PATH,write_in_conversation_path);
-//                    int len = strlen(WRITE_IN_CONVERSATIONS_PATH);
-//                    if(WRITE_IN_CONVERSATIONS_PATH[len-1] != '/'){
-//                        strcat(WRITE_IN_CONVERSATIONS_PATH,"/");
-//                    }
-//                } else {
-//                    strcpy(WRITE_IN_CONVERSATIONS_PATH,"./");
-//                }
-
                 export_path = getInfo_ConfigFile("EXPORT_PATH", info, lines);
                 if (export_path != NULL) {
                     strcpy(EXPORT_PATH, export_path);
@@ -1453,6 +1442,15 @@ gboolean readConfigFilesStatus() {
                 read_packet_from_files_path = getInfo_ConfigFile("READ_PACKET_FROM_FILES_PATH", info, lines);
                 if (read_packet_from_files_path != NULL) {
                     strcpy(READ_PACKET_FROM_FILES_PATH, read_packet_from_files_path);
+                    struct stat st;
+                    stat(READ_PACKET_FROM_FILES_PATH, &st);
+                    if (S_ISDIR(st.st_mode)){
+                        int len = strlen(READ_PACKET_FROM_FILES_PATH);
+                        if (READ_PACKET_FROM_FILES_PATH[len - 1] != '/') {
+                            strcat(READ_PACKET_FROM_FILES_PATH, "/");
+                        }
+                        file_Name_From_Dir_Flag = 1;
+                    }
                 } else {
                     strcpy(READ_PACKET_FROM_FILES_PATH, "./");
                 }
