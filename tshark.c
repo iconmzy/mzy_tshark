@@ -4178,7 +4178,7 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
 
         if (DISPLAY_PACKET_INFO_FLAG) {
             if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
-                if (cf->count % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
+                if (ALL_PACKET_COUNT % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
 //                    g_print("have processed %d packets!", cf->count);
                     g_print("have processed %d packets!", ALL_PACKET_COUNT);
                     g_print("\r");
