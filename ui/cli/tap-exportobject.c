@@ -45,6 +45,11 @@ void eo_list_object_types(void)
     eo_iterate_tables(list_exportobject_protocol, NULL);
 }
 
+/**
+ * 添加需要导出的协议选项
+ * @param option_string
+ * @return
+ */
 gboolean eo_tap_opt_add(const char *option_string)
 {
     gchar** splitted;
@@ -139,13 +144,19 @@ eo_draw(void *tapdata)
             g_string_free(safe_filename, TRUE);
         } while (g_file_test(save_as_fullpath, G_FILE_TEST_EXISTS) && ++count < prefs.gui_max_export_objects);
         count = 0;
-        eo_save_entry(save_as_fullpath, entry);
+        eo_save_entry(save_as_fullpath, entry);  // 写入文件
         g_free(save_as_fullpath);
         save_as_fullpath = NULL;
         slist = slist->next;
     }
 }
 
+/**
+ *
+ * @param key 需要导出的协议名称，包含dicom, http, imf, tftp, smb
+ * @param value
+ * @param user_data
+ */
 static void
 exportobject_handler(gpointer key, gpointer value _U_, gpointer user_data _U_)
 {

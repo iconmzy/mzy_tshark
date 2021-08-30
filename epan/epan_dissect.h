@@ -27,9 +27,9 @@ extern "C" {
  */
 struct epan_dissect {
 	struct epan_session *session;
-	tvbuff_t	*tvb;
-	proto_tree	*tree;
-	packet_info	pi;
+	tvbuff_t	*tvb;  //用来保存原始数据包
+	proto_tree	*tree;  //协议树结构
+	packet_info	pi;  // 包括各种关于数据包和协议显示的相关信息
 };
 
 #ifdef __cplusplus

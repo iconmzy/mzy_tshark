@@ -3147,7 +3147,7 @@ capture_input_new_packets(capture_session *cap_session, int to_read) {
            printing packet details, which is true if we're printing stuff
            ("print_packet_info" is true) and we're in verbose mode
            ("packet_details" is true). */
-        edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
+        edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);  /* 创建协议解析数据结构edt */
 
         wtap_rec_init(&rec);
         ws_buffer_init(&buf, 1514);
@@ -3368,7 +3368,7 @@ process_packet_first_pass(capture_file *cf, epan_dissect_t *edt,
 
         epan_dissect_run(edt, cf->cd_t, rec,
                          frame_tvbuff_new_buffer(&cf->provider, &fdlocal, buf),
-                         &fdlocal, NULL);
+                         &fdlocal, NULL);  /* 执行协议解析 */
 
         /* Run the read filter if we have one. */
         if (cf->rfcode)
@@ -3522,7 +3522,7 @@ process_cap_file_first_pass(capture_file *cf, int max_packet_count,
         status = PASS_READ_ERROR;
 
     if (edt)
-        epan_dissect_free(edt);
+        epan_dissect_free(edt);  /* 销毁协议解析数据结构edt */
 
     /* Close the sequential I/O side, to free up memory it requires. */
     wtap_sequential_close(cf->provider.wth);
@@ -4173,7 +4173,7 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
 
         epan_dissect_run_with_taps(edt, cf->cd_t, rec,
                                    frame_tvbuff_new_buffer(&cf->provider, &fdata, buf),
-                                   &fdata, cinfo);
+                                   &fdata, cinfo);  /* 获得edt中的tvbuff_t类型的数据指针，具有链表结构的数据包 */
 
 
         if (DISPLAY_PACKET_INFO_FLAG) {

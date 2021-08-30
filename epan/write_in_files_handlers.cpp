@@ -19,7 +19,7 @@
 
 /*常用的一些字符串*/
 #define str_Protocol_in_frame "[Protocols in frame:"
-#define str_FILES_RESOURCE "fileResource"
+#define str_FILES_RESOURCE "file_path"
 
 extern void fill_label_number(field_info *fi, gchar *label_str, gboolean is_signed);
 
@@ -954,13 +954,13 @@ void do_write_in_files_handler(gchar *label_ptr, const gchar *abbrev, const gcha
     if (str_abbrev.compare("tcp.srcport") == 0 or str_abbrev.compare("udp.srcport") == 0) {
         std::string value_t = str.substr(str.find_first_of(":") + 2);
         deleteSPACE_before_end(value_t);
-        cJSON_AddStringToObject(write_in_files_cJson, "srcport", value_t.c_str());
+        cJSON_AddStringToObject(write_in_files_cJson, "src_port", value_t.c_str());
     }
     /*tcp.dstport udp.dstport*/
     if (str_abbrev.compare("tcp.dstport") == 0 or str_abbrev.compare("udp.dstport") == 0) {
         std::string value_t = str.substr(str.find_first_of(":") + 2);
         deleteSPACE_before_end(value_t);
-        cJSON_AddStringToObject(write_in_files_cJson, "dstport", value_t.c_str());
+        cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value_t.c_str());
     }
     /*拿通信四元组 ----------end*/
 
@@ -995,7 +995,7 @@ void do_write_in_files_handler(gchar *label_ptr, const gchar *abbrev, const gcha
 gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
     /*key的置换和获取*/
     std::string key_str = node->finfo->hfinfo->abbrev;
-    while (key_str.find(".") != key_str.npos) {
+    while (key_str.find(".") != key_str.npos) {  /* 返回string::npos表示未查找到匹配项 */
         key_str.replace(key_str.find("."), 1, "_");
     }
     key_str = gotStrNameByStrName(key_str);
@@ -1150,7 +1150,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.src") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "ip_src", value);
+                    cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value);
                     child = child->next;
                     continue;
                 }
@@ -1158,7 +1158,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.dst") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "ip_dst", value);
+                    cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value);
                     child = child->next;
                     continue;
                 }
@@ -1176,7 +1176,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "udp.srcport") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "srcport", value);
+                    cJSON_AddStringToObject(write_in_files_cJson, "src_port", value);
                     child = child->next;
                     continue;
                 }
@@ -1184,7 +1184,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "udp.dstport") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "dstport", value);
+                    cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value);
                     child = child->next;
                     continue;
                 }

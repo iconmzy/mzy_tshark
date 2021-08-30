@@ -133,16 +133,16 @@ iousers_draw(void *arg)
 //						total_bytes
 //					);
 					if(WRITE_IN_CONVERSATIONS_FLAG){
-                        do_write_in_conversation_handler("src",src_addr);
+                        do_write_in_conversation_handler("src_ip",src_addr);
                         do_write_in_conversation_handler("src_port",src_port);
-                        do_write_in_conversation_handler("dst",dst_addr);
+                        do_write_in_conversation_handler("dst_ip",dst_addr);
                         do_write_in_conversation_handler("dst_port",dst_port);
-                        do_write_in_conversation_handler("recv_Frames",my_itoa(m_rx_frame));
-                        do_write_in_conversation_handler("recv_Bytes",my_itoa(m_rx_bytes));
-                        do_write_in_conversation_handler("send_Frames",my_itoa(m_tx_frames));
-                        do_write_in_conversation_handler("send_Bytes",my_itoa(m_tx_bytes));
-                        do_write_in_conversation_handler("total_Frames",my_itoa(total_bytes));
-                        do_write_in_conversation_handler("total_Bytes",my_itoa(m_total_bytes));
+                        do_write_in_conversation_handler("recv_frames",my_itoa(m_rx_frame));
+                        do_write_in_conversation_handler("recv_bytes",my_itoa(m_rx_bytes));
+                        do_write_in_conversation_handler("send_frames",my_itoa(m_tx_frames));
+                        do_write_in_conversation_handler("send_bytes",my_itoa(m_tx_bytes));
+                        do_write_in_conversation_handler("total_frames",my_itoa(total_bytes));
+                        do_write_in_conversation_handler("total_bytes",my_itoa(m_total_bytes));
 					}
 
 					wmem_free(NULL, src_port);
@@ -280,7 +280,7 @@ iousers_draw(void *arg)
 //				printf("   %12.4f\n",nstime_to_sec(&iui->stop_time) - nstime_to_sec(&iui->start_time));
 
 				float2char(nstime_to_sec(&iui->stop_time) - nstime_to_sec(&iui->start_time),t,11);
-				do_write_in_conversation_handler("Duration",t);
+				do_write_in_conversation_handler("duration",t);
                 memset(t,'\0',32);
                 /*一个会话统计结束标志。*/
                 do_write_in_conversation_handler("1END","-1END");
