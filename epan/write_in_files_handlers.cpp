@@ -516,6 +516,7 @@ int kmp(std::string s, std::string t) {
     else
         return -1;
 }
+
 /**
  * 返回指向对应协议名的结构体指针 为找到返回NULL
  * @param head  头结点
@@ -870,7 +871,7 @@ void do_write_in_files_handler(gchar *label_ptr, const gchar *abbrev, const gcha
             }
         } else {
             /*否则添加为在线实时获取*/
-            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "onLine");
+            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "on_line");
         }
         stream_head_fileds_contents = GOT_FILE_PATH;
     }
@@ -1069,15 +1070,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 
 
     /*获取文件来源*/
-    if(read_Pcap_From_File_Flag == 1){
-        if(file_Name_From_Dir_Flag){
+    if (read_Pcap_From_File_Flag == 1) {
+        if (file_Name_From_Dir_Flag) {
             /*当前读取文件夹来*/
-            cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,file_Name_t);
-        } else{
-            cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,read_File_Path);
+            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, file_Name_t);
+        } else {
+            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, read_File_Path);
         }
-    } else{
-        cJSON_AddStringToObject(write_in_files_cJson,str_FILES_RESOURCE,"onLine");
+    } else {
+        cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "onLine");
     }
     /*协议栈*/
     cJSON_AddStringToObject(write_in_files_cJson, "protocols", protocol_stack_t.c_str());
@@ -1232,6 +1233,18 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
     std::string key_str = key;
     std::string value_str = value;
     if (value_str.compare("-1END") == 0) {
+        /*获取文件来源，将conversation与源文件进行关联*/
+        if (read_Pcap_From_File_Flag == 1) {
+            if (file_Name_From_Dir_Flag) {
+                /*当前读取文件夹来*/
+                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, file_Name_t);
+            } else {
+                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, read_File_Path);
+            }
+        } else {
+            cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "onLine");
+        }
+
         /*当前流统计结束*/
         if (write_in_files_conv_cJson->child == NULL)
             return;
@@ -1444,7 +1457,7 @@ gboolean readConfigFilesStatus() {
                     strcpy(READ_PACKET_FROM_FILES_PATH, read_packet_from_files_path);
                     struct stat st;
                     stat(READ_PACKET_FROM_FILES_PATH, &st);
-                    if (S_ISDIR(st.st_mode)){
+                    if (S_ISDIR(st.st_mode)) {
                         int len = strlen(READ_PACKET_FROM_FILES_PATH);
                         if (READ_PACKET_FROM_FILES_PATH[len - 1] != '/') {
                             strcat(READ_PACKET_FROM_FILES_PATH, "/");
