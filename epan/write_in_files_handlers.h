@@ -4,17 +4,18 @@
 
 #ifndef WIRESHARK_WRITE_IN_FILES_HANDLERS_H
 #define WIRESHARK_WRITE_IN_FILES_HANDLERS_H
+
 #include <glib.h>
 #include "ws_symbol_export.h"
 #include <stdio.h>
 #include "epan.h"
 #include "proto.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-struct ConfigInfo
-{
+struct ConfigInfo {
     char key[64];
     char val[128];
 };
@@ -43,8 +44,9 @@ WS_DLL_PUBLIC gboolean file_Name_From_Dir_Flag;
 WS_DLL_PUBLIC gboolean read_Pcap_From_File_Flag;
 WS_DLL_PUBLIC char write_Json_Files_Init_Status;
 
-WS_DLL_PUBLIC char* my_itoa(long int n);
-WS_DLL_PUBLIC void float2char(float slope,char*buffer,int n);
+WS_DLL_PUBLIC char *my_itoa(long int n);
+
+WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];
 //是否允许新增协议相关
@@ -55,17 +57,25 @@ WS_DLL_PUBLIC gboolean ONLINE_CAPTURE_DATA_FLAG;
 WS_DLL_PUBLIC char ONLINE_CAPTURE_DATA_DEVICE_NAME[32];
 WS_DLL_PUBLIC gboolean READ_PACKET_FROM_FILES_FLAG;
 WS_DLL_PUBLIC char READ_PACKET_FROM_FILES_PATH[256];
+//线路号相关配置
+WS_DLL_PUBLIC char ONLINE_LINE_NO[32];  /* 实时接入数据的线路号 */
+WS_DLL_PUBLIC char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
 
 #define MAXFILELENGTH 50
 #define MAXWRITEFILELENGTH 128
 
 
-WS_DLL_PUBLIC void do_write_in_files_handler(gchar *label_str, const gchar * abbrev,const gchar* name ,int level);
-WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar*key,gchar* value);
-WS_DLL_PUBLIC gboolean initWriteJsonFiles(char* );
+WS_DLL_PUBLIC void do_write_in_files_handler(gchar *label_str, const gchar *abbrev, const gchar *name, int level);
+
+WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
+
+WS_DLL_PUBLIC gboolean initWriteJsonFiles(char *);
+
 WS_DLL_PUBLIC gboolean readConfigFilesStatus();
+
 WS_DLL_PUBLIC void clean_Temp_Files_All();
-WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t*);
+
+WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
 /**
  * 下面是读取配置文件相关函数
@@ -75,16 +85,15 @@ WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t*);
 //获得文件有效行数
 WS_DLL_PUBLIC int getLines_ConfigFile(FILE *file);
 //加载配置文件
-WS_DLL_PUBLIC void loadFile_ConfigFile(const char *filePath,char ***fileData,int *lines);
+WS_DLL_PUBLIC void loadFile_ConfigFile(const char *filePath, char ***fileData, int *lines);
 //解析配置文件
 WS_DLL_PUBLIC void parseFile_ConfigFile(char **fileData, int lines, struct ConfigInfo **info);
 //获得指定配置信息
-WS_DLL_PUBLIC char* getInfo_ConfigFile(const char *key, struct ConfigInfo *info,int line);
+WS_DLL_PUBLIC char *getInfo_ConfigFile(const char *key, struct ConfigInfo *info, int line);
 //释放配置文件信息
 WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 //判断当前行是否有效
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
-
 
 
 #ifdef __cplusplus
