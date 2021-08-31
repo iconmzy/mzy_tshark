@@ -16,6 +16,7 @@
 #include <map>
 #include <ctime>
 #include <unistd.h>
+#include <regex.h>
 
 /*常用的一些字符串*/
 #define str_Protocol_in_frame "[Protocols in frame:"
@@ -63,6 +64,10 @@ char READ_PACKET_FROM_FILES_PATH[256] = {0};
 //是否允许新增协议相关
 gboolean JSON_ADD_PROTO = 0;
 char JSON_ADD_PROTO_PATH[256] = {0};
+
+//线路号相关配置
+char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
+char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
 
 static std::string global_time_str;  // long int types
 
@@ -658,7 +663,7 @@ gboolean write_Files_conv(std::string &stream) {
     }
     if (conv_path_t.empty()) {
         conv_path_t = WRITE_IN_CONVERSATIONS_PATH;
-        conv_path_t = conv_path_t + "conv" + global_time_str + ".txt";
+        conv_path_t = conv_path_t + "conversation_" + global_time_str + ".txt";
     }
 
     FILE *fp = fopen(conv_path_t.c_str(), "a+");
@@ -1020,9 +1025,11 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
         }
     } else {
         /*还有子节点*/
-        cJSON *t = cJSON_CreateObject();
-        dissect_edt_Tree_Into_Json(t, node->first_child);
-        cJSON_AddItemToObject(json_t, key_str.c_str(), t);
+//        cJSON *t = cJSON_CreateObject();  // Todo: 不保留对象
+//        dissect_edt_Tree_Into_Json(t, node->first_child);   // Todo: 不保留对象
+//        cJSON_AddItemToObject(json_t, key_str.c_str(), t);  // Todo: 不保留对象
+
+        dissect_edt_Tree_Into_Json(json_t, node->first_child);
 
         if (node->next != NULL) {
             proto_node *index = node->next;
@@ -1035,6 +1042,42 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
 }
 
 /**
+ * 匹配线路号
+ * @param pattern 匹配模式
+ * @param source_str 目标文本串
+ * @return
+ */
+char *match_line_no(char *pattern, char *source_str) {
+    int flag = REG_EXTENDED;  /* 表示以功能更加强大的扩展正则表达式的方式进行匹配 */
+    regmatch_t pmatch[1];
+    const size_t nmatch = 1;
+    regex_t reg;  /* regex_t 是一个结构体数据类型，用来存放编译后的正则表达式 */
+    int ret_status;
+    char ebuff[256];
+    char line_no[32] = {0};
+
+    ret_status = regcomp(&reg, pattern, flag);  /* 编译正则表达式，返回值0表示成功，非0表示失败 */
+    if (ret_status) {
+        regerror(ret_status, &reg, ebuff, 256);
+        fprintf(stderr, "%s\n", ebuff);
+        return "unknown";
+    }
+    ret_status = regexec(&reg, source_str, nmatch, pmatch, 0);
+    if (ret_status == REG_NOMATCH) {
+//        printf("%s ==> Regex for lineno, no match!\n", source_str);
+        return "unknown";
+    } else if (ret_status == 0) {  // match success
+        int j = 0;
+        for (int i = pmatch[0].rm_so; i < pmatch[0].rm_eo; i++) {
+            line_no[j] = source_str[i];
+        }
+    }
+    regfree(&reg);  /* 清空compiled指向的regex_t结构体的内容，请记住，如果是重新编译的话，一定要先清空regex_t结构体 */
+    return line_no;
+}
+
+
+/**
  * 直接解析edt 写入文件缓存中 202107290910
  * @param edt
  * @return
@@ -1044,7 +1087,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     if (edt->tree == NULL)
         return false;
     proto_node *node = edt->tree->first_child;
-    std::string protocol_stack_t = "";
+    std::string protocol_stack_t = "";  // 记录协议栈
     proto_node *stack_node_t = node;
     while (stack_node_t != NULL) {
         field_info *fi = stack_node_t->finfo;
@@ -1069,16 +1112,24 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
 
 
+
     /*获取文件来源*/
     if (read_Pcap_From_File_Flag == 1) {
         if (file_Name_From_Dir_Flag) {
             /*当前读取文件夹来*/
             cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, file_Name_t);
+            cJSON_AddStringToObject(write_in_files_cJson, "line_no",
+                                    match_line_no(file_Name_t,
+                                                  OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
         } else {
             cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, read_File_Path);
+            cJSON_AddStringToObject(write_in_files_cJson, "line_no",
+                                    match_line_no(read_File_Path,
+                                                  OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
         }
     } else {
-        cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "onLine");
+        cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
+        cJSON_AddStringToObject(write_in_files_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
     }
     /*协议栈*/
     cJSON_AddStringToObject(write_in_files_cJson, "protocols", protocol_stack_t.c_str());
@@ -1238,11 +1289,18 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
             if (file_Name_From_Dir_Flag) {
                 /*当前读取文件夹来*/
                 cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, file_Name_t);
+                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no",
+                                        match_line_no(file_Name_t,
+                                                      OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
             } else {
                 cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, read_File_Path);
+                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no",
+                                        match_line_no(read_File_Path,
+                                                      OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
             }
         } else {
-            cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "onLine");
+            cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "online");
+            cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
         }
 
         /*当前流统计结束*/
@@ -1326,6 +1384,8 @@ gboolean readConfigFilesStatus() {
                 char *edit_files_process_num;
                 char *insert_many_protocol_stream_flag;
                 char *insert_many_protocol_stream_num;
+                char *online_line_no;
+                char *offline_line_no_regex;
 
 //WS_DLL_PUBLIC gboolean PACKET_PROTOCOL_FLAG;
 //WS_DLL_PUBLIC char PACKET_PROTOCOL_TYPES[256];
@@ -1480,6 +1540,20 @@ gboolean readConfigFilesStatus() {
                     strcpy(JSON_ADD_PROTO_PATH, json_add_proto_path);
                 } else {
                     strcpy(JSON_ADD_PROTO_PATH, "./defaul.json");
+                }
+
+                online_line_no = getInfo_ConfigFile("ONLINE_LINE_NO", info, lines);
+                if (online_line_no != NULL) {
+                    strcpy(ONLINE_LINE_NO, online_line_no);  /* TODO: 适配首部有空格的情况 */
+                } else {
+                    strcpy(ONLINE_LINE_NO, "");
+                }
+
+                offline_line_no_regex = getInfo_ConfigFile("OFFLINE_LINE_NO_REGEX", info, lines);
+                if (offline_line_no_regex != NULL) {
+                    strcpy(OFFLINE_LINE_NO_REGEX, offline_line_no_regex);
+                } else {
+                    strcpy(OFFLINE_LINE_NO_REGEX, "");
                 }
 
                 destroInfo_ConfigFile(info);
