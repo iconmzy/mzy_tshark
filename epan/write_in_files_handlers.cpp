@@ -70,12 +70,13 @@ char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
 char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
 
 static std::string global_time_str;  // long int types
+FILE *fp_result_timestampe = NULL;
 
 static __u_long Frame_Number = 0;
 static __u_char protocol_Content_Level = 0;
 static __u_char protocol_Content_Begin_FLag = 0;
 /*最终的初始化互斥变量1代表已经初始化过一次*/
-static gboolean mutex_final_clean_flag = 0;
+gboolean mutex_final_clean_flag = 0;
 
 typedef enum {
     GOT_NOTHING,
@@ -574,11 +575,8 @@ gboolean write_Files(std::string &stream, std::string &protocol) {
     if (access(EXPORT_PATH, 0) != 0) {  // type为0表示判断该路径是否存在
         /*当前协议对应文件夹不存在*/
         mkdirs(EXPORT_PATH);
-//        if (mkdir(EXPORT_PATH, 0777) != 0) {
-//            g_print("%s create error", EXPORT_PATH);
-//        }
     }
-    std::string filepath__str_t = EXPORT_PATH + protocol + "/" + protocol + "_" + global_time_str + ".txt";
+    std::string filepath__str_t = EXPORT_PATH + protocol + "/" + protocol + "_" + global_time_str + ".writting";
     std::string filedirpath_str_t = EXPORT_PATH + protocol;
     char filepath_t[MAXWRITEFILELENGTH] = {0};
     char fileDirPath_t[MAXWRITEFILELENGTH] = {0};
@@ -591,9 +589,6 @@ gboolean write_Files(std::string &stream, std::string &protocol) {
         if (access(fileDirPath_t, 0) != 0) {
             /*当前文件夹不存在*/
             mkdirs(fileDirPath_t);
-//            if (mkdir(fileDirPath_t, 0777) != 0) {
-//                g_print("%s create error", fileDirPath_t);
-//            }
         }
 
         FILE *fp = fopen(filepath_t, "a+");
@@ -617,9 +612,6 @@ gboolean write_Files(std::string &stream, std::string &protocol) {
                  * 当前协议对应文件夹不存在
                  */
                 mkdirs(fileDirPath_t);
-//                if (mkdir(fileDirPath_t, 0777) != 0) {
-//                    g_print("%s create error", fileDirPath_t);
-//                }
             }
             FILE *fp = fopen(filepath_t, "a+");
             if (fp == NULL) {
@@ -729,7 +721,8 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
             insertmanystream_Head->next = temp;
             temp->next->pre = temp;
         }
-    } else {
+    }
+    else {
         if (!write_Files(stream, protocol)) {
             g_print("%s insert error !\n", protocol.c_str());
         }
@@ -1568,22 +1561,6 @@ gboolean readConfigFilesStatus() {
 
 void clean_Temp_Files_All() {
     if (!mutex_final_clean_flag) {
-        /* if (pro_tree_head != NULL and pro_tree_head->child != NULL) {
-             *//*协议树有内容*//*
-            if (!proTocolTreeDataIntoJson(write_in_files_cJson, pro_tree_head->child)) {
-                g_print("%s protocol tree data into json error!\n", write_in_files_proto.c_str());
-                return;
-            }
-            write_in_files_stream = cJSON_Print(write_in_files_cJson);
-            if (!write_All_Temps_Into_Files(write_in_files_stream, write_in_files_proto)) {
-                g_print("write in files error");
-                return;
-            }
-            if (!initial_All_para()) {
-                g_print("initialize error!");
-                return;
-            }
-        }*/
 
         if (insertmanystream_Head != NULL and insertmanystream_Head->next != insertmanystream_Head) {
             /*批量插入缓存还有内容*/
@@ -1603,9 +1580,38 @@ void clean_Temp_Files_All() {
             insertmanystream_Head->protocol = "";
             insertmanystream_Head->contents = "";
         }
-        /*最后内存清空*/
+        /*最后内存清空,modify files name, .writting -> .txt*/
+        for(auto index : pFile_map){
+            std::string oldName_t = EXPORT_PATH + index.first + "/" + index.first + "_" + global_time_str + ".writting";
+            std::string newName_t = EXPORT_PATH + index.first + "/" + index.first + "_" + global_time_str + ".txt";
+            rename(oldName_t.c_str(),newName_t.c_str());
+        }
         pFile_map.clear();
 
+        if(fp_result_timestampe == NULL){
+            std::string filepath_str = EXPORT_PATH;
+            filepath_str += "result." + global_time_str + ".txt";
+            FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
+            if(file_Name_From_Dir_Flag){
+                fputs(file_Name_t,fp_result_timestampe);
+                fputs("\n",fp_result_timestampe);
+                fflush(fp_result_timestampe);
+            } else{
+                fputs(read_File_Path,fp_result_timestampe);
+                fputs("\n",fp_result_timestampe);
+                fflush(fp_result_timestampe);
+            }
+        } else{
+            if(file_Name_From_Dir_Flag){
+                fputs(file_Name_t,fp_result_timestampe);
+                fputs("\n",fp_result_timestampe);
+                fflush(fp_result_timestampe);
+            } else{
+                fputs(read_File_Path,fp_result_timestampe);
+                fputs("\n",fp_result_timestampe);
+                fflush(fp_result_timestampe);
+            }
+        }
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;
     }

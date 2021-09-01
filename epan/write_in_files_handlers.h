@@ -42,6 +42,7 @@ WS_DLL_PUBLIC char read_File_Path[256];
 WS_DLL_PUBLIC char file_Name_t[128];
 WS_DLL_PUBLIC gboolean file_Name_From_Dir_Flag;
 WS_DLL_PUBLIC gboolean read_Pcap_From_File_Flag;
+WS_DLL_PUBLIC gboolean mutex_final_clean_flag;
 WS_DLL_PUBLIC char write_Json_Files_Init_Status;
 
 WS_DLL_PUBLIC char *my_itoa(long int n);

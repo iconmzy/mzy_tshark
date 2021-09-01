@@ -2387,8 +2387,7 @@ int main(int argc, char *argv[]) {
 #endif
                         /*直接清理最终缓存*/
                         clean_Temp_Files_All();
-
-
+                        mutex_final_clean_flag = FALSE;
                         if (temp->next == NULL) {
                             draw_taps = TRUE;
                             if (pdu_export_arg) {
@@ -2412,7 +2411,6 @@ int main(int argc, char *argv[]) {
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will
