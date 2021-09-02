@@ -2385,7 +2385,7 @@ int main(int argc, char *argv[]) {
                         /*直接清理最终缓存*/
                         mutex_final_clean_flag = FALSE;
                         clean_Temp_Files_All();
-                        if (temp->next == NULL) {
+                        if (temp->next == NULL) {  //文件遍历结束
                             draw_taps = TRUE;
                             if (pdu_export_arg) {
                                 if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
@@ -2395,6 +2395,7 @@ int main(int argc, char *argv[]) {
                                 g_free(pdu_export_arg);
                                 g_free(exp_pdu_filename);
                             }
+                            change_result_file_name();
                         }
 
                         temp = temp->next;

@@ -38,6 +38,7 @@ static std::string conv_path_t = "";
 
 
 char EXPORT_PATH[256] = {0};
+char RESULT_PATH[256] = {0};
 //char read_File_Path[256];
 gboolean WRITE_IN_FILES_CONFIG = 1;
 gboolean DISPLAY_PACKET_INFO_FLAG = 0;
@@ -470,11 +471,11 @@ struct conversation_Connect_Total *gotConversationNodeInfo(struct conversation_C
  * @param dst
  * @return
  */
-gboolean lastLayerProtocolFilter(const char* dst) {
+gboolean lastLayerProtocolFilter(const char *dst) {
     if (strcmp(dst, "communityid") == 0) {
         return TRUE;
     }
-    if(strcmp(dst,"ftp.current-working-directory") == 0){
+    if (strcmp(dst, "ftp.current-working-directory") == 0) {
         return TRUE;
     }
 
@@ -722,8 +723,7 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
             insertmanystream_Head->next = temp;
             temp->next->pre = temp;
         }
-    }
-    else {
+    } else {
         if (!write_Files(stream, protocol)) {
             g_print("%s insert error !\n", protocol.c_str());
         }
@@ -1086,7 +1086,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     while (stack_node_t != NULL) {
         field_info *fi = stack_node_t->finfo;
 
-        if(lastLayerProtocolFilter(fi->hfinfo->abbrev)){
+        if (lastLayerProtocolFilter(fi->hfinfo->abbrev)) {
             stack_node_t = stack_node_t->next;
             continue;
         }
@@ -1122,8 +1122,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                                     match_line_no(read_File_Path,
                                                   OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
         }
-    }
-    else {
+    } else {
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
         cJSON_AddStringToObject(write_in_files_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
     }
@@ -1473,13 +1472,14 @@ gboolean readConfigFilesStatus() {
                         strcat(EXPORT_PATH, "/");
                     }
                     /*统一将路径全部初始化掉*/
+                    strcat(RESULT_PATH, EXPORT_PATH);
                     strcat(WRITE_IN_CONVERSATIONS_PATH, EXPORT_PATH);
                     strcat(WRITE_IN_CONVERSATIONS_PATH, "conversation/");
 
                     strcat(PACKET_PROTOCOL_PATH, EXPORT_PATH);
                     strcat(PACKET_PROTOCOL_PATH, "export/");
 
-                    strcat(EXPORT_PATH, "dissectors/");
+                    strcat(EXPORT_PATH, "dissectors/");  // TODO: 其实不太合理
                 } else {
                     strcpy(EXPORT_PATH, "./");
                 }
@@ -1588,39 +1588,46 @@ void clean_Temp_Files_All() {
             insertmanystream_Head->contents = "";
         }
         /*最后内存清空,modify files name, .writting -> .txt*/
-        for(auto index : pFile_map){
+        for (auto index : pFile_map) {
             std::string oldName_t = EXPORT_PATH + index.first + "/" + index.first + "_" + global_time_str + ".writting";
             std::string newName_t = EXPORT_PATH + index.first + "/" + index.first + "_" + global_time_str + ".txt";
-            rename(oldName_t.c_str(),newName_t.c_str());
+            rename(oldName_t.c_str(), newName_t.c_str());
         }
         pFile_map.clear();
 
-        if(fp_result_timestampe == NULL){
-            std::string filepath_str = EXPORT_PATH;
-            filepath_str += "result." + global_time_str + ".txt";
+        if (fp_result_timestampe == NULL) {
+            std::string filepath_str = RESULT_PATH;
+            filepath_str += "result-" + global_time_str + ".writting";
             FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
-            if(file_Name_From_Dir_Flag){
-                fputs(file_Name_t,fp_result_timestampe);
-                fputs("\r\n",fp_result_timestampe);
+            if (file_Name_From_Dir_Flag) {
+                fputs(file_Name_t, fp_result_timestampe);
+                fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
-            } else{
-                fputs(read_File_Path,fp_result_timestampe);
-                fputs("\r\n",fp_result_timestampe);
+            } else {
+                fputs(read_File_Path, fp_result_timestampe);
+                fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             }
-        }
-        else{
-            if(file_Name_From_Dir_Flag){
-                fputs(file_Name_t,fp_result_timestampe);
-                fputs("\r\n",fp_result_timestampe);
+        } else {
+            if (file_Name_From_Dir_Flag) {
+                fputs(file_Name_t, fp_result_timestampe);
+                fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
-            } else{
-                fputs(read_File_Path,fp_result_timestampe);
-                fputs("\r\n",fp_result_timestampe);
+            } else {
+                fputs(read_File_Path, fp_result_timestampe);
+                fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             }
         }
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;
     }
+}
+
+
+void change_result_file_name() {
+    std::string filepath_str = RESULT_PATH;
+    std::string oldName_t = filepath_str + "result-" + global_time_str + ".writting";
+    std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
+    rename(oldName_t.c_str(), newName_t.c_str());
 }
