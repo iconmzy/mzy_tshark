@@ -72,7 +72,6 @@ struct wtap {
     wtap_new_secrets_callback_t add_new_secrets;
     GPtrArray                   *fast_seek;
 };
-
 struct wtap_dumper;
 
 /*

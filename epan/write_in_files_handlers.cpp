@@ -465,19 +465,20 @@ struct conversation_Connect_Total *gotConversationNodeInfo(struct conversation_C
 
 }
 
-void getFileNames(std::string path, std::vector<std::string> &filenames) {
-    DIR *pDir;
-    struct dirent *ptr;
-    if (!(pDir = opendir(path.c_str()))) {
-        g_print("json Folder doesn't Exist!");
-        return;
+/**
+ * filter lastLayerProtocol Name By given chars.
+ * @param dst
+ * @return
+ */
+gboolean lastLayerProtocolFilter(const char* dst) {
+    if (strcmp(dst, "communityid") == 0) {
+        return TRUE;
     }
-    while ((ptr = readdir(pDir)) != 0) {
-        if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0) {
-            filenames.push_back(ptr->d_name);
-        }
+    if(strcmp(dst,"ftp.current-working-directory") == 0){
+        return TRUE;
     }
-    closedir(pDir);
+
+    return FALSE;
 }
 
 /**
@@ -1084,7 +1085,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     proto_node *stack_node_t = node;
     while (stack_node_t != NULL) {
         field_info *fi = stack_node_t->finfo;
-        if (strcmp(fi->hfinfo->abbrev, "communityid") == 0) {
+
+        if(lastLayerProtocolFilter(fi->hfinfo->abbrev)){
             stack_node_t = stack_node_t->next;
             continue;
         }
@@ -1103,9 +1105,9 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     if (kmp("[tcp],[udp],[data]", "[" + write_in_files_proto + "]") != -1) {
         return true;
     }
-
-
-
+//    if(write_in_files_proto.compare("ftp.current-working-directory") == 0 ){
+//        int a=0;
+//    }
     /*获取文件来源*/
     if (read_Pcap_From_File_Flag == 1) {
         if (file_Name_From_Dir_Flag) {
@@ -1120,7 +1122,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                                     match_line_no(read_File_Path,
                                                   OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
         }
-    } else {
+    }
+    else {
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
         cJSON_AddStringToObject(write_in_files_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
     }
@@ -1594,21 +1597,22 @@ void clean_Temp_Files_All() {
             FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
             if(file_Name_From_Dir_Flag){
                 fputs(file_Name_t,fp_result_timestampe);
-                fputs("\n",fp_result_timestampe);
+                fputs("\r\n",fp_result_timestampe);
                 fflush(fp_result_timestampe);
             } else{
                 fputs(read_File_Path,fp_result_timestampe);
-                fputs("\n",fp_result_timestampe);
+                fputs("\r\n",fp_result_timestampe);
                 fflush(fp_result_timestampe);
             }
-        } else{
+        }
+        else{
             if(file_Name_From_Dir_Flag){
                 fputs(file_Name_t,fp_result_timestampe);
-                fputs("\n",fp_result_timestampe);
+                fputs("\r\n",fp_result_timestampe);
                 fflush(fp_result_timestampe);
             } else{
                 fputs(read_File_Path,fp_result_timestampe);
-                fputs("\n",fp_result_timestampe);
+                fputs("\r\n",fp_result_timestampe);
                 fflush(fp_result_timestampe);
             }
         }

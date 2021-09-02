@@ -979,13 +979,6 @@ int main(int argc, char *argv[]) {
                         read_Pcap_From_File_Flag = 1;
                     }
                 }
-
-//      cf_name = g_strdup(optarg);
-//
-//      /*这里设置读取文件的标志，同时设置文件路径变量。*/
-//      strcpy(read_File_Path,cf_name);
-//      read_Pcap_From_File_Flag = 1;
-
                 break;
             case 'O': /* Only output these protocols */
                 output_only = g_strdup(optarg);
@@ -2345,7 +2338,8 @@ int main(int argc, char *argv[]) {
                 g_print("done! \n");
                 goto clean_exit;
             }
-        } else {
+        }
+        else {
             struct stat st;
             stat(cf_name, &st);
             if (S_ISDIR(st.st_mode)) {
@@ -2386,8 +2380,8 @@ int main(int argc, char *argv[]) {
                             0);
 #endif
                         /*直接清理最终缓存*/
-                        clean_Temp_Files_All();
                         mutex_final_clean_flag = FALSE;
+                        clean_Temp_Files_All();
                         if (temp->next == NULL) {
                             draw_taps = TRUE;
                             if (pdu_export_arg) {
@@ -2403,7 +2397,8 @@ int main(int argc, char *argv[]) {
                         temp = temp->next;
                     }
                 }
-            } else {
+            }
+            else {
                 /*文件名*/
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();
@@ -3402,228 +3397,12 @@ process_packet_first_pass(capture_file *cf, epan_dissect_t *edt,
     return passed;
 }
 
-/*
- * Set if reading a file was interrupted by a CTRL_ event on Windows or
- * a signal on UN*X.
- */
-static gboolean read_interrupted = FALSE;
-
-#ifdef _WIN32
-static BOOL WINAPI
-read_cleanup(DWORD ctrltype _U_)
-{
-  /* CTRL_C_EVENT is sort of like SIGINT, CTRL_BREAK_EVENT is unique to
-     Windows, CTRL_CLOSE_EVENT is sort of like SIGHUP, CTRL_LOGOFF_EVENT
-     is also sort of like SIGHUP, and CTRL_SHUTDOWN_EVENT is sort of
-     like SIGTERM at least when the machine's shutting down.
-
-     For now, we handle them all as indications that we should clean up
-     and quit, just as we handle SIGINT, SIGHUP, and SIGTERM in that
-     way on UNIX.
-
-     We must return TRUE so that no other handler - such as one that would
-     terminate the process - gets called.
-
-     XXX - for some reason, typing ^C to TShark, if you run this in
-     a Cygwin console window in at least some versions of Cygwin,
-     causes TShark to terminate immediately; this routine gets
-     called, but the main loop doesn't get a chance to run and
-     exit cleanly, at least if this is compiled with Microsoft Visual
-     C++ (i.e., it's a property of the Cygwin console window or Bash;
-     it happens if TShark is not built with Cygwin - for all I know,
-     building it with Cygwin may make the problem go away). */
-
-  /* tell the read to stop */
-  read_interrupted = TRUE;
-
-  return TRUE;
-}
-#else
-
-static void
-read_cleanup(int signum _U_) {
-    /* tell the read to stop */
-    read_interrupted = TRUE;
-}
-
-#endif /* _WIN32 */
-
 typedef enum {
     PASS_SUCCEEDED,
     PASS_READ_ERROR,
     PASS_WRITE_ERROR,
     PASS_INTERRUPTED
 } pass_status_t;
-
-static pass_status_t
-process_cap_file_first_pass(capture_file *cf, int max_packet_count,
-                            gint64 max_byte_count, int *err, gchar **err_info) {
-    wtap_rec rec;
-    Buffer buf;
-    epan_dissect_t *edt = NULL;
-    gint64 data_offset;
-    pass_status_t status = PASS_SUCCEEDED;
-
-    wtap_rec_init(&rec);
-    ws_buffer_init(&buf, 1514);
-
-    /* Allocate a frame_data_sequence for all the frames. */
-    cf->provider.frames = new_frame_data_sequence();
-
-    if (do_dissection) {
-        gboolean create_proto_tree;
-
-        /*
-         * Determine whether we need to create a protocol tree.
-         * We do if:
-         *
-         *    we're going to apply a read filter;
-         *
-         *    we're going to apply a display filter;
-         *
-         *    a postdissector wants field values or protocols
-         *    on the first pass.
-         */
-        create_proto_tree =
-                (cf->rfcode != NULL || cf->dfcode != NULL || postdissectors_want_hfids() || dissect_color);
-
-        // tshark_debug("tshark: create_proto_tree = %s", create_proto_tree ? "TRUE" : "FALSE");
-
-        /* We're not going to display the protocol tree on this pass,
-           so it's not going to be "visible". */
-        edt = epan_dissect_new(cf->epan, create_proto_tree, FALSE);
-    }
-
-    // tshark_debug("tshark: reading records for first pass");
-
-    *err = 0;
-    while (wtap_read(cf->provider.wth, &rec, &buf, err, err_info, &data_offset)) {
-        if (read_interrupted) {
-            status = PASS_INTERRUPTED;
-            break;
-        }
-        if (process_packet_first_pass(cf, edt, data_offset, &rec, &buf)) {
-            /* Stop reading if we have the maximum number of packets;
-             * When the -c option has not been used, max_packet_count
-             * starts at 0, which practically means, never stop reading.
-             * (unless we roll over max_packet_count ?)
-             */
-            if ((--max_packet_count == 0) || (max_byte_count != 0 && data_offset >= max_byte_count)) {
-                // tshark_debug("tshark: max_packet_count (%d) or max_byte_count (%" G_GINT64_MODIFIER "d/%" G_GINT64_MODIFIER "d) reached",
-//                     max_packet_count, data_offset, max_byte_count);
-                *err = 0; /* This is not an error */
-                break;
-            }
-        }
-    }
-    if (*err != 0)
-        status = PASS_READ_ERROR;
-
-    if (edt)
-        epan_dissect_free(edt);  /* 销毁协议解析数据结构edt */
-
-    /* Close the sequential I/O side, to free up memory it requires. */
-    wtap_sequential_close(cf->provider.wth);
-
-    /* Allow the protocol dissectors to free up memory that they
-     * don't need after the sequential run-through of the packets. */
-    postseq_cleanup_all_protocols();
-
-    cf->provider.prev_dis = NULL;
-    cf->provider.prev_cap = NULL;
-
-    ws_buffer_free(&buf);
-    wtap_rec_cleanup(&rec);
-
-    return status;
-}
-
-static gboolean
-process_packet_second_pass(capture_file *cf, epan_dissect_t *edt,
-                           frame_data *fdata, wtap_rec *rec,
-                           Buffer *buf, guint tap_flags) {
-    column_info *cinfo;
-    gboolean passed;
-
-    /* If we're not running a display filter and we're not printing any
-       packet information, we don't need to do a dissection. This means
-       that all packets can be marked as 'passed'. */
-    passed = TRUE;
-
-    /* If we're going to print packet information, or we're going to
-       run a read filter, or we're going to process taps, set up to
-       do a dissection and do so.  (This is the second pass of two
-       passes over the packets; that's the pass where we print
-       packet information or run taps.) */
-    if (edt) {
-        /* If we're running a display filter, prime the epan_dissect_t with that
-           filter. */
-        if (cf->dfcode)
-            epan_dissect_prime_with_dfilter(edt, cf->dfcode);
-
-        col_custom_prime_edt(edt, &cf->cinfo);
-
-        /* We only need the columns if either
-             1) some tap needs the columns
-           or
-             2) we're printing packet info but we're *not* verbose; in verbose
-                mode, we print the protocol tree, not the protocol summary.
-         */
-        if ((tap_flags & TL_REQUIRES_COLUMNS) || (print_packet_info && print_summary) ||
-            output_fields_has_cols(output_fields))
-            cinfo = &cf->cinfo;
-        else
-            cinfo = NULL;
-
-        frame_data_set_before_dissect(fdata, &cf->elapsed_time,
-                                      &cf->provider.ref, cf->provider.prev_dis);
-        if (cf->provider.ref == fdata) {
-            ref_frame = *fdata;
-            cf->provider.ref = &ref_frame;
-        }
-
-        if (dissect_color) {
-            color_filters_prime_edt(edt);
-            fdata->need_colorize = 1;
-        }
-
-        epan_dissect_run_with_taps(edt, cf->cd_t, rec,
-                                   frame_tvbuff_new_buffer(&cf->provider, fdata, buf),
-                                   fdata, cinfo);
-
-        /* Run the read/display filter if we have one. */
-        if (cf->dfcode)
-            passed = dfilter_apply_edt(cf->dfcode, edt);
-    }
-
-    if (passed) {
-        frame_data_set_after_dissect(fdata, &cum_bytes);
-        /* Process this packet. */
-        if (print_packet_info) {
-            /* We're printing packet information; print the information for
-               this packet. */
-            print_packet(cf, edt);
-
-            /* If we're doing "line-buffering", flush the standard output
-               after every packet.  See the comment above, for the "-l"
-               option, for an explanation of why we do that. */
-            if (line_buffered)
-                fflush(stdout);
-
-            if (ferror(stdout)) {
-                show_print_file_io_error();
-                exit(2);
-            }
-        }
-        cf->provider.prev_dis = fdata;
-    }
-    cf->provider.prev_cap = fdata;
-
-    if (edt) {
-        epan_dissect_reset(edt);
-    }
-    return passed || fdata->dependent_of_displayed;
-}
 
 static gboolean
 process_new_idbs(wtap *wth, wtap_dumper *pdh, int *err, gchar **err_info) {
@@ -3643,113 +3422,6 @@ process_new_idbs(wtap *wth, wtap_dumper *pdh, int *err, gchar **err_info) {
     }
     return TRUE;
 }
-
-static pass_status_t
-process_cap_file_second_pass(capture_file *cf, wtap_dumper *pdh,
-                             int *err, gchar **err_info,
-                             volatile guint32 *err_framenum) {
-    wtap_rec rec;
-    Buffer buf;
-    guint32 framenum;
-    frame_data *fdata;
-    gboolean filtering_tap_listeners;
-    guint tap_flags;
-    epan_dissect_t *edt = NULL;
-    pass_status_t status = PASS_SUCCEEDED;
-
-    /*
-     * Process whatever IDBs we haven't seen yet.  This will be all
-     * the IDBs in the file, as we've finished reading it; they'll
-     * all be at the beginning of the output file.
-     */
-    if (!process_new_idbs(cf->provider.wth, pdh, err, err_info)) {
-        *err_framenum = 0;
-        return PASS_WRITE_ERROR;
-    }
-
-    wtap_rec_init(&rec);
-    ws_buffer_init(&buf, 1514);
-
-    /* Do we have any tap listeners with filters? */
-    filtering_tap_listeners = have_filtering_tap_listeners();
-
-    /* Get the union of the flags for all tap listeners. */
-    tap_flags = union_of_tap_listener_flags();
-
-    if (do_dissection) {
-        gboolean create_proto_tree;
-
-        /*
-         * Determine whether we need to create a protocol tree.
-         * We do if:
-         *
-         *    we're going to apply a display filter;
-         *
-         *    we're going to print the protocol tree;
-         *
-         *    one of the tap listeners requires a protocol tree;
-         *
-         *    we have custom columns (which require field values, which
-         *    currently requires that we build a protocol tree).
-         */
-        create_proto_tree =
-                (cf->dfcode || print_details || filtering_tap_listeners ||
-                 (tap_flags & TL_REQUIRES_PROTO_TREE) || have_custom_cols(&cf->cinfo) || dissect_color);
-
-        // tshark_debug("tshark: create_proto_tree = %s", create_proto_tree ? "TRUE" : "FALSE");
-
-        /* The protocol tree will be "visible", i.e., printed, only if we're
-           printing packet details, which is true if we're printing stuff
-           ("print_packet_info" is true) and we're in verbose mode
-           ("packet_details" is true). */
-        edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
-    }
-
-    /*
-     * Force synchronous resolution of IP addresses; in this pass, we
-     * can't do it in the background and fix up past dissections.
-     */
-    set_resolution_synchrony(TRUE);
-
-    for (framenum = 1; framenum <= cf->count; framenum++) {
-        if (read_interrupted) {
-            status = PASS_INTERRUPTED;
-            break;
-        }
-        fdata = frame_data_sequence_find(cf->provider.frames, framenum);
-        if (!wtap_seek_read(cf->provider.wth, fdata->file_off, &rec, &buf, err,
-                            err_info)) {
-            /* Error reading from the input file. */
-            status = PASS_READ_ERROR;
-            break;
-        }
-        // tshark_debug("tshark: invoking process_packet_second_pass() for frame #%d", framenum);
-        if (process_packet_second_pass(cf, edt, fdata, &rec, &buf, tap_flags)) {
-            /* Either there's no read filtering or this packet passed the
-               filter, so, if we're writing to a capture file, write
-               this packet out. */
-            if (pdh != NULL) {
-                // tshark_debug("tshark: writing packet #%d to outfile", framenum);
-                if (!wtap_dump(pdh, &rec, ws_buffer_start_ptr(&buf), err, err_info)) {
-                    /* Error writing to the output file. */
-                    // tshark_debug("tshark: error writing to a capture file (%d)", *err);
-                    *err_framenum = framenum;
-                    status = PASS_WRITE_ERROR;
-                    break;
-                }
-            }
-        }
-    }
-
-    if (edt)
-        epan_dissect_free(edt);
-
-    ws_buffer_free(&buf);
-    wtap_rec_cleanup(&rec);
-
-    return status;
-}
-
 
 static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper *pdh,
                                                   int max_packet_count, gint64 max_byte_count,
@@ -3776,56 +3448,23 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
     tap_flags = union_of_tap_listener_flags();
 
     if (do_dissection) {
-        /*
-         * Determine whether we need to create a protocol tree.
-         * We do if:
-         *
-         *    we're going to apply a read filter;
-         *
-         *    we're going to apply a display filter;
-         *
-         *    we're going to print the protocol tree;
-         *
-         *    one of the tap listeners is going to apply a filter;
-         *
-         *    one of the tap listeners requires a protocol tree;
-         *
-         *    a postdissector wants field values or protocols
-         *    on the first pass;
-         *
-         *    we have custom columns (which require field values, which
-         *    currently requires that we build a protocol tree).
-         */
+        /* TRUE if we have to dissect each packet */
         create_proto_tree =
                 (cf->rfcode || cf->dfcode || print_details || filtering_tap_listeners ||
                  (tap_flags & TL_REQUIRES_PROTO_TREE) || postdissectors_want_hfids() ||
                  have_custom_cols(&cf->cinfo) || dissect_color);
-
-        // tshark_debug("tshark: create_proto_tree = %s", create_proto_tree ? "TRUE" : "FALSE");
-
-        /* The protocol tree will be "visible", i.e., printed, only if we're
-           printing packet details, which is true if we're printing stuff
-           ("print_packet_info" is true) and we're in verbose mode
-           ("packet_details" is true). */
-
-        edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
-
     }
-
     /*
      * Force synchronous resolution of IP addresses; we're doing only
      * one pass, so we can't do it in the background and fix up past
      * dissections.
      */
-    set_resolution_synchrony(TRUE);
+//    set_resolution_synchrony(TRUE);
+    set_resolution_synchrony(FALSE);
 
     *err = 0;
     while (wtap_read(cf->provider.wth, &rec, &buf, err, err_info, &data_offset)) {
 
-        if (read_interrupted) {
-            status = PASS_INTERRUPTED;
-            break;
-        }
         framenum++;
         /*
          * Process whatever IDBs we haven't seen yet.
@@ -3836,10 +3475,9 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
             break;
         }
 
-        // tshark_debug("tshark: processing packet #%d", framenum);
+//        reset_epan_mem(cf, edt, create_proto_tree, print_packet_info && print_details);
 
-        reset_epan_mem(cf, edt, create_proto_tree, print_packet_info && print_details);
-
+        edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
         if (process_packet_single_pass(cf, edt, data_offset, &rec, &buf, tap_flags)) {
             /* Either there's no read filtering or this packet passed the
                filter, so, if we're writing to a capture file, write
@@ -3855,26 +3493,15 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
                 }
             }
         }
-        /*    Stop reading if we have the maximum number of packets;
-         * When the -c option has not been used, max_packet_count
-         * starts at 0, which practically means, never stop reading.
-         * (unless we roll over max_packet_count ?)
-
-       if ((--max_packet_count == 0) || (max_byte_count != 0 && data_offset >= max_byte_count))
-        {
-          // tshark_debug("tshark: max_packet_count (%d) or max_byte_count (%" G_GINT64_MODIFIER "d/%" G_GINT64_MODIFIER "d) reached",
-                       max_packet_count, data_offset, max_byte_count);
-          *err = 0;  This is not an error
-          break;
-        }*/
+        epan_dissect_free(edt);
     }
     if (*err != 0 && status == PASS_SUCCEEDED) {
         /* Error reading from the input file. */
         status = PASS_READ_ERROR;
     }
 
-    if (edt)
-        epan_dissect_free(edt);
+//    if (edt)
+//        epan_dissect_free(edt);
 
     ws_buffer_free(&buf);
     wtap_rec_cleanup(&rec);
@@ -3887,215 +3514,24 @@ process_cap_file(capture_file *cf, char *save_file, int out_file_type,
                  gboolean out_file_name_res, int max_packet_count, gint64 max_byte_count) {
 
     process_file_status_t status = PROCESS_FILE_SUCCEEDED;
-    wtap_dumper *pdh;
-#ifndef _WIN32
-    struct sigaction action, oldaction;
-#endif
-    int err = 0, err_pass1 = 0;
-    gchar *err_info = NULL, *err_info_pass1 = NULL;
+    wtap_dumper *pdh = NULL;
+
+    int err = 0;
+    gchar *err_info = NULL;
     volatile guint32 err_framenum;
     wtap_dump_params params = WTAP_DUMP_PARAMS_INIT;
-    char *shb_user_appl;
-    pass_status_t first_pass_status, second_pass_status;
+    pass_status_t second_pass_status;
 
-
-    if (save_file != NULL) {
-        /* Set up to write to the capture file. */
-        wtap_dump_params_init_no_idbs(&params, cf->provider.wth);
-
-        /* If we don't have an application name add Tshark */
-        if (wtap_block_get_string_option_value(g_array_index(params.shb_hdrs, wtap_block_t, 0), OPT_SHB_USERAPPL,
-                                               &shb_user_appl) != WTAP_OPTTYPE_SUCCESS) {
-            /* this is free'd by wtap_block_free() later */
-            wtap_block_add_string_option_format(g_array_index(params.shb_hdrs, wtap_block_t, 0), OPT_SHB_USERAPPL, "%s",
-                                                get_appname_and_version());
-        }
-
-        // tshark_debug("tshark: writing format type %d, to %s", out_file_type, save_file);
-        if (strcmp(save_file, "-") == 0) {
-            /* Write to the standard output. */
-            pdh = wtap_dump_open_stdout(out_file_type, WTAP_UNCOMPRESSED, &params,
-                                        &err, &err_info);
-        } else {
-            pdh = wtap_dump_open(save_file, out_file_type, WTAP_UNCOMPRESSED, &params,
-                                 &err, &err_info);
-        }
-
-        g_free(params.idb_inf);
-        params.idb_inf = NULL;
-
-        if (pdh == NULL) {
-            /* We couldn't set up to write to the capture file. */
-            cfile_dump_open_failure_message("TShark", save_file, err, err_info,
-                                            out_file_type);
-            status = PROCESS_FILE_NO_FILE_PROCESSED;
-            goto out;
-        }
-    } else {
-        /* Set up to print packet information. */
-        /*if (print_packet_info)
-        {
-
-            if (!write_preamble(cf))
-          {
-              show_print_file_io_error();
-            status = PROCESS_FILE_NO_FILE_PROCESSED;
-            goto out;
-          }
-        }*/
-        pdh = NULL;
-    }
-
-#ifdef _WIN32
-    /* Catch a CTRL+C event and, if we get it, clean up and exit. */
-    SetConsoleCtrlHandler(read_cleanup, TRUE);
-#else  /* _WIN32 */
-    /* Catch SIGINT and SIGTERM and, if we get either of them,
-       clean up and exit.  If SIGHUP isn't being ignored, catch
-       it too and, if we get it, clean up and exit.
-
-       We restart any read that was in progress, so that it doesn't
-       disrupt reading from the sync pipe.  The signal handler tells
-       the capture child to finish; it will report that it finished,
-       or will exit abnormally, so  we'll stop reading from the sync
-       pipe, pick up the exit status, and quit. */
-    memset(&action, 0, sizeof(action));
-    action.sa_handler = read_cleanup;
-    action.sa_flags = SA_RESTART;
-    sigemptyset(&action.sa_mask);
-    sigaction(SIGTERM, &action, NULL);
-    sigaction(SIGINT, &action, NULL);
-    sigaction(SIGHUP, NULL, &oldaction);
-    if (oldaction.sa_handler == SIG_DFL)
-        sigaction(SIGHUP, &action, NULL);
-#endif /* _WIN32 */
-
-
-    first_pass_status = PASS_SUCCEEDED; /* There is no first pass */
     second_pass_status = process_cap_file_single_pass(cf, pdh,
                                                       max_packet_count,
                                                       max_byte_count,
                                                       &err, &err_info,
                                                       &err_framenum);
 
-
-    if (first_pass_status != PASS_SUCCEEDED ||
-        second_pass_status != PASS_SUCCEEDED) {
-        /*
-         * At least one of the passes didn't succeed; either it got a failure
-         * or it was interrupted.
-         */
-        if (first_pass_status != PASS_INTERRUPTED ||
-            second_pass_status != PASS_INTERRUPTED) {
-            /* At least one of the passes got an error. */
-            // tshark_debug("tshark: something failed along the line (%d)", err);
-            /*
-             * If we're printing packet data, and the standard output and error
-             * are going to the same place, flush the standard output, so everything
-             * buffered up is written, and then print a newline to the standard
-             * error before printing the error message, to separate it from the
-             * packet data.  (Alas, that only works on UN*X; st_dev is meaningless,
-             * and the _fstat() documentation at Microsoft doesn't indicate whether
-             * st_ino is even supported.)
-             */
-#ifndef _WIN32
-            if (print_packet_info) {
-                ws_statb64 stat_stdout, stat_stderr;
-
-                if (ws_fstat64(1, &stat_stdout) == 0 && ws_fstat64(2, &stat_stderr) == 0) {
-                    if (stat_stdout.st_dev == stat_stderr.st_dev &&
-                        stat_stdout.st_ino == stat_stderr.st_ino) {
-                        fflush(stdout);
-                        fprintf(stderr, "\n");
-                    }
-                }
-            }
-#endif
-        }
-
-        /* Report status of pass 1 of two-pass processing. */
-        switch (first_pass_status) {
-
-            case PASS_SUCCEEDED:
-                /* No problem. */
-                break;
-
-            case PASS_READ_ERROR:
-                /* Read error. */
-                cfile_read_failure_message("TShark", cf->filename, err_pass1,
-                                           err_info_pass1);
-                status = PROCESS_FILE_ERROR;
-                break;
-
-            case PASS_WRITE_ERROR:
-                /* Won't happen on the first pass. */
-                break;
-
-            case PASS_INTERRUPTED:
-                /* Not an error, so nothing to report. */
-                status = PROCESS_FILE_INTERRUPTED;
-                break;
-        }
-
-        /* Report status of pass 2 of two-pass processing or the only pass
-           of one-pass processing. */
-        switch (second_pass_status) {
-
-            case PASS_SUCCEEDED:
-                /* No problem. */
-                break;
-
-            case PASS_READ_ERROR:
-                /* Read error. */
-                cfile_read_failure_message("TShark", cf->filename, err, err_info);
-                status = PROCESS_FILE_ERROR;
-                break;
-
-            case PASS_WRITE_ERROR:
-                /* Write error.
-                   XXX - framenum is not necessarily the frame number in
-                   the input file if there was a read filter. */
-                cfile_write_failure_message("TShark", cf->filename, save_file,
-                                            err, err_info, err_framenum, out_file_type);
-                status = PROCESS_FILE_ERROR;
-                break;
-
-            case PASS_INTERRUPTED:
-                /* Not an error, so nothing to report. */
-                status = PROCESS_FILE_INTERRUPTED;
-                break;
-        }
-    }
-    if (save_file != NULL) {
-        if (second_pass_status != PASS_WRITE_ERROR) {
-            if (pdh && out_file_name_res) {
-                if (!wtap_dump_set_addrinfo_list(pdh, get_addrinfo_list())) {
-                    cmdarg_err("The file format \"%s\" doesn't support name resolution information.",
-                               wtap_file_type_subtype_short_string(out_file_type));
-                }
-            }
-            /* Now close the capture file. */
-            if (!wtap_dump_close(pdh, &err, &err_info)) {
-                cfile_close_failure_message(save_file, err, err_info);
-                status = PROCESS_FILE_ERROR;
-            }
-        } else {
-            /* We got a write error; it was reported, so just close the dump file
-               without bothering to check for further errors. */
-            wtap_dump_close(pdh, &err, &err_info);
-            g_free(err_info);
-            status = PROCESS_FILE_ERROR;
-        }
-    } else {
-        if (print_packet_info) {
-            if (!write_finale()) {
-                show_print_file_io_error();
-                status = PROCESS_FILE_ERROR;
-            }
-        }
+    if (second_pass_status != PASS_SUCCEEDED) {
+        g_print("process_cap_file_single_pass error!\n,current fileName is :%s\n",cf->filename);
     }
 
-    out:
     wtap_close(cf->provider.wth);
     cf->provider.wth = NULL;
 
@@ -4147,20 +3583,6 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
         /* This is the first and only pass, so prime the epan_dissect_t
            with the hfids postdissectors want on the first pass. */
         prime_epan_dissect_with_postdissector_wanted_hfids(edt);
-
-//    col_custom_prime_edt(edt, &cf->cinfo);
-
-        /* We only need the columns if either
-             1) some tap needs the columns
-           or
-             2) we're printing packet info but we're *not* verbose; in verbose
-                mode, we print the protocol tree, not the protocol summary.
-           or
-             3) there is a column mapped as an individual field */
-        /*if ((tap_flags & TL_REQUIRES_COLUMNS) || (print_packet_info && print_summary) || output_fields_has_cols(output_fields))
-          cinfo = &cf->cinfo;
-        else
-          cinfo = NULL;*/
 
         frame_data_set_before_dissect(&fdata, &cf->elapsed_time,
                                       &cf->provider.ref, cf->provider.prev_dis);
