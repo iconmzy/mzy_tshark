@@ -86,7 +86,7 @@ WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 //获得文件有效行数
 WS_DLL_PUBLIC int getLines_ConfigFile(FILE *file);
 //加载配置文件
-WS_DLL_PUBLIC void loadFile_ConfigFile(const char *filePath, char ***fileData, int *lines);
+WS_DLL_PUBLIC gboolean loadFile_ConfigFile(const char *filePath, char ***fileData, int *lines);
 //解析配置文件
 WS_DLL_PUBLIC void parseFile_ConfigFile(char **fileData, int lines, struct ConfigInfo **info);
 //获得指定配置信息

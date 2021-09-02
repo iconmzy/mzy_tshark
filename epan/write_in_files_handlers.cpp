@@ -1398,8 +1398,12 @@ gboolean readConfigFilesStatus() {
                 int lines = 0;
                 struct ConfigInfo *info = NULL;
 
-                loadFile_ConfigFile(CONFIG_FILES_PATH, &fileData, &lines);
-                parseFile_ConfigFile(fileData, lines, &info);
+                if (loadFile_ConfigFile(CONFIG_FILES_PATH, &fileData, &lines)) {
+                    parseFile_ConfigFile(fileData, lines, &info);
+                } else {
+                    return false;
+                }
+
 
 //                packet_protocol_path = getInfo_ConfigFile("PACKET_PROTOCOL_PATH", info, lines);
 //                if (packet_protocol_path != NULL) {

@@ -34,13 +34,15 @@ int getLines_ConfigFile(FILE *file)
     return lines;
 }
 //加载配置文件
-void loadFile_ConfigFile(const char *filePath, char ***fileData, int *line)
+gboolean loadFile_ConfigFile(const char *filePath, char ***fileData, int *line)
 {
 
     FILE *file = fopen(filePath, "r");
     if (NULL == file)
     {
-        return;
+        printf("==========================>\n");
+        printf("Errot message: The path of config file is incorrect.\n");
+        return FALSE;
     }
 
     int lines = getLines_ConfigFile(file);
@@ -73,6 +75,8 @@ void loadFile_ConfigFile(const char *filePath, char ***fileData, int *line)
 
     *fileData = temp; //难点，重点
     *line = lines;
+
+    return TRUE;
 }
 //解析配置文件
 void parseFile_ConfigFile(char **fileData, int lines, struct ConfigInfo **info)

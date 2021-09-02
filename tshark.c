@@ -942,6 +942,9 @@ int main(int argc, char *argv[]) {
 
                 if (readConfigFilesStatus()) {
                     g_print("config_files_load !\n");
+                } else {
+                    g_print("config files load fail!\n");
+                    goto clean_exit;
                 }
                 if (!initWriteJsonFiles(&write_Json_Files_Init_Status)) {
                     g_print("initWriteJsonFiles somthing error !\n");
