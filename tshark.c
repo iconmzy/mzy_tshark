@@ -184,7 +184,6 @@ char CONFIG_FILES_PATH[128] = {0};
 char file_Name_t[128] = {0};
 
 
-
 static guint32 cum_bytes;
 static frame_data ref_frame;
 //static frame_data prev_dis_frame;
@@ -2341,8 +2340,7 @@ int main(int argc, char *argv[]) {
                 g_print("done! \n");
                 goto clean_exit;
             }
-        }
-        else {
+        } else {
             struct stat st;
             stat(cf_name, &st);
             if (S_ISDIR(st.st_mode)) {
@@ -2359,8 +2357,8 @@ int main(int argc, char *argv[]) {
                     while (temp != NULL) {
                         cf_name = temp->fileName;
                         /*将缓存的文件名字初始化*/
-                        memset(file_Name_t,'\0',128);
-                        strcpy(file_Name_t,cf_name);
+                        memset(file_Name_t, '\0', 128);
+                        strcpy(file_Name_t, cf_name);
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             continue;
                         }
@@ -2399,10 +2397,10 @@ int main(int argc, char *argv[]) {
                         }
 
                         temp = temp->next;
+                        cf_close(&cfile);  //关闭打开的pcap文件
                     }
                 }
-            }
-            else {
+            } else {  //只有一个文件
                 /*文件名*/
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();
@@ -2441,6 +2439,8 @@ int main(int argc, char *argv[]) {
 #endif
                 /*直接清理最终缓存*/
                 clean_Temp_Files_All();
+                change_result_file_name();
+                cf_close(&cfile);  //关闭打开的pcap文件
 //
 //                }
 //                CATCH(OutOfMemoryError)
@@ -3533,7 +3533,7 @@ process_cap_file(capture_file *cf, char *save_file, int out_file_type,
                                                       &err_framenum);
 
     if (second_pass_status != PASS_SUCCEEDED) {
-        g_print("process_cap_file_single_pass error!\n,current fileName is :%s\n",cf->filename);
+        g_print("process_cap_file_single_pass error!\n,current fileName is :%s\n", cf->filename);
     }
 
     wtap_close(cf->provider.wth);
@@ -4072,6 +4072,10 @@ write_finale(void) {
     }
 }
 
+/**
+ * 关闭打开的pcap文件
+ * @param cf
+ */
 void cf_close(capture_file *cf) {
     if (cf->state == FILE_CLOSED)
         return; /* Nothing to do */
