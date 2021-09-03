@@ -478,6 +478,12 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     if (strcmp(dst, "ftp.current-working-directory") == 0) {
         return TRUE;
     }
+    if (strcmp(dst, "xml") == 0) {
+        return TRUE;
+    }
+    if (strcmp(dst, "json") == 0) {
+        return TRUE;
+    }
 
     return FALSE;
 }
@@ -1004,7 +1010,7 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
         /*数据节点*/
 
         /*以太网MTU最大1500，除开网络层头20，TCP头20字节，1460，udp头8字节，MSS为1472，这里取最大1472+1终止位*/
-        gchar value[1473] = {'\0'};
+        gchar value[15000] = {'\0'};  /*巨型帧会超过1500*/
         yy_proto_item_fill_label(node->finfo, value);
         cJSON_AddStringToObject(json_t, key_str.c_str(), value);
 
