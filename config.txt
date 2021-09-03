@@ -1,5 +1,5 @@
 #配置是否新增协议JSON
-JSON_ADD_PROTO:1
+JSON_ADD_PROTO:0
 #新增协议JSON路径 不超过255字符
 JSON_ADD_PROTO_PATH:/root/CLionProjects/tshark_test/newproto/json
 
