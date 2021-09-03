@@ -1,0 +1,49 @@
+#配置是否新增协议JSON
+JSON_ADD_PROTO:1
+#新增协议JSON路径 不超过255字符
+JSON_ADD_PROTO_PATH:/root/CLionProjects/tshark_test/newproto/json
+
+#配置是否写入解析文件
+WRITE_IN_FILES_CONFIG:1
+#配置协议解析输出文件的位置 不超过255字节
+EXPORT_PATH:../temp
+
+#配置是否统计会话信息
+WRITE_IN_CONVERSATIONS_FLAG:1
+
+#配置是否组包
+PACKET_PROTOCOL_FLAG:1
+#配置所需组包协议，英文逗号隔开
+PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp
+
+
+#配置是否写入数据库
+WRITE_IN_DATABASE_FLAG:0
+#数据库地址
+DATABASE_ADDR:127.0.0.1
+#数据库端口
+DATABASE_PORT:27017
+#是否在命令行显示数据
+DISPLAY_PACKET_INFO_FLAG:1
+
+#是否在线捕获数据  注意要和读取文件互斥
+ONLINE_CAPTURE_DATA_FLAG:0
+#在线捕获数据网卡device name  不超过31字符
+ONLINE_CAPTURE_DATA_DEVICE_NAME:enp4s0
+
+#是否读取文件获得捕获数据  注意要和在线捕获互斥  /home/yy/文档/协议流量/ipv4/smtp.pcap   /root/文档/protocol_pcap/online07160426.pcapng
+READ_PACKET_FROM_FILES_FLAG:1
+#读取文件获取捕获数据路径 推荐绝对路径 不超过255字符  /home/yy/桌面/test3.pcapng  /home/yy/Downloads/qq-files/912962140/file_recv/
+#若选择解析文件夹，建议末尾添加“/”，进行标识
+READ_PACKET_FROM_FILES_PATH:/home/yy/文档/协议流量/ipv4/smtp.pcap
+
+#是否拆分文件解析
+EDIT_FILES_DISSECT_FLAG:0
+#拆分子文件大小
+EDIT_FILES_SIZES:100000
+#并发进程数目 暂时未用
+EDIT_FILES_PROCESS_NUM:12
+#是否批量写入
+INSERT_MANY_PROTOCOL_STREAM_FLAG:0
+#每次每个协议批量写入行数
+INSERT_MANY_PROTOCOL_STREAM_NUM:1000
