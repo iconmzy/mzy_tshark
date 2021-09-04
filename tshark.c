@@ -180,10 +180,12 @@
 //#endif
 
 capture_file cfile;
-char read_File_Path[256] = {0};
+char READ_FILE_PATH[256] = {0};
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
-char file_Name_t[128] = {0};
+char FILE_NAME_T[128] = {0};
+char *OFFLINE_LINE_LINE_NO;  /* 离线接入数据通过正则表达式提取出来的线路号 */
+char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
 
 
 static guint32 cum_bytes;
@@ -1031,7 +1033,7 @@ int main(int argc, char *argv[]) {
 //            READ_FILES
                         cf_name = READ_PACKET_FROM_FILES_PATH;
                         /*这里设置读取文件的标志，同时设置文件路径变量。*/
-                        strcpy(read_File_Path, cf_name);
+                        strcpy(READ_FILE_PATH, cf_name);
                         read_Pcap_From_File_Flag = 1;
                     }
                 }
@@ -2411,8 +2413,9 @@ int main(int argc, char *argv[]) {
                     while (temp != NULL) {
                         cf_name = temp->fileName;
                         /*将缓存的文件名字初始化*/
-                        memset(file_Name_t, '\0', 128);
-                        strcpy(file_Name_t, cf_name);
+                        memset(FILE_NAME_T, '\0', 128);
+                        strcpy(FILE_NAME_T, cf_name);
+                        OFFLINE_LINE_LINE_NO = match_line_no(FILE_NAME_T, OFFLINE_LINE_NO_REGEX);  /* 匹配线路号 */
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
@@ -2463,6 +2466,7 @@ int main(int argc, char *argv[]) {
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
+                OFFLINE_LINE_LINE_NO = match_line_no(cf_name, OFFLINE_LINE_NO_REGEX);  /* 匹配线路号 */
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will

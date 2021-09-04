@@ -39,7 +39,7 @@ static std::string conv_path_t = "";
 
 char EXPORT_PATH[256] = {0};
 char RESULT_PATH[256] = {0};
-//char read_File_Path[256];
+//char READ_FILE_PATH[256];
 gboolean WRITE_IN_FILES_CONFIG = 1;
 gboolean DISPLAY_PACKET_INFO_FLAG = 0;
 gboolean WRITE_IN_CONVERSATIONS_FLAG = 1;
@@ -484,6 +484,9 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     if (strcmp(dst, "json") == 0) {
         return TRUE;
     }
+    if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
+        return TRUE;
+    }
 
     return FALSE;
 }
@@ -867,10 +870,10 @@ void do_write_in_files_handler(gchar *label_ptr, const gchar *abbrev, const gcha
     if (stream_head_fileds_contents == GOT_NOTHING) {
         if (read_Pcap_From_File_Flag == 1) {
             /*当前是读文件来的，需要一开始就把文件路径写入write_stream里面*/
-            if (strlen(read_File_Path) == 0) {
-                g_print("read_Pcap_From_File_Flag = 1,but read_File_Path = \"\" ");
+            if (strlen(READ_FILE_PATH) == 0) {
+                g_print("read_Pcap_From_File_Flag = 1,but READ_FILE_PATH = \"\" ");
             } else {
-                std::string str_t = read_File_Path;
+                std::string str_t = READ_FILE_PATH;
                 deleteSPACE_before_end(str_t);
                 cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, str_t.c_str());
             }
@@ -1118,15 +1121,12 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     if (read_Pcap_From_File_Flag == 1) {
         if (file_Name_From_Dir_Flag) {
             /*当前读取文件夹来*/
-            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, file_Name_t);
-            cJSON_AddStringToObject(write_in_files_cJson, "line_no",
-                                    match_line_no(file_Name_t,
-                                                  OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
+            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, FILE_NAME_T);
+            cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
         } else {
-            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, read_File_Path);
-            cJSON_AddStringToObject(write_in_files_cJson, "line_no",
-                                    match_line_no(read_File_Path,
-                                                  OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
+            /* 单个文件 */
+            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+            cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
         }
     } else {
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
@@ -1289,15 +1289,11 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
         if (read_Pcap_From_File_Flag == 1) {
             if (file_Name_From_Dir_Flag) {
                 /*当前读取文件夹来*/
-                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, file_Name_t);
-                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no",
-                                        match_line_no(file_Name_t,
-                                                      OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
+                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, FILE_NAME_T);
+                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO); /* 离线接入数据的线路号 */
             } else {
-                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, read_File_Path);
-                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no",
-                                        match_line_no(read_File_Path,
-                                                      OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
+                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
             }
         } else {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "online");
@@ -1606,21 +1602,21 @@ void clean_Temp_Files_All() {
             filepath_str += "result-" + global_time_str + ".writting";
             FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
             if (file_Name_From_Dir_Flag) {
-                fputs(file_Name_t, fp_result_timestampe);
+                fputs(FILE_NAME_T, fp_result_timestampe);
                 fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             } else {
-                fputs(read_File_Path, fp_result_timestampe);
+                fputs(READ_FILE_PATH, fp_result_timestampe);
                 fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             }
         } else {
             if (file_Name_From_Dir_Flag) {
-                fputs(file_Name_t, fp_result_timestampe);
+                fputs(FILE_NAME_T, fp_result_timestampe);
                 fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             } else {
-                fputs(read_File_Path, fp_result_timestampe);
+                fputs(READ_FILE_PATH, fp_result_timestampe);
                 fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             }
