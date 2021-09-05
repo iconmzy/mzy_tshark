@@ -9763,7 +9763,7 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str)
         case FT_IPXNET:
             integer = fvalue_get_uinteger(&fi->value);
             tmp = get_ipxnet_name(NULL, integer);
-            strcpy(label_str,addr_str);
+            strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
