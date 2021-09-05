@@ -9097,7 +9097,7 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
         case FT_STRINGZPAD:
         case FT_STRINGZTRUNC:
             bytes = (guint8 *) fvalue_get(&fi->value);
-            tmp = hfinfo_format_text(NULL, hfinfo, bytes);
+            tmp = hfinfo_format_text(NULL, hfinfo, bytes);  /* 进行格式化操作，例如\r会变成\\r，此举会导致字符串长度变长，给动态分配内存带来难度 */
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
