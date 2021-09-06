@@ -13,7 +13,6 @@
 #include <config.h>
 #include "epan/write_in_files_handlers.h"
 #include <sys/wait.h>
-#include "dirent.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -73,7 +72,6 @@
 #endif
 
 #include "frame_tvbuff.h"
-#include <epan/disabled_protos.h>
 #include <epan/prefs.h>
 #include <epan/column.h>
 #include <epan/decode_as.h>
