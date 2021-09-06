@@ -151,6 +151,8 @@
 
 #endif
 
+#include "authorize.h"
+
 /* Exit codes */
 #define INVALID_OPTION 1
 #define INVALID_INTERFACE 2
@@ -176,10 +178,12 @@
 //#endif
 
 capture_file cfile;
-char read_File_Path[256] = {0};
+char READ_FILE_PATH[256] = {0};
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
-char file_Name_t[128] = {0};
+char FILE_NAME_T[128] = {0};
+char *OFFLINE_LINE_LINE_NO;  /* 离线接入数据通过正则表达式提取出来的线路号 */
+char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
 
 
 static guint32 cum_bytes;
@@ -750,6 +754,58 @@ must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,
 struct protoInfo *allProtoInfo;
 
 int main(int argc, char *argv[]) {
+    /*添加注册码功能*/
+    char hname[128];
+    char *wid;
+    struct hostent *hent;
+    int i;
+    gethostname(hname, sizeof(hname));
+    hent = gethostbyname(hname);
+    char mac[30];
+    getMac(mac);
+    char id[50];
+    cpu_id(id);
+    strcat(id, mac);
+    calidenty(id);
+    addkey1(id);
+    printf("The machine id: %s\n", id);
+    usersee(id);
+    char active[80];
+    char *key = addkey2(id);
+    char sto[80];
+    FILE *infp = fopen("regist.txt", "r");  //需要添加文件路径
+    if (infp == NULL) {
+        printf("请输入激活码：\n");
+        scanf("%s", &active);
+        while (strcmp(active, key) != 0) {
+            printf("请输入激活码：\n");
+            scanf("%s", &active);
+        }
+        strcpy(sto, active);
+        writefile(sto);
+    } else {
+        char sti[80];
+        fscanf(infp, "%s", sti);
+        //printf("%s\n",sti.activecode);
+        fclose(infp);
+        strcpy(active, sti);
+        if (strcmp(key, active) != 0) {
+            printf("激活码错误，请重新输入：\n");
+
+            while (strcmp(key, active) != 0) {
+                printf("激活码错误，请重新输入：\n");
+                scanf("%s", &active);
+            }
+            strcpy(sti, active);
+            writefile(sti);
+        } else {
+//            printf("You have a perpetual fallback license for this version.\n");
+            printf("该设备已永久激活！\n");
+        }
+
+    }
+    /*注册码功能结束*/
+
 
     struct allExProtocols protos;
 
@@ -975,7 +1031,7 @@ int main(int argc, char *argv[]) {
 //            READ_FILES
                         cf_name = READ_PACKET_FROM_FILES_PATH;
                         /*这里设置读取文件的标志，同时设置文件路径变量。*/
-                        strcpy(read_File_Path, cf_name);
+                        strcpy(READ_FILE_PATH, cf_name);
                         read_Pcap_From_File_Flag = 1;
                     }
                 }
@@ -2355,9 +2411,11 @@ int main(int argc, char *argv[]) {
                     while (temp != NULL) {
                         cf_name = temp->fileName;
                         /*将缓存的文件名字初始化*/
-                        memset(file_Name_t, '\0', 128);
-                        strcpy(file_Name_t, cf_name);
+                        memset(FILE_NAME_T, '\0', 128);
+                        strcpy(FILE_NAME_T, cf_name);
+                        OFFLINE_LINE_LINE_NO = match_line_no(FILE_NAME_T, OFFLINE_LINE_NO_REGEX);  /* 匹配线路号 */
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
+                            temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
                         }
                         if (mutex) {
@@ -2406,6 +2464,7 @@ int main(int argc, char *argv[]) {
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
+                OFFLINE_LINE_LINE_NO = match_line_no(cf_name, OFFLINE_LINE_NO_REGEX);  /* 匹配线路号 */
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will
@@ -4136,7 +4195,7 @@ cf_open(capture_file *cf, const char *fname, unsigned int type, gboolean is_temp
 
     /* Create new epan session for dissection. */
 
-    /*这里有问题*/
+    /*TODO: 这里有问题*/
     epan_free(cf->epan);
     cf->epan = tshark_epan_new(cf);
 

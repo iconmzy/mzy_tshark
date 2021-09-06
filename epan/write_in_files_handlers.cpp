@@ -17,6 +17,7 @@
 #include <ctime>
 #include <unistd.h>
 #include <regex.h>
+#include <stdlib.h>
 
 /*常用的一些字符串*/
 #define str_Protocol_in_frame "[Protocols in frame:"
@@ -39,7 +40,7 @@ static std::string conv_path_t = "";
 
 char EXPORT_PATH[256] = {0};
 char RESULT_PATH[256] = {0};
-//char read_File_Path[256];
+//char READ_FILE_PATH[256];
 gboolean WRITE_IN_FILES_CONFIG = 1;
 gboolean DISPLAY_PACKET_INFO_FLAG = 0;
 gboolean WRITE_IN_CONVERSATIONS_FLAG = 1;
@@ -478,6 +479,15 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     if (strcmp(dst, "ftp.current-working-directory") == 0) {
         return TRUE;
     }
+    if (strcmp(dst, "xml") == 0) {
+        return TRUE;
+    }
+    if (strcmp(dst, "json") == 0) {
+        return TRUE;
+    }
+    if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
+        return TRUE;
+    }
 
     return FALSE;
 }
@@ -861,10 +871,10 @@ void do_write_in_files_handler(gchar *label_ptr, const gchar *abbrev, const gcha
     if (stream_head_fileds_contents == GOT_NOTHING) {
         if (read_Pcap_From_File_Flag == 1) {
             /*当前是读文件来的，需要一开始就把文件路径写入write_stream里面*/
-            if (strlen(read_File_Path) == 0) {
-                g_print("read_Pcap_From_File_Flag = 1,but read_File_Path = \"\" ");
+            if (strlen(READ_FILE_PATH) == 0) {
+                g_print("read_Pcap_From_File_Flag = 1,but READ_FILE_PATH = \"\" ");
             } else {
-                std::string str_t = read_File_Path;
+                std::string str_t = READ_FILE_PATH;
                 deleteSPACE_before_end(str_t);
                 cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, str_t.c_str());
             }
@@ -1003,10 +1013,27 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
     if (node->first_child == NULL or node->last_child == NULL) {
         /*数据节点*/
 
-        /*以太网MTU最大1500，除开网络层头20，TCP头20字节，1460，udp头8字节，MSS为1472，这里取最大1472+1终止位*/
-        gchar value[1473] = {'\0'};
-        yy_proto_item_fill_label(node->finfo, value);
-        cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+        /* 巨型帧会超过1500。 无法改为动态分配的原因在于原始字节数的长度不绝对等于解译后的数据长度，例如MAC地址原始为6字节，翻译后为36字节。
+         * fixme: 此处存在一个问题，即最大载荷长度到底为多少。以HTTP协议为例，绝对不能只看当前帧，当有分片存在时，最后一帧会组合前面分片的所有帧，所以长度不太可控。
+         * */
+
+        if (key_str.compare("http_file_data") == 0) {
+            /* 进行格式化操作，例如\r会变成\\r，此举会导致字符串长度变长，给动态分配内存带来难度。所以此处粗暴的直接将存储空间翻倍，但是并不适用所有情况，例如MAC地址，翻两倍依然不够 */
+            gchar *value = (gchar *) malloc(sizeof(gchar) * node->finfo->length * 2);
+            memset(value, '\0', node->finfo->length * 2);
+            yy_proto_item_fill_label(node->finfo, value);
+            cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+            free(value);
+        } else {
+            gchar value[15000] = {'\0'};
+            yy_proto_item_fill_label(node->finfo, value);
+            cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+        }
+
+//        gchar value[15000] = {'\0'};
+//        yy_proto_item_fill_label(node->finfo, value);
+//        cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+
 
         if (node->next != NULL) {
             proto_node *index = node->next;
@@ -1112,15 +1139,12 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     if (read_Pcap_From_File_Flag == 1) {
         if (file_Name_From_Dir_Flag) {
             /*当前读取文件夹来*/
-            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, file_Name_t);
-            cJSON_AddStringToObject(write_in_files_cJson, "line_no",
-                                    match_line_no(file_Name_t,
-                                                  OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
+            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, FILE_NAME_T);
+            cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
         } else {
-            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, read_File_Path);
-            cJSON_AddStringToObject(write_in_files_cJson, "line_no",
-                                    match_line_no(read_File_Path,
-                                                  OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
+            /* 单个文件 */
+            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+            cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
         }
     } else {
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
@@ -1283,15 +1307,11 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
         if (read_Pcap_From_File_Flag == 1) {
             if (file_Name_From_Dir_Flag) {
                 /*当前读取文件夹来*/
-                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, file_Name_t);
-                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no",
-                                        match_line_no(file_Name_t,
-                                                      OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
+                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, FILE_NAME_T);
+                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO); /* 离线接入数据的线路号 */
             } else {
-                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, read_File_Path);
-                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no",
-                                        match_line_no(read_File_Path,
-                                                      OFFLINE_LINE_NO_REGEX));  // 离线接入数据的线路号, TODO:读取的地方不一定是文件名，且放在此处不合理
+                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
             }
         } else {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "online");
@@ -1600,21 +1620,21 @@ void clean_Temp_Files_All() {
             filepath_str += "result-" + global_time_str + ".writting";
             FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
             if (file_Name_From_Dir_Flag) {
-                fputs(file_Name_t, fp_result_timestampe);
+                fputs(FILE_NAME_T, fp_result_timestampe);
                 fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             } else {
-                fputs(read_File_Path, fp_result_timestampe);
+                fputs(READ_FILE_PATH, fp_result_timestampe);
                 fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             }
         } else {
             if (file_Name_From_Dir_Flag) {
-                fputs(file_Name_t, fp_result_timestampe);
+                fputs(FILE_NAME_T, fp_result_timestampe);
                 fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             } else {
-                fputs(read_File_Path, fp_result_timestampe);
+                fputs(READ_FILE_PATH, fp_result_timestampe);
                 fputs("\r\n", fp_result_timestampe);
                 fflush(fp_result_timestampe);
             }

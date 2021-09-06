@@ -38,8 +38,8 @@ WS_DLL_PUBLIC int EDIT_FILES_PROCESS_NUM;  // 并发进程数目 暂时未用
 WS_DLL_PUBLIC gboolean DISPLAY_PACKET_INFO_FLAG;
 WS_DLL_PUBLIC gboolean EDIT_FILES_DISSECT_FLAG;
 
-WS_DLL_PUBLIC char read_File_Path[256];
-WS_DLL_PUBLIC char file_Name_t[128];
+WS_DLL_PUBLIC char READ_FILE_PATH[256];
+WS_DLL_PUBLIC char FILE_NAME_T[128];
 WS_DLL_PUBLIC gboolean file_Name_From_Dir_Flag;
 WS_DLL_PUBLIC gboolean read_Pcap_From_File_Flag;
 WS_DLL_PUBLIC gboolean mutex_final_clean_flag;
@@ -61,6 +61,7 @@ WS_DLL_PUBLIC char READ_PACKET_FROM_FILES_PATH[256];
 //线路号相关配置
 WS_DLL_PUBLIC char ONLINE_LINE_NO[32];  /* 实时接入数据的线路号 */
 WS_DLL_PUBLIC char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
+WS_DLL_PUBLIC char *OFFLINE_LINE_LINE_NO;  /* 离线接入数据通过正则表达式提取出来的线路号 */
 
 #define MAXFILELENGTH 50
 #define MAXWRITEFILELENGTH 128
@@ -79,6 +80,8 @@ WS_DLL_PUBLIC void clean_Temp_Files_All();
 WS_DLL_PUBLIC void change_result_file_name();
 
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
+
+WS_DLL_PUBLIC char *match_line_no(char *, char *);  /* 匹配线路号 */
 
 /**
  * 下面是读取配置文件相关函数
