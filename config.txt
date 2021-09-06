@@ -1,3 +1,6 @@
+#注册文件的路径
+REGISTRATION_FILE_PATH:/home/gzj/CLionProjects/aurora/run
+
 #配置是否新增协议JSON
 JSON_ADD_PROTO:1
 #新增协议JSON路径 不超过255字符
