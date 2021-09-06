@@ -105,8 +105,8 @@ char *addkey1(char *str) {
     return str;
 }
 
-void usersee(char *str) {
-    FILE *fp = fopen("activecode.txt", "w");//添加文件路径
+void usersee(char *machine_id_path, char *str) {
+    FILE *fp = fopen(machine_id_path, "w");//添加文件路径
     if (fp == NULL) {
         printf("can't open configure file\n");
         exit(-1);
@@ -116,9 +116,9 @@ void usersee(char *str) {
 }
 
 
-void writefile(char *str) {
+void writefile(char *regist_path, char *str) {
 
-    FILE *fp = fopen("regist.txt", "w");//写入二进制文件,需要添加文件；
+    FILE *fp = fopen(regist_path, "w");//写入二进制文件,需要添加文件；
     if (fp == NULL) {
         printf("can't open file\n");
         exit(-1);

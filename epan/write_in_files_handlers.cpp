@@ -70,6 +70,7 @@ char JSON_ADD_PROTO_PATH[256] = {0};
 //线路号相关配置
 char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
 char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
+char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 
 static std::string global_time_str;  // long int types
 FILE *fp_result_timestampe = NULL;
@@ -1401,6 +1402,7 @@ gboolean readConfigFilesStatus() {
                 char *insert_many_protocol_stream_num;
                 char *online_line_no;
                 char *offline_line_no_regex;
+                char *registration_file_path;
 
 //WS_DLL_PUBLIC gboolean PACKET_PROTOCOL_FLAG;
 //WS_DLL_PUBLIC char PACKET_PROTOCOL_TYPES[256];
@@ -1441,6 +1443,18 @@ gboolean readConfigFilesStatus() {
                 } else {
                     strcpy(PACKET_PROTOCOL_TYPES, "./");
                 }
+
+                registration_file_path = getInfo_ConfigFile("REGISTRATION_FILE_PATH", info, lines);
+                if (packet_protocol_types != NULL) {
+                    strcpy(REGISTRATION_FILE_PATH, registration_file_path);
+                    int len = strlen(REGISTRATION_FILE_PATH);
+                    if (REGISTRATION_FILE_PATH[len - 1] != '/') {
+                        strcat(REGISTRATION_FILE_PATH, "/");
+                    }
+                } else {
+                    strcpy(REGISTRATION_FILE_PATH, "./");
+                }
+
 
                 packet_protocol_flag = getInfo_ConfigFile("PACKET_PROTOCOL_FLAG", info, lines);
                 if (packet_protocol_flag != NULL) {

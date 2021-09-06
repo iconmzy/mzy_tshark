@@ -186,6 +186,7 @@ char CONFIG_FILES_PATH[128] = {0};
 char FILE_NAME_T[128] = {0};
 char *OFFLINE_LINE_LINE_NO;  /* 离线接入数据通过正则表达式提取出来的线路号 */
 char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
+char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 
 
 static guint32 cum_bytes;
@@ -771,11 +772,17 @@ int main(int argc, char *argv[]) {
     calidenty(id);
     addkey1(id);
     printf("The machine id: %s\n", id);
-    usersee(id);
+    char machine_id_path[100] = {"\0"};
+    strcpy(machine_id_path, REGISTRATION_FILE_PATH);
+    strcat(machine_id_path, "activecode.txt");
+    usersee(machine_id_path, id);
     char active[80];
     char *key = addkey2(id);
     char sto[80];
-    FILE *infp = fopen("regist.txt", "r");  //需要添加文件路径
+    char regist_path[100] = {"\0"};
+    strcpy(regist_path, REGISTRATION_FILE_PATH);
+    strcat(regist_path, "regist.txt");
+    FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
     if (infp == NULL) {
         printf("请输入激活码：\n");
         scanf("%s", &active);
@@ -784,7 +791,7 @@ int main(int argc, char *argv[]) {
             scanf("%s", &active);
         }
         strcpy(sto, active);
-        writefile(sto);
+        writefile(regist_path, sto);
     } else {
         char sti[80];
         fscanf(infp, "%s", sti);
@@ -799,7 +806,7 @@ int main(int argc, char *argv[]) {
                 scanf("%s", &active);
             }
             strcpy(sti, active);
-            writefile(sti);
+            writefile(regist_path, sti);
         } else {
 //            printf("You have a perpetual fallback license for this version.\n");
             printf("该设备已永久激活！\n");

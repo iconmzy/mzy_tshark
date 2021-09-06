@@ -24,9 +24,9 @@ char *halve(char *str);
 
 char *addkey1(char *str);
 
-void usersee(char *str);
+void usersee(char *file_path_getcwd, char *str);
 
-void writefile(char *str);
+void writefile(char *regist_path, char *str);
 
 char *addkey2(char *str);
 
