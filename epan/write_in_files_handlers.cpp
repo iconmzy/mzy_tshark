@@ -70,6 +70,7 @@ char JSON_ADD_PROTO_PATH[256] = {0};
 //线路号相关配置
 char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
 char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
+char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 
 static std::string global_time_str;  // long int types
 FILE *fp_result_timestampe = NULL;
@@ -486,6 +487,12 @@ gboolean lastLayerProtocolFilter(const char *dst) {
         return TRUE;
     }
     if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
+        return TRUE;
+    }
+    if (strcmp(dst, "smb2.fsctl.wait.name") == 0) {  /* smb2协议中多解析出来的信息 */
+        return TRUE;
+    }
+    if (strcmp(dst, "mswsp.msg") == 0) {  /* smb2的子协议mswsp中出现的畸形报文信息 */
         return TRUE;
     }
 
@@ -1401,6 +1408,7 @@ gboolean readConfigFilesStatus() {
                 char *insert_many_protocol_stream_num;
                 char *online_line_no;
                 char *offline_line_no_regex;
+                char *registration_file_path;
 
 //WS_DLL_PUBLIC gboolean PACKET_PROTOCOL_FLAG;
 //WS_DLL_PUBLIC char PACKET_PROTOCOL_TYPES[256];
@@ -1441,6 +1449,18 @@ gboolean readConfigFilesStatus() {
                 } else {
                     strcpy(PACKET_PROTOCOL_TYPES, "./");
                 }
+
+                registration_file_path = getInfo_ConfigFile("REGISTRATION_FILE_PATH", info, lines);
+                if (packet_protocol_types != NULL) {
+                    strcpy(REGISTRATION_FILE_PATH, registration_file_path);
+                    int len = strlen(REGISTRATION_FILE_PATH);
+                    if (REGISTRATION_FILE_PATH[len - 1] != '/') {
+                        strcat(REGISTRATION_FILE_PATH, "/");
+                    }
+                } else {
+                    strcpy(REGISTRATION_FILE_PATH, "./");
+                }
+
 
                 packet_protocol_flag = getInfo_ConfigFile("PACKET_PROTOCOL_FLAG", info, lines);
                 if (packet_protocol_flag != NULL) {
@@ -1588,7 +1608,6 @@ gboolean readConfigFilesStatus() {
 
 void clean_Temp_Files_All() {
     if (!mutex_final_clean_flag) {
-
         if (insertmanystream_Head != NULL and insertmanystream_Head->next != insertmanystream_Head) {
             /*批量插入缓存还有内容*/
             insertManyProtocolStream *index_t = insertmanystream_Head->next;
@@ -1615,39 +1634,47 @@ void clean_Temp_Files_All() {
         }
         pFile_map.clear();
 
-        if (fp_result_timestampe == NULL) {
-            std::string filepath_str = RESULT_PATH;
-            filepath_str += "result-" + global_time_str + ".writting";
-            FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
-            if (file_Name_From_Dir_Flag) {
-                fputs(FILE_NAME_T, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            } else {
-                fputs(READ_FILE_PATH, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            }
-        } else {
-            if (file_Name_From_Dir_Flag) {
-                fputs(FILE_NAME_T, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            } else {
-                fputs(READ_FILE_PATH, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            }
-        }
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;
     }
 }
 
+void add_record_in_result_file() {
+    if (fp_result_timestampe == NULL) {
+        std::string filepath_str = RESULT_PATH;
+        filepath_str += "result-" + global_time_str + ".writting";
+        FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
+        if (file_Name_From_Dir_Flag) {
+            fputs(FILE_NAME_T, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        } else {
+            fputs(READ_FILE_PATH, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        }
+    } else {
+        if (file_Name_From_Dir_Flag) {
+            fputs(FILE_NAME_T, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        } else {
+            fputs(READ_FILE_PATH, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        }
+    }
+}
 
 void change_result_file_name() {
     std::string filepath_str = RESULT_PATH;
     std::string oldName_t = filepath_str + "result-" + global_time_str + ".writting";
     std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
     rename(oldName_t.c_str(), newName_t.c_str());
+
+    std::time_t end_time = std::time(0);
+    g_print("结束时间戳：%s \n", ltos((u_long) end_time).c_str());
+    int begin_time = atoi(global_time_str.c_str());
+    int cost_time = (int) end_time - begin_time;
+    g_print("总计耗时：%d 秒\n", cost_time);
 }
