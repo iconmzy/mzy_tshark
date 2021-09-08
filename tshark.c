@@ -354,7 +354,7 @@ list_capture_types(void) {
 
     captypes = g_new(struct string_elem, WTAP_NUM_FILE_TYPES_SUBTYPES);
 
-    fprintf(stderr, "tshark: The available capture file types for the \"-F\" flag are:\n");
+    fprintf(stderr, "Aurora: The available capture file types for the \"-F\" flag are:\n");
     for (i = 0; i < WTAP_NUM_FILE_TYPES_SUBTYPES; i++) {
         if (wtap_dump_can_open(i)) {
             captypes[i].sstr = wtap_file_type_subtype_short_string(i);
@@ -377,7 +377,7 @@ list_read_capture_types(void) {
     /* this is a hack, but WTAP_NUM_FILE_TYPES_SUBTYPES is always >= number of open routines so we're safe */
     captypes = g_new(struct string_elem, WTAP_NUM_FILE_TYPES_SUBTYPES);
 
-    fprintf(stderr, "tshark: The available read file types for the \"-X read_format:\" option are:\n");
+    fprintf(stderr, "Aurora: The available read file types for the \"-X read_format:\" option are:\n");
     for (i = 0; open_routines[i].name != NULL; i++) {
         captypes[i].sstr = open_routines[i].name;
         captypes[i].lstr = (open_routines[i].type == OPEN_INFO_MAGIC) ? magic : heuristic;
@@ -389,7 +389,7 @@ list_read_capture_types(void) {
 
 static void
 list_export_pdu_taps(void) {
-    fprintf(stderr, "tshark: The available export tap names for the \"-U tap_name\" option are:\n");
+    fprintf(stderr, "Aurora: The available export tap names for the \"-U tap_name\" option are:\n");
     for (GSList *export_pdu_tap_name_list = get_export_pdu_tap_list();
          export_pdu_tap_name_list != NULL;
          export_pdu_tap_name_list = g_slist_next(export_pdu_tap_name_list)) {
@@ -625,7 +625,7 @@ print_current_user(void) {
         g_free(cur_user);
         g_free(cur_group);
         if (running_with_special_privs()) {
-            fprintf(stderr, " This could be dangerous.");
+//            fprintf(stderr, " This could be dangerous.");
         }
         fprintf(stderr, "\n");
     }
@@ -757,65 +757,6 @@ must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,
 struct protoInfo *allProtoInfo;
 
 int main(int argc, char *argv[]) {
-    /*添加注册码功能*/
-    char hname[128];
-    char *wid;
-    struct hostent *hent;
-    int i;
-    gethostname(hname, sizeof(hname));
-    hent = gethostbyname(hname);
-    char mac[30];
-    getMac(mac);
-    char id[50];
-    cpu_id(id);
-    strcat(id, mac);
-    calidenty(id);
-    addkey1(id);
-    printf("The machine id: %s\n", id);
-    char machine_id_path[100] = {"\0"};
-    strcpy(machine_id_path, REGISTRATION_FILE_PATH);
-    strcat(machine_id_path, "activecode.txt");
-    usersee(machine_id_path, id);
-    char active[80];
-    char *key = addkey2(id);
-    char sto[80];
-    char regist_path[100] = {"\0"};
-    strcpy(regist_path, REGISTRATION_FILE_PATH);
-    strcat(regist_path, "regist.txt");
-    FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
-    if (infp == NULL) {
-        printf("请输入激活码：\n");
-        scanf("%s", &active);
-        while (strcmp(active, key) != 0) {
-            printf("请输入激活码：\n");
-            scanf("%s", &active);
-        }
-        strcpy(sto, active);
-        writefile(regist_path, sto);
-    } else {
-        char sti[80];
-        fscanf(infp, "%s", sti);
-        //printf("%s\n",sti.activecode);
-        fclose(infp);
-        strcpy(active, sti);
-        if (strcmp(key, active) != 0) {
-            printf("激活码错误，请重新输入：\n");
-
-            while (strcmp(key, active) != 0) {
-                printf("激活码错误，请重新输入：\n");
-                scanf("%s", &active);
-            }
-            strcpy(sti, active);
-            writefile(regist_path, sti);
-        } else {
-//            printf("You have a perpetual fallback license for this version.\n");
-            printf("该设备已永久激活！\n");
-        }
-
-    }
-    /*注册码功能结束*/
-
-
     struct allExProtocols protos;
 
     char *err_msg;
@@ -901,7 +842,7 @@ int main(int argc, char *argv[]) {
     setlocale(LC_ALL, "");
 #endif
 
-    // tshark_debug("tshark started with %d args", argc);
+    // tshark_debug("Aurora started with %d args", argc);
 
     cmdarg_err_init(failure_warning_message, failure_message_cont);
 
@@ -926,7 +867,7 @@ int main(int argc, char *argv[]) {
     err_msg = init_progfile_dir(argv[0]);
     if (err_msg != NULL) {
         fprintf(stderr,
-                "tshark: Can't get pathname of directory containing the tshark program: %s.\n"
+                "Aurora: Can't get pathname of directory containing the tshark program: %s.\n"
                 "It won't be possible to capture traffic.\n"
                 "Report this to the Wireshark developers.",
                 err_msg);
@@ -944,7 +885,7 @@ int main(int argc, char *argv[]) {
 #endif /* _WIN32 */
 
     /* Initialize the version information. */
-    ws_init_version_info("TShark (Wireshark)", get_tshark_compiled_version_info,
+    ws_init_version_info("Aurora", get_tshark_compiled_version_info,
                          epan_get_compiled_version_info,
                          get_tshark_runtime_version_info);
 
@@ -1011,6 +952,65 @@ int main(int argc, char *argv[]) {
                 if (!initWriteJsonFiles(&write_Json_Files_Init_Status)) {
                     g_print("initWriteJsonFiles somthing error !\n");
                 }
+
+                /*添加注册码功能*/
+                char hname[128];
+                char *wid;
+                struct hostent *hent;
+                int i;
+                gethostname(hname, sizeof(hname));
+                hent = gethostbyname(hname);
+                char mac[30];
+                getMac(mac);
+                char id[50];
+                cpu_id(id);
+                strcat(id, mac);
+                calidenty(id);
+                addkey1(id);
+                printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+                printf("The machine id: %s\n", id);
+                char machine_id_path[100] = {"\0"};
+                strcpy(machine_id_path, REGISTRATION_FILE_PATH);
+                strcat(machine_id_path, "activecode.txt");
+                usersee(machine_id_path, id);
+                char active[80];
+                char *key = addkey2(id);
+                char sto[80];
+                char regist_path[100] = {"\0"};
+                strcpy(regist_path, REGISTRATION_FILE_PATH);
+                strcat(regist_path, "regist.txt");
+                FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
+                if (infp == NULL) {
+                    printf("请输入激活码：\n");
+                    scanf("%s", &active);
+                    while (strcmp(active, key) != 0) {
+                        printf("请输入激活码：\n");
+                        scanf("%s", &active);
+                    }
+                    strcpy(sto, active);
+                    writefile(regist_path, sto);
+                } else {
+                    char sti[80];
+                    fscanf(infp, "%s", sti);
+                    fclose(infp);
+                    strcpy(active, sti);
+                    if (strcmp(key, active) != 0) {
+                        printf("激活码错误，请重新输入：\n");
+
+                        while (strcmp(key, active) != 0) {
+                            printf("激活码错误，请重新输入：\n");
+                            scanf("%s", &active);
+                        }
+                        strcpy(sti, active);
+                        writefile(regist_path, sti);
+                    } else {
+//            printf("You have a perpetual fallback license for this version.\n");
+                        printf("该设备已永久激活！\n");
+                    }
+
+                }
+                printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+                /*注册码功能结束*/
 
                 /**
                  * 针对配置文件对项目进行配置
@@ -1238,7 +1238,7 @@ int main(int argc, char *argv[]) {
         goto clean_exit;
     }
 
-    // tshark_debug("tshark reading settings");
+    // tshark_debug("Aurora reading settings");
 
     /* Load libwireshark settings from the current profile. */
     prefs_p = epan_load_settings();
@@ -1636,7 +1636,7 @@ int main(int argc, char *argv[]) {
                    part of a tap filter.  Instead, we just add the argument
                    to a list of stat arguments. */
                 if (strcmp("help", optarg) == 0) {
-                    fprintf(stderr, "tshark: The available statistics for the \"-z\" option are:\n");
+                    fprintf(stderr, "Aurora: The available statistics for the \"-z\" option are:\n");
                     list_stat_cmd_args();
                     exit_status = EXIT_SUCCESS;
                     goto clean_exit;
@@ -1666,7 +1666,7 @@ int main(int argc, char *argv[]) {
             case LONGOPT_EXPORT_OBJECTS: /* --export-objects */
                 if (strcmp("help", optarg) == 0) {
                     fprintf(stderr,
-                            "tshark: The available export object types for the \"--export-objects\" option are:\n");
+                            "Aurora: The available export object types for the \"--export-objects\" option are:\n");
                     eo_list_object_types();
                     exit_status = EXIT_SUCCESS;
                     goto clean_exit;
@@ -2257,7 +2257,7 @@ int main(int argc, char *argv[]) {
                                       &err, &err_info);
         g_free(comment);
         if (!exp_pdu_status) {
-            cfile_dump_open_failure_message("TShark", exp_pdu_filename,
+            cfile_dump_open_failure_message("Aurora", exp_pdu_filename,
                                             err, err_info,
                                             WTAP_FILE_TYPE_SUBTYPE_PCAPNG);
             exit_status = INVALID_EXPORT;
@@ -2265,12 +2265,10 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    // tshark_debug("tshark: do_dissection = %s", do_dissection ? "TRUE" : "FALSE");
+    // tshark_debug("Aurora: do_dissection = %s", do_dissection ? "TRUE" : "FALSE");
 //  time_t begin_time = time(NULL);
 //  g_print(" begin %ld",begin_time);
     if (cf_name) {
-        // tshark_debug("tshark: Opening capture file: %s", cf_name);
-
         if (EDIT_FILES_DISSECT_FLAG) {
             /*这里开始调用edit拆分大型pcap包*/
             g_print("split packet begin\n");
@@ -2447,8 +2445,9 @@ int main(int argc, char *argv[]) {
 #endif
                         /*直接清理最终缓存*/
                         mutex_final_clean_flag = FALSE;
-                        clean_Temp_Files_All();
+                        add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                         if (temp->next == NULL) {  //文件遍历结束
+                            clean_Temp_Files_All();
                             draw_taps = TRUE;
                             if (pdu_export_arg) {
                                 if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
@@ -2488,7 +2487,7 @@ int main(int argc, char *argv[]) {
                 do_dissection = must_do_dissection(rfcode, dfcode, pdu_export_arg);
 
                 /* Process the packets in the file */
-                // tshark_debug("tshark: invoking process_cap_file() to process the packets");
+                // tshark_debug("Aurora: invoking process_cap_file() to process the packets");
 //        TRY
 //                {
                 status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
@@ -2560,7 +2559,6 @@ int main(int argc, char *argv[]) {
             }
         }
     } else {
-        // tshark_debug("tshark: no capture file specified");
         /* No capture file specified, so we're supposed to do a live capture
            or get a list of link-layer types for a live capture device;
            do we have support for live captures? */
@@ -2668,8 +2666,6 @@ int main(int argc, char *argv[]) {
                 goto clean_exit;
             }
         }
-
-        // tshark_debug("tshark: performing live capture");
 
         /* Start statistics taps; we should only do so after the capture
            started successfully, so we know we have something to compute
@@ -3325,7 +3321,7 @@ capture_input_drops(capture_session *cap_session _U_, guint32 dropped, const cha
 static void
 capture_input_closed(capture_session *cap_session _U_, gchar *msg) {
     if (msg != NULL)
-        fprintf(stderr, "tshark: %s\n", msg);
+        fprintf(stderr, "Aurora: %s\n", msg);
 
     report_counts();
 
@@ -3553,10 +3549,10 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
                filter, so, if we're writing to a capture file, write
                this packet out. */
             if (pdh != NULL) {
-                // tshark_debug("tshark: writing packet #%d to outfile", framenum);
+                // tshark_debug("Aurora: writing packet #%d to outfile", framenum);
                 if (!wtap_dump(pdh, &rec, ws_buffer_start_ptr(&buf), err, err_info)) {
                     /* Error writing to the output file. */
-                    // tshark_debug("tshark: error writing to a capture file (%d)", *err);
+                    // tshark_debug("Aurora: error writing to a capture file (%d)", *err);
                     *err_framenum = framenum;
                     status = PASS_WRITE_ERROR;
                     break;
@@ -4215,7 +4211,7 @@ cf_open(capture_file *cf, const char *fname, unsigned int type, gboolean is_temp
     return CF_OK;
 
     fail:
-    cfile_open_failure_message("TShark", fname, *err, err_info);
+    cfile_open_failure_message("Aurora", fname, *err, err_info);
     return CF_ERROR;
 }
 
@@ -4295,27 +4291,27 @@ show_print_file_io_error(void) {
 
 /*
  * General errors and warnings are reported with an console message
- * in TShark.
+ * in Aurora.
  */
 static void
 failure_warning_message(const char *msg_format, va_list ap) {
-    fprintf(stderr, "tshark: ");
+    fprintf(stderr, "Aurora: ");
     vfprintf(stderr, msg_format, ap);
     fprintf(stderr, "\n");
 }
 
 /*
- * Open/create errors are reported with an console message in TShark.
+ * Open/create errors are reported with an console message in Aurora.
  */
 static void
 open_failure_message(const char *filename, int err, gboolean for_writing) {
-    fprintf(stderr, "tshark: ");
+    fprintf(stderr, "Aurora: ");
     fprintf(stderr, file_open_error_message(err, for_writing), filename);
     fprintf(stderr, "\n");
 }
 
 /*
- * Read errors are reported with an console message in TShark.
+ * Read errors are reported with an console message in Aurora.
  */
 static void
 read_failure_message(const char *filename, int err) {

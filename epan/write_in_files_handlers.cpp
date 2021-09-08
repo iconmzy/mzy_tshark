@@ -1608,7 +1608,6 @@ gboolean readConfigFilesStatus() {
 
 void clean_Temp_Files_All() {
     if (!mutex_final_clean_flag) {
-
         if (insertmanystream_Head != NULL and insertmanystream_Head->next != insertmanystream_Head) {
             /*批量插入缓存还有内容*/
             insertManyProtocolStream *index_t = insertmanystream_Head->next;
@@ -1635,35 +1634,37 @@ void clean_Temp_Files_All() {
         }
         pFile_map.clear();
 
-        if (fp_result_timestampe == NULL) {
-            std::string filepath_str = RESULT_PATH;
-            filepath_str += "result-" + global_time_str + ".writting";
-            FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
-            if (file_Name_From_Dir_Flag) {
-                fputs(FILE_NAME_T, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            } else {
-                fputs(READ_FILE_PATH, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            }
-        } else {
-            if (file_Name_From_Dir_Flag) {
-                fputs(FILE_NAME_T, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            } else {
-                fputs(READ_FILE_PATH, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            }
-        }
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;
     }
 }
 
+void add_record_in_result_file() {
+    if (fp_result_timestampe == NULL) {
+        std::string filepath_str = RESULT_PATH;
+        filepath_str += "result-" + global_time_str + ".writting";
+        FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
+        if (file_Name_From_Dir_Flag) {
+            fputs(FILE_NAME_T, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        } else {
+            fputs(READ_FILE_PATH, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        }
+    } else {
+        if (file_Name_From_Dir_Flag) {
+            fputs(FILE_NAME_T, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        } else {
+            fputs(READ_FILE_PATH, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        }
+    }
+}
 
 void change_result_file_name() {
     std::string filepath_str = RESULT_PATH;
