@@ -2504,6 +2504,7 @@ int main(int argc, char *argv[]) {
 #endif
                 /*直接清理最终缓存*/
                 clean_Temp_Files_All();
+                add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                 change_result_file_name();
                 cf_close(&cfile);  //关闭打开的pcap文件
 //
