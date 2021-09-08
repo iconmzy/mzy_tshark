@@ -489,6 +489,12 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
         return TRUE;
     }
+    if (strcmp(dst, "smb2.fsctl.wait.name") == 0) {  /* smb2协议中多解析出来的信息 */
+        return TRUE;
+    }
+    if (strcmp(dst, "mswsp.msg") == 0) {  /* smb2的子协议mswsp中出现的畸形报文信息 */
+        return TRUE;
+    }
 
     return FALSE;
 }
@@ -1664,4 +1670,10 @@ void change_result_file_name() {
     std::string oldName_t = filepath_str + "result-" + global_time_str + ".writting";
     std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
     rename(oldName_t.c_str(), newName_t.c_str());
+
+    std::time_t end_time = std::time(0);
+    g_print("结束时间戳：%s \n", ltos((u_long) end_time).c_str());
+    int begin_time = atoi(global_time_str.c_str());
+    int cost_time = (int) end_time - begin_time;
+    g_print("总计耗时：%d 秒\n", cost_time);
 }
