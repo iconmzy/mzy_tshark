@@ -16,8 +16,7 @@
 #include <map>
 #include <ctime>
 #include <unistd.h>
-#include <regex.h>
-#include <regex>   // c++
+#include <regex>   // c++   [ c use #include <regex.h> ]
 #include <stdlib.h>
 
 /*常用的一些字符串*/
@@ -73,7 +72,6 @@ char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
 char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 char OFFLINE_LINE_LINE_NO[256] = {0};
-
 
 static std::string global_time_str;  // long int types
 FILE *fp_result_timestampe = NULL;
