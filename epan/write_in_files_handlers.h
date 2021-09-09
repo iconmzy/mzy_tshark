@@ -61,8 +61,8 @@ WS_DLL_PUBLIC char READ_PACKET_FROM_FILES_PATH[256];
 //线路号相关配置
 WS_DLL_PUBLIC char ONLINE_LINE_NO[32];  /* 实时接入数据的线路号 */
 WS_DLL_PUBLIC char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
-WS_DLL_PUBLIC char *OFFLINE_LINE_LINE_NO;  /* 离线接入数据通过正则表达式提取出来的线路号 */
 WS_DLL_PUBLIC char REGISTRATION_FILE_PATH[256];  /* 注册文件的路径 */
+WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则表达式提取出来的线路号 */
 
 #define MAXFILELENGTH 50
 #define MAXWRITEFILELENGTH 128
@@ -84,7 +84,7 @@ WS_DLL_PUBLIC void change_result_file_name();
 
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
-WS_DLL_PUBLIC char *match_line_no(char *, char *);  /* 匹配线路号 */
+WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
 
 /**
  * 下面是读取配置文件相关函数

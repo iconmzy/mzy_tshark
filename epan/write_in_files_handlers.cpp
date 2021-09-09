@@ -16,7 +16,7 @@
 #include <map>
 #include <ctime>
 #include <unistd.h>
-#include <regex.h>
+#include <regex>   // c++   [ c use #include <regex.h> ]
 #include <stdlib.h>
 
 /*常用的一些字符串*/
@@ -71,6 +71,7 @@ char JSON_ADD_PROTO_PATH[256] = {0};
 char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
 char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
+char OFFLINE_LINE_LINE_NO[256] = {0};
 
 static std::string global_time_str;  // long int types
 FILE *fp_result_timestampe = NULL;
@@ -1075,33 +1076,48 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
  * @param source_str 目标文本串
  * @return
  */
-char *match_line_no(char *pattern, char *source_str) {
-    int flag = REG_EXTENDED;  /* 表示以功能更加强大的扩展正则表达式的方式进行匹配 */
-    regmatch_t pmatch[1];
-    const size_t nmatch = 1;
-    regex_t reg;  /* regex_t 是一个结构体数据类型，用来存放编译后的正则表达式 */
-    int ret_status;
-    char ebuff[256];
-    char line_no[32] = {0};
+//char *match_line_no(char *pattern, char *source_str) {
+//    int flag = REG_EXTENDED;  /* 表示以功能更加强大的扩展正则表达式的方式进行匹配 */
+//    regmatch_t pmatch[1];
+//    const size_t nmatch = 1;
+//    regex_t reg;  /* regex_t 是一个结构体数据类型，用来存放编译后的正则表达式 */
+//    int ret_status;
+//    char ebuff[256];
+//    char line_no[32] = {0};
+//
+//    ret_status = regcomp(&reg, pattern, flag);  /* 编译正则表达式，返回值0表示成功，非0表示失败 */
+//    if (ret_status) {
+//        regerror(ret_status, &reg, ebuff, 256);
+//        fprintf(stderr, "%s\n", ebuff);
+//        return "unknown";
+//    }
+//    ret_status = regexec(&reg, source_str, nmatch, pmatch, 0);
+//    if (ret_status == REG_NOMATCH) {
+////        printf("%s ==> Regex for lineno, no match!\n", source_str);
+//        return "unknown";
+//    } else if (ret_status == 0) {  // match success
+//        int j = 0;
+//        for (int i = pmatch[0].rm_so; i < pmatch[0].rm_eo; i++) {
+//            line_no[j] = source_str[i];
+//        }
+//    }
+//    regfree(&reg);  /* 清空compiled指向的regex_t结构体的内容，请记住，如果是重新编译的话，一定要先清空regex_t结构体 */
+//    return line_no;
+//}
 
-    ret_status = regcomp(&reg, pattern, flag);  /* 编译正则表达式，返回值0表示成功，非0表示失败 */
-    if (ret_status) {
-        regerror(ret_status, &reg, ebuff, 256);
-        fprintf(stderr, "%s\n", ebuff);
-        return "unknown";
+void match_line_no(char *pattern, char *source_str, char * target) {
+
+    std::regex reg(pattern);  //, std::regex_constants::extended
+    //std::string s = source_str;
+    char * ret;
+    std::cmatch results;
+    bool match_bool = std::regex_search(source_str, results, reg);
+    // g_print("%d", match_bool);
+    if(match_bool){
+        strcpy(target, results.str().c_str());
+    } else{
+        strcpy(target, "unkonown");
     }
-    ret_status = regexec(&reg, source_str, nmatch, pmatch, 0);
-    if (ret_status == REG_NOMATCH) {
-//        printf("%s ==> Regex for lineno, no match!\n", source_str);
-        return "unknown";
-    } else if (ret_status == 0) {  // match success
-        int j = 0;
-        for (int i = pmatch[0].rm_so; i < pmatch[0].rm_eo; i++) {
-            line_no[j] = source_str[i];
-        }
-    }
-    regfree(&reg);  /* 清空compiled指向的regex_t结构体的内容，请记住，如果是重新编译的话，一定要先清空regex_t结构体 */
-    return line_no;
 }
 
 
@@ -1451,7 +1467,7 @@ gboolean readConfigFilesStatus() {
                 }
 
                 registration_file_path = getInfo_ConfigFile("REGISTRATION_FILE_PATH", info, lines);
-                if (packet_protocol_types != NULL) {
+                if (registration_file_path != NULL) {
                     strcpy(REGISTRATION_FILE_PATH, registration_file_path);
                     int len = strlen(REGISTRATION_FILE_PATH);
                     if (REGISTRATION_FILE_PATH[len - 1] != '/') {
