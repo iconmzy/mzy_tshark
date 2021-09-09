@@ -80,6 +80,7 @@ static int hf_tn3270_regime_subopt_value = -1;
 static int hf_tn3270_regime_cmd = -1;
 
 static int hf_telnet_starttls = -1;
+static int hf_telnet_asset = -1;  /* 额外添加 */
 
 static gint ett_telnet = -1;
 static gint ett_telnet_cmd = -1;
@@ -134,6 +135,7 @@ static expert_field ei_telnet_kerberos_blob_too_long = EI_INIT;
 static expert_field ei_telnet_invalid_purge = EI_INIT;
 static expert_field ei_telnet_invalid_baud_rate = EI_INIT;
 static expert_field ei_telnet_invalid_control = EI_INIT;
+static expert_field ei_telnet_au_server = EI_INIT;  /* 自定义 */
 
 static dissector_handle_t telnet_handle;
 
@@ -1912,6 +1914,21 @@ dissect_telnet(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data _
             break;
         }
     }
+    /* Expert info */
+    proto_item *sn_ti;
+    sn_ti = proto_tree_add_item(telnet_tree, hf_telnet_asset, tvb, 0, 0, ENC_ASCII | ENC_NA);
+
+    proto_item_set_generated(sn_ti);
+    if (pinfo->srcport == 23) {
+        expert_add_info_format(pinfo, sn_ti, &ei_telnet_au_server,
+                               "src_ip is Telnet Server");
+//        proto_tree_add_ipv4(sn_ti, hf_telnet_asset, tvb, 0, 0, pinfo->net_src.data);
+    } else if (pinfo->destport == 23) {
+        expert_add_info_format(pinfo, sn_ti, &ei_telnet_au_server,
+                               "dst_ip is Telnet Server");
+//        proto_tree_add_ipv4(sn_ti, hf_telnet_asset, tvb, 0, 0, pinfo->net_dst.data);
+    }
+
     return tvb_captured_length(tvb);
 }
 
@@ -2102,6 +2119,10 @@ proto_register_telnet(void) {
                     {"Follows",              "telnet.starttls",                            FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
+            {&hf_telnet_asset,
+                    {"Asset",                "telnet.asset",                               FT_STRING,  BASE_NONE,
+                            NULL,                                 0, NULL,                                                    HFILL}
+            },
     };
     static gint *ett[] = {
             &ett_telnet,
@@ -2147,18 +2168,19 @@ proto_register_telnet(void) {
     };
 
     static ei_register_info ei[] = {
-            {&ei_telnet_invalid_subcommand,     {"telnet.invalid_subcommand",       PI_PROTOCOL, PI_WARN, "Invalid subcommand",                EXPFILL}},
-            {&ei_telnet_invalid_baud_rate,      {"telnet.invalid_baud_rate",        PI_PROTOCOL, PI_WARN, "Invalid Baud Rate",                 EXPFILL}},
-            {&ei_telnet_invalid_data_size,      {"telnet.invalid_data_size",        PI_PROTOCOL, PI_WARN, "Invalid Data Size",                 EXPFILL}},
-            {&ei_telnet_invalid_parity,         {"telnet.invalid_parity",           PI_PROTOCOL, PI_WARN, "Invalid Parity Packet",             EXPFILL}},
-            {&ei_telnet_invalid_stop,           {"telnet.invalid_stop",             PI_PROTOCOL, PI_WARN, "Invalid Stop Packet",               EXPFILL}},
-            {&ei_telnet_invalid_control,        {"telnet.invalid_control",          PI_PROTOCOL, PI_WARN, "Invalid Control Packet",            EXPFILL}},
-            {&ei_telnet_invalid_linestate,      {"telnet.invalid_linestate",        PI_PROTOCOL, PI_WARN, "Invalid linestate",                 EXPFILL}},
-            {&ei_telnet_invalid_modemstate,     {"telnet.invalid_modemstate",       PI_PROTOCOL, PI_WARN, "Invalid Modemstate",                EXPFILL}},
-            {&ei_telnet_invalid_purge,          {"telnet.invalid_purge",            PI_PROTOCOL, PI_WARN, "Invalid Purge Packet",              EXPFILL}},
-            {&ei_telnet_kerberos_blob_too_long, {"telnet.kerberos_blob_too_long",   PI_PROTOCOL, PI_NOTE, "Kerberos blob too long to dissect", EXPFILL}},
-            {&ei_telnet_enc_cmd_unknown,        {"telnet.enc.cmd.unknown",          PI_PROTOCOL, PI_WARN, "Unknown encryption command",        EXPFILL}},
-            {&ei_telnet_suboption_length,       {"telnet.suboption_length.invalid", PI_PROTOCOL, PI_WARN, "Bogus suboption data",              EXPFILL}},
+            {&ei_telnet_invalid_subcommand,     {"telnet.invalid_subcommand",       PI_PROTOCOL, PI_WARN,    "Invalid subcommand",                EXPFILL}},
+            {&ei_telnet_invalid_baud_rate,      {"telnet.invalid_baud_rate",        PI_PROTOCOL, PI_WARN,    "Invalid Baud Rate",                 EXPFILL}},
+            {&ei_telnet_invalid_data_size,      {"telnet.invalid_data_size",        PI_PROTOCOL, PI_WARN,    "Invalid Data Size",                 EXPFILL}},
+            {&ei_telnet_invalid_parity,         {"telnet.invalid_parity",           PI_PROTOCOL, PI_WARN,    "Invalid Parity Packet",             EXPFILL}},
+            {&ei_telnet_invalid_stop,           {"telnet.invalid_stop",             PI_PROTOCOL, PI_WARN,    "Invalid Stop Packet",               EXPFILL}},
+            {&ei_telnet_invalid_control,        {"telnet.invalid_control",          PI_PROTOCOL, PI_WARN,    "Invalid Control Packet",            EXPFILL}},
+            {&ei_telnet_invalid_linestate,      {"telnet.invalid_linestate",        PI_PROTOCOL, PI_WARN,    "Invalid linestate",                 EXPFILL}},
+            {&ei_telnet_invalid_modemstate,     {"telnet.invalid_modemstate",       PI_PROTOCOL, PI_WARN,    "Invalid Modemstate",                EXPFILL}},
+            {&ei_telnet_invalid_purge,          {"telnet.invalid_purge",            PI_PROTOCOL, PI_WARN,    "Invalid Purge Packet",              EXPFILL}},
+            {&ei_telnet_kerberos_blob_too_long, {"telnet.kerberos_blob_too_long",   PI_PROTOCOL, PI_NOTE,    "Kerberos blob too long to dissect", EXPFILL}},
+            {&ei_telnet_enc_cmd_unknown,        {"telnet.enc.cmd.unknown",          PI_PROTOCOL, PI_WARN,    "Unknown encryption command",        EXPFILL}},
+            {&ei_telnet_suboption_length,       {"telnet.suboption_length.invalid", PI_PROTOCOL, PI_WARN,    "Bogus suboption data",              EXPFILL}},
+            {&ei_telnet_au_server,              {"telnet.au_server",                PI_PROTOCOL, PI_COMMENT, "Telnet Server Discover",            EXPFILL}},
     };
 
     expert_module_t *expert_telnet;
