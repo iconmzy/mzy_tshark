@@ -224,3 +224,4 @@ dkms.conf
 将删除 wsutil/CMakeFiles/wsutil.dir/wsutil_autogen/
 将删除 wsutil/wsutil_autogen/include/
 将删除 plugins/epan/opcua/opcua_autogen/include/
+config.txt.backup
