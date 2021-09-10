@@ -34,7 +34,6 @@ WS_DLL_PUBLIC char PACKET_PROTOCOL_PATH[256];
 WS_DLL_PUBLIC gboolean INSERT_MANY_PROTOCOL_STREAM_FLAG;  // 是否批量写入
 WS_DLL_PUBLIC int EDIT_FILES_SIZES;
 WS_DLL_PUBLIC int INSERT_MANY_PROTOCOL_STREAM_NUM;  // 每次每个协议批量写入行数
-WS_DLL_PUBLIC int EDIT_FILES_PROCESS_NUM;  // 并发进程数目 暂时未用
 WS_DLL_PUBLIC gboolean DISPLAY_PACKET_INFO_FLAG;
 WS_DLL_PUBLIC gboolean EDIT_FILES_DISSECT_FLAG;
 
@@ -71,6 +70,8 @@ WS_DLL_PUBLIC char REGISTRATION_FILE_PATH[256];  /* 注册文件的路径 */
 WS_DLL_PUBLIC void do_write_in_files_handler(gchar *label_str, const gchar *abbrev, const gchar *name, int level);
 
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
+
+WS_DLL_PUBLIC void do_handle_strem(gpointer str,gpointer data);
 
 WS_DLL_PUBLIC gboolean initWriteJsonFiles(char *);
 
