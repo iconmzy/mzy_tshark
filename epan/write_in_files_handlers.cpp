@@ -15,13 +15,16 @@
 #include <map>
 #include <ctime>
 #include <unistd.h>
-#include <regex.h>
 #include <cstdlib>
 #include <epan/ftypes/ftypes.h>
 #include "glib.h"
 #include "wsutil/pint.h"
 #include "epan/rtp_media.h"
 #include "wsutil/codecs.h"
+#include <regex>   // c++   [ c use #include <regex.h> ]
+#include <stdlib.h>
+#include <string.h>
+#include <cstring>
 
 /*常用的一些字符串*/
 #define str_FILES_RESOURCE "file_path"
@@ -68,6 +71,7 @@ char JSON_ADD_PROTO_PATH[256] = {0};
 char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
 char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
+char OFFLINE_LINE_LINE_NO[256] = {0};
 
 static std::string global_time_str;  // long int types
 FILE *fp_result_timestampe = nullptr;
@@ -242,6 +246,12 @@ gboolean lastLayerProtocolFilter(const char *dst) {
         return TRUE;
     }
     if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
+        return TRUE;
+    }
+    if (strcmp(dst, "smb2.fsctl.wait.name") == 0) {  /* smb2协议中多解析出来的信息 */
+        return TRUE;
+    }
+    if (strcmp(dst, "mswsp.msg") == 0) {  /* smb2的子协议mswsp中出现的畸形报文信息 */
         return TRUE;
     }
 
@@ -634,33 +644,32 @@ void dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node, totalParam *c
  * @param source_str 目标文本串
  * @return
  */
-char *match_line_no(char *pattern, char *source_str) {
-    int flag = REG_EXTENDED;  /* 表示以功能更加强大的扩展正则表达式的方式进行匹配 */
-    regmatch_t pmatch[1];
-    const size_t nmatch = 1;
-    regex_t reg;  /* regex_t 是一个结构体数据类型，用来存放编译后的正则表达式 */
-    int ret_status;
-    char ebuff[256];
-    char line_no[32] = {0};
+#define GET_FILENAME_FROM_PATH(_ptr_, _filename_) do {  \
+	_ptr_ = strrchr(_filename_, '/');  \
+	if (_ptr_ == NULL)  \
+		_ptr_ = _filename_;  \
+	else  \
+		_ptr_++;  \
+} while (0)
 
-    ret_status = regcomp(&reg, pattern, flag);  /* 编译正则表达式，返回值0表示成功，非0表示失败 */
-    if (ret_status) {
-        regerror(ret_status, &reg, ebuff, 256);
-        fprintf(stderr, "%s\n", ebuff);
-        return "unknown";
+void match_line_no(char *pattern, char *source_str, char * target) {
+
+    std::regex reg(pattern);  //, std::regex_constants::extended
+    //std::string s = source_str;
+    char * ret;
+    std::cmatch results;
+
+    /* get filename from path */
+	const char *_ptr_ = nullptr;
+    GET_FILENAME_FROM_PATH(_ptr_, source_str);
+
+    bool match_bool = std::regex_search(_ptr_, results, reg);
+    // g_print("%d", match_bool);
+    if(match_bool){
+        strcpy(target, results.str().c_str());
+    } else{
+        strcpy(target, "unknown");
     }
-    ret_status = regexec(&reg, source_str, nmatch, pmatch, 0);
-    if (ret_status == REG_NOMATCH) {
-//        printf("%s ==> Regex for lineno, no match!\n", source_str);
-        return "unknown";
-    } else if (ret_status == 0) {  // match success
-        int j = 0;
-        for (int i = pmatch[0].rm_so; i < pmatch[0].rm_eo; i++) {
-            line_no[j] = source_str[i];
-        }
-    }
-    regfree(&reg);  /* 清空compiled指向的regex_t结构体的内容，请记住，如果是重新编译的话，一定要先清空regex_t结构体 */
-    return line_no;
 }
 /**
  * 直接解析edt 写入文件缓存中 202107290910
@@ -1105,7 +1114,7 @@ gboolean readConfigFilesStatus() {
                 }
 
                 registration_file_path = getInfo_ConfigFile("REGISTRATION_FILE_PATH", info, lines);
-                if (packet_protocol_types != NULL) {
+                if (registration_file_path != NULL) {
                     strcpy(REGISTRATION_FILE_PATH, registration_file_path);
                     int len = strlen(REGISTRATION_FILE_PATH);
                     if (REGISTRATION_FILE_PATH[len - 1] != '/') {
@@ -1257,7 +1266,6 @@ gboolean readConfigFilesStatus() {
 
 void clean_Temp_Files_All() {
     if (!mutex_final_clean_flag) {
-
         if (insertmanystream_Head != NULL and insertmanystream_Head->next != insertmanystream_Head) {
             /*批量插入缓存还有内容*/
             insertManyProtocolStream *index_t = insertmanystream_Head->next;
@@ -1284,32 +1292,35 @@ void clean_Temp_Files_All() {
         }
         pFile_map.clear();
 
-        if (fp_result_timestampe == nullptr) {
-            std::string filepath_str = RESULT_PATH;
-            filepath_str += "result-" + global_time_str + ".writting";
-            fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
-            if (file_Name_From_Dir_Flag) {
-                fputs(FILE_NAME_T, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            } else {
-                fputs(READ_FILE_PATH, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            }
-        } else {
-            if (file_Name_From_Dir_Flag) {
-                fputs(FILE_NAME_T, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            } else {
-                fputs(READ_FILE_PATH, fp_result_timestampe);
-                fputs("\r\n", fp_result_timestampe);
-                fflush(fp_result_timestampe);
-            }
-        }
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;
+    }
+}
+
+void add_record_in_result_file() {
+    if (fp_result_timestampe == NULL) {
+        std::string filepath_str = RESULT_PATH;
+        filepath_str += "result-" + global_time_str + ".writting";
+        FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
+        if (file_Name_From_Dir_Flag) {
+            fputs(FILE_NAME_T, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        } else {
+            fputs(READ_FILE_PATH, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        }
+    } else {
+        if (file_Name_From_Dir_Flag) {
+            fputs(FILE_NAME_T, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        } else {
+            fputs(READ_FILE_PATH, fp_result_timestampe);
+            fputs("\r\n", fp_result_timestampe);
+            fflush(fp_result_timestampe);
+        }
     }
 }
 
@@ -1318,4 +1329,10 @@ void change_result_file_name() {
     std::string oldName_t = filepath_str + "result-" + global_time_str + ".writting";
     std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
     rename(oldName_t.c_str(), newName_t.c_str());
+
+    std::time_t end_time = std::time(0);
+    g_print("结束时间戳：%s \n", ltos((u_long) end_time).c_str());
+    int begin_time = atoi(global_time_str.c_str());
+    int cost_time = (int) end_time - begin_time;
+    g_print("总计耗时：%d 秒\n", cost_time);
 }
