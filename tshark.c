@@ -171,18 +171,12 @@
 #define LONGOPT_NO_DUPLICATE_KEYS LONGOPT_BASE_APPLICATION + 3
 #define LONGOPT_ELASTIC_MAPPING_FILTER LONGOPT_BASE_APPLICATION + 4
 
-//#if 0
-//#define // tshark_debug(...) g_warning(__VA_ARGS__)
-//#else
-//#define // tshark_debug(...)
-//#endif
 
 capture_file cfile;
 char READ_FILE_PATH[256] = {0};
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
 char FILE_NAME_T[128] = {0};
-//char *OFFLINE_LINE_LINE_NO;  /* 离线接入数据通过正则表达式提取出来的线路号 */
 char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 
