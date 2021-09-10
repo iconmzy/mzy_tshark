@@ -1,23 +1,25 @@
 #注册文件的路径
-REGISTRATION_FILE_PATH:/home/ymq/tshark/cmake-build-debug/run
+REGISTRATION_FILE_PATH:/home/gzj/CLionProjects/aurora/run
 
 #配置是否新增协议JSON
-JSON_ADD_PROTO:0
+JSON_ADD_PROTO:1
 #新增协议JSON路径 不超过255字符
-JSON_ADD_PROTO_PATH:/root/CLionProjects/tshark_test/newproto/json
+JSON_ADD_PROTO_PATH:/home/gzj/CLionProjects/tshark/newproto/json
 
-#配置是否写入解析文件
+
+#配置是否输出解析文件
 WRITE_IN_FILES_CONFIG:1
 #配置协议解析输出文件的位置 不超过255字节
-EXPORT_PATH:/home/ymq/aurora/out
+EXPORT_PATH:/home/gzj/tshark_pcap
 
-#配置是否统计会话信息
+#配置是否输出会话信息
 WRITE_IN_CONVERSATIONS_FLAG:1
 
 #配置是否组包
-PACKET_PROTOCOL_FLAG:1
+PACKET_PROTOCOL_FLAG:0
 #配置所需组包协议，英文逗号隔开
-PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp
+#PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp
+PACKET_PROTOCOL_TYPES:imf
 
 
 #配置是否写入数据库
@@ -36,9 +38,10 @@ ONLINE_CAPTURE_DATA_DEVICE_NAME:ens33
 
 #是否读取文件获得捕获数据  注意要和在线捕获互斥  /home/yy/文档/协议流量/ipv4/smtp.pcap   /root/文档/protocol_pcap/online07160426.pcapng
 READ_PACKET_FROM_FILES_FLAG:1
-#读取文件获取捕获数据路径 推荐绝对路径 不超过255字符  /home/yy/桌面/test3.pcapng  /home/yy/Downloads/qq-files/912962140/file_recv/
-#若选择解析文件夹，建议末尾添加“/”，进行标识
-READ_PACKET_FROM_FILES_PATH:/home/ymq/aurora/data/sausb7823-dsh_sds389.fhusyahzux.400_2021hjdsyu_843bns.dshus_8dh.pcapng
+#读取离线文件数据路径 推荐绝对路径 不超过255字符  /home/yy/桌面/test3.pcapng  /home/yy/Downloads/qq-files/912962140/file_recv/
+#READ_PACKET_FROM_FILES_PATH:/home/gzj/pcap/tftp_xlsx_pdf_png.pcap
+#READ_PACKET_FROM_FILES_PATH:/home/gzj/pcap/error.pcap
+READ_PACKET_FROM_FILES_PATH:/home/gzj/pcap/WIN7XW4600_00001_20121213125908.pcapng
 
 #是否拆分文件解析
 EDIT_FILES_DISSECT_FLAG:0
@@ -51,5 +54,8 @@ INSERT_MANY_PROTOCOL_STREAM_FLAG:0
 #每次每个协议批量写入行数
 INSERT_MANY_PROTOCOL_STREAM_NUM:1000
 
+#实时接入数据的线路号
+ONLINE_LINE_NO:123123
 #离线接入数据的识别线路号的正则表达式
-OFFLINE_LINE_NO_REGEX:.+(?=_2021)
+OFFLINE_LINE_NO_REGEX:lin[0-9]+
+

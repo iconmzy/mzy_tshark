@@ -36,11 +36,7 @@ tar -zxvf tshark.tar.gz
 yum install libpcap*
 ```
 
-## 更新记录
-
-### 2021年8月20日
-
-#### TODO
-[ x ] 添加授权码功能
-
-[ ] 更名
+## Build GCC version
+```
+gcc g++ >= 8 
+because of the regular expression in std c++ 11 and higher version

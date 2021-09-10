@@ -18,6 +18,8 @@
 #include <unistd.h>
 #include <regex>   // c++   [ c use #include <regex.h> ]
 #include <stdlib.h>
+#include <string.h>
+#include <cstring>
 
 /*常用的一些字符串*/
 #define str_Protocol_in_frame "[Protocols in frame:"
@@ -1076,34 +1078,13 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
  * @param source_str 目标文本串
  * @return
  */
-//char *match_line_no(char *pattern, char *source_str) {
-//    int flag = REG_EXTENDED;  /* 表示以功能更加强大的扩展正则表达式的方式进行匹配 */
-//    regmatch_t pmatch[1];
-//    const size_t nmatch = 1;
-//    regex_t reg;  /* regex_t 是一个结构体数据类型，用来存放编译后的正则表达式 */
-//    int ret_status;
-//    char ebuff[256];
-//    char line_no[32] = {0};
-//
-//    ret_status = regcomp(&reg, pattern, flag);  /* 编译正则表达式，返回值0表示成功，非0表示失败 */
-//    if (ret_status) {
-//        regerror(ret_status, &reg, ebuff, 256);
-//        fprintf(stderr, "%s\n", ebuff);
-//        return "unknown";
-//    }
-//    ret_status = regexec(&reg, source_str, nmatch, pmatch, 0);
-//    if (ret_status == REG_NOMATCH) {
-////        printf("%s ==> Regex for lineno, no match!\n", source_str);
-//        return "unknown";
-//    } else if (ret_status == 0) {  // match success
-//        int j = 0;
-//        for (int i = pmatch[0].rm_so; i < pmatch[0].rm_eo; i++) {
-//            line_no[j] = source_str[i];
-//        }
-//    }
-//    regfree(&reg);  /* 清空compiled指向的regex_t结构体的内容，请记住，如果是重新编译的话，一定要先清空regex_t结构体 */
-//    return line_no;
-//}
+#define GET_FILENAME_FROM_PATH(_ptr_, _filename_) do {  \
+	_ptr_ = strrchr(_filename_, '/');  \
+	if (_ptr_ == NULL)  \
+		_ptr_ = _filename_;  \
+	else  \
+		_ptr_++;  \
+} while (0)
 
 void match_line_no(char *pattern, char *source_str, char * target) {
 
@@ -1111,12 +1092,17 @@ void match_line_no(char *pattern, char *source_str, char * target) {
     //std::string s = source_str;
     char * ret;
     std::cmatch results;
-    bool match_bool = std::regex_search(source_str, results, reg);
+
+    /* get filename from path */
+	const char *_ptr_ = nullptr;
+    GET_FILENAME_FROM_PATH(_ptr_, source_str);
+
+    bool match_bool = std::regex_search(_ptr_, results, reg);
     // g_print("%d", match_bool);
     if(match_bool){
         strcpy(target, results.str().c_str());
     } else{
-        strcpy(target, "unkonown");
+        strcpy(target, "unknown");
     }
 }
 
