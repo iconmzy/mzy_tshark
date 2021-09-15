@@ -1,7 +1,7 @@
-# tshark
+# 极光Aurora
 
 #### 介绍
-tshark二次开发
+极光（Aurora）解析程序
 
 #### 软件架构
 软件架构说明
@@ -9,13 +9,13 @@ tshark二次开发
 
 ## 安装教程
 
-安装文件 `tshark.tar.gz`
+安装文件 `aurora.tar.gz`
 
 运行环境：Linux平台
 
 ### 第一步，解压
 ```
-tar -zxvf tshark.tar.gz
+tar -zxvf aurora.tar.gz
 ```
 
 ### 第二步，配置
@@ -27,7 +27,7 @@ tar -zxvf tshark.tar.gz
 ### 第三步，运行
 在run文件夹下运行如下命令即可
 ```
-./tshark -r [config.txt配置文件的路径]
+./aurora -r [config.txt配置文件的路径]
 ```
 
 ## 其他
