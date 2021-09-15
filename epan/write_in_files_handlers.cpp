@@ -496,6 +496,12 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     if (strcmp(dst, "mswsp.msg") == 0) {  /* smb2的子协议mswsp中出现的畸形报文信息 */
         return TRUE;
     }
+    if (strcmp(dst, "tcp.segments") == 0) {
+        return TRUE;
+    }
+    if (strcmp(dst, "urlencoded-form") == 0) {
+        return TRUE;
+    }
 
     return FALSE;
 }
