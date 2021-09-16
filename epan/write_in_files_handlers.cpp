@@ -513,6 +513,43 @@ gboolean write_Files_conv(std::string &stream) {
     }
     return true;
 }
+
+size_t noop_cb(void *ptr, size_t size, size_t nmemb, void *data) {
+    return size * nmemb;
+}
+
+/**
+ * 将数据流steam写入ES数据库，protocol协议
+ * @param stream
+ * @param protocol
+ */
+void write_into_es(std::string &stream, std::string &protocol) {
+    CURL *curl;
+    CURLcode res;
+
+    //HTTP报文头
+    struct curl_slist *headers = NULL;
+    char tmp_str[256] = {0};
+
+    //构建HTTP报文头
+    snprintf(tmp_str, sizeof(tmp_str), "content-type: application/json; charset=UTF-8");
+    headers = curl_slist_append(headers, tmp_str);
+    curl = curl_easy_init();  /* get a curl handle */
+    if (curl) {
+        std::string url = ES_URL;
+        url = ES_URL + protocol + "/_doc";
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());  //访问的URL
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);  //设置HTTP头
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, stream.c_str());  //post请求传输的数据
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, noop_cb);  //如果不人为设置对返回数据的处理,则会自动在结束的时候在控制台打印
+        res = curl_easy_perform(curl);
+        if (res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+        curl_easy_cleanup(curl);  //这个调用用来结束一个会话.与curl_easy_init配合着用
+    }
+    stream = "";
+}
+
 /**
  * 将数据流steam写入文件，protocol协议
  * @param stream
