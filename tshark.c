@@ -23,9 +23,7 @@
 #include <limits.h>
 
 #ifdef HAVE_GETOPT_H
-
 #include <getopt.h>
-
 #endif
 
 #include <errno.h>
@@ -35,9 +33,7 @@
 #endif
 
 #ifndef _WIN32
-
 #include <signal.h>
-
 #endif
 
 #ifndef HAVE_GETOPT_LONG
@@ -81,9 +77,7 @@
 #include <epan/addr_resolv.h>
 
 #ifdef HAVE_LIBPCAP
-
 #include "ui/capture_ui_utils.h"
-
 #endif
 
 #include "ui/taps.h"
@@ -113,11 +107,9 @@
 #include <epan/secrets.h>
 
 #include "capture_opts.h"
-
 #include "caputils/capture-pcap-util.h"
 
 #ifdef HAVE_LIBPCAP
-
 #include "caputils/capture_ifinfo.h"
 
 #ifdef _WIN32
@@ -731,8 +723,7 @@ about_folders(void) {
 
 
 static gboolean
-must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,
-                   gchar *volatile pdu_export_arg) {
+must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,gchar *volatile pdu_export_arg) {
     /* We have to dissect each packet if:
 
           we're printing information about each packet;
@@ -2393,7 +2384,8 @@ int main(int argc, char *argv[]) {
                 g_print("done! \n");
                 goto clean_exit;
             }
-        } else {
+        }
+        else {
             struct stat st;
             stat(cf_name, &st);
             if (S_ISDIR(st.st_mode)) {
@@ -2412,8 +2404,7 @@ int main(int argc, char *argv[]) {
                         /*将缓存的文件名字初始化*/
                         memset(FILE_NAME_T, '\0', 128);
                         strcpy(FILE_NAME_T, cf_name);
-                        //OFFLINE_LINE_LINE_NO = match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T);  /* 匹配线路号 */
-                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);
+                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
@@ -2457,7 +2448,8 @@ int main(int argc, char *argv[]) {
                         cf_close(&cfile);  //关闭打开的pcap文件
                     }
                 }
-            } else {  //只有一个文件
+            } else {
+                //只有一个文件
                 /*文件名*/
                 /*将缓存的文件名字初始化*/
                 memset(FILE_NAME_T, '\0', 128);
@@ -2469,8 +2461,7 @@ int main(int argc, char *argv[]) {
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-                //OFFLINE_LINE_LINE_NO = match_line_no(OFFLINE_LINE_NO_REGEX, cf_name);  /* 匹配线路号 */
-//                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will
@@ -2518,7 +2509,8 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-    } else {
+    }
+    else {
         /* No capture file specified, so we're supposed to do a live capture
            or get a list of link-layer types for a live capture device;
            do we have support for live captures? */
@@ -3625,13 +3617,11 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
         if (DISPLAY_PACKET_INFO_FLAG) {
             if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
                 if (ALL_PACKET_COUNT % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
-//                    g_print("have processed %d packets!", cf->count);
                     g_print("have processed %d packets!", ALL_PACKET_COUNT);
                     g_print("\r");
                     fflush(stdout);
                 }
             } else {
-//                g_print("have processed %d packets!", cf->count);
                 g_print("have processed %d packets!", ALL_PACKET_COUNT);
                 g_print("\r");
                 fflush(stdout);
