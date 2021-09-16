@@ -9046,15 +9046,7 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
             bytes = (guint8 *) fvalue_get(&fi->value);
             name = oid_resolved_from_encoded(NULL, bytes, fvalue_length(&fi->value));
             tmp = oid_encoded2string(NULL, bytes, fvalue_length(&fi->value));
-//            if (name)
-//            {
-//                label_fill_descr(label_str, 0, hfinfo, tmp, name);
-//                wmem_free(NULL, name);
-//            }
-//            else
-//            {
-//                label_fill(label_str, 0, hfinfo, tmp);
-//            }
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
@@ -9063,15 +9055,7 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
             bytes = (guint8 *) fvalue_get(&fi->value);
             name = rel_oid_resolved_from_encoded(NULL, bytes, fvalue_length(&fi->value));
             tmp = rel_oid_encoded2string(NULL, bytes, fvalue_length(&fi->value));
-//            if (name)
-//            {
-//                label_fill_descr(label_str, 0, hfinfo, tmp, name);
-//                wmem_free(NULL, name);
-//            }
-//            else
-//            {
-//                label_fill(label_str, 0, hfinfo, tmp);
-//            }
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;

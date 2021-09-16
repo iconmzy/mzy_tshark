@@ -194,15 +194,13 @@ proto_tree_print_node(proto_node *node, gpointer data)
 /**
  * 新增将内容写入文件
  */
-    if(WRITE_IN_FILES_CONFIG){
+  /*  if(WRITE_IN_FILES_CONFIG){
 
             if(write_Json_Files_Init_Status == 0 && initWriteJsonFiles(&write_Json_Files_Init_Status)){
             } else if(write_Json_Files_Init_Status != 1){
                 g_print("read json files error\nwrite protocol in files may be error!\n");
             }
             do_write_in_files_handler(label_ptr,fi->hfinfo->abbrev,fi->hfinfo->name,pdata->level);
-
-
     }
     if(WRITE_IN_CONVERSATIONS_FLAG){
 //        do_write_in_conversation_handler(label_ptr,fi->hfinfo->abbrev,pdata->level);
@@ -217,7 +215,9 @@ proto_tree_print_node(proto_node *node, gpointer data)
         pdata->success = print_line(pdata->stream, pdata->level, label_ptr);
     } else{
         pdata ->success = 1;
-    }
+    }*/
+
+    pdata->success = print_line(pdata->stream, pdata->level, label_ptr);
 
     if (proto_item_is_generated(node))
         g_free(label_ptr);

@@ -13,6 +13,8 @@
 #include <config.h>
 #include "epan/write_in_files_handlers.h"
 #include <sys/wait.h>
+#include "dirent.h"
+#include "wsutil/codecs.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -1106,6 +1108,9 @@ int main(int argc, char *argv[]) {
         exit_status = INIT_FAILED;
         goto clean_exit;
     }
+
+    /* Register all audio codecs. */
+    codecs_init();
 
     /* Register all tap listeners; we do this before we parse the arguments,
        as the "-z" argument can specify a registered tap. */
@@ -2369,11 +2374,6 @@ int main(int argc, char *argv[]) {
 
                 } else {
 //                /*父进程*/
-//                if(++edit_files_process_num % EDIT_FILES_PROCESS_NUM == 0){
-//                    int status;
-//                    g_print("now wating last %d process ending",edit_files_process_num);
-//                    waitpid(fpid,&status,0);
-//                }
                     pnext = pnext->next;
                 }
             }
@@ -2404,7 +2404,7 @@ int main(int argc, char *argv[]) {
                         /*将缓存的文件名字初始化*/
                         memset(FILE_NAME_T, '\0', 128);
                         strcpy(FILE_NAME_T, cf_name);
-                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+//                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
@@ -2451,13 +2451,17 @@ int main(int argc, char *argv[]) {
             } else {
                 //只有一个文件
                 /*文件名*/
+                /*将缓存的文件名字初始化*/
+                memset(FILE_NAME_T, '\0', 128);
+                strcpy(FILE_NAME_T, cf_name);
+
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();
                     extcap_cleanup();
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+//                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will
@@ -2492,6 +2496,7 @@ int main(int argc, char *argv[]) {
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                 change_result_file_name();
                 cf_close(&cfile);  //关闭打开的pcap文件
+
                 draw_taps = TRUE;
 
                 if (pdu_export_arg) {
