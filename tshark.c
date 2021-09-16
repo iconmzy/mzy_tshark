@@ -13,6 +13,8 @@
 #include <config.h>
 #include "epan/write_in_files_handlers.h"
 #include <sys/wait.h>
+#include "dirent.h"
+#include "wsutil/codecs.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -21,9 +23,7 @@
 #include <limits.h>
 
 #ifdef HAVE_GETOPT_H
-
 #include <getopt.h>
-
 #endif
 
 #include <errno.h>
@@ -33,9 +33,7 @@
 #endif
 
 #ifndef _WIN32
-
 #include <signal.h>
-
 #endif
 
 #ifndef HAVE_GETOPT_LONG
@@ -79,9 +77,7 @@
 #include <epan/addr_resolv.h>
 
 #ifdef HAVE_LIBPCAP
-
 #include "ui/capture_ui_utils.h"
-
 #endif
 
 #include "ui/taps.h"
@@ -111,11 +107,9 @@
 #include <epan/secrets.h>
 
 #include "capture_opts.h"
-
 #include "caputils/capture-pcap-util.h"
 
 #ifdef HAVE_LIBPCAP
-
 #include "caputils/capture_ifinfo.h"
 
 #ifdef _WIN32
@@ -729,8 +723,7 @@ about_folders(void) {
 
 
 static gboolean
-must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,
-                   gchar *volatile pdu_export_arg) {
+must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,gchar *volatile pdu_export_arg) {
     /* We have to dissect each packet if:
 
           we're printing information about each packet;
@@ -1122,6 +1115,9 @@ int main(int argc, char *argv[]) {
         exit_status = INIT_FAILED;
         goto clean_exit;
     }
+
+    /* Register all audio codecs. */
+    codecs_init();
 
     /* Register all tap listeners; we do this before we parse the arguments,
        as the "-z" argument can specify a registered tap. */
@@ -2385,11 +2381,6 @@ int main(int argc, char *argv[]) {
 
                 } else {
 //                /*父进程*/
-//                if(++edit_files_process_num % EDIT_FILES_PROCESS_NUM == 0){
-//                    int status;
-//                    g_print("now wating last %d process ending",edit_files_process_num);
-//                    waitpid(fpid,&status,0);
-//                }
                     pnext = pnext->next;
                 }
             }
@@ -2400,7 +2391,8 @@ int main(int argc, char *argv[]) {
                 g_print("done! \n");
                 goto clean_exit;
             }
-        } else {
+        }
+        else {
             struct stat st;
             stat(cf_name, &st);
             if (S_ISDIR(st.st_mode)) {
@@ -2419,8 +2411,7 @@ int main(int argc, char *argv[]) {
                         /*将缓存的文件名字初始化*/
                         memset(FILE_NAME_T, '\0', 128);
                         strcpy(FILE_NAME_T, cf_name);
-                        //OFFLINE_LINE_LINE_NO = match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T);  /* 匹配线路号 */
-                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);
+//                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
@@ -2464,16 +2455,20 @@ int main(int argc, char *argv[]) {
                         cf_close(&cfile);  //关闭打开的pcap文件
                     }
                 }
-            } else {  //只有一个文件
+            } else {
+                //只有一个文件
                 /*文件名*/
+                /*将缓存的文件名字初始化*/
+                memset(FILE_NAME_T, '\0', 128);
+                strcpy(FILE_NAME_T, cf_name);
+
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();
                     extcap_cleanup();
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-                //OFFLINE_LINE_LINE_NO = match_line_no(OFFLINE_LINE_NO_REGEX, cf_name);  /* 匹配线路号 */
-                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+//                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will
@@ -2508,47 +2503,8 @@ int main(int argc, char *argv[]) {
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                 change_result_file_name();
                 cf_close(&cfile);  //关闭打开的pcap文件
-//
-//                }
-//                CATCH(OutOfMemoryError)
-//                {
-//                    fprintf(stderr,
-//                            "Out Of Memory.\n"
-//                            "\n"
-//                            "Sorry, but TShark has to terminate now.\n"
-//                            "\n"
-//                            "More information and workarounds can be found at\n" WS_WIKI_URL("KnownBugs/OutOfMemory") "\n");
-//                    status = PROCESS_FILE_ERROR;
-//                }
-//        ENDTRY;
-//
-//        switch (status)
-//        {
-//
-//            case PROCESS_FILE_SUCCEEDED:
-//                /* Everything worked OK; draw the taps. */
+
                 draw_taps = TRUE;
-//                break;
-//
-//            case PROCESS_FILE_NO_FILE_PROCESSED:
-//                /* We never got to try to read the file, so there are no tap
-//                   results to dump.  Exit with an error status. */
-//                exit_status = 2;
-//                break;
-//
-//            case PROCESS_FILE_ERROR:
-//                /* We still dump out the results of taps, etc., as we might have
-//                   read some packets; however, we exit with an error status. */
-//                draw_taps = TRUE;
-//                exit_status = 2;
-//                break;
-//
-//            case PROCESS_FILE_INTERRUPTED:
-//                /* The user interrupted the read process; Don't dump out the
-//                   result of taps, etc., and exit with an error status. */
-//                exit_status = 2;
-//                break;
-//        }
 
                 if (pdu_export_arg) {
                     if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
@@ -2560,7 +2516,8 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-    } else {
+    }
+    else {
         /* No capture file specified, so we're supposed to do a live capture
            or get a list of link-layer types for a live capture device;
            do we have support for live captures? */
@@ -3667,13 +3624,11 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
         if (DISPLAY_PACKET_INFO_FLAG) {
             if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
                 if (ALL_PACKET_COUNT % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
-//                    g_print("have processed %d packets!", cf->count);
                     g_print("have processed %d packets!", ALL_PACKET_COUNT);
                     g_print("\r");
                     fflush(stdout);
                 }
             } else {
-//                g_print("have processed %d packets!", cf->count);
                 g_print("have processed %d packets!", ALL_PACKET_COUNT);
                 g_print("\r");
                 fflush(stdout);

@@ -185,6 +185,7 @@ set(LIBWIRESHARK_PUBLIC_HEADERS
 	write_in_files_handlers.h
 	cJSON.h
 	writefile.h
+	rtp_media.h
 
 	x264_prt_id.h
 	xdlc.h
@@ -285,6 +286,7 @@ set(LIBWIRESHARK_NONGENERATED_FILES
     write_in_files_handlers.cpp
 	cJSON.c
 	ConfigFile.c
+	rtp_media.c
 
 	xdlc.c
 	protobuf-helper.c
