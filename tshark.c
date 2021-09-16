@@ -749,6 +749,13 @@ must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,
 struct protoInfo *allProtoInfo;
 
 int main(int argc, char *argv[]) {
+    printf("\n");
+    printf("    ___\n");
+    printf("   /   | __  ___________  _________ _\n");
+    printf("  / /| |/ / / / ___/ __ \\/ ___/ __ `/\n");
+    printf(" / ___ / /_/ / /  / /_/ / /  / /_/ /\n");
+    printf("/_/  |_\\__,_/_/   \\____/_/   \\__,_/\n");
+    printf("\n");
     struct allExProtocols protos;
 
     char *err_msg;

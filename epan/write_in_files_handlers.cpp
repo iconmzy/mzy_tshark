@@ -20,10 +20,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <cstring>
+#include <stdio.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <curl/curl.h>
 
 /*常用的一些字符串*/
 #define str_Protocol_in_frame "[Protocols in frame:"
 #define str_FILES_RESOURCE "file_path"
+
 
 extern void fill_label_number(field_info *fi, gchar *label_str, gboolean is_signed);
 
@@ -74,6 +79,10 @@ char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
 char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 char OFFLINE_LINE_LINE_NO[256] = {0};
+
+//写入ES数据库相关配置
+gboolean WRITE_IN_ES_FLAG = 0;  /* 配置是否写入ElasticSearch数据库 */
+char ES_URL[256] = {0};  /* ElasticSearch地址 */
 
 static std::string global_time_str;  // long int types
 FILE *fp_result_timestampe = NULL;
@@ -271,6 +280,7 @@ typedef enum {
 
     CONVERSATION_CLOSED,
 } CONNECT_STATUS_FLAG;
+
 /*头插法双向链表*/
 struct conversation_Connect_Total {
     struct conversation_Connect_Total *next;
@@ -696,6 +706,42 @@ gboolean write_Files_conv(std::string &stream) {
     return true;
 }
 
+size_t noop_cb(void *ptr, size_t size, size_t nmemb, void *data) {
+    return size * nmemb;
+}
+
+/**
+ * 将数据流steam写入ES数据库，protocol协议
+ * @param stream
+ * @param protocol
+ */
+void write_into_es(std::string &stream, std::string &protocol) {
+    CURL *curl;
+    CURLcode res;
+
+    //HTTP报文头
+    struct curl_slist *headers = NULL;
+    char tmp_str[256] = {0};
+
+    //构建HTTP报文头
+    snprintf(tmp_str, sizeof(tmp_str), "content-type: application/json; charset=UTF-8");
+    headers = curl_slist_append(headers, tmp_str);
+    curl = curl_easy_init();  /* get a curl handle */
+    if (curl) {
+        std::string url = ES_URL;
+        url = ES_URL + protocol + "/_doc";
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());  //访问的URL
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);  //设置HTTP头
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, stream.c_str());  //post请求传输的数据
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, noop_cb);  //如果不人为设置对返回数据的处理,则会自动在结束的时候在控制台打印
+        res = curl_easy_perform(curl);
+        if (res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+        curl_easy_cleanup(curl);  //这个调用用来结束一个会话.与curl_easy_init配合着用
+    }
+    stream = "";
+}
+
 /**
  * 将数据流steam写入文件，protocol协议
  * @param stream
@@ -1085,33 +1131,32 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
  * @return
  */
 #define GET_FILENAME_FROM_PATH(_ptr_, _filename_) do {  \
-	_ptr_ = strrchr(_filename_, '/');  \
-	if (_ptr_ == NULL)  \
-		_ptr_ = _filename_;  \
-	else  \
-		_ptr_++;  \
+    _ptr_ = strrchr(_filename_, '/');  \
+    if (_ptr_ == NULL)  \
+        _ptr_ = _filename_;  \
+    else  \
+        _ptr_++;  \
 } while (0)
 
-void match_line_no(char *pattern, char *source_str, char * target) {
+void match_line_no(char *pattern, char *source_str, char *target) {
 
     std::regex reg(pattern);  //, std::regex_constants::extended
     //std::string s = source_str;
-    char * ret;
+    char *ret;
     std::cmatch results;
 
     /* get filename from path */
-	const char *_ptr_ = nullptr;
+    const char *_ptr_ = nullptr;
     GET_FILENAME_FROM_PATH(_ptr_, source_str);
 
     bool match_bool = std::regex_search(_ptr_, results, reg);
     // g_print("%d", match_bool);
-    if(match_bool){
+    if (match_bool) {
         strcpy(target, results.str().c_str());
-    } else{
+    } else {
         strcpy(target, "unknown");
     }
 }
-
 
 /**
  * 直接解析edt 写入文件缓存中 202107290910
@@ -1298,9 +1343,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
 
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
-    if (!write_All_Temps_Into_Files(write_in_files_stream, write_in_files_proto)) {
-        g_print("write in files error");
-        return false;
+    if (WRITE_IN_ES_FLAG == 1) {
+        write_into_es(write_in_files_stream, write_in_files_proto);
+
+    }
+    if (WRITE_IN_ES_FLAG != 1 && WRITE_IN_FILES_CONFIG == 1) {
+        if (!write_All_Temps_Into_Files(write_in_files_stream, write_in_files_proto)) {
+            g_print("write in files error");
+            return false;
+        }
     }
     if (!initial_All_para()) {
         g_print("initialize error!");
@@ -1308,6 +1359,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
     return true;
 }
+
 
 /**
  * 写会话
@@ -1417,6 +1469,8 @@ gboolean readConfigFilesStatus() {
                 char *online_line_no;
                 char *offline_line_no_regex;
                 char *registration_file_path;
+                char *write_in_es_flag;
+                char *es_url;
 
 //WS_DLL_PUBLIC gboolean PACKET_PROTOCOL_FLAG;
 //WS_DLL_PUBLIC char PACKET_PROTOCOL_TYPES[256];
@@ -1439,7 +1493,6 @@ gboolean readConfigFilesStatus() {
                     return false;
                 }
 
-
 //                packet_protocol_path = getInfo_ConfigFile("PACKET_PROTOCOL_PATH", info, lines);
 //                if (packet_protocol_path != NULL) {
 //                    strcpy(PACKET_PROTOCOL_PATH,packet_protocol_path);
@@ -1450,6 +1503,20 @@ gboolean readConfigFilesStatus() {
 //                } else {
 //                    strcpy(PACKET_PROTOCOL_PATH,"./");
 //                }
+
+                write_in_es_flag = getInfo_ConfigFile("WRITE_IN_ES_FLAG", info, lines);
+                if (write_in_es_flag != NULL) {
+                    WRITE_IN_ES_FLAG = *write_in_es_flag - '0';
+                } else WRITE_IN_ES_FLAG = 0;
+
+                es_url = getInfo_ConfigFile("ES_URL", info, lines);
+                if (es_url != NULL) {
+                    strcpy(ES_URL, es_url);
+                    int len = strlen(ES_URL);
+                    if (ES_URL[len - 1] != '/') {
+                        strcat(ES_URL, "/");
+                    }
+                }
 
                 packet_protocol_types = getInfo_ConfigFile("PACKET_PROTOCOL_TYPES", info, lines);
                 if (packet_protocol_types != NULL) {
@@ -1611,6 +1678,7 @@ gboolean readConfigFilesStatus() {
                 return false;
             }
     ENDTRY;
+    curl_global_init(CURL_GLOBAL_ALL);
     return true;
 }
 
@@ -1685,4 +1753,6 @@ void change_result_file_name() {
     int begin_time = atoi(global_time_str.c_str());
     int cost_time = (int) end_time - begin_time;
     g_print("总计耗时：%d 秒\n", cost_time);
+
+    curl_global_cleanup();  //在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数
 }
