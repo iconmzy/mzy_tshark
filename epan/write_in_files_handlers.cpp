@@ -1124,28 +1124,31 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
  */
 #define GET_FILENAME_FROM_PATH(_ptr_, _filename_) do {  \
 	_ptr_ = strrchr(_filename_, '/');  \
-	if (_ptr_ == NULL)  \
-		_ptr_ = _filename_;  \
-	else  \
-		_ptr_++;  \
+	if (_ptr_ == NULL)  _ptr_ = _filename_;  \
+	else  _ptr_++;  \
 } while (0)
 
 void match_line_no(char *pattern, char *source_str, char * target) {
+    try{
+        std::regex reg(pattern);  //, std::regex_constants::extended
+        //std::string s = source_str;
+        char * ret;
+        std::cmatch results;
 
-    std::regex reg(pattern);  //, std::regex_constants::extended
-    //std::string s = source_str;
-    char * ret;
-    std::cmatch results;
+        /* get filename from path */
+        const char *_ptr_ = nullptr;
+        GET_FILENAME_FROM_PATH(_ptr_, source_str);
+        bool match_bool = std::regex_search(_ptr_, results, reg);
 
-    /* get filename from path */
-	const char *_ptr_ = nullptr;
-    GET_FILENAME_FROM_PATH(_ptr_, source_str);
-
-    bool match_bool = std::regex_search(_ptr_, results, reg);
-    // g_print("%d", match_bool);
-    if(match_bool){
-        strcpy(target, results.str().c_str());
-    } else{
+        // g_print("%d", match_bool);
+        if(match_bool){
+            strcpy(target, results.str().c_str());
+        } else{
+            strcpy(target, "unknown");
+        }
+    }
+    catch (std::runtime_error){
+        g_print("regex grammar format error !");
         strcpy(target, "unknown");
     }
 }

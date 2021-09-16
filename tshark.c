@@ -2492,47 +2492,7 @@ int main(int argc, char *argv[]) {
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                 change_result_file_name();
                 cf_close(&cfile);  //关闭打开的pcap文件
-//
-//                }
-//                CATCH(OutOfMemoryError)
-//                {
-//                    fprintf(stderr,
-//                            "Out Of Memory.\n"
-//                            "\n"
-//                            "Sorry, but TShark has to terminate now.\n"
-//                            "\n"
-//                            "More information and workarounds can be found at\n" WS_WIKI_URL("KnownBugs/OutOfMemory") "\n");
-//                    status = PROCESS_FILE_ERROR;
-//                }
-//        ENDTRY;
-//
-//        switch (status)
-//        {
-//
-//            case PROCESS_FILE_SUCCEEDED:
-//                /* Everything worked OK; draw the taps. */
                 draw_taps = TRUE;
-//                break;
-//
-//            case PROCESS_FILE_NO_FILE_PROCESSED:
-//                /* We never got to try to read the file, so there are no tap
-//                   results to dump.  Exit with an error status. */
-//                exit_status = 2;
-//                break;
-//
-//            case PROCESS_FILE_ERROR:
-//                /* We still dump out the results of taps, etc., as we might have
-//                   read some packets; however, we exit with an error status. */
-//                draw_taps = TRUE;
-//                exit_status = 2;
-//                break;
-//
-//            case PROCESS_FILE_INTERRUPTED:
-//                /* The user interrupted the read process; Don't dump out the
-//                   result of taps, etc., and exit with an error status. */
-//                exit_status = 2;
-//                break;
-//        }
 
                 if (pdu_export_arg) {
                     if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
