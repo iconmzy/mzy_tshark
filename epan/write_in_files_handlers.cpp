@@ -113,8 +113,20 @@ struct strNameSameLevel *strname_head;
 //协议名称与对应的文件打开的指针map
 std::map<std::string, FILE *> pFile_map;
 
-//stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin
-//rtp stream---------------------- 20210909 yy ----------------------rtp stream begin
+//stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin ||||
+struct totalParam{
+    struct rtp_Content *rtp_content = nullptr;
+};
+/*流处理函数线程池*/
+GThreadPool *handleStreamTpool;
+/**
+ * 并发处理流数据函数
+ * @param str
+ * @param data
+ */
+gboolean packetProtoAlready = false; //当前数据包若为需要组的包则为TRUE，否则为FALSE
+
+//rtp stream---------------------- 20210909 yy ----------------------rtp stream begin |||
 const char *rtp_payload_type_to_str[128] = {
         "g711U","fs-1016","g721","GSM","g723","DVI4 8k","DVI4 16k","Exp. from Xerox PARC","g711A","g722","16-bit audio, stereo",\
         "16-bit audio, monaural","Qualcomm","CN","MPEG-I/II Audio","g728","DVI4 11k","DVI4 22k","g729","CN(old)","Unassigned","Unassigned","Unassigned",\
@@ -131,27 +143,27 @@ const char *rtp_payload_type_to_str[128] = {
         };
 //rtp 流文件句柄map
 static std::map<std::string,FILE*> rtp_stream_pFile_map;
-GList *rtp_fields = nullptr;
+GList *rtp_fields = nullptr; //rtp字段的双链表
 struct rtp_Content{
     gboolean marker;
     char ssrc[24];
     guint8 payload[2*4000];
     size_t payload_len;
     unsigned int payload_type;
-};
-gboolean packetProtoAlready = 0;
+}; //对应rtp字段双链表的存储
 typedef struct _rtp_decoder_t{
     codec_handle_t handle;
     void *context;
 } rtp_decoder_t;
-//rtp stream---------------------- 20210909 yy ---------------------- rtp stream end
+/**
+ * 写rtp可播放流的头
+ * @param fp
+ */
+void writeRTPstreamHead(FILE* fp);
+//rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
 
-struct totalParam{
-    struct rtp_Content *rtp_content = nullptr;
-};
-/*流处理函数线程池*/
-GThreadPool *handleStreamTpool;
-//stream handle----------------------------begin 20210909 yy ----------------------------stream handle end
+void do_handle_strem(gpointer str,gpointer data);
+//stream handle----------------------------begin 20210909 yy ----------------------------stream handle end ||||
 
 template <typename T>
 std::string numtos(T l){
@@ -612,10 +624,11 @@ gboolean initial_All_para() {
                 strname_head->next = NULL;
                 strname_head->times = 0;
                 strname_head->str_name = "";
-                return true;
 
+                //数据包处理完组包标志初始化
                 packetProtoAlready = false;
 
+                return true;
             }
             CATCH(OutOfMemoryError) {
                 g_print("initialize error");
@@ -639,16 +652,38 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
 
     if (node->first_child == nullptr or node->last_child == nullptr) {
         /*数据节点*/
-        gchar value[4542] = {'\0'};
-
-        if (node->finfo->length != 0 and node->finfo->length < 1514 ) {
+        if (node->finfo->length > 0 and node->finfo->length <= 1514 ) {
             try {
+                gchar value[4542] = {'\0'};
                 yy_proto_item_fill_label(node->finfo, value);
+                //组报相关
+                if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
+                    //rtp content relative
+                    g_assert(cookie !=nullptr);
+                    GList *it = nullptr;
+                    if ((it = g_list_find_custom(rtp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))) {
+                        if(strcmp((char*)it->data,"rtp.marker") == 0){
+                            cookie->rtp_content->marker = std::stoi(value);
+                        }
+                        else if(strcmp((char*)it->data,"rtp.ssrc") == 0){
+                            strcpy(cookie->rtp_content->ssrc,value);
+                        }
+                        else if(strcmp((char*)it->data,"rtp.payload") == 0){
+                            strcpy((char*)cookie->rtp_content->payload,(char*)node->finfo->value.value.bytes->data);
+                            cookie->rtp_content->payload_len = node->finfo->value.value.bytes->len;
+                        }
+                        else if(strcmp((char*)it->data,"rtp.p_type") == 0){
+                            cookie->rtp_content->payload_type = std::stoi(value);
+                        }
+                    }
+                }
+//               将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
                 while (key_str.find(".") != key_str.npos) {  /* 返回string::npos表示未查找到匹配项 */
                     key_str.replace(key_str.find("."), 1, "_");
                 }
+//               返回该包内重复字段的名称，如A_01,A_02...
                 key_str = gotStrNameByStrName(key_str);
-                cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+                cJSON_AddStringToObject(json_t, key_str.c_str(), value); //写入JSON
             } catch (std::out_of_range) {
                 g_print("out of range\n");
                 return false;
@@ -662,25 +697,6 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
                 return false;
             }
         }
-
-        if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
-            //rtp content relative
-            g_assert(cookie !=nullptr);
-            GList *it = nullptr;
-            if ((it = g_list_find_custom(rtp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))) {
-                if(strcmp((char*)it->data,"rtp_marker") == 0){
-                    cookie->rtp_content->marker = std::stoi(value);
-                }else if(strcmp((char*)it->data,"rtp_ssrc") == 0){
-                    strcpy(cookie->rtp_content->ssrc,value);
-                } else if(strcmp((char*)it->data,"rtp_payload") == 0){
-                    strcpy((char*)cookie->rtp_content->payload,(char*)node->finfo->value.value.bytes->data);
-                    cookie->rtp_content->payload_len = node->finfo->value.value.bytes->len;
-                } else if(strcmp((char*)it->data,"rtp_p_type") == 0){
-                    cookie->rtp_content->payload_type = std::stoi(value);
-                }
-            }
-        }
-
         if (node->next != NULL) {
             proto_node *index = node->next;
             if (!dissect_edt_Tree_Into_Json(json_t, index,cursion_layer,cookie)) {
@@ -920,6 +936,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     int cursion_layer = 0;
                     /*传入递归的参数*/
                     if(PACKET_PROTOCOL_FLAG && packetProtoAlready){
+                        //如果要组报
                         struct totalParam *cookie_t = g_new0(totalParam,1);
                         cookie_t->rtp_content = g_new0(rtp_Content,1);
                         dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cursion_layer,cookie_t);
@@ -941,7 +958,6 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
     if (WRITE_IN_ES_FLAG == 1) {
         write_into_es(write_in_files_stream, write_in_files_proto);
-
     }
     if (WRITE_IN_ES_FLAG != 1 && WRITE_IN_FILES_CONFIG == 1) {
         if (!write_All_Temps_Into_Files(write_in_files_stream, write_in_files_proto)) {
@@ -1009,6 +1025,7 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
     size_t decoded_samples;
     const gchar *payload_type_str = nullptr;
     payload_type_str = rtp_payload_type_to_str[payload_type];
+
     decode_bytes = decode_rtp_packet_payload(payload_type,payload_type_str,payload_data,payload_len,&decode_buff,decoders_hash,&channels,&sample_rate);
     decoded_samples = decode_bytes/2;
 
@@ -1032,32 +1049,31 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
         g_print("File parsing and saving at this rate is not supported \n%s\n",__FUNCTION__);
         decoded_samples = 0;
     }
+
     g_free(decode_buff);
 
     return decoded_samples;
 }
 
-/**
- * 并发处理rtp流
- * @param str
- * @param data
- */
 void do_handle_strem(gpointer str,gpointer data){
-    totalParam *t = (totalParam *) str;
+    auto *t = (totalParam *) str;
     if(t->rtp_content != nullptr){
-        /*存在rtpstream*/
+//        并发处理rtp流。
         char file_name_t[256] = {0};
         strcat(file_name_t,PACKET_PROTOCOL_PATH);
         sprintf(file_name_t,"%s%s",PACKET_PROTOCOL_PATH,"rtp/");
         if(access(file_name_t,0)!= 0){
             mkdirs(file_name_t);
         }
+        strcat(file_name_t,rtp_payload_type_to_str[t->rtp_content->payload_type]);
+        strcat(file_name_t,"_");
         strcat(file_name_t,global_time_str.c_str());
+        strcat(file_name_t,"_");
         strcat(file_name_t,t->rtp_content->ssrc);
         strcat(file_name_t,".au");
 
         FILE* fp;
-        if(rtp_stream_pFile_map.size() == 0){
+        if(rtp_stream_pFile_map.empty()){
             //空map
             fp = fopen(file_name_t,"a");
             if(!fp){
@@ -1088,10 +1104,13 @@ void do_handle_strem(gpointer str,gpointer data){
         struct _GHashTable *decoders_hash = rtp_decoder_hash_table_new();
         uint8_t pd_out[2*4000];
         size_t sample_count;
-        //payload_type_name 暂定
         sample_count = convert_payload_to_samples(t->rtp_content->payload_type,t->rtp_content->payload,t->rtp_content->payload_len,pd_out,decoders_hash);
-        if(fwrite(pd_out, sizeof(uint8_t),sample_count,fp) != sample_count){
-            g_print("%s sample_count write error !\n",__FUNCTION__);
+        if(sample_count != 0){
+            if (fwrite(pd_out, sizeof(uint8_t), sample_count * 2, fp) != sample_count) {
+                g_print("%s sample_count write error !\n", __FUNCTION__);
+            }
+        } else{
+            g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
         }
 
         g_free(t->rtp_content);
@@ -1122,13 +1141,13 @@ gboolean initWriteJsonFiles(char *flag) {
         insertmanystream_Head->contents = "";
     }
 
-    /*初始化rtpstream处理函数线程池*/
+    /*初始化rtpstream处理函数线程池 ,最大1个线程并发处理rtpliu*/
     handleStreamTpool = g_thread_pool_new(do_handle_strem,NULL,1,FALSE,NULL);
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_marker");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_ssrc");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_payload");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_p_type");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.marker");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.ssrc");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.payload");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.p_type");
 
     /*初始化互斥变量*/
     *flag = 1;

@@ -945,11 +945,7 @@ int main(int argc, char *argv[]) {
 
                 /*添加注册码功能*/
                 char hname[128];
-                char *wid;
-                struct hostent *hent;
-                int i;
                 gethostname(hname, sizeof(hname));
-                hent = gethostbyname(hname);
                 char mac[30];
                 getMac(mac);
                 char id[50];
@@ -959,7 +955,7 @@ int main(int argc, char *argv[]) {
                 addkey1(id);
                 printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
                 printf("The machine id: %s\n", id);
-                char machine_id_path[100] = {"\0"};
+                char machine_id_path[100] = {'\0'};
                 strcpy(machine_id_path, REGISTRATION_FILE_PATH);
                 strcat(machine_id_path, "activecode.txt");
                 usersee(machine_id_path, id);
@@ -3363,7 +3359,7 @@ process_new_idbs(wtap *wth, wtap_dumper *pdh, int *err, gchar **err_info) {
 }
 
 static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper *pdh,
-                                                  int max_packet_count, gint64 max_byte_count,
+                                                  int unuse1, gint64 unuse2,
                                                   int *err, gchar **err_info,
                                                   volatile guint32 *err_framenum) {
     wtap_rec rec;
@@ -3449,8 +3445,8 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
 }
 
 static process_file_status_t
-process_cap_file(capture_file *cf, char *save_file, int out_file_type,
-                 gboolean out_file_name_res, int max_packet_count, gint64 max_byte_count) {
+process_cap_file(capture_file *cf, char *unuse1, int unuse2,
+                 gboolean unuse3, int max_packet_count, gint64 max_byte_count) {
 
     process_file_status_t status = PROCESS_FILE_SUCCEEDED;
     wtap_dumper *pdh = NULL;
@@ -3492,7 +3488,7 @@ int ALL_PACKET_COUNT = 0;  // 全局变量统计总共处理了多少个packet�
  */
 static gboolean
 process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
-                           wtap_rec *rec, Buffer *buf, guint tap_flags) {
+                           wtap_rec *rec, Buffer *buf, guint unuse1) {
     frame_data fdata;
     column_info *cinfo = NULL;
     gboolean passed;
@@ -3589,53 +3585,6 @@ write_preamble(capture_file *cf) {
             g_assert_not_reached();
             return FALSE;
     }
-}
-
-static char *
-get_line_buf(size_t len) {
-    static char *line_bufp = NULL;
-    static size_t line_buf_len = 256;
-    size_t new_line_buf_len;
-
-    for (new_line_buf_len = line_buf_len; len > new_line_buf_len;
-         new_line_buf_len *= 2);
-    if (line_bufp == NULL) {
-        line_buf_len = new_line_buf_len;
-        line_bufp = (char *) g_malloc(line_buf_len + 1);
-    } else {
-        if (new_line_buf_len > line_buf_len) {
-            line_buf_len = new_line_buf_len;
-            line_bufp = (char *) g_realloc(line_bufp, line_buf_len + 1);
-        }
-    }
-    return line_bufp;
-}
-
-static inline void
-put_string(char *dest, const char *str, size_t str_len) {
-    memcpy(dest, str, str_len);
-    dest[str_len] = '\0';
-}
-
-static inline void
-put_spaces_string(char *dest, const char *str, size_t str_len, size_t str_with_spaces) {
-    size_t i;
-
-    for (i = str_len; i < str_with_spaces; i++)
-        *dest++ = ' ';
-
-    put_string(dest, str, str_len);
-}
-
-static inline void
-put_string_spaces(char *dest, const char *str, size_t str_len, size_t str_with_spaces) {
-    size_t i;
-
-    memcpy(dest, str, str_len);
-    for (i = str_len; i < str_with_spaces; i++)
-        dest[i] = ' ';
-
-    dest[str_with_spaces] = '\0';
 }
 
 static gboolean

@@ -65,9 +65,6 @@ WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则
 #define MAXFILELENGTH 50
 #define MAXWRITEFILELENGTH 128
 
-
-WS_DLL_PUBLIC void do_write_in_files_handler(gchar *label_str, const gchar *abbrev, const gchar *name, int level);
-
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
 
 WS_DLL_PUBLIC void do_handle_strem(gpointer str,gpointer data);
@@ -104,6 +101,9 @@ WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 //判断当前行是否有效
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 
+//rtp 相关
+WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);
+WS_DLL_PUBLIC int yy_g711u(unsigned char in[], int inlen, unsigned char out[]);
 
 #ifdef __cplusplus
 }
