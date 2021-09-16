@@ -2139,7 +2139,6 @@ CJSON_PUBLIC(cJSON*) cJSON_AddStringToObject(cJSON * const object, const char * 
     {
         return string_item;
     }
-
     cJSON_Delete(string_item);
     return NULL;
 }

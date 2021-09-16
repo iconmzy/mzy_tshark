@@ -1141,14 +1141,11 @@ int readFileList(char *basePath,pfileNameNode head){
         if (basePath[len - 1] != '/') {
             strcat(basePath, "/");
         }
-
         if ((dir=opendir(basePath)) == NULL)
         {
             g_print("Open dir:%s error ...",basePath);
             exit(1);
         }
-
-
         while ((ptr=readdir(dir)) != NULL)
         {
             if(strcmp(ptr->d_name,".")==0 || strcmp(ptr->d_name,"..")==0)    ///current dir OR parrent dir
