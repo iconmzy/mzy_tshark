@@ -75,13 +75,13 @@ WS_DLL_PUBLIC void do_handle_strem(gpointer str,gpointer data);
 
 WS_DLL_PUBLIC gboolean initWriteJsonFiles(char *);
 
-WS_DLL_PUBLIC gboolean readConfigFilesStatus();
+WS_DLL_PUBLIC gboolean readConfigFilesStatus(void);
 
-WS_DLL_PUBLIC void clean_Temp_Files_All();
+WS_DLL_PUBLIC void clean_Temp_Files_All(void);
 
-WS_DLL_PUBLIC void add_record_in_result_file();
+WS_DLL_PUBLIC void add_record_in_result_file(void);
 
-WS_DLL_PUBLIC void change_result_file_name();
+WS_DLL_PUBLIC void change_result_file_name(void);
 
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 

@@ -28,7 +28,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include <curl/curl.h>
+#include "curl/curl.h"
 
 /*常用的一些字符串*/
 #define str_FILES_RESOURCE "file_path"
@@ -295,7 +295,7 @@ gboolean cursionkeyStrFilter(const char *key_str){
 int kmp(std::string s, std::string t) {
     int i = 0, j = -1;
     int slen = s.length(), tlen = t.length();
-    int next[tlen];
+    int *next = new int[tlen+1]();
     //首先求出模式串t的next数组
     next[0] = -1;
     while (i < tlen) {
@@ -306,13 +306,6 @@ int kmp(std::string s, std::string t) {
         } else
             j = next[j];
     }
-    /*
-    //输出next数组
-    for(i=0;i<tlen;++i){
-        cout<<next[i]<<" ";
-    }
-    cout<<endl;
-    */
     //接着根据next数组实现KMP算法
     i = 0;
     j = 0;
@@ -323,6 +316,7 @@ int kmp(std::string s, std::string t) {
         } else
             j = next[j];
     }
+    delete[] next;
     if (j == tlen)
         return i - j;
     else

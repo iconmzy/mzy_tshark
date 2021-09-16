@@ -2411,7 +2411,7 @@ int main(int argc, char *argv[]) {
                         /*将缓存的文件名字初始化*/
                         memset(FILE_NAME_T, '\0', 128);
                         strcpy(FILE_NAME_T, cf_name);
-//                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
@@ -2468,7 +2468,7 @@ int main(int argc, char *argv[]) {
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-//                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will
@@ -3341,87 +3341,6 @@ capture_cleanup(int signum _U_) {
 #endif /* _WIN32 */
 #endif /* HAVE_LIBPCAP */
 
-static gboolean
-process_packet_first_pass(capture_file *cf, epan_dissect_t *edt,
-                          gint64 offset, wtap_rec *rec, Buffer *buf) {
-    frame_data fdlocal;
-    guint32 framenum;
-    gboolean passed;
-
-    /* The frame number of this packet is one more than the count of
-       frames in this packet. */
-    framenum = cf->count + 1;
-
-    /* If we're not running a display filter and we're not printing any
-       packet information, we don't need to do a dissection. This means
-       that all packets can be marked as 'passed'. */
-    passed = TRUE;
-
-    frame_data_init(&fdlocal, framenum, rec, offset, cum_bytes);
-
-    /* If we're going to run a read filter or a display filter, set up to
-       do a dissection and do so.  (This is the first pass of two passes
-       over the packets, so we will not be printing any information
-       from the dissection or running taps on the packet; if we're doing
-       any of that, we'll do it in the second pass.) */
-    if (edt) {
-        /* If we're running a read filter, prime the epan_dissect_t with that
-           filter. */
-        if (cf->rfcode)
-            epan_dissect_prime_with_dfilter(edt, cf->rfcode);
-
-        if (cf->dfcode)
-            epan_dissect_prime_with_dfilter(edt, cf->dfcode);
-
-        /* This is the first pass, so prime the epan_dissect_t with the
-           hfids postdissectors want on the first pass. */
-        prime_epan_dissect_with_postdissector_wanted_hfids(edt);
-
-        frame_data_set_before_dissect(&fdlocal, &cf->elapsed_time,
-                                      &cf->provider.ref, cf->provider.prev_dis);
-        if (cf->provider.ref == &fdlocal) {
-            ref_frame = fdlocal;
-            cf->provider.ref = &ref_frame;
-        }
-
-        epan_dissect_run(edt, cf->cd_t, rec,
-                         frame_tvbuff_new_buffer(&cf->provider, &fdlocal, buf),
-                         &fdlocal, NULL);  /* 执行协议解析 */
-
-        /* Run the read filter if we have one. */
-        if (cf->rfcode)
-            passed = dfilter_apply_edt(cf->rfcode, edt);
-    }
-
-    if (passed) {
-        frame_data_set_after_dissect(&fdlocal, &cum_bytes);
-        cf->provider.prev_cap = cf->provider.prev_dis = frame_data_sequence_add(cf->provider.frames, &fdlocal);
-
-        /* If we're not doing dissection then there won't be any dependent frames.
-         * More importantly, edt.pi.dependent_frames won't be initialized because
-         * epan hasn't been initialized.
-         * if we *are* doing dissection, then mark the dependent frames, but only
-         * if a display filter was given and it matches this packet.
-         */
-        if (edt && cf->dfcode) {
-            if (dfilter_apply_edt(cf->dfcode, edt)) {
-                g_slist_foreach(edt->pi.dependent_frames, find_and_mark_frame_depended_upon, cf->provider.frames);
-            }
-        }
-
-        cf->count++;
-    } else {
-        /* if we don't add it to the frame_data_sequence, clean it up right now
-         * to avoid leaks */
-        frame_data_destroy(&fdlocal);
-    }
-
-    if (edt)
-        epan_dissect_reset(edt);
-
-    return passed;
-}
-
 typedef enum {
     PASS_SUCCEEDED,
     PASS_READ_ERROR,
@@ -3967,96 +3886,6 @@ print_columns(capture_file *cf, const epan_dissect_t *edt) {
         return print_line_color(print_stream, 0, line_bufp, &color_filter->fg_color, &color_filter->bg_color);
     else
         return print_line(print_stream, 0, line_bufp);
-}
-
-static gboolean
-print_packet(capture_file *cf, epan_dissect_t *edt) {
-    if (print_summary || output_fields_has_cols(output_fields))
-        /* Just fill in the columns. */
-        epan_dissect_fill_in_columns(edt, FALSE, TRUE);
-
-    /* Print summary columns and/or protocol tree */
-    switch (output_action) {
-
-        case WRITE_TEXT:
-            if (print_summary && !print_columns(cf, edt))
-                return FALSE;
-            if (print_details) {
-                if (!proto_tree_print(print_details ? print_dissections_expanded : print_dissections_none, print_hex,
-                                      edt, output_only_tables,
-                                      print_stream))
-                    return FALSE;
-                if (!print_hex) {
-                    if (!print_line(print_stream, 0, separator))
-                        return FALSE;
-                }
-            }
-            break;
-
-        case WRITE_XML:
-            if (print_summary) {
-                write_psml_columns(edt, stdout, dissect_color);
-                return !ferror(stdout);
-            }
-            if (print_details) {
-                write_pdml_proto_tree(output_fields, protocolfilter, protocolfilter_flags, edt, &cf->cinfo, stdout,
-                                      dissect_color);
-                printf("\n");
-                return !ferror(stdout);
-            }
-            break;
-
-        case WRITE_FIELDS:
-            if (print_summary) {
-                /*No non-verbose "fields" format */
-                g_assert_not_reached();
-            }
-            if (print_details) {
-                write_fields_proto_tree(output_fields, edt, &cf->cinfo, stdout);
-                printf("\n");
-                return !ferror(stdout);
-            }
-            break;
-
-        case WRITE_JSON:
-            if (print_summary)
-                g_assert_not_reached();
-            if (print_details) {
-                write_json_proto_tree(output_fields, print_dissections_expanded,
-                                      print_hex, protocolfilter, protocolfilter_flags,
-                                      edt, &cf->cinfo, node_children_grouper, &jdumper);
-                return !ferror(stdout);
-            }
-            break;
-
-        case WRITE_JSON_RAW:
-            if (print_summary)
-                g_assert_not_reached();
-            if (print_details) {
-                write_json_proto_tree(output_fields, print_dissections_none, TRUE,
-                                      protocolfilter, protocolfilter_flags,
-                                      edt, &cf->cinfo, node_children_grouper, &jdumper);
-                return !ferror(stdout);
-            }
-            break;
-
-        case WRITE_EK:
-            write_ek_proto_tree(output_fields, print_summary, print_hex, protocolfilter,
-                                protocolfilter_flags, edt, &cf->cinfo, stdout);
-            return !ferror(stdout);
-    }
-
-    if (print_hex) {
-        if (print_summary || print_details) {
-            if (!print_line(print_stream, 0, ""))
-                return FALSE;
-        }
-        if (!print_hex_data(print_stream, edt))
-            return FALSE;
-        if (!print_line(print_stream, 0, separator))
-            return FALSE;
-    }
-    return TRUE;
 }
 
 static gboolean
