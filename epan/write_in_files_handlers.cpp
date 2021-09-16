@@ -38,7 +38,7 @@ static std::vector<std::string> proto_array;
 /*缓存会话数据内容*/
 static cJSON *write_in_files_conv_cJson = cJSON_CreateObject();
 static std::string conv_path_t = "";
-
+static FILE *conversation_Handle_File = nullptr;
 
 char EXPORT_PATH[256] = {0};
 char RESULT_PATH[256] = {0};
@@ -501,6 +501,15 @@ gboolean lastLayerProtocolFilter(const char *dst) {
 
     return FALSE;
 }
+/**
+ *
+ */
+gboolean cursionkeyStrFilter(const char *key_str){
+    if (strcmp(key_str, "text") == 0) {
+        return TRUE;
+    }
+    return false;
+}
 
 /**
  * 匹配返回下标，为找到返回-1
@@ -679,14 +688,26 @@ gboolean write_Files_conv(std::string &stream) {
         conv_path_t = WRITE_IN_CONVERSATIONS_PATH;
         conv_path_t = conv_path_t + "conversation_" + global_time_str + ".txt";
     }
-
-    FILE *fp = fopen(conv_path_t.c_str(), "a+");
-    if (fp == NULL) {
-        g_print("open %s error!\n", conv_path_t.c_str());
+    if (!conversation_Handle_File) {
+        conversation_Handle_File = fopen(conv_path_t.c_str(), "a+");
+        if (conversation_Handle_File == NULL) {
+            g_print("open %s error!\n", conv_path_t.c_str());
+            return false;
+        }
+    }
+    try {
+        fputs(stream.c_str(), conversation_Handle_File);
+        fflush(conversation_Handle_File);
+    }catch (std::out_of_range){
+        g_print("out of range\n");
+        return false;
+    }catch (std::overflow_error){
+        g_print("overflow_error\n");
+        return false;
+    }catch (std::runtime_error){
+        g_print("runtime_error\n");
         return false;
     }
-    fputs(stream.c_str(), fp);
-    fflush(fp);
     return true;
 }
 
@@ -1012,42 +1033,59 @@ void do_write_in_files_handler(gchar *label_ptr, const gchar *abbrev, const gcha
  * @param json_t
  * @param node
  */
-gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
+gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursion_layer) {
     /*key的置换和获取*/
     std::string key_str = node->finfo->hfinfo->abbrev;
-    while (key_str.find(".") != key_str.npos) {  /* 返回string::npos表示未查找到匹配项 */
-        key_str.replace(key_str.find("."), 1, "_");
+    if(cursionkeyStrFilter(key_str.c_str())){
+        return true;
     }
-    key_str = gotStrNameByStrName(key_str);
+    if(++cursion_layer > 500 ) return true;
 
-    if (node->first_child == NULL or node->last_child == NULL) {
+    if (node->first_child == nullptr or node->last_child == nullptr) {
         /*数据节点*/
 
         /* 巨型帧会超过1500。 无法改为动态分配的原因在于原始字节数的长度不绝对等于解译后的数据长度，例如MAC地址原始为6字节，翻译后为36字节。
          * fixme: 此处存在一个问题，即最大载荷长度到底为多少。以HTTP协议为例，绝对不能只看当前帧，当有分片存在时，最后一帧会组合前面分片的所有帧，所以长度不太可控。
          * */
 
-        if (key_str.compare("http_file_data") == 0) {
-            /* 进行格式化操作，例如\r会变成\\r，此举会导致字符串长度变长，给动态分配内存带来难度。所以此处粗暴的直接将存储空间翻倍，但是并不适用所有情况，例如MAC地址，翻两倍依然不够 */
-            gchar *value = (gchar *) malloc(sizeof(gchar) * node->finfo->length * 2);
-            memset(value, '\0', node->finfo->length * 2);
-            yy_proto_item_fill_label(node->finfo, value);
-            cJSON_AddStringToObject(json_t, key_str.c_str(), value);
-            free(value);
-        } else {
-            gchar value[15000] = {'\0'};
-            yy_proto_item_fill_label(node->finfo, value);
-            cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+//        if (key_str.compare("http_file_data") == 0) {
+//            /* 进行格式化操作，例如\r会变成\\r，此举会导致字符串长度变长，给动态分配内存带来难度。所以此处粗暴的直接将存储空间翻倍，但是并不适用所有情况，例如MAC地址，翻两倍依然不够 */
+//            gchar *value = (gchar *) malloc(sizeof(gchar) * node->finfo->length * 2);
+//            memset(value, '\0', node->finfo->length * 2);
+//            yy_proto_item_fill_label(node->finfo, value);
+//            cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+//            free(value);
+//        } else {
+        if (node->finfo->length != 0 and node->finfo->length < 1514 ) {
+            try {
+                gchar value[4542] = {'\0'};
+                yy_proto_item_fill_label(node->finfo, value);
+                while (key_str.find(".") != key_str.npos) {  /* 返回string::npos表示未查找到匹配项 */
+                    key_str.replace(key_str.find("."), 1, "_");
+                }
+                key_str = gotStrNameByStrName(key_str);
+                cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+            } catch (std::out_of_range) {
+                g_print("out of range\n");
+                return false;
+            }
+            catch (std::length_error) {
+                g_print("length_error\n");
+                return false;
+            }
+            catch (std::range_error) {
+                g_print("range_error\n");
+                return false;
+            }
         }
 
 //        gchar value[15000] = {'\0'};
 //        yy_proto_item_fill_label(node->finfo, value);
 //        cJSON_AddStringToObject(json_t, key_str.c_str(), value);
 
-
         if (node->next != NULL) {
             proto_node *index = node->next;
-            if (!dissect_edt_Tree_Into_Json(json_t, index)) {
+            if (!dissect_edt_Tree_Into_Json(json_t, index,cursion_layer)) {
                 g_print("%s dissect_edt_Tree_Into_Json error!\n", key_str.c_str());
                 return false;
             }
@@ -1060,11 +1098,11 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node) {
 //        dissect_edt_Tree_Into_Json(t, node->first_child);   // Todo: 不保留对象
 //        cJSON_AddItemToObject(json_t, key_str.c_str(), t);  // Todo: 不保留对象
 
-        dissect_edt_Tree_Into_Json(json_t, node->first_child);
+        dissect_edt_Tree_Into_Json(json_t, node->first_child,cursion_layer);
 
         if (node->next != NULL) {
             proto_node *index = node->next;
-            dissect_edt_Tree_Into_Json(json_t, index);
+            dissect_edt_Tree_Into_Json(json_t, index,cursion_layer);
         } else {
             return true;
         }
@@ -1119,7 +1157,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     proto_node *node = edt->tree->first_child;
     std::string protocol_stack_t = "";  // 记录协议栈
     proto_node *stack_node_t = node;
-    while (stack_node_t != NULL) {
+    int stack_node_layer = 0;
+    while (stack_node_t != nullptr and ++stack_node_layer < 11) {
         field_info *fi = stack_node_t->finfo;
 
         if (lastLayerProtocolFilter(fi->hfinfo->abbrev)) {
@@ -1278,15 +1317,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             proto_node *child = node->first_child;
             if (child != NULL) {
                 try {
-                    dissect_edt_Tree_Into_Json(write_in_files_cJson, child);
+                    int recursion_layer = 0;
+                    dissect_edt_Tree_Into_Json(write_in_files_cJson, child,recursion_layer);
                 }
                 catch (std::invalid_argument) {
                     node = node->next;
                     continue;
                 }
             }
-            node = node->next;
-            continue;
+            break;
         }
         node = node->next;
     }
