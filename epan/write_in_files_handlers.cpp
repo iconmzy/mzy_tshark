@@ -153,10 +153,15 @@ struct totalParam{
 GThreadPool *handleStreamTpool;
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle end
 
-
-std::string ltos(__u_long l);
-
-std::string ltos(u_int l);
+template <typename T>
+std::string numtos(T l){
+    std::ostringstream os;
+    os << l;
+    std::string result;
+    std::istringstream is(os.str());
+    is >> result;
+    return result;
+}
 
 /**
  * 返回字段名称
@@ -178,7 +183,7 @@ std::string gotStrNameByStrName(std::string &strname) {
         while (temp != NULL) {
             if (temp->str_name.compare(strname) == 0) {
                 temp->times++;
-                return strname + "_" + ltos(temp->times);
+                return strname + "_" + numtos(temp->times);
             }
             temp = temp->next;
         }
@@ -201,8 +206,6 @@ void initStrNameLevelLinkList(struct strNameSameLevel *node) {
     }
 }
 
-
-
 /**
  * 切分string类 ,返回vector<string>
  * @param str
@@ -220,24 +223,6 @@ std::vector<std::string> split(const std::string &str, std::string delim) {
     }
     delete[] source;
     return res;
-}
-
-std::string ltos(__u_long l) {
-    std::ostringstream os;
-    os << l;
-    std::string result;
-    std::istringstream is(os.str());
-    is >> result;
-    return result;
-}
-
-std::string ltos(u_int l) {
-    std::ostringstream os;
-    os << l;
-    std::string result;
-    std::istringstream is(os.str());
-    is >> result;
-    return result;
 }
 
 /**
@@ -285,7 +270,6 @@ gboolean cursionkeyStrFilter(const char *key_str){
     }
     return false;
 }
-
 /**
  * 匹配返回下标，为找到返回-1
  * @param s 匹配串
@@ -731,7 +715,7 @@ void match_line_no(char *pattern, char *source_str, char * target) {
     try{
         std::regex reg(pattern);  //, std::regex_constants::extended
         //std::string s = source_str;
-        char * ret;
+//        char * ret;
         std::cmatch results;
 
         /* get filename from path */
@@ -1185,7 +1169,7 @@ gboolean readConfigFilesStatus() {
                  * 这里需要把当前运行的时间戳定下来
                  */
                 std::time_t global_time = std::time(0);
-                global_time_str = ltos((u_long) global_time);
+                global_time_str = numtos((u_long) global_time);
                 g_print("current files time %s \n", global_time_str.c_str());
 
                 char **fileData = NULL;
@@ -1197,17 +1181,6 @@ gboolean readConfigFilesStatus() {
                 } else {
                     return false;
                 }
-
-//                packet_protocol_path = getInfo_ConfigFile("PACKET_PROTOCOL_PATH", info, lines);
-//                if (packet_protocol_path != NULL) {
-//                    strcpy(PACKET_PROTOCOL_PATH,packet_protocol_path);
-//                    int len = strlen(PACKET_PROTOCOL_PATH);
-//                    if(PACKET_PROTOCOL_PATH[len-1] != '/'){
-//                        strcat(PACKET_PROTOCOL_PATH,"/");
-//                    }
-//                } else {
-//                    strcpy(PACKET_PROTOCOL_PATH,"./");
-//                }
 
                 write_in_es_flag = getInfo_ConfigFile("WRITE_IN_ES_FLAG", info, lines);
                 if (write_in_es_flag != NULL) {
@@ -1449,7 +1422,7 @@ void change_result_file_name() {
     rename(oldName_t.c_str(), newName_t.c_str());
 
     std::time_t end_time = std::time(0);
-    g_print("结束时间戳：%s \n", ltos((u_long) end_time).c_str());
+    g_print("结束时间戳：%s \n", numtos((u_long) end_time).c_str());
     int begin_time = atoi(global_time_str.c_str());
     int cost_time = (int) end_time - begin_time;
     g_print("总计耗时：%d 秒\n", cost_time);

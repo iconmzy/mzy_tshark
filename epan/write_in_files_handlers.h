@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include "epan.h"
 #include "proto.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif

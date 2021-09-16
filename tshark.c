@@ -297,8 +297,6 @@ static void show_print_file_io_error(void);
 
 static gboolean write_preamble(capture_file *cf);
 
-static gboolean print_packet(capture_file *cf, epan_dissect_t *edt);
-
 static gboolean write_finale(void);
 
 static void failure_warning_message(const char *msg_format, va_list ap);
@@ -798,7 +796,7 @@ int main(int argc, char *argv[]) {
     char *volatile exp_pdu_filename = NULL;
     exp_pdu_t exp_pdu_tap_data;
     const gchar *elastic_mapping_filter = NULL;
-    pfileNameNode headOfDirPath = malloc(sizeof(struct fileNameNode) * 1);
+    pfileNameNode headOfDirPath = (pfileNameNode)malloc(sizeof(struct fileNameNode) * 1);
     headOfDirPath->next = NULL;
     memset(headOfDirPath->fileName, '\0', 128);
 /*
@@ -974,10 +972,10 @@ int main(int argc, char *argv[]) {
                 FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
                 if (infp == NULL) {
                     printf("请输入激活码：\n");
-                    scanf("%s", &active);
+                    scanf("%s", active);
                     while (strcmp(active, key) != 0) {
                         printf("请输入激活码：\n");
-                        scanf("%s", &active);
+                        scanf("%s", active);
                     }
                     strcpy(sto, active);
                     writefile(regist_path, sto);
@@ -991,12 +989,11 @@ int main(int argc, char *argv[]) {
 
                         while (strcmp(key, active) != 0) {
                             printf("激活码错误，请重新输入：\n");
-                            scanf("%s", &active);
+                            scanf("%s", active);
                         }
                         strcpy(sti, active);
                         writefile(regist_path, sti);
                     } else {
-//            printf("You have a perpetual fallback license for this version.\n");
                         printf("该设备已永久激活！\n");
                     }
 
@@ -1026,10 +1023,8 @@ int main(int argc, char *argv[]) {
                     goto clean_exit;
                 } else {
                     if (ONLINE_CAPTURE_DATA_FLAG) {
-//            ONLINE device name is next;
                         has_extcap_options = TRUE;
                     } else if (READ_PACKET_FROM_FILES_FLAG) {
-//            READ_FILES
                         cf_name = READ_PACKET_FROM_FILES_PATH;
                         /*这里设置读取文件的标志，同时设置文件路径变量。*/
                         strcpy(READ_FILE_PATH, cf_name);
@@ -3641,251 +3636,6 @@ put_string_spaces(char *dest, const char *str, size_t str_len, size_t str_with_s
         dest[i] = ' ';
 
     dest[str_with_spaces] = '\0';
-}
-
-static gboolean
-print_columns(capture_file *cf, const epan_dissect_t *edt) {
-    char *line_bufp;
-    int i;
-    size_t buf_offset;
-    size_t column_len;
-    size_t col_len;
-    col_item_t *col_item;
-    gchar str_format[11];
-    const color_filter_t *color_filter = NULL;
-
-    line_bufp = get_line_buf(256);
-    buf_offset = 0;
-    *line_bufp = '\0';
-
-    if (dissect_color)
-        color_filter = edt->pi.fd->color_filter;
-
-    for (i = 0; i < cf->cinfo.num_cols; i++) {
-        col_item = &cf->cinfo.columns[i];
-        printf("\ntitle %s, data: %s \n", col_item->col_title, col_item->col_data);
-        /* Skip columns not marked as visible. */
-        // if (!get_column_visible(i))
-        //   continue;
-        switch (col_item->col_fmt) {
-            case COL_NUMBER:
-                column_len = col_len = strlen(col_item->col_data);
-                if (column_len < 5)
-                    column_len = 5;
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_spaces_string(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
-                break;
-
-            case COL_CLS_TIME:
-            case COL_REL_TIME:
-            case COL_ABS_TIME:
-            case COL_ABS_YMD_TIME:  /* XXX - wider */
-            case COL_ABS_YDOY_TIME: /* XXX - wider */
-            case COL_UTC_TIME:
-            case COL_UTC_YMD_TIME:  /* XXX - wider */
-            case COL_UTC_YDOY_TIME: /* XXX - wider */
-                column_len = col_len = strlen(col_item->col_data);
-                if (column_len < 10)
-                    column_len = 10;
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_spaces_string(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
-                break;
-
-            case COL_DEF_SRC:
-            case COL_RES_SRC:
-            case COL_UNRES_SRC:
-            case COL_DEF_DL_SRC:
-            case COL_RES_DL_SRC:
-            case COL_UNRES_DL_SRC:
-            case COL_DEF_NET_SRC:
-            case COL_RES_NET_SRC:
-            case COL_UNRES_NET_SRC:
-                column_len = col_len = strlen(col_item->col_data);
-                if (column_len < 12)
-                    column_len = 12;
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_spaces_string(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
-                break;
-
-            case COL_DEF_DST:
-            case COL_RES_DST:
-            case COL_UNRES_DST:
-            case COL_DEF_DL_DST:
-            case COL_RES_DL_DST:
-            case COL_UNRES_DL_DST:
-            case COL_DEF_NET_DST:
-            case COL_RES_NET_DST:
-            case COL_UNRES_NET_DST:
-                column_len = col_len = strlen(col_item->col_data);
-                if (column_len < 12)
-                    column_len = 12;
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_string_spaces(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
-                break;
-
-            default:
-                column_len = strlen(col_item->col_data);
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_string(line_bufp + buf_offset, col_item->col_data, column_len);
-                break;
-        }
-        buf_offset += column_len;
-        if (i != cf->cinfo.num_cols - 1) {
-            /*
-             * This isn't the last column, so we need to print a
-             * separator between this column and the next.
-             *
-             * If we printed a network source and are printing a
-             * network destination of the same type next, separate
-             * them with a UTF-8 right arrow; if we printed a network
-             * destination and are printing a network source of the same
-             * type next, separate them with a UTF-8 left arrow;
-             * otherwise separate them with a space.
-             *
-             * We add enough space to the buffer for " \xe2\x86\x90 "
-             * or " \xe2\x86\x92 ", even if we're only adding " ".
-             */
-            line_bufp = get_line_buf(buf_offset + 5);
-            switch (col_item->col_fmt) {
-
-                case COL_DEF_SRC:
-                case COL_RES_SRC:
-                case COL_UNRES_SRC:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_DST:
-                        case COL_RES_DST:
-                        case COL_UNRES_DST:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_RIGHTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_DL_SRC:
-                case COL_RES_DL_SRC:
-                case COL_UNRES_DL_SRC:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_DL_DST:
-                        case COL_RES_DL_DST:
-                        case COL_UNRES_DL_DST:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_RIGHTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_NET_SRC:
-                case COL_RES_NET_SRC:
-                case COL_UNRES_NET_SRC:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_NET_DST:
-                        case COL_RES_NET_DST:
-                        case COL_UNRES_NET_DST:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_RIGHTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_DST:
-                case COL_RES_DST:
-                case COL_UNRES_DST:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_SRC:
-                        case COL_RES_SRC:
-                        case COL_UNRES_SRC:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_LEFTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_DL_DST:
-                case COL_RES_DL_DST:
-                case COL_UNRES_DL_DST:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_DL_SRC:
-                        case COL_RES_DL_SRC:
-                        case COL_UNRES_DL_SRC:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_LEFTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_NET_DST:
-                case COL_RES_NET_DST:
-                case COL_UNRES_NET_DST:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_NET_SRC:
-                        case COL_RES_NET_SRC:
-                        case COL_UNRES_NET_SRC:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_LEFTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                default:
-                    put_string(line_bufp + buf_offset, delimiter_char, 1);
-                    buf_offset += 1;
-                    break;
-            }
-        }
-    }
-
-    if (dissect_color && color_filter != NULL)
-        return print_line_color(print_stream, 0, line_bufp, &color_filter->fg_color, &color_filter->bg_color);
-    else
-        return print_line(print_stream, 0, line_bufp);
 }
 
 static gboolean
