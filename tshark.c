@@ -2462,7 +2462,6 @@ int main(int argc, char *argv[]) {
                 /*将缓存的文件名字初始化*/
                 memset(FILE_NAME_T, '\0', 128);
                 strcpy(FILE_NAME_T, cf_name);
-                OFFLINE_LINE_LINE_NO = match_line_no(FILE_NAME_T, OFFLINE_LINE_NO_REGEX);  /* 匹配线路号 */
 
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();
@@ -2471,7 +2470,7 @@ int main(int argc, char *argv[]) {
                     goto clean_exit;
                 }
                 //OFFLINE_LINE_LINE_NO = match_line_no(OFFLINE_LINE_NO_REGEX, cf_name);  /* 匹配线路号 */
-                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+//                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will

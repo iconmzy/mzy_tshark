@@ -595,7 +595,7 @@ void dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node, totalParam *c
             if (node->next != NULL) {
                 proto_node *index = node->next;
                 return dissect_edt_Tree_Into_Json(json_t, index,cookie);
-            }
+            } else return;
         }
 
         /* 进行格式化操作，例如\r会变成\\r，此举会导致字符串长度变长，给动态分配内存带来难度。所以此处粗暴的直接将存储空间翻倍，但是并不适用所有情况，例如MAC地址，翻两倍依然不够 */
