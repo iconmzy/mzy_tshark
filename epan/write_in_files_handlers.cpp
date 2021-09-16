@@ -603,7 +603,7 @@ gboolean initial_All_para() {
  * @param json_t
  * @param node
  */
-gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursion_layer) {
+gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursion_layer,struct totalParam *cookie) {
     /*key的置换和获取*/
     std::string key_str = node->finfo->hfinfo->abbrev;
     if(cursionkeyStrFilter(key_str.c_str())){
@@ -613,23 +613,10 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
 
     if (node->first_child == nullptr or node->last_child == nullptr) {
         /*数据节点*/
+        gchar value[4542] = {'\0'};
 
-        /* 巨型帧会超过1500。 无法改为动态分配的原因在于原始字节数的长度不绝对等于解译后的数据长度，例如MAC地址原始为6字节，翻译后为36字节。
-         * fixme: 此处存在一个问题，即最大载荷长度到底为多少。以HTTP协议为例，绝对不能只看当前帧，当有分片存在时，最后一帧会组合前面分片的所有帧，所以长度不太可控。
-         * */
-        int len = node->finfo->length*2;
-
-//        if (key_str.compare("http_file_data") == 0) {
-//            /* 进行格式化操作，例如\r会变成\\r，此举会导致字符串长度变长，给动态分配内存带来难度。所以此处粗暴的直接将存储空间翻倍，但是并不适用所有情况，例如MAC地址，翻两倍依然不够 */
-//            gchar *value = (gchar *) malloc(sizeof(gchar) * node->finfo->length * 2);
-//            memset(value, '\0', node->finfo->length * 2);
-//            yy_proto_item_fill_label(node->finfo, value);
-//            cJSON_AddStringToObject(json_t, key_str.c_str(), value);
-//            free(value);
-//        } else {
         if (node->finfo->length != 0 and node->finfo->length < 1514 ) {
             try {
-                gchar value[4542] = {'\0'};
                 yy_proto_item_fill_label(node->finfo, value);
                 while (key_str.find(".") != key_str.npos) {  /* 返回string::npos表示未查找到匹配项 */
                     key_str.replace(key_str.find("."), 1, "_");
@@ -649,6 +636,7 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
                 return false;
             }
         }
+
         if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
             //rtp content relative
             g_assert(cookie !=nullptr);
@@ -669,28 +657,21 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
 
         if (node->next != NULL) {
             proto_node *index = node->next;
-            if (!dissect_edt_Tree_Into_Json(json_t, index)) {
+            if (!dissect_edt_Tree_Into_Json(json_t, index,cursion_layer,cookie)) {
                 g_print("%s dissect_edt_Tree_Into_Json error!\n", key_str.c_str());
                 return false;
             }
-        } else {
-            return true;
-        }
-    } else {
-        /*还有子节点*/
-//        cJSON *t = cJSON_CreateObject();  // Todo: 不保留对象
-//        dissect_edt_Tree_Into_Json(t, node->first_child);   // Todo: 不保留对象
-//        cJSON_AddItemToObject(json_t, key_str.c_str(), t);  // Todo: 不保留对象
-
-        dissect_edt_Tree_Into_Json(json_t, node->first_child);
-
-        if (node->next != NULL) {
-            proto_node *index = node->next;
-            dissect_edt_Tree_Into_Json(json_t, index);
-        } else {
-            return true;
         }
     }
+    else {
+        /*还有子节点*/
+        dissect_edt_Tree_Into_Json(json_t, node->first_child,cursion_layer,cookie);
+        if (node->next != NULL) {
+            proto_node *index = node->next;
+            dissect_edt_Tree_Into_Json(json_t, index,cursion_layer,cookie);
+        }
+    }
+    return true;
 }
 /**
  * 匹配线路号
@@ -766,6 +747,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 //    if(write_in_files_proto.compare("ftp.current-working-directory") == 0 ){
 //        int a=0;
 //    }
+
     if(PACKET_PROTOCOL_FLAG){
         /*判断当前协议是否需要组包*/
         if(g_list_find_custom(rtp_fields,write_in_files_proto.c_str(),(GCompareFunc)strcmp)){
@@ -906,14 +888,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             proto_node *child = node->first_child;
             if (child != NULL) {
                 try {
+                    int cursion_layer = 0;
                     /*传入递归的参数*/
                     if(PACKET_PROTOCOL_FLAG && packetProtoAlready){
                         struct totalParam *cookie_t = g_new0(totalParam,1);
                         cookie_t->rtp_content = g_new0(rtp_Content,1);
-                        dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cookie_t);
+                        dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cursion_layer,cookie_t);
                         g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
                     } else{
-                        dissect_edt_Tree_Into_Json(write_in_files_cJson, child,NULL);
+                        dissect_edt_Tree_Into_Json(write_in_files_cJson, child,cursion_layer,NULL);
                     }
                 }
                 catch (std::invalid_argument) {
