@@ -809,7 +809,6 @@ dissect_tftp(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void* data _U_
   return tvb_captured_length(tvb);
 }
 
-
 static void
 apply_tftp_prefs(void) {
   global_tftp_port_range = prefs_get_range_value("tftp", "udp.port");
