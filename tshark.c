@@ -2272,7 +2272,8 @@ int main(int argc, char *argv[]) {
                     g_print("error fork\n");
                     pnext = pnext->next;
                     continue;
-                } else if (fpid == 0) {
+                }
+                else if (fpid == 0) {
                     /*子进程*/
                     cf_name = pnext->fileName;
                     g_print("process %d->%s \n", getpid(), cf_name);
@@ -2370,7 +2371,8 @@ int main(int argc, char *argv[]) {
 
                     break;
 
-                } else {
+                }
+                else {
 //                /*父进程*/
                     pnext = pnext->next;
                 }

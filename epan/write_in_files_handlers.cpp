@@ -141,8 +141,12 @@ const char *rtp_payload_type_to_str[128] = {
         "RTPType-107","RTPType-108","RTPType-109","RTPType-110","RTPType-111","RTPType-112","RTPType-113","RTPType-114","RTPType-115","RTPType-116","RTPType-117",\
         "RTPType-118","RTPType-119","RTPType-120","RTPType-121","RTPType-122","RTPType-123","RTPType-124","RTPType-125","RTPType-126","RTPType-127"
         };
+struct rtpFileRel{
+    FILE * fp;
+    struct _GHashTable *decoders_hash;
+};
 //rtp 流文件句柄map
-static std::map<std::string,FILE*> rtp_stream_pFile_map;
+static std::map<std::string,struct rtpFileRel> rtp_stream_pFile_map;
 GList *rtp_fields = nullptr; //rtp字段的双链表
 struct rtp_Content{
     gboolean marker;
@@ -669,7 +673,9 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
                             strcpy(cookie->rtp_content->ssrc,value);
                         }
                         else if(strcmp((char*)it->data,"rtp.payload") == 0){
-                            strcpy((char*)cookie->rtp_content->payload,(char*)node->finfo->value.value.bytes->data);
+                            for (int i = 0; i < node->finfo->length ;++i) {
+                                cookie->rtp_content->payload[i] = node->finfo->value.value.bytes->data[i];
+                            }
                             cookie->rtp_content->payload_len = node->finfo->value.value.bytes->len;
                         }
                         else if(strcmp((char*)it->data,"rtp.p_type") == 0){
@@ -941,7 +947,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                         cookie_t->rtp_content = g_new0(rtp_Content,1);
                         dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cursion_layer,cookie_t);
                         g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
-                    } else{
+                    }
+                    else{
                         dissect_edt_Tree_Into_Json(write_in_files_cJson, child,cursion_layer,NULL);
                     }
                 }
@@ -971,7 +978,6 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
     return true;
 }
-
 
 /**
  * 写会话
@@ -1073,6 +1079,7 @@ void do_handle_strem(gpointer str,gpointer data){
         strcat(file_name_t,".au");
 
         FILE* fp;
+        struct _GHashTable *decoders_hash = nullptr;
         if(rtp_stream_pFile_map.empty()){
             //空map
             fp = fopen(file_name_t,"a");
@@ -1081,13 +1088,26 @@ void do_handle_strem(gpointer str,gpointer data){
                 return;
             }
             writeRTPstreamHead(fp);
+            struct rtpFileRel temprtpFIleRel{};
             char ssrc_t[24]= {0};
             strcpy(ssrc_t,t->rtp_content->ssrc);
-            rtp_stream_pFile_map.insert(std::pair<std::string,FILE*>(ssrc_t,fp));
+            temprtpFIleRel.decoders_hash = rtp_decoder_hash_table_new();
+            decoders_hash = temprtpFIleRel.decoders_hash;
+            temprtpFIleRel.fp = fp;
+            rtp_stream_pFile_map.insert(std::pair<std::string,struct rtpFileRel>(ssrc_t,temprtpFIleRel));
         } else {
             auto index = rtp_stream_pFile_map.find(t->rtp_content->ssrc);
             if(index != rtp_stream_pFile_map.end()){
-                fp = index->second;
+                fp = index->second.fp;
+                decoders_hash = index->second.decoders_hash;
+                //这里解码器初始化
+                if(t->rtp_content->marker){
+                    if(decoders_hash){
+                        g_hash_table_destroy(decoders_hash);//这里得释放掉。
+                    }
+                    index->second.decoders_hash = nullptr;
+                    decoders_hash = nullptr;
+                }
             } else{
                 fp = fopen(file_name_t,"a");
                 if(!fp){
@@ -1095,18 +1115,21 @@ void do_handle_strem(gpointer str,gpointer data){
                     return;
                 }
                 writeRTPstreamHead(fp);
+                struct rtpFileRel temprtpFileRel{};
                 char ssrc_t[24]= {0};
                 strcpy(ssrc_t,t->rtp_content->ssrc);
-                rtp_stream_pFile_map.insert(std::pair<std::string,FILE*>(ssrc_t,fp));
+                temprtpFileRel.fp = fp;
+                temprtpFileRel.decoders_hash = rtp_decoder_hash_table_new();
+                decoders_hash = temprtpFileRel.decoders_hash;
+                rtp_stream_pFile_map.insert(std::pair<std::string,struct rtpFileRel>(ssrc_t,temprtpFileRel));
             }
         }
         g_assert(fp != nullptr);
-        struct _GHashTable *decoders_hash = rtp_decoder_hash_table_new();
         uint8_t pd_out[2*4000];
         size_t sample_count;
         sample_count = convert_payload_to_samples(t->rtp_content->payload_type,t->rtp_content->payload,t->rtp_content->payload_len,pd_out,decoders_hash);
         if(sample_count != 0){
-            if (fwrite(pd_out, sizeof(uint8_t), sample_count * 2, fp) != sample_count) {
+            if (fwrite(pd_out, sizeof(uint8_t), sample_count*2, fp) != sample_count*2) {
                 g_print("%s sample_count write error !\n", __FUNCTION__);
             }
         } else{
@@ -1376,6 +1399,13 @@ gboolean readConfigFilesStatus() {
 
 void clean_Temp_Files_All() {
     if (!mutex_final_clean_flag) {
+        if(!rtp_stream_pFile_map.empty()){
+            //rtp map not null
+            for (auto &i :rtp_stream_pFile_map) {
+                g_hash_table_destroy(i.second.decoders_hash);//这里得释放掉。
+                fclose(i.second.fp);//关闭打开的文件句柄
+            }
+        }
         if (insertmanystream_Head != NULL and insertmanystream_Head->next != insertmanystream_Head) {
             /*批量插入缓存还有内容*/
             insertManyProtocolStream *index_t = insertmanystream_Head->next;
