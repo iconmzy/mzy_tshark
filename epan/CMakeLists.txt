@@ -287,6 +287,7 @@ set(LIBWIRESHARK_NONGENERATED_FILES
 	cJSON.c
 	ConfigFile.c
 	rtp_media.c
+	yy_g711.c
 
 	xdlc.c
 	protobuf-helper.c

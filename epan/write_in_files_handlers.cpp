@@ -28,7 +28,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include <curl/curl.h>
+#include "curl/curl.h"
 
 /*常用的一些字符串*/
 #define str_FILES_RESOURCE "file_path"
@@ -113,8 +113,20 @@ struct strNameSameLevel *strname_head;
 //协议名称与对应的文件打开的指针map
 std::map<std::string, FILE *> pFile_map;
 
-//stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin
-//rtp stream---------------------- 20210909 yy ----------------------rtp stream begin
+//stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin ||||
+struct totalParam{
+    struct rtp_Content *rtp_content = nullptr;
+};
+/*流处理函数线程池*/
+GThreadPool *handleStreamTpool;
+/**
+ * 并发处理流数据函数
+ * @param str
+ * @param data
+ */
+gboolean packetProtoAlready = false; //当前数据包若为需要组的包则为TRUE，否则为FALSE
+
+//rtp stream---------------------- 20210909 yy ----------------------rtp stream begin |||
 const char *rtp_payload_type_to_str[128] = {
         "g711U","fs-1016","g721","GSM","g723","DVI4 8k","DVI4 16k","Exp. from Xerox PARC","g711A","g722","16-bit audio, stereo",\
         "16-bit audio, monaural","Qualcomm","CN","MPEG-I/II Audio","g728","DVI4 11k","DVI4 22k","g729","CN(old)","Unassigned","Unassigned","Unassigned",\
@@ -131,32 +143,37 @@ const char *rtp_payload_type_to_str[128] = {
         };
 //rtp 流文件句柄map
 static std::map<std::string,FILE*> rtp_stream_pFile_map;
-GList *rtp_fields = nullptr;
+GList *rtp_fields = nullptr; //rtp字段的双链表
 struct rtp_Content{
     gboolean marker;
     char ssrc[24];
     guint8 payload[2*4000];
     size_t payload_len;
     unsigned int payload_type;
-};
-gboolean packetProtoAlready = 0;
+}; //对应rtp字段双链表的存储
 typedef struct _rtp_decoder_t{
     codec_handle_t handle;
     void *context;
 } rtp_decoder_t;
-//rtp stream---------------------- 20210909 yy ---------------------- rtp stream end
+/**
+ * 写rtp可播放流的头
+ * @param fp
+ */
+void writeRTPstreamHead(FILE* fp);
+//rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
 
-struct totalParam{
-    struct rtp_Content *rtp_content = nullptr;
-};
-/*流处理函数线程池*/
-GThreadPool *handleStreamTpool;
-//stream handle----------------------------begin 20210909 yy ----------------------------stream handle end
+void do_handle_strem(gpointer str,gpointer data);
+//stream handle----------------------------begin 20210909 yy ----------------------------stream handle end ||||
 
-
-std::string ltos(__u_long l);
-
-std::string ltos(u_int l);
+template <typename T>
+std::string numtos(T l){
+    std::ostringstream os;
+    os << l;
+    std::string result;
+    std::istringstream is(os.str());
+    is >> result;
+    return result;
+}
 
 /**
  * 返回字段名称
@@ -178,7 +195,7 @@ std::string gotStrNameByStrName(std::string &strname) {
         while (temp != NULL) {
             if (temp->str_name.compare(strname) == 0) {
                 temp->times++;
-                return strname + "_" + ltos(temp->times);
+                return strname + "_" + numtos(temp->times);
             }
             temp = temp->next;
         }
@@ -201,8 +218,6 @@ void initStrNameLevelLinkList(struct strNameSameLevel *node) {
     }
 }
 
-
-
 /**
  * 切分string类 ,返回vector<string>
  * @param str
@@ -220,24 +235,6 @@ std::vector<std::string> split(const std::string &str, std::string delim) {
     }
     delete[] source;
     return res;
-}
-
-std::string ltos(__u_long l) {
-    std::ostringstream os;
-    os << l;
-    std::string result;
-    std::istringstream is(os.str());
-    is >> result;
-    return result;
-}
-
-std::string ltos(u_int l) {
-    std::ostringstream os;
-    os << l;
-    std::string result;
-    std::istringstream is(os.str());
-    is >> result;
-    return result;
 }
 
 /**
@@ -285,7 +282,6 @@ gboolean cursionkeyStrFilter(const char *key_str){
     }
     return false;
 }
-
 /**
  * 匹配返回下标，为找到返回-1
  * @param s 匹配串
@@ -295,7 +291,7 @@ gboolean cursionkeyStrFilter(const char *key_str){
 int kmp(std::string s, std::string t) {
     int i = 0, j = -1;
     int slen = s.length(), tlen = t.length();
-    int next[tlen];
+    int *next = new int[tlen+1]();
     //首先求出模式串t的next数组
     next[0] = -1;
     while (i < tlen) {
@@ -306,13 +302,6 @@ int kmp(std::string s, std::string t) {
         } else
             j = next[j];
     }
-    /*
-    //输出next数组
-    for(i=0;i<tlen;++i){
-        cout<<next[i]<<" ";
-    }
-    cout<<endl;
-    */
     //接着根据next数组实现KMP算法
     i = 0;
     j = 0;
@@ -323,6 +312,7 @@ int kmp(std::string s, std::string t) {
         } else
             j = next[j];
     }
+    delete[] next;
     if (j == tlen)
         return i - j;
     else
@@ -634,10 +624,11 @@ gboolean initial_All_para() {
                 strname_head->next = NULL;
                 strname_head->times = 0;
                 strname_head->str_name = "";
-                return true;
 
+                //数据包处理完组包标志初始化
                 packetProtoAlready = false;
 
+                return true;
             }
             CATCH(OutOfMemoryError) {
                 g_print("initialize error");
@@ -661,16 +652,38 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
 
     if (node->first_child == nullptr or node->last_child == nullptr) {
         /*数据节点*/
-        gchar value[4542] = {'\0'};
-
-        if (node->finfo->length != 0 and node->finfo->length < 1514 ) {
+        if (node->finfo->length > 0 and node->finfo->length <= 1514 ) {
             try {
+                gchar value[4542] = {'\0'};
                 yy_proto_item_fill_label(node->finfo, value);
+                //组报相关
+                if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
+                    //rtp content relative
+                    g_assert(cookie !=nullptr);
+                    GList *it = nullptr;
+                    if ((it = g_list_find_custom(rtp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))) {
+                        if(strcmp((char*)it->data,"rtp.marker") == 0){
+                            cookie->rtp_content->marker = std::stoi(value);
+                        }
+                        else if(strcmp((char*)it->data,"rtp.ssrc") == 0){
+                            strcpy(cookie->rtp_content->ssrc,value);
+                        }
+                        else if(strcmp((char*)it->data,"rtp.payload") == 0){
+                            strcpy((char*)cookie->rtp_content->payload,(char*)node->finfo->value.value.bytes->data);
+                            cookie->rtp_content->payload_len = node->finfo->value.value.bytes->len;
+                        }
+                        else if(strcmp((char*)it->data,"rtp.p_type") == 0){
+                            cookie->rtp_content->payload_type = std::stoi(value);
+                        }
+                    }
+                }
+//               将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
                 while (key_str.find(".") != key_str.npos) {  /* 返回string::npos表示未查找到匹配项 */
                     key_str.replace(key_str.find("."), 1, "_");
                 }
+//               返回该包内重复字段的名称，如A_01,A_02...
                 key_str = gotStrNameByStrName(key_str);
-                cJSON_AddStringToObject(json_t, key_str.c_str(), value);
+                cJSON_AddStringToObject(json_t, key_str.c_str(), value); //写入JSON
             } catch (std::out_of_range) {
                 g_print("out of range\n");
                 return false;
@@ -684,25 +697,6 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
                 return false;
             }
         }
-
-        if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
-            //rtp content relative
-            g_assert(cookie !=nullptr);
-            GList *it = nullptr;
-            if ((it = g_list_find_custom(rtp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))) {
-                if(strcmp((char*)it->data,"rtp_marker") == 0){
-                    cookie->rtp_content->marker = std::stoi(value);
-                }else if(strcmp((char*)it->data,"rtp_ssrc") == 0){
-                    strcpy(cookie->rtp_content->ssrc,value);
-                } else if(strcmp((char*)it->data,"rtp_payload") == 0){
-                    strcpy((char*)cookie->rtp_content->payload,(char*)node->finfo->value.value.bytes->data);
-                    cookie->rtp_content->payload_len = node->finfo->value.value.bytes->len;
-                } else if(strcmp((char*)it->data,"rtp_p_type") == 0){
-                    cookie->rtp_content->payload_type = std::stoi(value);
-                }
-            }
-        }
-
         if (node->next != NULL) {
             proto_node *index = node->next;
             if (!dissect_edt_Tree_Into_Json(json_t, index,cursion_layer,cookie)) {
@@ -737,7 +731,7 @@ void match_line_no(char *pattern, char *source_str, char * target) {
     try{
         std::regex reg(pattern);  //, std::regex_constants::extended
         //std::string s = source_str;
-        char * ret;
+//        char * ret;
         std::cmatch results;
 
         /* get filename from path */
@@ -942,6 +936,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     int cursion_layer = 0;
                     /*传入递归的参数*/
                     if(PACKET_PROTOCOL_FLAG && packetProtoAlready){
+                        //如果要组报
                         struct totalParam *cookie_t = g_new0(totalParam,1);
                         cookie_t->rtp_content = g_new0(rtp_Content,1);
                         dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cursion_layer,cookie_t);
@@ -963,7 +958,6 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
     if (WRITE_IN_ES_FLAG == 1) {
         write_into_es(write_in_files_stream, write_in_files_proto);
-
     }
     if (WRITE_IN_ES_FLAG != 1 && WRITE_IN_FILES_CONFIG == 1) {
         if (!write_All_Temps_Into_Files(write_in_files_stream, write_in_files_proto)) {
@@ -1031,6 +1025,7 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
     size_t decoded_samples;
     const gchar *payload_type_str = nullptr;
     payload_type_str = rtp_payload_type_to_str[payload_type];
+
     decode_bytes = decode_rtp_packet_payload(payload_type,payload_type_str,payload_data,payload_len,&decode_buff,decoders_hash,&channels,&sample_rate);
     decoded_samples = decode_bytes/2;
 
@@ -1054,32 +1049,31 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
         g_print("File parsing and saving at this rate is not supported \n%s\n",__FUNCTION__);
         decoded_samples = 0;
     }
+
     g_free(decode_buff);
 
     return decoded_samples;
 }
 
-/**
- * 并发处理rtp流
- * @param str
- * @param data
- */
 void do_handle_strem(gpointer str,gpointer data){
-    totalParam *t = (totalParam *) str;
+    auto *t = (totalParam *) str;
     if(t->rtp_content != nullptr){
-        /*存在rtpstream*/
+//        并发处理rtp流。
         char file_name_t[256] = {0};
         strcat(file_name_t,PACKET_PROTOCOL_PATH);
         sprintf(file_name_t,"%s%s",PACKET_PROTOCOL_PATH,"rtp/");
         if(access(file_name_t,0)!= 0){
             mkdirs(file_name_t);
         }
+        strcat(file_name_t,rtp_payload_type_to_str[t->rtp_content->payload_type]);
+        strcat(file_name_t,"_");
         strcat(file_name_t,global_time_str.c_str());
+        strcat(file_name_t,"_");
         strcat(file_name_t,t->rtp_content->ssrc);
         strcat(file_name_t,".au");
 
         FILE* fp;
-        if(rtp_stream_pFile_map.size() == 0){
+        if(rtp_stream_pFile_map.empty()){
             //空map
             fp = fopen(file_name_t,"a");
             if(!fp){
@@ -1110,10 +1104,13 @@ void do_handle_strem(gpointer str,gpointer data){
         struct _GHashTable *decoders_hash = rtp_decoder_hash_table_new();
         uint8_t pd_out[2*4000];
         size_t sample_count;
-        //payload_type_name 暂定
         sample_count = convert_payload_to_samples(t->rtp_content->payload_type,t->rtp_content->payload,t->rtp_content->payload_len,pd_out,decoders_hash);
-        if(fwrite(pd_out, sizeof(uint8_t),sample_count,fp) != sample_count){
-            g_print("%s sample_count write error !\n",__FUNCTION__);
+        if(sample_count != 0){
+            if (fwrite(pd_out, sizeof(uint8_t), sample_count * 2, fp) != sample_count) {
+                g_print("%s sample_count write error !\n", __FUNCTION__);
+            }
+        } else{
+            g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
         }
 
         g_free(t->rtp_content);
@@ -1144,13 +1141,13 @@ gboolean initWriteJsonFiles(char *flag) {
         insertmanystream_Head->contents = "";
     }
 
-    /*初始化rtpstream处理函数线程池*/
+    /*初始化rtpstream处理函数线程池 ,最大1个线程并发处理rtpliu*/
     handleStreamTpool = g_thread_pool_new(do_handle_strem,NULL,1,FALSE,NULL);
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_marker");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_ssrc");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_payload");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_p_type");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.marker");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.ssrc");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.payload");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.p_type");
 
     /*初始化互斥变量*/
     *flag = 1;
@@ -1191,7 +1188,7 @@ gboolean readConfigFilesStatus() {
                  * 这里需要把当前运行的时间戳定下来
                  */
                 std::time_t global_time = std::time(0);
-                global_time_str = ltos((u_long) global_time);
+                global_time_str = numtos((u_long) global_time);
                 g_print("current files time %s \n", global_time_str.c_str());
 
                 char **fileData = NULL;
@@ -1203,17 +1200,6 @@ gboolean readConfigFilesStatus() {
                 } else {
                     return false;
                 }
-
-//                packet_protocol_path = getInfo_ConfigFile("PACKET_PROTOCOL_PATH", info, lines);
-//                if (packet_protocol_path != NULL) {
-//                    strcpy(PACKET_PROTOCOL_PATH,packet_protocol_path);
-//                    int len = strlen(PACKET_PROTOCOL_PATH);
-//                    if(PACKET_PROTOCOL_PATH[len-1] != '/'){
-//                        strcat(PACKET_PROTOCOL_PATH,"/");
-//                    }
-//                } else {
-//                    strcpy(PACKET_PROTOCOL_PATH,"./");
-//                }
 
                 write_in_es_flag = getInfo_ConfigFile("WRITE_IN_ES_FLAG", info, lines);
                 if (write_in_es_flag != NULL) {
@@ -1455,7 +1441,7 @@ void change_result_file_name() {
     rename(oldName_t.c_str(), newName_t.c_str());
 
     std::time_t end_time = std::time(0);
-    g_print("结束时间戳：%s \n", ltos((u_long) end_time).c_str());
+    g_print("结束时间戳：%s \n", numtos((u_long) end_time).c_str());
     int begin_time = atoi(global_time_str.c_str());
     int cost_time = (int) end_time - begin_time;
     g_print("总计耗时：%d 秒\n", cost_time);

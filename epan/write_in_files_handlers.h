@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include "epan.h"
 #include "proto.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -66,22 +65,19 @@ WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则
 #define MAXFILELENGTH 50
 #define MAXWRITEFILELENGTH 128
 
-
-WS_DLL_PUBLIC void do_write_in_files_handler(gchar *label_str, const gchar *abbrev, const gchar *name, int level);
-
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
 
 WS_DLL_PUBLIC void do_handle_strem(gpointer str,gpointer data);
 
 WS_DLL_PUBLIC gboolean initWriteJsonFiles(char *);
 
-WS_DLL_PUBLIC gboolean readConfigFilesStatus();
+WS_DLL_PUBLIC gboolean readConfigFilesStatus(void);
 
-WS_DLL_PUBLIC void clean_Temp_Files_All();
+WS_DLL_PUBLIC void clean_Temp_Files_All(void);
 
-WS_DLL_PUBLIC void add_record_in_result_file();
+WS_DLL_PUBLIC void add_record_in_result_file(void);
 
-WS_DLL_PUBLIC void change_result_file_name();
+WS_DLL_PUBLIC void change_result_file_name(void);
 
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
@@ -105,6 +101,9 @@ WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 //判断当前行是否有效
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 
+//rtp 相关
+WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);
+WS_DLL_PUBLIC int yy_g711u(unsigned char in[], int inlen, unsigned char out[]);
 
 #ifdef __cplusplus
 }

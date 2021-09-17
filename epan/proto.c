@@ -8795,7 +8795,6 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
     guint64 integer64;
     ws_in4_addr ipv4;
     e_guid_t *guid;
-    gchar *name;
     address addr;
     char *addr_str;
     char *tmp;
@@ -9044,7 +9043,6 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
 
         case FT_OID:
             bytes = (guint8 *) fvalue_get(&fi->value);
-            name = oid_resolved_from_encoded(NULL, bytes, fvalue_length(&fi->value));
             tmp = oid_encoded2string(NULL, bytes, fvalue_length(&fi->value));
 
             strcpy(label_str, tmp);
@@ -9053,7 +9051,6 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
 
         case FT_REL_OID:
             bytes = (guint8 *) fvalue_get(&fi->value);
-            name = rel_oid_resolved_from_encoded(NULL, bytes, fvalue_length(&fi->value));
             tmp = rel_oid_encoded2string(NULL, bytes, fvalue_length(&fi->value));
 
             strcpy(label_str, tmp);
