@@ -1065,7 +1065,7 @@ void do_handle_strem(gpointer str,gpointer data){
     auto *t = (totalParam *) str;
     if(t->rtp_content != nullptr){
 //        并发处理rtp流。
-        char file_name_t[256] = {0};
+        char file_name_t[270] = {0};
         strcat(file_name_t,PACKET_PROTOCOL_PATH);
         sprintf(file_name_t,"%s%s",PACKET_PROTOCOL_PATH,"rtp/");
         if(access(file_name_t,0)!= 0){
