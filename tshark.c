@@ -174,13 +174,13 @@
 
 
 capture_file cfile;
-char READ_FILE_PATH[256] = {0};
+char READ_FILE_PATH[256] = {0}; //存放文件名——含路径。
+char FILE_NAME_T[256] = {0};//存放文件名。
+
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
-char FILE_NAME_T[128] = {0};
 char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
-
 
 static guint32 cum_bytes;
 static frame_data ref_frame;
@@ -2389,7 +2389,8 @@ int main(int argc, char *argv[]) {
                 g_print("done! \n");
                 goto clean_exit;
             }
-        } else {
+        }
+        else {
             struct stat st;
             stat(cf_name, &st);
             if (S_ISDIR(st.st_mode)) {
@@ -2404,10 +2405,13 @@ int main(int argc, char *argv[]) {
                     pfileNameNode temp = headOfDirPath->next;
                     gboolean mutex = TRUE;
                     while (temp != NULL) {
-                        cf_name = temp->fileName;
-                        /*将缓存的文件名字初始化*/
-                        memset(FILE_NAME_T, '\0', 128);
-                        strcpy(FILE_NAME_T, cf_name);
+                        cf_name = temp->fileName_path;
+                        /*将缓存的文件名全路径初始化*/
+                        memset(FILE_NAME_T, '\0', 256);
+                        strcpy(FILE_NAME_T,temp->fileName);
+                        memset(READ_FILE_PATH, '\0', 256);
+                        strcpy(READ_FILE_PATH, cf_name);
+
                         match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
@@ -2452,12 +2456,29 @@ int main(int argc, char *argv[]) {
                         cf_close(&cfile);  //关闭打开的pcap文件
                     }
                 }
-            } else {
+            }
+            else {
                 //只有一个文件
                 /*文件名*/
                 /*将缓存的文件名字初始化*/
-                memset(FILE_NAME_T, '\0', 128);
-                strcpy(FILE_NAME_T, cf_name);
+                memset(READ_FILE_PATH, '\0', 256);
+                strcpy(READ_FILE_PATH, cf_name); //文件名含路径
+                char file_name_t[256] = {0}; //获取文件名
+                for (int i = (int)strlen(cf_name),j = 0; i != 0 ; i--) {
+                    if(cf_name[i] == '.'){
+                        j=i;
+                    }
+                    else if(cf_name[i] == '/' && j != 0){
+                        int a = 0;
+                        i++;
+                        while (i < j){
+                            file_name_t[a++] = cf_name[i++];
+                        }
+                        break;
+                    }
+                }
+                memset(FILE_NAME_T,'\0',256);
+                strcpy(FILE_NAME_T,file_name_t); //文件名
 
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();

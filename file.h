@@ -731,7 +731,8 @@ gboolean cf_add_ip_name_from_string(capture_file *cf, const char *addr, const ch
  */
 typedef struct fileNameNode{
     struct fileNameNode* next;
-    char fileName[128];
+    char fileName_path[256];//文件路径
+    char fileName[256];//文件名称
 }*pfileNameNode;
 /**
  * 拆分文件，返回指向文件名称的二维指针数组

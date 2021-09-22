@@ -114,7 +114,7 @@ struct strNameSameLevel *strname_head;
 std::map<std::string, FILE *> pFile_map;
 
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin ||||
-struct totalParam{
+struct totalParam{ //流组报相关全参数结构体
     struct rtp_Content *rtp_content = nullptr;
 };
 /*流处理函数线程池*/
@@ -148,6 +148,7 @@ struct rtp_Content{
     guint8 payload[2*4000];
     size_t payload_len;
     unsigned int payload_type;
+    char file_name[128];
 }; //对应rtp字段双链表的存储
 typedef struct _rtp_decoder_t{
     codec_handle_t handle;
@@ -159,6 +160,7 @@ typedef struct _rtp_decoder_t{
  */
 void writeRTPstreamHead(FILE* fp);
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
+void do_handle_strem(gpointer str,gpointer data);
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle end ||||
 
 /**
@@ -669,6 +671,7 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
                         }
                         else if(strcmp((char*)it->data,"rtp.ssrc") == 0){
                             strcpy(cookie->rtp_content->ssrc,value);
+                            strcpy(cookie->rtp_content->file_name,FILE_NAME_T);//这里将rtp数据包所属的文件名也传入
                         }
                         else if(strcmp((char*)it->data,"rtp.payload") == 0){
                             for (int i = 0; i < node->finfo->length ;++i) {
@@ -805,15 +808,9 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
     /*获取文件来源*/
     if (read_Pcap_From_File_Flag == 1) {
-        if (file_Name_From_Dir_Flag) {
-            /*当前读取文件夹来*/
-            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, FILE_NAME_T);
-            cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
-        } else {
-            /* 单个文件 */
-            cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
-            cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
-        }
+        /* 单个文件 */
+        cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+        cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
     } else {
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
         cJSON_AddStringToObject(write_in_files_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
@@ -938,9 +935,9 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             if (child != NULL) {
                 try {
                     int cursion_layer = 0;
-                    /*传入递归的参数*/
                     if(PACKET_PROTOCOL_FLAG && packetProtoAlready){
-                        //如果要组报
+                        //要组报
+                        /*传入递归的参数*/
                         struct totalParam *cookie_t = g_new0(totalParam,1);
                         cookie_t->rtp_content = g_new0(rtp_Content,1);
                         dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cursion_layer,cookie_t);
@@ -988,14 +985,8 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
     if (value_str.compare("-1END") == 0) {
         /*获取文件来源，将conversation与源文件进行关联*/
         if (read_Pcap_From_File_Flag == 1) {
-            if (file_Name_From_Dir_Flag) {
-                /*当前读取文件夹来*/
-                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, FILE_NAME_T);
-                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO); /* 离线接入数据的线路号 */
-            } else {
-                cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
-                cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
-            }
+            cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+            cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
         } else {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "online");
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
@@ -1069,17 +1060,24 @@ void do_handle_strem(gpointer str,gpointer data){
     if(t->rtp_content != nullptr){
 //        并发处理rtp流。
         char file_name_t[270] = {0};
-        strcat(file_name_t,PACKET_PROTOCOL_PATH);
-        sprintf(file_name_t,"%s%s",PACKET_PROTOCOL_PATH,"rtp/");
-        if(access(file_name_t,0)!= 0){
-            mkdirs(file_name_t);
+        {
+            //确定rtp 输出的文件名
+            strcat(file_name_t,PACKET_PROTOCOL_PATH);
+            sprintf(file_name_t,"%s%s",PACKET_PROTOCOL_PATH,"rtp/");
+            if(access(file_name_t,0)!= 0){
+                mkdirs(file_name_t);
+            }
+            strcat(file_name_t,rtp_payload_type_to_str[t->rtp_content->payload_type]);
+            strcat(file_name_t,"_");
+            strcat(file_name_t,global_time_str.c_str());
+            strcat(file_name_t,"_");
+            strcat(file_name_t,t->rtp_content->ssrc);
+            strcat(file_name_t,"_");
+            std::string file_name_t_str = t->rtp_content->file_name;
+            file_name_t_str = file_name_t_str.substr(file_name_t_str.rfind("/")+1,file_name_t_str.rfind(".")-file_name_t_str.rfind("/")-1);
+            strcat(file_name_t,file_name_t_str.c_str());
+            strcat(file_name_t,".au");
         }
-        strcat(file_name_t,rtp_payload_type_to_str[t->rtp_content->payload_type]);
-        strcat(file_name_t,"_");
-        strcat(file_name_t,global_time_str.c_str());
-        strcat(file_name_t,"_");
-        strcat(file_name_t,t->rtp_content->ssrc);
-        strcat(file_name_t,".au");
 
         FILE* fp;
         struct _GHashTable *decoders_hash = nullptr;
@@ -1135,12 +1133,14 @@ void do_handle_strem(gpointer str,gpointer data){
             if (fwrite(pd_out, sizeof(uint8_t), sample_count*2, fp) != sample_count*2) {
                 g_print("%s sample_count write error !\n", __FUNCTION__);
             }
-        } else{
+        }
+        else{
             g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
         }
-
         g_free(t->rtp_content);
     }
+
+    //传入的参数空间释放。
     g_free(t);
 }
 
@@ -1445,25 +1445,13 @@ void add_record_in_result_file() {
         std::string filepath_str = RESULT_PATH;
         filepath_str += "result-" + global_time_str + ".writting";
         FILE *fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
-        if (file_Name_From_Dir_Flag) {
-            fputs(FILE_NAME_T, fp_result_timestampe);
-            fputs("\r\n", fp_result_timestampe);
-            fflush(fp_result_timestampe);
-        } else {
-            fputs(READ_FILE_PATH, fp_result_timestampe);
-            fputs("\r\n", fp_result_timestampe);
-            fflush(fp_result_timestampe);
-        }
+        fputs(READ_FILE_PATH, fp_result_timestampe);
+        fputs("\r\n", fp_result_timestampe);
+        fflush(fp_result_timestampe);
     } else {
-        if (file_Name_From_Dir_Flag) {
-            fputs(FILE_NAME_T, fp_result_timestampe);
-            fputs("\r\n", fp_result_timestampe);
-            fflush(fp_result_timestampe);
-        } else {
-            fputs(READ_FILE_PATH, fp_result_timestampe);
-            fputs("\r\n", fp_result_timestampe);
-            fflush(fp_result_timestampe);
-        }
+        fputs(READ_FILE_PATH, fp_result_timestampe);
+        fputs("\r\n", fp_result_timestampe);
+        fflush(fp_result_timestampe);
     }
 }
 

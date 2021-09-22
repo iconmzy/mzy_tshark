@@ -36,8 +36,9 @@ WS_DLL_PUBLIC int INSERT_MANY_PROTOCOL_STREAM_NUM;  // 每次每个协议批量�
 WS_DLL_PUBLIC gboolean DISPLAY_PACKET_INFO_FLAG;
 WS_DLL_PUBLIC gboolean EDIT_FILES_DISSECT_FLAG;
 
-WS_DLL_PUBLIC char READ_FILE_PATH[256];
-WS_DLL_PUBLIC char FILE_NAME_T[128];
+WS_DLL_PUBLIC char READ_FILE_PATH[256];//文件名含路径
+WS_DLL_PUBLIC char FILE_NAME_T[256];//文件名
+
 WS_DLL_PUBLIC gboolean file_Name_From_Dir_Flag;
 WS_DLL_PUBLIC gboolean read_Pcap_From_File_Flag;
 WS_DLL_PUBLIC gboolean mutex_final_clean_flag;
@@ -66,8 +67,6 @@ WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则
 #define MAXWRITEFILELENGTH 128
 
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
-
-WS_DLL_PUBLIC void do_handle_strem(gpointer str,gpointer data);
 
 WS_DLL_PUBLIC gboolean initWriteJsonFiles(char *);
 
@@ -102,8 +101,8 @@ WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 
 //rtp 相关
-WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);
-WS_DLL_PUBLIC int yy_g711u(unsigned char in[], int inlen, unsigned char out[]);
+//WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);
+//WS_DLL_PUBLIC int yy_g711u(unsigned char in[], int inlen, unsigned char out[]);
 
 #ifdef __cplusplus
 }

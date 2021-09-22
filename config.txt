@@ -35,7 +35,7 @@ ONLINE_CAPTURE_DATA_DEVICE_NAME:enp4s0
 
 #是否读取文件获得捕获数据  注意要和在线捕获互斥  /home/yy/文档/协议流量/ipv4/smtp.pcap   /root/文档/protocol_pcap/online07160426.pcapng
 READ_PACKET_FROM_FILES_FLAG:1
-#读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap
+#读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap sip-rtp-g722.pcap
 #若选择解析文件夹，建议末尾添加“/”，进行标识
 READ_PACKET_FROM_FILES_PATH:/home/yy/Desktop/Wireshark抓包全集（85种协议）/sip-rtp-g722.pcap
 
