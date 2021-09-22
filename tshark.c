@@ -23,7 +23,9 @@
 #include <limits.h>
 
 #ifdef HAVE_GETOPT_H
+
 #include <getopt.h>
+
 #endif
 
 #include <errno.h>
@@ -33,7 +35,9 @@
 #endif
 
 #ifndef _WIN32
+
 #include <signal.h>
+
 #endif
 
 #ifndef HAVE_GETOPT_LONG
@@ -77,7 +81,9 @@
 #include <epan/addr_resolv.h>
 
 #ifdef HAVE_LIBPCAP
+
 #include "ui/capture_ui_utils.h"
+
 #endif
 
 #include "ui/taps.h"
@@ -110,6 +116,7 @@
 #include "caputils/capture-pcap-util.h"
 
 #ifdef HAVE_LIBPCAP
+
 #include "caputils/capture_ifinfo.h"
 
 #ifdef _WIN32
@@ -721,7 +728,7 @@ about_folders(void) {
 
 
 static gboolean
-must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,gchar *volatile pdu_export_arg) {
+must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode, gchar *volatile pdu_export_arg) {
     /* We have to dissect each packet if:
 
           we're printing information about each packet;
@@ -740,13 +747,13 @@ must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,gchar *volatile pdu_expo
 struct protoInfo *allProtoInfo;
 
 int main(int argc, char *argv[]) {
-    printf("\n");
-    printf("    ___\n");
-    printf("   /   | __  ___________  _________ _\n");
-    printf("  / /| |/ / / / ___/ __ \\/ ___/ __ `/\n");
-    printf(" / ___ / /_/ / /  / /_/ / /  / /_/ /\n");
-    printf("/_/  |_\\__,_/_/   \\____/_/   \\__,_/\n");
-    printf("\n");
+    printf("                                        \n");
+    printf("    ___                                 \n");
+    printf("   /   | __  ___________  _________ _   \n");
+    printf("  / /| |/ / / / ___/ __ \\/ ___/ __ `/  \n");
+    printf(" / ___ / /_/ / /  / /_/ / /  / /_/ /    \n");
+    printf("/_/  |_\\__,_/_/   \\____/_/   \\__,_/  \n");
+    printf("                                        \n");
     struct allExProtocols protos;
 
     char *err_msg;
@@ -796,7 +803,7 @@ int main(int argc, char *argv[]) {
     char *volatile exp_pdu_filename = NULL;
     exp_pdu_t exp_pdu_tap_data;
     const gchar *elastic_mapping_filter = NULL;
-    pfileNameNode headOfDirPath = (pfileNameNode)malloc(sizeof(struct fileNameNode) * 1);
+    pfileNameNode headOfDirPath = (pfileNameNode) malloc(sizeof(struct fileNameNode) * 1);
     headOfDirPath->next = NULL;
     memset(headOfDirPath->fileName, '\0', 128);
 /*
@@ -2272,8 +2279,7 @@ int main(int argc, char *argv[]) {
                     g_print("error fork\n");
                     pnext = pnext->next;
                     continue;
-                }
-                else if (fpid == 0) {
+                } else if (fpid == 0) {
                     /*子进程*/
                     cf_name = pnext->fileName;
                     g_print("process %d->%s \n", getpid(), cf_name);
@@ -2371,8 +2377,7 @@ int main(int argc, char *argv[]) {
 
                     break;
 
-                }
-                else {
+                } else {
 //                /*父进程*/
                     pnext = pnext->next;
                 }
@@ -2384,8 +2389,7 @@ int main(int argc, char *argv[]) {
                 g_print("done! \n");
                 goto clean_exit;
             }
-        }
-        else {
+        } else {
             struct stat st;
             stat(cf_name, &st);
             if (S_ISDIR(st.st_mode)) {
@@ -2509,8 +2513,7 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-    }
-    else {
+    } else {
         /* No capture file specified, so we're supposed to do a live capture
            or get a list of link-layer types for a live capture device;
            do we have support for live captures? */
