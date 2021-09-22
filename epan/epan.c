@@ -575,8 +575,7 @@ epan_dissect_run(epan_dissect_t *edt, int file_type_subtype,
     wmem_leave_packet_scope();
 }
 
-void
-epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
+void epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
                            wtap_rec *rec, tvbuff_t *tvb, frame_data *fd,
                            column_info *cinfo) {
 
