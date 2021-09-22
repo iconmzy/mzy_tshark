@@ -119,13 +119,7 @@ struct totalParam{
 };
 /*流处理函数线程池*/
 GThreadPool *handleStreamTpool;
-/**
- * 并发处理流数据函数
- * @param str
- * @param data
- */
 gboolean packetProtoAlready = false; //当前数据包若为需要组的包则为TRUE，否则为FALSE
-
 //rtp stream---------------------- 20210909 yy ----------------------rtp stream begin |||
 const char *rtp_payload_type_to_str[128] = {
         "g711U","fs-1016","g721","GSM","g723","DVI4 8k","DVI4 16k","Exp. from Xerox PARC","g711A","g722","16-bit audio, stereo",\
@@ -160,15 +154,19 @@ typedef struct _rtp_decoder_t{
     void *context;
 } rtp_decoder_t;
 /**
- * 写rtp可播放流的头
+ * 写rtp可播放流的头 仅支持8000采样率.
  * @param fp
  */
 void writeRTPstreamHead(FILE* fp);
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
-
-void do_handle_strem(gpointer str,gpointer data);
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle end ||||
 
+/**
+ * 输入数字，返回对应string
+ * @tparam T 泛型名
+ * @param l
+ * @return
+ */
 template <typename T>
 std::string numtos(T l){
     std::ostringstream os;
@@ -461,7 +459,7 @@ void writeRTPstreamHead(FILE* fp){
  * @return
  */
 gboolean write_Files_conv(std::string &stream) {
-
+    /*这里把json写成一行,且添加换行符 ----begin*/
     int n_t = kmp(stream, "\n");
     while (n_t != -1) {
         stream.replace(n_t, 1, "");
@@ -1048,7 +1046,7 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
                 pd_out[2*i+1] = pd[1];
             }
         } else{
-            g_print("File parsing and saving at this rate is not supported \n%s\n",__FUNCTION__);
+            g_print("File parsing and saving at this rate is not supported,8000 rate only \n%s\n",__FUNCTION__);
             decoded_samples = 0;
         }
     } else{
@@ -1061,6 +1059,11 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
     return decoded_samples;
 }
 
+/**
+ * 并发处理流数据函数
+ * @param str
+ * @param data
+ */
 void do_handle_strem(gpointer str,gpointer data){
     auto *t = (totalParam *) str;
     if(t->rtp_content != nullptr){
