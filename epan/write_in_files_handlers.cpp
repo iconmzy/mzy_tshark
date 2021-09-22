@@ -220,6 +220,8 @@ void initStrNameLevelLinkList(struct strNameSameLevel *node) {
     }
 }
 
+
+
 /**
  * 切分string类 ,返回vector<string>
  * @param str
@@ -1074,10 +1076,7 @@ void do_handle_strem(gpointer str,gpointer data){
         if(access(file_name_t,0)!= 0){
             mkdirs(file_name_t);
         }
-        strcat(file_name_t,rtp_payload_type_to_str[t->rtp_content->payload_type]);
-        strcat(file_name_t,"_");
         strcat(file_name_t,global_time_str.c_str());
-        strcat(file_name_t,"_");
         strcat(file_name_t,t->rtp_content->ssrc);
         strcat(file_name_t,".au");
 

@@ -2259,8 +2259,7 @@ int main(int argc, char *argv[]) {
     }
 
     // tshark_debug("Aurora: do_dissection = %s", do_dissection ? "TRUE" : "FALSE");
-//  time_t begin_time = time(NULL);
-//  g_print(" begin %ld",begin_time);
+
     if (cf_name) {
         if (EDIT_FILES_DISSECT_FLAG) {
             /*这里开始调用edit拆分大型pcap包*/
@@ -2452,7 +2451,8 @@ int main(int argc, char *argv[]) {
                         cf_close(&cfile);  //关闭打开的pcap文件
                     }
                 }
-            } else {
+            }
+            else {
                 //只有一个文件
                 /*文件名*/
                 /*将缓存的文件名字初始化*/
@@ -2481,8 +2481,7 @@ int main(int argc, char *argv[]) {
 
                 /* Process the packets in the file */
                 // tshark_debug("Aurora: invoking process_cap_file() to process the packets");
-//        TRY
-//                {
+
                 status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP
                                           global_capture_opts.has_autostop_packets
@@ -3416,7 +3415,6 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
         }
 
 //        reset_epan_mem(cf, edt, create_proto_tree, print_packet_info && print_details);
-
         edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
         if (process_packet_single_pass(cf, edt, data_offset, &rec, &buf, tap_flags)) {
             /* Either there's no read filtering or this packet passed the
@@ -3439,9 +3437,6 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
         /* Error reading from the input file. */
         status = PASS_READ_ERROR;
     }
-
-//    if (edt)
-//        epan_dissect_free(edt);
 
     ws_buffer_free(&buf);
     wtap_rec_cleanup(&rec);
