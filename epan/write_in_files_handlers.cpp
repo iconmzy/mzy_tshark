@@ -1073,9 +1073,7 @@ void do_handle_strem(gpointer str,gpointer data){
             strcat(file_name_t,"_");
             strcat(file_name_t,t->rtp_content->ssrc);
             strcat(file_name_t,"_");
-            std::string file_name_t_str = t->rtp_content->file_name;
-            file_name_t_str = file_name_t_str.substr(file_name_t_str.rfind("/")+1,file_name_t_str.rfind(".")-file_name_t_str.rfind("/")-1);
-            strcat(file_name_t,file_name_t_str.c_str());
+            strcat(file_name_t,t->rtp_content->file_name);
             strcat(file_name_t,".au");
         }
 
