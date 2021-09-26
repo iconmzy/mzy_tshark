@@ -29,7 +29,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "curl/curl.h"
-
+#define __U__ __attribute__((unused))
 /*常用的一些字符串*/
 #define str_FILES_RESOURCE "file_path"
 
@@ -114,12 +114,6 @@ struct strNameSameLevel *strname_head;
 std::map<std::string, FILE *> pFile_map;
 
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin ||||
-struct totalParam{ //流组报相关全参数结构体
-    struct rtp_Content *rtp_content = nullptr;
-};
-/*流处理函数线程池*/
-GThreadPool *handleStreamTpool;
-gboolean packetProtoAlready = false; //当前数据包若为需要组的包则为TRUE，否则为FALSE
 //rtp stream---------------------- 20210909 yy ----------------------rtp stream begin |||
 const char *rtp_payload_type_to_str[128] = {
         "g711U","fs-1016","g721","GSM","g723","DVI4 8k","DVI4 16k","Exp. from Xerox PARC","g711A","g722","16-bit audio, stereo",\
@@ -135,6 +129,7 @@ const char *rtp_payload_type_to_str[128] = {
         "RTPType-107","RTPType-108","RTPType-109","RTPType-110","RTPType-111","RTPType-112","RTPType-113","RTPType-114","RTPType-115","RTPType-116","RTPType-117",\
         "RTPType-118","RTPType-119","RTPType-120","RTPType-121","RTPType-122","RTPType-123","RTPType-124","RTPType-125","RTPType-126","RTPType-127"
         };
+std::map<std::uint8_t,std::string> rtp_payload_type_To_tail{{0,"au"},{2,"au"},{4,"au"},{8,"au"},{9,"au"},{17,"au"},{32,"mpeg"}};
 struct rtpFileRel{
     FILE * fp;
     struct _GHashTable *decoders_hash;
@@ -159,7 +154,42 @@ typedef struct _rtp_decoder_t{
  * @param fp
  */
 void writeRTPstreamHead(FILE* fp);
+inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, const std::string &);//给定rtp的类型，返回组报结果文件名
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
+//tls stream---------------------- 20210909 yy ---------------------- tls stream begin |||
+enum tls_Status{
+    CLIENT_HELLO = 0,
+    SERVER_HELLO,
+    SERVER_CERTIFICATE,
+};
+struct tls_Content{
+    char        sip[24];
+    char        dip[24];
+    uint16_t    sport;
+    uint16_t    dport;
+    uint16_t    handshake_ciphersuite;  //tls.handshake.ciphersuite
+    uint8_t     handshake_type; //tls.handshake.type
+    char      cer[8000];   //tls.handshake.certificates
+};//并发处理tls相关内容
+
+struct tls_Vec{
+    std::string sip;
+    std::string dip;
+    uint16_t    sport;
+    uint16_t    dport;
+    uint8_t     tls_Status;
+};//保存tls所有连接状态
+std::vector<struct tls_Vec> tls_Total;
+
+//tls stream---------------------- 20210909 yy ---------------------- tls stream end |||
+
+struct totalParam{ //流组报相关全参数结构体
+    struct rtp_Content *rtp_content = nullptr;
+    struct tls_Content *tls_content = nullptr;
+};
+/*流处理函数线程池*/
+GThreadPool *handleStreamTpool;
+gboolean packetProtoAlready = false; //当前数据包若为需要组的包则为TRUE，否则为FALSE
 void do_handle_strem(gpointer str,gpointer data);
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle end ||||
 
@@ -170,7 +200,7 @@ void do_handle_strem(gpointer str,gpointer data);
  * @return
  */
 template <typename T>
-std::string numtos(T l){
+inline std::string numtos(T l){
     std::ostringstream os;
     os << l;
     std::string result;
@@ -508,7 +538,7 @@ gboolean write_Files_conv(std::string &stream) {
     return true;
 }
 
-size_t noop_cb(void *ptr, size_t size, size_t nmemb, void *data) {
+size_t noop_cb(void *ptr, size_t size, size_t nmemb, void *data __U__) {
     return size * nmemb;
 }
 
@@ -682,6 +712,14 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
                         else if(strcmp((char*)it->data,"rtp.p_type") == 0){
                             cookie->rtp_content->payload_type = std::stoi(value);
                         }
+//                        else if(strcmp((char*)it->data,"tls.handshake.type") == 0){
+//                            cookie->tls_content->handshake_type = std::stoi(value);
+//                        } else if(strcmp((char*)it->data,"tls.handshake.ciphersuite") == 0){
+//                            cookie->tls_content->handshake_ciphersuite = std::stoi(value);
+//                        }else if(strcmp((char*)it->data,"tls.handshake.certificates") == 0){
+//                            strcpy(cookie->tls_content->cer,value);//
+//                        }
+
                     }
                 }
 //               将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
@@ -940,6 +978,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                         /*传入递归的参数*/
                         struct totalParam *cookie_t = g_new0(totalParam,1);
                         cookie_t->rtp_content = g_new0(rtp_Content,1);
+//                        cookie_t->tls_content = g_new0(tls_Content,1);
                         dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cursion_layer,cookie_t);
                         g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
                     }
@@ -952,7 +991,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     continue;
                 }
             }
-            break;
+            //可能存在多个相同协议，如tls,tls;
         }
         node = node->next;
     }
@@ -1055,7 +1094,7 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
  * @param str
  * @param data
  */
-void do_handle_strem(gpointer str,gpointer data){
+void do_handle_strem(gpointer str,gpointer data __U__){
     auto *t = (totalParam *) str;
     if(t->rtp_content != nullptr){
 //        并发处理rtp流。
@@ -1067,14 +1106,8 @@ void do_handle_strem(gpointer str,gpointer data){
             if(access(file_name_t,0)!= 0){
                 mkdirs(file_name_t);
             }
-            strcat(file_name_t,rtp_payload_type_to_str[t->rtp_content->payload_type]);
-            strcat(file_name_t,"_");
-            strcat(file_name_t,global_time_str.c_str());
-            strcat(file_name_t,"_");
-            strcat(file_name_t,t->rtp_content->ssrc);
-            strcat(file_name_t,"_");
-            strcat(file_name_t,t->rtp_content->file_name);
-            strcat(file_name_t,".au");
+            std::string fn_str_t = got_rtp_Stream_FileName(t->rtp_content->payload_type,global_time_str,t->rtp_content->ssrc);
+            strcat(file_name_t,fn_str_t.c_str());
         }
 
         FILE* fp;
@@ -1142,6 +1175,19 @@ void do_handle_strem(gpointer str,gpointer data){
     g_free(t);
 }
 
+std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const std::string &p){
+    std::string file_t,tail_t;
+    auto index_t = rtp_payload_type_To_tail.find(type);
+    if(index_t == rtp_payload_type_To_tail.end()){
+        tail_t = "unknowType";
+    } else{
+        tail_t = index_t->second;
+    }
+
+    file_t += rtp_payload_type_to_str[type];
+    return file_t += "_" + s +"_"+ p +"."+ tail_t;
+}
+
 /**
  * 初始化拿json的map数据，正常取值返回1，否则返回0，flag为0表示没有初始化，为1表示已初始化。
  * @param flag
@@ -1165,13 +1211,20 @@ gboolean initWriteJsonFiles(char *flag) {
         insertmanystream_Head->contents = "";
     }
 
-    /*初始化rtpstream处理函数线程池 ,最大1个线程并发处理rtpliu*/
+    /*初始化rtpstream处理函数线程池 ,最大1个线程并发处理流数据*/
     handleStreamTpool = g_thread_pool_new(do_handle_strem,NULL,1,FALSE,NULL);
+    //rtp
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.marker");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.ssrc");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.payload");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.p_type");
+    //tls
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "tls");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "tls.handshake.type");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "tls.handshake.ciphersuite");
+    rtp_fields = g_list_append(rtp_fields, (gpointer) "tls.handshake.certificates");
+
 
     /*初始化互斥变量*/
     *flag = 1;

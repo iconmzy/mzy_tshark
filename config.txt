@@ -37,7 +37,7 @@ ONLINE_CAPTURE_DATA_DEVICE_NAME:enp4s0
 READ_PACKET_FROM_FILES_FLAG:1
 #读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap sip-rtp-g722.pcap
 #若选择解析文件夹，建议末尾添加“/”，进行标识
-READ_PACKET_FROM_FILES_PATH:/home/yy/Desktop/Wireshark抓包全集（85种协议）/sip-rtp-g729a.pcap
+READ_PACKET_FROM_FILES_PATH:/home/yy/Desktop/Packets/sip-rtp-g722.pcap
 
 #是否拆分文件解析
 EDIT_FILES_DISSECT_FLAG:0
