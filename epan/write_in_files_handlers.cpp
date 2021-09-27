@@ -811,12 +811,10 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     int stack_node_layer = 0;
     while (stack_node_t != nullptr and ++stack_node_layer < 11) {
         field_info *fi = stack_node_t->finfo;
-
         if (lastLayerProtocolFilter(fi->hfinfo->abbrev)) {
             stack_node_t = stack_node_t->next;
             continue;
         }
-
         if (protocol_stack_t.empty() == 1) {
             protocol_stack_t.append(fi->hfinfo->abbrev);
             write_in_files_proto = fi->hfinfo->abbrev;

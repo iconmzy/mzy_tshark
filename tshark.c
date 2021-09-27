@@ -1718,11 +1718,16 @@ int main(int argc, char *argv[]) {
             list_stat_cmd_args();
             g_print("someting error in conversation of tcp\n");
         }
-        char *arg_t_1 = "follow,udp,raw,0";
-        if (!process_stat_cmd_arg(arg_t_1)) {
-            list_stat_cmd_args();
-            g_print("someting error in conversation of tcp\n");
-        }
+//        char *arg_t_1 = "follow,udp,raw,0";
+//        if (!process_stat_cmd_arg(arg_t_1)) {
+//            list_stat_cmd_args();
+//            g_print("someting error in conversation of tcp\n");
+//        }
+//        char *arg_t_2 = "follow,udp,raw,1";
+//        if (!process_stat_cmd_arg(arg_t_2)) {
+//            list_stat_cmd_args();
+//            g_print("someting error in conversation of tcp\n");
+//        }
     }
 
     /*
