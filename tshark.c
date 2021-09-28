@@ -1718,16 +1718,14 @@ int main(int argc, char *argv[]) {
             list_stat_cmd_args();
             g_print("someting error in conversation of tcp\n");
         }
-//        char *arg_t_1 = "follow,udp,raw,0";
-//        if (!process_stat_cmd_arg(arg_t_1)) {
-//            list_stat_cmd_args();
-//            g_print("someting error in conversation of tcp\n");
-//        }
-//        char *arg_t_2 = "follow,udp,raw,1";
-//        if (!process_stat_cmd_arg(arg_t_2)) {
-//            list_stat_cmd_args();
-//            g_print("someting error in conversation of tcp\n");
-//        }
+        for (int i = 0; i < 2; ++i) {
+            char arg_t_1[24] = "follow,udp,raw,";
+            strcat(arg_t_1,my_itoa(i));
+            if (!process_stat_cmd_arg(arg_t_1)) {
+                list_stat_cmd_args();
+                g_print("someting error in conversation of tcp\n");
+            }
+        }
     }
 
     /*
@@ -2542,7 +2540,8 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-    } else {
+    }
+    else {
         /* No capture file specified, so we're supposed to do a live capture
            or get a list of link-layer types for a live capture device;
            do we have support for live captures? */
@@ -2704,8 +2703,10 @@ int main(int argc, char *argv[]) {
         cfile.provider.frames = NULL;
     }
 
-    if (draw_taps)
+    if (draw_taps){
         draw_tap_listeners(TRUE);
+        followConnectFiveEleClear();
+    }
     /* Memory cleanup */
     reset_tap_listeners();
     funnel_dump_all_text_windows();

@@ -30,6 +30,7 @@
 #include <sys/stat.h>
 #include "curl/curl.h"
 #define __U__ __attribute__((unused))
+
 /*常用的一些字符串*/
 #define str_FILES_RESOURCE "file_path"
 
@@ -180,8 +181,28 @@ struct tls_Vec{
     uint8_t     tls_Status;
 };//保存tls所有连接状态
 std::vector<struct tls_Vec> tls_Total;
-
 //tls stream---------------------- 20210909 yy ---------------------- tls stream end |||
+//h263 stream---------------------- 20210909 yy -----------------------------------begin h263|||
+enum comFourEleContent_Status{
+    GotSip,
+    GotDip,
+    GotSport,
+    GotDport,
+    AlreadyInsert,
+};
+struct comFiveEleContent{ //通信五元组内容
+    std::string sip;
+    std::string dip;
+    std::string sport;
+    std::string dport;
+    std::string protocol;
+    int status;
+};
+std::vector<struct comFiveEleContent> h263_stream_Need;
+std::string streamFileName_t; //缓存followstream文件名，协议+四元组
+FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
+
+//h263 stream---------------------- 20210909 yy -----------------------------------end h263|||
 
 struct totalParam{ //流组报相关全参数结构体
     struct rtp_Content *rtp_content = nullptr;
@@ -351,6 +372,21 @@ int kmp(std::string s, std::string t) {
         return i - j;
     else
         return -1;
+}
+/**
+ * 用ts 替换 dstr 中的所有 rs。
+ * @param dstr
+ * @param rs
+ * @param ts
+ * @return
+ */
+inline void stringReplaceByStr(std::string &dstr,std::string const &rs,std::string const &ts){
+    int len = rs.length();
+    int n_t = kmp(dstr,rs);
+    while (n_t != -1){
+        dstr.replace(n_t,len,ts);
+        n_t = kmp(dstr,rs);
+    }
 }
 /**
  * 返回指向对应协议名的结构体指针 为找到返回NULL
@@ -538,7 +574,7 @@ gboolean write_Files_conv(std::string &stream) {
     return true;
 }
 
-size_t noop_cb(void *ptr, size_t size, size_t nmemb, void *data __U__) {
+size_t noop_cb(void *ptr __U__, size_t size, size_t nmemb, void *data __U__) {
     return size * nmemb;
 }
 
@@ -808,6 +844,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     proto_node *node = edt->tree->first_child;
     std::string protocol_stack_t;  // 记录协议栈
     proto_node *stack_node_t = node;
+    comFiveEleContent c5e = comFiveEleContent(); //存放通信五元组
+
     int stack_node_layer = 0;
     while (stack_node_t != nullptr and ++stack_node_layer < 11) {
         field_info *fi = stack_node_t->finfo;
@@ -824,6 +862,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             protocol_stack_t.append(fi->hfinfo->abbrev);
             write_in_files_proto = fi->hfinfo->abbrev;
         }
+        c5e.protocol = write_in_files_proto; //通信五元组协议
         stack_node_t = stack_node_t->next;
     }
     /*单独的协议过滤*/
@@ -881,8 +920,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
                     cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value);
-                    child = child->next;
-                    continue;
+                    break; //这里最后一个，提高效率
                 }
                 child = child->next;
             }
@@ -905,8 +943,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
                     cJSON_AddStringToObject(write_in_files_cJson, "eth_src", value);
-                    child = child->next;
-                    continue;
+                    break;//这里最后一个，提高效率
                 }
                 child = child->next;
             }
@@ -922,6 +959,10 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.src") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
+
+                    c5e.sip = value;//通信五元组源ip
+                    c5e.status = comFourEleContent_Status::GotSip;
+
                     cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value);
                     child = child->next;
                     continue;
@@ -930,12 +971,16 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.dst") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
+
+                    c5e.dip = value;//通信五元组目的ip
+                    c5e.status = comFourEleContent_Status::GotDip;
+
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value);
-                    child = child->next;
-                    continue;
+                    break;//这里最后一个，提高效率
                 }
                 child = child->next;
             }
+
             node = node->next;
             continue;
         }
@@ -948,6 +993,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "udp.srcport") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
+                    c5e.sport = value;//通信五元组源端口
+                    c5e.status = comFourEleContent_Status::GotSport;
                     cJSON_AddStringToObject(write_in_files_cJson, "src_port", value);
                     child = child->next;
                     continue;
@@ -956,9 +1003,28 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "udp.dstport") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
+
+                    c5e.dport = value;//通信五元组目的端口
+                    c5e.status = comFourEleContent_Status::GotDport;
+
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value);
                     child = child->next;
                     continue;
+                }
+                if(c5e.status == comFourEleContent_Status::GotDport){ //TODO:这样判断是否取满五元组存在问题 20210927 yy
+                    if(c5e.protocol == "h263"){
+                        //h263 标志
+                        gboolean mutex = false;
+                        for (auto &i : h263_stream_Need) { //去重
+                            if(i.sip == c5e.sip and i.sport == c5e.sport and i.dip == c5e.dip and i.dport == c5e.dport)
+                                mutex = 1;
+                        }
+                        if(!mutex){
+                            h263_stream_Need.push_back(c5e);
+                            c5e.status = comFourEleContent_Status::AlreadyInsert;
+                        }
+                    }
+                    break;//这里最后一个，提高效率
                 }
                 child = child->next;
             }
@@ -1112,7 +1178,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
         struct _GHashTable *decoders_hash = nullptr;
         if(rtp_stream_pFile_map.empty()){
             //空map
-            fp = fopen(file_name_t,"a");
+            fp = fopen(file_name_t,"a+");
             if(!fp){
                 g_print("%s open error",file_name_t);
                 return;
@@ -1139,7 +1205,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
                     decoders_hash = nullptr;
                 }
             } else{
-                fp = fopen(file_name_t,"a");
+                fp = fopen(file_name_t,"a+");
                 if(!fp){
                     g_print("%s open error",file_name_t);
                     return;
@@ -1171,6 +1237,67 @@ void do_handle_strem(gpointer str,gpointer data __U__){
 
     //传入的参数空间释放。
     g_free(t);
+}
+/**
+ * 判断当前流是否输出
+ * @param sip
+ * @param sport
+ * @param dip
+ * @param dport
+ * @return
+ */
+gboolean JudgeStreamPrint(gchar* sip,guint sport,gchar *dip,guint dport){
+    for (auto & i : h263_stream_Need) {
+        if(strcmp(sip,i.sip.c_str()) == 0 and strcmp(dip,i.dip.c_str()) == 0 and i.sport == numtos(sport) and i.dport == numtos(dport)){
+            if(!streamFileName_t.empty()){
+                return true;
+            }
+            streamFileName_t +=i.protocol + "/";
+            std::string sip_r = i.sip;
+            stringReplaceByStr(sip_r,".","_");
+            streamFileName_t +=sip_r +"_" + i.sport;
+            sip_r = i.dip;
+            stringReplaceByStr(sip_r,".","_");
+            streamFileName_t += sip_r +"_" + i.dport;
+
+            std::string path_t = PACKET_PROTOCOL_PATH; //这里就直接把路径建好 后续followstream就不用再重复建造路径
+            path_t += i.protocol;
+            if(access(path_t.c_str(), 0) != 0){
+                mkdirs(path_t.c_str());
+            }
+            return true;
+        }
+    }
+    return false;
+}
+/**
+ * followstream 写文件
+ * @param data
+ * @param len
+ * @return
+ */
+gboolean streamFollowIntoFiles(guint8 *data,guint len){
+    if(len == 0) return true;
+    if(strcmp((char *)data,"-1END") == 0){
+        //一个流结束
+        fclose(streamFileName_fp);
+        streamFileName_fp = nullptr;
+        streamFileName_t.clear();
+        return true;
+    } else {
+        std::string fpath_t = PACKET_PROTOCOL_PATH;
+        fpath_t += streamFileName_t + ".stream";
+        if(!streamFileName_fp){
+            assert(!streamFileName_t.empty());//名称肯定不能为空
+            streamFileName_fp = fopen(fpath_t.c_str(), "ab");
+             if(!streamFileName_fp){
+                 g_print("stream follow fp open error!\n");
+                 return false;
+             }
+        }
+        fwrite(data, sizeof(uint8_t),len,streamFileName_fp);
+        return true;
+    }
 }
 
 std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const std::string &p){
@@ -1483,7 +1610,6 @@ void clean_Temp_Files_All() {
             rename(oldName_t.c_str(), newName_t.c_str());
         }
         pFile_map.clear();
-
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;
     }
@@ -1517,4 +1643,8 @@ void change_result_file_name() {
     g_print("总计耗时：%d 秒\n", cost_time);
 
     curl_global_cleanup();  //在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数
+}
+
+void followConnectFiveEleClear(){
+    h263_stream_Need.clear();//一个文件结束后 h263缓存流信息清空。
 }

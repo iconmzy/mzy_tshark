@@ -103,7 +103,9 @@ WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 //rtp 相关
 //WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);
 //WS_DLL_PUBLIC int yy_g711u(unsigned char in[], int inlen, unsigned char out[]);
-
+WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
+WS_DLL_PUBLIC void followConnectFiveEleClear();
+WS_DLL_PUBLIC gboolean streamFollowIntoFiles(guint8 *data,guint len);
 #ifdef __cplusplus
 }
 #endif
