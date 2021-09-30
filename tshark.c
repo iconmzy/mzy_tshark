@@ -179,7 +179,7 @@ char FILE_NAME_T[256] = {0};//存放文件名。
 
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
-char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
+char OFFLINE_LINE_NO_REGEX[512];  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 
 static guint32 cum_bytes;
@@ -2419,7 +2419,8 @@ int main(int argc, char *argv[]) {
                         memset(READ_FILE_PATH, '\0', 256);
                         strcpy(READ_FILE_PATH, cf_name);
 
-                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+//                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+                        parse_offline_regex_dict(cf_name);
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
@@ -2493,7 +2494,8 @@ int main(int argc, char *argv[]) {
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+//                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+                parse_offline_regex_dict(cf_name);
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will

@@ -23,7 +23,7 @@ WS_DLL_PUBLIC void ws_vadd_crash_info(const char *fmt, va_list ap);
 WS_DLL_PUBLIC void ws_add_crash_info(const char *fmt, ...)
     G_GNUC_PRINTF(1,2);
 
-#ifdef __cplusplus
+#ifdef __cplusplusN
 }
 #endif /* __cplusplus */
 

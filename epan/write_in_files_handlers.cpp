@@ -79,9 +79,10 @@ char JSON_ADD_PROTO_PATH[256] = {0};
 
 //线路号相关配置
 char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
-char OFFLINE_LINE_NO_REGEX[256] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
+char OFFLINE_LINE_NO_REGEX[512] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 char OFFLINE_LINE_LINE_NO[256] = {0};
+struct offline_regex_dict *regex_dict = nullptr;
 
 //写入ES数据库相关配置
 gboolean WRITE_IN_ES_FLAG = 0;  /* 配置是否写入ElasticSearch数据库 */
@@ -822,16 +823,56 @@ void match_line_no(char *pattern, char *source_str, char * target) {
 
         // g_print("%d", match_bool);
         if(match_bool){
-            strcpy(target, results.str().c_str());
+            strcpy(target, (char *)results.str().c_str());
         } else{
-            strcpy(target, "unknown");
+            strcpy(target, "");
         }
     }
     catch (std::runtime_error){
         g_print("regex grammar format error !");
-        strcpy(target, "unknown");
+        strcpy(target, "");
     }
 }
+
+void parse_offline_regex_dict(char *source_str){
+//    g_list_free((GList*)regex_dict);
+    char* tmp;
+    int len = sizeof(OFFLINE_LINE_NO_REGEX);
+    tmp = (char*) malloc(len+1);
+    strcpy(tmp, OFFLINE_LINE_NO_REGEX);
+
+    cJSON *ljson;
+    ljson = (cJSON *)cJSON_Parse(tmp);
+
+    if(ljson== nullptr) return;
+    int regex_len = cJSON_GetArraySize(ljson);
+
+
+    regex_dict = (offline_regex_dict *)malloc(sizeof(offline_regex_dict));
+    offline_regex_dict *head = regex_dict;
+
+    cJSON *cjson = ljson->child;
+    int i;
+    for(i=0; i<regex_len; i++){
+        auto *node = (offline_regex_dict *)malloc(sizeof(offline_regex_dict));
+        node->key = (char*) malloc(sizeof (char)*128);
+        node->value = (char*) malloc(sizeof (char)*128);
+        strcpy(node->key, cjson->string);
+        strcpy(node->value, cjson->valuestring);
+        node->regex = (char*) malloc(sizeof (char)*256);
+        match_line_no(node->value, source_str, node->regex);
+        head->next = node;
+        head = node;
+        cjson = cjson->next;
+
+        g_print("s%, s%, s%", node->key, node->value, node->regex);
+    }
+
+    head->next = nullptr;
+    cJSON_Delete(ljson);
+    free(tmp);
+}
+
 /**
  * 直接解析edt 写入文件缓存中 202107290910
  * @param edt
@@ -885,13 +926,22 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     if (read_Pcap_From_File_Flag == 1) {
         /* 单个文件 */
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
-        cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
+//        cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
+        if(regex_dict){
+            offline_regex_dict* first =  regex_dict->next;
+            while(first && first->key != nullptr){
+                cJSON_AddStringToObject(write_in_files_cJson, first->key, first->regex);
+                first = first->next;
+            }
+        }
+
     } else {
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
         cJSON_AddStringToObject(write_in_files_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
     }
     /*协议栈*/
     cJSON_AddStringToObject(write_in_files_cJson, "protocols", protocol_stack_t.c_str());
+    cJSON_AddStringToObject(write_in_files_cJson, "frame_id", numtos(edt->pi.num).c_str());
 
     while (node != NULL) {
         field_info *fi = node->finfo;
@@ -1090,6 +1140,8 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
         if (read_Pcap_From_File_Flag == 1) {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
+
+
         } else {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "online");
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
@@ -1140,11 +1192,11 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
                 pd_out[2*i+1] = pd[1];
             }
         } else{
-            g_print("File parsing and saving at this rate is not supported,8000 rate only \n%s\n",__FUNCTION__);
+//            g_print("File parsing and saving at this rate is not supported,8000 rate only \n%s\n",__FUNCTION__);
             decoded_samples = 0;
         }
     } else{
-        g_print("File parsing and saving at this rate is not supported \n%s\n",__FUNCTION__);
+//        g_print("File parsing and saving at this rate is not supported \n%s\n",__FUNCTION__);
         decoded_samples = 0;
     }
 
@@ -1230,7 +1282,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
             }
         }
         else{
-            g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
+//            g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
         }
         g_free(t->rtp_content);
     }
