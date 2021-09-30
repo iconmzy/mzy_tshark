@@ -21,6 +21,11 @@
 #endif
 
 #include "mate.h"
+
+cJSON *
+
+struct cJSON
+
 #include "mate_grammar.h"
 #include <wsutil/file_util.h>
 #include <wsutil/str_util.h>

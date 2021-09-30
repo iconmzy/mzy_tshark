@@ -863,7 +863,10 @@ static cJSON_bool parse_string(cJSON * const item, parse_buffer * const input_bu
                     break;
 
                 default:
-                    goto fail;
+                    *output_pointer++ = *input_pointer;
+                    *output_pointer++ = input_pointer[1];
+                    break;
+//                    goto fail;
             }
             input_pointer += sequence_length;
         }
@@ -1168,7 +1171,7 @@ fail:
 }
 
 /* Default options for cJSON_Parse */
-CJSON_PUBLIC(cJSON *) cJSON_Parse(const char *value)
+cJSON * cJSON_Parse(const char *value)
 {
     return cJSON_ParseWithOpts(value, 0, 0);
 }
