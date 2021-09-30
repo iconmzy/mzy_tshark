@@ -156,11 +156,7 @@ static void follow_print_hex(const char *prefixp, guint32 offset, void *datap, i
 
 static void follow_draw(void *contextp)
 {
-  static const char     separator[] =
-    "===================================================================\n";
-
   follow_info_t *follow_info = (follow_info_t*)contextp;
-  cli_follow_info_t* cli_follow_info = (cli_follow_info_t*)follow_info->gui_data;
   gchar             buf_c[WS_INET6_ADDRSTRLEN];
   gchar             buf_s[WS_INET6_ADDRSTRLEN];
   GList             *cur;

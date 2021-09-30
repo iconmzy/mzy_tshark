@@ -64,6 +64,7 @@ char PACKET_PROTOCOL_TYPES[256] = {0};
 char PACKET_PROTOCOL_PATH[256] = {0};
 
 int EDIT_FILES_SIZES = 1000;
+int PER_FILES_MAX_LINES = 10000;
 gboolean INSERT_MANY_PROTOCOL_STREAM_FLAG = 1;
 int INSERT_MANY_PROTOCOL_STREAM_NUM = 1000;
 
@@ -111,8 +112,15 @@ struct strNameSameLevel {
 };
 struct strNameSameLevel *strname_head;
 
+typedef struct pFile_Info{
+    FILE *fp;
+    std::string fileName_ori;//最原始文件名
+    std::string fileName_last;//最后/最新文件名
+    int lines;
+    int times;
+}pFILE_INFO;
 //协议名称与对应的文件打开的指针map
-std::map<std::string, FILE *> pFile_map;
+std::map<std::string, pFILE_INFO *> pFile_map;
 
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin ||||
 //rtp stream---------------------- 20210909 yy ----------------------rtp stream begin |||
@@ -432,7 +440,7 @@ void mkdirs(const char *muldir) {
  * @param protocol
  * @return
  */
-gboolean write_Files(std::string &stream, std::string &protocol) {
+gboolean write_Files(std::string const &stream, std::string const &protocol,int lines) {
 
     if (access(EXPORT_PATH, 0) != 0) {  // type为0表示判断该路径是否存在
         /*当前协议对应文件夹不存在*/
@@ -445,28 +453,30 @@ gboolean write_Files(std::string &stream, std::string &protocol) {
 
     strcpy(filepath_t, filepath__str_t.c_str());
     strcpy(fileDirPath_t, filedirpath_str_t.c_str());
+    pFILE_INFO *fp_t;
 
-    if (pFile_map.size() == 0) {
+    if (pFile_map.empty()) {
         /*当前是空map*/
         if (access(fileDirPath_t, 0) != 0) {
             /*当前文件夹不存在*/
             mkdirs(fileDirPath_t);
         }
-
-        FILE *fp = fopen(filepath_t, "a+");
-        if (fp == NULL) {
+        fp_t = new pFile_Info;
+        fp_t->fp = fopen(filepath_t, "a+");
+        if (fp_t->fp == NULL) {
             g_print("open filepath error!\n");
             return false;
         }
-        pFile_map.insert(std::pair<std::string, FILE *>(protocol, fp));
-        fputs(stream.c_str(), fp);
-        fflush(fp);
+        fp_t->fileName_ori = filepath_t;
+        fp_t->fileName_last = filepath_t;
+        fp_t->lines = 0;
+        fp_t->times = 1;
+        pFile_map.insert(std::pair<std::string, pFILE_INFO*>(protocol, fp_t));
     } else {
-        std::map<std::string, FILE *>::iterator it;
+        std::map<std::string, pFILE_INFO*>::iterator it;
         it = pFile_map.find(protocol);
         if (it != pFile_map.end()) {
-            fputs(stream.c_str(), it->second);
-            fflush(it->second);
+            fp_t = it->second;
         } else {
 //            没有找到对应的文件句柄,接下来新增一个句柄.
             if (access(fileDirPath_t, 0) != 0) {
@@ -475,16 +485,43 @@ gboolean write_Files(std::string &stream, std::string &protocol) {
                  */
                 mkdirs(fileDirPath_t);
             }
-            FILE *fp = fopen(filepath_t, "a+");
-            if (fp == NULL) {
+            fp_t = new pFile_Info;
+            fp_t->fp = fopen(filepath_t, "a+");
+            if (fp_t->fp == NULL) {
                 g_print("open filepath error!\n");
                 return false;
             }
-            pFile_map.insert(std::pair<std::string, FILE *>(protocol, fp));
-            fputs(stream.c_str(), fp);
-            fflush(fp);
+            fp_t->fileName_ori = filepath_t;
+            fp_t->fileName_last = filepath_t;
+            fp_t->lines = 0;
+            fp_t->times = 1;
+            pFile_map.insert(std::pair<std::string, pFILE_INFO*>(protocol, fp_t));
         }
     }
+
+    fp_t->lines += lines;
+    if(fp_t->lines > PER_FILES_MAX_LINES){
+        //单个文件行数已经大于配置数
+        fclose(fp_t->fp);
+        std::string fN_t = fp_t->fileName_last;
+        stringReplaceByStr(fN_t,".writting",".txt");
+        rename(fp_t->fileName_last.c_str(),fN_t.c_str()); //将writing 写成最终文件。
+        std::string tail = "_"+numtos(fp_t->times)+".";
+        std::string file_t = fp_t->fileName_ori;
+        file_t.replace(file_t.rfind('.'),1,tail);//在原始文件名上更改
+        FILE *fp = fopen(file_t.c_str(),"a+");
+        if(!fp){
+            g_print("%s open error,FUNCTION:%s",file_t.c_str(),__FUNCTION__);
+        }
+        fp_t->lines = lines;
+        fp_t->times++;
+        fp_t->fp = fp;
+        fp_t->fileName_last = file_t;
+    }
+
+    g_assert(fp_t->fp); //这里肯定fp不能为空。否则文件不知道写到那里。
+    fputs(stream.c_str(),fp_t->fp);
+    fflush(fp_t->fp);
     return true;
 }
 /**
@@ -642,7 +679,7 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
             index_t->contents.append(stream);
             if (++index_t->times >= INSERT_MANY_PROTOCOL_STREAM_NUM) {
                 /*批量插入*/
-                if (!write_Files(index_t->contents, protocol)) {
+                if (!write_Files(index_t->contents, protocol,INSERT_MANY_PROTOCOL_STREAM_NUM)) {
                     g_print("%s insert error!\n", protocol.c_str());
                 }
                 /*批量插入成功后对这个缓存节点清空并释放缓存*/
@@ -654,7 +691,7 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
             }
         } else {
             /*NULL 头插法循环双链表*/
-            insertManyProtocolStream *temp = new insertManyProtocolStream;
+            auto *temp = new insertManyProtocolStream;
             temp->protocol = protocol;
             temp->contents.append(stream);
             temp->times = 1;
@@ -664,7 +701,7 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
             temp->next->pre = temp;
         }
     } else {
-        if (!write_Files(stream, protocol)) {
+        if (!write_Files(stream, protocol,1)) {
             g_print("%s insert error !\n", protocol.c_str());
         }
     }
@@ -1240,14 +1277,14 @@ void do_handle_strem(gpointer str,gpointer data __U__){
 }
 /**
  * 判断当前流是否输出
- * @param sip
- * @param sport
- * @param dip
- * @param dport
+ * @param sip client ip
+ * @param sport client port
+ * @param dip server ip
+ * @param dport server port
  * @return
  */
 gboolean JudgeStreamPrint(gchar* sip,guint sport,gchar *dip,guint dport){
-    for (auto & i : h263_stream_Need) {
+    for (auto &i : h263_stream_Need) {
         if(strcmp(sip,i.sip.c_str()) == 0 and strcmp(dip,i.dip.c_str()) == 0 and i.sport == numtos(sport) and i.dport == numtos(dport)){
             if(!streamFileName_t.empty()){
                 return true;
@@ -1385,6 +1422,7 @@ gboolean readConfigFilesStatus() {
                 char *registration_file_path;
                 char *write_in_es_flag;
                 char *es_url;
+                char *per_files_max_linex;
 
                 /**
                  * 这里需要把当前运行的时间戳定下来
@@ -1455,6 +1493,11 @@ gboolean readConfigFilesStatus() {
                 if (edit_files_sizes != NULL) {
                     EDIT_FILES_SIZES = std::stoi(edit_files_sizes);
                 } else EDIT_FILES_SIZES = 1000;
+
+                per_files_max_linex = getInfo_ConfigFile("PER_FILES_MAX_LINES", info, lines);
+                if (per_files_max_linex != NULL) {
+                    PER_FILES_MAX_LINES = std::stoi(per_files_max_linex);
+                } else PER_FILES_MAX_LINES = 10000;
 
                 edit_files_dissect_flag = getInfo_ConfigFile("EDIT_FILES_DISSECT_FLAG", info, lines);
                 if (edit_files_dissect_flag != NULL) {
@@ -1589,7 +1632,7 @@ void clean_Temp_Files_All() {
             /*批量插入缓存还有内容*/
             insertManyProtocolStream *index_t = insertmanystream_Head->next;
             while (index_t != insertmanystream_Head) {
-                write_Files(index_t->contents, index_t->protocol);
+                write_Files(index_t->contents, index_t->protocol,1);//最后的清理工作，默认当作1条数据，会导致一个文件行数目可能会大于PER_FILES_MAX_LINES。
                 insertManyProtocolStream *t = index_t;
                 index_t = index_t->next;
                 delete t;
@@ -1605,9 +1648,11 @@ void clean_Temp_Files_All() {
         }
         /*最后内存清空,modify files name, .writting -> .txt*/
         for (const auto& index : pFile_map) {
-            std::string oldName_t = EXPORT_PATH + index.first + "/" + index.first + "_" + global_time_str + ".writting";
-            std::string newName_t = EXPORT_PATH + index.first + "/" + index.first + "_" + global_time_str + ".txt";
+            std::string oldName_t = index.second->fileName_last;
+            std::string newName_t = index.second->fileName_last;
+            stringReplaceByStr(newName_t,".writting",".txt");
             rename(oldName_t.c_str(), newName_t.c_str());
+            fclose(index.second->fp);
         }
         pFile_map.clear();
         /*最终初始化互斥变量*/
