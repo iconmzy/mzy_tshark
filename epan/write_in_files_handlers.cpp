@@ -139,7 +139,7 @@ const char *rtp_payload_type_to_str[128] = {
         "RTPType-107","RTPType-108","RTPType-109","RTPType-110","RTPType-111","RTPType-112","RTPType-113","RTPType-114","RTPType-115","RTPType-116","RTPType-117",\
         "RTPType-118","RTPType-119","RTPType-120","RTPType-121","RTPType-122","RTPType-123","RTPType-124","RTPType-125","RTPType-126","RTPType-127"
         };
-std::map<std::uint8_t,std::string> rtp_payload_type_To_tail{{0,"au"},{2,"au"},{4,"au"},{8,"au"},{9,"au"},{17,"au"},{32,"mpeg"}};
+std::map<std::uint8_t,std::string> rtp_payload_type_To_tail{{0,"au"},{2,"au"},{4,"au"},{8,"au"},{9,"au"},{17,"au"},{32,"mpeg"}};//key 是rtp_payload_type_to_str的下标，value是该格式对应的输出文件名。
 struct rtpFileRel{
     FILE * fp;
     struct _GHashTable *decoders_hash;
@@ -834,6 +834,7 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
     }
     return true;
 }
+
 /**
  * 匹配线路号
  * @param pattern 匹配模式
@@ -1389,6 +1390,13 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
     }
 }
 
+/**
+ * 给定rtp的类型，返回组报结果文件名
+ * @param type rtptype（下标0-127）
+ * @param s global_time_str
+ * @param p ssrc
+ * @return
+ */
 std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const std::string &p){
     std::string file_t,tail_t;
     auto index_t = rtp_payload_type_To_tail.find(type);
