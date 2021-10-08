@@ -272,6 +272,37 @@ std::string gotStrNameByStrName(std::string &strname) {
         return strname;
     }
 }
+/**
+ * 判断是否重复key_str  重复返回1，非重复返回0
+ * @param key_str
+ * @return
+ */
+gboolean judgeDuplicateKeyStr(const std::string &key_str){
+    if(strname_head->next == nullptr){
+        auto *temp = new struct strNameSameLevel;
+        temp->next = strname_head->next;
+        temp->times = 0;
+        temp->str_name = key_str;
+        strname_head->next = temp;
+        return false;
+    } else{
+        struct strNameSameLevel *temp = strname_head->next;
+        while (temp != nullptr) {
+            if (temp->str_name == key_str) {
+                temp->times++;
+                return true;
+            }
+            temp = temp->next;
+        }
+        //头插法插入名称节点。
+        auto *temp_t = new struct strNameSameLevel;
+        temp_t->next = strname_head->next;
+        temp_t->times = 0;
+        temp_t->str_name = key_str;
+        strname_head->next = temp_t;
+        return false;
+    }
+}
 
 void initStrNameLevelLinkList(struct strNameSameLevel *node) {
     if (node != NULL) {
@@ -879,9 +910,24 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
             while (key_str.find('.') != std::string::npos) {  /* 返回string::npos表示未查找到匹配项 */
                 key_str.replace(key_str.find('.'), 1, "_");
             }
-            //返回该包内重复字段的名称，如A_01,A_02...
-            key_str = gotStrNameByStrName(key_str);
-            cJSON_AddStringToObject(json_t,key_str.c_str(),value);
+
+            //重复字段的数组处理
+            if(judgeDuplicateKeyStr(key_str)){
+                cJSON *item = cJSON_GetObjectItem(json_t,key_str.c_str());
+                if(cJSON_IsArray(item)){
+                    //已经是数组
+                    cJSON_AddItemToArray(item,cJSON_CreateString(value));
+                } else{
+                    //第一次重复
+                    std::string pre_value = cJSON_GetStringValue(item);
+                    cJSON_DeleteItemFromObject(json_t, key_str.c_str());
+                    cJSON * temp_array = cJSON_AddArrayToObject(json_t, key_str.c_str());
+                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(pre_value.c_str()));
+                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(value));
+                }
+            } else{
+                cJSON_AddStringToObject(json_t,key_str.c_str(),value);
+            }
             delete []value;
         } else{
             temp = temp->first_child;
