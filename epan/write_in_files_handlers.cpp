@@ -903,7 +903,7 @@ void parse_offline_regex_dict(char *source_str){
         head = node;
         cjson = cjson->next;
 
-        g_print("s%, s%, s%", node->key, node->value, node->regex);
+        g_print("%s, %s, %s", node->key, node->value, node->regex);
     }
 
     head->next = nullptr;
@@ -945,7 +945,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         stack_node_t = stack_node_t->next;
     }
     /*单独的协议过滤*/
-    if (kmp("[tcp],[udp],[data]", "[" + write_in_files_proto + "]") != -1) {
+    if (kmp("[tcp],[udp]", "[" + write_in_files_proto + "]") != -1) {
         return true;
     }
 
@@ -1118,6 +1118,24 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             }
             node = node->next;
             continue;
+        }
+
+        /*未知协议识别规则：最后层协议为data,暂定为未知协议,20211008 yy*/
+        if(strcmp(fi->hfinfo->abbrev,"data") == 0){
+            if(node->first_child->first_child != nullptr){
+                //当前data并不是最后一个协议，
+                continue;
+            }
+            field_info *fi_data = node->first_child->finfo;
+            if(strcmp(fi_data->hfinfo->abbrev,"data.data") == 0){
+                auto *value = new gchar[fi_data->length *2 +1];
+                yy_proto_item_fill_label(fi_data,value);
+                cJSON_AddStringToObject(write_in_files_cJson,"data",value);
+                write_in_files_proto = "unkown";
+                delete []value;
+            }
+            //这里直接退出协议数据获取循环。不必进入最后层协议的解析。
+            break;
         }
         /*最后层协议的解析*/
         if (strcmp(fi->hfinfo->abbrev, write_in_files_proto.c_str()) == 0) {
@@ -1741,9 +1759,9 @@ void change_result_file_name() {
     std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
     rename(oldName_t.c_str(), newName_t.c_str());
 
-    std::time_t end_time = std::time(0);
+    std::time_t end_time = std::time(nullptr);
     g_print("结束时间戳：%s \n", numtos((u_long) end_time).c_str());
-    int begin_time = atoi(global_time_str.c_str());
+    int begin_time = (int)strtol(global_time_str.c_str(), nullptr,10);
     int cost_time = (int) end_time - begin_time;
     g_print("总计耗时：%d 秒\n", cost_time);
 

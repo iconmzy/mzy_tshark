@@ -2430,7 +2430,7 @@ int main(int argc, char *argv[]) {
                             do_dissection = must_do_dissection(rfcode, dfcode, pdu_export_arg);
                             mutex = FALSE;
                         }
-
+                        g_print("正在解析-->:%s\n",cf_name);
                         status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP
                                                   global_capture_opts.has_autostop_packets
@@ -2462,6 +2462,7 @@ int main(int argc, char *argv[]) {
 
                         temp = temp->next;
                         cf_close(&cfile);  //关闭打开的pcap文件
+                        g_print("完成解析-->:%s\n",cf_name);
                     }
                 }
             }
@@ -2488,6 +2489,7 @@ int main(int argc, char *argv[]) {
                 memset(FILE_NAME_T,'\0',256);
                 strcpy(FILE_NAME_T,file_name_t); //文件名
 
+                g_print("正在解析-->: %s\n",cf_name);
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();
                     extcap_cleanup();
@@ -2529,6 +2531,7 @@ int main(int argc, char *argv[]) {
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                 change_result_file_name();
                 cf_close(&cfile);  //关闭打开的pcap文件
+                g_print("完成解析-->:%s\n",cf_name);
 
                 draw_taps = TRUE;
 
