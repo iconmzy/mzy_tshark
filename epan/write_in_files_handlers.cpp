@@ -81,10 +81,11 @@ char JSON_ADD_PROTO_PATH[256] = {0};
 
 //线路号相关配置
 char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
-char OFFLINE_LINE_NO_REGEX[512] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
+static char OFFLINE_LINE_NO_REGEX[512] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 char OFFLINE_LINE_LINE_NO[256] = {0};
-struct offline_regex_dict *regex_dict = nullptr;
+cJSON *regex_dict = nullptr;
+std::map<std::string,std::string> regex_dict_map;
 
 //写入ES数据库相关配置
 gboolean WRITE_IN_ES_FLAG = 0;  /* 配置是否写入ElasticSearch数据库 */
@@ -994,17 +995,21 @@ void match_line_no(char *pattern, char *source_str, char * target) {
         }
     }
     catch (std::runtime_error){
-        g_print("regex grammar format error !");
+        g_print("regex grammar format error !\n");
         strcpy(target, "");
     }
 }
 
 void parse_offline_regex_dict(char *source_str){
-
-    for(struct offline_regex_dict* i= regex_dict; i!= nullptr; i = i->next){
-        match_line_no(i->value, source_str, i->regex);
-//        g_print("%s, %s, %s\n", i->key, i->value, i->regex);
+    cJSON *temp = regex_dict->child;
+    while (temp!=nullptr){
+        char value[250] = {0};
+        match_line_no(temp->valuestring, source_str, value);
+        cJSON_AddStringToObject(write_in_files_cJson, temp->string, value);
+        regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
+        temp = temp->next;
     }
+
 }
 
 /**
@@ -1060,15 +1065,11 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     if (read_Pcap_From_File_Flag == 1) {
         /* 单个文件 */
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
-//        cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
-        if(regex_dict){
-            offline_regex_dict* first =  regex_dict;
-            while(first && first->key != nullptr){
-                cJSON_AddStringToObject(write_in_files_cJson, first->key, first->regex);
-                first = first->next;
+        if(!regex_dict_map.empty()){
+            for (auto & i : regex_dict_map) {
+                cJSON_AddStringToObject(write_in_files_cJson, i.first.c_str(), i.second.c_str());
             }
         }
-
     } else {
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
         cJSON_AddStringToObject(write_in_files_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
@@ -1526,6 +1527,7 @@ std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const
 
 /**
  * 初始化拿json的map数据，正常取值返回1，否则返回0，flag为0表示没有初始化，为1表示已初始化。
+ * 另外部分需要一开始初始化的参数也在这里初始化
  * @param flag
  * @return
  */
@@ -1536,6 +1538,8 @@ gboolean initWriteJsonFiles(char *flag) {
     strname_head->next = nullptr;
     strname_head->str_name = "";
     strname_head->times = 0;
+
+    regex_dict = (cJSON *)cJSON_Parse(OFFLINE_LINE_NO_REGEX); //线路号匹配的json初始化
 
     /*批量插入初始化头部节点*/
     if (INSERT_MANY_PROTOCOL_STREAM_FLAG == 1) {
@@ -1560,6 +1564,7 @@ gboolean initWriteJsonFiles(char *flag) {
     tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.type");
     tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.ciphersuite");
     tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.certificates");
+
 
 
     /*初始化互斥变量*/
@@ -1778,33 +1783,11 @@ gboolean readConfigFilesStatus() {
                 offline_line_no_regex = getInfo_ConfigFile("OFFLINE_LINE_NO_REGEX", info, lines);
                 if (offline_line_no_regex != nullptr) {
                     strcpy(OFFLINE_LINE_NO_REGEX, offline_line_no_regex);
-                    cJSON *ljson;
-                    ljson = (cJSON *)cJSON_Parse(OFFLINE_LINE_NO_REGEX);
-                    int regex_len = cJSON_GetArraySize(ljson);
-                    regex_dict = (offline_regex_dict *)malloc(sizeof(offline_regex_dict));
-                    offline_regex_dict *head = regex_dict;
-                    head->next = nullptr;
-                    cJSON *cjson = ljson->child;
-                    for(int i=0; i<regex_len; i++){
-                        auto *node = (offline_regex_dict *)malloc(sizeof(offline_regex_dict));
-                        node->key = (char*) malloc(sizeof (char)*128);
-                        strcpy(node->key, cjson->string);
-                        node->value = (char*) malloc(sizeof (char)*128);
-                        strcpy(node->value, cjson->valuestring);
-                        node->regex = (char*) malloc(sizeof (char)*256);
-                        node->next = head->next;
-                        head->next = node;
-                        cjson = cjson->next;
-                    }
-                    struct offline_regex_dict * t = regex_dict->next;
-                    free(regex_dict);
-                    regex_dict = t;
                 } else {
                     strcpy(OFFLINE_LINE_NO_REGEX, "");
                 }
 
                 destroInfo_ConfigFile(info);
-
             };
             CATCH_ALL {
                 return false;
@@ -1849,13 +1832,9 @@ void clean_Temp_Files_All() {
             rename(oldName_t.c_str(), newName_t.c_str());
             fclose(index.second->fp);
         }
-        //free regex_dict
-        struct offline_regex_dict * t = regex_dict->next;
-        while (t!= nullptr){
-            free(regex_dict);
-            regex_dict =t;
-            t = regex_dict->next;
-        }
+
+        //delete regex_dict cJson
+        cJSON_Delete(regex_dict);
 
         pFile_map.clear();
         /*最终初始化互斥变量*/
@@ -1879,6 +1858,12 @@ void add_record_in_result_file() {
         fputs("\r\n", fp_result_timestampe);
         fflush(fp_result_timestampe);
     }
+}
+/**
+ * 单个文件结束，进行初始化操作函数
+ */
+void single_File_End_Init(){
+    regex_dict_map.clear(); //每个文件的线路号清空
 }
 
 void change_result_file_name() {

@@ -15,7 +15,7 @@
 #include <sys/wait.h>
 #include "dirent.h"
 #include "wsutil/codecs.h"
-
+#include <curl/curl.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -179,7 +179,6 @@ char FILE_NAME_T[256] = {0};//存放文件名。
 
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
-char OFFLINE_LINE_NO_REGEX[512];  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
 
 static guint32 cum_bytes;
@@ -936,7 +935,7 @@ int main(int argc, char *argv[]) {
                 print_packet_info = TRUE;
                 print_summary = TRUE;
                 break;
-            case 'r': /* Read capture file x */
+            case 'r': /* Read config file config.txt */
                 config_file_path = g_strdup(optarg);
                 strcpy(CONFIG_FILES_PATH, config_file_path);
 
@@ -2371,7 +2370,6 @@ int main(int argc, char *argv[]) {
                         memset(READ_FILE_PATH, '\0', 256);
                         strcpy(READ_FILE_PATH, cf_name);
 
-//                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                         parse_offline_regex_dict(cf_name);
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
@@ -2399,6 +2397,7 @@ int main(int argc, char *argv[]) {
                         g_print("完成解析-->:%s\n",cf_name);
                         mutex_final_clean_flag = FALSE;
                         add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
+                        single_File_End_Init();
 
                         if (temp->next == NULL) {  //文件遍历结束
                             clean_Temp_Files_All();
@@ -2452,7 +2451,6 @@ int main(int argc, char *argv[]) {
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-//                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
                 parse_offline_regex_dict(cf_name);
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
@@ -2486,7 +2484,9 @@ int main(int argc, char *argv[]) {
                 g_print("完成解析-->:%s\n",cf_name);
                 clean_Temp_Files_All();
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
+                single_File_End_Init();
                 change_result_file_name();
+
                 cf_close(&cfile);  //关闭打开的pcap文件
 
                 if (pdu_export_arg) {
