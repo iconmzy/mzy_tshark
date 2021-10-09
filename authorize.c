@@ -162,6 +162,7 @@ char *addkey2(char *str) {
     }
     static char cha[30] = {"\0"};
     char cha1[30] = {"\0"};
+    cha[0]=0;
     for (int i = 0; i < n; i++) {
         sprintf(cha1, "%d", arr[i]);
         strcat(cha, cha1);
@@ -170,8 +171,10 @@ char *addkey2(char *str) {
 
 }
 
-void verify_identity(const char * reg_path){
+//void verify_identity(const char * reg_path){
+void verify_identity(){
     /*添加注册码功能*/
+    char reg_path[200]="./";//strcpy(reg_path,REGISTRATION_FILE_PATH);
     char mac[30];
     getMac(mac);
     char id[50];
@@ -179,8 +182,8 @@ void verify_identity(const char * reg_path){
     strcat(id, mac);
     calidenty(id);
     addkey1(id);
-    printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    printf("The machine id: %s\n", id);
+    //printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //printf("The machine id: %s\n", id);
     char machine_id_path[100] = {"\0"};
     strcpy(machine_id_path, reg_path);
     strcat(machine_id_path, "activecode.txt");
@@ -192,13 +195,11 @@ void verify_identity(const char * reg_path){
     strcpy(regist_path, reg_path);
     strcat(regist_path, "regist.txt");
     FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
+    /*
     if (infp == NULL) {
         printf("请输入激活码：\n");
         scanf("%s", active);
-        while (strcmp(active, key) != 0) {
-            printf("请输入激活码：\n");
-            scanf("%s", active);
-        }
+        while (strcmp(active, key) != 0) {       printf("请输入激活码：\n");      scanf("%s", active);     }
         strcpy(sto, active);
         writefile(regist_path, sto);
     } else {
@@ -209,17 +210,18 @@ void verify_identity(const char * reg_path){
         if (strcmp(key, active) != 0) {
             printf("激活码错误，请重新输入：\n");
 
-            while (strcmp(key, active) != 0) {
-                printf("激活码错误，请重新输入：\n");
-                scanf("%s", active);
-            }
+            while (strcmp(key, active) != 0) { printf("激活码错误，请重新输入：\n");   scanf("%s", active); }
             strcpy(sti, active);
             writefile(regist_path, sti);
-        } else {
-            printf("该设备已永久激活！\n");
-        }
-
+        } else {       printf("该设备已永久激活！\n");     }
+    }*/
+    if (infp != NULL){
+        char sti[80]; fscanf(infp, "%s", sti);   fclose(infp);
+        strcpy(active, sti);
+        if (strcmp(key, active) == 0) {   /* printf("该设备已激活！\n"); */}
+        else {printf("illegal user1\n");while(1){};}
     }
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    else {printf("illegal user2\n");while(1){};}
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     /*注册码功能结束*/
 }
