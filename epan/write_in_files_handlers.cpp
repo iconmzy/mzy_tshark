@@ -969,23 +969,15 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
  * @param source_str 目标文本串
  * @return
  */
-#define GET_FILENAME_FROM_PATH(_ptr_, _filename_) do {  \
-	_ptr_ = strrchr(_filename_, '/');  \
-	if (_ptr_ == NULL)  _ptr_ = _filename_;  \
-	else  _ptr_++;  \
-} while (0)
 
 void match_line_no(char *pattern, char *source_str, char * target) {
     try{
-        std::regex reg(pattern);  //, std::regex_constants::extended
-        //std::string s = source_str;
-//        char * ret;
+
+        std::regex reg(pattern);  // TODO:这里的(?<=_).*(?=_\w{8}T\w{6}) 这种表达式会格式错误。
+
         std::cmatch results;
 
-        /* get filename from path */
-        const char *_ptr_ = nullptr;
-        GET_FILENAME_FROM_PATH(_ptr_, source_str);
-        bool match_bool = std::regex_search(_ptr_, results, reg);
+        bool match_bool = std::regex_search(source_str, results, reg);
 
         // g_print("%d", match_bool);
         if(match_bool){
@@ -1000,13 +992,13 @@ void match_line_no(char *pattern, char *source_str, char * target) {
     }
 }
 
-void parse_offline_regex_dict(char *source_str){
+void parse_offline_regex_dict(){
     cJSON *temp = regex_dict->child;
     while (temp!=nullptr){
         char value[250] = {0};
-        match_line_no(temp->valuestring, source_str, value);
+        match_line_no(temp->child->valuestring, FILE_NAME_T, value);
         cJSON_AddStringToObject(write_in_files_cJson, temp->string, value);
-        regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
+        regex_dict_map.insert(std::pair<std::string,std::string>(temp->child->string,value));
         temp = temp->next;
     }
 

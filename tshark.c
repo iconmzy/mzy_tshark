@@ -2370,7 +2370,7 @@ int main(int argc, char *argv[]) {
                         memset(READ_FILE_PATH, '\0', 256);
                         strcpy(READ_FILE_PATH, cf_name);
 
-                        parse_offline_regex_dict(cf_name);
+                        parse_offline_regex_dict();
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
@@ -2428,7 +2428,7 @@ int main(int argc, char *argv[]) {
                 strcpy(READ_FILE_PATH, cf_name); //文件名含路径
                 char file_name_t[256] = {0}; //获取文件名
                 for (int i = (int)strlen(cf_name),j = 0; i != 0 ; i--) {
-                    if(cf_name[i] == '.'){
+                    if(cf_name[i] == '.' && j == 0){
                         j=i;
                     }
                     else if(cf_name[i] == '/' && j != 0){
@@ -2451,7 +2451,7 @@ int main(int argc, char *argv[]) {
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-                parse_offline_regex_dict(cf_name);
+                parse_offline_regex_dict();
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will

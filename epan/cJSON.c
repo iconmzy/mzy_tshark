@@ -862,10 +862,10 @@ static cJSON_bool parse_string(cJSON * const item, parse_buffer * const input_bu
                     }
                     break;
 
-                default:
-                    *output_pointer++ = *input_pointer;
-                    *output_pointer++ = input_pointer[1];
-                    break;
+//                default:
+//                    *output_pointer++ = *input_pointer;
+//                    *output_pointer++ = input_pointer[1];
+//                    break;
 //                    goto fail;
             }
             input_pointer += sequence_length;

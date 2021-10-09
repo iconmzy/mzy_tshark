@@ -91,7 +91,7 @@ WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 //};
 //WS_DLL_PUBLIC struct offline_regex_dict *regex_dict;
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
-WS_DLL_PUBLIC void parse_offline_regex_dict(char *);
+WS_DLL_PUBLIC void parse_offline_regex_dict();
 
 /**
  * 下面是读取配置文件相关函数
