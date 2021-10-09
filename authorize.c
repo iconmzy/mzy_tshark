@@ -169,3 +169,57 @@ char *addkey2(char *str) {
     return cha;
 
 }
+
+void verify_identity(const char * reg_path){
+    /*添加注册码功能*/
+    char mac[30];
+    getMac(mac);
+    char id[50];
+    cpu_id(id);
+    strcat(id, mac);
+    calidenty(id);
+    addkey1(id);
+    printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("The machine id: %s\n", id);
+    char machine_id_path[100] = {"\0"};
+    strcpy(machine_id_path, reg_path);
+    strcat(machine_id_path, "activecode.txt");
+    usersee(machine_id_path, id);
+    char active[80];
+    char *key = addkey2(id);
+    char sto[80];
+    char regist_path[100] = {"\0"};
+    strcpy(regist_path, reg_path);
+    strcat(regist_path, "regist.txt");
+    FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
+    if (infp == NULL) {
+        printf("请输入激活码：\n");
+        scanf("%s", active);
+        while (strcmp(active, key) != 0) {
+            printf("请输入激活码：\n");
+            scanf("%s", active);
+        }
+        strcpy(sto, active);
+        writefile(regist_path, sto);
+    } else {
+        char sti[80];
+        fscanf(infp, "%s", sti);
+        fclose(infp);
+        strcpy(active, sti);
+        if (strcmp(key, active) != 0) {
+            printf("激活码错误，请重新输入：\n");
+
+            while (strcmp(key, active) != 0) {
+                printf("激活码错误，请重新输入：\n");
+                scanf("%s", active);
+            }
+            strcpy(sti, active);
+            writefile(regist_path, sti);
+        } else {
+            printf("该设备已永久激活！\n");
+        }
+
+    }
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    /*注册码功能结束*/
+}

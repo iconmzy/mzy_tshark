@@ -951,59 +951,7 @@ int main(int argc, char *argv[]) {
                 }
 
                 /*添加注册码功能*/
-                char hname[128];
-                gethostname(hname, sizeof(hname));
-                char mac[30];
-                getMac(mac);
-                char id[50];
-                cpu_id(id);
-                strcat(id, mac);
-                calidenty(id);
-                addkey1(id);
-                printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-                printf("The machine id: %s\n", id);
-                char machine_id_path[100] = {'\0'};
-                strcpy(machine_id_path, REGISTRATION_FILE_PATH);
-                strcat(machine_id_path, "activecode.txt");
-                usersee(machine_id_path, id);
-                char active[80];
-                char *key = addkey2(id);
-                char sto[80];
-                char regist_path[100] = {"\0"};
-                strcpy(regist_path, REGISTRATION_FILE_PATH);
-                strcat(regist_path, "regist.txt");
-                FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
-                if (infp == NULL) {
-                    printf("请输入激活码：\n");
-                    scanf("%s", active);
-                    while (strcmp(active, key) != 0) {
-                        printf("请输入激活码：\n");
-                        scanf("%s", active);
-                    }
-                    strcpy(sto, active);
-                    writefile(regist_path, sto);
-                } else {
-                    char sti[80];
-                    fscanf(infp, "%s", sti);
-                    fclose(infp);
-                    strcpy(active, sti);
-                    if (strcmp(key, active) != 0) {
-                        printf("激活码错误，请重新输入：\n");
-
-                        while (strcmp(key, active) != 0) {
-                            printf("激活码错误，请重新输入：\n");
-                            scanf("%s", active);
-                        }
-                        strcpy(sti, active);
-                        writefile(regist_path, sti);
-                    } else {
-                        printf("该设备已永久激活！\n");
-                    }
-
-                }
-                printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-                /*注册码功能结束*/
-
+                verify_identity(REGISTRATION_FILE_PATH);
                 /**
                  * 针对配置文件对项目进行配置
                  */
@@ -2400,7 +2348,7 @@ int main(int argc, char *argv[]) {
         else {
             struct stat st;
             stat(cf_name, &st);
-
+            //verify_identity(REGISTRATION_FILE_PATH);
             if (S_ISDIR(st.st_mode)) {
                 /*文件夹*/
                 if (access(cf_name, R_OK) == -1) {
@@ -2410,9 +2358,11 @@ int main(int argc, char *argv[]) {
                 }
                 else {
                     /*路径正常*/
+                    //verify_identity(REGISTRATION_FILE_PATH);
                     readFileList(cf_name, headOfDirPath);
                     pfileNameNode temp = headOfDirPath->next;
                     gboolean mutex = TRUE;
+                    //verify_identity(REGISTRATION_FILE_PATH);
                     while (temp != NULL) {
                         cf_name = temp->fileName_path;
                         /*将缓存的文件名全路径初始化*/
@@ -2467,12 +2417,14 @@ int main(int argc, char *argv[]) {
                         temp = temp->next;
                         cf_close(&cfile);  //关闭打开的pcap文件
                     }
+                    //verify_identity(REGISTRATION_FILE_PATH);
                 }
             }
             else {
                 //只有一个文件
                 /*文件名*/
                 /*将缓存的文件名字初始化*/
+                //verify_identity(REGISTRATION_FILE_PATH);
                 memset(READ_FILE_PATH, '\0', 256);
                 strcpy(READ_FILE_PATH, cf_name); //文件名含路径
                 char file_name_t[256] = {0}; //获取文件名
@@ -2493,6 +2445,7 @@ int main(int argc, char *argv[]) {
                 strcpy(FILE_NAME_T,file_name_t); //文件名
 
                 g_print("正在解析-->: %s\n",cf_name);
+                //verify_identity(REGISTRATION_FILE_PATH);
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();
                     extcap_cleanup();

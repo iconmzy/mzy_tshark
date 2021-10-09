@@ -1000,42 +1000,11 @@ void match_line_no(char *pattern, char *source_str, char * target) {
 }
 
 void parse_offline_regex_dict(char *source_str){
-//    g_list_free((GList*)regex_dict);
-    char* tmp;
-    int len = sizeof(OFFLINE_LINE_NO_REGEX);
-    tmp = (char*) malloc(len+1);
-    strcpy(tmp, OFFLINE_LINE_NO_REGEX);
 
-    cJSON *ljson;
-    ljson = (cJSON *)cJSON_Parse(tmp);
-
-    if(ljson== nullptr) return;
-    int regex_len = cJSON_GetArraySize(ljson);
-
-
-    regex_dict = (offline_regex_dict *)malloc(sizeof(offline_regex_dict));
-    offline_regex_dict *head = regex_dict;
-
-    cJSON *cjson = ljson->child;
-    int i;
-    for(i=0; i<regex_len; i++){
-        auto *node = (offline_regex_dict *)malloc(sizeof(offline_regex_dict));
-        node->key = (char*) malloc(sizeof (char)*128);
-        node->value = (char*) malloc(sizeof (char)*128);
-        strcpy(node->key, cjson->string);
-        strcpy(node->value, cjson->valuestring);
-        node->regex = (char*) malloc(sizeof (char)*256);
-        match_line_no(node->value, source_str, node->regex);
-        head->next = node;
-        head = node;
-        cjson = cjson->next;
-
-//        g_print("%s, %s, %s\n", node->key, node->value, node->regex);
+    for(struct offline_regex_dict* i= regex_dict; i!= nullptr; i = i->next){
+        match_line_no(i->value, source_str, i->regex);
+//        g_print("%s, %s, %s\n", i->key, i->value, i->regex);
     }
-
-    head->next = nullptr;
-    cJSON_Delete(ljson);
-    free(tmp);
 }
 
 /**
@@ -1093,7 +1062,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
 //        cJSON_AddStringToObject(write_in_files_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
         if(regex_dict){
-            offline_regex_dict* first =  regex_dict->next;
+            offline_regex_dict* first =  regex_dict;
             while(first && first->key != nullptr){
                 cJSON_AddStringToObject(write_in_files_cJson, first->key, first->regex);
                 first = first->next;
@@ -1257,7 +1226,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                 auto *value = new gchar[fi_data->length *2 +1];
                 yy_proto_item_fill_label(fi_data,value);
                 cJSON_AddStringToObject(write_in_files_cJson,"data",value);
-                write_in_files_proto = "unkown";
+                write_in_files_proto = "unknown";
                 delete []value;
             }
             //这里直接退出协议数据获取循环。不必进入最后层协议的解析。
@@ -1546,7 +1515,7 @@ std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const
     std::string file_t,tail_t;
     auto index_t = rtp_payload_type_To_tail.find(type);
     if(index_t == rtp_payload_type_To_tail.end()){
-        tail_t = "unknowType";
+        tail_t = "unknownType";
     } else{
         tail_t = index_t->second;
     }
@@ -1809,6 +1778,27 @@ gboolean readConfigFilesStatus() {
                 offline_line_no_regex = getInfo_ConfigFile("OFFLINE_LINE_NO_REGEX", info, lines);
                 if (offline_line_no_regex != nullptr) {
                     strcpy(OFFLINE_LINE_NO_REGEX, offline_line_no_regex);
+                    cJSON *ljson;
+                    ljson = (cJSON *)cJSON_Parse(OFFLINE_LINE_NO_REGEX);
+                    int regex_len = cJSON_GetArraySize(ljson);
+                    regex_dict = (offline_regex_dict *)malloc(sizeof(offline_regex_dict));
+                    offline_regex_dict *head = regex_dict;
+                    head->next = nullptr;
+                    cJSON *cjson = ljson->child;
+                    for(int i=0; i<regex_len; i++){
+                        auto *node = (offline_regex_dict *)malloc(sizeof(offline_regex_dict));
+                        node->key = (char*) malloc(sizeof (char)*128);
+                        strcpy(node->key, cjson->string);
+                        node->value = (char*) malloc(sizeof (char)*128);
+                        strcpy(node->value, cjson->valuestring);
+                        node->regex = (char*) malloc(sizeof (char)*256);
+                        node->next = head->next;
+                        head->next = node;
+                        cjson = cjson->next;
+                    }
+                    struct offline_regex_dict * t = regex_dict->next;
+                    free(regex_dict);
+                    regex_dict = t;
                 } else {
                     strcpy(OFFLINE_LINE_NO_REGEX, "");
                 }
@@ -1859,6 +1849,14 @@ void clean_Temp_Files_All() {
             rename(oldName_t.c_str(), newName_t.c_str());
             fclose(index.second->fp);
         }
+        //free regex_dict
+        struct offline_regex_dict * t = regex_dict->next;
+        while (t!= nullptr){
+            free(regex_dict);
+            regex_dict =t;
+            t = regex_dict->next;
+        }
+
         pFile_map.clear();
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;
