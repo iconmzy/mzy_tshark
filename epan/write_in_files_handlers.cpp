@@ -973,7 +973,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
 void match_line_no(char *pattern, char *source_str, char * target) {
     try{
 
-        std::regex reg(pattern);  // TODO:这里的(?<=_).*(?=_\w{8}T\w{6}) 这种表达式会格式错误。
+        std::regex reg(pattern);  // TODO:这里的 (?<=_).*(?=_\w{8}T\w{6}) 这种表达式会格式错误。
 
         std::cmatch results;
 
@@ -996,12 +996,11 @@ void parse_offline_regex_dict(){
     cJSON *temp = regex_dict->child;
     while (temp!=nullptr){
         char value[250] = {0};
-        match_line_no(temp->child->valuestring, FILE_NAME_T, value);
+        match_line_no(temp->valuestring, FILE_NAME_T, value);
         cJSON_AddStringToObject(write_in_files_cJson, temp->string, value);
-        regex_dict_map.insert(std::pair<std::string,std::string>(temp->child->string,value));
+        regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
         temp = temp->next;
     }
-
 }
 
 /**
