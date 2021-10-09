@@ -2527,13 +2527,11 @@ int main(int argc, char *argv[]) {
                             0);
 #endif
                 /*直接清理最终缓存*/
+                g_print("完成解析-->:%s\n",cf_name);
                 clean_Temp_Files_All();
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                 change_result_file_name();
                 cf_close(&cfile);  //关闭打开的pcap文件
-                g_print("完成解析-->:%s\n",cf_name);
-
-                draw_taps = TRUE;
 
                 if (pdu_export_arg) {
                     if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
@@ -2551,15 +2549,6 @@ int main(int argc, char *argv[]) {
            or get a list of link-layer types for a live capture device;
            do we have support for live captures? */
 #ifdef HAVE_LIBPCAP
-#ifdef _WIN32
-        /* Warn the user if npf.sys isn't loaded. */
-        if (!npf_sys_is_running())
-        {
-          fprintf(stderr, "The NPF driver isn't running.  You may have trouble "
-                          "capturing or\nlisting interfaces.\n");
-        }
-#endif /* _WIN32 */
-
         /* if no interface was specified, pick a default */
         exit_status = capture_opts_default_iface_if_necessary(&global_capture_opts,
                                                               ((prefs_p->capture_device) &&
@@ -2683,12 +2672,6 @@ int main(int argc, char *argv[]) {
         capture();
         exit_status = global_capture_session.fork_child_status;
 
-        if (print_packet_info) {
-            if (!write_finale()) {
-                show_print_file_io_error();
-            }
-        }
-
         /*
          * If we never got a capture file, don't draw the taps; we not only
          * didn't capture any packets, we never even did any capturing.
@@ -2708,10 +2691,13 @@ int main(int argc, char *argv[]) {
         cfile.provider.frames = NULL;
     }
 
+    //每个文件结束清理流统计。
+    draw_taps = TRUE;
     if (draw_taps){
         draw_tap_listeners(TRUE);
         followConnectFiveEleClear();
     }
+
     /* Memory cleanup */
     reset_tap_listeners();
     funnel_dump_all_text_windows();

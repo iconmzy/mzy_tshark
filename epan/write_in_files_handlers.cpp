@@ -168,6 +168,7 @@ void writeRTPstreamHead(FILE* fp);
 inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, const std::string &);//给定rtp的类型，返回组报结果文件名
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
 //tls stream---------------------- 20210909 yy ---------------------- tls stream begin |||
+GList *tls_fields = nullptr; //tls字段的双链表
 enum tls_Status{
     CLIENT_HELLO = 0,
     SERVER_HELLO,
@@ -208,7 +209,7 @@ struct comFiveEleContent{ //通信五元组内容
     std::string protocol;
     int status;
 };
-std::vector<struct comFiveEleContent> h263_stream_Need;
+std::vector<struct comFiveEleContent> h263_stream_Need; //存放每个流的通信五元组及其他信息
 std::string streamFileName_t; //缓存followstream文件名，协议+四元组
 FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
 
@@ -339,31 +340,36 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     if (strcmp(dst, "communityid") == 0) {
         return TRUE;
     }
-    if (strcmp(dst, "ftp.current-working-directory") == 0) {
+    else if (strcmp(dst, "ftp.current-working-directory") == 0) {
         return TRUE;
     }
-    if (strcmp(dst, "xml") == 0) {
+    else if (strcmp(dst, "xml") == 0) {
         return TRUE;
     }
-    if (strcmp(dst, "json") == 0) {
+    else if (strcmp(dst, "json") == 0) {
         return TRUE;
     }
-    if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
+    else if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
         return TRUE;
     }
-    if (strcmp(dst, "smb2.fsctl.wait.name") == 0) {  /* smb2协议中多解析出来的信息 */
+    else if (strcmp(dst, "smb2.fsctl.wait.name") == 0) {  /* smb2协议中多解析出来的信息 */
         return TRUE;
     }
-    if (strcmp(dst, "mswsp.msg") == 0) {  /* smb2的子协议mswsp中出现的畸形报文信息 */
+    else if (strcmp(dst, "mswsp.msg") == 0) {  /* smb2的子协议mswsp中出现的畸形报文信息 */
         return TRUE;
     }
-    if (strcmp(dst, "tcp.segments") == 0) {
+    else if (strcmp(dst, "tcp.segments") == 0) {
         return TRUE;
     }
-    if (strcmp(dst, "urlencoded-form") == 0) {
+    else if (strcmp(dst, "urlencoded-form") == 0) {
         return TRUE;
     }
-
+    else if (strcmp(dst, "data-text-lines") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "media") == 0) {
+        return TRUE;
+    }
     return FALSE;
 }
 /**
@@ -887,6 +893,13 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
                 g_assert(cookie !=nullptr);
                 GList *it = nullptr;
                 if ((it = g_list_find_custom(rtp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))) {
+                    if(!cookie->rtp_content){
+                        cookie->rtp_content = g_new0(rtp_Content,1);
+                        if(!cookie->rtp_content){
+                            g_print("rtp content init error!\n");
+                            continue;
+                        }
+                    }
                     if(strcmp((char*)it->data,"rtp.marker") == 0){
                         cookie->rtp_content->marker = std::stoi(value);
                     }
@@ -903,6 +916,15 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
                     else if(strcmp((char*)it->data,"rtp.p_type") == 0){
                         cookie->rtp_content->payload_type = std::stoi(value);
                     }
+                } else if((it = g_list_find_custom(tls_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
+                    if(!cookie->tls_content){
+                        cookie->tls_content = g_new0(tls_Content,1);
+                        if(!cookie->tls_content){
+                            g_print("tls content init error!\n");
+                            continue;
+                        }
+                    }
+                    //赋值
                 }
             }
 
@@ -1008,7 +1030,7 @@ void parse_offline_regex_dict(char *source_str){
         head = node;
         cjson = cjson->next;
 
-        g_print("%s, %s, %s\n", node->key, node->value, node->regex);
+//        g_print("%s, %s, %s\n", node->key, node->value, node->regex);
     }
 
     head->next = nullptr;
@@ -1251,8 +1273,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                         //要组报
                         /*传入递归的参数*/
                         struct totalParam *cookie_t = g_new0(totalParam,1);
-                        cookie_t->rtp_content = g_new0(rtp_Content,1);
-//                        cookie_t->tls_content = g_new0(tls_Content,1);
+
 //                        dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cursion_layer,cookie_t);
                         dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child,cookie_t);
                         g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
@@ -1503,7 +1524,7 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
         fpath_t += streamFileName_t + ".stream";
         if(!streamFileName_fp){
             assert(!streamFileName_t.empty());//名称肯定不能为空
-            streamFileName_fp = fopen(fpath_t.c_str(), "ab");
+            streamFileName_fp = fopen(fpath_t.c_str(), "a+");
              if(!streamFileName_fp){
                  g_print("stream follow fp open error!\n");
                  return false;
@@ -1566,10 +1587,10 @@ gboolean initWriteJsonFiles(char *flag) {
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.payload");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp.p_type");
     //tls
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "tls");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "tls.handshake.type");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "tls.handshake.ciphersuite");
-    rtp_fields = g_list_append(rtp_fields, (gpointer) "tls.handshake.certificates");
+    tls_fields = g_list_append(tls_fields, (gpointer) "tls");
+    tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.type");
+    tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.ciphersuite");
+    tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.certificates");
 
 
     /*初始化互斥变量*/
@@ -1844,6 +1865,9 @@ void clean_Temp_Files_All() {
     }
 }
 
+/**
+ * 写结果文件 result+global_time_str.writting -> .txt
+ */
 void add_record_in_result_file() {
     if (fp_result_timestampe == nullptr) {
         std::string filepath_str = RESULT_PATH;
@@ -1875,5 +1899,5 @@ void change_result_file_name() {
 }
 
 void followConnectFiveEleClear(){
-    h263_stream_Need.clear();//一个文件结束后 h263缓存流信息清空。
+    h263_stream_Need.clear();//程序快结束后，流信息清空（如h263）。在流统计输出初始化之后初始化。
 }
