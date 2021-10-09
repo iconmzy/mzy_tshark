@@ -318,14 +318,14 @@ void initStrNameLevelLinkList(struct strNameSameLevel *node) {
  * @param delim
  * @return
  */
-std::vector<std::string> split(const std::string &str, std::string delim) {
+std::vector<std::string> split(const std::string &str, const std::string& delim) {
     std::vector<std::string> res;
     char *source = new char[str.length() + 1];
     strcpy(source, str.c_str());
     char *p = strtok(source, delim.c_str());
     while (p) {
-        res.push_back(p);
-        p = strtok(NULL, delim.c_str());
+        res.emplace_back(p);
+        p = strtok(nullptr, delim.c_str());
     }
     delete[] source;
     return res;

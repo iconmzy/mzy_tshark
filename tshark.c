@@ -2400,13 +2400,15 @@ int main(int argc, char *argv[]) {
         else {
             struct stat st;
             stat(cf_name, &st);
+
             if (S_ISDIR(st.st_mode)) {
                 /*文件夹*/
                 if (access(cf_name, R_OK) == -1) {
                     /*路径无法访问*/
                     g_print("%s path not true !\n", cf_name);
                     exit(0);
-                } else {
+                }
+                else {
                     /*路径正常*/
                     readFileList(cf_name, headOfDirPath);
                     pfileNameNode temp = headOfDirPath->next;
@@ -2444,8 +2446,10 @@ int main(int argc, char *argv[]) {
                             0);
 #endif
                         /*直接清理最终缓存*/
+                        g_print("完成解析-->:%s\n",cf_name);
                         mutex_final_clean_flag = FALSE;
                         add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
+
                         if (temp->next == NULL) {  //文件遍历结束
                             clean_Temp_Files_All();
                             draw_taps = TRUE;
@@ -2462,7 +2466,6 @@ int main(int argc, char *argv[]) {
 
                         temp = temp->next;
                         cf_close(&cfile);  //关闭打开的pcap文件
-                        g_print("完成解析-->:%s\n",cf_name);
                     }
                 }
             }
