@@ -1001,13 +1001,15 @@ void match_line_no(char *pattern, char *source_str, char * target) {
  * 注意每解析完一个文件后需要对regex_dict_map进行初始化。
  */
 void parse_offline_regex_dict(){
-    cJSON *temp = regex_dict->child;
-    while (temp!=nullptr){
-        char value[250] = {0};
-        match_line_no(temp->valuestring, FILE_NAME_T, value);
-        cJSON_AddStringToObject(write_in_files_cJson, temp->string, value);
-        regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
-        temp = temp->next;
+    if(regex_dict && regex_dict->child){
+        cJSON *temp = regex_dict->child;
+        while (temp!=nullptr){
+            char value[250] = {0};
+            match_line_no(temp->valuestring, FILE_NAME_T, value);
+            cJSON_AddStringToObject(write_in_files_cJson, temp->string, value);
+            regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
+            temp = temp->next;
+        }
     }
 }
 
@@ -1563,8 +1565,12 @@ gboolean beginInitOnce(char *flag) {
     strname_head->next = nullptr;
     strname_head->str_name = "";
     strname_head->times = 0;
-
-    regex_dict = (cJSON *)cJSON_Parse(OFFLINE_LINE_NO_REGEX); //线路号匹配的json初始化
+    try {
+        regex_dict = (cJSON *) cJSON_Parse(OFFLINE_LINE_NO_REGEX); //线路号匹配的json初始化
+    }
+    catch (std::regex_error){
+        g_print("line regex grammar format error !, regex nothing has wrote !\n");
+    }
 
     /*批量插入初始化头部节点*/
     if (INSERT_MANY_PROTOCOL_STREAM_FLAG == 1) {

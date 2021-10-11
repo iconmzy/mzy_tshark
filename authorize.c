@@ -5,7 +5,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include <stdbool.h>
 
 #define MAXINTERFACES 16
 void getMac(char *mac) {
@@ -170,7 +169,7 @@ char *addkey2(char *str) {
 
 }
 
-void verify_identity_one(const char * reg_path,bool status){
+void verify_identity_one(const char * reg_path){
     /*添加注册码功能*/
     char mac[30];
     getMac(mac);
@@ -179,15 +178,7 @@ void verify_identity_one(const char * reg_path,bool status){
     strcat(id, mac);
     calidenty(id);
     addkey1(id);
-//    bool status = false;
-    if (status){
-        printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-        printf("The machine id: %s\n", id);
-    }
-    char machine_id_path[100] = {"\0"};
-    strcpy(machine_id_path, reg_path);
-    strcat(machine_id_path, "activecode.txt");
-    usersee(machine_id_path, id);
+
     char active[80];
     char *key = addkey2(id);
     char sto[80];
@@ -196,6 +187,13 @@ void verify_identity_one(const char * reg_path,bool status){
     strcat(regist_path, "regist.txt");
     FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
     if (infp == NULL) {
+        printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+        printf("The machine id: %s\n", id);
+        char machine_id_path[100] = {"\0"};
+        strcpy(machine_id_path, reg_path);
+        strcat(machine_id_path, "activecode.txt");
+        usersee(machine_id_path, id);
+
         printf("请输入激活码：\n");
         scanf("%s", active);
         while (strcmp(active, key) != 0) {
@@ -211,22 +209,11 @@ void verify_identity_one(const char * reg_path,bool status){
         strcpy(active, sti);
         if (strcmp(key, active) != 0) {
             printf("激活码错误，请重新输入：\n");
-
             while (strcmp(key, active) != 0) {
                 printf("激活码错误，请重新输入：\n");
                 scanf("%s", active);
             }
-            strcpy(sti, active);
-            writefile(regist_path, sti);
-        } else {
-            if (status) {
-                printf("该设备已永久激活！\n");
-            }
         }
-
     }
-    if (status) {
-        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-        }
     /*注册码功能结束*/
 }

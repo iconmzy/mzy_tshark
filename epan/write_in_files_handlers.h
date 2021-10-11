@@ -82,14 +82,6 @@ WS_DLL_PUBLIC void change_result_file_name(void);
 
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
-// parse offline_line_no regex dict
-//struct offline_regex_dict{
-//    char  key[128];
-//    char value[128];
-//    char regex[256];
-//    struct offline_regex_dict *next;
-//};
-//WS_DLL_PUBLIC struct offline_regex_dict *regex_dict;
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
 WS_DLL_PUBLIC void parse_offline_regex_dict();
 
