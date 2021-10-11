@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 #define MAXINTERFACES 16
 void getMac(char *mac) {
@@ -169,7 +170,7 @@ char *addkey2(char *str) {
 
 }
 
-void verify_identity_one(const char * reg_path){
+void verify_identity_one(const char * reg_path,bool status){
     /*添加注册码功能*/
     char mac[30];
     getMac(mac);
@@ -178,8 +179,11 @@ void verify_identity_one(const char * reg_path){
     strcat(id, mac);
     calidenty(id);
     addkey1(id);
-    printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    printf("The machine id: %s\n", id);
+//    bool status = false;
+    if (status){
+        printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+        printf("The machine id: %s\n", id);
+    }
     char machine_id_path[100] = {"\0"};
     strcpy(machine_id_path, reg_path);
     strcat(machine_id_path, "activecode.txt");
@@ -215,10 +219,14 @@ void verify_identity_one(const char * reg_path){
             strcpy(sti, active);
             writefile(regist_path, sti);
         } else {
-            printf("该设备已永久激活！\n");
+            if (status) {
+                printf("该设备已永久激活！\n");
+            }
         }
 
     }
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    if (status) {
+        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+        }
     /*注册码功能结束*/
 }

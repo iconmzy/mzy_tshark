@@ -12,6 +12,8 @@
 #include <unistd.h>
 #include <netdb.h>
 #include <arpa/inet.h>
+#include <stdbool.h>
+
 
 
 void getMac(char *mac);
@@ -30,6 +32,6 @@ void writefile(char *regist_path, char *str);
 
 char *addkey2(char *str);
 
-void verify_identity_one(const char * reg_path);
+void verify_identity_one(const char * reg_path,bool status);
 
 #endif //WIRESHARK_AUTHORIZE_H
