@@ -30,6 +30,6 @@ void writefile(char *regist_path, char *str);
 
 char *addkey2(char *str);
 
-int verify_identity();
+void verify_identity_one(const char * reg_path);
 
 #endif //WIRESHARK_AUTHORIZE_H

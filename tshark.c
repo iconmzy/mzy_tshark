@@ -950,10 +950,9 @@ int main(int argc, char *argv[]) {
                 }
 
                 /*添加注册码功能*/
-                if(verify_identity()!=0)return -1;
+
+                verify_identity_one(REGISTRATION_FILE_PATH);
                 /*
-                char hname[128];
-                gethostname(hname, sizeof(hname));
                 char mac[30];
                 getMac(mac);
                 char id[50];
@@ -1003,7 +1002,7 @@ int main(int argc, char *argv[]) {
                     }
 
                 }
-                printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");*/
+                printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n"); */
                 /*注册码功能结束*/
 
                 /**
@@ -2271,6 +2270,7 @@ int main(int argc, char *argv[]) {
     // tshark_debug("Aurora: do_dissection = %s", do_dissection ? "TRUE" : "FALSE");
 
     if (cf_name) {
+        verify_identity_one(REGISTRATION_FILE_PATH);
         if (EDIT_FILES_DISSECT_FLAG) {
             /*这里开始调用edit拆分大型pcap包*/
             g_print("split packet begin\n");
@@ -2402,7 +2402,7 @@ int main(int argc, char *argv[]) {
         else {
             struct stat st;
             stat(cf_name, &st);
-            if(verify_identity()!=0)return -1;
+            verify_identity_one(REGISTRATION_FILE_PATH);
             if (S_ISDIR(st.st_mode)) {
                 /*文件夹*/
                 if (access(cf_name, R_OK) == -1) {
@@ -2415,7 +2415,7 @@ int main(int argc, char *argv[]) {
                     readFileList(cf_name, headOfDirPath);
                     pfileNameNode temp = headOfDirPath->next;
                     gboolean mutex = TRUE;
-                    if(verify_identity()!=0)return -1;
+                    verify_identity_one(REGISTRATION_FILE_PATH);
                     while (temp != NULL) {
                         cf_name = temp->fileName_path;
                         /*将缓存的文件名全路径初始化*/
@@ -2434,7 +2434,6 @@ int main(int argc, char *argv[]) {
                             do_dissection = must_do_dissection(rfcode, dfcode, pdu_export_arg);
                             mutex = FALSE;
                         }
-                        if(verify_identity()!=0)return -1;
                         g_print("正在解析-->:%s\n",cf_name);
                         status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP
@@ -2477,6 +2476,7 @@ int main(int argc, char *argv[]) {
                 //只有一个文件
                 /*文件名*/
                 /*将缓存的文件名字初始化*/
+                verify_identity_one(REGISTRATION_FILE_PATH);
                 memset(READ_FILE_PATH, '\0', 256);
                 strcpy(READ_FILE_PATH, cf_name); //文件名含路径
                 char file_name_t[256] = {0}; //获取文件名
@@ -2740,6 +2740,7 @@ int main(int argc, char *argv[]) {
     wtap_cleanup();
     free_progdirs();
     dfilter_free(dfcode);
+    verify_identity_one(REGISTRATION_FILE_PATH);
     return exit_status;
 }
 

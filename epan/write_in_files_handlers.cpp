@@ -974,9 +974,7 @@ void match_line_no(char *pattern, char *source_str, char * target) {
     try{
 
         std::regex reg(pattern);  // TODO:这里的 (?<=_).*(?=_\w{8}T\w{6}) 这种表达式会格式错误。
-
         std::cmatch results;
-
         bool match_bool = std::regex_search(source_str, results, reg);
 
         // g_print("%d", match_bool);
