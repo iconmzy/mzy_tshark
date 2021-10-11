@@ -1,5 +1,5 @@
 #注册文件的路径
-REGISTRATION_FILE_PATH:./
+REGISTRATION_FILE_PATH:/home/ymq/aurora/activate
 
 #配置是否新增协议JSON
 JSON_ADD_PROTO:1
@@ -9,7 +9,8 @@ JSON_ADD_PROTO_PATH:../../newproto/json
 #配置是否写入解析文件
 WRITE_IN_FILES_CONFIG:1
 #配置协议解析输出文件的位置 不超过255字节
-EXPORT_PATH:../temp
+EXPORT_PATH:/home/ymq/aurora/out
+
 #每个文件大致最大行数
 PER_FILES_MAX_LINES:10000
 
@@ -28,18 +29,18 @@ DATABASE_ADDR:127.0.0.1
 #数据库端口
 DATABASE_PORT:27017
 #是否在命令行显示数据
-DISPLAY_PACKET_INFO_FLAG:0
+DISPLAY_PACKET_INFO_FLAG:1
 
 #是否在线捕获数据  注意要和读取文件互斥
 ONLINE_CAPTURE_DATA_FLAG:0
 #在线捕获数据网卡device name  不超过31字符
 ONLINE_CAPTURE_DATA_DEVICE_NAME:enp4s0
 
-#是否读取文件获得捕获数据  注意要和在线捕获互斥  /home/yy/Desktop/Packets/h263-over-rtp.pcap
+#是否读取文件获得捕获数据  注意要和在线捕获互斥  /home/yy/文档/协议流量/ipv4/smtp.pcap   /root/文档/protocol_pcap/online07160426.pcapng
 READ_PACKET_FROM_FILES_FLAG:1
 #读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap sip-rtp-g722.pcap
-#若选择解析文件夹，建议末尾添加“/”，进行标识
-READ_PACKET_FROM_FILES_PATH:/home/yy/Desktop/Packets/[ABC-06]AB-1-88-E-T-U3#10F$22@11VC4.400_VCT(50)_20210918T120809.pcap
+#若选择解析文件夹，建议末尾添加“/”，进行标识                  test/OSPF-V3-UPDATE.pcap  Wireshark抓包全集（85种协议）/协议浏览/CDP/3560_CDP.cap
+READ_PACKET_FROM_FILES_PATH:/home/ymq/aurora/data/test/
 
 #是否拆分文件解析
 EDIT_FILES_DISSECT_FLAG:0
@@ -50,8 +51,9 @@ INSERT_MANY_PROTOCOL_STREAM_FLAG:0
 #每次每个协议批量写入行数
 INSERT_MANY_PROTOCOL_STREAM_NUM:1000
 
+
 #实时接入数据的线路号
 ONLINE_LINE_NO:123123
 #离线接入数据的识别线路号的正则表达式
-OFFLINE_LINE_NO_REGEX:{"lineno":"\\[.*(?=_.*_\\w{8}T\\w{6})","signal_type":"(?<=_).*(?=_\\d{8}T\\d{6})","test":"modi"}
+OFFLINE_LINE_NO_REGEX:{"lineno":"\\[.*(?=_.*_\\w{8}T\\w{6})","signal_type":".*(?=_2021)","test":"modi"}
 
