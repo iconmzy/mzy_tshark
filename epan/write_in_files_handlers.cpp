@@ -99,28 +99,28 @@ gboolean mutex_final_clean_flag = 0;
 
 /*批量插入的链表*/
 struct insertManyProtocolStream {
-    struct insertManyProtocolStream *next;
-    struct insertManyProtocolStream *pre;
+    struct insertManyProtocolStream *next{};
+    struct insertManyProtocolStream *pre{};
     std::string contents;
     std::string protocol;
-    int times;
+    int times{};
 };
 static insertManyProtocolStream *insertmanystream_Head;
 
 //strname的重复次数，头文件times为-1
 struct strNameSameLevel {
     std::string str_name;
-    struct strNameSameLevel *next;
-    u_int times;
+    struct strNameSameLevel *next{};
+    u_int times{};
 };
 struct strNameSameLevel *strname_head;
 
 typedef struct pFile_Info{
-    FILE *fp;
+    FILE *fp{};
     std::string fileName_ori;//最原始文件名
     std::string fileName_last;//最后/最新文件名
-    int lines;
-    int times;
+    int lines{};
+    int times{};
 }pFILE_INFO;
 //协议名称与对应的文件打开的指针map
 std::map<std::string, pFILE_INFO *> pFile_map;
@@ -141,7 +141,7 @@ struct comFiveEleContent{ //通信五元组内容及其他信息
     std::string dport;
     std::string protocol;
     std::string protocol_suffix;
-    int status;
+    int status{};
 };
 std::vector<struct comFiveEleContent> final_Follow_Write_Need; //存放所有最后需要输出流的通信五元组及其他信息,
 std::string streamFileName_t; //缓存followstream文件名，协议+四元组
@@ -938,23 +938,27 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
                 key_str.replace(key_str.find('.'), 1, "_");
             }
 
-            //重复字段的数组处理
-            if(judgeDuplicateKeyStr(key_str)){
-                cJSON *item = cJSON_GetObjectItem(json_t,key_str.c_str());
-                if(cJSON_IsArray(item)){
-                    //已经是数组
-                    cJSON_AddItemToArray(item,cJSON_CreateString(value));
-                } else{
-                    //第一次重复
-                    std::string pre_value = cJSON_GetStringValue(item);
-                    cJSON_DeleteItemFromObject(json_t, key_str.c_str());
-                    cJSON * temp_array = cJSON_AddArrayToObject(json_t, key_str.c_str());
-                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(pre_value.c_str()));
-                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(value));
-                }
-            } else{
-                cJSON_AddStringToObject(json_t,key_str.c_str(),value);
-            }
+//            //重复字段的数组处理
+//            if(judgeDuplicateKeyStr(key_str)){
+//                cJSON *item = cJSON_GetObjectItem(json_t,key_str.c_str());
+//                if(cJSON_IsArray(item)){
+//                    //已经是数组
+//                    cJSON_AddItemToArray(item,cJSON_CreateString(value));
+//                } else{
+//                    //第一次重复
+//                    std::string pre_value = cJSON_GetStringValue(item);
+//                    cJSON_DeleteItemFromObject(json_t, key_str.c_str());
+//                    cJSON * temp_array = cJSON_AddArrayToObject(json_t, key_str.c_str());
+//                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(pre_value.c_str()));
+//                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(value));
+//                }
+//            } else{
+//                cJSON_AddStringToObject(json_t,key_str.c_str(),value);
+//            }
+//
+            key_str = gotStrNameByStrName(key_str);
+            cJSON_AddStringToObject(json_t,key_str.c_str(),value);
+
             delete []value;
         } else{
             temp = temp->first_child;
