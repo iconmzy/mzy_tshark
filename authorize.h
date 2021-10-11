@@ -12,6 +12,8 @@
 #include <unistd.h>
 #include <netdb.h>
 #include <arpa/inet.h>
+#include <stdbool.h>
+
 
 
 void getMac(char *mac);

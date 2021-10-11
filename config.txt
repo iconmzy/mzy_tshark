@@ -2,7 +2,7 @@
 REGISTRATION_FILE_PATH:/home/ymq/aurora/activate
 
 #配置是否新增协议JSON
-JSON_ADD_PROTO:1
+JSON_ADD_PROTO:0
 #新增协议JSON路径 不超过255字符
 JSON_ADD_PROTO_PATH:../../newproto/json
 
@@ -55,5 +55,5 @@ INSERT_MANY_PROTOCOL_STREAM_NUM:1000
 #实时接入数据的线路号
 ONLINE_LINE_NO:123123
 #离线接入数据的识别线路号的正则表达式
-OFFLINE_LINE_NO_REGEX:{"lineno":"\\[.*(?=_.*_\\w{8}T\\w{6})","signal_type":".*(?=_2021)","test":"modi"}
+OFFLINE_LINE_NO_REGEX:{"lineno":"\\[.*(?=_.*_\\w{8}T\\w{6})","signal_type":".*(?=_2021)"}
 
