@@ -144,6 +144,11 @@ struct comFiveEleContent{ //通信五元组内容及其他信息
     int status{};
 };
 std::vector<struct comFiveEleContent> final_Follow_Write_Need; //存放所有最后需要输出流的通信五元组及其他信息,
+struct final_Follow_File_Rel{
+    std::string streamFileName_t; //缓存followstream文件名，协议+四元组
+    FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
+    std::string content; //存放内容。
+};
 std::string streamFileName_t; //缓存followstream文件名，协议+四元组
 FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
 
@@ -1249,6 +1254,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     else{
                         dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child,nullptr);
                         delete(c5e); //未使用通信五元组，直接释放。
+                        c5e = nullptr;
                     }
                 }
                 catch (std::invalid_argument) {
@@ -1364,6 +1370,7 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
 void do_handle_strem(gpointer str,gpointer data __U__){
     auto *t = (totalParam *) str;
     if(t->rtp_content != nullptr){
+        //g722协议单独处理，16000的采样率tshark不支持保存。
         if(strcmp(rtp_payload_type_to_str[t->rtp_content->payload_type],"g722") == 0){
             //g722协议，不在这里处理,直接输出全部流，交给g722协议解析程序处理。
             if(final_Follow_Write_Need.empty()){
@@ -1380,7 +1387,6 @@ void do_handle_strem(gpointer str,gpointer data __U__){
                     }
                 }
             }
-
         }
         else {
 //        并发处理rtp流。
