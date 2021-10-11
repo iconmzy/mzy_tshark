@@ -126,6 +126,28 @@ typedef struct pFile_Info{
 std::map<std::string, pFILE_INFO *> pFile_map;
 
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin ||||
+//h263 stream---------------------- 20210909 yy -----------------------------------begin h263|||
+enum comFourEleContent_Status{
+    GotSip,
+    GotDip,
+    GotSport,
+    GotDport,
+    AlreadyInsert,
+};
+struct comFiveEleContent{ //通信五元组内容及其他信息
+    std::string sip;
+    std::string dip;
+    std::string sport;
+    std::string dport;
+    std::string protocol;
+    std::string protocol_suffix;
+    int status;
+};
+std::vector<struct comFiveEleContent> final_Follow_Write_Need; //存放所有最后需要输出流的通信五元组及其他信息,
+std::string streamFileName_t; //缓存followstream文件名，协议+四元组
+FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
+
+//h263 stream---------------------- 20210909 yy -----------------------------------end h263|||
 //rtp stream---------------------- 20210909 yy ----------------------rtp stream begin |||
 const char *rtp_payload_type_to_str[128] = {
         "g711U","fs-1016","g721","GSM","g723","DVI4 8k","DVI4 16k","Exp. from Xerox PARC","g711A","g722","16-bit audio, stereo",\
@@ -142,7 +164,7 @@ const char *rtp_payload_type_to_str[128] = {
         "RTPType-118","RTPType-119","RTPType-120","RTPType-121","RTPType-122","RTPType-123","RTPType-124","RTPType-125","RTPType-126","RTPType-127"
         };
 std::map<std::uint8_t,std::string> rtp_payload_type_To_tail{{0,"au"},{2,"au"},{4,"au"},{8,"au"},{9,"au"},{18,"au"},{32,"mpeg"}};//key 是rtp_payload_type_to_str的下标，value是该格式对应的输出文件名。
-struct rtpFileRel{
+struct rtpFileRel{ //RTP文件及解码器相关
     FILE * fp;
     struct _GHashTable *decoders_hash;
 };
@@ -157,17 +179,15 @@ struct rtp_Content{
     unsigned int payload_type;
     char file_name[128];
 }; //对应rtp字段双链表的存储
+
 typedef struct _rtp_decoder_t{
     codec_handle_t handle;
     void *context;
 } rtp_decoder_t;
-/**
- * 写rtp可播放流的头 仅支持8000采样率.
- * @param fp
- */
-void writeRTPstreamHead(FILE* fp);
+void writeRTPstreamHead(FILE* fp);//写rtp可播放流的头 仅支持8000采样率.
 inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, const std::string &);//给定rtp的类型，返回组报结果文件名
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
+
 //tls stream---------------------- 20210909 yy ---------------------- tls stream begin |||
 GList *tls_fields = nullptr; //tls字段的双链表
 enum tls_Status{
@@ -194,29 +214,9 @@ struct tls_Vec{
 };//保存tls所有连接状态
 std::vector<struct tls_Vec> tls_Total;
 //tls stream---------------------- 20210909 yy ---------------------- tls stream end |||
-//h263 stream---------------------- 20210909 yy -----------------------------------begin h263|||
-enum comFourEleContent_Status{
-    GotSip,
-    GotDip,
-    GotSport,
-    GotDport,
-    AlreadyInsert,
-};
-struct comFiveEleContent{ //通信五元组内容
-    std::string sip;
-    std::string dip;
-    std::string sport;
-    std::string dport;
-    std::string protocol;
-    int status;
-};
-std::vector<struct comFiveEleContent> h263_stream_Need; //存放每个流的通信五元组及其他信息
-std::string streamFileName_t; //缓存followstream文件名，协议+四元组
-FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
-
-//h263 stream---------------------- 20210909 yy -----------------------------------end h263|||
 
 struct totalParam{ //流组报相关全参数结构体
+    struct comFiveEleContent *c5e;
     struct rtp_Content *rtp_content = nullptr;
     struct tls_Content *tls_content = nullptr;
 };
@@ -562,7 +562,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
     return true;
 }
 /**
- * 给fp写入rtp可播放流的头部
+ * 给fp写入rtp可播放流的头部 仅支持8000采样率
  * @param fp
  */
 void writeRTPstreamHead(FILE* fp){
@@ -969,7 +969,6 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
  * @param source_str 目标文本串
  * @return
  */
-
 void match_line_no(char *pattern, char *source_str, char * target) {
     try{
 
@@ -1015,7 +1014,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     proto_node *node = edt->tree->first_child;
     std::string protocol_stack_t;  // 记录协议栈
     proto_node *stack_node_t = node;
-    comFiveEleContent c5e = comFiveEleContent(); //存放通信五元组
+    auto *c5e = new comFiveEleContent(); //存放通信五元组
 
     int stack_node_layer = 0;
     while (stack_node_t != nullptr and ++stack_node_layer < 11) {
@@ -1033,7 +1032,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             protocol_stack_t.append(fi->hfinfo->abbrev);
             write_in_files_proto = fi->hfinfo->abbrev;
         }
-        c5e.protocol = write_in_files_proto; //通信五元组协议
+        c5e->protocol = write_in_files_proto; //通信五元组协议
         stack_node_t = stack_node_t->next;
     }
     /*单独的协议过滤*/
@@ -1136,8 +1135,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
 
-                    c5e.sip = value;//通信五元组源ip
-                    c5e.status = comFourEleContent_Status::GotSip;
+                    c5e->sip = value;//通信五元组源ip
+                    c5e->status = comFourEleContent_Status::GotSip;
 
                     cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value);
                     child = child->next;
@@ -1148,8 +1147,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
 
-                    c5e.dip = value;//通信五元组目的ip
-                    c5e.status = comFourEleContent_Status::GotDip;
+                    c5e->dip = value;//通信五元组目的ip
+                    c5e->status = comFourEleContent_Status::GotDip;
 
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value);
                     break;//这里最后一个，提高效率
@@ -1169,8 +1168,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "udp.srcport") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
-                    c5e.sport = value;//通信五元组源端口
-                    c5e.status = comFourEleContent_Status::GotSport;
+                    c5e->sport = value;//通信五元组源端口
+                    c5e->status = comFourEleContent_Status::GotSport;
                     cJSON_AddStringToObject(write_in_files_cJson, "src_port", value);
                     child = child->next;
                     continue;
@@ -1180,24 +1179,24 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
 
-                    c5e.dport = value;//通信五元组目的端口
-                    c5e.status = comFourEleContent_Status::GotDport;
+                    c5e->dport = value;//通信五元组目的端口
+                    c5e->status = comFourEleContent_Status::GotDport;
 
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value);
                     child = child->next;
                     continue;
                 }
-                if(c5e.status == comFourEleContent_Status::GotDport){ //TODO:这样判断是否取满五元组存在问题 20210927 yy
-                    if(c5e.protocol == "h263"){
+                if(c5e->status == comFourEleContent_Status::GotDport){ //TODO:这样判断是否取满五元组存在问题 20210927 yy
+                    if(c5e->protocol == "h263"){
                         //h263 标志
                         gboolean mutex = false;
-                        for (auto &i : h263_stream_Need) { //去重
-                            if(i.sip == c5e.sip and i.sport == c5e.sport and i.dip == c5e.dip and i.dport == c5e.dport)
+                        for (auto &i : final_Follow_Write_Need) { //去重
+                            if(i.sip == c5e->sip and i.sport == c5e->sport and i.dip == c5e->dip and i.dport == c5e->dport)
                                 mutex = 1;
                         }
                         if(!mutex){
-                            h263_stream_Need.push_back(c5e);
-                            c5e.status = comFourEleContent_Status::AlreadyInsert;
+                            final_Follow_Write_Need.push_back(*c5e);
+                            c5e->status = comFourEleContent_Status::AlreadyInsert;
                         }
                     }
                     break;//这里最后一个，提高效率
@@ -1229,19 +1228,18 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             proto_node *child = node->first_child;
             if (child != nullptr) {
                 try {
-                    int cursion_layer = 0;
                     if(PACKET_PROTOCOL_FLAG && packetProtoAlready){
                         //要组报
                         /*传入递归的参数*/
                         struct totalParam *cookie_t = g_new0(totalParam,1);
-
-//                        dissect_edt_Tree_Into_Json(write_in_files_cJson, child, cursion_layer,cookie_t);
+                        //通信五元组赋值
+                        cookie_t->c5e = c5e;
                         dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child,cookie_t);
                         g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
                     }
                     else{
                         dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child,nullptr);
-//                        dissect_edt_Tree_Into_Json(write_in_files_cJson, child,cursion_layer,nullptr);
+                        delete(c5e);
                     }
                 }
                 catch (std::invalid_argument) {
@@ -1357,80 +1355,105 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
 void do_handle_strem(gpointer str,gpointer data __U__){
     auto *t = (totalParam *) str;
     if(t->rtp_content != nullptr){
+        if(strcmp(rtp_payload_type_to_str[t->rtp_content->payload_type],"g722") == 0){
+            //g722协议，不在这里处理,直接输出全部流，交给g722协议解析程序处理。
+            if(final_Follow_Write_Need.empty()){
+                //空
+                t->c5e->protocol_suffix = "g722";
+                final_Follow_Write_Need.push_back(*t->c5e);
+            } else {
+                for (auto &i :final_Follow_Write_Need) {
+                    if (i.sip == t->c5e->sip and i.sport == t->c5e->sport and i.dip == t->c5e->dip and
+                        i.dport == t->c5e->dport) {
+                        //do nothing  重复的只存一次
+                    } else {
+                        final_Follow_Write_Need.push_back(*t->c5e);
+                    }
+                }
+            }
+
+        }
+        else {
 //        并发处理rtp流。
-        char file_name_t[270] = {0};
-        {
+            char file_name_t[270] = {0};
+
             //确定rtp 输出的文件名
-            strcat(file_name_t,PACKET_PROTOCOL_PATH);
-            sprintf(file_name_t,"%s%s",PACKET_PROTOCOL_PATH,"rtp/");
-            if(access(file_name_t,0)!= 0){
+            strcat(file_name_t, PACKET_PROTOCOL_PATH);
+            sprintf(file_name_t, "%s%s", PACKET_PROTOCOL_PATH, "rtp/");
+            if (access(file_name_t, 0) != 0) {
                 mkdirs(file_name_t);
             }
-            std::string fn_str_t = got_rtp_Stream_FileName(t->rtp_content->payload_type,global_time_str,t->rtp_content->ssrc);
-            strcat(file_name_t,fn_str_t.c_str());
-        }
+            std::string fn_str_t = got_rtp_Stream_FileName(t->rtp_content->payload_type, global_time_str,
+                                                           t->rtp_content->ssrc);
+            strcat(file_name_t, fn_str_t.c_str());
 
-        FILE* fp;
-        struct _GHashTable *decoders_hash = nullptr;
-        if(rtp_stream_pFile_map.empty()){
-            //空map
-            fp = fopen(file_name_t,"a+");
-            if(!fp){
-                g_print("%s open error",file_name_t);
-                return;
-            }
-            writeRTPstreamHead(fp);
-            struct rtpFileRel temprtpFIleRel{};
-            char ssrc_t[24]= {0};
-            strcpy(ssrc_t,t->rtp_content->ssrc);
-            temprtpFIleRel.decoders_hash = rtp_decoder_hash_table_new();
-            decoders_hash = temprtpFIleRel.decoders_hash;
-            temprtpFIleRel.fp = fp;
-            rtp_stream_pFile_map.insert(std::pair<std::string,struct rtpFileRel>(ssrc_t,temprtpFIleRel));
-        } else {
-            auto index = rtp_stream_pFile_map.find(t->rtp_content->ssrc);
-            if(index != rtp_stream_pFile_map.end()){
-                fp = index->second.fp;
-                decoders_hash = index->second.decoders_hash;
-                //这里解码器初始化
-                if(t->rtp_content->marker){
-                    if(decoders_hash){
-                        g_hash_table_destroy(decoders_hash);//这里得释放掉。
-                    }
-                    index->second.decoders_hash = nullptr;
-                    decoders_hash = nullptr;
-                }
-            } else{
-                fp = fopen(file_name_t,"a+");
-                if(!fp){
-                    g_print("%s open error",file_name_t);
+            FILE *fp;
+            struct _GHashTable *decoders_hash = nullptr;
+            if (rtp_stream_pFile_map.empty()) {
+                //空map
+                fp = fopen(file_name_t, "a+");
+                if (!fp) {
+                    g_print("%s open error", file_name_t);
                     return;
                 }
                 writeRTPstreamHead(fp);
-                struct rtpFileRel temprtpFileRel{};
-                char ssrc_t[24]= {0};
-                strcpy(ssrc_t,t->rtp_content->ssrc);
-                temprtpFileRel.fp = fp;
-                temprtpFileRel.decoders_hash = rtp_decoder_hash_table_new();
-                decoders_hash = temprtpFileRel.decoders_hash;
-                rtp_stream_pFile_map.insert(std::pair<std::string,struct rtpFileRel>(ssrc_t,temprtpFileRel));
+                struct rtpFileRel temprtpFIleRel{};
+                char ssrc_t[24] = {0};
+                strcpy(ssrc_t, t->rtp_content->ssrc);
+                temprtpFIleRel.decoders_hash = rtp_decoder_hash_table_new();
+                decoders_hash = temprtpFIleRel.decoders_hash;
+                temprtpFIleRel.fp = fp;
+                rtp_stream_pFile_map.insert(std::pair<std::string, struct rtpFileRel>(ssrc_t, temprtpFIleRel));
+            } else {
+                auto index = rtp_stream_pFile_map.find(t->rtp_content->ssrc);
+                if (index != rtp_stream_pFile_map.end()) {
+                    fp = index->second.fp;
+                    decoders_hash = index->second.decoders_hash;
+                    //这里解码器初始化
+                    if (t->rtp_content->marker) {
+                        if (decoders_hash) {
+                            g_hash_table_destroy(decoders_hash);//这里得释放掉。
+                        }
+                        index->second.decoders_hash = nullptr;
+                        decoders_hash = nullptr;
+                    }
+                } else {
+                    fp = fopen(file_name_t, "a+");
+                    if (!fp) {
+                        g_print("%s open error", file_name_t);
+                        return;
+                    }
+                    writeRTPstreamHead(fp);
+                    struct rtpFileRel temprtpFileRel{};
+                    char ssrc_t[24] = {0};
+                    strcpy(ssrc_t, t->rtp_content->ssrc);
+                    temprtpFileRel.fp = fp;
+                    temprtpFileRel.decoders_hash = rtp_decoder_hash_table_new();
+                    decoders_hash = temprtpFileRel.decoders_hash;
+                    rtp_stream_pFile_map.insert(std::pair<std::string, struct rtpFileRel>(ssrc_t, temprtpFileRel));
+                }
             }
-        }
-        g_assert(fp != nullptr);
-        uint8_t pd_out[2*4000];
-        size_t sample_count;
-        sample_count = convert_payload_to_samples(t->rtp_content->payload_type,t->rtp_content->payload,t->rtp_content->payload_len,pd_out,decoders_hash);
-        if(sample_count != 0){
-            if (fwrite(pd_out, sizeof(uint8_t), sample_count*2, fp) != sample_count*2) {
-                g_print("%s sample_count write error !\n", __FUNCTION__);
-            }
-        }
-        else{
+            g_assert(fp != nullptr);
+            uint8_t pd_out[2 * 4000];
+            size_t sample_count;
+            sample_count = convert_payload_to_samples(t->rtp_content->payload_type, t->rtp_content->payload,
+                                                      t->rtp_content->payload_len, pd_out, decoders_hash);
+            if (sample_count != 0) {
+                if (fwrite(pd_out, sizeof(uint8_t), sample_count * 2, fp) != sample_count * 2) {
+                    g_print("%s sample_count write error !\n", __FUNCTION__);
+                }
+            } else {
 //            g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
+            }
         }
+
         g_free(t->rtp_content);
     }
 
+    //最后才释放通信五元组内容。
+    if(t->c5e){
+        delete(t->c5e);
+    }
     //传入的参数空间释放。
     g_free(t);
 }
@@ -1443,15 +1466,16 @@ void do_handle_strem(gpointer str,gpointer data __U__){
  * @return
  */
 gboolean JudgeStreamPrint(gchar* sip,guint sport,gchar *dip,guint dport){
-    for (auto &i : h263_stream_Need) {
+    for (auto &i : final_Follow_Write_Need) {
         if(strcmp(sip,i.sip.c_str()) == 0 and strcmp(dip,i.dip.c_str()) == 0 and i.sport == numtos(sport) and i.dport == numtos(dport)){
             if(!streamFileName_t.empty()){
+                //应该为空，若有内容肯定是那里出了问题。
                 return true;
             }
-            streamFileName_t +=i.protocol + "/";
+            streamFileName_t += i.protocol + "/" + i.protocol_suffix +"_";
             std::string sip_r = i.sip;
             stringReplaceByStr(sip_r,".","_");
-            streamFileName_t +=sip_r +"_" + i.sport;
+            streamFileName_t +=sip_r +"_" + i.sport+"_";
             sip_r = i.dip;
             stringReplaceByStr(sip_r,".","_");
             streamFileName_t += sip_r +"_" + i.dport;
@@ -1466,6 +1490,7 @@ gboolean JudgeStreamPrint(gchar* sip,guint sport,gchar *dip,guint dport){
     }
     return false;
 }
+
 /**
  * followstream 写文件
  * @param data
@@ -1873,5 +1898,5 @@ void change_result_file_name() {
 }
 
 void followConnectFiveEleClear(){
-    h263_stream_Need.clear();//程序快结束后，流信息清空（如h263）。在流统计输出初始化之后初始化。
+    final_Follow_Write_Need.clear();//程序快结束后，流信息清空（如h263）。在流统计输出初始化之后初始化。
 }
