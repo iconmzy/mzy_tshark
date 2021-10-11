@@ -950,7 +950,7 @@ int main(int argc, char *argv[]) {
                 }
 
                 /*添加注册码功能*/
-                verify_identity();
+                if(verify_identity()!=0)return -1;
                 /*
                 char hname[128];
                 gethostname(hname, sizeof(hname));
@@ -2402,7 +2402,7 @@ int main(int argc, char *argv[]) {
         else {
             struct stat st;
             stat(cf_name, &st);
-            verify_identity();
+            if(verify_identity()!=0)return -1;
             if (S_ISDIR(st.st_mode)) {
                 /*文件夹*/
                 if (access(cf_name, R_OK) == -1) {
@@ -2415,7 +2415,7 @@ int main(int argc, char *argv[]) {
                     readFileList(cf_name, headOfDirPath);
                     pfileNameNode temp = headOfDirPath->next;
                     gboolean mutex = TRUE;
-                    verify_identity();
+                    if(verify_identity()!=0)return -1;
                     while (temp != NULL) {
                         cf_name = temp->fileName_path;
                         /*将缓存的文件名全路径初始化*/
@@ -2434,7 +2434,7 @@ int main(int argc, char *argv[]) {
                             do_dissection = must_do_dissection(rfcode, dfcode, pdu_export_arg);
                             mutex = FALSE;
                         }
-                        verify_identity();
+                        if(verify_identity()!=0)return -1;
                         g_print("正在解析-->:%s\n",cf_name);
                         status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP

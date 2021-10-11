@@ -172,7 +172,7 @@ char *addkey2(char *str) {
 }
 
 //void verify_identity(const char * reg_path){
-void verify_identity(){
+int verify_identity(){
     /*添加注册码功能*/
     char reg_path[200]="./";//strcpy(reg_path,REGISTRATION_FILE_PATH);
     char mac[30];
@@ -218,10 +218,11 @@ void verify_identity(){
     if (infp != NULL){
         char sti[80]; fscanf(infp, "%s", sti);   fclose(infp);
         strcpy(active, sti);
-        if (strcmp(key, active) == 0) {   /* printf("该设备已激活！\n"); */}
-        else {printf("illegal user1\n");while(1){};}
+        if (strcmp(key, active) == 0) {    printf("该设备已激活！\n"); return 0;}
+        else {printf("未激活，请激活！\n");return 1;}//while(1){};}
     }
-    else {printf("illegal user2\n");while(1){};}
+    else {printf("未激活，请激活！\n"); return 1;}
+
     //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     /*注册码功能结束*/
 }
