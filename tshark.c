@@ -945,8 +945,8 @@ int main(int argc, char *argv[]) {
                     g_print("config files load fail!\n");
                     goto clean_exit;
                 }
-                if (!initWriteJsonFiles(&write_Json_Files_Init_Status)) {
-                    g_print("initWriteJsonFiles somthing error !\n");
+                if (!beginInitOnce(&write_Json_Files_Init_Status)) {
+                    g_print("beginInitOnce somthing error !\n");
                 }
 
                 /*添加注册码功能*/

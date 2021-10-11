@@ -243,12 +243,11 @@ inline std::string numtos(T l){
 }
 
 /**
- * 返回字段名称
+ * 返回该包内重复字段的名称，如A_01,A_02... 现在改为输出数组则用不到 20211011 15:37 yy
  * @param strname 字段名称
  * @return
  */
 std::string gotStrNameByStrName(std::string &strname) {
-
     if (strname_head->next == nullptr) {
         auto *temp = new struct strNameSameLevel;
         temp->next = strname_head->next;
@@ -306,6 +305,10 @@ gboolean judgeDuplicateKeyStr(const std::string &key_str){
     }
 }
 
+/**
+ * 初始化 strNameSameLevel链表。
+ * @param node
+ */
 void initStrNameLevelLinkList(struct strNameSameLevel *node) {
     if (node != NULL) {
         initStrNameLevelLinkList(node->next);
@@ -333,7 +336,7 @@ std::vector<std::string> split(const std::string &str, const std::string& delim)
 }
 
 /**
- * filter lastLayerProtocol Name By given chars.
+ * 过滤一些无用的协议。
  * @param dst
  * @return
  */
@@ -374,7 +377,7 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     return FALSE;
 }
 /**
- *
+ * 递归key的过滤。
  */
 gboolean cursionkeyStrFilter(const char *key_str){
     if (strcmp(key_str, "text") == 0) {
@@ -383,7 +386,7 @@ gboolean cursionkeyStrFilter(const char *key_str){
     return false;
 }
 /**
- * 匹配返回下标，为找到返回-1
+ * 快速匹配算法。匹配返回下标，为找到返回-1
  * @param s 匹配串
  * @param t 模式串
  * @return
@@ -419,7 +422,7 @@ int kmp(std::string s, std::string t) {
         return -1;
 }
 /**
- * 用ts 替换 dstr 中的所有 rs。
+ * 工具：用ts 替换 dstr 中的所有 rs。
  * @param dstr
  * @param rs
  * @param ts
@@ -472,9 +475,10 @@ void mkdirs(const char *muldir) {
     }
 }
 /**
- * 最终的数据流写入对应协议文件
+ * 最终的数据流写入对应协议文件，lines为该此写入文件的json行数。除了批量写入，其他单次写入为1
  * @param stream
  * @param protocol
+ * @param lines
  * @return
  */
 gboolean write_Files(std::string const &stream, std::string const &protocol,int lines) {
@@ -562,7 +566,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
     return true;
 }
 /**
- * 给fp写入rtp可播放流的头部 仅支持8000采样率
+ * 给fp写入rtp可播放流的头部 仅支持8000采样率，目前测试仅支持g711A/U,g729a，采样率为8000的数据。
  * @param fp
  */
 void writeRTPstreamHead(FILE* fp){
@@ -595,7 +599,7 @@ void writeRTPstreamHead(FILE* fp){
     fflush(fp);
 }
 /**
- * 将会话统计信息写入文件中
+ * 将会话统计信息写入文件中，文件名固定为conversation.txt
  * @param stream
  * @param protocol
  * @return
@@ -685,7 +689,7 @@ void write_into_es(std::string &stream, std::string &protocol) {
 }
 
 /**
- * 将数据流steam写入文件，protocol协议
+ * 将数据流steam写入文件，protocol为协议
  * @param stream
  * @param protocol
  * @return
@@ -748,7 +752,7 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
 }
 
 /**
- * 所有参数初始化
+ * 每个edt处理完后的，所有参数初始化。初始化较为频繁，尽量防止内存错误。
  * @return
  */
 gboolean initial_All_para() {
@@ -988,7 +992,10 @@ void match_line_no(char *pattern, char *source_str, char * target) {
         strcpy(target, "");
     }
 }
-
+/**
+ * 每解析一个新的文件开始时进行初始化，用OFFLINE_LINE_NO_REGEX对应的value，正则匹配新的文件名称，将该文件名匹配后的结果写入regex_dict_map中。
+ * 注意每解析完一个文件后需要对regex_dict_map进行初始化。
+ */
 void parse_offline_regex_dict(){
     cJSON *temp = regex_dict->child;
     while (temp!=nullptr){
@@ -1185,7 +1192,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     continue;
                 }
                 if(c5e->status == comFourEleContent_Status::GotDport){ //TODO:这样判断是否取满五元组存在问题 20210927 yy
-                    if(c5e->protocol == "h263"){
+                    if(c5e->protocol == "h263"){ //视频在这里存放通信五元组，话音在rtp流处理处存放
                         //h263 标志
                         gboolean mutex = false;
                         for (auto &i : final_Follow_Write_Need) { //去重
@@ -1231,13 +1238,13 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                         /*传入递归的参数*/
                         struct totalParam *cookie_t = g_new0(totalParam,1);
                         //通信五元组赋值
-                        cookie_t->c5e = c5e;
+                        cookie_t->c5e = c5e; //这里释放在rtp流处理函数后释放
                         dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child,cookie_t);
                         g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
                     }
                     else{
                         dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child,nullptr);
-                        delete(c5e);
+                        delete(c5e); //未使用通信五元组，直接释放。
                     }
                 }
                 catch (std::invalid_argument) {
@@ -1268,7 +1275,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 }
 
 /**
- * 写会话
+ * 程序结束后将tap-iousers.c中的统计会话数据conversation写入文件中。
  * @param label_str 字段
  * @param level 层级
  */
@@ -1299,7 +1306,7 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
     }
 }
 /**
- * decode rtp streams into pd_out
+ * decode rtp streams into pd_out 主要g711A/U g729a的解码器。
  * @param payload_type_names
  * @param payload_data
  * @param payload_len
@@ -1346,7 +1353,7 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
 }
 
 /**
- * 并发处理流数据函数
+ * 并发处理流数据函数;处理cookie_t的内容。
  * @param str
  * @param data
  */
@@ -1456,7 +1463,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
     g_free(t);
 }
 /**
- * 判断当前流是否输出
+ * 根据final_Follow_Write_Need内容，判断tap-follow.c中的统计流是否输出
  * @param sip client ip
  * @param sport client port
  * @param dip server ip
@@ -1490,7 +1497,7 @@ gboolean JudgeStreamPrint(gchar* sip,guint sport,gchar *dip,guint dport){
 }
 
 /**
- * followstream 写文件
+ * 程序结束后，将tap-follow.c中的统计流数据全部写入文件。
  * @param data
  * @param len
  * @return
@@ -1520,7 +1527,7 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
 }
 
 /**
- * 给定rtp的类型，返回组报结果文件名
+ * 给定rtp的类型，全局时间戳，ssrc；返回组报结果文件名 [rtpstring]+[global_time_str]+[ssrc]+[tail_t]
  * @param type rtptype（下标0-127）
  * @param s global_time_str
  * @param p ssrc
@@ -1540,12 +1547,12 @@ std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const
 }
 
 /**
- * 初始化拿json的map数据，正常取值返回1，否则返回0，flag为0表示没有初始化，为1表示已初始化。
- * 另外部分需要一开始初始化的参数也在这里初始化
+ * 程序一开始的初始化，初始化write_file_in_files_handlers.cpp的各种变量。
+ * 另外需要一开始初始化的对象也在这里初始化 beginInitOnce
  * @param flag
  * @return
  */
-gboolean initWriteJsonFiles(char *flag) {
+gboolean beginInitOnce(char *flag) {
 
 //    这里把同级的level的strname初始化
     strname_head = new struct strNameSameLevel;
@@ -1587,7 +1594,7 @@ gboolean initWriteJsonFiles(char *flag) {
 }
 
 /**
- * 获取读取configfiles的状态.
+ * 程序一开始读取一次configfiles的内容.
  * @return
  */
 gboolean readConfigFilesStatus() {
@@ -1811,6 +1818,9 @@ gboolean readConfigFilesStatus() {
     return true;
 }
 
+/**
+ * 程序结束的最后操作。02 释放一些数据结构，仅释放一次。
+ */
 void clean_Temp_Files_All() {
     if (!mutex_final_clean_flag) {
         if(!rtp_stream_pFile_map.empty()){
@@ -1857,7 +1867,8 @@ void clean_Temp_Files_All() {
 }
 
 /**
- * 写结果文件 result+global_time_str.writting -> .txt
+ * 将处理完的文件名称写入结果文件 result+global_time_str.writting
+ * READ_FILE_PATH 全局存放文件名（含路径）
  */
 void add_record_in_result_file() {
     if (fp_result_timestampe == nullptr) {
@@ -1873,6 +1884,7 @@ void add_record_in_result_file() {
         fflush(fp_result_timestampe);
     }
 }
+
 /**
  * 单个文件结束，进行初始化操作函数
  */
@@ -1880,6 +1892,9 @@ void single_File_End_Init(){
     regex_dict_map.clear(); //每个文件的线路号清空
 }
 
+/**
+ * 程序结束的最后操作。01
+ */
 void change_result_file_name() {
     std::string filepath_str = RESULT_PATH;
     std::string oldName_t = filepath_str + "result-" + global_time_str + ".writting";
@@ -1895,6 +1910,9 @@ void change_result_file_name() {
     curl_global_cleanup();  //在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数
 }
 
+/**
+ *程序快结束后，流信息清空（如h263）。在流统计输出初始化之后初始化。
+ */
 void followConnectFiveEleClear(){
-    final_Follow_Write_Need.clear();//程序快结束后，流信息清空（如h263）。在流统计输出初始化之后初始化。
+    final_Follow_Write_Need.clear();
 }

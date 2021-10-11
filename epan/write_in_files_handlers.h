@@ -68,7 +68,7 @@ WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则
 
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
 
-WS_DLL_PUBLIC gboolean initWriteJsonFiles(char *);
+WS_DLL_PUBLIC gboolean beginInitOnce(char *);
 
 WS_DLL_PUBLIC gboolean readConfigFilesStatus(void);
 
