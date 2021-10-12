@@ -1148,9 +1148,12 @@ int readFileList(char *basePath,pfileNameNode head){
         }
         while ((ptr=readdir(dir)) != NULL)
         {
+            char *cc_ptr = strrchr(ptr->d_name, '.');
+            if(NULL != cc_ptr &&  !(strcmp(cc_ptr, ".cap")==0 || strcmp(cc_ptr, ".pcap")==0 || strcmp(cc_ptr, ".pcapng")==0)) continue;
+
             if(strcmp(ptr->d_name,".")==0 || strcmp(ptr->d_name,"..")==0)    ///current dir OR parrent dir
                 continue;
-            else if(ptr->d_type == 8)    ///file
+            else if(ptr->d_type == 8)   ///file
             {
                 pfileNameNode temp = malloc(sizeof(struct fileNameNode));
                 char basePath_t[256] = {0};
