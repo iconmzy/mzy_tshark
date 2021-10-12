@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <queue>
+#include <list>
 #include <fstream>
 #include <sstream>
 #include <exceptions.h>
@@ -174,6 +175,8 @@ const char *rtp_payload_type_to_str[128] = {
         "RTPType-118","RTPType-119","RTPType-120","RTPType-121","RTPType-122","RTPType-123","RTPType-124","RTPType-125","RTPType-126","RTPType-127"
         };
 std::map<std::uint8_t,std::string> rtp_payload_type_To_tail{{0,"au"},{2,"au"},{4,"au"},{8,"au"},{9,"au"},{18,"au"},{32,"mpeg"}};//key 是rtp_payload_type_to_str的下标，value是该格式对应的输出文件名。
+std::array<unsigned int,3> rtp_Head_au_8000_Rate_surport_List{0,2,18};//写8000采样率头部au文件，支持类型列表
+
 struct rtpFileRel{ //RTP文件及解码器相关
     FILE * fp;
     struct _GHashTable *decoders_hash;
@@ -1390,8 +1393,8 @@ void do_handle_strem(gpointer str,gpointer data __U__){
     auto *t = (totalParam *) str;
     if(t->rtp_content != nullptr){
         //g722协议单独处理，16000的采样率tshark不支持保存。
-        if(strcmp(rtp_payload_type_to_str[t->rtp_content->payload_type],"g722") == 0){
-            //g722协议，不在这里处理,直接输出全部流，交给g722协议解析程序处理。
+        /*if(strcmp(rtp_payload_type_to_str[t->rtp_content->payload_type],"g722") == 0){
+            //g722协议，单独处理
             if(final_Follow_Write_Need.empty()){
                 //空
                 t->c5e->protocol_suffix = "g722";
@@ -1411,80 +1414,95 @@ void do_handle_strem(gpointer str,gpointer data __U__){
                     }
                 }
             }
+
+        }
+        else {*/
+//        并发处理rtp流。目前仅支持g711A/U,g729a。
+        char file_name_t[270] = {0};
+        //确定rtp 输出的文件名
+        strcat(file_name_t, PACKET_PROTOCOL_PATH);
+        sprintf(file_name_t, "%s%s", PACKET_PROTOCOL_PATH, "rtp/");
+        if (access(file_name_t, 0) != 0) {
+            mkdirs(file_name_t);
+        }
+        std::string fn_str_t = got_rtp_Stream_FileName(t->rtp_content->payload_type, global_time_str,
+                                                       t->rtp_content->ssrc);
+        strcat(file_name_t, fn_str_t.c_str());
+
+        FILE *fp = nullptr;
+        struct _GHashTable *decoders_hash = nullptr;
+        if (rtp_stream_pFile_map.empty()) {
+            //空map
+            fp = fopen(file_name_t, "a+");
+            if (!fp) {
+                g_print("%s open error", file_name_t);
+                return;
+            }
+            if(std::find(rtp_Head_au_8000_Rate_surport_List.begin(),rtp_Head_au_8000_Rate_surport_List.end(),t->rtp_content->payload_type) != rtp_Head_au_8000_Rate_surport_List.end()){
+                //按需写入头部
+                writeRTPstreamHead(fp);
+            }
+            struct rtpFileRel temprtpFIleRel{};
+            temprtpFIleRel.decoders_hash = rtp_decoder_hash_table_new();
+            decoders_hash = temprtpFIleRel.decoders_hash;
+            temprtpFIleRel.fp = fp;
+            std::string ssrc_t = t->rtp_content->ssrc;
+            ssrc_t += rtp_payload_type_to_str[t->rtp_content->payload_type];
+            rtp_stream_pFile_map.insert(std::pair<std::string, struct rtpFileRel>(ssrc_t, temprtpFIleRel));
         }
         else {
-//        并发处理rtp流。目前仅支持g711A/U,g729a。
-            char file_name_t[270] = {0};
-
-            //确定rtp 输出的文件名
-            strcat(file_name_t, PACKET_PROTOCOL_PATH);
-            sprintf(file_name_t, "%s%s", PACKET_PROTOCOL_PATH, "rtp/");
-            if (access(file_name_t, 0) != 0) {
-                mkdirs(file_name_t);
-            }
-            std::string fn_str_t = got_rtp_Stream_FileName(t->rtp_content->payload_type, global_time_str,
-                                                           t->rtp_content->ssrc);
-            strcat(file_name_t, fn_str_t.c_str());
-
-            FILE *fp;
-            struct _GHashTable *decoders_hash = nullptr;
-            if (rtp_stream_pFile_map.empty()) {
-                //空map
+            std::string ssrc_t = t->rtp_content->ssrc;
+            ssrc_t += rtp_payload_type_to_str[t->rtp_content->payload_type];
+            auto index = rtp_stream_pFile_map.find(ssrc_t);
+            if (index != rtp_stream_pFile_map.end()) {
+                fp = index->second.fp;
+                decoders_hash = index->second.decoders_hash;
+                //这里解码器初始化
+                if (t->rtp_content->marker) {
+                    if (decoders_hash) {
+                        g_hash_table_destroy(decoders_hash);//这里得释放掉。
+                    }
+                    index->second.decoders_hash = nullptr;
+                    decoders_hash = nullptr;
+                }
+            } else {
                 fp = fopen(file_name_t, "a+");
                 if (!fp) {
                     g_print("%s open error", file_name_t);
                     return;
                 }
-                writeRTPstreamHead(fp);
-                struct rtpFileRel temprtpFIleRel{};
-                char ssrc_t[24] = {0};
-                strcpy(ssrc_t, t->rtp_content->ssrc);
-                temprtpFIleRel.decoders_hash = rtp_decoder_hash_table_new();
-                decoders_hash = temprtpFIleRel.decoders_hash;
-                temprtpFIleRel.fp = fp;
-                rtp_stream_pFile_map.insert(std::pair<std::string, struct rtpFileRel>(ssrc_t, temprtpFIleRel));
-            } else {
-                auto index = rtp_stream_pFile_map.find(t->rtp_content->ssrc);
-                if (index != rtp_stream_pFile_map.end()) {
-                    fp = index->second.fp;
-                    decoders_hash = index->second.decoders_hash;
-                    //这里解码器初始化
-                    if (t->rtp_content->marker) {
-                        if (decoders_hash) {
-                            g_hash_table_destroy(decoders_hash);//这里得释放掉。
-                        }
-                        index->second.decoders_hash = nullptr;
-                        decoders_hash = nullptr;
-                    }
-                } else {
-                    fp = fopen(file_name_t, "a+");
-                    if (!fp) {
-                        g_print("%s open error", file_name_t);
-                        return;
-                    }
+                if(std::find(rtp_Head_au_8000_Rate_surport_List.begin(),rtp_Head_au_8000_Rate_surport_List.end(),t->rtp_content->payload_type) != rtp_Head_au_8000_Rate_surport_List.end()){
+                    //按需写入头部
                     writeRTPstreamHead(fp);
-                    struct rtpFileRel temprtpFileRel{};
-                    char ssrc_t[24] = {0};
-                    strcpy(ssrc_t, t->rtp_content->ssrc);
-                    temprtpFileRel.fp = fp;
-                    temprtpFileRel.decoders_hash = rtp_decoder_hash_table_new();
-                    decoders_hash = temprtpFileRel.decoders_hash;
-                    rtp_stream_pFile_map.insert(std::pair<std::string, struct rtpFileRel>(ssrc_t, temprtpFileRel));
                 }
-            }
-            g_assert(fp != nullptr);
-            uint8_t pd_out[2 * 4000];
-            size_t sample_count;
-            sample_count = convert_payload_to_samples(t->rtp_content->payload_type, t->rtp_content->payload,
-                                                      t->rtp_content->payload_len, pd_out, decoders_hash);
-            if (sample_count != 0) {
-                if (fwrite(pd_out, sizeof(uint8_t), sample_count * 2, fp) != sample_count * 2) {
-                    g_print("%s sample_count write error !\n", __FUNCTION__);
-                }
-            } else {
-//            g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
+                struct rtpFileRel temprtpFileRel{};
+                temprtpFileRel.decoders_hash = rtp_decoder_hash_table_new();
+                decoders_hash = temprtpFileRel.decoders_hash;
+                temprtpFileRel.fp = fp;
+                rtp_stream_pFile_map.insert(std::pair<std::string, struct rtpFileRel>(ssrc_t, temprtpFileRel));
             }
         }
+        g_assert(fp != nullptr);
+        size_t sample_count = 0;
+        uint8_t pd_out[2 * 4000];
+
+        if(strcmp(rtp_payload_type_to_str[t->rtp_content->payload_type],"g722") == 0){
+            //g722
+            sample_count = g722_single_frame_decode(t->rtp_content->payload,t->rtp_content->payload_len,t->rtp_content->marker,pd_out);
+        } else{
+            sample_count = convert_payload_to_samples(t->rtp_content->payload_type, t->rtp_content->payload,
+                                                      t->rtp_content->payload_len, pd_out, decoders_hash);
+            sample_count *=2; //8000采样率，写入数据内容乘2。
+        }
+
+        if (sample_count != 0) {
+            if (fwrite(pd_out, sizeof(uint8_t), sample_count, fp) != sample_count) {
+                g_print("%s sample_count write error !\n", __FUNCTION__);
+            }
+        } else {
+            g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
+        }
+//        }
 
         g_free(t->rtp_content);
     }
@@ -1529,10 +1547,10 @@ gboolean JudgeStreamPrint(gchar* sip,guint sport,gchar *dip,guint dport){
             pfinal_follow->content_len = 0;
 
             //g722单独处理交给g722处理接口 protocol_suffix 是协议的后层协议，后缀协议
-            if(i.protocol_suffix == "g722"){
+            /*if(i.protocol_suffix == "g722"){
                 pfinal_follow->cache_Flag = true;
                 pfinal_follow->protocol_suffix_type = 9; //g722 type
-            }
+            }*/
 
             //这里就直接把路径建好 后续followstream就不用再重复建造路径
             std::string path_t = PACKET_PROTOCOL_PATH;
@@ -1556,17 +1574,20 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
     if(len == 0) return true;
     if(strcmp((char *)data,"-1END") == 0){
         //一个流结束
-        if(pfinal_follow->cache_Flag){
+
+        /*if(pfinal_follow->cache_Flag){
             //特殊的部分流处理交给指定的接口处理
             if(pfinal_follow->protocol_suffix == "g722"){
                 guchar *out = g_new0(guchar, pfinal_follow->content_len * 4);
                 int t = g722decode(pfinal_follow->content.data(), pfinal_follow->content_len, out);
                 fwrite(out, sizeof(guchar), t, pfinal_follow->streamFileName_fp);
             }
-        }
+        }*/
+
         fclose(pfinal_follow->streamFileName_fp);
         pfinal_follow->streamFileName_fp = nullptr;
         pfinal_follow->streamFileName_t.clear();
+        pfinal_follow->protocol_suffix.clear();
         pfinal_follow->content.clear();
         free(pfinal_follow);
         pfinal_follow = nullptr;
@@ -1576,14 +1597,16 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
             std::string fpath_t = PACKET_PROTOCOL_PATH;
 
             //获取尾名，文件格式名
-            std::string tail_t;
-            auto index_t = rtp_payload_type_To_tail.find(pfinal_follow->protocol_suffix_type);
-            if (index_t == rtp_payload_type_To_tail.end()) {
-                tail_t = ".stream";
-            } else {
-                tail_t = index_t->second;
-            }
-            fpath_t += pfinal_follow->streamFileName_t + tail_t;
+            /* std::string tail_t;
+             auto index_t = rtp_payload_type_To_tail.find(pfinal_follow->protocol_suffix_type);
+             if (index_t == rtp_payload_type_To_tail.end()) {
+                 tail_t = ".stream";
+             } else {
+                 tail_t = index_t->second;
+             }
+             fpath_t += pfinal_follow->streamFileName_t + tail_t;*/
+
+            fpath_t += pfinal_follow->streamFileName_t + ".stream";
 
             assert(!pfinal_follow->streamFileName_t.empty());//名称肯定不能为空
             pfinal_follow->streamFileName_fp = fopen(fpath_t.c_str(), "a+");
@@ -1592,18 +1615,17 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
                 return false;
             }
         }
-        if (!pfinal_follow->cache_Flag) {
-            fwrite(data, sizeof(uint8_t), len, pfinal_follow->streamFileName_fp);
-        } else {
-            //缓存内容
-            pfinal_follow->content.reserve(len);
-            for (guint i = 0; i < len; ++i) {
-                pfinal_follow->content.push_back(data[i]);
-            }
+//        if (!pfinal_follow->cache_Flag) {
+        fwrite(data, sizeof(uint8_t), len, pfinal_follow->streamFileName_fp);
+        /*  } else {
+              //缓存内容
+              pfinal_follow->content.reserve(len);
+              for (guint i = 0; i < len; ++i) {
+                  pfinal_follow->content.push_back(data[i]);
+              }
 
-            pfinal_follow->content_len += len;
-        }
-
+              pfinal_follow->content_len += len;
+          }*/
         return true;
     }
 }

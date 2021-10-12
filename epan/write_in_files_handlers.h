@@ -106,7 +106,11 @@ WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 //rtp 相关
 //WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);
 //WS_DLL_PUBLIC int yy_g711u(unsigned char in[], int inlen, unsigned char out[]);
-WS_DLL_PUBLIC int g722decode(unsigned char *data,int len, unsigned char *out);
+//g722 全文件解码器。
+//WS_DLL_PUBLIC int g722decode(unsigned char *data,int len, unsigned char *out);
+
+// g722单帧解码器
+WS_DLL_PUBLIC int g722_single_frame_decode(unsigned char *data,int len, int mark, unsigned char *out);
 
 WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
 WS_DLL_PUBLIC void followConnectFiveEleClear();

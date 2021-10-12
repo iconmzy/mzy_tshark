@@ -288,7 +288,8 @@ set(LIBWIRESHARK_NONGENERATED_FILES
 	ConfigFile.c
 	rtp_media.c
 #	yy_g711.c
-	g722decode_yy.cpp
+#	g722decode_yy.cpp
+	g722decode_yy_single_frame_decode.cpp
 
 	xdlc.c
 	protobuf-helper.c
