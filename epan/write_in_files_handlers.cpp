@@ -1074,10 +1074,6 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         return true;
     }
 
-    /*debug test*/
-//    if(write_in_files_proto.compare("ftp.current-working-directory") == 0 ){
-//        int a=0;
-//    }
 
     if(PACKET_PROTOCOL_FLAG){
         /*判断当前协议是否需要组包*/
