@@ -516,7 +516,7 @@ char *reverse(char *s) {
  * char s[] 的作用是存储整数的每一位
  */
 char *my_itoa(long int n) {
-    int i = 0, isNegative = 0;
+    long int i = 0, isNegative = 0;
     static char s[100];         //必须为static变量，或者是全局变量
     if ((isNegative = n) < 0) //如果是负数，先转为正数
     {
