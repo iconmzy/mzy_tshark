@@ -41,12 +41,12 @@ extern void fill_label_number(field_info *fi, gchar *label_str, gboolean is_sign
 /*即将写进文件的协议*/
 static std::string write_in_files_proto;
 /*内容缓存*/
-static std::string write_in_files_stream = "";
+static std::string write_in_files_stream;
 static cJSON *write_in_files_cJson = cJSON_CreateObject();
 static cJSON *pro_cJson = cJSON_CreateObject();
 /*缓存会话数据内容*/
 static cJSON *write_in_files_conv_cJson = cJSON_CreateObject();
-static std::string conv_path_t = "";
+static std::string conv_path_t;
 
 static FILE *conversation_Handle_File = nullptr;
 
@@ -141,16 +141,21 @@ struct comFiveEleContent{ //通信五元组内容及其他信息
     std::string dport;
     std::string protocol;
     std::string protocol_suffix;
+    unsigned int protocol_suffix_type{};
     int status{};
 };
 std::vector<struct comFiveEleContent> final_Follow_Write_Need; //存放所有最后需要输出流的通信五元组及其他信息,
-struct final_Follow_File_Rel{
+
+typedef struct final_Follow_File_Rel{
     std::string streamFileName_t; //缓存followstream文件名，协议+四元组
     FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
-    std::string content; //存放内容。
-};
-std::string streamFileName_t; //缓存followstream文件名，协议+四元组
-FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
+    std::string protocol_suffix;
+    guint8 protocol_suffix_type{}; //对应protocol_suffix 的type number;
+    gboolean cache_Flag{}; //是否存放缓存的标志
+    std::vector<guchar> content; //存放内容。
+    int content_len{};  //内容长度
+}*pfinal_Follow_File_Rel;
+pfinal_Follow_File_Rel pfinal_follow = nullptr; //存放最后统计流的文件及内容信息
 
 //h263 stream---------------------- 20210909 yy -----------------------------------end h263|||
 //rtp stream---------------------- 20210909 yy ----------------------rtp stream begin |||
@@ -175,7 +180,11 @@ struct rtpFileRel{ //RTP文件及解码器相关
 };
 //rtp 流文件句柄map
 static std::map<std::string,struct rtpFileRel> rtp_stream_pFile_map;
-GList *rtp_fields = nullptr; //rtp字段的双链表
+
+//rtp字段的双链表
+GList *rtp_fields = nullptr;
+
+//对应rtp字段双链表的存储
 struct rtp_Content{
     gboolean marker;
     char ssrc[24];
@@ -183,14 +192,16 @@ struct rtp_Content{
     size_t payload_len;
     unsigned int payload_type;
     char file_name[128];
-}; //对应rtp字段双链表的存储
+};
 
 typedef struct _rtp_decoder_t{
     codec_handle_t handle;
     void *context;
 } rtp_decoder_t;
-void writeRTPstreamHead(FILE* fp);//写rtp可播放流的头 仅支持8000采样率.
-inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, const std::string &);//给定rtp的类型，返回组报结果文件名
+//写rtp可播放流的头 仅支持8000采样率.
+void writeRTPstreamHead(FILE* fp);
+//给定rtp的类型，返回组报结果文件名
+inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, const std::string &);
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
 
 //tls stream---------------------- 20210909 yy ---------------------- tls stream begin |||
@@ -221,13 +232,17 @@ std::vector<struct tls_Vec> tls_Total;
 //tls stream---------------------- 20210909 yy ---------------------- tls stream end |||
 
 struct totalParam{ //流组报相关全参数结构体
-    struct comFiveEleContent *c5e;
+    struct comFiveEleContent *c5e = nullptr;
     struct rtp_Content *rtp_content = nullptr;
     struct tls_Content *tls_content = nullptr;
 };
 /*流处理函数线程池*/
 GThreadPool *handleStreamTpool;
-gboolean packetProtoAlready = false; //当前数据包若为需要组的包则为TRUE，否则为FALSE
+
+//当前数据包若为需要组的包则为TRUE，否则为FALSE
+gboolean packetProtoAlready = false;
+
+//并发处理流数据的函数入口。
 void do_handle_strem(gpointer str,gpointer data);
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle end ||||
 
@@ -1211,8 +1226,10 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                                 mutex = 1;
                         }
                         if(!mutex){
-                            final_Follow_Write_Need.push_back(*c5e);
+                            c5e->protocol_suffix = "h263";
+                            c5e->protocol_suffix_type = 32;
                             c5e->status = comFourEleContent_Status::AlreadyInsert;
+                            final_Follow_Write_Need.push_back(*c5e);
                         }
                     }
                     break;//这里最后一个，提高效率
@@ -1378,20 +1395,25 @@ void do_handle_strem(gpointer str,gpointer data __U__){
             if(final_Follow_Write_Need.empty()){
                 //空
                 t->c5e->protocol_suffix = "g722";
+                t->c5e->protocol_suffix_type = t->rtp_content->payload_type;
+                t->c5e->status = comFourEleContent_Status::AlreadyInsert;
                 final_Follow_Write_Need.push_back(*t->c5e);
             } else {
-                for (auto &i :final_Follow_Write_Need) {
+                for (auto &i :final_Follow_Write_Need) {  //TODO::这里可能潜在一个BUG，就是相同的四元组，前后发了不同协议的两个流，这里没法区分开。
                     if (i.sip == t->c5e->sip and i.sport == t->c5e->sport and i.dip == t->c5e->dip and
                         i.dport == t->c5e->dport) {
                         //do nothing  重复的只存一次
                     } else {
+                        t->c5e->protocol_suffix = "g722";
+                        t->c5e->protocol_suffix_type = t->rtp_content->payload_type;
+                        t->c5e->status = comFourEleContent_Status::AlreadyInsert;
                         final_Follow_Write_Need.push_back(*t->c5e);
                     }
                 }
             }
         }
         else {
-//        并发处理rtp流。
+//        并发处理rtp流。目前仅支持g711A/U,g729a。
             char file_name_t[270] = {0};
 
             //确定rtp 输出的文件名
@@ -1466,7 +1488,9 @@ void do_handle_strem(gpointer str,gpointer data __U__){
 
         g_free(t->rtp_content);
     }
-
+    if(t->tls_content != nullptr){
+        //tls
+    }
     //最后才释放通信五元组内容。
     if(t->c5e){
         delete(t->c5e);
@@ -1485,19 +1509,33 @@ void do_handle_strem(gpointer str,gpointer data __U__){
 gboolean JudgeStreamPrint(gchar* sip,guint sport,gchar *dip,guint dport){
     for (auto &i : final_Follow_Write_Need) {
         if(strcmp(sip,i.sip.c_str()) == 0 and strcmp(dip,i.dip.c_str()) == 0 and i.sport == numtos(sport) and i.dport == numtos(dport)){
-            if(!streamFileName_t.empty()){
-                //应该为空，若有内容肯定是那里出了问题。
-                return true;
+            if(pfinal_follow != nullptr){
+                //应该为空，若不是空指针肯定是那里出了问题。
+                return false;
             }
-            streamFileName_t += i.protocol + "/" + i.protocol_suffix +"_";
+
+            pfinal_follow = new final_Follow_File_Rel{};
+            pfinal_follow->streamFileName_t += i.protocol + "/" + i.protocol_suffix +"_";
             std::string sip_r = i.sip;
             stringReplaceByStr(sip_r,".","_");
-            streamFileName_t +=sip_r +"_" + i.sport+"_";
+            pfinal_follow->streamFileName_t +=sip_r +"_" + i.sport+"_";
             sip_r = i.dip;
             stringReplaceByStr(sip_r,".","_");
-            streamFileName_t += sip_r +"_" + i.dport;
+            pfinal_follow->streamFileName_t += sip_r +"_" + i.dport;
+            pfinal_follow->content.clear();
+            pfinal_follow->streamFileName_fp = nullptr;
+            pfinal_follow->cache_Flag = false;
+            pfinal_follow->protocol_suffix = i.protocol_suffix;
+            pfinal_follow->content_len = 0;
 
-            std::string path_t = PACKET_PROTOCOL_PATH; //这里就直接把路径建好 后续followstream就不用再重复建造路径
+            //g722单独处理交给g722处理接口 protocol_suffix 是协议的后层协议，后缀协议
+            if(i.protocol_suffix == "g722"){
+                pfinal_follow->cache_Flag = true;
+                pfinal_follow->protocol_suffix_type = 9; //g722 type
+            }
+
+            //这里就直接把路径建好 后续followstream就不用再重复建造路径
+            std::string path_t = PACKET_PROTOCOL_PATH;
             path_t += i.protocol;
             if(access(path_t.c_str(), 0) != 0){
                 mkdirs(path_t.c_str());
@@ -1518,22 +1556,54 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
     if(len == 0) return true;
     if(strcmp((char *)data,"-1END") == 0){
         //一个流结束
-        fclose(streamFileName_fp);
-        streamFileName_fp = nullptr;
-        streamFileName_t.clear();
+        if(pfinal_follow->cache_Flag){
+            //特殊的部分流处理交给指定的接口处理
+            if(pfinal_follow->protocol_suffix == "g722"){
+                guchar *out = g_new0(guchar, pfinal_follow->content_len * 4);
+                int t = g722decode(pfinal_follow->content.data(), pfinal_follow->content_len, out);
+                fwrite(out, sizeof(guchar), t, pfinal_follow->streamFileName_fp);
+            }
+        }
+        fclose(pfinal_follow->streamFileName_fp);
+        pfinal_follow->streamFileName_fp = nullptr;
+        pfinal_follow->streamFileName_t.clear();
+        pfinal_follow->content.clear();
+        free(pfinal_follow);
+        pfinal_follow = nullptr;
         return true;
     } else {
-        std::string fpath_t = PACKET_PROTOCOL_PATH;
-        fpath_t += streamFileName_t + ".stream";
-        if(!streamFileName_fp){
-            assert(!streamFileName_t.empty());//名称肯定不能为空
-            streamFileName_fp = fopen(fpath_t.c_str(), "a+");
-             if(!streamFileName_fp){
-                 g_print("stream follow fp open error!\n");
-                 return false;
-             }
+        if (!pfinal_follow->streamFileName_fp) {
+            std::string fpath_t = PACKET_PROTOCOL_PATH;
+
+            //获取尾名，文件格式名
+            std::string tail_t;
+            auto index_t = rtp_payload_type_To_tail.find(pfinal_follow->protocol_suffix_type);
+            if (index_t == rtp_payload_type_To_tail.end()) {
+                tail_t = ".stream";
+            } else {
+                tail_t = index_t->second;
+            }
+            fpath_t += pfinal_follow->streamFileName_t + tail_t;
+
+            assert(!pfinal_follow->streamFileName_t.empty());//名称肯定不能为空
+            pfinal_follow->streamFileName_fp = fopen(fpath_t.c_str(), "a+");
+            if (!pfinal_follow->streamFileName_fp) {
+                g_print("stream follow fp open error!\n");
+                return false;
+            }
         }
-        fwrite(data, sizeof(uint8_t),len,streamFileName_fp);
+        if (!pfinal_follow->cache_Flag) {
+            fwrite(data, sizeof(uint8_t), len, pfinal_follow->streamFileName_fp);
+        } else {
+            //缓存内容
+            pfinal_follow->content.reserve(len);
+            for (guint i = 0; i < len; ++i) {
+                pfinal_follow->content.push_back(data[i]);
+            }
+
+            pfinal_follow->content_len += len;
+        }
+
         return true;
     }
 }

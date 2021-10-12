@@ -1667,7 +1667,7 @@ int main(int argc, char *argv[]) {
             list_stat_cmd_args();
             g_print("someting error in conversation of tcp\n");
         }
-        for (int i = 0; i < 3; ++i) { //这里的循环次数是文件解析最后支持输出流的个数，有多少流就应该多大。
+        for (int i = 0; i < 100; ++i) { //这里的循环次数是文件解析最后支持输出流的个数，有多少流就应该多大。
             char arg_t_1[24] = "follow,udp,raw,";
             strcat(arg_t_1,my_itoa(i));
             if (!process_stat_cmd_arg(arg_t_1)) {
@@ -2647,7 +2647,7 @@ int main(int argc, char *argv[]) {
         cfile.provider.frames = NULL;
     }
 
-    //每个文件结束清理流统计。
+    //清理流统计。
     draw_taps = TRUE;
     if (draw_taps){
         draw_tap_listeners(TRUE);
