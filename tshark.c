@@ -2499,6 +2499,7 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+        g_print("解析完成");
     }
     else {
         /* No capture file specified, so we're supposed to do a live capture
