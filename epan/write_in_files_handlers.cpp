@@ -23,7 +23,6 @@
 #include "wsutil/pint.h"
 #include "epan/rtp_media.h"
 #include "wsutil/codecs.h"
-#include <regex>   // c++   [ c use #include <regex.h> ]
 #include <stdlib.h>
 #include <string.h>
 #include <cstring>
@@ -780,23 +779,26 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
  * @return
  */
 void match_line_no(char *pattern, char *source_str, char * target) {
-    try{
+    GRegex *regex;   //正则表达式对象
+    GMatchInfo *match_info;   //匹配后的集合
+    GError *error = NULL;
+    regex = g_regex_new(pattern, static_cast<GRegexCompileFlags>(0), static_cast<GRegexMatchFlags>(0),
+                        &error);  //创建正则表达式
+    g_regex_match(regex, source_str, static_cast<GRegexMatchFlags>(0), &match_info);   //匹配
+    while (g_match_info_matches(match_info)) {    //利用g_match_info_fetch把每一项fetch出来
+        gint count = g_match_info_get_match_count(match_info);
+        g_print("match count:%d\n", count);
 
-        std::regex reg(pattern);  // TODO:这里的 (?<=_).*(?=_\w{8}T\w{6}) 这种表达式会格式错误。
-        std::cmatch results;
-        bool match_bool = std::regex_search(source_str, results, reg);
-
-        // g_print("%d", match_bool);
-        if(match_bool){
-            strcpy(target, (char *)results.str().c_str());
-        } else{
-            strcpy(target, "");
+        int i;
+        for (i = 0; i < count; i++) {
+            gchar *word = g_match_info_fetch(match_info, i);
+            strcpy(target, word);
+            g_free(word);
         }
+        g_match_info_next(match_info, NULL);
     }
-    catch (std::runtime_error){
-        g_print("regex grammar format error !\n");
-        strcpy(target, "");
-    }
+    g_match_info_free(match_info);  //释放空间
+    g_regex_unref(regex);
 }
 /**
  * 每解析一个新的文件开始时进行初始化，用OFFLINE_LINE_NO_REGEX对应的value，正则匹配新的文件名称，将该文件名匹配后的结果写入regex_dict_map中。
@@ -821,10 +823,12 @@ void parse_offline_regex_dict(){
  * @return
  */
 gboolean dissect_edt_into_files(epan_dissect_t *edt) {
-    g_assert(edt != nullptr);
     if (edt->tree == nullptr)
         return false;
     proto_node *node = edt->tree->first_child;
+    if(node == nullptr)
+        return false;
+
     std::string protocol_stack_t;  // 记录协议栈
     proto_node *stack_node_t = node;
 
@@ -868,40 +872,40 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     cJSON_AddStringToObject(write_in_files_cJson, "protocols", protocol_stack_t.c_str());
     cJSON_AddStringToObject(write_in_files_cJson, "frame_id", numtos(edt->pi.num).c_str());
 
+    /*帧头每个数据包肯定有帧头*/
+    if (strcmp(node->finfo->hfinfo->abbrev, "frame") == 0) {
+        proto_node *child = node->first_child; //该层协议的第一个字段
+        while (child != nullptr) {
+            /*该层协议具有内容*/
+            field_info *child_finfo = child->finfo;
+            if (strcmp(child_finfo->hfinfo->abbrev, "frame.encap_type") == 0) {
+                gchar value[240] = {'\0'};
+                yy_proto_item_fill_label(child_finfo, value);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_encap_type", value);
+                child = child->next;
+                continue;
+            }
+            if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
+                gchar value[240] = {'\0'};
+                yy_proto_item_fill_label(child_finfo, value);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value);
+                child = child->next;
+                continue;
+            }
+            if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
+                gchar value[240] = {'\0'};
+                yy_proto_item_fill_label(child_finfo, value);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value);
+                break; //这里最后一个，提高效率
+            }
+            child = child->next;
+        }
+        node = node->next;
+    }
+
     while (node != nullptr) {
         field_info *fi = node->finfo;
 
-        /*帧头*/
-        if (strcmp(fi->hfinfo->abbrev, "frame") == 0) {
-            proto_node *child = node->first_child; //该层协议的第一个字段
-            while (child != nullptr) {
-                /*该层协议具有内容*/
-                field_info *child_finfo = child->finfo;
-                if (strcmp(child_finfo->hfinfo->abbrev, "frame.encap_type") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "frame_encap_type", value);
-                    child = child->next;
-                    continue;
-                }
-                if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value);
-                    child = child->next;
-                    continue;
-                }
-                if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value);
-                    break; //这里最后一个，提高效率
-                }
-                child = child->next;
-            }
-            node = node->next;
-            continue;
-        }
         /*eth*/
         if (strcmp(fi->hfinfo->abbrev, "eth") == 0) {
             proto_node *child = node->first_child;
@@ -914,7 +918,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     child = child->next;
                     continue;
                 }
-                if (strcmp(child_finfo->hfinfo->abbrev, "eth.src") == 0) {
+                else if (strcmp(child_finfo->hfinfo->abbrev, "eth.src") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
                     cJSON_AddStringToObject(write_in_files_cJson, "eth_src", value);
@@ -926,7 +930,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             continue;
         }
         /*ip ipv6 */
-        if (strcmp(fi->hfinfo->abbrev, "ip") == 0 or strcmp(fi->hfinfo->abbrev, "ipv6") == 0) {
+        else if (strcmp(fi->hfinfo->abbrev, "ip") == 0 or strcmp(fi->hfinfo->abbrev, "ipv6") == 0) {
             proto_node *child = node->first_child;
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
@@ -938,7 +942,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     child = child->next;
                     continue;
                 }
-                if (strcmp(child_finfo->hfinfo->abbrev, "ip.dst") == 0 or
+                else if (strcmp(child_finfo->hfinfo->abbrev, "ip.dst") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.dst") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
@@ -952,7 +956,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             continue;
         }
         /*tcp udp*/
-        if (strcmp(fi->hfinfo->abbrev, "tcp") == 0 or strcmp(fi->hfinfo->abbrev, "udp") == 0) {
+        else if (strcmp(fi->hfinfo->abbrev, "tcp") == 0 or strcmp(fi->hfinfo->abbrev, "udp") == 0) {
             proto_node *child = node->first_child;
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
@@ -964,7 +968,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     child = child->next;
                     continue;
                 }
-                if (strcmp(child_finfo->hfinfo->abbrev, "tcp.dstport") == 0 or
+                else if (strcmp(child_finfo->hfinfo->abbrev, "tcp.dstport") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "udp.dstport") == 0) {
                     gchar value[240] = {'\0'};
                     yy_proto_item_fill_label(child_finfo, value);
@@ -978,7 +982,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             continue;
         }
         /*未知协议识别规则：最后层协议为data,暂定为未知协议,20211008 yy*/
-        if(strcmp(fi->hfinfo->abbrev,"data") == 0){
+        else if(strcmp(fi->hfinfo->abbrev,"data") == 0){
             if(node->first_child->first_child != nullptr){
                 //当前data并不是最后一个协议，
                 continue;
@@ -995,20 +999,20 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             break;
         }
         /*最后层协议的解析*/
-        if (strcmp(fi->hfinfo->abbrev, write_in_files_proto.c_str()) == 0) {
+        else if (strcmp(fi->hfinfo->abbrev, write_in_files_proto.c_str()) == 0) {
             proto_node *child = node->first_child;
             if (child != nullptr) {
                 try {
                     int curlayer = 0;
-//                    dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson, child, nullptr);
-                    dissect_edt_Tree_Into_Json(write_in_files_cJson,child,curlayer, nullptr);
+                    dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson, child, nullptr);
+//                    dissect_edt_Tree_Into_Json(write_in_files_cJson,child,curlayer, nullptr);
                 }
                 catch (std::invalid_argument) {
                     node = node->next;
                     continue;
                 }
             }
-            //可能存在多个相同协议，如tls,tls;
+            break;
         }
         node = node->next;
     }
@@ -1072,18 +1076,14 @@ gboolean beginInitOnce(char *flag) {
     strname_head->next = nullptr;
     strname_head->str_name = "";
     strname_head->times = 0;
-    try {
-        regex_dict = (cJSON *) cJSON_Parse(OFFLINE_LINE_NO_REGEX); //线路号匹配的json初始化
-        if(regex_dict == nullptr){
-            g_print("KEY:OFFLINE_LINE_NO_REGEX format error!\n");
-            g_print("must be standard JSON format\n");
-            g_print("example:{\"KEY1\":\"VALUE1\",\"KEY2\":\"VALUE2\"}\n");
-            exit(0);
-        }
+    regex_dict = (cJSON *) cJSON_Parse(OFFLINE_LINE_NO_REGEX); //线路号匹配的json初始化
+    if (regex_dict == nullptr) {
+        g_print("KEY:OFFLINE_LINE_NO_REGEX format error!\n");
+        g_print("must be standard JSON format\n");
+        g_print("example:{\"KEY1\":\"VALUE1\",\"KEY2\":\"VALUE2\"}\n");
+        exit(0);
     }
-    catch (std::regex_error){
-        g_print("line regex grammar format error !, regex nothing has wrote !\n");
-    }
+
 
     /*批量插入初始化头部节点*/
     if (INSERT_MANY_PROTOCOL_STREAM_FLAG == 1) {
