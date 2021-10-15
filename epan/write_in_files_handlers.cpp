@@ -1000,8 +1000,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             if (child != nullptr) {
                 try {
                     int curlayer = 0;
-                    dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson, child, nullptr);
-//                    dissect_edt_Tree_Into_Json(write_in_files_cJson,child,curlayer, nullptr);
+//                    dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson, child, nullptr);
+                    dissect_edt_Tree_Into_Json(write_in_files_cJson,child,curlayer, nullptr);
                 }
                 catch (std::invalid_argument) {
                     node = node->next;
