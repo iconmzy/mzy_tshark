@@ -165,19 +165,19 @@ static void follow_draw(void *contextp)
 
   address_to_str_buf(&follow_info->client_ip, buf_c, sizeof buf_c);
   address_to_str_buf(&follow_info->server_ip, buf_s, sizeof buf_s);
-
-   if(!JudgeStreamPrint(buf_c,follow_info->client_port,buf_s,follow_info->server_port)){
-       return;
-   }
-
-  for (cur = g_list_last(follow_info->payload), chunk = 1; //TODO：将流数据内容写入文件。
-       cur != NULL;
-       cur = g_list_previous(cur), chunk++)
-  {
-    follow_record = (follow_record_t *)cur->data;
-    streamFollowIntoFiles(follow_record->data->data,follow_record->data->len);
-  }
-    streamFollowIntoFiles("-1END",-1);
+//
+//   if(!JudgeStreamPrint(buf_c,follow_info->client_port,buf_s,follow_info->server_port)){
+//       return;
+//   }
+//
+//  for (cur = g_list_last(follow_info->payload), chunk = 1; //TODO：将流数据内容写入文件。
+//       cur != NULL;
+//       cur = g_list_previous(cur), chunk++)
+//  {
+//    follow_record = (follow_record_t *)cur->data;
+//    streamFollowIntoFiles(follow_record->data->data,follow_record->data->len);
+//  }
+//    streamFollowIntoFiles("-1END",-1);
 }
 
 static gboolean follow_arg_strncmp(const char **opt_argp, const char *strp)

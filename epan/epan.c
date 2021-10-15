@@ -581,7 +581,7 @@ void epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
 
     wmem_enter_packet_scope();
 
-    if (PACKET_PROTOCOL_FLAG || WRITE_IN_CONVERSATIONS_FLAG) {
+    if (WRITE_IN_CONVERSATIONS_FLAG) {
         tap_queue_init(edt);
     }
 
@@ -593,7 +593,7 @@ void epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
     }
 
     /* 协议组报，生成会话数据 */
-    if (PACKET_PROTOCOL_FLAG || WRITE_IN_CONVERSATIONS_FLAG) {
+    if (WRITE_IN_CONVERSATIONS_FLAG) {
         tap_push_tapped_queue(edt);
     }
 

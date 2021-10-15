@@ -26,8 +26,6 @@ WS_DLL_PUBLIC char EXPORT_PATH[256];
 WS_DLL_PUBLIC gboolean WRITE_IN_CONVERSATIONS_FLAG;
 WS_DLL_PUBLIC char WRITE_IN_CONVERSATIONS_PATH[256];
 
-WS_DLL_PUBLIC gboolean PACKET_PROTOCOL_FLAG;
-WS_DLL_PUBLIC char PACKET_PROTOCOL_TYPES[256];
 WS_DLL_PUBLIC char PACKET_PROTOCOL_PATH[256];
 
 WS_DLL_PUBLIC gboolean INSERT_MANY_PROTOCOL_STREAM_FLAG;  // 是否批量写入
@@ -113,7 +111,6 @@ WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 WS_DLL_PUBLIC int g722_single_frame_decode(unsigned char *data,int len, int mark, unsigned char *out);
 
 WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
-WS_DLL_PUBLIC void followConnectFiveEleClear();
 WS_DLL_PUBLIC gboolean streamFollowIntoFiles(guint8 *data,guint len);
 #ifdef __cplusplus
 }
