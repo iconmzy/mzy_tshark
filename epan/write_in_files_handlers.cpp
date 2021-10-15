@@ -140,9 +140,9 @@ struct comFiveEleContent{ //通信五元组内容及其他信息
     std::string dip;
     std::string sport;
     std::string dport;
-    std::string protocol;
-    std::string protocol_suffix;
-    unsigned int protocol_suffix_type{};
+    std::string protocol;//协议 如rtp
+    std::string protocol_suffix;//子协议，如g722,g711
+    unsigned int protocol_suffix_type{}; //子协议号,[0-127]
     int status{};
 };
 std::vector<struct comFiveEleContent> final_Follow_Write_Need; //存放所有最后需要输出流的通信五元组及其他信息,
@@ -150,7 +150,7 @@ std::vector<struct comFiveEleContent> final_Follow_Write_Need; //存放所有最
 typedef struct final_Follow_File_Rel{
     std::string streamFileName_t; //缓存followstream文件名，协议+四元组
     FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
-    std::string protocol_suffix;
+    std::string protocol_suffix;//子协议，如rtp协议承载的g722,g711
     guint8 protocol_suffix_type{}; //对应protocol_suffix 的type number;
     gboolean cache_Flag{}; //是否存放缓存的标志
     std::vector<guchar> content; //存放内容。
