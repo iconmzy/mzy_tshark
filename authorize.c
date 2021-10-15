@@ -206,7 +206,7 @@ void verify_identity_one(const char * reg_path){
             exit(0);
         }
     }
-    printf("The device had activated!");
+    printf("The device has activated!\n");
     /*注册码功能结束*/
 }
 void verify_identity_two(const char * reg_path){

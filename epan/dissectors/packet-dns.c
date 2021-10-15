@@ -1616,8 +1616,8 @@ dissect_dns_query(tvbuff_t *tvb, int offset, int dns_data_offset,
     /* The number of used bytes for qname is the total used bytes minus 2 bytes for qtype and 2 bytes for qclass */
     proto_tree_add_string(q_tree, hf_dns_qry_name, tvb, offset, used_bytes - 4, name_out);
 
-    tq = proto_tree_add_uint(q_tree, hf_dns_qry_name_len, tvb, offset, used_bytes - 4, name_len > 1 ? name_len : 0);
-    proto_item_set_generated(tq);
+//    tq = proto_tree_add_uint(q_tree, hf_dns_qry_name_len, tvb, offset, used_bytes - 4, name_len > 1 ? name_len : 0);
+//    proto_item_set_generated(tq);
 
     labels = qname_labels_count(name, name_len);
     tq = proto_tree_add_uint(q_tree, hf_dns_count_labels, tvb, offset, used_bytes - 4, labels);
@@ -4153,26 +4153,26 @@ dissect_dns_common(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree,
   proto_tree_add_item(field_tree, hf_dns_flags_opcode,
                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
   if (is_llmnr) {
-    if (flags & F_RESPONSE) {
-      proto_tree_add_item(field_tree, hf_dns_flags_conflict_response,
-                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
-    } else {
-      proto_tree_add_item(field_tree, hf_dns_flags_conflict_query,
-                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
-    }
+//    if (flags & F_RESPONSE) {
+//      proto_tree_add_item(field_tree, hf_dns_flags_conflict_response,
+//                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
+//    } else {
+//      proto_tree_add_item(field_tree, hf_dns_flags_conflict_query,
+//                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
+//    }
     proto_tree_add_item(field_tree, hf_dns_flags_truncated,
                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
-    proto_tree_add_item(field_tree, hf_dns_flags_tentative,
-                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
+//    proto_tree_add_item(field_tree, hf_dns_flags_tentative,
+//                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
     if (flags & F_RESPONSE) {
       proto_tree_add_item(field_tree, hf_dns_flags_rcode,
                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
     }
   } else {
-    if (flags & F_RESPONSE) {
-      proto_tree_add_item(field_tree, hf_dns_flags_authoritative,
-                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
-    }
+//    if (flags & F_RESPONSE) {
+//      proto_tree_add_item(field_tree, hf_dns_flags_authoritative,
+//                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
+//    }
     proto_tree_add_item(field_tree, hf_dns_flags_truncated,
                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
     proto_tree_add_item(field_tree, hf_dns_flags_recdesired,
@@ -4181,17 +4181,17 @@ dissect_dns_common(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree,
       proto_tree_add_item(field_tree, hf_dns_flags_recavail,
                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
     }
-    proto_tree_add_item(field_tree, hf_dns_flags_z,
-                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
+//    proto_tree_add_item(field_tree, hf_dns_flags_z,
+//                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
     if (flags & F_RESPONSE) {
       proto_tree_add_item(field_tree, hf_dns_flags_authenticated,
                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
     } else if (flags & F_AUTHENTIC) {
-      proto_tree_add_item(field_tree, hf_dns_flags_ad,
-                                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
+//      proto_tree_add_item(field_tree, hf_dns_flags_ad,
+//                                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
     }
-    proto_tree_add_item(field_tree, hf_dns_flags_checkdisable,
-                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
+//    proto_tree_add_item(field_tree, hf_dns_flags_checkdisable,
+//                tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
     if (flags & F_RESPONSE) {
       proto_tree_add_item(field_tree, hf_dns_flags_rcode,
                 tvb, offset + DNS_FLAGS, 2, ENC_BIG_ENDIAN);
@@ -4200,24 +4200,24 @@ dissect_dns_common(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree,
 
   quest = tvb_get_ntohs(tvb, offset + DNS_QUEST);
   if (isupdate) {
-    proto_tree_add_uint(dns_tree, hf_dns_count_zones, tvb,
-        offset + DNS_QUEST, 2, quest);
+//    proto_tree_add_uint(dns_tree, hf_dns_count_zones, tvb,
+//        offset + DNS_QUEST, 2, quest);
   } else {
     proto_tree_add_uint(dns_tree, hf_dns_count_questions, tvb,
         offset + DNS_QUEST, 2, quest);
   }
   ans = tvb_get_ntohs(tvb, offset + DNS_ANS);
   if (isupdate) {
-    proto_tree_add_uint(dns_tree, hf_dns_count_prerequisites, tvb,
-        offset + DNS_ANS, 2, ans);
+//    proto_tree_add_uint(dns_tree, hf_dns_count_prerequisites, tvb,
+//        offset + DNS_ANS, 2, ans);
   } else {
     proto_tree_add_uint(dns_tree, hf_dns_count_answers, tvb,
         offset + DNS_ANS, 2, ans);
   }
   auth = tvb_get_ntohs(tvb, offset + DNS_AUTH);
   if (isupdate) {
-    proto_tree_add_uint(dns_tree, hf_dns_count_updates, tvb,
-        offset + DNS_AUTH, 2, auth);
+//    proto_tree_add_uint(dns_tree, hf_dns_count_updates, tvb,
+//        offset + DNS_AUTH, 2, auth);
   } else {
     proto_tree_add_uint(dns_tree, hf_dns_count_auth_rr, tvb,
         offset + DNS_AUTH, 2, auth);
