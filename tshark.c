@@ -1640,7 +1640,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    /*   if (PACKET_PROTOCOL_FLAG) {  // 是否组包
+    if (PACKET_PROTOCOL_FLAG) {  // 是否组包
         char t[24] = {0};
         int len = strlen(PACKET_PROTOCOL_TYPES);
         int j = 0;
@@ -1660,7 +1660,7 @@ int main(int argc, char *argv[]) {
                 j = 0;
             }
         }
-    }*/
+    }
 
     if (WRITE_IN_CONVERSATIONS_FLAG) {  // 是否统计会话信息
         char *arg_t = "conv,tcp";
