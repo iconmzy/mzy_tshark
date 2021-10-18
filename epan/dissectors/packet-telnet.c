@@ -24,6 +24,12 @@
 #include "packet-tn5250.h"
 #include "packet-acdr.h"
 
+gboolean start_get_username = FALSE;  /* 用户名开始标志 */
+guint32 user_port = -1;  /* 端口标识 */
+char username[64] = {'\0'};  /* 存放提取到的用户名 */
+gboolean start_get_pwd = FALSE;
+char password[32] = {'\0'};
+
 void proto_reg_handoff_telnet(void);
 
 void proto_register_telnet(void);
@@ -81,6 +87,8 @@ static int hf_tn3270_regime_cmd = -1;
 
 static int hf_telnet_starttls = -1;
 static int hf_telnet_asset = -1;  /* 额外添加 */
+static int hf_telnet_username = -1;
+static int hf_telnet_password = -1;
 
 static gint ett_telnet = -1;
 static gint ett_telnet_cmd = -1;
@@ -1589,6 +1597,11 @@ static tn_opt options[] = {
 static int
 telnet_sub_option(packet_info *pinfo, proto_tree *option_tree, proto_item *option_item, tvbuff_t *tvb,
                   int start_offset) {
+
+//    for (int ii=0; ii<50; ii++) {
+//        printf("%d\t%s\n", ii, options[ii].name);
+//    }
+
     int offset = start_offset;
     guint8 opt_byte;
     int subneg_len;
@@ -1915,19 +1928,47 @@ dissect_telnet(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data _
         }
     }
     /* Expert info */
-    proto_item *sn_ti;
-    sn_ti = proto_tree_add_item(telnet_tree, hf_telnet_asset, tvb, 0, 0, ENC_ASCII | ENC_NA);
-
-    proto_item_set_generated(sn_ti);
-    if (pinfo->srcport == 23) {
-        expert_add_info_format(pinfo, sn_ti, &ei_telnet_au_server,
-                               "src_ip is Telnet Server");
-//        proto_tree_add_ipv4(sn_ti, hf_telnet_asset, tvb, 0, 0, pinfo->net_src.data);
-    } else if (pinfo->destport == 23) {
-        expert_add_info_format(pinfo, sn_ti, &ei_telnet_au_server,
-                               "dst_ip is Telnet Server");
-//        proto_tree_add_ipv4(sn_ti, hf_telnet_asset, tvb, 0, 0, pinfo->net_dst.data);
+    if (strcmp(telnet_tree->first_child->finfo->hfinfo->name, "Data") == 0) {
+        if (!start_get_username && strcmp(telnet_tree->first_child->finfo->value.value.string, "login: ") == 0) {
+            /* 开始获取用户名，以四元组作为标识 */
+            start_get_username = TRUE;
+            /* 需要取的用户名，把端口倒过来 */
+            user_port = pinfo->destport;
+        } else if (start_get_username && pinfo->srcport == user_port) {
+            if (strcmp(telnet_tree->first_child->finfo->value.value.string, "\r") == 0) {
+                g_print("\n用户名：%s\n", username);
+                proto_tree_add_string(telnet_tree, hf_telnet_username, tvb, 0, 0, username);
+                start_get_username = FALSE;
+                user_port = -1;
+                memset(username, '\0', sizeof(username));
+            } else {
+                strcat(username, telnet_tree->first_child->finfo->value.value.string);
+            }
+        } else if (!start_get_pwd && strcmp(telnet_tree->first_child->finfo->value.value.string, "Password: ") == 0) {
+            start_get_pwd = TRUE;
+        } else if (start_get_pwd && pinfo->destport == 23) {
+            if (strcmp(telnet_tree->first_child->finfo->value.value.string, "\r") == 0) {
+                g_print("\n密码：%s\n", password);
+                proto_tree_add_string(telnet_tree, hf_telnet_password, tvb, 0, 0, password);
+                start_get_pwd = FALSE;
+                memset(password, '\0', sizeof(password));
+            } else {
+                strcat(password, telnet_tree->first_child->finfo->value.value.string);
+            }
+        }
     }
+
+//    proto_item *sn_ti;
+//    sn_ti = proto_tree_add_item(telnet_tree, hf_telnet_asset, tvb, 0, 0, ENC_ASCII | ENC_NA);
+//
+//    proto_item_set_generated(sn_ti);
+//    if (pinfo->srcport == 23) {
+//        expert_add_info_format(pinfo, sn_ti, &ei_telnet_au_server,
+//                               "src_ip is Telnet Server");
+//    } else if (pinfo->destport == 23) {
+//        expert_add_info_format(pinfo, sn_ti, &ei_telnet_au_server,
+//                               "dst_ip is Telnet Server");
+//    }
 
     return tvb_captured_length(tvb);
 }
@@ -2121,6 +2162,14 @@ proto_register_telnet(void) {
             },
             {&hf_telnet_asset,
                     {"Asset",                "telnet.asset",                               FT_STRING,  BASE_NONE,
+                            NULL,                                 0, NULL,                                                    HFILL}
+            },
+            {&hf_telnet_username,
+                    {"Username",                "telnet.username",                               FT_STRING,  BASE_NONE,
+                            NULL,                                 0, NULL,                                                    HFILL}
+            },
+            {&hf_telnet_password,
+                    {"Password",                "telnet.password",                               FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
     };
