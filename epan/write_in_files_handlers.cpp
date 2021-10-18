@@ -787,7 +787,7 @@ void match_line_no(char *pattern, char *source_str, char * target) {
     g_regex_match(regex, source_str, static_cast<GRegexMatchFlags>(0), &match_info);   //匹配
     while (g_match_info_matches(match_info)) {    //利用g_match_info_fetch把每一项fetch出来
         gint count = g_match_info_get_match_count(match_info);
-        g_print("match count:%d\n", count);
+//        g_print("match count:%d\n", count);
 
         int i;
         for (i = 0; i < count; i++) {
@@ -796,6 +796,7 @@ void match_line_no(char *pattern, char *source_str, char * target) {
             g_free(word);
         }
         g_match_info_next(match_info, NULL);
+        if(strlen(target)>1) break;
     }
     g_match_info_free(match_info);  //释放空间
     g_regex_unref(regex);
