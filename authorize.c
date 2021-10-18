@@ -29,7 +29,7 @@ void getMac(char *mac) {
     }
     return;
 }
-
+/*
 void cpu_id(char *id) {
     unsigned int s1, s2;
     asm volatile
@@ -43,15 +43,26 @@ void cpu_id(char *id) {
     sprintf(id, "%08X-%08X", s1, s2);
     return;
 }
+*/
 
-
-/*添加注册码功能*/
+///添加注册码功能
 void verify_identity_one(const char * reg_path){
+//void verify_identity_one(){
+//    char reg_path[]="/home/zhr/aurora/";
     char mac[256], id[256], file[256], cha[256];
     int i, j, n, k, p, q,  sum, a, temp[256], add[256], arr[256], idx[6] = {4, 3, 5, 2, 0, 1};
     FILE *fp;
 
-    getMac(mac);  cpu_id(id);   strcat(id, mac);
+    getMac(mac);
+    //cpu_id(id);
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sactivecodea.txt",file);
+    printf("%s\n",file);
+    if ((fp = fopen(file, "r")) == NULL) {  printf("openfile Err1!\n");  exit(0);}
+    fseek(fp, 0, SEEK_END); j = ftell(fp); rewind(fp);    fread(id,1,j,fp);fclose(fp);id[j]=0;
+    printf("cpuid:%s\n",id);
+
+    strcat(id, mac);
     n = strlen(id); j = 0;
     for ( i = 0; i < n; i++) if (id[i] != ':' && id[i] != '-') id[j++] = id[i];
     id[j] = 0;  n=j;
@@ -64,8 +75,13 @@ void verify_identity_one(const char * reg_path){
     cha[p] = 0;    q = 0;
     for(i=0;i<=k;i++){for(j=0;j<6;j++){ if (i * 6 + idx[j] < n)id[q++] = (char)(cha[i*6+idx[j]]+i); else continue;}}
     id[q] = 0;
+    //sprintf(id,"1F800F11653128");
     printf("The machine id: %s\n", id);
-    for(i=0;i<256;i++)file[i]=0; strcpy(file, reg_path);  strcat(file, "activecode.txt");
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sactivecode.txt",file);
+    printf("%s\n",file);
+
+    //for(i=0;i<256;i++)file[i]=0; strcpy(file, reg_path);  strcat(file, "activecode.txt");
     if ((fp = fopen(file, "w")) == NULL) {  printf("openfile Err!\n");  exit(0); }  fprintf(fp, "%s", id);  fclose(fp);
 
     n = strlen(id);
@@ -81,13 +97,19 @@ void verify_identity_one(const char * reg_path){
     for ( i = 0; i < 30; i++)cha[i]=0;
     id[0]=0;  for ( i = 0; i < n; i++) {  sprintf(cha, "%d", arr[i]);    strcat(id, cha);  }
 
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sregist.txt",file);
+    printf("%s\n",file);
+    //strcpy(file, reg_path);    strcat(file, "regist.txt");
 
-    for(i=0;i<256;i++) file[i] = 0;  strcpy(file, reg_path);    strcat(file, "regist.txt");
     if ((fp = fopen(file, "r")) == NULL){printf("未激活，请激活！\n"); exit(0);}
     fread(cha,1,14,fp);   fclose(fp);
-    if (strcmp(id, cha) != 0) {printf("未激活，请激活！%s %s\n",id, cha);
+    n=0;for(i=0;i<14;i++)n+=id[i]^cha[i];
+    if (n != 0) {printf("未激活，请激活！%s %s\n",id, cha);
         exit(0);}
-    printf("该设备已激活！\n");    /*注册码功能结束*/
+    printf("该设备已激活！\n");
+    return ;
+    ///注册码功能结束
 }
 
 void verify_identity_two(const char * reg_path){
@@ -95,7 +117,13 @@ void verify_identity_two(const char * reg_path){
     int i, j, n, k, p, q,  sum, a, temp[256], add[256], arr[256], idx[6] = {4, 3, 5, 2, 0, 1};
     FILE *fp;
 
-    getMac(mac);  cpu_id(id);   strcat(id, mac);
+    getMac(mac);  //cpu_id(id);
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sactivecodea.txt",file);
+    if ((fp = fopen(file, "r")) == NULL) {  printf("openfile Err!\n");  exit(0);}
+    fseek(fp, 0, SEEK_END); j = ftell(fp); rewind(fp);    fread(id,1,j,fp);fclose(fp);id[j]=0;
+    printf("cpuid:%s\n",id);
+    strcat(id, mac);
     n = strlen(id); j = 0;
     for ( i = 0; i < n; i++) if (id[i] != ':' && id[i] != '-') id[j++] = id[i];
     id[j] = 0;  n=j;
@@ -108,7 +136,13 @@ void verify_identity_two(const char * reg_path){
     cha[p] = 0;   q = 0;
     for(i=0;i<=k;i++){for(j=0;j<6;j++){ if (i * 6 + idx[j] < n)id[q++] = (char)(cha[i*6+idx[j]]+i); else continue;}}
     id[q] = 0;
-    for(i=0;i<256;i++)file[i]=0; strcpy(file, reg_path);  strcat(file, "activecode.txt");
+
+    //sprintf(id,"1F800F11653128");
+    printf("The machine id: %s\n", id);
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sactivecode.txt",file);
+    printf("%s\n",file);
+    //for(i=0;i<256;i++)file[i]=0; strcpy(file, reg_path);  strcat(file, "activecode.txt");
     if ((fp = fopen(file, "w")) == NULL) {  printf("openfile Err!\n");
         exit(0); }  fprintf(fp, "%s", id);  fclose(fp);
 
@@ -125,12 +159,17 @@ void verify_identity_two(const char * reg_path){
     for ( i = 0; i < 30; i++)cha[i]=0;
     id[0]=0;  for ( i = 0; i < n; i++) {  sprintf(cha, "%d", arr[i]);    strcat(id, cha);  }
 
-    for(i=0;i<256;i++) file[i] = 0;  strcpy(file, reg_path);    strcat(file, "regist.txt");
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sregist.txt",file);
+    printf("%s\n",file);
+    //for(i=0;i<256;i++) file[i] = 0;  strcpy(file, reg_path);    strcat(file, "regist.txt");
     if ((fp = fopen(file, "r")) == NULL){printf("未激活，请激活！\n"); exit(0);}
     fread(cha,1,14,fp);   fclose(fp);
-    if (strcmp(id, cha) != 0) {printf("未激活，请激活！%s %s\n",id, cha);exit(0);}
+    n=0;for(i=0;i<14;i++)n+=id[i]^cha[i];
+    //if (strcmp(id, cha) != 0) {printf("未激活，请激活！%s %s\n",id, cha);exit(0);}
+    return;
     //printf("该设备已激活！\n");
-    /*注册码功能结束*/
+    ///注册码功能结束
 }
 
 
