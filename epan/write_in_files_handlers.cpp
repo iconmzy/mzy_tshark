@@ -907,7 +907,8 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
         que.pop();
         if(temp->first_child == nullptr or temp->last_child == nullptr){
             //data node
-            if(temp->finfo->length >= 1514 or temp->finfo->length <= 0) continue; //无意义的长值直接跳过
+            if(temp->finfo->length >= 1514 or temp->finfo->length < 0)
+                continue; //无意义的长值直接跳过  TODO: 相当于跳过所有的专家信息
 
             std::string key_str = temp->finfo->hfinfo->abbrev;
             if(cursionkeyStrFilter(key_str.c_str())) continue; //无意义的字段过滤掉
