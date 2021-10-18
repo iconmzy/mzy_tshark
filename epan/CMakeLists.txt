@@ -186,6 +186,7 @@ set(LIBWIRESHARK_PUBLIC_HEADERS
 	cJSON.h
 	writefile.h
 	rtp_media.h
+	authorize.h
 
 	x264_prt_id.h
 	xdlc.h
@@ -290,7 +291,7 @@ set(LIBWIRESHARK_NONGENERATED_FILES
 #	yy_g711.c
 #	g722decode_yy.cpp
 	g722decode_yy_single_frame_decode.cpp
-
+	authorize.c
 	xdlc.c
 	protobuf-helper.c
 	protobuf_lang_tree.c

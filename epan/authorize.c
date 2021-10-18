@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <glib.h>
 
 
 #define MAXINTERFACES 16
@@ -104,8 +105,11 @@ char *addkey1(char *str) {
     return str;
 }
 
-void usersee(char *machine_id_path, char *str) {
-    FILE *fp = fopen(machine_id_path, "w");//添加文件路径
+void usersee(const char *reg_path, char *str) {
+    char path[256] = {'\0'};
+    strcpy(path,reg_path);
+    strcat(path,XXX2_AU);
+    FILE *fp = fopen(path, "w");//添加文件路径
     if (fp == NULL) {
         printf("can't open configure file\n");
         exit(-1);
@@ -127,7 +131,6 @@ void writefile(char *regist_path, char *str) {
 }
 
 char *addkey2(char *str) {
-
     int n = strlen(str);
     int temp[n];
     int add[n];
@@ -144,6 +147,7 @@ char *addkey2(char *str) {
         add[i] = sum;
     }
     int arr[30];
+
     for (int i = 0; i < n; i++) {
         int a = (str[i] * temp[i] + add[i]) % 126;
         //printf("%d\n",a);
@@ -159,9 +163,11 @@ char *addkey2(char *str) {
                 arr[i] = a;
         }
     }
-    static char cha[30] = {"\0"};
+    char* cha = g_new(char,60);
+    memset(cha,'\0',60);
     char cha1[30] = {"\0"};
     cha[0]=0;
+
     for (int i = 0; i < n; i++) {
         sprintf(cha1, "%d", arr[i]);
         strcat(cha, cha1);
@@ -170,37 +176,39 @@ char *addkey2(char *str) {
 
 }
 
-void verify_identity_one(const char * reg_path){
+void verify_identity_one(const char reg_path[]){
     /*添加注册码功能*/
-    char mac[30];
+    char mac[30] = {'\0'};
+    char id[50] = {'\0'};
+    char sti[80] = {'\0'};
+    char active[80] = {'\0'};
+    char key[80] = {'\0'};
     getMac(mac);
-    char id[50];
     cpu_id(id);
     strcat(id, mac);
     calidenty(id);
     addkey1(id);
 
-    char active[80];
-    char *key = addkey2(id);
-    char regist_path[100] = {"\0"};
-    strcpy(regist_path, reg_path);
-    strcat(regist_path, XXX1_AU);
-    FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
+    GString *regist_path = g_string_new(reg_path);
+    char *addkey2_out = addkey2(id);
+    strcpy(key,addkey2_out);
+    g_free(addkey2_out);
+
+    regist_path = g_string_append(regist_path,XXX1_AU);
+    FILE *infp = fopen(regist_path->str, "r");  //需要添加文件路径
+
     if (infp == NULL) {
         printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
         printf("The machine id: %s\n", id);
-        char machine_id_path[100] = {"\0"};
-        strcpy(machine_id_path, reg_path);
-        strcat(machine_id_path, XXX2_AU);
-        usersee(machine_id_path, id);
-        printf("请激活\n");
+        usersee(reg_path, id);
+        printf("请激活\n\n");
         sleep(2);
         exit(0);
     } else {
-        char sti[80];
         fscanf(infp, "%s", sti);
         fclose(infp);
         strcpy(active, sti);
+
         if (strcmp(key, active) != 0) {
             printf("激活码错误，请激活\n");
             exit(0);

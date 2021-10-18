@@ -1259,15 +1259,16 @@ gboolean readConfigFilesStatus() {
                 read_packet_from_files_path = getInfo_ConfigFile("READ_PACKET_FROM_FILES_PATH", info, lines);
                 if (read_packet_from_files_path != nullptr) {
                     strcpy(READ_PACKET_FROM_FILES_PATH, read_packet_from_files_path);
-                    struct stat st{};
-                    stat(READ_PACKET_FROM_FILES_PATH, &st);
-                    if (S_ISDIR(st.st_mode)) {
+                    auto *st = new struct stat;
+                    stat(READ_PACKET_FROM_FILES_PATH, st);
+                    if (S_ISDIR(st->st_mode)) {
                         int len = strlen(READ_PACKET_FROM_FILES_PATH);
                         if (READ_PACKET_FROM_FILES_PATH[len - 1] != '/') {
                             strcat(READ_PACKET_FROM_FILES_PATH, "/");
                         }
                         file_Name_From_Dir_Flag = 1;
                     }
+                    free(st);
                 } else {
                     strcpy(READ_PACKET_FROM_FILES_PATH, "./");
                 }

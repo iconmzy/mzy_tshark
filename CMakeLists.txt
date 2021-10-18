@@ -2516,7 +2516,6 @@ if (BUILD_tshark)
             newproto/jsonopt.c
             newproto/register_protocol.c
             ${TSHARK_TAP_SRC}
-            authorize.c
             )
 
     set(ENV{PKG_CONFIG_PATH} /usr/share/pkgconfig)
