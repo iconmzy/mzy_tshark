@@ -4,7 +4,7 @@
 #include <net/if.h>
 #include <sys/ioctl.h>
 #include "authorize.h"
-
+char globalCPUid[256] = {'\0'};
 void getMac(char *mac) {
     int fd, i;
 
@@ -29,8 +29,8 @@ void getMac(char *mac) {
     }
     return;
 }
-/*
-void cpu_id(char *id) {
+
+void cpu_id() {
     unsigned int s1, s2;
     asm volatile
     ( "movl $0x01 , %%eax ; \n\t"
@@ -40,10 +40,8 @@ void cpu_id(char *id) {
       "movl %%eax ,%1 ; \n\t"
     :"=m"(s1), "=m"(s2)
     );
-    sprintf(id, "%08X-%08X", s1, s2);
-    return;
+    sprintf(globalCPUid, "%08X-%08X", s1, s2);
 }
-*/
 
 ///添加注册码功能
 void verify_identity_one(const char * reg_path){
@@ -55,13 +53,16 @@ void verify_identity_one(const char * reg_path){
 
     getMac(mac);
     //cpu_id(id);
+    /*
     n = strlen(reg_path);
     for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sactivecodea.txt",file);
     printf("%s\n",file);
     if ((fp = fopen(file, "r")) == NULL) {  printf("openfile Err1!\n");  exit(0);}
     fseek(fp, 0, SEEK_END); j = ftell(fp); rewind(fp);    fread(id,1,j,fp);fclose(fp);id[j]=0;
     printf("cpuid:%s\n",id);
-
+    */
+    strcpy(id,globalCPUid);
+    printf("cpuid:%s\n",id);
     strcat(id, mac);
     n = strlen(id); j = 0;
     for ( i = 0; i < n; i++) if (id[i] != ':' && id[i] != '-') id[j++] = id[i];
@@ -118,11 +119,14 @@ void verify_identity_two(const char * reg_path){
     FILE *fp;
 
     getMac(mac);  //cpu_id(id);
-    n = strlen(reg_path);
+    /*n = strlen(reg_path);
     for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sactivecodea.txt",file);
     if ((fp = fopen(file, "r")) == NULL) {  printf("openfile Err!\n");  exit(0);}
-    fseek(fp, 0, SEEK_END); j = ftell(fp); rewind(fp);    fread(id,1,j,fp);fclose(fp);id[j]=0;
+    fseek(fp, 0, SEEK_END); j = ftell(fp); rewind(fp);    fread(id,1,j,fp);fclose(fp);id[j]=0;*/
+
+    strcpy(id,globalCPUid);
     printf("cpuid:%s\n",id);
+
     strcat(id, mac);
     n = strlen(id); j = 0;
     for ( i = 0; i < n; i++) if (id[i] != ':' && id[i] != '-') id[j++] = id[i];

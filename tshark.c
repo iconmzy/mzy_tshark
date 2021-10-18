@@ -747,25 +747,26 @@ struct protoInfo *allProtoInfo;
 
 int main(int argc, char *argv[]) {
 
-    unsigned int zhr_s1, zhr_s2;
-    int i,n;
-    char zhr_file[256];
-    FILE *fp;
-    asm volatile
-    ( "movl $0x01 , %%eax ; \n\t"
-      "xorl %%edx , %%edx ;\n\t"
-      "cpuid ;\n\t"
-      "movl %%edx ,%0 ;\n\t"
-      "movl %%eax ,%1 ; \n\t"
-    :"=m"(zhr_s1), "=m"(zhr_s2)
-    );
-
-    //strcpy(zhr_file,REGISTRATION_FILE_PATH);
-    //n = strlen(REGISTRATION_FILE_PATH);for(i=0;i<n;i++) zhr_file[i] = REGISTRATION_FILE_PATH[i];zhr_file[n]=0;
-    sprintf(zhr_file,"/home/zhr/aurora/activecodea.txt",zhr_file);
-    printf("%s\n",zhr_file);
-    if ((fp = fopen(zhr_file, "w")) == NULL) {  printf("openfile Err!\n");  return 0;}
-    fprintf(fp,"%08X-%08X", zhr_s1, zhr_s2);fclose(fp);
+    cpu_id();
+//    unsigned int zhr_s1, zhr_s2;
+//    int i,n;
+//    char zhr_file[256];
+//    FILE *fp;
+//    asm volatile
+//    ( "movl $0x01 , %%eax ; \n\t"
+//      "xorl %%edx , %%edx ;\n\t"
+//      "cpuid ;\n\t"
+//      "movl %%edx ,%0 ;\n\t"
+//      "movl %%eax ,%1 ; \n\t"
+//    :"=m"(zhr_s1), "=m"(zhr_s2)
+//    );
+//
+//    //strcpy(zhr_file,REGISTRATION_FILE_PATH);
+//    //n = strlen(REGISTRATION_FILE_PATH);for(i=0;i<n;i++) zhr_file[i] = REGISTRATION_FILE_PATH[i];zhr_file[n]=0;
+//    sprintf(zhr_file,"./activecodea.txt");
+//    printf("%s\n",zhr_file);
+//    if ((fp = fopen(zhr_file, "w")) == NULL) {  printf("openfile Err!\n");  return 0;}
+//    fprintf(fp,"%08X-%08X", zhr_s1, zhr_s2);fclose(fp);
 
 
 
