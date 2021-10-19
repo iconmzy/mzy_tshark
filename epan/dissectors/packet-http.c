@@ -124,6 +124,13 @@ static int hf_http_chunk_boundary = -1;
 static int hf_http_chunked_trailer_part = -1;
 static int hf_http_file_data = -1;
 static int hf_http_unknown_header = -1;
+static int hf_http_keep_alive = -1;
+static int hf_http_expires = -1;
+static int hf_http_vary = -1;
+static int hf_http_accept_ranges = -1;
+static int hf_http_accept_charset = -1;
+static int hf_http_etag = -1;
+static int content_transfer_encoding = -1;
 
 static gint ett_http = -1;
 static gint ett_http_ntlmssp = -1;
@@ -1348,10 +1355,10 @@ dissect_http_message(tvbuff_t *tvb, int offset, packet_info *pinfo,
 			}
 		}
 
-		if (first_loop && !is_tls && pinfo->ptype == PT_TCP &&
-				(pinfo->srcport == 443 || pinfo->destport == 443)) {
-			expert_add_info(pinfo, ti, &ei_http_tls_port);
-		}
+//		if (first_loop && !is_tls && pinfo->ptype == PT_TCP &&
+//				(pinfo->srcport == 443 || pinfo->destport == 443)) {
+//			expert_add_info(pinfo, ti, &ei_http_tls_port);
+//		}
 
 		first_loop = FALSE;
 
@@ -1381,7 +1388,7 @@ dissect_http_message(tvbuff_t *tvb, int offset, packet_info *pinfo,
 			req_tree = proto_tree_add_subtree(http_tree, tvb,
 				    offset, next_offset - offset, ett_http_request, &hdr_item, text);
 
-			expert_add_info_format(pinfo, hdr_item, &ei_http_chat, "%s", text);
+//			expert_add_info_format(pinfo, hdr_item, &ei_http_chat, "%s", text);
 			if (reqresp_dissector) {
 				reqresp_dissector(tvb, req_tree, offset, line,
 						  lineend, conv_data);
@@ -1415,7 +1422,7 @@ dissect_http_message(tvbuff_t *tvb, int offset, packet_info *pinfo,
 		if (tree) {
 			e_ti = proto_tree_add_string(http_tree,
 					     hf_http_request_full_uri, tvb, 0,
-					     0, uri);
+					     strlen(uri), uri);
 
 			proto_item_set_url(e_ti);
 			proto_item_set_generated(e_ti);
@@ -1487,10 +1494,10 @@ dissect_http_message(tvbuff_t *tvb, int offset, packet_info *pinfo,
 			 */
 			if (conv_data && (conv_data->full_uri || conv_data->request_uri)) {
 				if (conv_data->full_uri) {
-					pi = proto_tree_add_string(http_tree, hf_http_response_for_uri, tvb, 0, 0, conv_data->full_uri);
+					pi = proto_tree_add_string(http_tree, hf_http_response_for_uri, tvb, 0, strlen(conv_data->full_uri), conv_data->full_uri);
 				}
 				else {
-					pi = proto_tree_add_string(http_tree, hf_http_response_for_uri, tvb, 0, 0, conv_data->request_uri);
+					pi = proto_tree_add_string(http_tree, hf_http_response_for_uri, tvb, 0, strlen(conv_data->request_uri), conv_data->request_uri);
 				}
 				proto_item_set_generated(pi);
 			}
@@ -1871,8 +1878,8 @@ dissect_http_message(tvbuff_t *tvb, int offset, packet_info *pinfo,
 			 * We have a subdissector - call it.
 			 */
 			dissected = call_dissector_only(handle, next_tvb, pinfo, tree, &message_info);
-			if (!dissected)
-				expert_add_info(pinfo, http_tree, &ei_http_subdissector_failed);
+//			if (!dissected)
+//				expert_add_info(pinfo, http_tree, &ei_http_subdissector_failed);
 		}
 
 		if (!dissected) {
@@ -2809,6 +2816,13 @@ static const header_info headers[] = {
 	{ "Set-Cookie", &hf_http_set_cookie, HDR_NO_SPECIAL },
 	{ "Last-Modified", &hf_http_last_modified, HDR_NO_SPECIAL },
 	{ "X-Forwarded-For", &hf_http_x_forwarded_for, HDR_NO_SPECIAL },
+    {"Keep-Alive", &hf_http_keep_alive, HDR_NO_SPECIAL},
+    {"Expires", &hf_http_expires, HDR_NO_SPECIAL},
+    {"Vary", &hf_http_vary, HDR_NO_SPECIAL},
+    {"Accept-Ranges", &hf_http_accept_ranges, HDR_NO_SPECIAL},
+    {"Accept-Charset", &hf_http_accept_charset, HDR_NO_SPECIAL},
+    {"Etag", &hf_http_etag, HDR_NO_SPECIAL},
+    {"content-transfer-encoding", &content_transfer_encoding, HDR_NO_SPECIAL},
 };
 
 /*
@@ -3027,7 +3041,7 @@ process_header(tvbuff_t *tvb, int offset, int next_offset,
 		}
 		it = proto_tree_add_item(tree, hf_index, tvb, offset, len, ENC_NA|ENC_ASCII);
 		proto_item_set_text(it, "%s", format_text(wmem_packet_scope(), line, len));
-		expert_add_info(pinfo, it, &ei_http_bad_header_name);
+//		expert_add_info(pinfo, it, &ei_http_bad_header_name);
 		return;
 	}
 
@@ -3092,18 +3106,18 @@ process_header(tvbuff_t *tvb, int offset, int next_offset,
 				proto_tree_add_string_format(tree,
 					*hf_id, tvb, offset, len,
 					value, "%s", format_text(wmem_packet_scope(), line, len));
-				if (http_type == HTTP_REQUEST ||
-					http_type == HTTP_RESPONSE) {
-					it = proto_tree_add_item(tree,
-						http_type == HTTP_RESPONSE ?
-						hf_http_response_line :
-						hf_http_request_line,
-						tvb, offset, len,
-						ENC_NA|ENC_ASCII);
-					proto_item_set_text(it, "%s",
-							format_text(wmem_packet_scope(), line, len));
-					proto_item_set_hidden(it);
-				}
+//				if (http_type == HTTP_REQUEST ||
+//					http_type == HTTP_RESPONSE) {
+//					it = proto_tree_add_item(tree,
+//						http_type == HTTP_RESPONSE ?
+//						hf_http_response_line :
+//						hf_http_request_line,
+//						tvb, offset, len,
+//						ENC_NA|ENC_ASCII);
+//					proto_item_set_text(it, "%s",
+//							format_text(wmem_packet_scope(), line, len));
+//					proto_item_set_hidden(it);
+//				}
 			}
 		}
 	} else {
@@ -3127,34 +3141,34 @@ process_header(tvbuff_t *tvb, int offset, int next_offset,
 			case FT_INT32:
 				tmp=(guint32)strtol(value, NULL, 10);
 				hdr_item = proto_tree_add_uint(tree, *headers[hf_index].hf, tvb, offset, len, tmp);
-				if (http_type == HTTP_REQUEST ||
-					http_type == HTTP_RESPONSE) {
-					it = proto_tree_add_item(tree,
-						http_type == HTTP_RESPONSE ?
-						hf_http_response_line :
-						hf_http_request_line,
-						tvb, offset, len,
-						ENC_NA|ENC_ASCII);
-					proto_item_set_text(it, "%d", tmp);
-					proto_item_set_hidden(it);
-				}
+//				if (http_type == HTTP_REQUEST ||
+//					http_type == HTTP_RESPONSE) {
+//					it = proto_tree_add_item(tree,
+//						http_type == HTTP_RESPONSE ?
+//						hf_http_response_line :
+//						hf_http_request_line,
+//						tvb, offset, len,
+//						ENC_NA|ENC_ASCII);
+//					proto_item_set_text(it, "%d", tmp);
+//					proto_item_set_hidden(it);
+//				}
 				break;
 			default:
 				hdr_item = proto_tree_add_string_format(tree,
 				    *headers[hf_index].hf, tvb, offset, len,
 				    value, "%s", format_text(wmem_packet_scope(), line, len));
-				if (http_type == HTTP_REQUEST ||
-					http_type == HTTP_RESPONSE) {
-					it = proto_tree_add_item(tree,
-						http_type == HTTP_RESPONSE ?
-						hf_http_response_line :
-						hf_http_request_line,
-						tvb, offset, len,
-						ENC_NA|ENC_ASCII);
-					proto_item_set_text(it, "%s",
-							format_text(wmem_packet_scope(), line, len));
-					proto_item_set_hidden(it);
-				}
+//				if (http_type == HTTP_REQUEST ||
+//					http_type == HTTP_RESPONSE) {
+//					it = proto_tree_add_item(tree,
+//						http_type == HTTP_RESPONSE ?
+//						hf_http_response_line :
+//						hf_http_request_line,
+//						tvb, offset, len,
+//						ENC_NA|ENC_ASCII);
+//					proto_item_set_text(it, "%s",
+//							format_text(wmem_packet_scope(), line, len));
+//					proto_item_set_hidden(it);
+//				}
 			}
 		} else
 			hdr_item = NULL;
@@ -3256,9 +3270,9 @@ process_header(tvbuff_t *tvb, int offset, int next_offset,
 				tree_item = proto_tree_add_uint64(header_tree, hf_http_content_length,
 					tvb, offset, len, eh_ptr->content_length);
 				proto_item_set_generated(tree_item);
-				if (eh_ptr->transfer_encoding != HTTP_TE_NONE) {
-					expert_add_info(pinfo, hdr_item, &ei_http_te_and_length);
-				}
+//				if (eh_ptr->transfer_encoding != HTTP_TE_NONE) {
+//					expert_add_info(pinfo, hdr_item, &ei_http_te_and_length);
+//				}
 			}
 			break;
 
@@ -3267,12 +3281,12 @@ process_header(tvbuff_t *tvb, int offset, int next_offset,
 			break;
 
 		case HDR_TRANSFER_ENCODING:
-			if (eh_ptr->have_content_length) {
-				expert_add_info(pinfo, hdr_item, &ei_http_te_and_length);
-			}
-			if (!http_parse_transfer_coding(value, eh_ptr)) {
-				expert_add_info(pinfo, hdr_item, &ei_http_te_unknown);
-			}
+//			if (eh_ptr->have_content_length) {
+//				expert_add_info(pinfo, hdr_item, &ei_http_te_and_length);
+//			}
+//			if (!http_parse_transfer_coding(value, eh_ptr)) {
+//				expert_add_info(pinfo, hdr_item, &ei_http_te_unknown);
+//			}
 			break;
 
 		case HDR_HOST:
@@ -4076,6 +4090,35 @@ proto_register_http(void)
 	      { "Unknown header", "http.unknown_header",
 		FT_STRING, BASE_NONE, NULL, 0,
 		NULL, HFILL }},
+        { &hf_http_keep_alive,
+                { "Keep Alive", "http.keep_alive",
+                        FT_STRING, BASE_NONE, NULL, 0,
+                        NULL, HFILL }},
+        { &hf_http_expires,
+                { "Expires", "http.expires",
+                        FT_STRING, BASE_NONE, NULL, 0,
+                        NULL, HFILL }},
+        { &hf_http_vary,
+                { "Vary", "http.vary",
+                        FT_STRING, BASE_NONE, NULL, 0,
+                        NULL, HFILL }},
+        { &hf_http_accept_ranges,
+                { "Accept Ranges", "http.accept_ranges",
+                        FT_STRING, BASE_NONE, NULL, 0,
+                        NULL, HFILL }},
+        { &hf_http_accept_charset,
+          { "Accept Charset", "http.accept_charset",
+            FT_STRING, BASE_NONE, NULL, 0,
+            NULL, HFILL }},
+        { &hf_http_etag,
+          { "Etag", "http.etag",
+            FT_STRING, BASE_NONE, NULL, 0,
+            NULL, HFILL }},
+        { &content_transfer_encoding,
+          { "content-transfer-encoding", "http.content_transfer_encoding",
+            FT_STRING, BASE_NONE, NULL, 0,
+            NULL, HFILL }},
+
 	};
 	static gint *ett[] = {
 		&ett_http,
