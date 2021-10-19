@@ -524,7 +524,6 @@ size_t noop_cb(void *ptr __U__, size_t size, size_t nmemb, void *data __U__) {
  */
 gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) {
 
-
     /*添加换行符*/
     stream.append("\r\n");
 
