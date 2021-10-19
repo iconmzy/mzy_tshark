@@ -1250,7 +1250,8 @@ fail:
 /* Render a cJSON item/entity/structure to text. */
 CJSON_PUBLIC(char *) cJSON_Print(const cJSON *item)
 {
-    return (char*)print(item, true, &global_hooks);
+//    return (char*)print(item, true, &global_hooks); //true输出格式形式
+    return (char*)print(item, false, &global_hooks); //false不输出格式形式。
 }
 
 CJSON_PUBLIC(char *) cJSON_PrintUnformatted(const cJSON *item)
@@ -1734,6 +1735,7 @@ static cJSON_bool print_object(const cJSON * const item, printbuffer * const out
     if (output_buffer->format)
     {
         *output_pointer++ = '\n';
+//        output_pointer++;
     }
     output_buffer->offset += length;
 
@@ -1814,6 +1816,7 @@ static cJSON_bool print_object(const cJSON * const item, printbuffer * const out
         for (i = 0; i < (output_buffer->depth - 1); i++)
         {
             *output_pointer++ = '\t';
+//            output_pointer++;
         }
     }
     *output_pointer++ = '}';

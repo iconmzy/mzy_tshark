@@ -201,7 +201,7 @@ gboolean judgeDuplicateKeyStr(const std::string &key_str){
  * @param node
  */
 void initStrNameLevelLinkList(struct strNameSameLevel *node) {
-    if (node != NULL) {
+    if (node != nullptr) {
         initStrNameLevelLinkList(node->next);
         delete (node);
     }
@@ -378,6 +378,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
         /*当前协议对应文件夹不存在*/
         mkdirs(EXPORT_PATH);
     }
+
     std::string filepath__str_t = EXPORT_PATH + protocol + "/" + protocol + "_" + global_time_str + ".writting";
     std::string filedirpath_str_t = EXPORT_PATH + protocol;
     char filepath_t[MAXWRITEFILELENGTH] = {0};
@@ -387,6 +388,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
     strcpy(fileDirPath_t, filedirpath_str_t.c_str());
     pFILE_INFO *fp_t;
 
+    //寻找fp
     if (pFile_map.empty()) {
         /*当前是空map*/
         if (access(fileDirPath_t, 0) != 0) {
@@ -404,7 +406,8 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
         fp_t->lines = 0;
         fp_t->times = 1;
         pFile_map.insert(std::pair<std::string, pFILE_INFO*>(protocol, fp_t));
-    } else {
+    }
+    else {
         std::map<std::string, pFILE_INFO*>::iterator it;
         it = pFile_map.find(protocol);
         if (it != pFile_map.end()) {
@@ -456,6 +459,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
     fflush(fp_t->fp);
     return true;
 }
+
 /**
  * 将会话统计信息写入文件中，文件名固定为conversation.txt
  * @param stream
@@ -520,26 +524,16 @@ size_t noop_cb(void *ptr __U__, size_t size, size_t nmemb, void *data __U__) {
  */
 gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) {
 
-    /*这里把json写成一行,且添加换行符 ----begin*/
-    int n_t = kmp(stream, "\n");
-    while (n_t != -1) {
-        stream.replace(n_t, 1, "");
-        n_t = kmp(stream, "\n");
-    }
-    int t_t = kmp(stream, "\t");
-    while (t_t != -1) {
-        stream.replace(t_t, 1, "");
-        t_t = kmp(stream, "\t");
-    }
-    stream.append("\r\n");
-    /*这里把json写成一行,且添加换行符 ----end*/
 
-    assert(protocol.compare("") != 0);
+    /*添加换行符*/
+    stream.append("\r\n");
+
+    assert(!protocol.empty());
 
     if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {
         /*批量插入标志*/
         insertManyProtocolStream *index_t = insertManyFindProtocol(insertmanystream_Head, protocol);
-        if (index_t != NULL) {
+        if (index_t != nullptr) {
             /*NOT null*/
             index_t->contents.append(stream);
             if (++index_t->times >= INSERT_MANY_PROTOCOL_STREAM_NUM) {
@@ -565,7 +559,8 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
             insertmanystream_Head->next = temp;
             temp->next->pre = temp;
         }
-    } else {
+    }
+    else {
         if (!write_Files(stream, protocol,1)) {
             g_print("%s insert error !\n", protocol.c_str());
         }
@@ -580,7 +575,7 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
  */
 gboolean initial_All_para() {
     TRY {
-                write_in_files_proto = "";
+                write_in_files_proto.clear();
 
                 /*初始化部分要用到的 json对象 ----begin*/
                 cJSON_Delete(write_in_files_cJson);
@@ -590,9 +585,9 @@ gboolean initial_All_para() {
                 /*需要初始化strname链表*/
                 initStrNameLevelLinkList(strname_head);
                 strname_head = new struct strNameSameLevel;
-                strname_head->next = NULL;
+                strname_head->next = nullptr;
                 strname_head->times = 0;
-                strname_head->str_name = "";
+                strname_head->str_name.clear();
 
                 return true;
             }
@@ -659,8 +654,8 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
  * @param cookie
  * @return
  */
+std::queue< proto_node* > que;
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
-    std::queue< proto_node* > que;
     while(node != nullptr){
         if(node->first_child == nullptr or node->last_child == nullptr){
             dissect_Per_Node_No_Cursion(json_t,node,cookie);
@@ -974,9 +969,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             proto_node *child = node->first_child;
             if (child != nullptr) {
                 try {
-                    int curlayer = 0;
                     dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson, child, nullptr);
-//                    dissect_edt_Tree_Into_Json(write_in_files_cJson,child,curlayer, nullptr);
                 }
                 catch (std::invalid_argument) {
                     node = node->next;
@@ -989,7 +982,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
 
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
-    if (WRITE_IN_ES_FLAG != 1 && WRITE_IN_FILES_CONFIG == 1) {
+
+    if (WRITE_IN_FILES_CONFIG == 1) {
         if (!write_All_Temps_Into_Files(write_in_files_stream, write_in_files_proto)) {
             g_print("write in files error");
             return false;
