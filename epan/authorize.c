@@ -1,26 +1,22 @@
-//
-// Created by gzj on 2021/9/3.
-//
-#include "authorize.h"
 #include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <glib.h>
+#include <net/if.h>
+#include <sys/ioctl.h>
+#include "authorize.h"
 
 
-#define MAXINTERFACES 16
 void getMac(char *mac) {
-    int fd;
-//    int interface;
-    struct ifreq buf[MAXINTERFACES];
+    int fd, i;
+
+    struct ifreq buf[16];
     struct ifconf ifc;
 
     if ((fd = socket(AF_INET, SOCK_DGRAM, 0)) >= 0) {
-        int i = 1;
+        i = 1;
         ifc.ifc_len = sizeof(buf);
         ifc.ifc_buf = (caddr_t) buf;
         if (!ioctl(fd, SIOCGIFCONF, (char *) &ifc)) {
-//            interface = ifc.ifc_len / sizeof(struct ifreq);
             if (!(ioctl(fd, SIOCGIFHWADDR, (char *) &buf[i]))) {
                 sprintf(mac, "%02X:%02X:%02X:%02X:%02X:%02X",
                         (unsigned char) buf[i].ifr_hwaddr.sa_data[0],
@@ -32,11 +28,11 @@ void getMac(char *mac) {
             }
         }
     }
+    return;
 }
 
-char *cpu_id(char *id) {
-    unsigned long s1, s2;
-    //
+void cpu_id() {
+    unsigned int s1, s2;
     asm volatile
     ( "movl $0x01 , %%eax ; \n\t"
       "xorl %%edx , %%edx ;\n\t"
@@ -45,209 +41,110 @@ char *cpu_id(char *id) {
       "movl %%eax ,%1 ; \n\t"
     :"=m"(s1), "=m"(s2)
     );
-    sprintf(id, "%08X-%08X", s1, s2);
-    //
-    return id;
+    sprintf(globalCPUid, "%08X-%08X", s1, s2);
 }
 
-char *calidenty(char *str) {
-    int n = strlen(str);
-    int j = 0;
-    for (int i = 0; i < n; i++) {
-        if (str[i] != ':' && str[i] != '-') {
-            str[j++] = str[i];
-        }
-    }
-    str[j] = '\0';
-    int j1 = 0;
-    for (int i = 0; i < n; i += 2) {
-        str[j1++] = str[i];
-    }
-    str[j1] = '\0';
+///添加注册码功能
+void verify_identity_one(const char * reg_path){
 
-    return str;
+    char mac[256], id[256], file[256], cha[256];
+    int i, j, n, k, p, q,  sum, a, temp[256], add[256], arr[256], idx[6] = {4, 3, 5, 2, 0, 1};
+    FILE *fp;
 
-}
-
-char *halve(char *str) {
-    int n = strlen(str);
-    int j1 = 0;
-    for (int i = 0; i < n; i += 2) {
-        str[j1++] = str[i];
-    }
-    str[j1] = '\0';
-    return str;
-}
-
-char *addkey1(char *str) {
-    int idx[] = {4, 3, 5, 2, 0, 1};
-    int n = strlen(str);
-    int k = n / 6;
-    char fenlan[30];
-    int p = 0;
-    for (int i = 0; i <= k; i++) {
-        for (int j = 0; j < 6; j++) {
-            if (i * 6 + idx[j] < n)
-                fenlan[p++] = str[i * 6 + idx[j]];
-            else
-                continue;
-        }
-    }
-    fenlan[p] = '\0';
-    int q = 0;
-    for (int i = 0; i <= k; i++) {
-        for (int j = 0; j < 6; j++) {
-            if (i * 6 + idx[j] < n)
-                str[q++] = (char) (fenlan[i * 6 + idx[j]] + i);
-            else
-                continue;
-        }
-    }
-    str[q] = '\0';
-    return str;
-}
-
-void usersee(const char *reg_path, char *str) {
-    char path[256] = {'\0'};
-    strcpy(path,reg_path);
-    strcat(path,XXX2_AU);
-    FILE *fp = fopen(path, "w");//添加文件路径
-    if (fp == NULL) {
-        printf("can't open configure file\n");
-        exit(-1);
-    }
-    fprintf(fp, "%s", str);
-    fclose(fp);
-}
-
-
-void writefile(char *regist_path, char *str) {
-
-    FILE *fp = fopen(regist_path, "w");//写入二进制文件,需要添加文件；
-    if (fp == NULL) {
-        printf("can't open file\n");
-        exit(-1);
-    }
-    fprintf(fp, "%s", str);
-    fclose(fp);
-}
-
-char *addkey2(char *str) {
-    int n = strlen(str);
-    int temp[n];
-    int add[n];
-    for (int i = 0; i < n; i++) {
-        temp[i] = i;
-    }
-    for (int i = 0; i < n; i++) {
-        int sum = 0;
-        for (int j = 0; j < n; j++) {
-            if (j != i)
-                sum += temp[j];
-
-        }
-        add[i] = sum;
-    }
-    int arr[30];
-
-    for (int i = 0; i < n; i++) {
-        int a = (str[i] * temp[i] + add[i]) % 126;
-        //printf("%d\n",a);
-        if (a >= 0 && a <= 9)
-            arr[i] = a;
-        else if (a >= 10 && a <= 99)
-            arr[i] = a % 10;
-        else {
-            a %= 100;
-            if (a >= 10 && a <= 99)
-                arr[i] = a % 10;
-            else
-                arr[i] = a;
-        }
-    }
-    char* cha = g_new(char,60);
-    memset(cha,'\0',60);
-    char cha1[30] = {"\0"};
-    cha[0]=0;
-
-    for (int i = 0; i < n; i++) {
-        sprintf(cha1, "%d", arr[i]);
-        strcat(cha, cha1);
-    }
-    return cha;
-
-}
-
-void verify_identity_one(const char reg_path[]){
-    /*添加注册码功能*/
-    char mac[32] = {'\0'};
-    char id[64] = {'\0'};
-    char sti[128] = {'\0'};
-    char key[128] = {'\0'};
     getMac(mac);
-    cpu_id(id);
+    strcpy(id,globalCPUid);
+
     strcat(id, mac);
-    calidenty(id);
-    addkey1(id);
+    n = strlen(id); j = 0;
+    for ( i = 0; i < n; i++) if (id[i] != ':' && id[i] != '-') id[j++] = id[i];
+    id[j] = 0;  n=j;
+    j = 0; for (i= 0;i<n;i+=2) id[j++] = id[i]; id[j] = 0;
 
-    GString *regist_path = g_string_new(reg_path);
-    char *addkey2_out = addkey2(id);
-    strcpy(key,addkey2_out);
-    g_free(addkey2_out);
-
-    regist_path = g_string_append(regist_path,XXX1_AU);
-    FILE *infp = fopen(regist_path->str, "r");  //需要添加文件路径
-
-    if (infp == NULL) {
-        printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-        printf("The machine id: %s\n", id);
-        usersee(reg_path, id);
-        printf("请激活\n\n");
-        sleep(2);
-        exit(0);
-    } else {
-        g_print("213\n");
-        fscanf(infp, "%s", sti);
-//        fread(sti, 1,14,infp);
-
-        fclose(infp);
-
-        if (strcmp(key, sti) != 0) {
-            printf("激活码错误，请激活\n");
-            exit(0);
-        }
+    n = j;   k = n / 6;   p = 0;
+    for ( i = 0; i <= k; i++) {
+        for ( j = 0; j < 6; j++) { if (i * 6 + idx[j] < n) cha[p++] = id[i * 6 + idx[j]];  else  continue; }
     }
-    printf("The device has activated!\n");
-    /*注册码功能结束*/
+    cha[p] = 0;    q = 0;
+    for(i=0;i<=k;i++){for(j=0;j<6;j++){ if (i * 6 + idx[j] < n)id[q++] = (char)(cha[i*6+idx[j]]+i); else continue;}}
+    id[q] = 0;
+
+    printf("The machine id: %s\n", id);
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sactivecode.txt",file);
+    if ((fp = fopen(file, "w")) == NULL) {  printf("openfile Err!\n");  exit(0); }  fprintf(fp, "%s", id);  fclose(fp);
+
+    n = strlen(id);
+    for ( i = 0; i < n; i++) temp[i] = i;
+    for (i = 0; i < n; i++) { sum = 0;  for (j = 0; j < n; j++) if (j != i) sum += temp[j];   add[i] = sum;    }
+
+    for ( i = 0; i < n; i++) {
+        a = (id[i] * temp[i] + add[i]) % 126;
+        if (a >= 0 && a <= 9)  arr[i] = a;
+        else if (a >= 10 && a <= 99)  arr[i] = a % 10;
+        else { a %= 100;       if (a >= 10 && a <= 99)  arr[i] = a % 10;  else  arr[i] = a; }
+    }
+    for ( i = 0; i < 30; i++)cha[i]=0;
+    id[0]=0;  for ( i = 0; i < n; i++) {  sprintf(cha, "%d", arr[i]);    strcat(id, cha);  }
+
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sregist.txt",file);
+
+    if ((fp = fopen(file, "r")) == NULL){printf("未激活，请激活！\n"); exit(0);}
+    fread(cha,1,14,fp);   fclose(fp);
+    n=0;for(i=0;i<14;i++)n+=id[i]^cha[i];
+    if (n != 0) {printf("未激活，请激活！%s %s\n",id, cha);
+        exit(0);}
+    printf("该设备已激活！\n");
+    ///注册码功能结束
 }
+
 void verify_identity_two(const char * reg_path){
-    /*添加注册码功能*/
-    char mac[30];
-    getMac(mac);
-    char id[50];
-    cpu_id(id);
-    strcat(id, mac);
-    calidenty(id);
-    addkey1(id);
-    char active[80];
-    char *key = addkey2(id);
-    char regist_path[100] = {"\0"};
-    strcpy(regist_path, reg_path);
-    strcat(regist_path, XXX1_AU);
-    FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
+    char mac[256], id[256], file[256], cha[256];
+    int i, j, n, k, p, q,  sum, a, temp[256], add[256], arr[256], idx[6] = {4, 3, 5, 2, 0, 1};
+    FILE *fp;
 
-    if (infp == NULL) {
-        printf("请激活\n");
-        exit(0);
-    } else {
-        char sti[80];
-        fscanf(infp, "%s", sti);
-        fclose(infp);
-        strcpy(active, sti);
-        if (strcmp(key, active) != 0) {
-            printf("激活码错误，请激活\n");
-            exit(0);
-            }
+    getMac(mac);
+    strcpy(id,globalCPUid);
+
+    strcat(id, mac);
+    n = strlen(id); j = 0;
+    for ( i = 0; i < n; i++) if (id[i] != ':' && id[i] != '-') id[j++] = id[i];
+    id[j] = 0;  n=j;
+    j = 0; for (i= 0;i<n;i+=2) id[j++] = id[i]; id[j] = 0;
+
+    n = j;   k = n / 6;   p = 0;
+    for ( i = 0; i <= k; i++) {
+        for ( j = 0; j < 6; j++) { if (i * 6 + idx[j] < n) cha[p++] = id[i * 6 + idx[j]];  else  continue;  }
     }
-    /*注册码功能结束*/
+    cha[p] = 0;   q = 0;
+    for(i=0;i<=k;i++){for(j=0;j<6;j++){ if (i * 6 + idx[j] < n)id[q++] = (char)(cha[i*6+idx[j]]+i); else continue;}}
+    id[q] = 0;
+
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sactivecode.txt",file);
+    if ((fp = fopen(file, "w")) == NULL) {  printf("openfile Err!\n");
+        exit(0); }  fprintf(fp, "%s", id);  fclose(fp);
+
+    n = strlen(id);
+    for ( i = 0; i < n; i++) temp[i] = i;
+    for (i = 0; i < n; i++) { sum = 0;  for (j = 0; j < n; j++) if (j != i) sum += temp[j];   add[i] = sum;    }
+
+    for ( i = 0; i < n; i++) {
+        a = (id[i] * temp[i] + add[i]) % 126;
+        if (a >= 0 && a <= 9)  arr[i] = a;
+        else if (a >= 10 && a <= 99)  arr[i] = a % 10;
+        else { a %= 100;       if (a >= 10 && a <= 99)  arr[i] = a % 10;  else  arr[i] = a; }
+    }
+    for ( i = 0; i < 30; i++)cha[i]=0;
+    id[0]=0;  for ( i = 0; i < n; i++) {  sprintf(cha, "%d", arr[i]);    strcat(id, cha);  }
+
+    n = strlen(reg_path);
+    for(i=0;i<n;i++) file[i] = reg_path[i];file[n]=0; sprintf(file,"%sregist.txt",file);
+    if ((fp = fopen(file, "r")) == NULL){printf("未激活，请激活！\n"); exit(0);}
+    fread(cha,1,14,fp);   fclose(fp);
+    n=0;for(i=0;i<14;i++)n+=id[i]^cha[i];
+
+    ///注册码功能结束
 }
+
+

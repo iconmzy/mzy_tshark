@@ -1,5 +1,5 @@
 #注册文件的路径
-REGISTRATION_FILE_PATH:./
+REGISTRATION_FILE_PATH:/home/ymq/aurora/activate
 
 #配置是否新增协议JSON
 JSON_ADD_PROTO:0
@@ -11,7 +11,8 @@ WRITE_IN_FILES_CONFIG:1
 #配置是否统计会话信息
 WRITE_IN_CONVERSATIONS_FLAG:1
 #配置协议解析输出文件的位置 不超过255字节
-EXPORT_PATH:../temp
+EXPORT_PATH:/home/ymq/aurora/out
+
 #每个txt文件大致最大行数
 PER_FILES_MAX_LINES:10000
 #是否在命令行显示解析包数目
@@ -33,7 +34,7 @@ ONLINE_CAPTURE_DATA_DEVICE_NAME:enp4s0
 READ_PACKET_FROM_FILES_FLAG:1
 #读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap sip-rtp-g722.pcap
 #若选择解析文件夹，建议末尾添加“/”，进行标识
-READ_PACKET_FROM_FILES_PATH:/home/yy/Desktop/Packets/small_1.pcapng
+READ_PACKET_FROM_FILES_PATH:/home/ymq/aurora/data/Wireshark抓包全集（85种协议）
 
 #是否拆分文件解析
 EDIT_FILES_DISSECT_FLAG:0
@@ -47,5 +48,5 @@ INSERT_MANY_PROTOCOL_STREAM_NUM:1000
 #实时接入数据的线路号
 ONLINE_LINE_NO:123123
 #离线接入数据的识别线路号的正则表达式
-OFFLINE_LINE_NO_REGEX:{"lineno":"\\[.*(?=_.*_\\w{8}T\\w{6})","signal_type":".*(?=_2021)"}
+OFFLINE_LINE_NO_REGEX:{"lineno":"[^_]*","signal_type":".*(?=_2021)"}
 
