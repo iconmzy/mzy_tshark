@@ -152,7 +152,7 @@
 
 #endif
 
-#include "epan/authorize.h"
+#include <epan/authorize.h>
 
 /* Exit codes */
 #define INVALID_OPTION 1
@@ -755,6 +755,7 @@ int main(int argc, char *argv[]) {
     printf("/_/  |_\\__,_/_/   \\____/_/   \\__,_/  \n");
     printf("                                        \n");
 
+    cpu_id();
     printf("VERSION:%s\n", AORURA_VERSION);
 
     struct allExProtocols protos;
