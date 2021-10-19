@@ -719,19 +719,8 @@ void write_into_es(std::string &stream, std::string &protocol) {
  */
 gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) {
 
-    /*这里把json写成一行,且添加换行符 ----begin*/
-    int n_t = kmp(stream, "\n");
-    while (n_t != -1) {
-        stream.replace(n_t, 1, "");
-        n_t = kmp(stream, "\n");
-    }
-    int t_t = kmp(stream, "\t");
-    while (t_t != -1) {
-        stream.replace(t_t, 1, "");
-        t_t = kmp(stream, "\t");
-    }
+    /*添加换行符*/
     stream.append("\r\n");
-    /*这里把json写成一行,且添加换行符 ----end*/
 
     assert(protocol.compare("") != 0);
 
