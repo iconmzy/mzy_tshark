@@ -7,8 +7,6 @@
 
 void verify_identity_one(const char * reg_path);
 void verify_identity_two(const char * reg_path);
-void cpu_id();
-//void verify_identity_one();//const char * reg_path);
-//void verify_identity_two();//const char * reg_path);
+void cpu_id(void);
 
 #endif //WIRESHARK_AUTHORIZE_H
