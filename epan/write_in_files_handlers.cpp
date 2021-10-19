@@ -513,37 +513,6 @@ size_t noop_cb(void *ptr __U__, size_t size, size_t nmemb, void *data __U__) {
     return size * nmemb;
 }
 /**
- * 将数据流steam写入ES数据库，protocol协议
- * @param stream
- * @param protocol
- */
-void write_into_es(std::string &stream, std::string &protocol) {
-    CURL *curl;
-    CURLcode res;
-
-    //HTTP报文头
-    struct curl_slist *headers = NULL;
-    char tmp_str[256] = {0};
-
-    //构建HTTP报文头
-    snprintf(tmp_str, sizeof(tmp_str), "content-type: application/json; charset=UTF-8");
-    headers = curl_slist_append(headers, tmp_str);
-    curl = curl_easy_init();  /* get a curl handle */
-    if (curl) {
-        std::string url = ES_URL;
-        url = ES_URL + protocol + "/_doc";
-        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());  //访问的URL
-        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);  //设置HTTP头
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, stream.c_str());  //post请求传输的数据
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, noop_cb);  //如果不人为设置对返回数据的处理,则会自动在结束的时候在控制台打印
-        res = curl_easy_perform(curl);
-        if (res != CURLE_OK)
-            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
-        curl_easy_cleanup(curl);  //这个调用用来结束一个会话.与curl_easy_init配合着用
-    }
-    stream = "";
-}
-/**
  * 将数据流steam写入文件，protocol为协议
  * @param stream
  * @param protocol
@@ -681,6 +650,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     cJSON_AddStringToObject(json_t,key_str.c_str(),value);
 
     delete []value;
+    return true;
 }
 /**
  * 非递归处理协议解析树内容，层序遍历，存入json中。
@@ -885,14 +855,14 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                 child = child->next;
                 continue;
             }
-            if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
+            else if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
                 gchar value[240] = {'\0'};
                 yy_proto_item_fill_label(child_finfo, value);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value);
                 child = child->next;
                 continue;
             }
-            if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
+            else if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
                 gchar value[240] = {'\0'};
                 yy_proto_item_fill_label(child_finfo, value);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value);
@@ -1018,9 +988,6 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
 
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
-    if (WRITE_IN_ES_FLAG == 1) {
-        write_into_es(write_in_files_stream, write_in_files_proto);
-    }
     if (WRITE_IN_ES_FLAG != 1 && WRITE_IN_FILES_CONFIG == 1) {
         if (!write_All_Temps_Into_Files(write_in_files_stream, write_in_files_proto)) {
             g_print("write in files error");
@@ -1307,7 +1274,6 @@ gboolean readConfigFilesStatus() {
                 return false;
             }
     ENDTRY;
-    curl_global_init(CURL_GLOBAL_ALL);
     return true;
 }
 
@@ -1393,6 +1359,5 @@ void change_result_file_name() {
     int cost_time = (int) end_time - begin_time;
     g_print("总计耗时：%d 秒\n", cost_time);
 
-    curl_global_cleanup();  //在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数
 }
 

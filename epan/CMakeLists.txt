@@ -293,6 +293,7 @@ set(LIBWIRESHARK_NONGENERATED_FILES
 	g722decode_yy_single_frame_decode.cpp
 	authorize.c
 	xdlc.c
+
 	protobuf-helper.c
 	protobuf_lang_tree.c
 	${CMAKE_CURRENT_BINARY_DIR}/ps.c

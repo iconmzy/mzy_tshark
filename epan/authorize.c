@@ -36,6 +36,7 @@ void getMac(char *mac) {
 
 char *cpu_id(char *id) {
     unsigned long s1, s2;
+    //
     asm volatile
     ( "movl $0x01 , %%eax ; \n\t"
       "xorl %%edx , %%edx ;\n\t"
@@ -45,6 +46,7 @@ char *cpu_id(char *id) {
     :"=m"(s1), "=m"(s2)
     );
     sprintf(id, "%08X-%08X", s1, s2);
+    //
     return id;
 }
 
@@ -178,11 +180,10 @@ char *addkey2(char *str) {
 
 void verify_identity_one(const char reg_path[]){
     /*添加注册码功能*/
-    char mac[30] = {'\0'};
-    char id[50] = {'\0'};
-    char sti[80] = {'\0'};
-    char active[80] = {'\0'};
-    char key[80] = {'\0'};
+    char mac[32] = {'\0'};
+    char id[64] = {'\0'};
+    char sti[128] = {'\0'};
+    char key[128] = {'\0'};
     getMac(mac);
     cpu_id(id);
     strcat(id, mac);
@@ -205,11 +206,13 @@ void verify_identity_one(const char reg_path[]){
         sleep(2);
         exit(0);
     } else {
+        g_print("213\n");
         fscanf(infp, "%s", sti);
-        fclose(infp);
-        strcpy(active, sti);
+//        fread(sti, 1,14,infp);
 
-        if (strcmp(key, active) != 0) {
+        fclose(infp);
+
+        if (strcmp(key, sti) != 0) {
             printf("激活码错误，请激活\n");
             exit(0);
         }
