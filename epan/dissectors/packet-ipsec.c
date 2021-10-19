@@ -488,46 +488,46 @@ static void check_esp_sequence_info(guint32 spi, guint32 sequence_number, packet
 
 /* Check to see if there is a report stored for this frame.  If there is,
    add it to the tree and report using expert info */
-static void show_esp_sequence_info(guint32 spi, guint32 sequence_number,
-                                   tvbuff_t *tvb, proto_tree *tree, packet_info *pinfo) {
+//static void show_esp_sequence_info(guint32 spi, guint32 sequence_number,
+//                                   tvbuff_t *tvb, proto_tree *tree, packet_info *pinfo) {
     /* Look up this frame in the report table. */
-    spi_status *status = (spi_status *) wmem_map_lookup(esp_sequence_analysis_report_hash,
-                                                        GUINT_TO_POINTER(pinfo->num));
-    if (status != NULL) {
-        proto_item *sn_ti, *frame_ti;
+//    spi_status *status = (spi_status *) wmem_map_lookup(esp_sequence_analysis_report_hash,
+//                                                        GUINT_TO_POINTER(pinfo->num));
+//    if (status != NULL) {
+//        proto_item *sn_ti, *frame_ti;
 
         /* Expected sequence number */
-        sn_ti = proto_tree_add_uint(tree, hf_esp_sequence_analysis_expected_sn,
-                                    tvb, 0, 0, status->previousSequenceNumber + 1);
-        if (sequence_number > (status->previousSequenceNumber + 1)) {
-            proto_item_append_text(sn_ti, " (%u SNs missing)",
-                                   sequence_number - (status->previousSequenceNumber + 1));
-        }
-        proto_item_set_generated(sn_ti);
+//        sn_ti = proto_tree_add_uint(tree, hf_esp_sequence_analysis_expected_sn,
+//                                    tvb, 0, 0, status->previousSequenceNumber + 1);
+//        if (sequence_number > (status->previousSequenceNumber + 1)) {
+//            proto_item_append_text(sn_ti, " (%u SNs missing)",
+//                                   sequence_number - (status->previousSequenceNumber + 1));
+//        }
+//        proto_item_set_generated(sn_ti);
 
         /* Link back to previous frame for SPI */
-        frame_ti = proto_tree_add_uint(tree, hf_esp_sequence_analysis_previous_frame,
-                                       tvb, 0, 0, status->previousFrameNum);
-        proto_item_set_generated(frame_ti);
+//        frame_ti = proto_tree_add_uint(tree, hf_esp_sequence_analysis_previous_frame,
+//                                       tvb, 0, 0, status->previousFrameNum);
+//        proto_item_set_generated(frame_ti);
 
         /* Expert info */
-        if (sequence_number == status->previousSequenceNumber) {
-            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
-                                   "Wrong Sequence Number for SPI %08x - %u repeated",
-                                   spi, sequence_number);
-        } else if (sequence_number > status->previousSequenceNumber + 1) {
-            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
-                                   "Wrong Sequence Number for SPI %08x - %u missing",
-                                   spi,
-                                   sequence_number - (status->previousSequenceNumber + 1));
-        } else {
-            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
-                                   "Wrong Sequence Number for SPI %08x - %u less than expected",
-                                   spi,
-                                   (status->previousSequenceNumber + 1) - sequence_number);
-        }
-    }
-}
+//        if (sequence_number == status->previousSequenceNumber) {
+//            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
+//                                   "Wrong Sequence Number for SPI %08x - %u repeated",
+//                                   spi, sequence_number);
+//        } else if (sequence_number > status->previousSequenceNumber + 1) {
+//            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
+//                                   "Wrong Sequence Number for SPI %08x - %u missing",
+//                                   spi,
+//                                   sequence_number - (status->previousSequenceNumber + 1));
+//        } else {
+//            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
+//                                   "Wrong Sequence Number for SPI %08x - %u less than expected",
+//                                   spi,
+//                                   (status->previousSequenceNumber + 1) - sequence_number);
+//        }
+//    }
+//}
 
 /*
    Default ESP payload heuristic decode to off
@@ -1268,8 +1268,8 @@ dissect_esp(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data _U_)
         if (!pinfo->fd->visited) {
             check_esp_sequence_info(spi, sequence_number, pinfo);
         }
-        show_esp_sequence_info(spi, sequence_number,
-                               tvb, esp_tree, pinfo);
+//        show_esp_sequence_info(spi, sequence_number,
+//                               tvb, esp_tree, pinfo);
     }
 
     /* The SAD is not activated */
