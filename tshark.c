@@ -3374,8 +3374,8 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
      * one pass, so we can't do it in the background and fix up past
      * dissections.
      */
-    set_resolution_synchrony(TRUE);
-//    set_resolution_synchrony(FALSE);
+//    set_resolution_synchrony(TRUE);
+    set_resolution_synchrony(FALSE);
 
     *err = 0;
     while (wtap_read(cf->provider.wth, &rec, &buf, err, err_info, &data_offset)) {
