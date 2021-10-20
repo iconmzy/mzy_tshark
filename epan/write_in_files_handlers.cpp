@@ -33,12 +33,6 @@
 #include "curl/curl.h"
 #define __U__ __attribute__((unused))
 
-/*常用的一些字符串*/
-#define str_FILES_RESOURCE "file_path"
-
-
-extern void fill_label_number(field_info *fi, gchar *label_str, gboolean is_signed);
-
 /*即将写进文件的协议*/
 static std::string write_in_files_proto;
 /*内容缓存*/
@@ -50,6 +44,9 @@ static cJSON *write_in_files_conv_cJson = cJSON_CreateObject();
 static std::string conv_path_t;
 
 static FILE *conversation_Handle_File = nullptr;
+std::queue< proto_node* > que; //全局node节点队列
+#define VALUE_240_LENGTH 256
+gchar* value_240 = nullptr; //240长度是一个协议名最大长度
 
 char EXPORT_PATH[256] = {0};
 char RESULT_PATH[256] = {0};
@@ -397,6 +394,24 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     else if (strcmp(dst, "media") == 0) {
         return TRUE;
     }
+    else if (strcmp(dst, "_ws.short") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "_ws.unreassembled") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "ftp-data.current-working-directory") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "dof.dpp.v2s") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "dof.oap") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "wlan.mgt") == 0) {
+        return TRUE;
+    }
     return FALSE;
 }
 /**
@@ -719,19 +734,8 @@ void write_into_es(std::string &stream, std::string &protocol) {
  */
 gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) {
 
-    /*这里把json写成一行,且添加换行符 ----begin*/
-    int n_t = kmp(stream, "\n");
-    while (n_t != -1) {
-        stream.replace(n_t, 1, "");
-        n_t = kmp(stream, "\n");
-    }
-    int t_t = kmp(stream, "\t");
-    while (t_t != -1) {
-        stream.replace(t_t, 1, "");
-        t_t = kmp(stream, "\t");
-    }
+    /*添加换行符*/
     stream.append("\r\n");
-    /*这里把json写成一行,且添加换行符 ----end*/
 
     assert(protocol.compare("") != 0);
 
@@ -808,87 +812,99 @@ gboolean initial_All_para() {
     ENDTRY;
     return true;
 }
+
 /**
- * 递归处理协议解析树内容，存入json中。
+ * 处理单个数据节点。针对node
  * @param json_t
  * @param node
+ * @param cookie
+ * @return
  */
-gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursion_layer,struct totalParam *cookie) {
-    /*key的置换和获取*/
-    std::string key_str = node->finfo->hfinfo->abbrev;
-    if(cursionkeyStrFilter(key_str.c_str())){
-        return true;
-    }
-    if(++cursion_layer > 500 ) return true;
+gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct totalParam *cookie __U__){
+    if(temp->finfo->length >= 1514 or temp->finfo->length <= 0) return false; //无意义的长值直接跳过
 
-    if (node->first_child == nullptr or node->last_child == nullptr) {
-        /*数据节点*/
-        if (node->finfo->length > 0 and node->finfo->length <= 1514 ) {
-            try {
-                gchar value[4542] = {'\0'};
-                yy_proto_item_fill_label(node->finfo, value);
-                //组报相关
-                if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
-                    //rtp content relative
-                    g_assert(cookie !=nullptr);
-                    GList *it = nullptr;
-                    if ((it = g_list_find_custom(rtp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))) {
-                        if(strcmp((char*)it->data,"rtp.marker") == 0){
-                            cookie->rtp_content->marker = std::stoi(value);
-                        }
-                        else if(strcmp((char*)it->data,"rtp.ssrc") == 0){
-                            strcpy(cookie->rtp_content->ssrc,value);
-                            strcpy(cookie->rtp_content->file_name,FILE_NAME_T);//这里将rtp数据包所属的文件名也传入
-                        }
-                        else if(strcmp((char*)it->data,"rtp.payload") == 0){
-                            for (int i = 0; i < node->finfo->length ;++i) {
-                                cookie->rtp_content->payload[i] = node->finfo->value.value.bytes->data[i];
-                            }
-                            cookie->rtp_content->payload_len = node->finfo->value.value.bytes->len;
-                        }
-                        else if(strcmp((char*)it->data,"rtp.p_type") == 0){
-                            cookie->rtp_content->payload_type = std::stoi(value);
-                        }
-                    }
+    std::string key_str = temp->finfo->hfinfo->abbrev;
+    if(cursionkeyStrFilter(key_str.c_str())) return false; //无意义的字段过滤掉
+
+    //获取value
+    int bufferlen = temp->finfo->length *3 +1;
+
+    auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen>100?bufferlen:100);
+    yy_proto_item_fill_label(temp->finfo,&value_t,bufferlen);
+
+    //组包相关
+    if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
+        //rtp content relative
+        g_assert(cookie !=nullptr);
+        GList *it = nullptr;
+        if ((it = g_list_find_custom(rtp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))) {
+            if(!cookie->rtp_content){
+                cookie->rtp_content = g_new0(rtp_Content,1);
+                if(!cookie->rtp_content){
+                    g_print("rtp content init error!\n");
+                    return false;
                 }
-//               将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
-                while (key_str.find('.') != std::string::npos) {  /* 返回string::npos表示未查找到匹配项 */
-                    key_str.replace(key_str.find('.'), 1, "_");
+            }
+            if(strcmp((char*)it->data,"rtp.marker") == 0){
+                cookie->rtp_content->marker = std::stoi(value_t);
+            }
+            else if(strcmp((char*)it->data,"rtp.ssrc") == 0){
+                strcpy(cookie->rtp_content->ssrc,value_t);
+                strcpy(cookie->rtp_content->file_name,FILE_NAME_T);//这里将rtp数据包所属的文件名也传入
+            }
+            else if(strcmp((char*)it->data,"rtp.payload") == 0){
+                for (guint i = 0; i < temp->finfo->value.value.bytes->len ;++i) {
+                    cookie->rtp_content->payload[i] = temp->finfo->value.value.bytes->data[i];
                 }
-//               返回该包内重复字段的名称，如A_01,A_02...
-                key_str = gotStrNameByStrName(key_str);
-                cJSON_AddStringToObject(json_t, key_str.c_str(), value); //写入JSON
-            } catch (std::out_of_range) {
-                g_print("out of range\n");
-                return false;
+                cookie->rtp_content->payload_len = temp->finfo->value.value.bytes->len;
             }
-            catch (std::length_error) {
-                g_print("length_error\n");
-                return false;
+            else if(strcmp((char*)it->data,"rtp.p_type") == 0){
+                cookie->rtp_content->payload_type = std::stoi(value_t);
             }
-            catch (std::range_error) {
-                g_print("range_error\n");
-                return false;
+        } else if((it = g_list_find_custom(tls_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
+            if(!cookie->tls_content){
+                cookie->tls_content = g_new0(tls_Content,1);
+                if(!cookie->tls_content){
+                    g_print("tls content init error!\n");
+                    return false;
+                }
             }
-        }
-        if (node->next != NULL) {
-            proto_node *index = node->next;
-            if (!dissect_edt_Tree_Into_Json(json_t, index,cursion_layer,cookie)) {
-                g_print("%s dissect_edt_Tree_Into_Json error!\n", key_str.c_str());
-                return false;
-            }
+            //赋值
         }
     }
-    else {
-        /*还有子节点*/
-        dissect_edt_Tree_Into_Json(json_t, node->first_child,cursion_layer,cookie);
-        if (node->next != NULL) {
-            proto_node *index = node->next;
-            dissect_edt_Tree_Into_Json(json_t, index,cursion_layer,cookie);
-        }
+
+    //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
+    while (key_str.find('.') != std::string::npos) {  /* 返回string::npos表示未查找到匹配项 */
+        key_str.replace(key_str.find('.'), 1, "_");
     }
+
+/*
+            //重复字段的数组处理
+            if(judgeDuplicateKeyStr(key_str)){
+                cJSON *item = cJSON_GetObjectItem(json_t,key_str.c_str());
+                if(cJSON_IsArray(item)){
+                    //已经是数组
+                    cJSON_AddItemToArray(item,cJSON_CreateString(value));
+                } else{
+                    //第一次重复
+                    std::string pre_value = cJSON_GetStringValue(item);
+                    cJSON_DeleteItemFromObject(json_t, key_str.c_str());
+                    cJSON * temp_array = cJSON_AddArrayToObject(json_t, key_str.c_str());
+                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(pre_value.c_str()));
+                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(value));
+                }
+            } else{
+                cJSON_AddStringToObject(json_t,key_str.c_str(),value);
+            }
+*/
+
+    key_str = gotStrNameByStrName(key_str);
+    cJSON_AddStringToObject(json_t,key_str.c_str(),value_t);
+
+    g_free(value_t);
     return true;
 }
+
 /**
  * 非递归处理协议解析树内容，层序遍历，存入json中。
  * @param json_t
@@ -897,93 +913,21 @@ gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursi
  * @return
  */
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
-    std::queue< proto_node* > que;
     while(node != nullptr){
-        que.push(node);
-        node = node->next;
+        if(node->first_child == nullptr or node->last_child == nullptr){
+            dissect_Per_Node_No_Cursion(json_t,node,cookie);
+            node = node->next;
+        } else{
+            que.push(node);
+            node = node->next;
+        }
     }
     while (!que.empty()){
         proto_node* temp = que.front();
         que.pop();
+
         if(temp->first_child == nullptr or temp->last_child == nullptr){
-            //data node
-            if(temp->finfo->length >= 1514 or temp->finfo->length < 0)
-                continue; //无意义的长值直接跳过  TODO: 相当于跳过所有的专家信息
-
-            std::string key_str = temp->finfo->hfinfo->abbrev;
-            if(cursionkeyStrFilter(key_str.c_str())) continue; //无意义的字段过滤掉
-
-            //获取value
-            auto *value = new gchar[(temp->finfo->length *3 +1)>100?temp->finfo->length *3 +1:100];
-            yy_proto_item_fill_label(temp->finfo,value);
-            //组包相关
-            if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
-                //rtp content relative
-                g_assert(cookie !=nullptr);
-                GList *it = nullptr;
-                if ((it = g_list_find_custom(rtp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))) {
-                    if(!cookie->rtp_content){
-                        cookie->rtp_content = g_new0(rtp_Content,1);
-                        if(!cookie->rtp_content){
-                            g_print("rtp content init error!\n");
-                            continue;
-                        }
-                    }
-                    if(strcmp((char*)it->data,"rtp.marker") == 0){
-                        cookie->rtp_content->marker = std::stoi(value);
-                    }
-                    else if(strcmp((char*)it->data,"rtp.ssrc") == 0){
-                        strcpy(cookie->rtp_content->ssrc,value);
-                        strcpy(cookie->rtp_content->file_name,FILE_NAME_T);//这里将rtp数据包所属的文件名也传入
-                    }
-                    else if(strcmp((char*)it->data,"rtp.payload") == 0){
-                        for (guint i = 0; i < temp->finfo->value.value.bytes->len ;++i) {
-                            cookie->rtp_content->payload[i] = temp->finfo->value.value.bytes->data[i];
-                        }
-                        cookie->rtp_content->payload_len = temp->finfo->value.value.bytes->len;
-                    }
-                    else if(strcmp((char*)it->data,"rtp.p_type") == 0){
-                        cookie->rtp_content->payload_type = std::stoi(value);
-                    }
-                } else if((it = g_list_find_custom(tls_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
-                    if(!cookie->tls_content){
-                        cookie->tls_content = g_new0(tls_Content,1);
-                        if(!cookie->tls_content){
-                            g_print("tls content init error!\n");
-                            continue;
-                        }
-                    }
-                    //赋值
-                }
-            }
-
-            //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
-            while (key_str.find('.') != std::string::npos) {  /* 返回string::npos表示未查找到匹配项 */
-                key_str.replace(key_str.find('.'), 1, "_");
-            }
-
-//            //重复字段的数组处理
-//            if(judgeDuplicateKeyStr(key_str)){
-//                cJSON *item = cJSON_GetObjectItem(json_t,key_str.c_str());
-//                if(cJSON_IsArray(item)){
-//                    //已经是数组
-//                    cJSON_AddItemToArray(item,cJSON_CreateString(value));
-//                } else{
-//                    //第一次重复
-//                    std::string pre_value = cJSON_GetStringValue(item);
-//                    cJSON_DeleteItemFromObject(json_t, key_str.c_str());
-//                    cJSON * temp_array = cJSON_AddArrayToObject(json_t, key_str.c_str());
-//                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(pre_value.c_str()));
-//                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(value));
-//                }
-//            } else{
-//                cJSON_AddStringToObject(json_t,key_str.c_str(),value);
-//            }
-//
-            key_str = gotStrNameByStrName(key_str);
-            cJSON_AddStringToObject(json_t,key_str.c_str(),value);
-
-            delete []value;
+            dissect_Per_Node_No_Cursion(json_t,temp,cookie);
         } else{
             temp = temp->first_child;
             while (temp != nullptr){
@@ -1075,7 +1019,6 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         return true;
     }
 
-
     if(PACKET_PROTOCOL_FLAG){
         /*判断当前协议是否需要组包*/
         if(g_list_find_custom(rtp_fields,write_in_files_proto.c_str(),(GCompareFunc)strcmp)){
@@ -1085,70 +1028,65 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     /*获取文件来源*/
     if (read_Pcap_From_File_Flag == 1) {
         /* 单个文件 */
-        cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+        cJSON_AddStringToObject(write_in_files_cJson, "file_path", READ_FILE_PATH);
         if(!regex_dict_map.empty()){
             for (auto & i : regex_dict_map) {
                 cJSON_AddStringToObject(write_in_files_cJson, i.first.c_str(), i.second.c_str());
             }
         }
     } else {
-        cJSON_AddStringToObject(write_in_files_cJson, str_FILES_RESOURCE, "online");
+        cJSON_AddStringToObject(write_in_files_cJson, "file_path", "online");
         cJSON_AddStringToObject(write_in_files_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
     }
     /*协议栈*/
     cJSON_AddStringToObject(write_in_files_cJson, "protocols", protocol_stack_t.c_str());
     cJSON_AddStringToObject(write_in_files_cJson, "frame_id", numtos(edt->pi.num).c_str());
 
+    /*帧头每个数据包肯定有帧头*/
+    if (strcmp(node->finfo->hfinfo->abbrev, "frame") == 0) {
+        proto_node *child = node->first_child; //该层协议的第一个字段
+        while (child != nullptr) {
+            /*该层协议具有内容*/
+            field_info *child_finfo = child->finfo;
+            if (strcmp(child_finfo->hfinfo->abbrev, "frame.encap_type") == 0) {
+                yy_proto_item_fill_label(child_finfo, &value_240,240);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_encap_type", value_240);
+                child = child->next;
+                continue;
+            }
+            else if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
+                yy_proto_item_fill_label(child_finfo, &value_240,240);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value_240);
+                child = child->next;
+                continue;
+            }
+            else if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
+                yy_proto_item_fill_label(child_finfo, &value_240,240);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value_240);
+                break; //这里最后一个，提高效率
+            }
+            child = child->next;
+        }
+        node = node->next;
+    }
+
     while (node != nullptr) {
         field_info *fi = node->finfo;
 
-        /*帧头*/
-        if (strcmp(fi->hfinfo->abbrev, "frame") == 0) {
-            proto_node *child = node->first_child; //该层协议的第一个字段
-            while (child != nullptr) {
-                /*该层协议具有内容*/
-                field_info *child_finfo = child->finfo;
-                if (strcmp(child_finfo->hfinfo->abbrev, "frame.encap_type") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "frame_encap_type", value);
-                    child = child->next;
-                    continue;
-                }
-                if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value);
-                    child = child->next;
-                    continue;
-                }
-                if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value);
-                    break; //这里最后一个，提高效率
-                }
-                child = child->next;
-            }
-            node = node->next;
-            continue;
-        }
         /*eth*/
         if (strcmp(fi->hfinfo->abbrev, "eth") == 0) {
             proto_node *child = node->first_child;
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "eth.dst") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "eth_dst", value);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "eth_dst", value_240);
                     child = child->next;
                     continue;
                 }
-                if (strcmp(child_finfo->hfinfo->abbrev, "eth.src") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "eth_src", value);
+                else if (strcmp(child_finfo->hfinfo->abbrev, "eth.src") == 0) {
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "eth_src", value_240);
                     break;//这里最后一个，提高效率
                 }
                 child = child->next;
@@ -1156,32 +1094,25 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             node = node->next;
             continue;
         }
-        /*ip ipv6 */
-        if (strcmp(fi->hfinfo->abbrev, "ip") == 0 or strcmp(fi->hfinfo->abbrev, "ipv6") == 0) {
+            /*ip ipv6 */
+        else if (strcmp(fi->hfinfo->abbrev, "ip") == 0 or strcmp(fi->hfinfo->abbrev, "ipv6") == 0) {
             proto_node *child = node->first_child;
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "ip.src") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.src") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-
-                    c5e->sip = value;//通信五元组源ip
-                    c5e->status = comFourEleContent_Status::GotSip;
-
-                    cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value_240);
                     child = child->next;
                     continue;
                 }
-                if (strcmp(child_finfo->hfinfo->abbrev, "ip.dst") == 0 or
-                    strcmp(child_finfo->hfinfo->abbrev, "ipv6.dst") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-
-                    c5e->dip = value;//通信五元组目的ip
-                    c5e->status = comFourEleContent_Status::GotDip;
-
-                    cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value);
+                else if (strcmp(child_finfo->hfinfo->abbrev, "ip.dst") == 0 or
+                         strcmp(child_finfo->hfinfo->abbrev, "ipv6.dst") == 0) {
+//                    gchar value[240] = {'\0'};
+//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value_240);
+//                    g_free(value);
                     break;//这里最后一个，提高效率
                 }
                 child = child->next;
@@ -1190,74 +1121,50 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             node = node->next;
             continue;
         }
-        /*tcp udp*/
-        if (strcmp(fi->hfinfo->abbrev, "tcp") == 0 or strcmp(fi->hfinfo->abbrev, "udp") == 0) {
+            /*tcp udp*/
+        else if (strcmp(fi->hfinfo->abbrev, "tcp") == 0 or strcmp(fi->hfinfo->abbrev, "udp") == 0) {
             proto_node *child = node->first_child;
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "tcp.srcport") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "udp.srcport") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    c5e->sport = value;//通信五元组源端口
-                    c5e->status = comFourEleContent_Status::GotSport;
-                    cJSON_AddStringToObject(write_in_files_cJson, "src_port", value);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "src_port", value_240);
                     child = child->next;
                     continue;
                 }
-                if (strcmp(child_finfo->hfinfo->abbrev, "tcp.dstport") == 0 or
-                    strcmp(child_finfo->hfinfo->abbrev, "udp.dstport") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-
-                    c5e->dport = value;//通信五元组目的端口
-                    c5e->status = comFourEleContent_Status::GotDport;
-
-                    cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value);
+                else if (strcmp(child_finfo->hfinfo->abbrev, "tcp.dstport") == 0 or
+                         strcmp(child_finfo->hfinfo->abbrev, "udp.dstport") == 0) {
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value_240);
                     child = child->next;
                     continue;
-                }
-                if(c5e->status == comFourEleContent_Status::GotDport){ //TODO:这样判断是否取满五元组存在问题 20210927 yy
-                    if(c5e->protocol == "h263"){ //视频在这里存放通信五元组，话音在rtp流处理处存放
-                        //h263 标志
-                        gboolean mutex = false;
-                        for (auto &i : final_Follow_Write_Need) { //去重
-                            if(i.sip == c5e->sip and i.sport == c5e->sport and i.dip == c5e->dip and i.dport == c5e->dport)
-                                mutex = 1;
-                        }
-                        if(!mutex){
-                            c5e->protocol_suffix = "h263";
-                            c5e->protocol_suffix_type = 32;
-                            c5e->status = comFourEleContent_Status::AlreadyInsert;
-                            final_Follow_Write_Need.push_back(*c5e);
-                        }
-                    }
-                    break;//这里最后一个，提高效率
                 }
                 child = child->next;
             }
             node = node->next;
             continue;
         }
-        /*未知协议识别规则：最后层协议为data,暂定为未知协议,20211008 yy*/
-        if(strcmp(fi->hfinfo->abbrev,"data") == 0){
+            /*未知协议识别规则：最后层协议为data,暂定为未知协议,20211008 yy*/
+        else if(strcmp(fi->hfinfo->abbrev,"data") == 0){
             if(node->first_child->first_child != nullptr){
                 //当前data并不是最后一个协议，
                 continue;
             }
             field_info *fi_data = node->first_child->finfo;
             if(strcmp(fi_data->hfinfo->abbrev,"data.data") == 0){
-                auto *value = new gchar[fi_data->length *2 +1];
-                yy_proto_item_fill_label(fi_data,value);
+                auto *value = (gchar*)g_malloc_n(sizeof(gchar),fi_data->length *2 +1);
+                yy_proto_item_fill_label(fi_data,&value,fi_data->length *2 +1);
                 cJSON_AddStringToObject(write_in_files_cJson,"data",value);
+                g_free(value);
                 write_in_files_proto = "unknown";
-                delete []value;
             }
             //这里直接退出协议数据获取循环。不必进入最后层协议的解析。
             break;
         }
+
         /*最后层协议的解析*/
-        if (strcmp(fi->hfinfo->abbrev, write_in_files_proto.c_str()) == 0) {
+        else if (strcmp(fi->hfinfo->abbrev, write_in_files_proto.c_str()) == 0) {
             proto_node *child = node->first_child;
             if (child != nullptr) {
                 try {
@@ -1282,6 +1189,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                 }
             }
             //可能存在多个相同协议，如tls,tls;
+            break;
         }
         node = node->next;
     }
@@ -1314,12 +1222,12 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
     if (value_str == "-1END") {
         /*获取文件来源，将conversation与源文件进行关联*/
         if (read_Pcap_From_File_Flag == 1) {
-            cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+            cJSON_AddStringToObject(write_in_files_conv_cJson, "file_path", READ_FILE_PATH);
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
 
 
         } else {
-            cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "online");
+            cJSON_AddStringToObject(write_in_files_conv_cJson, "file_path", "online");
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
         }
 
@@ -1660,11 +1568,13 @@ gboolean beginInitOnce(char *flag) {
     strname_head->next = nullptr;
     strname_head->str_name = "";
     strname_head->times = 0;
-    try {
-        regex_dict = (cJSON *) cJSON_Parse(OFFLINE_LINE_NO_REGEX); //线路号匹配的json初始化
-    }
-    catch (std::regex_error){
-        g_print("line regex grammar format error !, regex nothing has wrote !\n");
+
+    regex_dict = (cJSON *) cJSON_Parse(OFFLINE_LINE_NO_REGEX); //线路号匹配的json初始化
+    if (regex_dict == nullptr) {
+        g_print("\tKEY:OFFLINE_LINE_NO_REGEX format error!\n");
+        g_print("\tmust be standard JSON format\n");
+        g_print("\texample:{\"KEY1\":\"VALUE1\",\"KEY2\":\"VALUE2\"}\n\n");
+        exit(0);
     }
 
     /*批量插入初始化头部节点*/
@@ -1691,7 +1601,8 @@ gboolean beginInitOnce(char *flag) {
     tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.ciphersuite");
     tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.certificates");
 
-
+    //存放240字节的value内存空间
+    value_240 = (gchar *) g_malloc_n(sizeof(gchar), VALUE_240_LENGTH);
 
     /*初始化互斥变量*/
     *flag = 1;
@@ -1964,6 +1875,9 @@ void clean_Temp_Files_All() {
 
         //delete regex_dict cJson
         cJSON_Delete(regex_dict);
+
+        //释放240字节的value内存空间
+        g_free(value_240);
 
         pFile_map.clear();
         /*最终初始化互斥变量*/

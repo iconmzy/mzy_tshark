@@ -2397,9 +2397,10 @@ proto_item_fill_label(field_info *fi, gchar *label_str);
  * 这里自定义了取值的方式。
  * @param fi
  * @param label_str
+ * @param len
  */
 WS_DLL_PUBLIC void
-yy_proto_item_fill_label(field_info *fi, gchar *label_str);
+yy_proto_item_fill_label(field_info *fi, gchar **label_str,int len);
 
 /** Register a new protocol.
 @param name the full name of the new protocol
