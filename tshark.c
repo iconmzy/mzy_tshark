@@ -15,7 +15,7 @@
 #include <sys/wait.h>
 #include "dirent.h"
 #include "wsutil/codecs.h"
-#include <curl/curl.h>
+#include <curl/curl.h> //这个文件依赖libgnutls.so
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
