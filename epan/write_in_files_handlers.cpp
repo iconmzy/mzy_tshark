@@ -116,6 +116,8 @@ typedef struct pFile_Info{
 }pFILE_INFO;
 //协议名称与对应的文件打开的指针map
 std::map<std::string, pFILE_INFO *> pFile_map;
+#define VALUE_240_LENGTH 241
+gchar* value_240 = nullptr; //240长度是一个协议名最大长度
 
 /**
  * 输入数字，返回对应string
@@ -612,8 +614,13 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     if(cursionkeyStrFilter(key_str.c_str())) return false; //无意义的字段过滤掉
 
     //获取value
-    auto *value = new gchar[(temp->finfo->length *3 +1)>100?temp->finfo->length *3 +1:100];
-    yy_proto_item_fill_label(temp->finfo,value);
+    int bufferlen = temp->finfo->length *3 +1;
+    if(bufferlen == 97){
+        int a =0;
+    }
+//    gchar *value = new gchar[bufferlen>100?bufferlen:100];
+    auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen>100?bufferlen:100);
+    yy_proto_item_fill_label(temp->finfo,&value_t,bufferlen);
 
     //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
     while (key_str.find('.') != std::string::npos) {  /* 返回string::npos表示未查找到匹配项 */
@@ -641,9 +648,10 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
 */
 
     key_str = gotStrNameByStrName(key_str);
-    cJSON_AddStringToObject(json_t,key_str.c_str(),value);
+    cJSON_AddStringToObject(json_t,key_str.c_str(),value_t);
 
-    delete []value;
+    g_free(value_t);
+//    delete []value;
     return true;
 }
 /**
@@ -679,63 +687,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
     }
     return true;
 }
-/**
- * 递归处理协议解析树内容，存入json中。
- * @param json_t
- * @param node
- */
-gboolean dissect_edt_Tree_Into_Json(cJSON *&json_t, proto_node *&node,int &cursion_layer,struct totalParam *cookie) {
-    /*key的置换和获取*/
-    std::string key_str = node->finfo->hfinfo->abbrev;
-    if(cursionkeyStrFilter(key_str.c_str())){
-        return true;
-    }
-    if(++cursion_layer > 500 ) return true;
 
-    if (node->first_child == nullptr or node->last_child == nullptr) {
-        /*数据节点*/
-        if (node->finfo->length > 0 and node->finfo->length <= 1514 ) {
-            try {
-                gchar value[4542] = {'\0'};
-                yy_proto_item_fill_label(node->finfo, value);
-//               将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
-                while (key_str.find('.') != std::string::npos) {  /* 返回string::npos表示未查找到匹配项 */
-                    key_str.replace(key_str.find('.'), 1, "_");
-                }
-//               返回该包内重复字段的名称，如A_01,A_02...
-                key_str = gotStrNameByStrName(key_str);
-                cJSON_AddStringToObject(json_t, key_str.c_str(), value); //写入JSON
-            } catch (std::out_of_range) {
-                g_print("out of range\n");
-                return false;
-            }
-            catch (std::length_error) {
-                g_print("length_error\n");
-                return false;
-            }
-            catch (std::range_error) {
-                g_print("range_error\n");
-                return false;
-            }
-        }
-        if (node->next != NULL) {
-            proto_node *index = node->next;
-            if (!dissect_edt_Tree_Into_Json(json_t, index,cursion_layer,cookie)) {
-                g_print("%s dissect_edt_Tree_Into_Json error!\n", key_str.c_str());
-                return false;
-            }
-        }
-    }
-    else {
-        /*还有子节点*/
-        dissect_edt_Tree_Into_Json(json_t, node->first_child,cursion_layer,cookie);
-        if (node->next != NULL) {
-            proto_node *index = node->next;
-            dissect_edt_Tree_Into_Json(json_t, index,cursion_layer,cookie);
-        }
-    }
-    return true;
-}
 /**
  * 匹配线路号
  * @param pattern 匹配模式
@@ -844,23 +796,25 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             /*该层协议具有内容*/
             field_info *child_finfo = child->finfo;
             if (strcmp(child_finfo->hfinfo->abbrev, "frame.encap_type") == 0) {
-                gchar value[240] = {'\0'};
-                yy_proto_item_fill_label(child_finfo, value);
-                cJSON_AddStringToObject(write_in_files_cJson, "frame_encap_type", value);
+//                gchar value[240] = {'\0'};
+                yy_proto_item_fill_label(child_finfo, &value_240,240);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_encap_type", value_240);
                 child = child->next;
                 continue;
             }
             else if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
-                gchar value[240] = {'\0'};
-                yy_proto_item_fill_label(child_finfo, value);
-                cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value);
+//                gchar value[240] = {'\0'};
+                yy_proto_item_fill_label(child_finfo, &value_240,240);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value_240);
                 child = child->next;
                 continue;
             }
             else if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
-                gchar value[240] = {'\0'};
-                yy_proto_item_fill_label(child_finfo, value);
-                cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value);
+//                gchar value[240] = {'\0'};
+//                auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
+                yy_proto_item_fill_label(child_finfo, &value_240,240);
+                cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value_240);
+//                g_free(value);
                 break; //这里最后一个，提高效率
             }
             child = child->next;
@@ -877,16 +831,20 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "eth.dst") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "eth_dst", value);
+//                    gchar value[240] = {'\0'};
+//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "eth_dst", value_240);
+//                    g_free(value);
                     child = child->next;
                     continue;
                 }
                 else if (strcmp(child_finfo->hfinfo->abbrev, "eth.src") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "eth_src", value);
+//                    gchar value[240] = {'\0'};
+//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "eth_src", value_240);
+//                    g_free(value);
                     break;//这里最后一个，提高效率
                 }
                 child = child->next;
@@ -901,17 +859,21 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "ip.src") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.src") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value);
+//                    gchar value[240] = {'\0'};
+//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value_240);
+//                    g_free(value);
                     child = child->next;
                     continue;
                 }
                 else if (strcmp(child_finfo->hfinfo->abbrev, "ip.dst") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.dst") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value);
+//                    gchar value[240] = {'\0'};
+//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value_240);
+//                    g_free(value);
                     break;//这里最后一个，提高效率
                 }
                 child = child->next;
@@ -927,17 +889,21 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "tcp.srcport") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "udp.srcport") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "src_port", value);
+//                    gchar value[240] = {'\0'};
+//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "src_port", value_240);
+//                    g_free(value);
                     child = child->next;
                     continue;
                 }
                 else if (strcmp(child_finfo->hfinfo->abbrev, "tcp.dstport") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "udp.dstport") == 0) {
-                    gchar value[240] = {'\0'};
-                    yy_proto_item_fill_label(child_finfo, value);
-                    cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value);
+//                    gchar value[240] = {'\0'};
+//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
+                    yy_proto_item_fill_label(child_finfo, &value_240,240);
+                    cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value_240);
+//                    g_free(value);
                     child = child->next;
                     continue;
                 }
@@ -954,11 +920,12 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             }
             field_info *fi_data = node->first_child->finfo;
             if(strcmp(fi_data->hfinfo->abbrev,"data.data") == 0){
-                auto *value = new gchar[fi_data->length *2 +1];
-                yy_proto_item_fill_label(fi_data,value);
+//                auto *value = new gchar[fi_data->length *2 +1];
+                auto *value = (gchar*)g_malloc_n(sizeof(gchar),fi_data->length *2 +1);
+                yy_proto_item_fill_label(fi_data,&value,fi_data->length *2 +1);
                 cJSON_AddStringToObject(write_in_files_cJson,"data",value);
+                g_free(value);
                 write_in_files_proto = "unknown";
-                delete []value;
             }
             //这里直接退出协议数据获取循环。不必进入最后层协议的解析。
             break;
@@ -1045,7 +1012,6 @@ gboolean beginInitOnce(char *flag) {
         exit(0);
     }
 
-
     /*批量插入初始化头部节点*/
     if (INSERT_MANY_PROTOCOL_STREAM_FLAG == 1) {
         insertmanystream_Head = new struct insertManyProtocolStream;
@@ -1056,6 +1022,8 @@ gboolean beginInitOnce(char *flag) {
         insertmanystream_Head->contents = "";
     }
 
+    //存放240字节的value内存空间
+    value_240 = (gchar *)g_malloc_n(sizeof(gchar),256);
     /*初始化互斥变量*/
     *flag = 1;
     return true;
@@ -1305,6 +1273,9 @@ void clean_Temp_Files_All() {
 
         //delete regex_dict cJson
         cJSON_Delete(regex_dict);
+
+        //释放240字节的value内存空间
+        g_free(value_240);
 
         pFile_map.clear();
         /*最终初始化互斥变量*/
