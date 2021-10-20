@@ -246,9 +246,15 @@ int g722_decode(unsigned char data[],int len, unsigned char out[])
 }
 
 int g722_single_frame_decode(unsigned char *data,int len, int mark, unsigned char *out)
-{	
-	if(mark==0)return g722_decode(data, len,out);
-	if(mark==1)return g722_decode_init(data, len,out);
-	return 0;
+{
+    if(mark==0){
+        if(m_pG722Decode == nullptr){
+            return g722_decode_init(data, len,out);
+        } else{
+            return g722_decode(data, len,out);
+        }
+    }
+    if(mark==1)return g722_decode_init(data, len,out);
+    return 0;
 }
 
