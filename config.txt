@@ -10,6 +10,8 @@ JSON_ADD_PROTO_PATH:../../newproto/json
 WRITE_IN_FILES_CONFIG:1
 #配置是否统计会话信息
 WRITE_IN_CONVERSATIONS_FLAG:1
+#配置是否组报
+PACKET_PROTOCOL_FLAG:0
 #配置协议解析输出文件的位置 不超过255字节
 EXPORT_PATH:../temp
 #每个txt文件大致最大行数
