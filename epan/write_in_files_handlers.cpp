@@ -285,6 +285,33 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     else if (strcmp(dst, "wlan.mgt") == 0) {
         return TRUE;
     }
+    else if (strcmp(dst, "image-gif") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "image") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "ftp-data.command-frame") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "dcerpc.cn_deseg_req") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "dcerpc.stub_data") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "db-lsp-disc") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "dcerpc.encrypted_stub_data") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "dcerpc.fragments") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "snmp.var-bind_str") == 0) {
+        return TRUE;
+    }
     return FALSE;
 }
 /**
