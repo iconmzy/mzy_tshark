@@ -1054,6 +1054,7 @@ gboolean readConfigFilesStatus() {
                 char *json_add_proto;
                 char *json_add_proto_path;
                 char *edit_files_dissect_flag;
+                char *packet_protocol_flag;
                 char *edit_files_sizes;
                 char *insert_many_protocol_stream_flag;
                 char *insert_many_protocol_stream_num;
@@ -1126,10 +1127,15 @@ gboolean readConfigFilesStatus() {
                     PER_FILES_MAX_LINES = std::stoi(per_files_max_linex);
                 } else PER_FILES_MAX_LINES = 10000;
 
-                edit_files_dissect_flag = getInfo_ConfigFile("EDIT_FILES_DISSECT_FLAG", info, lines);
-                if (edit_files_dissect_flag != nullptr) {
-                    EDIT_FILES_DISSECT_FLAG = *edit_files_dissect_flag - '0';
+                packet_protocol_flag = getInfo_ConfigFile("EDIT_FILES_DISSECT_FLAG", info, lines);
+                if (packet_protocol_flag != nullptr) {
+                    EDIT_FILES_DISSECT_FLAG = *packet_protocol_flag - '0';
                 } else EDIT_FILES_DISSECT_FLAG = 0;
+
+                edit_files_dissect_flag = getInfo_ConfigFile("PACKET_PROTOCOL_FLAG", info, lines);
+                if (edit_files_dissect_flag != nullptr) {
+                    PACKET_PROTOCOL_FLAG = *edit_files_dissect_flag - '0';
+                } else PACKET_PROTOCOL_FLAG = 0;
 
                 write_in_files_config = getInfo_ConfigFile("WRITE_IN_FILES_CONFIG", info, lines);
                 if (write_in_files_config != nullptr) {
