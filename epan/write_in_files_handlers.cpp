@@ -273,6 +273,18 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     else if (strcmp(dst, "_ws.unreassembled") == 0) {
         return TRUE;
     }
+    else if (strcmp(dst, "ftp-data.current-working-directory") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "dof.dpp.v2s") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "dof.oap") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "wlan.mgt") == 0) {
+        return TRUE;
+    }
     return FALSE;
 }
 /**
