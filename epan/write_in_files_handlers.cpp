@@ -267,6 +267,12 @@ gboolean lastLayerProtocolFilter(const char *dst) {
     else if (strcmp(dst, "media") == 0) {
         return TRUE;
     }
+    else if (strcmp(dst, "_ws.short") == 0) {
+        return TRUE;
+    }
+    else if (strcmp(dst, "_ws.unreassembled") == 0) {
+        return TRUE;
+    }
     return FALSE;
 }
 /**
