@@ -282,14 +282,14 @@ set(LIBWIRESHARK_NONGENERATED_FILES
 	uat.c
 	value_string.c
 	unit_strings.c
-
     write_in_files_handlers.cpp
 	cJSON.c
 	ConfigFile.c
 	rtp_media.c
-#	yy_g711.c
-#	g722decode_yy.cpp
-	g722decode_yy_single_frame_decode.cpp
+	g711u_decode.c
+	g711a_decode.c
+	g722_decode.c
+	g729a_decode.c
 
 	xdlc.c
 	protobuf-helper.c

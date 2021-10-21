@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "write_in_files_handlers.h"
 
 enum
 {
@@ -38,6 +37,8 @@ typedef struct
     int out_bits;
 } g722_decode_state_t;
 
+
+
 static __inline short saturate(int amp)
 {
     short amp16;
@@ -50,20 +51,32 @@ static __inline short saturate(int amp)
 static void block4(g722_decode_state_t *s, int band, int d)
 {
     int wd1, wd2, wd3, i;
+
+    /* Block 4, RECONS */
     s->band[band].d[0] = d;
     s->band[band].r[0] = saturate(s->band[band].s + d);
+
+    /* Block 4, PARREC */
     s->band[band].p[0] = saturate(s->band[band].sz + d);
-    for (i = 0;  i < 3;  i++)   s->band[band].sg[i] = s->band[band].p[i] >> 15;
+
+    /* Block 4, UPPOL2 */
+    for (i = 0;  i < 3;  i++)
+        s->band[band].sg[i] = s->band[band].p[i] >> 15;
     wd1 = saturate(s->band[band].a[1] << 2);
+
     wd2 = (s->band[band].sg[0] == s->band[band].sg[1])  ?  -wd1  :  wd1;
-    if (wd2 > 32767)  wd2 = 32767;
+    if (wd2 > 32767)
+        wd2 = 32767;
     wd3 = (s->band[band].sg[0] == s->band[band].sg[2])  ?  128  :  -128;
     wd3 += (wd2 >> 7);
     wd3 += (s->band[band].a[2]*32512) >> 15;
-    if (wd3 > 12288)       wd3 = 12288;
-    else if (wd3 < -12288) wd3 = -12288;
+    if (wd3 > 12288)
+        wd3 = 12288;
+    else if (wd3 < -12288)
+        wd3 = -12288;
     s->band[band].ap[2] = wd3;
 
+    /* Block 4, UPPOL1 */
     s->band[band].sg[0] = s->band[band].p[0] >> 15;
     s->band[band].sg[1] = s->band[band].p[1] >> 15;
     wd1 = (s->band[band].sg[0] == s->band[band].sg[1])  ?  192  :  -192;
@@ -71,8 +84,10 @@ static void block4(g722_decode_state_t *s, int band, int d)
 
     s->band[band].ap[1] = saturate(wd1 + wd2);
     wd3 = saturate(15360 - s->band[band].ap[2]);
-    if (s->band[band].ap[1] > wd3)       s->band[band].ap[1] = wd3;
-    else if (s->band[band].ap[1] < -wd3) s->band[band].ap[1] = -wd3;
+    if (s->band[band].ap[1] > wd3)
+        s->band[band].ap[1] = wd3;
+    else if (s->band[band].ap[1] < -wd3)
+        s->band[band].ap[1] = -wd3;
 
     /* Block 4, UPZERO */
     wd1 = (d == 0)  ?  0  :  128;
@@ -221,40 +236,22 @@ int WebRtc_g722_decode(g722_decode_state_t *s, short amp[],  const unsigned char
     } return outlen;
 }
 
-g722_decode_state_t*  m_pG722Decode = NULL;
-
-int g722_decode_init(unsigned char data[],int len, unsigned char out[])
-{	
-	unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x3e,0x80,0,0,0,0x01}; 
+unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x3e,0x80,0,0,0,0x01}; //0x803e0000, 0x401f0000; //16000 or 8000
+int g722_decode(unsigned char in[],int inlen, unsigned char out[])
+{
 	unsigned char se;
-	int i,j;
+	int i,j,n=0;
+	g722_decode_state_t *m_pG722Decode = NULL;
+	//for(j=0;j<len;j+=172)for(i=0;i<160;i++)data[n++]=data[j+i+12];
+	//for(j=0;j<inlen;j+=160)for(i=0;i<160;i++)data[n++]=data[j+i];
+	//printf("%d %d\n",len,n);
+	
 	m_pG722Decode= (g722_decode_state_t *) malloc(sizeof(g722_decode_state_t));	
-	WebRtc_g722_decode_init((g722_decode_state_t *) m_pG722Decode, 16000, 2);	
-	j = 2*WebRtc_g722_decode((g722_decode_state_t *)m_pG722Decode, (short*)(out+24), data, len);	
+	WebRtc_g722_decode_init((g722_decode_state_t *)m_pG722Decode, 16000, 2);// Bitrate 64 kbps and wideband mode (2) // != 0)printf("DecoderInit failed\n");		
+	j = WebRtc_g722_decode((g722_decode_state_t *)m_pG722Decode, (short*)out+24, in, inlen);
+	j=j*2;
 	for(i=0;i<24;i++)out[i]=AU_header[i];
 	for(i=0;i<j;i+=2){se=out[i+24]; out[i+24]=out[i+1+24]; out[i+1+24]=se;};
 	return j+24;
-}
-
-int g722_decode(unsigned char data[],int len, unsigned char out[])
-{		
-	unsigned char se;
-	int i,j;
-	j = 2*WebRtc_g722_decode((g722_decode_state_t *)m_pG722Decode, (short*)out, data, len);		
-	for(i=0;i<j;i+=2){se=out[i]; out[i]=out[i+1]; out[i+1]=se;};
-	return j;
-}
-
-int g722_single_frame_decode(unsigned char *data,int len, int mark, unsigned char *out)
-{
-    if(mark==0){
-        if(m_pG722Decode == nullptr){
-            return g722_decode_init(data, len,out);
-        } else{
-            return g722_decode(data, len,out);
-        }
-    }
-    if(mark==1)return g722_decode_init(data, len,out);
-    return 0;
 }
 
