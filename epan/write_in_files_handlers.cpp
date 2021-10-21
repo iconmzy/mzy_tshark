@@ -1460,7 +1460,7 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
 void rtpVoiceMatching(rtpTotalBufferContent &info){
     for (auto &it : rtpMachingVec ) {
         if(it.sip == info.dip and it.dip == info.sip and it.sport == info.dport and it.dport == info.sport \
-        and (std::abs(it.time_begin - info.time_begin) < 1000) and (std::abs(it.time_end - info.time_end) < 1000)){
+        and (std::abs(it.time_begin - info.time_begin) < 1000) ){ //这里不加结束时间的原因是程序最后的清空有可能没来得及给结束时间赋值，使用time_end可能会报错
 
 //                call_zhr_handler(it.fp_path,info.fp_path);
             return;
@@ -1778,16 +1778,18 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
  * @return
  */
 std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const std::string &p){
-    std::string file_t,tail_t;
-    auto index_t = rtp_payload_type_To_tail.find(type);
-    if(index_t == rtp_payload_type_To_tail.end()){
-        tail_t = "unknownType";
-    } else{
-        tail_t = index_t->second;
-    }
+    std::string file_t;
+//    std::string tail_t;
+//    auto index_t = rtp_payload_type_To_tail.find(type);
+//    if(index_t == rtp_payload_type_To_tail.end()){
+//        tail_t = "unknownType";
+//    } else{
+//        tail_t = index_t->second;
+//    }
 
     file_t += rtp_payload_type_to_str[type];
-    return file_t += "_" + s +"_"+ p +"."+ tail_t;
+//    return file_t += "_" + s +"_"+ p +"."+ tail_t;
+    return file_t += "_" + s +"_"+ p;
 }
 
 /**
@@ -2071,6 +2073,52 @@ gboolean readConfigFilesStatus() {
     return true;
 }
 
+
+
+/**
+ * 将处理完的文件名称写入结果文件 result+global_time_str.writting
+ * READ_FILE_PATH 全局存放文件名（含路径）
+ */
+void add_record_in_result_file() {
+    if (fp_result_timestampe == nullptr) {
+        std::string filepath_str = RESULT_PATH;
+        filepath_str += "result-" + global_time_str + ".writting";
+        fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
+        fputs(READ_FILE_PATH, fp_result_timestampe);
+        fputs("\r\n", fp_result_timestampe);
+        fflush(fp_result_timestampe);
+    } else {
+        fputs(READ_FILE_PATH, fp_result_timestampe);
+        fputs("\r\n", fp_result_timestampe);
+        fflush(fp_result_timestampe);
+    }
+}
+
+/**
+ * 单个文件结束，进行初始化操作函数 适用于文件夹解析
+ */
+void single_File_End_Init(){
+    regex_dict_map.clear(); //每个文件的线路号清空
+}
+
+/**
+ * 程序结束的最后操作。01
+ */
+void change_result_file_name() {
+    std::string filepath_str = RESULT_PATH;
+    std::string oldName_t = filepath_str + "result-" + global_time_str + ".writting";
+    std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
+    rename(oldName_t.c_str(), newName_t.c_str());
+
+    std::time_t end_time = std::time(nullptr);
+    g_print("结束时间戳：%s \n", numtos((u_long) end_time).c_str());
+    int begin_time = (int)strtol(global_time_str.c_str(), nullptr,10);
+    int cost_time = (int) end_time - begin_time;
+    g_print("总计耗时：%d 秒\n", cost_time);
+
+    curl_global_cleanup();  //在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数
+}
+
 /**
  * 程序结束的最后操作。02 释放一些数据结构，仅释放一次。
  */
@@ -2116,54 +2164,25 @@ void clean_Temp_Files_All() {
         //释放240字节的value内存空间
         g_free(value_240);
 
+        //程序退出时的rtp缓存的清空和配对
+        for (auto &it : rtpTotalBuffer) {
+            unsigned long len = it.second.data.get_len();
+            if (fwrite(it.second.data.get_data(), sizeof(guint8), len, it.second.fp) != len) {
+                g_print("rtp write error ! -> %s\n", it.second.fp_path.c_str());
+            }
+            it.second.data.clear();
+            fclose(it.second.fp); // 写完就关闭掉
+            //判断话音是否要配对
+            rtpVoiceMatching(it.second);
+        }
+        rtpTotalBuffer.clear();
+        //rtp配对清空
+        rtpMachingVec.clear();
+
         pFile_map.clear();
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;
     }
-}
-
-/**
- * 将处理完的文件名称写入结果文件 result+global_time_str.writting
- * READ_FILE_PATH 全局存放文件名（含路径）
- */
-void add_record_in_result_file() {
-    if (fp_result_timestampe == nullptr) {
-        std::string filepath_str = RESULT_PATH;
-        filepath_str += "result-" + global_time_str + ".writting";
-        fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
-        fputs(READ_FILE_PATH, fp_result_timestampe);
-        fputs("\r\n", fp_result_timestampe);
-        fflush(fp_result_timestampe);
-    } else {
-        fputs(READ_FILE_PATH, fp_result_timestampe);
-        fputs("\r\n", fp_result_timestampe);
-        fflush(fp_result_timestampe);
-    }
-}
-
-/**
- * 单个文件结束，进行初始化操作函数
- */
-void single_File_End_Init(){
-    regex_dict_map.clear(); //每个文件的线路号清空
-}
-
-/**
- * 程序结束的最后操作。01
- */
-void change_result_file_name() {
-    std::string filepath_str = RESULT_PATH;
-    std::string oldName_t = filepath_str + "result-" + global_time_str + ".writting";
-    std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
-    rename(oldName_t.c_str(), newName_t.c_str());
-
-    std::time_t end_time = std::time(nullptr);
-    g_print("结束时间戳：%s \n", numtos((u_long) end_time).c_str());
-    int begin_time = (int)strtol(global_time_str.c_str(), nullptr,10);
-    int cost_time = (int) end_time - begin_time;
-    g_print("总计耗时：%d 秒\n", cost_time);
-
-    curl_global_cleanup();  //在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数
 }
 
 /**

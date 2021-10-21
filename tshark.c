@@ -2415,7 +2415,7 @@ int main(int argc, char *argv[]) {
                                 g_free(pdu_export_arg);
                                 g_free(exp_pdu_filename);
                             }
-                            change_result_file_name();
+                            change_result_file_name();//final_process_and_clean_memory()
                         }
 
                         temp = temp->next;
