@@ -1433,7 +1433,6 @@ int
 dissector_try_uint(dissector_table_t sub_dissectors, const guint32 uint_val,
 		   tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
 {
-
 	return dissector_try_uint_new(sub_dissectors, uint_val, tvb, pinfo, tree, TRUE, NULL);
 }
 
