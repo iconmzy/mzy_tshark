@@ -107,7 +107,6 @@ static heur_dissector_list_t eth_trailer_subdissector_list;
 static dissector_handle_t eth_withoutfcs_handle;
 static dissector_handle_t eth_maybefcs_handle;
 
-
 static int eth_tap = -1;
 
 #define ETH_HEADER_SIZE    14

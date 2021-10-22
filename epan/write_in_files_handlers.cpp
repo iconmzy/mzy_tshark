@@ -43,8 +43,8 @@ static cJSON *write_in_files_cJson = cJSON_CreateObject();
 /*缓存会话数据内容*/
 static cJSON *write_in_files_conv_cJson = cJSON_CreateObject();
 static std::string conv_path_t;
-
 static FILE *conversation_Handle_File = nullptr;
+std::queue< proto_node* > que; //全局node节点队列
 
 cJSON *regex_dict = nullptr;
 std::map<std::string,std::string> regex_dict_map;
@@ -58,11 +58,11 @@ char RESULT_PATH[256] = {0};
 gboolean WRITE_IN_FILES_CONFIG = 1;
 gboolean DISPLAY_PACKET_INFO_FLAG = 0;
 gboolean WRITE_IN_CONVERSATIONS_FLAG = 1;
-gboolean PACKET_PROTOCOL_FLAG = 1;
-gboolean EDIT_FILES_DISSECT_FLAG = 0;
-gboolean file_Name_From_Dir_Flag = 0;
-char WRITE_IN_CONVERSATIONS_PATH[256] = {0};
+gboolean PACKET_PROTOCOL_FLAG = 0;
 char PACKET_PROTOCOL_TYPES[256] = {"imf,dicom,http,smb,tftp"};
+gboolean file_Name_From_Dir_Flag = 0;
+gboolean EDIT_FILES_DISSECT_FLAG = 0;
+char WRITE_IN_CONVERSATIONS_PATH[256] = {0};
 char PACKET_PROTOCOL_PATH[256] = {0};
 int EDIT_FILES_SIZES = 1000;
 int PER_FILES_MAX_LINES = 10000;
@@ -116,7 +116,7 @@ typedef struct pFile_Info{
 }pFILE_INFO;
 //协议名称与对应的文件打开的指针map
 std::map<std::string, pFILE_INFO *> pFile_map;
-#define VALUE_240_LENGTH 241
+#define VALUE_240_LENGTH 256
 gchar* value_240 = nullptr; //240长度是一个协议名最大长度
 
 /**
@@ -660,10 +660,10 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
 
     //获取value
     int bufferlen = temp->finfo->length *3 +1;
-    if(bufferlen == 97){
-        int a =0;
-    }
-//    gchar *value = new gchar[bufferlen>100?bufferlen:100];
+    /*debug test*/
+//    if(bufferlen == 97){
+//        int a =0;
+//    }
     auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen>100?bufferlen:100);
     yy_proto_item_fill_label(temp->finfo,&value_t,bufferlen);
 
@@ -706,7 +706,6 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
  * @param cookie
  * @return
  */
-std::queue< proto_node* > que;
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
     while(node != nullptr){
         if(node->first_child == nullptr or node->last_child == nullptr){
@@ -841,25 +840,20 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             /*该层协议具有内容*/
             field_info *child_finfo = child->finfo;
             if (strcmp(child_finfo->hfinfo->abbrev, "frame.encap_type") == 0) {
-//                gchar value[240] = {'\0'};
                 yy_proto_item_fill_label(child_finfo, &value_240,240);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_encap_type", value_240);
                 child = child->next;
                 continue;
             }
             else if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
-//                gchar value[240] = {'\0'};
                 yy_proto_item_fill_label(child_finfo, &value_240,240);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value_240);
                 child = child->next;
                 continue;
             }
             else if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
-//                gchar value[240] = {'\0'};
-//                auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
                 yy_proto_item_fill_label(child_finfo, &value_240,240);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value_240);
-//                g_free(value);
                 break; //这里最后一个，提高效率
             }
             child = child->next;
@@ -876,20 +870,14 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "eth.dst") == 0) {
-//                    gchar value[240] = {'\0'};
-//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "eth_dst", value_240);
-//                    g_free(value);
                     child = child->next;
                     continue;
                 }
                 else if (strcmp(child_finfo->hfinfo->abbrev, "eth.src") == 0) {
-//                    gchar value[240] = {'\0'};
-//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "eth_src", value_240);
-//                    g_free(value);
                     break;//这里最后一个，提高效率
                 }
                 child = child->next;
@@ -904,11 +892,8 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "ip.src") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6.src") == 0) {
-//                    gchar value[240] = {'\0'};
-//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value_240);
-//                    g_free(value);
                     child = child->next;
                     continue;
                 }
@@ -934,21 +919,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                 field_info *child_finfo = child->finfo;
                 if (strcmp(child_finfo->hfinfo->abbrev, "tcp.srcport") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "udp.srcport") == 0) {
-//                    gchar value[240] = {'\0'};
-//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "src_port", value_240);
-//                    g_free(value);
                     child = child->next;
                     continue;
                 }
                 else if (strcmp(child_finfo->hfinfo->abbrev, "tcp.dstport") == 0 or
                     strcmp(child_finfo->hfinfo->abbrev, "udp.dstport") == 0) {
-//                    gchar value[240] = {'\0'};
-//                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),240);
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value_240);
-//                    g_free(value);
                     child = child->next;
                     continue;
                 }
@@ -965,7 +944,6 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             }
             field_info *fi_data = node->first_child->finfo;
             if(strcmp(fi_data->hfinfo->abbrev,"data.data") == 0){
-//                auto *value = new gchar[fi_data->length *2 +1];
                 auto *value = (gchar*)g_malloc_n(sizeof(gchar),fi_data->length *2 +1);
                 yy_proto_item_fill_label(fi_data,&value,fi_data->length *2 +1);
                 cJSON_AddStringToObject(write_in_files_cJson,"data",value);
@@ -1049,11 +1027,12 @@ gboolean beginInitOnce(char *flag) {
     strname_head->next = nullptr;
     strname_head->str_name = "";
     strname_head->times = 0;
+
     regex_dict = (cJSON *) cJSON_Parse(OFFLINE_LINE_NO_REGEX); //线路号匹配的json初始化
     if (regex_dict == nullptr) {
-        g_print("KEY:OFFLINE_LINE_NO_REGEX format error!\n");
-        g_print("must be standard JSON format\n");
-        g_print("example:{\"KEY1\":\"VALUE1\",\"KEY2\":\"VALUE2\"}\n");
+        g_print("\tKEY:OFFLINE_LINE_NO_REGEX format error!\n");
+        g_print("\tmust be standard JSON format\n");
+        g_print("\texample:{\"KEY1\":\"VALUE1\",\"KEY2\":\"VALUE2\"}\n\n");
         exit(0);
     }
 
@@ -1068,7 +1047,7 @@ gboolean beginInitOnce(char *flag) {
     }
 
     //存放240字节的value内存空间
-    value_240 = (gchar *)g_malloc_n(sizeof(gchar),256);
+    value_240 = (gchar *)g_malloc_n(sizeof(gchar),VALUE_240_LENGTH);
     /*初始化互斥变量*/
     *flag = 1;
     return true;
