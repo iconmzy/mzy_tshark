@@ -664,7 +664,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
 //    if(bufferlen == 97){
 //        int a =0;
 //    }
-    auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen>100?bufferlen:100);
+    auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen>100?bufferlen:1000);
     yy_proto_item_fill_label(temp->finfo,&value_t,bufferlen);
 
     //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”

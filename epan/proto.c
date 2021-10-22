@@ -8899,7 +8899,6 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             } else {
 
                 strcpy(label_str, my_itoa(fvalue_get_uinteger64(&fi->value)));
-
             }
             break;
 
