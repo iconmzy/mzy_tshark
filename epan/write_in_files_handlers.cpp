@@ -405,6 +405,8 @@ std::string gotStrNameByStrName(std::string &strname) {
         struct strNameSameLevel *temp = strname_head->next;
         while (temp != nullptr) {
             if (temp->str_name == strname) {
+                if(temp->times > 49)
+                    return "-1";
                 temp->times++;
                 return strname + "_" + numtos(temp->times);
             }
@@ -980,9 +982,9 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     if(cursionkeyStrFilter(key_str.c_str())) return false; //无意义的字段过滤掉
 
     //获取value
-    int bufferlen = temp->finfo->length *3 +1;
+    int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):300;
 
-    auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen>100?bufferlen:100);
+    auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
     yy_proto_item_fill_label(temp->finfo,&value_t,bufferlen);
 
     //组包相关
@@ -1053,14 +1055,17 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
                     cJSON_DeleteItemFromObject(json_t, key_str.c_str());
                     cJSON * temp_array = cJSON_AddArrayToObject(json_t, key_str.c_str());
                     cJSON_AddItemToArray(temp_array,cJSON_CreateString(pre_value.c_str()));
-                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(value));
+                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(value_t));
                 }
             } else{
-                cJSON_AddStringToObject(json_t,key_str.c_str(),value);
+                cJSON_AddStringToObject(json_t,key_str.c_str(),value_t);
             }
 */
 
     key_str = gotStrNameByStrName(key_str);
+    if(key_str == "-1"){
+        return false;
+    }
     cJSON_AddStringToObject(json_t,key_str.c_str(),value_t);
 
     g_free(value_t);
