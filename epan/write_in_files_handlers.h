@@ -50,6 +50,7 @@ WS_DLL_PUBLIC char *my_itoa(long int n);
 WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];
+
 //是否允许新增协议相关
 WS_DLL_PUBLIC gboolean JSON_ADD_PROTO;
 WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[256];

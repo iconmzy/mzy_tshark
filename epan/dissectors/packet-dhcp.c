@@ -7152,6 +7152,7 @@ dissect_dhcp(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void* data _U_
 		}
 	}
 
+	/* variable  options*/
 	voff = VENDOR_INFO_OFFSET;
 	if (dhcp_type == NULL) {
 		hidden_item = proto_tree_add_boolean(bp_tree, hf_dhcp_bootp, tvb, 0, 0, 1);
