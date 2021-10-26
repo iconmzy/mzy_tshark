@@ -37,6 +37,13 @@
 
 /*即将写进文件的协议*/
 static std::string write_in_files_proto;
+std::list<std::string> lastLayerProtocolFilterList = {
+        "communityid","ftp.current-working-directory","xml","json","_ws.malformed","smb2.fsctl.wait.name", "mswsp.msg"\
+        ,"tcp.segments","urlencoded-form","data-text-lines","media","_ws.short","_ws.unreassembled","_ws.short","_ws.unreassembled"\
+        ,"ftp-data.current-working-directory","dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","ftp-data.command-frame","dcerpc.cn_deseg_req"\
+        ,"dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str"
+};
+std::list<std::string> protoKeyFilterList = {"text"};
 /*内容缓存*/
 static std::string write_in_files_stream;
 static cJSON *write_in_files_cJson = cJSON_CreateObject();
@@ -59,7 +66,7 @@ gboolean WRITE_IN_FILES_CONFIG = 1;
 gboolean DISPLAY_PACKET_INFO_FLAG = 0;
 gboolean WRITE_IN_CONVERSATIONS_FLAG = 1;
 gboolean PACKET_PROTOCOL_FLAG = 0;
-char PACKET_PROTOCOL_TYPES[256] = {"imf,dicom,http,smb,tftp"};
+char PACKET_PROTOCOL_TYPES[256] = {"imf,dicom,smb,tftp"};
 gboolean file_Name_From_Dir_Flag = 0;
 gboolean EDIT_FILES_DISSECT_FLAG = 0;
 char WRITE_IN_CONVERSATIONS_PATH[256] = {0};
@@ -153,10 +160,10 @@ std::string gotStrNameByStrName(std::string &strname) {
         struct strNameSameLevel *temp = strname_head->next;
         while (temp != nullptr) {
             if (temp->str_name == strname) {
-                if(temp->times > 49){
+                temp->times++;
+                if(temp->times >= 50){
                     return "-1";
                 }
-                temp->times++;
                 return strname + "_" + numtos(temp->times);
             }
             temp = temp->next;
@@ -238,83 +245,10 @@ std::vector<std::string> split(const std::string &str, const std::string& delim)
  * @return
  */
 gboolean lastLayerProtocolFilter(const char *dst) {
-    if (strcmp(dst, "communityid") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "ftp.current-working-directory") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "xml") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "json") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
-        return TRUE;
-    }
-    else if (strcmp(dst, "smb2.fsctl.wait.name") == 0) {  /* smb2协议中多解析出来的信息 */
-        return TRUE;
-    }
-    else if (strcmp(dst, "mswsp.msg") == 0) {  /* smb2的子协议mswsp中出现的畸形报文信息 */
-        return TRUE;
-    }
-    else if (strcmp(dst, "tcp.segments") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "urlencoded-form") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "data-text-lines") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "media") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "_ws.short") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "_ws.unreassembled") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "ftp-data.current-working-directory") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dof.dpp.v2s") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dof.oap") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "wlan.mgt") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "image-gif") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "image") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "ftp-data.command-frame") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dcerpc.cn_deseg_req") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dcerpc.stub_data") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "db-lsp-disc") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dcerpc.encrypted_stub_data") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dcerpc.fragments") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "snmp.var-bind_str") == 0) {
-        return TRUE;
+    for (auto &i : lastLayerProtocolFilterList) { //lastLayerProtocolFilterList 列表在上面定义 yy20211026
+        if(i == dst){
+            return true;
+        }
     }
     return FALSE;
 }
@@ -322,8 +256,9 @@ gboolean lastLayerProtocolFilter(const char *dst) {
  * 递归key的过滤。
  */
 gboolean cursionkeyStrFilter(const char *key_str){
-    if (strcmp(key_str, "text") == 0) {
-        return TRUE;
+    for (auto &i :protoKeyFilterList) {  //protoKeyFilterList 列表在上面定义20211026 yy
+        if(i == key_str)
+            return true;
     }
     return false;
 }
@@ -1312,7 +1247,8 @@ void clean_Temp_Files_All() {
             rename(oldName_t.c_str(), newName_t.c_str());
             fclose(index.second->fp);
         }
-
+        //delete strname_head ;
+        delete strname_head;
         //delete regex_dict cJson
         cJSON_Delete(regex_dict);
 
