@@ -122,6 +122,13 @@ typedef struct pFile_Info{
 }pFILE_INFO;
 //协议名称与对应的文件打开的指针map
 std::map<std::string, pFILE_INFO *> pFile_map;
+std::list<std::string> lastLayerProtocolFilterList = { //最后层协议名称过滤
+        "communityid","ftp.current-working-directory","xml","json","_ws.malformed","smb2.fsctl.wait.name", "mswsp.msg"\
+        ,"tcp.segments","urlencoded-form","data-text-lines","media","_ws.short","_ws.unreassembled","_ws.short","_ws.unreassembled"\
+        ,"ftp-data.current-working-directory","dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","ftp-data.command-frame","dcerpc.cn_deseg_req"\
+        ,"dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str"
+};
+std::list<std::string> protoKeyFilterList = {"text"}; //协议KEY过滤
 
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin ||||
 class gunit8Array
@@ -199,7 +206,7 @@ public:
     {
         if(m_ptr) // 如果数组不为空
         {
-            guint8 *tmpPtr = new guint8[m_size + 1]; // 重新分配空间
+            auto *tmpPtr = new guint8[m_size + 1]; // 重新分配空间
             memcpy(tmpPtr, m_ptr, sizeof(int)*m_size); // 拷贝原数组内容
             delete [] m_ptr;
             m_ptr = tmpPtr;
@@ -279,6 +286,7 @@ typedef struct _rtpTotalBufferContent{ //
     std::string sport;
     std::string dport;
     std::string ssrc;
+    std::string rtpPayloadType;
     int time_begin{};
     int time_end{};
     FILE *fp{};
@@ -291,6 +299,7 @@ typedef struct _rtpMatchingInfo{
     std::string dip;
     std::string sport;
     std::string dport;
+    std::string rtpPayloadType;
     int time_begin{};
     int time_end{};
     std::string fp_path{};
@@ -405,9 +414,9 @@ std::string gotStrNameByStrName(std::string &strname) {
         struct strNameSameLevel *temp = strname_head->next;
         while (temp != nullptr) {
             if (temp->str_name == strname) {
-                if(temp->times > 49)
-                    return "-1";
                 temp->times++;
+                if(temp->times >= 50)
+                    return "-1";
                 return strname + "_" + numtos(temp->times);
             }
             temp = temp->next;
@@ -489,92 +498,20 @@ std::vector<std::string> split(const std::string &str, const std::string& delim)
  * @return
  */
 gboolean lastLayerProtocolFilter(const char *dst) {
-    if (strcmp(dst, "communityid") == 0) {
-        return TRUE;
+    for (auto &i : lastLayerProtocolFilterList) { //lastLayerProtocolFilterList 列表在上面定义 yy20211026
+        if(i == dst){
+            return true;
+        }
     }
-    else if (strcmp(dst, "ftp.current-working-directory") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "xml") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "json") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "_ws.malformed") == 0) {  /* SSHv2协议中多解析出来的信息 */
-        return TRUE;
-    }
-    else if (strcmp(dst, "smb2.fsctl.wait.name") == 0) {  /* smb2协议中多解析出来的信息 */
-        return TRUE;
-    }
-    else if (strcmp(dst, "mswsp.msg") == 0) {  /* smb2的子协议mswsp中出现的畸形报文信息 */
-        return TRUE;
-    }
-    else if (strcmp(dst, "tcp.segments") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "urlencoded-form") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "data-text-lines") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "media") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "_ws.short") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "_ws.unreassembled") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "ftp-data.current-working-directory") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dof.dpp.v2s") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dof.oap") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "wlan.mgt") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "image-gif") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "image") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "ftp-data.command-frame") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dcerpc.cn_deseg_req") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dcerpc.stub_data") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "db-lsp-disc") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dcerpc.encrypted_stub_data") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "dcerpc.fragments") == 0) {
-        return TRUE;
-    }
-    else if (strcmp(dst, "snmp.var-bind_str") == 0) {
-        return TRUE;
-    }
-    return FALSE;
+    return false;
 }
 /**
  * 递归key的过滤。
  */
 gboolean cursionkeyStrFilter(const char *key_str){
-    if (strcmp(key_str, "text") == 0) {
-        return TRUE;
+    for (auto &i :protoKeyFilterList) {  //protoKeyFilterList 列表在上面定义20211026 yy
+        if(i == key_str)
+            return true;
     }
     return false;
 }
@@ -798,19 +735,8 @@ void writeRTPstreamHead(FILE* fp){
  * @return
  */
 gboolean write_Files_conv(std::string &stream) {
-    /*这里把json写成一行,且添加换行符 ----begin*/
-    int n_t = kmp(stream, "\n");
-    while (n_t != -1) {
-        stream.replace(n_t, 1, "");
-        n_t = kmp(stream, "\n");
-    }
-    int t_t = kmp(stream, "\t");
-    while (t_t != -1) {
-        stream.replace(t_t, 1, "");
-        t_t = kmp(stream, "\t");
-    }
+    /*添加换行符*/
     stream.append("\r\n");
-    /*这里把json写成一行,且添加换行符 ----end*/
 
     if (access(WRITE_IN_CONVERSATIONS_PATH, 0) != 0) {
         /*当前协议对应文件夹不存在*/
@@ -824,7 +750,7 @@ gboolean write_Files_conv(std::string &stream) {
     }
     if (!conversation_Handle_File) {
         conversation_Handle_File = fopen(conv_path_t.c_str(), "a+");
-        if (conversation_Handle_File == NULL) {
+        if (conversation_Handle_File == nullptr) {
             g_print("open %s error!\n", conv_path_t.c_str());
             return false;
         }
@@ -859,7 +785,7 @@ void write_into_es(std::string &stream, std::string &protocol) {
     CURLcode res;
 
     //HTTP报文头
-    struct curl_slist *headers = NULL;
+    struct curl_slist *headers = nullptr;
     char tmp_str[256] = {0};
 
     //构建HTTP报文头
@@ -938,33 +864,32 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
  * @return
  */
 gboolean initial_All_para() {
-    TRY {
-                write_in_files_proto = "";
+    try {
+        write_in_files_proto = "";
 
-                /*初始化部分要用到的 json对象 ----begin*/
-                cJSON_Delete(write_in_files_cJson);
-                cJSON_Delete(pro_cJson);
-                write_in_files_cJson = cJSON_CreateObject();
-                pro_cJson = cJSON_CreateObject();
-                /*初始化部分要用到的 json对象 ----end*/
+        /*初始化部分要用到的 json对象 ----begin*/
+        cJSON_Delete(write_in_files_cJson);
+        cJSON_Delete(pro_cJson);
+        write_in_files_cJson = cJSON_CreateObject();
+        pro_cJson = cJSON_CreateObject();
+        /*初始化部分要用到的 json对象 ----end*/
 
-                /*需要初始化strname链表*/
-                initStrNameLevelLinkList(strname_head);
-                strname_head = new struct strNameSameLevel;
-                strname_head->next = NULL;
-                strname_head->times = 0;
-                strname_head->str_name = "";
+        /*需要初始化strname链表*/
+        initStrNameLevelLinkList(strname_head);
+        strname_head = new struct strNameSameLevel;
+        strname_head->next = nullptr;
+        strname_head->times = 0;
+        strname_head->str_name = "";
 
-                //数据包处理完组包标志初始化
-                packetProtoAlready = false;
+        //数据包处理完组包标志初始化
+        packetProtoAlready = false;
 
-                return true;
-            }
-            CATCH(OutOfMemoryError) {
-                g_print("initialize error");
-                return false;
-            }
-    ENDTRY;
+        return true;
+    }
+    catch (std::out_of_range) {
+        g_print("initialize error");
+        return false;
+    }
     return true;
 }
 
@@ -1033,7 +958,6 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
                 }
             }
             //赋值
-
         }
     }
 
@@ -1465,9 +1389,9 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
 void rtpVoiceMatching(rtpTotalBufferContent &info){
     for (auto &it : rtpMachingVec ) {
         if(it.sip == info.dip and it.dip == info.sip and it.sport == info.dport and it.dport == info.sport \
-        and (std::abs(it.time_begin - info.time_begin) < 1000) ){ //这里不加结束时间的原因是程序最后的清空有可能没来得及给结束时间赋值，使用time_end可能会报错
+        and (std::abs(it.time_begin - info.time_begin) < 1000) and it.rtpPayloadType == info.rtpPayloadType){ //这里不加结束时间的原因是程序最后的清空有可能没来得及给结束时间赋值，使用time_end可能会报错
 
-//                call_zhr_handler(it.fp_path,info.fp_path);
+//                call_zhr_handler(it.fp_path,info.fp_path,info.rtpPayloadType);
             return;
         }
     }
@@ -1480,9 +1404,10 @@ void rtpVoiceMatching(rtpTotalBufferContent &info){
     temp.sport = info.sport;
     temp.sip = info.sip;
     temp.dip = info.dip;
+    temp.rtpPayloadType = info.rtpPayloadType;
     rtpMachingVec.push_back(temp);
 
-//    call_zhr_handler(info.fp_path, nullptr);
+//    call_zhr_handler(info.fp_path, nullptr,info.rtpPayloadType);
 
 }
 
@@ -1531,6 +1456,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
                 temp.dport = t->c5e->dport;
                 temp.time_begin = t->c5e->frame_time; //开始时间戳
                 temp.ssrc = t->rtp_content->ssrc;
+                temp.rtpPayloadType = t->rtp_content->payload_type;
                 //确定rtp 输出的文件名 begin
                 char file_name_t[270] = {0};
                 strcat(file_name_t, PACKET_PROTOCOL_PATH);
@@ -2077,9 +2003,6 @@ gboolean readConfigFilesStatus() {
     curl_global_init(CURL_GLOBAL_ALL);
     return true;
 }
-
-
-
 /**
  * 将处理完的文件名称写入结果文件 result+global_time_str.writting
  * READ_FILE_PATH 全局存放文件名（含路径）
