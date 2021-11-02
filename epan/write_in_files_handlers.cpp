@@ -31,6 +31,16 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "curl/curl.h"
+#include "decode_zhr.h"
+//这样引用是否合理？//
+/*
+#include "g711u_decode_zhr.c"
+#include "g729a_decode_zhr.c"
+#include "g722_decode_zhr.c"
+#include "g711a_decode_zhr.c"
+*/
+
+
 #define __U__ __attribute__((unused))
 
 /*即将写进文件的协议*/
@@ -376,6 +386,12 @@ GThreadPool *handleStreamTpool;
 
 //当前数据包若为需要组的包则为TRUE，否则为FALSE
 gboolean packetProtoAlready = false;
+
+
+//根据payloadType调用解码器//
+void call_decode_by_i(int payloadType_i,char* it_fp_path_t,char* info_fp_path_t);
+
+
 
 //并发处理流数据的函数入口。
 void do_handle_strem(gpointer str,gpointer data);
@@ -949,7 +965,8 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
                     cookie->rtp_content->bye = true;
                 }
             }
-        } else if((it = g_list_find_custom(tls_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
+        }
+        else if((it = g_list_find_custom(tls_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
             if(!cookie->tls_content){
                 cookie->tls_content = g_new0(tls_Content,1);
                 if(!cookie->tls_content){
@@ -1387,15 +1404,30 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
  * @return
  */
 void rtpVoiceMatching(rtpTotalBufferContent &info){
-    for (auto &it : rtpMachingVec ) {
-        if(it.sip == info.dip and it.dip == info.sip and it.sport == info.dport and it.dport == info.sport \
-        and (std::abs(it.time_begin - info.time_begin) < 1000) and it.rtpPayloadType == info.rtpPayloadType){ //这里不加结束时间的原因是程序最后的清空有可能没来得及给结束时间赋值，使用time_end可能会报错
-
-//                call_zhr_handler(it.fp_path,info.fp_path,info.rtpPayloadType);
+    std::vector<rtpMatchingInfo>::iterator it;
+    for (it = rtpMachingVec.begin();it != rtpMachingVec.end(); it++ ) {
+        if (it->sip == info.dip and it->dip == info.sip and it->sport == info.dport and it->dport == info.sport \
+ and (std::abs(it->time_begin - info.time_begin) < 1000) and
+            it->rtpPayloadType == info.rtpPayloadType) { //这里不加结束时间的原因是程序最后的清空有可能没来得及给结束时间赋值，使用time_end可能会报错
+            //匹配info.rtpPayloadType
+            int payloadType_i = 0;
+            for (int i = 0;i <= 128;i++){
+                if(strcmp(info.rtpPayloadType.c_str(),rtp_payload_type_to_str[i]) == 0){
+                    payloadType_i = i;
+                    break;
+                }
+            }
+            char info_fp_path_t[256];
+            char it_fp_path_t[256];
+            strcpy(it_fp_path_t,it->fp_path.c_str());
+            strcpy(info_fp_path_t,info.fp_path.c_str());
+            call_decode_by_i(payloadType_i,it_fp_path_t,info_fp_path_t);
+            //找到对家的两个文件进行合并解码后，在vector缓存区中删除该对家//
+            rtpMachingVec.erase(it);
             return;
         }
     }
-
+    //没有找到对家的数据放入缓存区//
     rtpMatchingInfo temp;
     temp.fp_path = info.fp_path;
     temp.time_begin = info.time_begin;
@@ -1406,9 +1438,36 @@ void rtpVoiceMatching(rtpTotalBufferContent &info){
     temp.dip = info.dip;
     temp.rtpPayloadType = info.rtpPayloadType;
     rtpMachingVec.push_back(temp);
+    return;
 
-//    call_zhr_handler(info.fp_path, nullptr,info.rtpPayloadType);
+}
 
+/**
+ * 根据patloadType调用相应call_zhr_handler。
+ * @param i
+ * @param it_fp_path_t info_fp_path_t
+ */
+void call_decode_by_i(int payloadType_i,char* it_fp_path_t,char* info_fp_path_t){
+    switch (payloadType_i){
+        //根据patloadType调用相应call_zhr_handler//
+        case 0:
+            g711u_decode_zhr(it_fp_path_t,info_fp_path_t);
+            break;
+
+        case 8:
+            g711a_decode_zhr(it_fp_path_t,info_fp_path_t);
+            break;
+        case 9:
+            g722_decode_zhr(it_fp_path_t,info_fp_path_t);
+            break;
+        case 18:
+            g729a_decode_zhr(it_fp_path_t,info_fp_path_t);
+            break;
+        default:
+            break;
+
+    }
+    return;
 }
 
 /**
@@ -1456,7 +1515,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
                 temp.dport = t->c5e->dport;
                 temp.time_begin = t->c5e->frame_time; //开始时间戳
                 temp.ssrc = t->rtp_content->ssrc;
-                temp.rtpPayloadType = t->rtp_content->payload_type;
+                temp.rtpPayloadType = rtp_payload_type_to_str[t->rtp_content->payload_type];
                 //确定rtp 输出的文件名 begin
                 char file_name_t[270] = {0};
                 strcat(file_name_t, PACKET_PROTOCOL_PATH);
@@ -1586,6 +1645,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
     }
     //传入的参数空间释放。
     g_free(t);
+    return;
 }
 /**
  * 根据final_Follow_Write_Need内容，判断tap-follow.c中的统计流是否输出
@@ -1595,6 +1655,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
  * @param dport server port
  * @return
  */
+
 gboolean JudgeStreamPrint(gchar* sip,guint sport,gchar *dip,guint dport){
     for (auto &i : final_Follow_Write_Need) {
         if(strcmp(sip,i.sip.c_str()) == 0 and strcmp(dip,i.dip.c_str()) == 0 and i.sport == numtos(sport) and i.dport == numtos(dport)){
@@ -1770,7 +1831,6 @@ gboolean beginInitOnce(char *flag) {
     tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.type");
     tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.ciphersuite");
     tls_fields = g_list_append(tls_fields, (gpointer) "tls.handshake.certificates");
-
     //存放240字节的value内存空间
     value_240 = (gchar *) g_malloc_n(sizeof(gchar), VALUE_240_LENGTH);
 
@@ -2091,7 +2151,6 @@ void clean_Temp_Files_All() {
 
         //释放240字节的value内存空间
         g_free(value_240);
-
         //程序退出时的rtp缓存的清空和配对
         for (auto &it : rtpTotalBuffer) {
             unsigned long len = it.second.data.get_len();
@@ -2100,13 +2159,24 @@ void clean_Temp_Files_All() {
             }
             it.second.data.clear();
             fclose(it.second.fp); // 写完就关闭掉
-            //判断话音是否要配对
-            rtpVoiceMatching(it.second);
+            rtpVoiceMatching(it.second);//判断话音是否要配对
         }
-        rtpTotalBuffer.clear();
-        //rtp配对清空
-        rtpMachingVec.clear();
+        rtpTotalBuffer.clear();//rtp配对清空
+        std::vector<rtpMatchingInfo>::iterator it;
+        for (it = rtpMachingVec.begin();it != rtpMachingVec.end(); it++ ){
 
+            int payloadType_i = 0;
+            for (int i = 0;i <= 128;i++){
+                if(strcmp(it->rtpPayloadType.c_str(),rtp_payload_type_to_str[i]) == 0){
+                    payloadType_i = i;
+                    break;
+                }
+            }
+            char single_fp_path_t[256];
+            strcpy(single_fp_path_t,it->fp_path.c_str());
+            call_decode_by_i(payloadType_i,single_fp_path_t,nullptr);//对没有对家的文件进行解码//
+        }
+        rtpMachingVec.clear();
         pFile_map.clear();
         /*最终初始化互斥变量*/
         mutex_final_clean_flag = 1;

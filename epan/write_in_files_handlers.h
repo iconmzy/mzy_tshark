@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "epan.h"
 #include "proto.h"
+#include "decode_zhr.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -105,12 +106,15 @@ WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 
 //g711 A/U
-WS_DLL_PUBLIC int g711a_decode(unsigned char in[], int inlen, unsigned char out[]);
-WS_DLL_PUBLIC int g711u_decode(unsigned char in[], int inlen, unsigned char out[]);
+WS_DLL_PUBLIC void g711a_decode_zhr(char filename1[],  char filename2[]);
+WS_DLL_PUBLIC void g711u_decode_zhr(char filename1[],  char filename2[]);
 //g722 全文件解码器。
-WS_DLL_PUBLIC int g722_decode(unsigned char in[],int inlen, unsigned char out[]);
+WS_DLL_PUBLIC void g722_decode_zhr(char filename1[],  char filename2[]);
 //g729a 全文件解码器
-WS_DLL_PUBLIC int g729a_decode(unsigned char in[], int inlen, unsigned char out[]);
+WS_DLL_PUBLIC void g729a_decode_zhr(char filename1[],  char filename2[]);
+//
+
+
 
 WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
 WS_DLL_PUBLIC void followConnectFiveEleClear();

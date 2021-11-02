@@ -186,7 +186,7 @@ set(LIBWIRESHARK_PUBLIC_HEADERS
 	cJSON.h
 	writefile.h
 	rtp_media.h
-
+	decode_zhr.h
 	x264_prt_id.h
 	xdlc.h
 )
@@ -286,14 +286,15 @@ set(LIBWIRESHARK_NONGENERATED_FILES
 	cJSON.c
 	ConfigFile.c
 	rtp_media.c
-	g711u_decode.c
-	g711a_decode.c
-	g722_decode.c
-	g729a_decode.c
+
 
 	xdlc.c
 	protobuf-helper.c
 	protobuf_lang_tree.c
+		g711a_decode_zhr.c
+		g711u_decode_zhr.c
+		g722_decode_zhr.c
+		g729a_decode_zhr.c
 	${CMAKE_CURRENT_BINARY_DIR}/ps.c
 )
 set(LIBWIRESHARK_FILES ${LIBWIRESHARK_NONGENERATED_FILES})
