@@ -1033,7 +1033,10 @@ gboolean readConfigFilesStatus() {
                 /**
                  * 这里需要把当前运行的时间戳定下来
                  */
-                std::time_t global_time = std::time(nullptr);
+                struct timeval time_now{};
+                gettimeofday(&time_now, nullptr);
+                std::time_t global_time = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
+                //std::time_t global_time = std::time(nullptr);
                 global_time_str = numtos((u_long) global_time);
                 g_print("current files time %s \n", global_time_str.c_str());
 
@@ -1296,11 +1299,35 @@ void change_result_file_name() {
     std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
     rename(oldName_t.c_str(), newName_t.c_str());
 
-    std::time_t end_time = std::time(nullptr);
-    g_print("结束时间戳：%s \n", numtos((u_long) end_time).c_str());
-    int begin_time = (int)strtol(global_time_str.c_str(), nullptr,10);
-    int cost_time = (int) end_time - begin_time;
-    g_print("总计耗时：%d 秒\n", cost_time);
+    //std::time_t end_time = std::time(nullptr);
+    struct timeval time_now{};
+    gettimeofday(&time_now, nullptr);
+    std::time_t end_time = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
+    std::string end_time_str = numtos((u_long) end_time);
+    char begin_time_t[20];
+    char end_time_t[20];
+    strcpy(end_time_t,end_time_str.c_str());
+    g_print("结束时间戳：%s \n", end_time_t);
+    strcpy(begin_time_t,global_time_str.c_str());
+    //int begin_time = (int)strtol(global_time_str.c_str(), nullptr,0);
+    int cost_time = calculate_cost_time(end_time_t,begin_time_t);
+    g_print("总计耗时：%d ms\n", cost_time);
 
 }
 
+int calculate_cost_time(char* end_time_t,char* begin_time_t){
+    int cut_length = 20;
+    for(int i = 0; i <= 20; i++){
+        if(end_time_t[i] != begin_time_t[i]){
+            cut_length = i;
+            break;
+        }
+    }
+    std::string end = end_time_t;
+    std::string begin = begin_time_t;
+    std::string end_ms= end.substr(cut_length);
+    std::string begin_ms= begin.substr(cut_length);
+
+    return  strtol(end_ms.c_str(), nullptr,10) - strtol(begin_ms.c_str(), nullptr,10);
+
+}

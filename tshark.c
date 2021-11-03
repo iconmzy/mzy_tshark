@@ -2215,7 +2215,7 @@ int main(int argc, char *argv[]) {
     // tshark_debug("Aurora: do_dissection = %s", do_dissection ? "TRUE" : "FALSE");
 
     if (cf_name) {
-        verify_identity_two(REGISTRATION_FILE_PATH);
+        verify_identity_two(REGISTRATION_FILE_PATH);/*check activecode statu*/
         if (EDIT_FILES_DISSECT_FLAG) {
             /*这里开始调用edit拆分大型pcap包*/
             g_print("split packet begin\n");
@@ -2347,7 +2347,7 @@ int main(int argc, char *argv[]) {
         else {
             struct stat st;
             stat(cf_name, &st);
-            verify_identity_two(REGISTRATION_FILE_PATH);
+            verify_identity_two(REGISTRATION_FILE_PATH);/*check activecode statu*/
             if (S_ISDIR(st.st_mode)) {
                 /*文件夹*/
                 if (access(cf_name, R_OK) == -1) {
@@ -2421,7 +2421,7 @@ int main(int argc, char *argv[]) {
                 //只有一个文件
                 /*文件名*/
                 /*将缓存的文件名字初始化*/
-                verify_identity_two(REGISTRATION_FILE_PATH);
+                verify_identity_two(REGISTRATION_FILE_PATH);/*check activecode statu*/
                 memset(READ_FILE_PATH, '\0', 256);
                 strcpy(READ_FILE_PATH, cf_name); //文件名含路径
                 char file_name_t[256] = {0}; //获取文件名
@@ -2465,6 +2465,7 @@ int main(int argc, char *argv[]) {
                 /* Process the packets in the file */
                 // tshark_debug("Aurora: invoking process_cap_file() to process the packets");
 
+                /* status is a enum struct*/
                 status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP
                                           global_capture_opts.has_autostop_packets
