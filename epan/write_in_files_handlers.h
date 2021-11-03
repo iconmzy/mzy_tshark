@@ -81,7 +81,7 @@ WS_DLL_PUBLIC void add_record_in_result_file(void);
 WS_DLL_PUBLIC void single_File_End_Init(void);
 
 WS_DLL_PUBLIC void change_result_file_name(void);
-
+WS_DLL_PUBLIC int calculate_cost_time(char* global_time_str, char* end_time_str);
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
