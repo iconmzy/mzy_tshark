@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "epan.h"
 #include "proto.h"
+#include "decode_zhr.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -50,6 +51,7 @@ WS_DLL_PUBLIC char *my_itoa(long int n);
 WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];
+
 //是否允许新增协议相关
 WS_DLL_PUBLIC gboolean JSON_ADD_PROTO;
 WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[256];
@@ -79,7 +81,7 @@ WS_DLL_PUBLIC void add_record_in_result_file(void);
 WS_DLL_PUBLIC void single_File_End_Init(void);
 
 WS_DLL_PUBLIC void change_result_file_name(void);
-
+WS_DLL_PUBLIC int calculate_cost_time(char* global_time_str, char* end_time_str);
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
@@ -103,14 +105,16 @@ WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 //判断当前行是否有效
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 
-//rtp 相关
-//WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);
-//WS_DLL_PUBLIC int yy_g711u(unsigned char in[], int inlen, unsigned char out[]);
+//g711 A/U
+WS_DLL_PUBLIC void g711a_decode_zhr(char filename1[],  char filename2[]);
+WS_DLL_PUBLIC void g711u_decode_zhr(char filename1[],  char filename2[]);
 //g722 全文件解码器。
-//WS_DLL_PUBLIC int g722decode(unsigned char *data,int len, unsigned char *out);
+WS_DLL_PUBLIC void g722_decode_zhr(char filename1[],  char filename2[]);
+//g729a 全文件解码器
+WS_DLL_PUBLIC void g729a_decode_zhr(char filename1[],  char filename2[]);
+//
 
-// g722单帧解码器
-WS_DLL_PUBLIC int g722_single_frame_decode(unsigned char *data,int len, int mark, unsigned char *out);
+
 
 WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
 WS_DLL_PUBLIC void followConnectFiveEleClear();
