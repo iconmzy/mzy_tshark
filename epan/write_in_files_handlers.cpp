@@ -638,6 +638,21 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     g_free(value_t);
     return true;
 }
+
+
+/**
+ * 判断希望特殊提取子段的协议类型
+ * @param json_t
+ * @param node
+ * @param cookie
+ * @return
+ */
+
+int check_special_extract(const char* special_extract_protocol){
+
+    return 0;
+}
+
 /**
  * 非递归处理协议解析树内容，层序遍历，存入json中。
  * @param json_t
@@ -646,28 +661,70 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
  * @return
  */
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
-    while(node != nullptr){
-        if(node->first_child == nullptr or node->last_child == nullptr){
-            dissect_Per_Node_No_Cursion(json_t,node,cookie);
-            node = node->next;
-        } else{
-            que.push(node);
-            node = node->next;
-        }
-    }
-    while (!que.empty()){
-        proto_node* temp = que.front();
-        que.pop();
-        if(temp->first_child == nullptr or temp->last_child == nullptr){
-            dissect_Per_Node_No_Cursion(json_t,temp,cookie);
-        } else{
-            temp = temp->first_child;
-            while (temp != nullptr){
-                que.push(temp);
-                temp = temp->next;
+    //g_print("test断点\n");
+    //判断希望特殊提取子段的协议类型 目前有telnet ftp的账号密码提取 smtp协议的账号口令提取//
+    int special_extract = 0;
+    special_extract = check_special_extract(node->parent->finfo->hfinfo->abbrev);
+    switch(special_extract){
+        case 0:{
+            //case0表示不需要额外提取字段的协议,默认处理//
+            while(node != nullptr){
+                if(node->first_child == nullptr or node->last_child == nullptr){
+                    dissect_Per_Node_No_Cursion(json_t,node,cookie);
+                    node = node->next;
+                } else{
+                    que.push(node);
+                    node = node->next;
+                }
             }
+            while (!que.empty()){
+                proto_node* temp = que.front();
+                que.pop();
+                if(temp->first_child == nullptr or temp->last_child == nullptr){
+                    dissect_Per_Node_No_Cursion(json_t,temp,cookie);
+                } else{
+                    temp = temp->first_child;
+                    while (temp != nullptr){
+                        que.push(temp);
+                        temp = temp->next;
+                    }
+                }
+            }
+            break;
         }
+        case 1:{
+            //处理telnet协议过程中将账号密码提取：做成字段（key:value）//
+            while(node != nullptr){
+                if(node->first_child == nullptr or node->last_child == nullptr){
+                    dissect_Per_Node_No_Cursion(json_t,node,cookie);
+                    node = node->next;
+                } else{
+                    que.push(node);
+                    node = node->next;
+                }
+            }
+            while (!que.empty()){
+                proto_node* temp = que.front();
+                que.pop();
+                if(temp->first_child == nullptr or temp->last_child == nullptr){
+                    dissect_Per_Node_No_Cursion(json_t,temp,cookie);
+                } else{
+                    temp = temp->first_child;
+                    while (temp != nullptr){
+                        que.push(temp);
+                        temp = temp->next;
+                    }
+                }
+            }
+            break;
+        }
+        case 2:{
+            //处理ftp协议过程中将账号密码提取：做成字段（key:value）//
+            break;
+        }
+
     }
+
     return true;
 }
 
@@ -713,6 +770,12 @@ void parse_offline_regex_dict(){
             cJSON_AddStringToObject(write_in_files_cJson, temp->string, value);
             regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
             temp = temp->next;
+        }
+        auto iter = regex_dict_map.find("lineno");
+        if (iter != regex_dict_map.end())
+        {
+            // 找到了本地文件匹配的线路号
+            strcpy(OFFLINE_LINE_LINE_NO,iter->second.c_str());
         }
     }
 }
@@ -1310,12 +1373,18 @@ void change_result_file_name() {
     g_print("结束时间戳：%s \n", end_time_t);
     strcpy(begin_time_t,global_time_str.c_str());
     //int begin_time = (int)strtol(global_time_str.c_str(), nullptr,0);
-    int cost_time = calculate_cost_time(end_time_t,begin_time_t);
-    g_print("总计耗时：%d ms\n", cost_time);
+    long int cost_time = calculate_cost_time(end_time_t,begin_time_t);
+    if(cost_time >= 1000){
+        int ms = cost_time %1000;
+        g_print("总计耗时：%ld s %d ms\n", cost_time/1000,ms);
+    }else{
+        g_print("总计耗时：%ld ms\n", cost_time);
+    }
 
 }
 
-int calculate_cost_time(char* end_time_t,char* begin_time_t){
+//尽可能短地计算处理时间，并根据时间控制打印格式//
+long int calculate_cost_time(char* end_time_t,char* begin_time_t){
     int cut_length = 20;
     for(int i = 0; i <= 20; i++){
         if(end_time_t[i] != begin_time_t[i]){

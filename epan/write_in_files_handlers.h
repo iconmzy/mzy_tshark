@@ -22,12 +22,13 @@ WS_DLL_PUBLIC char CONFIG_FILES_PATH[128];
 
 WS_DLL_PUBLIC gboolean WRITE_IN_FILES_CONFIG;
 WS_DLL_PUBLIC char EXPORT_PATH[256];
-WS_DLL_PUBLIC int calculate_cost_time(char* end_time_t,char* begin_time_t);
+WS_DLL_PUBLIC long int calculate_cost_time(char* end_time_t,char* begin_time_t);
 WS_DLL_PUBLIC gboolean WRITE_IN_CONVERSATIONS_FLAG;
 WS_DLL_PUBLIC gboolean PACKET_PROTOCOL_FLAG;
 WS_DLL_PUBLIC char WRITE_IN_CONVERSATIONS_PATH[256];
 WS_DLL_PUBLIC char PACKET_PROTOCOL_TYPES[256];
 
+WS_DLL_PUBLIC int check_special_extract(const char* special_extract_protocol);//判断希望特殊提取子段的协议
 WS_DLL_PUBLIC char PACKET_PROTOCOL_PATH[256];
 
 WS_DLL_PUBLIC gboolean INSERT_MANY_PROTOCOL_STREAM_FLAG;  // 是否批量写入
@@ -102,6 +103,7 @@ WS_DLL_PUBLIC char *getInfo_ConfigFile(const char *key, struct ConfigInfo *info,
 WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 //判断当前行是否有效
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
+
 
 //rtp 相关
 //WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);

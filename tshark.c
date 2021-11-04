@@ -2354,8 +2354,7 @@ int main(int argc, char *argv[]) {
                     /*路径无法访问*/
                     g_print("%s path not true !\n", cf_name);
                     exit(0);
-                }
-                else {
+                }else {
                     /*路径正常*/
                     readFileList(cf_name, headOfDirPath);
                     pfileNameNode temp = headOfDirPath->next;
@@ -2371,8 +2370,26 @@ int main(int argc, char *argv[]) {
 
                         parse_offline_regex_dict();
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
-                            temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
-                            continue;
+                            if(temp->next != NULL){
+                                temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
+                                continue;
+                            }else{
+                                temp = temp->next;
+                                clean_Temp_Files_All();
+                                draw_taps = TRUE;
+                                if (pdu_export_arg) {
+                                    if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
+                                        cfile_close_failure_message(exp_pdu_filename, err, err_info);
+                                        exit_status = 2;
+                                    }
+                                    g_free(pdu_export_arg);
+                                    g_free(exp_pdu_filename);
+                                }
+                                change_result_file_name();
+                                break;
+                            }
+
+
                         }
                         if (mutex) {
                             start_requested_stats();
@@ -2414,6 +2431,11 @@ int main(int argc, char *argv[]) {
 
                         temp = temp->next;
                         cf_close(&cfile);  //关闭打开的pcap文件
+                        //清理流统计。
+                        draw_taps = TRUE;
+                        if (draw_taps){
+                            draw_tap_listeners(TRUE);
+                        }
                     }
                 }
             }
@@ -2495,6 +2517,11 @@ int main(int argc, char *argv[]) {
                     g_free(pdu_export_arg);
                     g_free(exp_pdu_filename);
                 }
+            }
+            //清理流统计。
+            draw_taps = TRUE;
+            if (draw_taps){
+                draw_tap_listeners(TRUE);
             }
         }
         g_print("解析完成");
@@ -2646,11 +2673,11 @@ int main(int argc, char *argv[]) {
         cfile.provider.frames = NULL;
     }
 
-    //清理流统计。
-    draw_taps = TRUE;
+    //清理流统计old,放在这里会导致对文件夹写conversation出问题。
+/*    draw_taps = TRUE;
     if (draw_taps){
         draw_tap_listeners(TRUE);
-    }
+    }*/
 
     /* Memory cleanup */
     reset_tap_listeners();
