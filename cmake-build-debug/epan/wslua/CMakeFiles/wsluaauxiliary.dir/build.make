@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for wsluaauxiliary.
 
@@ -62,8 +62,8 @@ epan/wslua/init.lua: ../epan/ftypes/ftypes.h
 epan/wslua/init.lua: ../wiretap/wtap.h
 epan/wslua/init.lua: ../epan/epan.h
 epan/wslua/init.lua: ../epan/stat_groups.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating init.lua"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/wslua && /usr/bin/perl /root/CLionProjects/tshark_shanghai/epan/wslua/make-init-lua.pl /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/wslua/template-init.lua > init.lua
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating init.lua"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/wslua && /usr/bin/perl /root/CLionProjects/tshark_gongjv/epan/wslua/make-init-lua.pl /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/wslua/template-init.lua > init.lua
 
 wsluaauxiliary: epan/wslua/CMakeFiles/wsluaauxiliary
 wsluaauxiliary: epan/wslua/init.lua
@@ -77,10 +77,10 @@ epan/wslua/CMakeFiles/wsluaauxiliary.dir/build: wsluaauxiliary
 .PHONY : epan/wslua/CMakeFiles/wsluaauxiliary.dir/build
 
 epan/wslua/CMakeFiles/wsluaauxiliary.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/wslua && $(CMAKE_COMMAND) -P CMakeFiles/wsluaauxiliary.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/wslua && $(CMAKE_COMMAND) -P CMakeFiles/wsluaauxiliary.dir/cmake_clean.cmake
 .PHONY : epan/wslua/CMakeFiles/wsluaauxiliary.dir/clean
 
 epan/wslua/CMakeFiles/wsluaauxiliary.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/wslua /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/wslua /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/wslua/CMakeFiles/wsluaauxiliary.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/wslua /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/wslua /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/wslua/CMakeFiles/wsluaauxiliary.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/wslua/CMakeFiles/wsluaauxiliary.dir/depend
 

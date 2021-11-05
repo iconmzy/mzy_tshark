@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-lte-rrc.
 
@@ -68,9 +68,9 @@ epan/dissectors/asn1/lte-rrc/packet-lte-rrc-stamp: ../epan/dissectors/asn1/lte-r
 epan/dissectors/asn1/lte-rrc/packet-lte-rrc-stamp: ../epan/dissectors/asn1/lte-rrc/packet-lte-rrc-template.c
 epan/dissectors/asn1/lte-rrc/packet-lte-rrc-stamp: ../epan/dissectors/asn1/lte-rrc/packet-lte-rrc-template.h
 epan/dissectors/asn1/lte-rrc/packet-lte-rrc-stamp: ../epan/dissectors/asn1/lte-rrc/lte-rrc.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-lte-rrc-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/lte-rrc && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -L -p lte-rrc -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/lte-rrc/lte-rrc.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/lte-rrc/packet-lte-rrc-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/lte-rrc -O /root/CLionProjects/tshark_shanghai/epan/dissectors EUTRA-InterNodeDefinitions.asn EUTRA-RRC-Definitions.asn EUTRA-Sidelink-Preconf.asn EUTRA-UE-Variables.asn PC5-RRC-Definitions.asn NBIOT-InterNodeDefinitions.asn NBIOT-RRC-Definitions.asn NBIOT-UE-Variables.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/lte-rrc && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-lte-rrc.c packet-lte-rrc-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-lte-rrc-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/lte-rrc && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -L -p lte-rrc -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/lte-rrc/lte-rrc.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/lte-rrc/packet-lte-rrc-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/lte-rrc -O /root/CLionProjects/tshark_gongjv/epan/dissectors EUTRA-InterNodeDefinitions.asn EUTRA-RRC-Definitions.asn EUTRA-Sidelink-Preconf.asn EUTRA-UE-Variables.asn PC5-RRC-Definitions.asn NBIOT-InterNodeDefinitions.asn NBIOT-RRC-Definitions.asn NBIOT-UE-Variables.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/lte-rrc && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-lte-rrc.c packet-lte-rrc-stamp
 
 generate_dissector-lte-rrc: epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc
 generate_dissector-lte-rrc: epan/dissectors/asn1/lte-rrc/packet-lte-rrc-stamp
@@ -84,10 +84,10 @@ epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc.dir/build: ge
 .PHONY : epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc.dir/build
 
 epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/lte-rrc && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-lte-rrc.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/lte-rrc && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-lte-rrc.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc.dir/clean
 
 epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/lte-rrc /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/lte-rrc /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/lte-rrc /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/lte-rrc /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/lte-rrc/CMakeFiles/generate_dissector-lte-rrc.dir/depend
 

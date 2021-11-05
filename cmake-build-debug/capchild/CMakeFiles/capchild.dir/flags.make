@@ -6,7 +6,7 @@ C_FLAGS = -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-lab
 
 C_DEFINES = -DG_DISABLE_DEPRECATED -DG_DISABLE_SINGLE_INCLUDES
 
-C_INCLUDES = -I/root/CLionProjects/tshark_shanghai/cmake-build-debug -I/root/CLionProjects/tshark_shanghai -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
+C_INCLUDES = -I/root/CLionProjects/tshark_gongjv/cmake-build-debug -I/root/CLionProjects/tshark_gongjv -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
 
 # Custom flags: capchild/CMakeFiles/capchild.dir/capture_ifinfo.c.o_FLAGS = 
 

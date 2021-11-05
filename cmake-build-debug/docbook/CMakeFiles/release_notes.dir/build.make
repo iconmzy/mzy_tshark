@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for release_notes.
 
@@ -63,10 +63,10 @@ docbook/CMakeFiles/release_notes.dir/build: release_notes
 .PHONY : docbook/CMakeFiles/release_notes.dir/build
 
 docbook/CMakeFiles/release_notes.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/docbook && $(CMAKE_COMMAND) -P CMakeFiles/release_notes.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/docbook && $(CMAKE_COMMAND) -P CMakeFiles/release_notes.dir/cmake_clean.cmake
 .PHONY : docbook/CMakeFiles/release_notes.dir/clean
 
 docbook/CMakeFiles/release_notes.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/docbook /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/docbook /root/CLionProjects/tshark_shanghai/cmake-build-debug/docbook/CMakeFiles/release_notes.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/docbook /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/docbook /root/CLionProjects/tshark_gongjv/cmake-build-debug/docbook/CMakeFiles/release_notes.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : docbook/CMakeFiles/release_notes.dir/depend
 

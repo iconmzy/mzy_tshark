@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/tools/lemon/lemon.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/tools/lemon/CMakeFiles/lemon.dir/lemon.c.o"
+  "/root/CLionProjects/tshark_gongjv/tools/lemon/lemon.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/tools/lemon/CMakeFiles/lemon.dir/lemon.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

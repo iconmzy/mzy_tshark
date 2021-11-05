@@ -18,14 +18,14 @@ CMakeFiles/capture_opts.dir/capture_opts.c.o
  ../wsutil/plugins.h
  ../wsutil/processes.h
  ../wsutil/ws_pipe.h
- /root/CLionProjects/tshark_shanghai/capture_opts.c
- /root/CLionProjects/tshark_shanghai/capture_opts.h
- /root/CLionProjects/tshark_shanghai/caputils/capture-pcap-util.h
- /root/CLionProjects/tshark_shanghai/caputils/capture_ifinfo.h
- /root/CLionProjects/tshark_shanghai/ringbuffer.h
- /root/CLionProjects/tshark_shanghai/ui/filter_files.h
- /root/CLionProjects/tshark_shanghai/wiretap/wtap.h
- /root/CLionProjects/tshark_shanghai/wiretap/wtap_opttypes.h
+ /root/CLionProjects/tshark_gongjv/capture_opts.c
+ /root/CLionProjects/tshark_gongjv/capture_opts.h
+ /root/CLionProjects/tshark_gongjv/caputils/capture-pcap-util.h
+ /root/CLionProjects/tshark_gongjv/caputils/capture_ifinfo.h
+ /root/CLionProjects/tshark_gongjv/ringbuffer.h
+ /root/CLionProjects/tshark_gongjv/ui/filter_files.h
+ /root/CLionProjects/tshark_gongjv/wiretap/wtap.h
+ /root/CLionProjects/tshark_gongjv/wiretap/wtap_opttypes.h
  /usr/include/glib-2.0/glib.h
  /usr/include/glib-2.0/glib/deprecated/gallocator.h
  /usr/include/glib-2.0/glib/deprecated/gcache.h

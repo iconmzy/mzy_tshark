@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate-kerberos-exp.cnf.
 
@@ -64,8 +64,8 @@ epan/dissectors/asn1/kerberos/kerberos-exp.cnf: ../epan/dissectors/asn1/kerberos
 epan/dissectors/asn1/kerberos/kerberos-exp.cnf: ../epan/dissectors/asn1/kerberos/packet-kerberos-template.c
 epan/dissectors/asn1/kerberos/kerberos-exp.cnf: ../epan/dissectors/asn1/kerberos/packet-kerberos-template.h
 epan/dissectors/asn1/kerberos/kerberos-exp.cnf: ../epan/dissectors/asn1/kerberos/kerberos.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating kerberos-exp.cnf"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -E -b -p kerberos -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/kerberos/kerberos.cnf -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/kerberos KerberosV5Spec2.asn k5.asn RFC3244.asn RFC6113.asn
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating kerberos-exp.cnf"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -E -b -p kerberos -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/kerberos/kerberos.cnf -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/kerberos KerberosV5Spec2.asn k5.asn RFC3244.asn RFC6113.asn
 
 generate-kerberos-exp.cnf: epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf
 generate-kerberos-exp.cnf: epan/dissectors/asn1/kerberos/kerberos-exp.cnf
@@ -79,10 +79,10 @@ epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf.dir/build: ge
 .PHONY : epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf.dir/build
 
 epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos && $(CMAKE_COMMAND) -P CMakeFiles/generate-kerberos-exp.cnf.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos && $(CMAKE_COMMAND) -P CMakeFiles/generate-kerberos-exp.cnf.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf.dir/clean
 
 epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/kerberos /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/kerberos /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/kerberos/CMakeFiles/generate-kerberos-exp.cnf.dir/depend
 

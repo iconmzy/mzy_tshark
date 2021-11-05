@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for news.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include docbook/CMakeFiles/news.dir/progress.make
 
 docbook/CMakeFiles/news: docbook/release-notes.txt
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/docbook && /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E copy_if_different /root/CLionProjects/tshark_shanghai/cmake-build-debug/docbook/release-notes.txt /root/CLionProjects/tshark_shanghai/NEWS
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/docbook && /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E copy_if_different /root/CLionProjects/tshark_gongjv/cmake-build-debug/docbook/release-notes.txt /root/CLionProjects/tshark_gongjv/NEWS
 
 news: docbook/CMakeFiles/news
 news: docbook/CMakeFiles/news.dir/build.make
@@ -67,10 +67,10 @@ docbook/CMakeFiles/news.dir/build: news
 .PHONY : docbook/CMakeFiles/news.dir/build
 
 docbook/CMakeFiles/news.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/docbook && $(CMAKE_COMMAND) -P CMakeFiles/news.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/docbook && $(CMAKE_COMMAND) -P CMakeFiles/news.dir/cmake_clean.cmake
 .PHONY : docbook/CMakeFiles/news.dir/clean
 
 docbook/CMakeFiles/news.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/docbook /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/docbook /root/CLionProjects/tshark_shanghai/cmake-build-debug/docbook/CMakeFiles/news.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/docbook /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/docbook /root/CLionProjects/tshark_gongjv/cmake-build-debug/docbook/CMakeFiles/news.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : docbook/CMakeFiles/news.dir/depend
 

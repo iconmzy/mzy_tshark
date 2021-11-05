@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/capchild/capture_ifinfo.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/capchild/CMakeFiles/capchild.dir/capture_ifinfo.c.o"
-  "/root/CLionProjects/tshark_shanghai/capchild/capture_sync.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/capchild/CMakeFiles/capchild.dir/capture_sync.c.o"
+  "/root/CLionProjects/tshark_gongjv/capchild/capture_ifinfo.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/capchild/CMakeFiles/capchild.dir/capture_ifinfo.c.o"
+  "/root/CLionProjects/tshark_gongjv/capchild/capture_sync.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/capchild/CMakeFiles/capchild.dir/capture_sync.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -25,7 +25,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

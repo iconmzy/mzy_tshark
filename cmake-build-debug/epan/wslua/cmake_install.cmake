@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/epan/wslua
+# Install script for directory: /root/CLionProjects/tshark_gongjv/epan/wslua
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,9 +39,9 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/wireshark" TYPE FILE FILES
-    "/root/CLionProjects/tshark_shanghai/epan/wslua/console.lua"
-    "/root/CLionProjects/tshark_shanghai/epan/wslua/dtd_gen.lua"
-    "/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/wslua/init.lua"
+    "/root/CLionProjects/tshark_gongjv/epan/wslua/console.lua"
+    "/root/CLionProjects/tshark_gongjv/epan/wslua/dtd_gen.lua"
+    "/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/wslua/init.lua"
     )
 endif()
 

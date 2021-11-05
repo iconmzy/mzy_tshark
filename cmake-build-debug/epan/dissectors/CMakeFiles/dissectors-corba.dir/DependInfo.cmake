@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/epan/dissectors/packet-coseventcomm.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-coseventcomm.c.o"
-  "/root/CLionProjects/tshark_shanghai/epan/dissectors/packet-cosnaming.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-cosnaming.c.o"
-  "/root/CLionProjects/tshark_shanghai/epan/dissectors/packet-gias.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-gias.c.o"
-  "/root/CLionProjects/tshark_shanghai/epan/dissectors/packet-parlay.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-parlay.c.o"
-  "/root/CLionProjects/tshark_shanghai/epan/dissectors/packet-tango.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-tango.c.o"
+  "/root/CLionProjects/tshark_gongjv/epan/dissectors/packet-coseventcomm.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-coseventcomm.c.o"
+  "/root/CLionProjects/tshark_gongjv/epan/dissectors/packet-cosnaming.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-cosnaming.c.o"
+  "/root/CLionProjects/tshark_gongjv/epan/dissectors/packet-gias.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-gias.c.o"
+  "/root/CLionProjects/tshark_gongjv/epan/dissectors/packet-parlay.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-parlay.c.o"
+  "/root/CLionProjects/tshark_gongjv/epan/dissectors/packet-tango.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/CMakeFiles/dissectors-corba.dir/packet-tango.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/depend.make
@@ -59,34 +59,34 @@ include plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/flags.make
 
 plugins/wiretap/usbdump/plugin.c: ../plugins/wiretap/usbdump/usbdump.c
 plugins/wiretap/usbdump/plugin.c: ../tools/make-plugin-reg.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating plugin.c"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/make-plugin-reg.py /root/CLionProjects/tshark_shanghai/plugins/wiretap/usbdump plugin_wtap usbdump.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating plugin.c"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/make-plugin-reg.py /root/CLionProjects/tshark_gongjv/plugins/wiretap/usbdump plugin_wtap usbdump.c
 
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/plugin.c.o: plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/flags.make
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/plugin.c.o: plugins/wiretap/usbdump/plugin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/plugin.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/usbdump.dir/plugin.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump/plugin.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/plugin.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/usbdump.dir/plugin.c.o   -c /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump/plugin.c
 
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/plugin.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/usbdump.dir/plugin.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump/plugin.c > CMakeFiles/usbdump.dir/plugin.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump/plugin.c > CMakeFiles/usbdump.dir/plugin.c.i
 
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/plugin.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/usbdump.dir/plugin.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump/plugin.c -o CMakeFiles/usbdump.dir/plugin.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump/plugin.c -o CMakeFiles/usbdump.dir/plugin.c.s
 
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/usbdump.c.o: plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/flags.make
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/usbdump.c.o: ../plugins/wiretap/usbdump/usbdump.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/usbdump.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/usbdump.dir/usbdump.c.o   -c /root/CLionProjects/tshark_shanghai/plugins/wiretap/usbdump/usbdump.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/usbdump.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/usbdump.dir/usbdump.c.o   -c /root/CLionProjects/tshark_gongjv/plugins/wiretap/usbdump/usbdump.c
 
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/usbdump.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/usbdump.dir/usbdump.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/plugins/wiretap/usbdump/usbdump.c > CMakeFiles/usbdump.dir/usbdump.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/plugins/wiretap/usbdump/usbdump.c > CMakeFiles/usbdump.dir/usbdump.c.i
 
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/usbdump.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/usbdump.dir/usbdump.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/plugins/wiretap/usbdump/usbdump.c -o CMakeFiles/usbdump.dir/usbdump.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/plugins/wiretap/usbdump/usbdump.c -o CMakeFiles/usbdump.dir/usbdump.c.s
 
 # Object files for target usbdump
 usbdump_OBJECTS = \
@@ -106,8 +106,8 @@ run/plugins/3.4/wiretap/usbdump.so: /usr/lib64/libgcrypt.so
 run/plugins/3.4/wiretap/usbdump.so: /usr/lib64/libgpg-error.so
 run/plugins/3.4/wiretap/usbdump.so: /usr/lib64/libglib-2.0.so
 run/plugins/3.4/wiretap/usbdump.so: plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared module ../../../run/plugins/3.4/wiretap/usbdump.so"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/usbdump.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared module ../../../run/plugins/3.4/wiretap/usbdump.so"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/usbdump.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/build: run/plugins/3.4/wiretap/usbdump.so
@@ -115,10 +115,10 @@ plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/build: run/plugins/3.4/wiretap/us
 .PHONY : plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/build
 
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && $(CMAKE_COMMAND) -P CMakeFiles/usbdump.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && $(CMAKE_COMMAND) -P CMakeFiles/usbdump.dir/cmake_clean.cmake
 .PHONY : plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/clean
 
 plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/depend: plugins/wiretap/usbdump/plugin.c
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/wiretap/usbdump /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/wiretap/usbdump /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/wiretap/usbdump/CMakeFiles/usbdump.dir/depend
 

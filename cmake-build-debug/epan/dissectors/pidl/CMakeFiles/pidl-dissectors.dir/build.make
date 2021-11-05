@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for pidl-dissectors.
 
@@ -67,10 +67,10 @@ epan/dissectors/pidl/CMakeFiles/pidl-dissectors.dir/build: pidl-dissectors
 .PHONY : epan/dissectors/pidl/CMakeFiles/pidl-dissectors.dir/build
 
 epan/dissectors/pidl/CMakeFiles/pidl-dissectors.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/pidl && $(CMAKE_COMMAND) -P CMakeFiles/pidl-dissectors.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/pidl && $(CMAKE_COMMAND) -P CMakeFiles/pidl-dissectors.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/pidl/CMakeFiles/pidl-dissectors.dir/clean
 
 epan/dissectors/pidl/CMakeFiles/pidl-dissectors.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/pidl /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/pidl /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/pidl/CMakeFiles/pidl-dissectors.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/pidl /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/pidl /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/pidl/CMakeFiles/pidl-dissectors.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/pidl/CMakeFiles/pidl-dissectors.dir/depend
 

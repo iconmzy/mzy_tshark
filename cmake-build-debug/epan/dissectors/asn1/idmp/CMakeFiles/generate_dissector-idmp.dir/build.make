@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-idmp.
 
@@ -64,9 +64,9 @@ epan/dissectors/asn1/idmp/packet-idmp-stamp: ../epan/dissectors/asn1/idmp/packet
 epan/dissectors/asn1/idmp/packet-idmp-stamp: ../epan/dissectors/asn1/idmp/idmp.cnf
 epan/dissectors/asn1/idmp/packet-idmp-stamp: epan/dissectors/asn1/x509af/x509af-exp.cnf
 epan/dissectors/asn1/idmp/packet-idmp-stamp: epan/dissectors/asn1/x509ce/x509ce-exp.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-idmp-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/idmp && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -b -L -p idmp -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/idmp/idmp.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/idmp/packet-idmp-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/idmp -O /root/CLionProjects/tshark_shanghai/epan/dissectors IDMProtocolSpecification.asn CommonProtocolSpecification.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/idmp && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-idmp.c packet-idmp-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-idmp-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/idmp && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -b -L -p idmp -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/idmp/idmp.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/idmp/packet-idmp-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/idmp -O /root/CLionProjects/tshark_gongjv/epan/dissectors IDMProtocolSpecification.asn CommonProtocolSpecification.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/idmp && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-idmp.c packet-idmp-stamp
 
 generate_dissector-idmp: epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp
 generate_dissector-idmp: epan/dissectors/asn1/idmp/packet-idmp-stamp
@@ -80,10 +80,10 @@ epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp.dir/build: generate
 .PHONY : epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp.dir/build
 
 epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/idmp && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-idmp.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/idmp && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-idmp.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp.dir/clean
 
 epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/idmp /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/idmp /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/idmp /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/idmp /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/idmp/CMakeFiles/generate_dissector-idmp.dir/depend
 

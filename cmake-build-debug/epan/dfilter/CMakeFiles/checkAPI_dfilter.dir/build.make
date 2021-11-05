@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_dfilter.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/progress.make
 
 epan/dfilter/CMakeFiles/checkAPI_dfilter:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_dfilter"
-	cd /root/CLionProjects/tshark_shanghai/epan/dfilter && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl -g termoutput dfilter.c dfilter-macro.c dfunctions.c dfvm.c drange.c gencode.c semcheck.c sttype-function.c sttype-integer.c sttype-pointer.c sttype-range.c sttype-set.c sttype-string.c sttype-test.c syntax-tree.c /root/CLionProjects/tshark_shanghai/epan/dfilter/grammar.lemon
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_dfilter"
+	cd /root/CLionProjects/tshark_gongjv/epan/dfilter && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl -g termoutput dfilter.c dfilter-macro.c dfunctions.c dfvm.c drange.c gencode.c semcheck.c sttype-function.c sttype-integer.c sttype-pointer.c sttype-range.c sttype-set.c sttype-string.c sttype-test.c syntax-tree.c /root/CLionProjects/tshark_gongjv/epan/dfilter/grammar.lemon
 
 checkAPI_dfilter: epan/dfilter/CMakeFiles/checkAPI_dfilter
 checkAPI_dfilter: epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/build.make
@@ -68,10 +68,10 @@ epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/build: checkAPI_dfilter
 .PHONY : epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/build
 
 epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dfilter && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_dfilter.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dfilter && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_dfilter.dir/cmake_clean.cmake
 .PHONY : epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/clean
 
 epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dfilter /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dfilter /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dfilter /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dfilter /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dfilter/CMakeFiles/checkAPI_dfilter.dir/depend
 

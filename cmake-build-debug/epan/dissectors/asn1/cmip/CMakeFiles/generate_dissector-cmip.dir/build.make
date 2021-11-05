@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-cmip.
 
@@ -64,9 +64,9 @@ epan/dissectors/asn1/cmip/packet-cmip-stamp: ../epan/dissectors/asn1/cmip/packet
 epan/dissectors/asn1/cmip/packet-cmip-stamp: ../epan/dissectors/asn1/cmip/packet-cmip-template.h
 epan/dissectors/asn1/cmip/packet-cmip-stamp: ../epan/dissectors/asn1/cmip/cmip.cnf
 epan/dissectors/asn1/cmip/packet-cmip-stamp: epan/dissectors/asn1/acse/acse-exp.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-cmip-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/cmip && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -b -p cmip -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/cmip/cmip.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/cmip/packet-cmip-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/cmip -O /root/CLionProjects/tshark_shanghai/epan/dissectors CMIP-1.asn CMIP-A-ABORT-Information.asn CMIP-A-ASSOCIATE-Information.asn ../x721/Attribute-ASN1Module.asn ../ros/Remote-Operations-Information-Objects.asn ../ros/Remote-Operations-Generic-ROS-PDUs.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/cmip && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-cmip.c packet-cmip-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-cmip-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/cmip && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -b -p cmip -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/cmip/cmip.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/cmip/packet-cmip-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/cmip -O /root/CLionProjects/tshark_gongjv/epan/dissectors CMIP-1.asn CMIP-A-ABORT-Information.asn CMIP-A-ASSOCIATE-Information.asn ../x721/Attribute-ASN1Module.asn ../ros/Remote-Operations-Information-Objects.asn ../ros/Remote-Operations-Generic-ROS-PDUs.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/cmip && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-cmip.c packet-cmip-stamp
 
 generate_dissector-cmip: epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip
 generate_dissector-cmip: epan/dissectors/asn1/cmip/packet-cmip-stamp
@@ -80,10 +80,10 @@ epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip.dir/build: generate
 .PHONY : epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip.dir/build
 
 epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/cmip && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-cmip.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/cmip && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-cmip.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip.dir/clean
 
 epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/cmip /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/cmip /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/cmip /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/cmip /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/cmip/CMakeFiles/generate_dissector-cmip.dir/depend
 

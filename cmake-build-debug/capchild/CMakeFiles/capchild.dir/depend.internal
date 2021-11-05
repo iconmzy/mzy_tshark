@@ -64,7 +64,7 @@ capchild/CMakeFiles/capchild.dir/capture_ifinfo.c.o
  ../wsutil/processes.h
  ../wsutil/unicode-utils.h
  ../wsutil/ws_mempbrk.h
- /root/CLionProjects/tshark_shanghai/capchild/capture_ifinfo.c
+ /root/CLionProjects/tshark_gongjv/capchild/capture_ifinfo.c
  /usr/include/glib-2.0/glib.h
  /usr/include/glib-2.0/glib/deprecated/gallocator.h
  /usr/include/glib-2.0/glib/deprecated/gcache.h
@@ -230,7 +230,7 @@ capchild/CMakeFiles/capchild.dir/capture_sync.c.o
  ../wsutil/win32-utils.h
  ../wsutil/ws_mempbrk.h
  ../wsutil/ws_pipe.h
- /root/CLionProjects/tshark_shanghai/capchild/capture_sync.c
+ /root/CLionProjects/tshark_gongjv/capchild/capture_sync.c
  /usr/include/glib-2.0/glib.h
  /usr/include/glib-2.0/glib/deprecated/gallocator.h
  /usr/include/glib-2.0/glib/deprecated/gcache.h

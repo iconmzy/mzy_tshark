@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/epan/dissectors/pidl
+# Install script for directory: /root/CLionProjects/tshark_gongjv/epan/dissectors/pidl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

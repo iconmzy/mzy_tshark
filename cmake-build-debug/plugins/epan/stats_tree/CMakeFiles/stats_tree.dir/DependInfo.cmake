@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/plugins/epan/stats_tree/pinfo_stats_tree.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/stats_tree/CMakeFiles/stats_tree.dir/pinfo_stats_tree.c.o"
-  "/root/CLionProjects/tshark_shanghai/plugins/epan/stats_tree/stats_tree_plugin.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/stats_tree/CMakeFiles/stats_tree.dir/stats_tree_plugin.c.o"
+  "/root/CLionProjects/tshark_gongjv/plugins/epan/stats_tree/pinfo_stats_tree.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/stats_tree/CMakeFiles/stats_tree.dir/pinfo_stats_tree.c.o"
+  "/root/CLionProjects/tshark_gongjv/plugins/epan/stats_tree/stats_tree_plugin.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/stats_tree/CMakeFiles/stats_tree.dir/stats_tree_plugin.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -28,9 +28,9 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/CMakeFiles/epan.dir/DependInfo.cmake"
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/wiretap/CMakeFiles/wiretap.dir/DependInfo.cmake"
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/CMakeFiles/epan.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/wiretap/CMakeFiles/wiretap.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

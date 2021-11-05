@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for x11-dissector.
 
@@ -58,8 +58,8 @@ epan/dissectors/CMakeFiles/x11-dissector: ../tools/process-x11-fields.pl
 epan/dissectors/CMakeFiles/x11-dissector: ../tools/process-x11-xcb.pl
 epan/dissectors/CMakeFiles/x11-dissector: ../epan/dissectors/xcbproto
 epan/dissectors/CMakeFiles/x11-dissector: ../epan/dissectors/mesa
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/process-x11-fields.pl /root/CLionProjects/tshark_shanghai/epan/dissectors < /root/CLionProjects/tshark_shanghai/epan/dissectors/x11-fields
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/process-x11-xcb.pl /root/CLionProjects/tshark_shanghai/epan/dissectors
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/process-x11-fields.pl /root/CLionProjects/tshark_gongjv/epan/dissectors < /root/CLionProjects/tshark_gongjv/epan/dissectors/x11-fields
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/process-x11-xcb.pl /root/CLionProjects/tshark_gongjv/epan/dissectors
 
 x11-dissector: epan/dissectors/CMakeFiles/x11-dissector
 x11-dissector: epan/dissectors/CMakeFiles/x11-dissector.dir/build.make
@@ -72,10 +72,10 @@ epan/dissectors/CMakeFiles/x11-dissector.dir/build: x11-dissector
 .PHONY : epan/dissectors/CMakeFiles/x11-dissector.dir/build
 
 epan/dissectors/CMakeFiles/x11-dissector.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors && $(CMAKE_COMMAND) -P CMakeFiles/x11-dissector.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors && $(CMAKE_COMMAND) -P CMakeFiles/x11-dissector.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/CMakeFiles/x11-dissector.dir/clean
 
 epan/dissectors/CMakeFiles/x11-dissector.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/CMakeFiles/x11-dissector.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/CMakeFiles/x11-dissector.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/CMakeFiles/x11-dissector.dir/depend
 

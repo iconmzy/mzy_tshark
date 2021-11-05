@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/ui
+# Install script for directory: /root/CLionProjects/tshark_gongjv/ui
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

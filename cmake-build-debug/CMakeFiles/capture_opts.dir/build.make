@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/capture_opts.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/capture_opts.dir/flags.make
 
 CMakeFiles/capture_opts.dir/capture_opts.c.o: CMakeFiles/capture_opts.dir/flags.make
 CMakeFiles/capture_opts.dir/capture_opts.c.o: ../capture_opts.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/capture_opts.dir/capture_opts.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/capture_opts.dir/capture_opts.c.o   -c /root/CLionProjects/tshark_shanghai/capture_opts.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/capture_opts.dir/capture_opts.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/capture_opts.dir/capture_opts.c.o   -c /root/CLionProjects/tshark_gongjv/capture_opts.c
 
 CMakeFiles/capture_opts.dir/capture_opts.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/capture_opts.dir/capture_opts.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/capture_opts.c > CMakeFiles/capture_opts.dir/capture_opts.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/capture_opts.c > CMakeFiles/capture_opts.dir/capture_opts.c.i
 
 CMakeFiles/capture_opts.dir/capture_opts.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/capture_opts.dir/capture_opts.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/capture_opts.c -o CMakeFiles/capture_opts.dir/capture_opts.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/capture_opts.c -o CMakeFiles/capture_opts.dir/capture_opts.c.s
 
 capture_opts: CMakeFiles/capture_opts.dir/capture_opts.c.o
 capture_opts: CMakeFiles/capture_opts.dir/build.make
@@ -85,6 +85,6 @@ CMakeFiles/capture_opts.dir/clean:
 .PHONY : CMakeFiles/capture_opts.dir/clean
 
 CMakeFiles/capture_opts.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/capture_opts.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/capture_opts.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/capture_opts.dir/depend
 

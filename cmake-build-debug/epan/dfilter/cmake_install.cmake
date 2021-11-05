@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/epan/dfilter
+# Install script for directory: /root/CLionProjects/tshark_gongjv/epan/dfilter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/wireshark/epan/dfilter" TYPE FILE FILES
-    "/root/CLionProjects/tshark_shanghai/epan/dfilter/dfilter.h"
-    "/root/CLionProjects/tshark_shanghai/epan/dfilter/drange.h"
+    "/root/CLionProjects/tshark_gongjv/epan/dfilter/dfilter.h"
+    "/root/CLionProjects/tshark_gongjv/epan/dfilter/drange.h"
     )
 endif()
 

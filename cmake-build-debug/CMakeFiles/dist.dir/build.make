@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for dist.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include CMakeFiles/dist.dir/progress.make
 
 CMakeFiles/dist:
-	cd /root/CLionProjects/tshark_shanghai && /root/CLionProjects/tshark_shanghai/cmake-build-debug/packaging/source/git-export-release.sh -d /root/CLionProjects/tshark_shanghai/cmake-build-debug
+	cd /root/CLionProjects/tshark_gongjv && /root/CLionProjects/tshark_gongjv/cmake-build-debug/packaging/source/git-export-release.sh -d /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 dist: CMakeFiles/dist
 dist: CMakeFiles/dist.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/dist.dir/clean:
 .PHONY : CMakeFiles/dist.dir/clean
 
 CMakeFiles/dist.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/dist.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/dist.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/dist.dir/depend
 

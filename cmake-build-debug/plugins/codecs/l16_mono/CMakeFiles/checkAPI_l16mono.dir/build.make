@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_l16mono.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/progress.make
 
 plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_l16mono"
-	cd /root/CLionProjects/tshark_shanghai/plugins/codecs/l16_mono && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl -g abort -g termoutput l16decode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_l16mono"
+	cd /root/CLionProjects/tshark_gongjv/plugins/codecs/l16_mono && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl -g abort -g termoutput l16decode.c
 
 checkAPI_l16mono: plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono
 checkAPI_l16mono: plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/build.make
@@ -68,10 +68,10 @@ plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/build: checkAPI_l16mono
 .PHONY : plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/build
 
 plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/l16_mono && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_l16mono.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/l16_mono && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_l16mono.dir/cmake_clean.cmake
 .PHONY : plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/clean
 
 plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/codecs/l16_mono /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/l16_mono /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/codecs/l16_mono /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/l16_mono /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/codecs/l16_mono/CMakeFiles/checkAPI_l16mono.dir/depend
 

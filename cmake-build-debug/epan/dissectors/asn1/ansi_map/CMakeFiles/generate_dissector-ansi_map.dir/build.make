@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-ansi_map.
 
@@ -62,9 +62,9 @@ epan/dissectors/asn1/ansi_map/packet-ansi_map-stamp: ../epan/dissectors/asn1/ans
 epan/dissectors/asn1/ansi_map/packet-ansi_map-stamp: ../epan/dissectors/asn1/ansi_map/packet-ansi_map-template.h
 epan/dissectors/asn1/ansi_map/packet-ansi_map-stamp: ../epan/dissectors/asn1/ansi_map/ansi_map.cnf
 epan/dissectors/asn1/ansi_map/packet-ansi_map-stamp: epan/dissectors/asn1/gsm_map/gsm_map-exp.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-ansi_map-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/ansi_map && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -b -p ansi_map -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/ansi_map/ansi_map.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/ansi_map/packet-ansi_map-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/ansi_map -O /root/CLionProjects/tshark_shanghai/epan/dissectors ansi_map.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/ansi_map && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-ansi_map.c packet-ansi_map-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-ansi_map-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/ansi_map && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -b -p ansi_map -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/ansi_map/ansi_map.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/ansi_map/packet-ansi_map-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/ansi_map -O /root/CLionProjects/tshark_gongjv/epan/dissectors ansi_map.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/ansi_map && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-ansi_map.c packet-ansi_map-stamp
 
 generate_dissector-ansi_map: epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map
 generate_dissector-ansi_map: epan/dissectors/asn1/ansi_map/packet-ansi_map-stamp
@@ -78,10 +78,10 @@ epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map.dir/build: 
 .PHONY : epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map.dir/build
 
 epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/ansi_map && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-ansi_map.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/ansi_map && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-ansi_map.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map.dir/clean
 
 epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/ansi_map /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/ansi_map /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/ansi_map /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/ansi_map /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/ansi_map/CMakeFiles/generate_dissector-ansi_map.dir/depend
 

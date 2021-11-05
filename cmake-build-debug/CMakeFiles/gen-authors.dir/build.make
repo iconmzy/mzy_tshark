@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for gen-authors.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include CMakeFiles/gen-authors.dir/progress.make
 
 CMakeFiles/gen-authors:
-	cd /root/CLionProjects/tshark_shanghai && /usr/bin/perl tools/generate_authors.pl AUTHORS.src > AUTHORS
+	cd /root/CLionProjects/tshark_gongjv && /usr/bin/perl tools/generate_authors.pl AUTHORS.src > AUTHORS
 
 gen-authors: CMakeFiles/gen-authors
 gen-authors: CMakeFiles/gen-authors.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/gen-authors.dir/clean:
 .PHONY : CMakeFiles/gen-authors.dir/clean
 
 CMakeFiles/gen-authors.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/gen-authors.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/gen-authors.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/gen-authors.dir/depend
 

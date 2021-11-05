@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_g722.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/progress.make
 
 plugins/codecs/G722/CMakeFiles/checkAPI_g722:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_g722"
-	cd /root/CLionProjects/tshark_shanghai/plugins/codecs/G722 && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl -g abort -g termoutput G722decode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_g722"
+	cd /root/CLionProjects/tshark_gongjv/plugins/codecs/G722 && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl -g abort -g termoutput G722decode.c
 
 checkAPI_g722: plugins/codecs/G722/CMakeFiles/checkAPI_g722
 checkAPI_g722: plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/build.make
@@ -68,10 +68,10 @@ plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/build: checkAPI_g722
 .PHONY : plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/build
 
 plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G722 && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_g722.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G722 && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_g722.dir/cmake_clean.cmake
 .PHONY : plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/clean
 
 plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/codecs/G722 /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G722 /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/codecs/G722 /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G722 /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/codecs/G722/CMakeFiles/checkAPI_g722.dir/depend
 

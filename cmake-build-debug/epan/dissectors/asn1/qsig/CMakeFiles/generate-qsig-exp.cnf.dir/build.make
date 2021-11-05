@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate-qsig-exp.cnf.
 
@@ -90,8 +90,8 @@ epan/dissectors/asn1/qsig/qsig-exp.cnf: ../epan/dissectors/asn1/qsig/QSIG-MID.as
 epan/dissectors/asn1/qsig/qsig-exp.cnf: ../epan/dissectors/asn1/qsig/packet-qsig-template.c
 epan/dissectors/asn1/qsig/qsig-exp.cnf: ../epan/dissectors/asn1/qsig/packet-qsig-template.h
 epan/dissectors/asn1/qsig/qsig-exp.cnf: ../epan/dissectors/asn1/qsig/qsig.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating qsig-exp.cnf"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/qsig && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -E -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/qsig/qsig.cnf -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/qsig General-Error-List.asn qsig-gf-ext.asn qsig-gf-gp.asn qsig-gf-ade.asn QSIG-NA.asn QSIG-CF.asn QSIG-PR.asn QSIG-CT.asn QSIG-CC.asn QSIG-CO.asn QSIG-DND.asn QSIG-CI.asn QSIG-AOC.asn QSIG-RE.asn SYNC-SIG.asn QSIG-CINT.asn QSIG-CMN.asn QSIG-CPI.asn QSIG-PUMR.asn QSIG-PUMCH.asn QSIG-SSCT.asn QSIG-WTMLR.asn QSIG-WTMCH.asn QSIG-WTMAU.asn QSIG-SD.asn QSIG-CIDL.asn QSIG-SMS.asn QSIG-MCR.asn QSIG-MCM.asn QSIG-MID.asn
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating qsig-exp.cnf"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/qsig && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -E -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/qsig/qsig.cnf -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/qsig General-Error-List.asn qsig-gf-ext.asn qsig-gf-gp.asn qsig-gf-ade.asn QSIG-NA.asn QSIG-CF.asn QSIG-PR.asn QSIG-CT.asn QSIG-CC.asn QSIG-CO.asn QSIG-DND.asn QSIG-CI.asn QSIG-AOC.asn QSIG-RE.asn SYNC-SIG.asn QSIG-CINT.asn QSIG-CMN.asn QSIG-CPI.asn QSIG-PUMR.asn QSIG-PUMCH.asn QSIG-SSCT.asn QSIG-WTMLR.asn QSIG-WTMCH.asn QSIG-WTMAU.asn QSIG-SD.asn QSIG-CIDL.asn QSIG-SMS.asn QSIG-MCR.asn QSIG-MCM.asn QSIG-MID.asn
 
 generate-qsig-exp.cnf: epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf
 generate-qsig-exp.cnf: epan/dissectors/asn1/qsig/qsig-exp.cnf
@@ -105,10 +105,10 @@ epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf.dir/build: generate-q
 .PHONY : epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf.dir/build
 
 epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/qsig && $(CMAKE_COMMAND) -P CMakeFiles/generate-qsig-exp.cnf.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/qsig && $(CMAKE_COMMAND) -P CMakeFiles/generate-qsig-exp.cnf.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf.dir/clean
 
 epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/qsig /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/qsig /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/qsig /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/qsig /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/qsig/CMakeFiles/generate-qsig-exp.cnf.dir/depend
 

@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/depend.make
@@ -59,34 +59,34 @@ include plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/flags.make
 
 plugins/epan/wimaxmacphy/plugin.c: ../plugins/epan/wimaxmacphy/packet-wimaxmacphy.c
 plugins/epan/wimaxmacphy/plugin.c: ../tools/make-plugin-reg.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating plugin.c"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/make-plugin-reg.py /root/CLionProjects/tshark_shanghai/plugins/epan/wimaxmacphy plugin packet-wimaxmacphy.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating plugin.c"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/make-plugin-reg.py /root/CLionProjects/tshark_gongjv/plugins/epan/wimaxmacphy plugin packet-wimaxmacphy.c
 
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/plugin.c.o: plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/flags.make
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/plugin.c.o: plugins/epan/wimaxmacphy/plugin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/plugin.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wimaxmacphy.dir/plugin.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy/plugin.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/plugin.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wimaxmacphy.dir/plugin.c.o   -c /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy/plugin.c
 
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/plugin.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/wimaxmacphy.dir/plugin.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy/plugin.c > CMakeFiles/wimaxmacphy.dir/plugin.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy/plugin.c > CMakeFiles/wimaxmacphy.dir/plugin.c.i
 
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/plugin.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wimaxmacphy.dir/plugin.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy/plugin.c -o CMakeFiles/wimaxmacphy.dir/plugin.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy/plugin.c -o CMakeFiles/wimaxmacphy.dir/plugin.c.s
 
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.o: plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/flags.make
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.o: ../plugins/epan/wimaxmacphy/packet-wimaxmacphy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.o   -c /root/CLionProjects/tshark_shanghai/plugins/epan/wimaxmacphy/packet-wimaxmacphy.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.o   -c /root/CLionProjects/tshark_gongjv/plugins/epan/wimaxmacphy/packet-wimaxmacphy.c
 
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/plugins/epan/wimaxmacphy/packet-wimaxmacphy.c > CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/plugins/epan/wimaxmacphy/packet-wimaxmacphy.c > CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.i
 
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/plugins/epan/wimaxmacphy/packet-wimaxmacphy.c -o CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/plugins/epan/wimaxmacphy/packet-wimaxmacphy.c -o CMakeFiles/wimaxmacphy.dir/packet-wimaxmacphy.c.s
 
 # Object files for target wimaxmacphy
 wimaxmacphy_OBJECTS = \
@@ -107,8 +107,8 @@ run/plugins/3.4/epan/wimaxmacphy.so: /usr/lib64/libgcrypt.so
 run/plugins/3.4/epan/wimaxmacphy.so: /usr/lib64/libgpg-error.so
 run/plugins/3.4/epan/wimaxmacphy.so: /usr/lib64/libglib-2.0.so
 run/plugins/3.4/epan/wimaxmacphy.so: plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared module ../../../run/plugins/3.4/epan/wimaxmacphy.so"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/wimaxmacphy.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared module ../../../run/plugins/3.4/epan/wimaxmacphy.so"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/wimaxmacphy.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/build: run/plugins/3.4/epan/wimaxmacphy.so
@@ -116,10 +116,10 @@ plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/build: run/plugins/3.4/epan/
 .PHONY : plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/build
 
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && $(CMAKE_COMMAND) -P CMakeFiles/wimaxmacphy.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && $(CMAKE_COMMAND) -P CMakeFiles/wimaxmacphy.dir/cmake_clean.cmake
 .PHONY : plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/clean
 
 plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/depend: plugins/epan/wimaxmacphy/plugin.c
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/epan/wimaxmacphy /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/epan/wimaxmacphy /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/epan/wimaxmacphy/CMakeFiles/wimaxmacphy.dir/depend
 

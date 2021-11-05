@@ -52,9 +52,9 @@ strsafe.h
 glib.h
 -
 
-/root/CLionProjects/tshark_shanghai/version.h
+/root/CLionProjects/tshark_gongjv/version.h
 
-/root/CLionProjects/tshark_shanghai/version_info.c
+/root/CLionProjects/tshark_gongjv/version_info.c
 config.h
 -
 stdio.h
@@ -78,9 +78,9 @@ glib.h
 zlib.h
 -
 version.h
-/root/CLionProjects/tshark_shanghai/version.h
+/root/CLionProjects/tshark_gongjv/version.h
 version_info.h
-/root/CLionProjects/tshark_shanghai/version_info.h
+/root/CLionProjects/tshark_gongjv/version_info.h
 wsutil/cpu_info.h
 -
 wsutil/copyright_info.h
@@ -94,7 +94,7 @@ wsutil/ws_printf.h
 wsutil/plugins.h
 -
 
-/root/CLionProjects/tshark_shanghai/version_info.h
+/root/CLionProjects/tshark_gongjv/version_info.h
 glib.h
 -
 

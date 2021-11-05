@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/dumpcap.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/dumpcap.dir/dumpcap.c.o"
-  "/root/CLionProjects/tshark_shanghai/ringbuffer.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/dumpcap.dir/ringbuffer.c.o"
-  "/root/CLionProjects/tshark_shanghai/sync_pipe_write.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/dumpcap.dir/sync_pipe_write.c.o"
+  "/root/CLionProjects/tshark_gongjv/dumpcap.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/dumpcap.dir/dumpcap.c.o"
+  "/root/CLionProjects/tshark_gongjv/ringbuffer.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/dumpcap.dir/ringbuffer.c.o"
+  "/root/CLionProjects/tshark_gongjv/sync_pipe_write.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/dumpcap.dir/sync_pipe_write.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -27,10 +27,10 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/writecap/CMakeFiles/writecap.dir/DependInfo.cmake"
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/caputils/CMakeFiles/caputils.dir/DependInfo.cmake"
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/ui/CMakeFiles/ui.dir/DependInfo.cmake"
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/writecap/CMakeFiles/writecap.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/caputils/CMakeFiles/caputils.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/ui/CMakeFiles/ui.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/extcap/extcap-base.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/extcap/CMakeFiles/extcap-base.dir/extcap-base.c.o"
+  "/root/CLionProjects/tshark_gongjv/extcap/extcap-base.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/extcap/CMakeFiles/extcap-base.dir/extcap-base.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

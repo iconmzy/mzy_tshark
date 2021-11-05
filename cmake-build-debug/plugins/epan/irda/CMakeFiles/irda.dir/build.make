@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include plugins/epan/irda/CMakeFiles/irda.dir/depend.make
@@ -61,60 +61,60 @@ plugins/epan/irda/plugin.c: ../plugins/epan/irda/packet-ircomm.c
 plugins/epan/irda/plugin.c: ../plugins/epan/irda/packet-irda.c
 plugins/epan/irda/plugin.c: ../plugins/epan/irda/packet-sir.c
 plugins/epan/irda/plugin.c: ../tools/make-plugin-reg.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating plugin.c"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/make-plugin-reg.py /root/CLionProjects/tshark_shanghai/plugins/epan/irda plugin packet-ircomm.c packet-irda.c packet-sir.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating plugin.c"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/make-plugin-reg.py /root/CLionProjects/tshark_gongjv/plugins/epan/irda plugin packet-ircomm.c packet-irda.c packet-sir.c
 
 plugins/epan/irda/CMakeFiles/irda.dir/plugin.c.o: plugins/epan/irda/CMakeFiles/irda.dir/flags.make
 plugins/epan/irda/CMakeFiles/irda.dir/plugin.c.o: plugins/epan/irda/plugin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object plugins/epan/irda/CMakeFiles/irda.dir/plugin.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/irda.dir/plugin.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda/plugin.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object plugins/epan/irda/CMakeFiles/irda.dir/plugin.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/irda.dir/plugin.c.o   -c /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda/plugin.c
 
 plugins/epan/irda/CMakeFiles/irda.dir/plugin.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/irda.dir/plugin.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda/plugin.c > CMakeFiles/irda.dir/plugin.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda/plugin.c > CMakeFiles/irda.dir/plugin.c.i
 
 plugins/epan/irda/CMakeFiles/irda.dir/plugin.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/irda.dir/plugin.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda/plugin.c -o CMakeFiles/irda.dir/plugin.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda/plugin.c -o CMakeFiles/irda.dir/plugin.c.s
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-ircomm.c.o: plugins/epan/irda/CMakeFiles/irda.dir/flags.make
 plugins/epan/irda/CMakeFiles/irda.dir/packet-ircomm.c.o: ../plugins/epan/irda/packet-ircomm.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object plugins/epan/irda/CMakeFiles/irda.dir/packet-ircomm.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/irda.dir/packet-ircomm.c.o   -c /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-ircomm.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object plugins/epan/irda/CMakeFiles/irda.dir/packet-ircomm.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/irda.dir/packet-ircomm.c.o   -c /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-ircomm.c
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-ircomm.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/irda.dir/packet-ircomm.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-ircomm.c > CMakeFiles/irda.dir/packet-ircomm.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-ircomm.c > CMakeFiles/irda.dir/packet-ircomm.c.i
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-ircomm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/irda.dir/packet-ircomm.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-ircomm.c -o CMakeFiles/irda.dir/packet-ircomm.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-ircomm.c -o CMakeFiles/irda.dir/packet-ircomm.c.s
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-irda.c.o: plugins/epan/irda/CMakeFiles/irda.dir/flags.make
 plugins/epan/irda/CMakeFiles/irda.dir/packet-irda.c.o: ../plugins/epan/irda/packet-irda.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object plugins/epan/irda/CMakeFiles/irda.dir/packet-irda.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/irda.dir/packet-irda.c.o   -c /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-irda.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object plugins/epan/irda/CMakeFiles/irda.dir/packet-irda.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/irda.dir/packet-irda.c.o   -c /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-irda.c
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-irda.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/irda.dir/packet-irda.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-irda.c > CMakeFiles/irda.dir/packet-irda.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-irda.c > CMakeFiles/irda.dir/packet-irda.c.i
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-irda.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/irda.dir/packet-irda.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-irda.c -o CMakeFiles/irda.dir/packet-irda.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-irda.c -o CMakeFiles/irda.dir/packet-irda.c.s
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-sir.c.o: plugins/epan/irda/CMakeFiles/irda.dir/flags.make
 plugins/epan/irda/CMakeFiles/irda.dir/packet-sir.c.o: ../plugins/epan/irda/packet-sir.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object plugins/epan/irda/CMakeFiles/irda.dir/packet-sir.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/irda.dir/packet-sir.c.o   -c /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-sir.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object plugins/epan/irda/CMakeFiles/irda.dir/packet-sir.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/irda.dir/packet-sir.c.o   -c /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-sir.c
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-sir.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/irda.dir/packet-sir.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-sir.c > CMakeFiles/irda.dir/packet-sir.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-sir.c > CMakeFiles/irda.dir/packet-sir.c.i
 
 plugins/epan/irda/CMakeFiles/irda.dir/packet-sir.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/irda.dir/packet-sir.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/plugins/epan/irda/packet-sir.c -o CMakeFiles/irda.dir/packet-sir.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/plugins/epan/irda/packet-sir.c -o CMakeFiles/irda.dir/packet-sir.c.s
 
 # Object files for target irda
 irda_OBJECTS = \
@@ -139,8 +139,8 @@ run/plugins/3.4/epan/irda.so: /usr/lib64/libgcrypt.so
 run/plugins/3.4/epan/irda.so: /usr/lib64/libgpg-error.so
 run/plugins/3.4/epan/irda.so: /usr/lib64/libglib-2.0.so
 run/plugins/3.4/epan/irda.so: plugins/epan/irda/CMakeFiles/irda.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C shared module ../../../run/plugins/3.4/epan/irda.so"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/irda.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C shared module ../../../run/plugins/3.4/epan/irda.so"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/irda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 plugins/epan/irda/CMakeFiles/irda.dir/build: run/plugins/3.4/epan/irda.so
@@ -148,10 +148,10 @@ plugins/epan/irda/CMakeFiles/irda.dir/build: run/plugins/3.4/epan/irda.so
 .PHONY : plugins/epan/irda/CMakeFiles/irda.dir/build
 
 plugins/epan/irda/CMakeFiles/irda.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda && $(CMAKE_COMMAND) -P CMakeFiles/irda.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda && $(CMAKE_COMMAND) -P CMakeFiles/irda.dir/cmake_clean.cmake
 .PHONY : plugins/epan/irda/CMakeFiles/irda.dir/clean
 
 plugins/epan/irda/CMakeFiles/irda.dir/depend: plugins/epan/irda/plugin.c
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/epan/irda /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/irda/CMakeFiles/irda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/epan/irda /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/irda/CMakeFiles/irda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/epan/irda/CMakeFiles/irda.dir/depend
 

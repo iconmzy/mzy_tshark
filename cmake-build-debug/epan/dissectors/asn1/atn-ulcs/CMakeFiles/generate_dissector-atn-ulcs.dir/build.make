@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-atn-ulcs.
 
@@ -61,9 +61,9 @@ epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-stamp: ../epan/dissectors/asn1/atn
 epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-stamp: ../epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-template.c
 epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-stamp: ../epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-template.h
 epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-stamp: ../epan/dissectors/asn1/atn-ulcs/atn-ulcs.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-atn-ulcs-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/atn-ulcs && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -u -L -p atn-ulcs -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/atn-ulcs/atn-ulcs.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/atn-ulcs -O /root/CLionProjects/tshark_shanghai/epan/dissectors atn-ulcs.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/atn-ulcs && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-atn-ulcs.c packet-atn-ulcs-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-atn-ulcs-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/atn-ulcs && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -u -L -p atn-ulcs -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/atn-ulcs/atn-ulcs.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/atn-ulcs -O /root/CLionProjects/tshark_gongjv/epan/dissectors atn-ulcs.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/atn-ulcs && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-atn-ulcs.c packet-atn-ulcs-stamp
 
 generate_dissector-atn-ulcs: epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs
 generate_dissector-atn-ulcs: epan/dissectors/asn1/atn-ulcs/packet-atn-ulcs-stamp
@@ -77,10 +77,10 @@ epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs.dir/build: 
 .PHONY : epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs.dir/build
 
 epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/atn-ulcs && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-atn-ulcs.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/atn-ulcs && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-atn-ulcs.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs.dir/clean
 
 epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/atn-ulcs /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/atn-ulcs /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/atn-ulcs /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/atn-ulcs /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/atn-ulcs/CMakeFiles/generate_dissector-atn-ulcs.dir/depend
 

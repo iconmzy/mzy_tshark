@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate-gsm_map-exp.cnf.
 
@@ -91,8 +91,8 @@ epan/dissectors/asn1/gsm_map/gsm_map-exp.cnf: ../epan/dissectors/asn1/gsm_map/pa
 epan/dissectors/asn1/gsm_map/gsm_map-exp.cnf: ../epan/dissectors/asn1/gsm_map/packet-gsm_map-template.h
 epan/dissectors/asn1/gsm_map/gsm_map-exp.cnf: ../epan/dissectors/asn1/gsm_map/gsm_map.cnf
 epan/dissectors/asn1/gsm_map/gsm_map-exp.cnf: ../epan/dissectors/asn1/gsm_map/../ros/Remote-Operations-Information-Objects.asn
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating gsm_map-exp.cnf"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/gsm_map && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -E -b -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/gsm_map/gsm_map.cnf -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/gsm_map ../ros/Remote-Operations-Information-Objects.asn MobileDomainDefinitions.asn MAP-ApplicationContexts.asn MAP-SS-Code.asn MAP-BS-Code.asn MAP-TS-Code.asn MAP-ExtensionDataTypes.asn MAP-CommonDataTypes.asn MAP-SS-DataTypes.asn MAP-ER-DataTypes.asn MAP-SM-DataTypes.asn MAP-OM-DataTypes.asn MAP-MS-DataTypes.asn MAP-CH-DataTypes.asn MAP-LCS-DataTypes.asn MAP-GR-DataTypes.asn MAP-DialogueInformation.asn MAP-LocationServiceOperations.asn MAP-Group-Call-Operations.asn MAP-ShortMessageServiceOperations.asn MAP-SupplementaryServiceOperations.asn MAP-CallHandlingOperations.asn MAP-OperationAndMaintenanceOperations.asn MAP-MobileServiceOperations.asn MAP-Errors.asn MAP-Protocol.asn GSMMAP.asn SS-DataTypes.asn SS-Operations.asn Ericsson.asn Nokia.asn
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating gsm_map-exp.cnf"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/gsm_map && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -E -b -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/gsm_map/gsm_map.cnf -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/gsm_map ../ros/Remote-Operations-Information-Objects.asn MobileDomainDefinitions.asn MAP-ApplicationContexts.asn MAP-SS-Code.asn MAP-BS-Code.asn MAP-TS-Code.asn MAP-ExtensionDataTypes.asn MAP-CommonDataTypes.asn MAP-SS-DataTypes.asn MAP-ER-DataTypes.asn MAP-SM-DataTypes.asn MAP-OM-DataTypes.asn MAP-MS-DataTypes.asn MAP-CH-DataTypes.asn MAP-LCS-DataTypes.asn MAP-GR-DataTypes.asn MAP-DialogueInformation.asn MAP-LocationServiceOperations.asn MAP-Group-Call-Operations.asn MAP-ShortMessageServiceOperations.asn MAP-SupplementaryServiceOperations.asn MAP-CallHandlingOperations.asn MAP-OperationAndMaintenanceOperations.asn MAP-MobileServiceOperations.asn MAP-Errors.asn MAP-Protocol.asn GSMMAP.asn SS-DataTypes.asn SS-Operations.asn Ericsson.asn Nokia.asn
 
 generate-gsm_map-exp.cnf: epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf
 generate-gsm_map-exp.cnf: epan/dissectors/asn1/gsm_map/gsm_map-exp.cnf
@@ -106,10 +106,10 @@ epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf.dir/build: gene
 .PHONY : epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf.dir/build
 
 epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/gsm_map && $(CMAKE_COMMAND) -P CMakeFiles/generate-gsm_map-exp.cnf.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/gsm_map && $(CMAKE_COMMAND) -P CMakeFiles/generate-gsm_map-exp.cnf.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf.dir/clean
 
 epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/gsm_map /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/gsm_map /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/gsm_map /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/gsm_map /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/gsm_map/CMakeFiles/generate-gsm_map-exp.cnf.dir/depend
 

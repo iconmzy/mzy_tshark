@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_usbdump.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/progress.make
 
 plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_usbdump"
-	cd /root/CLionProjects/tshark_shanghai/plugins/wiretap/usbdump && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl -g abort -g termoutput usbdump.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_usbdump"
+	cd /root/CLionProjects/tshark_gongjv/plugins/wiretap/usbdump && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl -g abort -g termoutput usbdump.c
 
 checkAPI_usbdump: plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump
 checkAPI_usbdump: plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/build.make
@@ -68,10 +68,10 @@ plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/build: checkAPI_usbdump
 .PHONY : plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/build
 
 plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_usbdump.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_usbdump.dir/cmake_clean.cmake
 .PHONY : plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/clean
 
 plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/wiretap/usbdump /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/wiretap/usbdump /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/wiretap/usbdump/CMakeFiles/checkAPI_usbdump.dir/depend
 

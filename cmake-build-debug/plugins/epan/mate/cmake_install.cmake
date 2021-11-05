@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/plugins/epan/mate
+# Install script for directory: /root/CLionProjects/tshark_gongjv/plugins/epan/mate
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/epan/mate.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/epan" TYPE MODULE FILES "/root/CLionProjects/tshark_shanghai/cmake-build-debug/run/plugins/3.4/epan/mate.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/epan" TYPE MODULE FILES "/root/CLionProjects/tshark_gongjv/cmake-build-debug/run/plugins/3.4/epan/mate.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/epan/mate.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/epan/mate.so")
     file(RPATH_CHANGE

@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/epan/wmem
+# Install script for directory: /root/CLionProjects/tshark_gongjv/epan/wmem
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,20 +39,20 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/wireshark/epan/wmem" TYPE FILE FILES
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_array.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_core.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_list.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_map.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_miscutl.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_queue.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_scopes.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_stack.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_strbuf.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_strutl.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_tree.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_interval_tree.h"
-    "/root/CLionProjects/tshark_shanghai/epan/wmem/wmem_user_cb.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_array.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_core.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_list.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_map.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_miscutl.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_queue.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_scopes.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_stack.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_strbuf.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_strutl.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_tree.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_interval_tree.h"
+    "/root/CLionProjects/tshark_gongjv/epan/wmem/wmem_user_cb.h"
     )
 endif()
 

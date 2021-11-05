@@ -6,7 +6,7 @@ C_FLAGS = -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-lab
 
 C_DEFINES = -DG_DISABLE_DEPRECATED -DG_DISABLE_SINGLE_INCLUDES -DWS_BUILD_DLL -Dwiretap_EXPORTS
 
-C_INCLUDES = -I/root/CLionProjects/tshark_shanghai/cmake-build-debug -I/root/CLionProjects/tshark_shanghai -I/root/CLionProjects/tshark_shanghai/wiretap -I/root/CLionProjects/tshark_shanghai/cmake-build-debug/wiretap -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
+C_INCLUDES = -I/root/CLionProjects/tshark_gongjv/cmake-build-debug -I/root/CLionProjects/tshark_gongjv -I/root/CLionProjects/tshark_gongjv/wiretap -I/root/CLionProjects/tshark_gongjv/cmake-build-debug/wiretap -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
 
 # Custom flags: wiretap/CMakeFiles/wiretap.dir/5views.c.o_FLAGS = 
 

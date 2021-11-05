@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-camel.
 
@@ -76,9 +76,9 @@ epan/dissectors/asn1/camel/packet-camel-stamp: ../epan/dissectors/asn1/camel/cam
 epan/dissectors/asn1/camel/packet-camel-stamp: ../epan/dissectors/asn1/camel/camel.cnf
 epan/dissectors/asn1/camel/packet-camel-stamp: epan/dissectors/asn1/inap/inap-exp.cnf
 epan/dissectors/asn1/camel/packet-camel-stamp: epan/dissectors/asn1/gsm_map/gsm_map-exp.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-camel-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/camel && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -b -L -p camel -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/camel/camel.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/camel/packet-camel-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/camel -O /root/CLionProjects/tshark_shanghai/epan/dissectors CAP-object-identifiers.asn CAP-classes.asn CAP-datatypes.asn CAP-errorcodes.asn CAP-errortypes.asn CAP-operationcodes.asn CAP-GPRS-ReferenceNumber.asn CAP-gsmSCF-gsmSRF-ops-args.asn CAP-gsmSSF-gsmSCF-ops-args.asn CAP-gprsSSF-gsmSCF-ops-args.asn CAP-SMS-ops-args.asn CAP-U-ABORT-Data.asn CamelV2diff.asn ../ros/Remote-Operations-Information-Objects.asn ../ros/Remote-Operations-Generic-ROS-PDUs.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/camel && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-camel.c packet-camel-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-camel-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/camel && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -b -L -p camel -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/camel/camel.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/camel/packet-camel-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/camel -O /root/CLionProjects/tshark_gongjv/epan/dissectors CAP-object-identifiers.asn CAP-classes.asn CAP-datatypes.asn CAP-errorcodes.asn CAP-errortypes.asn CAP-operationcodes.asn CAP-GPRS-ReferenceNumber.asn CAP-gsmSCF-gsmSRF-ops-args.asn CAP-gsmSSF-gsmSCF-ops-args.asn CAP-gprsSSF-gsmSCF-ops-args.asn CAP-SMS-ops-args.asn CAP-U-ABORT-Data.asn CamelV2diff.asn ../ros/Remote-Operations-Information-Objects.asn ../ros/Remote-Operations-Generic-ROS-PDUs.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/camel && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-camel.c packet-camel-stamp
 
 generate_dissector-camel: epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel
 generate_dissector-camel: epan/dissectors/asn1/camel/packet-camel-stamp
@@ -92,10 +92,10 @@ epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel.dir/build: genera
 .PHONY : epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel.dir/build
 
 epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/camel && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-camel.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/camel && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-camel.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel.dir/clean
 
 epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/camel /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/camel /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/camel /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/camel /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/camel/CMakeFiles/generate_dissector-camel.dir/depend
 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/extcap/udpdump.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/extcap/CMakeFiles/udpdump.dir/udpdump.c.o"
+  "/root/CLionProjects/tshark_gongjv/extcap/udpdump.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/extcap/CMakeFiles/udpdump.dir/udpdump.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -24,8 +24,8 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/writecap/CMakeFiles/writecap.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/writecap/CMakeFiles/writecap.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

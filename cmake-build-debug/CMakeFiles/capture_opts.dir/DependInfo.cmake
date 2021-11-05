@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/capture_opts.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/capture_opts.dir/capture_opts.c.o"
+  "/root/CLionProjects/tshark_gongjv/capture_opts.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/capture_opts.dir/capture_opts.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

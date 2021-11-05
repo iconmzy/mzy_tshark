@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-spnego.
 
@@ -60,9 +60,9 @@ epan/dissectors/asn1/spnego/packet-spnego-stamp: ../tools/asn2wrs.py
 epan/dissectors/asn1/spnego/packet-spnego-stamp: ../epan/dissectors/asn1/spnego/spnego.asn
 epan/dissectors/asn1/spnego/packet-spnego-stamp: ../epan/dissectors/asn1/spnego/packet-spnego-template.c
 epan/dissectors/asn1/spnego/packet-spnego-stamp: ../epan/dissectors/asn1/spnego/spnego.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-spnego-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/spnego && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -b -p spnego -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/spnego/spnego.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/spnego/packet-spnego-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/spnego -O /root/CLionProjects/tshark_shanghai/epan/dissectors spnego.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/spnego && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-spnego.c packet-spnego-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-spnego-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/spnego && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -b -p spnego -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/spnego/spnego.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/spnego/packet-spnego-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/spnego -O /root/CLionProjects/tshark_gongjv/epan/dissectors spnego.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/spnego && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-spnego.c packet-spnego-stamp
 
 generate_dissector-spnego: epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego
 generate_dissector-spnego: epan/dissectors/asn1/spnego/packet-spnego-stamp
@@ -76,10 +76,10 @@ epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego.dir/build: gene
 .PHONY : epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego.dir/build
 
 epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/spnego && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-spnego.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/spnego && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-spnego.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego.dir/clean
 
 epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/spnego /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/spnego /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/spnego /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/spnego /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/spnego/CMakeFiles/generate_dissector-spnego.dir/depend
 

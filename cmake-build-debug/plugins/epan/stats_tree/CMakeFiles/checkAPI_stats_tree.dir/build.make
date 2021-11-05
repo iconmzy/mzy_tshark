@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_stats_tree.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/progress.make
 
 plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_stats_tree"
-	cd /root/CLionProjects/tshark_shanghai/plugins/epan/stats_tree && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl -g abort -g termoutput stats_tree_plugin.c pinfo_stats_tree.c pinfo_stats_tree.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_stats_tree"
+	cd /root/CLionProjects/tshark_gongjv/plugins/epan/stats_tree && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl -g abort -g termoutput stats_tree_plugin.c pinfo_stats_tree.c pinfo_stats_tree.h
 
 checkAPI_stats_tree: plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree
 checkAPI_stats_tree: plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/build.make
@@ -68,10 +68,10 @@ plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/build: checkAPI_stats
 .PHONY : plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/build
 
 plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/stats_tree && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_stats_tree.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/stats_tree && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_stats_tree.dir/cmake_clean.cmake
 .PHONY : plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/clean
 
 plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/epan/stats_tree /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/stats_tree /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/epan/stats_tree /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/stats_tree /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/epan/stats_tree/CMakeFiles/checkAPI_stats_tree.dir/depend
 

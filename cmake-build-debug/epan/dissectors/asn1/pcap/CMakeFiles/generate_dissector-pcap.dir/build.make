@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-pcap.
 
@@ -65,9 +65,9 @@ epan/dissectors/asn1/pcap/packet-pcap-stamp: ../epan/dissectors/asn1/pcap/PCAP-P
 epan/dissectors/asn1/pcap/packet-pcap-stamp: ../epan/dissectors/asn1/pcap/PCAP-PDU-Descriptions.asn
 epan/dissectors/asn1/pcap/packet-pcap-stamp: ../epan/dissectors/asn1/pcap/packet-pcap-template.c
 epan/dissectors/asn1/pcap/packet-pcap-stamp: ../epan/dissectors/asn1/pcap/pcap.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-pcap-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/pcap && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -p pcap -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/pcap/pcap.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/pcap/packet-pcap-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/pcap -O /root/CLionProjects/tshark_shanghai/epan/dissectors PCAP-CommonDataTypes.asn PCAP-Constants.asn PCAP-Containers.asn PCAP-IEs.asn PCAP-PDU-Contents.asn PCAP-PDU-Descriptions.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/pcap && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-pcap.c packet-pcap-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-pcap-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/pcap && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -p pcap -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/pcap/pcap.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/pcap/packet-pcap-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/pcap -O /root/CLionProjects/tshark_gongjv/epan/dissectors PCAP-CommonDataTypes.asn PCAP-Constants.asn PCAP-Containers.asn PCAP-IEs.asn PCAP-PDU-Contents.asn PCAP-PDU-Descriptions.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/pcap && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-pcap.c packet-pcap-stamp
 
 generate_dissector-pcap: epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap
 generate_dissector-pcap: epan/dissectors/asn1/pcap/packet-pcap-stamp
@@ -81,10 +81,10 @@ epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap.dir/build: generate
 .PHONY : epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap.dir/build
 
 epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/pcap && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-pcap.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/pcap && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-pcap.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap.dir/clean
 
 epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/pcap /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/pcap /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/pcap /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/pcap /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/pcap/CMakeFiles/generate_dissector-pcap.dir/depend
 

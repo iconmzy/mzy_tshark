@@ -12,9 +12,9 @@ CMakeFiles/version_info.dir/version_info.c.o
  ../wsutil/os_version_info.h
  ../wsutil/plugins.h
  ../wsutil/ws_printf.h
- /root/CLionProjects/tshark_shanghai/version.h
- /root/CLionProjects/tshark_shanghai/version_info.c
- /root/CLionProjects/tshark_shanghai/version_info.h
+ /root/CLionProjects/tshark_gongjv/version.h
+ /root/CLionProjects/tshark_gongjv/version_info.c
+ /root/CLionProjects/tshark_gongjv/version_info.h
  /usr/include/glib-2.0/glib.h
  /usr/include/glib-2.0/glib/deprecated/gallocator.h
  /usr/include/glib-2.0/glib/deprecated/gcache.h

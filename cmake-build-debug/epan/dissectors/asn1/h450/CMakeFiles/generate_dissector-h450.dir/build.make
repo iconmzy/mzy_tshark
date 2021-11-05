@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-h450.
 
@@ -77,9 +77,9 @@ epan/dissectors/asn1/h450/packet-h450-stamp: ../epan/dissectors/asn1/h450/packet
 epan/dissectors/asn1/h450/packet-h450-stamp: ../epan/dissectors/asn1/h450/h450.cnf
 epan/dissectors/asn1/h450/packet-h450-stamp: epan/dissectors/asn1/h225/h225-exp.cnf
 epan/dissectors/asn1/h450/packet-h450-stamp: epan/dissectors/asn1/h450-ros/h450-ros-exp.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-h450-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/h450 && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/h450/h450.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/h450/packet-h450-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/h450 -O /root/CLionProjects/tshark_shanghai/epan/dissectors H4501-Supplementary-ServiceAPDU-Structure.asn Addressing-Data-Elements.asn H225-generic-parameters-definition.asn Manufacturer-specific-service-extension-definition.asn H4501-General-Error-List.asn Call-Transfer-Operations.asn Call-Diversion-Operations.asn Call-Hold-Operations.asn Call-Park-Pickup-Operations.asn Call-Waiting-Operations.asn Message-Waiting-Indication-Operations.asn Name-Operations.asn Call-Completion-Operations.asn Call-Offer-Operations.asn Call-Intrusion-Operations.asn Common-Information-Operations.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/h450 && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-h450.c packet-h450-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-h450-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/h450 && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/h450/h450.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/h450/packet-h450-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/h450 -O /root/CLionProjects/tshark_gongjv/epan/dissectors H4501-Supplementary-ServiceAPDU-Structure.asn Addressing-Data-Elements.asn H225-generic-parameters-definition.asn Manufacturer-specific-service-extension-definition.asn H4501-General-Error-List.asn Call-Transfer-Operations.asn Call-Diversion-Operations.asn Call-Hold-Operations.asn Call-Park-Pickup-Operations.asn Call-Waiting-Operations.asn Message-Waiting-Indication-Operations.asn Name-Operations.asn Call-Completion-Operations.asn Call-Offer-Operations.asn Call-Intrusion-Operations.asn Common-Information-Operations.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/h450 && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-h450.c packet-h450-stamp
 
 generate_dissector-h450: epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450
 generate_dissector-h450: epan/dissectors/asn1/h450/packet-h450-stamp
@@ -93,10 +93,10 @@ epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450.dir/build: generate
 .PHONY : epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450.dir/build
 
 epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/h450 && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-h450.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/h450 && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-h450.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450.dir/clean
 
 epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/h450 /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/h450 /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/h450 /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/h450 /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/h450/CMakeFiles/generate_dissector-h450.dir/depend
 

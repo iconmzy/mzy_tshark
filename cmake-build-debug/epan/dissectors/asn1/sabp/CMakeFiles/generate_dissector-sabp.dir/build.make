@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-sabp.
 
@@ -65,9 +65,9 @@ epan/dissectors/asn1/sabp/packet-sabp-stamp: ../epan/dissectors/asn1/sabp/SABP-P
 epan/dissectors/asn1/sabp/packet-sabp-stamp: ../epan/dissectors/asn1/sabp/SABP-PDU-Descriptions.asn
 epan/dissectors/asn1/sabp/packet-sabp-stamp: ../epan/dissectors/asn1/sabp/packet-sabp-template.c
 epan/dissectors/asn1/sabp/packet-sabp-stamp: ../epan/dissectors/asn1/sabp/sabp.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-sabp-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/sabp && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -p sabp -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/sabp/sabp.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/sabp/packet-sabp-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/sabp -O /root/CLionProjects/tshark_shanghai/epan/dissectors SABP-CommonDataTypes.asn SABP-Constants.asn SABP-Containers.asn SABP-IEs.asn SABP-PDU-Contents.asn SABP-PDU-Descriptions.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/sabp && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-sabp.c packet-sabp-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-sabp-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/sabp && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -p sabp -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/sabp/sabp.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/sabp/packet-sabp-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/sabp -O /root/CLionProjects/tshark_gongjv/epan/dissectors SABP-CommonDataTypes.asn SABP-Constants.asn SABP-Containers.asn SABP-IEs.asn SABP-PDU-Contents.asn SABP-PDU-Descriptions.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/sabp && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-sabp.c packet-sabp-stamp
 
 generate_dissector-sabp: epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp
 generate_dissector-sabp: epan/dissectors/asn1/sabp/packet-sabp-stamp
@@ -81,10 +81,10 @@ epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp.dir/build: generate
 .PHONY : epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp.dir/build
 
 epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/sabp && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-sabp.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/sabp && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-sabp.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp.dir/clean
 
 epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/sabp /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/sabp /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/sabp /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/sabp /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/sabp/CMakeFiles/generate_dissector-sabp.dir/depend
 

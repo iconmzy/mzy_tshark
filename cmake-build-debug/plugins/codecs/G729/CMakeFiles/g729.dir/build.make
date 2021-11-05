@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include plugins/codecs/G729/CMakeFiles/g729.dir/depend.make
@@ -59,34 +59,34 @@ include plugins/codecs/G729/CMakeFiles/g729.dir/flags.make
 
 plugins/codecs/G729/plugin.c: ../plugins/codecs/G729/G729decode.c
 plugins/codecs/G729/plugin.c: ../tools/make-plugin-reg.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating plugin.c"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/make-plugin-reg.py /root/CLionProjects/tshark_shanghai/plugins/codecs/G729 plugin_codec G729decode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating plugin.c"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/make-plugin-reg.py /root/CLionProjects/tshark_gongjv/plugins/codecs/G729 plugin_codec G729decode.c
 
 plugins/codecs/G729/CMakeFiles/g729.dir/plugin.c.o: plugins/codecs/G729/CMakeFiles/g729.dir/flags.make
 plugins/codecs/G729/CMakeFiles/g729.dir/plugin.c.o: plugins/codecs/G729/plugin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object plugins/codecs/G729/CMakeFiles/g729.dir/plugin.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/g729.dir/plugin.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729/plugin.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object plugins/codecs/G729/CMakeFiles/g729.dir/plugin.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/g729.dir/plugin.c.o   -c /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729/plugin.c
 
 plugins/codecs/G729/CMakeFiles/g729.dir/plugin.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/g729.dir/plugin.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729/plugin.c > CMakeFiles/g729.dir/plugin.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729/plugin.c > CMakeFiles/g729.dir/plugin.c.i
 
 plugins/codecs/G729/CMakeFiles/g729.dir/plugin.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/g729.dir/plugin.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729/plugin.c -o CMakeFiles/g729.dir/plugin.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729/plugin.c -o CMakeFiles/g729.dir/plugin.c.s
 
 plugins/codecs/G729/CMakeFiles/g729.dir/G729decode.c.o: plugins/codecs/G729/CMakeFiles/g729.dir/flags.make
 plugins/codecs/G729/CMakeFiles/g729.dir/G729decode.c.o: ../plugins/codecs/G729/G729decode.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object plugins/codecs/G729/CMakeFiles/g729.dir/G729decode.c.o"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/g729.dir/G729decode.c.o   -c /root/CLionProjects/tshark_shanghai/plugins/codecs/G729/G729decode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object plugins/codecs/G729/CMakeFiles/g729.dir/G729decode.c.o"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/g729.dir/G729decode.c.o   -c /root/CLionProjects/tshark_gongjv/plugins/codecs/G729/G729decode.c
 
 plugins/codecs/G729/CMakeFiles/g729.dir/G729decode.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/g729.dir/G729decode.c.i"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_shanghai/plugins/codecs/G729/G729decode.c > CMakeFiles/g729.dir/G729decode.c.i
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/CLionProjects/tshark_gongjv/plugins/codecs/G729/G729decode.c > CMakeFiles/g729.dir/G729decode.c.i
 
 plugins/codecs/G729/CMakeFiles/g729.dir/G729decode.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/g729.dir/G729decode.c.s"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_shanghai/plugins/codecs/G729/G729decode.c -o CMakeFiles/g729.dir/G729decode.c.s
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/CLionProjects/tshark_gongjv/plugins/codecs/G729/G729decode.c -o CMakeFiles/g729.dir/G729decode.c.s
 
 # Object files for target g729
 g729_OBJECTS = \
@@ -106,8 +106,8 @@ run/plugins/3.4/codecs/g729.so: /usr/lib64/libglib-2.0.so
 run/plugins/3.4/codecs/g729.so: /usr/lib64/libgcrypt.so
 run/plugins/3.4/codecs/g729.so: /usr/lib64/libgpg-error.so
 run/plugins/3.4/codecs/g729.so: plugins/codecs/G729/CMakeFiles/g729.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared module ../../../run/plugins/3.4/codecs/g729.so"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/g729.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared module ../../../run/plugins/3.4/codecs/g729.so"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/g729.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 plugins/codecs/G729/CMakeFiles/g729.dir/build: run/plugins/3.4/codecs/g729.so
@@ -115,10 +115,10 @@ plugins/codecs/G729/CMakeFiles/g729.dir/build: run/plugins/3.4/codecs/g729.so
 .PHONY : plugins/codecs/G729/CMakeFiles/g729.dir/build
 
 plugins/codecs/G729/CMakeFiles/g729.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 && $(CMAKE_COMMAND) -P CMakeFiles/g729.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 && $(CMAKE_COMMAND) -P CMakeFiles/g729.dir/cmake_clean.cmake
 .PHONY : plugins/codecs/G729/CMakeFiles/g729.dir/clean
 
 plugins/codecs/G729/CMakeFiles/g729.dir/depend: plugins/codecs/G729/plugin.c
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/codecs/G729 /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729 /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G729/CMakeFiles/g729.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/codecs/G729 /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729 /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G729/CMakeFiles/g729.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/codecs/G729/CMakeFiles/g729.dir/depend
 

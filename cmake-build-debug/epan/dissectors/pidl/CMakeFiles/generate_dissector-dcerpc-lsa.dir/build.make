@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-dcerpc-lsa.
 
@@ -60,9 +60,9 @@ epan/dissectors/pidl/packet-dcerpc-lsa-stamp: ../tools/pidl/pidl
 epan/dissectors/pidl/packet-dcerpc-lsa-stamp: ../epan/dissectors/pidl/lsa/lsa.idl
 epan/dissectors/pidl/packet-dcerpc-lsa-stamp: ../epan/dissectors/pidl/lsa/lsa.cnf
 epan/dissectors/pidl/packet-dcerpc-lsa-stamp: ../epan/dissectors/pidl/idl_types.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-dcerpc-lsa-stamp"
-	cd /root/CLionProjects/tshark_shanghai/epan/dissectors/pidl/lsa && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/pidl/pidl --ws-parser --outputdir ../.. --includedir .. -- lsa.idl
-	cd /root/CLionProjects/tshark_shanghai/epan/dissectors/pidl/lsa && /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E touch /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/pidl/packet-dcerpc-lsa-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-dcerpc-lsa-stamp"
+	cd /root/CLionProjects/tshark_gongjv/epan/dissectors/pidl/lsa && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/pidl/pidl --ws-parser --outputdir ../.. --includedir .. -- lsa.idl
+	cd /root/CLionProjects/tshark_gongjv/epan/dissectors/pidl/lsa && /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E touch /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/pidl/packet-dcerpc-lsa-stamp
 
 generate_dissector-dcerpc-lsa: epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa
 generate_dissector-dcerpc-lsa: epan/dissectors/pidl/packet-dcerpc-lsa-stamp
@@ -76,10 +76,10 @@ epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa.dir/build: generat
 .PHONY : epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa.dir/build
 
 epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/pidl && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-dcerpc-lsa.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/pidl && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-dcerpc-lsa.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa.dir/clean
 
 epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/pidl /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/pidl /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/pidl /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/pidl /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/pidl/CMakeFiles/generate_dissector-dcerpc-lsa.dir/depend
 

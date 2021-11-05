@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_transum.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/progress.make
 
 plugins/epan/transum/CMakeFiles/checkAPI_transum:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_transum"
-	cd /root/CLionProjects/tshark_shanghai/plugins/epan/transum && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl --group abort --group termoutput:1 --summary-group termoutput packet-transum.c decoders.c extractors.c decoders.h extractors.h packet-transum.h preferences.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_transum"
+	cd /root/CLionProjects/tshark_gongjv/plugins/epan/transum && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl --group abort --group termoutput:1 --summary-group termoutput packet-transum.c decoders.c extractors.c decoders.h extractors.h packet-transum.h preferences.h
 
 checkAPI_transum: plugins/epan/transum/CMakeFiles/checkAPI_transum
 checkAPI_transum: plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/build.make
@@ -68,10 +68,10 @@ plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/build: checkAPI_transum
 .PHONY : plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/build
 
 plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/transum && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_transum.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/transum && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_transum.dir/cmake_clean.cmake
 .PHONY : plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/clean
 
 plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/epan/transum /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/transum /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/epan/transum /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/transum /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/epan/transum/CMakeFiles/checkAPI_transum.dir/depend
 

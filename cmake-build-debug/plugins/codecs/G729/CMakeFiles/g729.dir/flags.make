@@ -6,7 +6,7 @@ C_FLAGS = -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-lab
 
 C_DEFINES = -DG_DISABLE_DEPRECATED -DG_DISABLE_SINGLE_INCLUDES -DPLUGIN_VERSION=\"0.1.0\" -Dg729_EXPORTS
 
-C_INCLUDES = -I/root/CLionProjects/tshark_shanghai/cmake-build-debug -I/root/CLionProjects/tshark_shanghai -I/root/CLionProjects/tshark_shanghai/codecs -I/root/CLionProjects/tshark_shanghai/plugins/codecs/G729 -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
+C_INCLUDES = -I/root/CLionProjects/tshark_gongjv/cmake-build-debug -I/root/CLionProjects/tshark_gongjv -I/root/CLionProjects/tshark_gongjv/codecs -I/root/CLionProjects/tshark_gongjv/plugins/codecs/G729 -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
 
 # Custom flags: plugins/codecs/G729/CMakeFiles/g729.dir/plugin.c.o_FLAGS = 
 

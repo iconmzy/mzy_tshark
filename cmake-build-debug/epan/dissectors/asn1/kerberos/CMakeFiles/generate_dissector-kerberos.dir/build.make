@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-kerberos.
 
@@ -64,9 +64,9 @@ epan/dissectors/asn1/kerberos/packet-kerberos-stamp: ../epan/dissectors/asn1/ker
 epan/dissectors/asn1/kerberos/packet-kerberos-stamp: ../epan/dissectors/asn1/kerberos/packet-kerberos-template.c
 epan/dissectors/asn1/kerberos/packet-kerberos-stamp: ../epan/dissectors/asn1/kerberos/packet-kerberos-template.h
 epan/dissectors/asn1/kerberos/packet-kerberos-stamp: ../epan/dissectors/asn1/kerberos/kerberos.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-kerberos-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -b -p kerberos -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/kerberos/kerberos.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/kerberos/packet-kerberos-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/kerberos -O /root/CLionProjects/tshark_shanghai/epan/dissectors KerberosV5Spec2.asn k5.asn RFC3244.asn RFC6113.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-kerberos.c packet-kerberos-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-kerberos-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -b -p kerberos -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/kerberos/kerberos.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/kerberos/packet-kerberos-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/kerberos -O /root/CLionProjects/tshark_gongjv/epan/dissectors KerberosV5Spec2.asn k5.asn RFC3244.asn RFC6113.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-kerberos.c packet-kerberos-stamp
 
 generate_dissector-kerberos: epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos
 generate_dissector-kerberos: epan/dissectors/asn1/kerberos/packet-kerberos-stamp
@@ -80,10 +80,10 @@ epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos.dir/build: 
 .PHONY : epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos.dir/build
 
 epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-kerberos.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-kerberos.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos.dir/clean
 
 epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/kerberos /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/kerberos /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/kerberos/CMakeFiles/generate_dissector-kerberos.dir/depend
 

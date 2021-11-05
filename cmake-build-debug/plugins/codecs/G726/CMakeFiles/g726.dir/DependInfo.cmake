@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/plugins/codecs/G726/G726decode.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G726/CMakeFiles/g726.dir/G726decode.c.o"
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G726/plugin.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G726/CMakeFiles/g726.dir/plugin.c.o"
+  "/root/CLionProjects/tshark_gongjv/plugins/codecs/G726/G726decode.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G726/CMakeFiles/g726.dir/G726decode.c.o"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G726/plugin.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G726/CMakeFiles/g726.dir/plugin.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -29,7 +29,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/root/CLionProjects/tshark_shanghai/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
+  "/root/CLionProjects/tshark_gongjv/cmake-build-debug/wsutil/CMakeFiles/wsutil.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

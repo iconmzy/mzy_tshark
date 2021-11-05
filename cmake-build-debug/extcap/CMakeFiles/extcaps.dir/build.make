@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for extcaps.
 
@@ -63,10 +63,10 @@ extcap/CMakeFiles/extcaps.dir/build: extcaps
 .PHONY : extcap/CMakeFiles/extcaps.dir/build
 
 extcap/CMakeFiles/extcaps.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/extcap && $(CMAKE_COMMAND) -P CMakeFiles/extcaps.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/extcap && $(CMAKE_COMMAND) -P CMakeFiles/extcaps.dir/cmake_clean.cmake
 .PHONY : extcap/CMakeFiles/extcaps.dir/clean
 
 extcap/CMakeFiles/extcaps.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/extcap /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/extcap /root/CLionProjects/tshark_shanghai/cmake-build-debug/extcap/CMakeFiles/extcaps.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/extcap /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/extcap /root/CLionProjects/tshark_gongjv/cmake-build-debug/extcap/CMakeFiles/extcaps.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : extcap/CMakeFiles/extcaps.dir/depend
 

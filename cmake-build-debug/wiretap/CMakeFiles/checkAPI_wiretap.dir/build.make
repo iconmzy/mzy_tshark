@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_wiretap.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include wiretap/CMakeFiles/checkAPI_wiretap.dir/progress.make
 
 wiretap/CMakeFiles/checkAPI_wiretap:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_wiretap"
-	cd /root/CLionProjects/tshark_shanghai/wiretap && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl --group abort:11 --summary-group abort --group termoutput:1 --summary-group termoutput 5views.c aethra.c ascendtext.c atm.c ber.c btsnoop.c busmaster.c camins.c candump.c capsa.c catapult_dct2000.c commview.c cosine.c csids.c daintree-sna.c dbs-etherwatch.c dpa400.c dct3trace.c erf.c eyesdn.c file_access.c file_wrappers.c hcidump.c i4btrace.c ipfix.c iptrace.c iseries.c json.c k12.c lanalyzer.c libpcap.c log3gpp.c logcat.c logcat_text.c merge.c mp4.c mpeg.c mplog.c mime_file.c mp2t.c netmon.c netscaler.c netscreen.c nettl.c nettrace_3gpp_32_423.c network_instruments.c netxray.c ngsniffer.c packetlogger.c pcap-common.c pcapng.c peekclassic.c peektagged.c rfc7468.c pppdump.c radcom.c ruby_marshal.c snoop.c stanag4607.c systemd_journal.c tnef.c toshiba.c visual.c vms.c vwr.c wtap.c wtap_opttypes.c /root/CLionProjects/tshark_shanghai/cmake-build-debug/wiretap/ascend.y /root/CLionProjects/tshark_shanghai/wiretap/busmaster_parser.lemon /root/CLionProjects/tshark_shanghai/wiretap/candump_parser.lemon
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_wiretap"
+	cd /root/CLionProjects/tshark_gongjv/wiretap && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl --group abort:11 --summary-group abort --group termoutput:1 --summary-group termoutput 5views.c aethra.c ascendtext.c atm.c ber.c btsnoop.c busmaster.c camins.c candump.c capsa.c catapult_dct2000.c commview.c cosine.c csids.c daintree-sna.c dbs-etherwatch.c dpa400.c dct3trace.c erf.c eyesdn.c file_access.c file_wrappers.c hcidump.c i4btrace.c ipfix.c iptrace.c iseries.c json.c k12.c lanalyzer.c libpcap.c log3gpp.c logcat.c logcat_text.c merge.c mp4.c mpeg.c mplog.c mime_file.c mp2t.c netmon.c netscaler.c netscreen.c nettl.c nettrace_3gpp_32_423.c network_instruments.c netxray.c ngsniffer.c packetlogger.c pcap-common.c pcapng.c peekclassic.c peektagged.c rfc7468.c pppdump.c radcom.c ruby_marshal.c snoop.c stanag4607.c systemd_journal.c tnef.c toshiba.c visual.c vms.c vwr.c wtap.c wtap_opttypes.c /root/CLionProjects/tshark_gongjv/cmake-build-debug/wiretap/ascend.y /root/CLionProjects/tshark_gongjv/wiretap/busmaster_parser.lemon /root/CLionProjects/tshark_gongjv/wiretap/candump_parser.lemon
 
 checkAPI_wiretap: wiretap/CMakeFiles/checkAPI_wiretap
 checkAPI_wiretap: wiretap/CMakeFiles/checkAPI_wiretap.dir/build.make
@@ -68,10 +68,10 @@ wiretap/CMakeFiles/checkAPI_wiretap.dir/build: checkAPI_wiretap
 .PHONY : wiretap/CMakeFiles/checkAPI_wiretap.dir/build
 
 wiretap/CMakeFiles/checkAPI_wiretap.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/wiretap && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_wiretap.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/wiretap && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_wiretap.dir/cmake_clean.cmake
 .PHONY : wiretap/CMakeFiles/checkAPI_wiretap.dir/clean
 
 wiretap/CMakeFiles/checkAPI_wiretap.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/wiretap /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/wiretap /root/CLionProjects/tshark_shanghai/cmake-build-debug/wiretap/CMakeFiles/checkAPI_wiretap.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/wiretap /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/wiretap /root/CLionProjects/tshark_gongjv/cmake-build-debug/wiretap/CMakeFiles/checkAPI_wiretap.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : wiretap/CMakeFiles/checkAPI_wiretap.dir/depend
 

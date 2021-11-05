@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate_dissector-its.
 
@@ -76,9 +76,9 @@ epan/dissectors/asn1/its/packet-its-stamp: ../epan/dissectors/asn1/its/EVCSN-PDU
 epan/dissectors/asn1/its/packet-its-stamp: ../epan/dissectors/asn1/its/EV-RSR-PDU-Descriptions.asn
 epan/dissectors/asn1/its/packet-its-stamp: ../epan/dissectors/asn1/its/packet-its-template.c
 epan/dissectors/asn1/its/packet-its-stamp: ../epan/dissectors/asn1/its/its.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-its-stamp"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/its && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -o its -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/its/its.cnf -s /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/its/packet-its-template -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/its -O /root/CLionProjects/tshark_shanghai/epan/dissectors ITS-Container.asn ITS-ContainerV1.asn ISO_TS_14816.asn ISO_TS_24534-3.asn ISO_TS_17419.asn ISO_TS_14906_Application.asn ISO_TS_19091.asn GDD.asn ISO19321IVIv2.asn ETSI_TS_103301.asn CAMv1.asn CAM.asn DENMv1.asn DENM.asn TIS_TPG_Transactions_Descriptions.asn EVCSN-PDU-Descriptions.asn EV-RSR-PDU-Descriptions.asn
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/its && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_shanghai/epan/dissectors/packet-its.c packet-its-stamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating packet-its-stamp"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/its && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -o its -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/its/its.cnf -s /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/its/packet-its-template -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/its -O /root/CLionProjects/tshark_gongjv/epan/dissectors ITS-Container.asn ITS-ContainerV1.asn ISO_TS_14816.asn ISO_TS_24534-3.asn ISO_TS_17419.asn ISO_TS_14906_Application.asn ISO_TS_19091.asn GDD.asn ISO19321IVIv2.asn ETSI_TS_103301.asn CAMv1.asn CAM.asn DENMv1.asn DENM.asn TIS_TPG_Transactions_Descriptions.asn EVCSN-PDU-Descriptions.asn EV-RSR-PDU-Descriptions.asn
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/its && /usr/bin/python3.6 -c "import shutil, sys; x,s,d=sys.argv; open(d, 'w'); shutil.copystat(s, d)" /root/CLionProjects/tshark_gongjv/epan/dissectors/packet-its.c packet-its-stamp
 
 generate_dissector-its: epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its
 generate_dissector-its: epan/dissectors/asn1/its/packet-its-stamp
@@ -92,10 +92,10 @@ epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its.dir/build: generate_d
 .PHONY : epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its.dir/build
 
 epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/its && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-its.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/its && $(CMAKE_COMMAND) -P CMakeFiles/generate_dissector-its.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its.dir/clean
 
 epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/its /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/its /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/its /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/its /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/its/CMakeFiles/generate_dissector-its.dir/depend
 

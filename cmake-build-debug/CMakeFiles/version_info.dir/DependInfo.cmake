@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/root/CLionProjects/tshark_shanghai/version_info.c" "/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/version_info.dir/version_info.c.o"
+  "/root/CLionProjects/tshark_gongjv/version_info.c" "/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/version_info.dir/version_info.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

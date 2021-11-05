@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_wimaxmacphy.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/progress.make
 
 plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_wimaxmacphy"
-	cd /root/CLionProjects/tshark_shanghai/plugins/epan/wimaxmacphy && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl -g abort -g termoutput packet-wimaxmacphy.c packet-wimaxmacphy.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_wimaxmacphy"
+	cd /root/CLionProjects/tshark_gongjv/plugins/epan/wimaxmacphy && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl -g abort -g termoutput packet-wimaxmacphy.c packet-wimaxmacphy.h
 
 checkAPI_wimaxmacphy: plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy
 checkAPI_wimaxmacphy: plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/build.make
@@ -68,10 +68,10 @@ plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/build: checkAPI_wim
 .PHONY : plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/build
 
 plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_wimaxmacphy.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_wimaxmacphy.dir/cmake_clean.cmake
 .PHONY : plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/clean
 
 plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/epan/wimaxmacphy /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/epan/wimaxmacphy /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/epan/wimaxmacphy/CMakeFiles/checkAPI_wimaxmacphy.dir/depend
 

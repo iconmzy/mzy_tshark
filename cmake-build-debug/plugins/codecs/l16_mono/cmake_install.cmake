@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/plugins/codecs/l16_mono
+# Install script for directory: /root/CLionProjects/tshark_gongjv/plugins/codecs/l16_mono
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/codecs/l16mono.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/codecs" TYPE MODULE FILES "/root/CLionProjects/tshark_shanghai/cmake-build-debug/run/plugins/3.4/codecs/l16mono.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/codecs" TYPE MODULE FILES "/root/CLionProjects/tshark_gongjv/cmake-build-debug/run/plugins/3.4/codecs/l16mono.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/codecs/l16mono.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/wireshark/plugins/3.4/codecs/l16mono.so")
     file(RPATH_CHANGE

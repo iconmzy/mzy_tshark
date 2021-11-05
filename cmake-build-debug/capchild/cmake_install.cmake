@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/capchild
+# Install script for directory: /root/CLionProjects/tshark_gongjv/capchild
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

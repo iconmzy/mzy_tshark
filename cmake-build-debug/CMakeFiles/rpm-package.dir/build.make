@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for rpm-package.
 
@@ -54,12 +54,12 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include CMakeFiles/rpm-package.dir/progress.make
 
 CMakeFiles/rpm-package: packaging/rpm/SOURCES/wireshark-3.4.5.tar.xz
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Create a tarball from the current git commit."
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/packaging/rpm && /usr/bin/rpmbuild --define _topdir\ /root/CLionProjects/tshark_shanghai/cmake-build-debug/packaging/rpm --define _prefix\ /usr/local --without qt5 --with lua --with c_ares --with spandsp --with bcg729 -v -ba SPECS/wireshark.spec
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Create a tarball from the current git commit."
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/packaging/rpm && /usr/bin/rpmbuild --define _topdir\ /root/CLionProjects/tshark_gongjv/cmake-build-debug/packaging/rpm --define _prefix\ /usr/local --without qt5 --with lua --with c_ares --with spandsp --with bcg729 -v -ba SPECS/wireshark.spec
 
 packaging/rpm/SOURCES/wireshark-3.4.5.tar.xz:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating packaging/rpm/SOURCES/wireshark-3.4.5.tar.xz"
-	cd /root/CLionProjects/tshark_shanghai && /root/CLionProjects/tshark_shanghai/cmake-build-debug/packaging/source/git-export-release.sh -d /root/CLionProjects/tshark_shanghai/cmake-build-debug/packaging/rpm/SOURCES 3.4.5
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating packaging/rpm/SOURCES/wireshark-3.4.5.tar.xz"
+	cd /root/CLionProjects/tshark_gongjv && /root/CLionProjects/tshark_gongjv/cmake-build-debug/packaging/source/git-export-release.sh -d /root/CLionProjects/tshark_gongjv/cmake-build-debug/packaging/rpm/SOURCES 3.4.5
 
 rpm-package: CMakeFiles/rpm-package
 rpm-package: packaging/rpm/SOURCES/wireshark-3.4.5.tar.xz
@@ -77,6 +77,6 @@ CMakeFiles/rpm-package.dir/clean:
 .PHONY : CMakeFiles/rpm-package.dir/clean
 
 CMakeFiles/rpm-package.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/rpm-package.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles/rpm-package.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rpm-package.dir/depend
 

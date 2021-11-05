@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_wsutil.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include wsutil/CMakeFiles/checkAPI_wsutil.dir/progress.make
 
 wsutil/CMakeFiles/checkAPI_wsutil:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_wsutil"
-	cd /root/CLionProjects/tshark_shanghai/wsutil && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl --group termoutput:2 --summary-group termoutput adler32.c base32.c bitswap.c buffer.c codecs.c copyright_info.c crash_info.c crc10.c crc16.c crc16-plain.c crc32.c crc5.c crc6.c crc7.c crc8.c crc11.c curve25519.c dot11decrypt_wep.c eax.c filesystem.c frequency-utils.c g711.c inet_addr.c interface.c jsmn.c json_dumper.c mpeg-audio.c nstime.c cpu_info.c os_version_info.c please_report_bug.c privileges.c rsa.c sober128.c socket.c strnatcmp.c str_util.c strtoi.c report_message.c tempfile.c time_util.c type_util.c unicode-utils.c ws_mempbrk.c ws_pipe.c wsgcrypt.c wsjson.c xtea.c plugins.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_wsutil"
+	cd /root/CLionProjects/tshark_gongjv/wsutil && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl --group termoutput:2 --summary-group termoutput adler32.c base32.c bitswap.c buffer.c codecs.c copyright_info.c crash_info.c crc10.c crc16.c crc16-plain.c crc32.c crc5.c crc6.c crc7.c crc8.c crc11.c curve25519.c dot11decrypt_wep.c eax.c filesystem.c frequency-utils.c g711.c inet_addr.c interface.c jsmn.c json_dumper.c mpeg-audio.c nstime.c cpu_info.c os_version_info.c please_report_bug.c privileges.c rsa.c sober128.c socket.c strnatcmp.c str_util.c strtoi.c report_message.c tempfile.c time_util.c type_util.c unicode-utils.c ws_mempbrk.c ws_pipe.c wsgcrypt.c wsjson.c xtea.c plugins.c
 
 checkAPI_wsutil: wsutil/CMakeFiles/checkAPI_wsutil
 checkAPI_wsutil: wsutil/CMakeFiles/checkAPI_wsutil.dir/build.make
@@ -68,10 +68,10 @@ wsutil/CMakeFiles/checkAPI_wsutil.dir/build: checkAPI_wsutil
 .PHONY : wsutil/CMakeFiles/checkAPI_wsutil.dir/build
 
 wsutil/CMakeFiles/checkAPI_wsutil.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/wsutil && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_wsutil.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/wsutil && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_wsutil.dir/cmake_clean.cmake
 .PHONY : wsutil/CMakeFiles/checkAPI_wsutil.dir/clean
 
 wsutil/CMakeFiles/checkAPI_wsutil.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/wsutil /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/wsutil /root/CLionProjects/tshark_shanghai/cmake-build-debug/wsutil/CMakeFiles/checkAPI_wsutil.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/wsutil /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/wsutil /root/CLionProjects/tshark_gongjv/cmake-build-debug/wsutil/CMakeFiles/checkAPI_wsutil.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : wsutil/CMakeFiles/checkAPI_wsutil.dir/depend
 

@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/sabp
+# Install script for directory: /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/sabp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

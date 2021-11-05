@@ -7,13 +7,13 @@ C_FLAGS = -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-lab
 
 C_DEFINES = -DG_DISABLE_DEPRECATED -DG_DISABLE_SINGLE_INCLUDES -DWS_BUILD_DLL -Depan_EXPORTS
 
-C_INCLUDES = -I/root/CLionProjects/tshark_shanghai/cmake-build-debug -I/root/CLionProjects/tshark_shanghai -I/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan -I/root/CLionProjects/tshark_shanghai/epan -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
+C_INCLUDES = -I/root/CLionProjects/tshark_gongjv/cmake-build-debug -I/root/CLionProjects/tshark_gongjv -I/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan -I/root/CLionProjects/tshark_gongjv/epan -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
 
 CXX_FLAGS =  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768  -g -fPIC   -std=c++11
 
 CXX_DEFINES = -DG_DISABLE_DEPRECATED -DG_DISABLE_SINGLE_INCLUDES -DWS_BUILD_DLL -Depan_EXPORTS
 
-CXX_INCLUDES = -I/root/CLionProjects/tshark_shanghai/cmake-build-debug -I/root/CLionProjects/tshark_shanghai -I/root/CLionProjects/tshark_shanghai/cmake-build-debug/epan -I/root/CLionProjects/tshark_shanghai/epan -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
+CXX_INCLUDES = -I/root/CLionProjects/tshark_gongjv/cmake-build-debug -I/root/CLionProjects/tshark_gongjv -I/root/CLionProjects/tshark_gongjv/cmake-build-debug/epan -I/root/CLionProjects/tshark_gongjv/epan -isystem /usr/include/glib-2.0 -isystem /usr/lib64/glib-2.0/include 
 
 # Custom flags: epan/CMakeFiles/epan.dir/addr_and_mask.c.o_FLAGS = 
 

@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/epan/ftypes
+# Install script for directory: /root/CLionProjects/tshark_gongjv/epan/ftypes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,6 +38,6 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/wireshark/epan/ftypes" TYPE FILE FILES "/root/CLionProjects/tshark_shanghai/epan/ftypes/ftypes.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/wireshark/epan/ftypes" TYPE FILE FILES "/root/CLionProjects/tshark_gongjv/epan/ftypes/ftypes.h")
 endif()
 

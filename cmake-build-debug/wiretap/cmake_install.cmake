@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/wiretap
+# Install script for directory: /root/CLionProjects/tshark_gongjv/wiretap
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,8 +50,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64" TYPE SHARED_LIBRARY FILES
-    "/root/CLionProjects/tshark_shanghai/cmake-build-debug/run/libwiretap.so.11.0.5"
-    "/root/CLionProjects/tshark_shanghai/cmake-build-debug/run/libwiretap.so.11"
+    "/root/CLionProjects/tshark_gongjv/cmake-build-debug/run/libwiretap.so.11.0.5"
+    "/root/CLionProjects/tshark_gongjv/cmake-build-debug/run/libwiretap.so.11"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/libwiretap.so.11.0.5"
@@ -77,7 +77,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/libwiretap.so"
          RPATH "/usr/local/lib64")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64" TYPE SHARED_LIBRARY FILES "/root/CLionProjects/tshark_shanghai/cmake-build-debug/run/libwiretap.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64" TYPE SHARED_LIBRARY FILES "/root/CLionProjects/tshark_gongjv/cmake-build-debug/run/libwiretap.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/libwiretap.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/libwiretap.so")
     file(RPATH_CHANGE
@@ -92,13 +92,13 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/wireshark/wiretap" TYPE FILE FILES
-    "/root/CLionProjects/tshark_shanghai/wiretap/file_wrappers.h"
-    "/root/CLionProjects/tshark_shanghai/wiretap/merge.h"
-    "/root/CLionProjects/tshark_shanghai/wiretap/pcap-encap.h"
-    "/root/CLionProjects/tshark_shanghai/wiretap/pcapng_module.h"
-    "/root/CLionProjects/tshark_shanghai/wiretap/secrets-types.h"
-    "/root/CLionProjects/tshark_shanghai/wiretap/wtap.h"
-    "/root/CLionProjects/tshark_shanghai/wiretap/wtap_opttypes.h"
+    "/root/CLionProjects/tshark_gongjv/wiretap/file_wrappers.h"
+    "/root/CLionProjects/tshark_gongjv/wiretap/merge.h"
+    "/root/CLionProjects/tshark_gongjv/wiretap/pcap-encap.h"
+    "/root/CLionProjects/tshark_gongjv/wiretap/pcapng_module.h"
+    "/root/CLionProjects/tshark_gongjv/wiretap/secrets-types.h"
+    "/root/CLionProjects/tshark_gongjv/wiretap/wtap.h"
+    "/root/CLionProjects/tshark_gongjv/wiretap/wtap_opttypes.h"
     )
 endif()
 

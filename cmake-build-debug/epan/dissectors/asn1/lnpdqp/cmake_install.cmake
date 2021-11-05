@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/lnpdqp
+# Install script for directory: /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/lnpdqp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

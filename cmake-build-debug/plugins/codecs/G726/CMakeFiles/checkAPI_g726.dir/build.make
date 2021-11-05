@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_g726.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/progress.make
 
 plugins/codecs/G726/CMakeFiles/checkAPI_g726:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_g726"
-	cd /root/CLionProjects/tshark_shanghai/plugins/codecs/G726 && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl -g abort -g termoutput G726decode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_g726"
+	cd /root/CLionProjects/tshark_gongjv/plugins/codecs/G726 && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl -g abort -g termoutput G726decode.c
 
 checkAPI_g726: plugins/codecs/G726/CMakeFiles/checkAPI_g726
 checkAPI_g726: plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/build.make
@@ -68,10 +68,10 @@ plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/build: checkAPI_g726
 .PHONY : plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/build
 
 plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G726 && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_g726.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G726 && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_g726.dir/cmake_clean.cmake
 .PHONY : plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/clean
 
 plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/plugins/codecs/G726 /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G726 /root/CLionProjects/tshark_shanghai/cmake-build-debug/plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/plugins/codecs/G726 /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G726 /root/CLionProjects/tshark_gongjv/cmake-build-debug/plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : plugins/codecs/G726/CMakeFiles/checkAPI_g726.dir/depend
 

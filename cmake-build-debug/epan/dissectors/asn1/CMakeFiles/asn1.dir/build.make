@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for asn1.
 
@@ -67,10 +67,10 @@ epan/dissectors/asn1/CMakeFiles/asn1.dir/build: asn1
 .PHONY : epan/dissectors/asn1/CMakeFiles/asn1.dir/build
 
 epan/dissectors/asn1/CMakeFiles/asn1.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1 && $(CMAKE_COMMAND) -P CMakeFiles/asn1.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1 && $(CMAKE_COMMAND) -P CMakeFiles/asn1.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/CMakeFiles/asn1.dir/clean
 
 epan/dissectors/asn1/CMakeFiles/asn1.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1 /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1 /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/CMakeFiles/asn1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1 /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1 /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/CMakeFiles/asn1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/CMakeFiles/asn1.dir/depend
 

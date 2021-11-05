@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for checkAPI_ftypes.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
 include epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/progress.make
 
 epan/ftypes/CMakeFiles/checkAPI_ftypes:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_ftypes"
-	cd /root/CLionProjects/tshark_shanghai/epan/ftypes && /usr/bin/perl /root/CLionProjects/tshark_shanghai/tools/checkAPIs.pl -g termoutput ftypes.c ftype-bytes.c ftype-double.c ftype-ieee-11073-float.c ftype-integer.c ftype-ipv4.c ftype-ipv6.c ftype-guid.c ftype-none.c ftype-pcre.c ftype-protocol.c ftype-string.c ftype-time.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running checkAPI_ftypes"
+	cd /root/CLionProjects/tshark_gongjv/epan/ftypes && /usr/bin/perl /root/CLionProjects/tshark_gongjv/tools/checkAPIs.pl -g termoutput ftypes.c ftype-bytes.c ftype-double.c ftype-ieee-11073-float.c ftype-integer.c ftype-ipv4.c ftype-ipv6.c ftype-guid.c ftype-none.c ftype-pcre.c ftype-protocol.c ftype-string.c ftype-time.c
 
 checkAPI_ftypes: epan/ftypes/CMakeFiles/checkAPI_ftypes
 checkAPI_ftypes: epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/build.make
@@ -68,10 +68,10 @@ epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/build: checkAPI_ftypes
 .PHONY : epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/build
 
 epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/ftypes && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_ftypes.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/ftypes && $(CMAKE_COMMAND) -P CMakeFiles/checkAPI_ftypes.dir/cmake_clean.cmake
 .PHONY : epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/clean
 
 epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/ftypes /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/ftypes /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/ftypes /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/ftypes /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/ftypes/CMakeFiles/checkAPI_ftypes.dir/depend
 

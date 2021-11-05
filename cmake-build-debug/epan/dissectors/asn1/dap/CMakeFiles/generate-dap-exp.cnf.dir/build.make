@@ -43,10 +43,10 @@ RM = /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_shanghai
+CMAKE_SOURCE_DIR = /root/CLionProjects/tshark_gongjv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/tshark_shanghai/cmake-build-debug
+CMAKE_BINARY_DIR = /root/CLionProjects/tshark_gongjv/cmake-build-debug
 
 # Utility rule file for generate-dap-exp.cnf.
 
@@ -62,8 +62,8 @@ epan/dissectors/asn1/dap/dap-exp.cnf: ../epan/dissectors/asn1/dap/DirectoryAcces
 epan/dissectors/asn1/dap/dap-exp.cnf: ../epan/dissectors/asn1/dap/packet-dap-template.c
 epan/dissectors/asn1/dap/dap-exp.cnf: ../epan/dissectors/asn1/dap/packet-dap-template.h
 epan/dissectors/asn1/dap/dap-exp.cnf: ../epan/dissectors/asn1/dap/dap.cnf
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating dap-exp.cnf"
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/dap && /usr/bin/python3.6 /root/CLionProjects/tshark_shanghai/tools/asn2wrs.py -E -b -L -p dap -c /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/dap/dap.cnf -D /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/dap dap.asn DirectoryAccessProtocol.asn
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/CLionProjects/tshark_gongjv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating dap-exp.cnf"
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/dap && /usr/bin/python3.6 /root/CLionProjects/tshark_gongjv/tools/asn2wrs.py -E -b -L -p dap -c /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/dap/dap.cnf -D /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/dap dap.asn DirectoryAccessProtocol.asn
 
 generate-dap-exp.cnf: epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf
 generate-dap-exp.cnf: epan/dissectors/asn1/dap/dap-exp.cnf
@@ -77,10 +77,10 @@ epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf.dir/build: generate-dap
 .PHONY : epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf.dir/build
 
 epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf.dir/clean:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/dap && $(CMAKE_COMMAND) -P CMakeFiles/generate-dap-exp.cnf.dir/cmake_clean.cmake
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/dap && $(CMAKE_COMMAND) -P CMakeFiles/generate-dap-exp.cnf.dir/cmake_clean.cmake
 .PHONY : epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf.dir/clean
 
 epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf.dir/depend:
-	cd /root/CLionProjects/tshark_shanghai/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_shanghai /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/dap /root/CLionProjects/tshark_shanghai/cmake-build-debug /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/dap /root/CLionProjects/tshark_shanghai/cmake-build-debug/epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/CLionProjects/tshark_gongjv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/CLionProjects/tshark_gongjv /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/dap /root/CLionProjects/tshark_gongjv/cmake-build-debug /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/dap /root/CLionProjects/tshark_gongjv/cmake-build-debug/epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : epan/dissectors/asn1/dap/CMakeFiles/generate-dap-exp.cnf.dir/depend
 

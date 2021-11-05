@@ -1,4 +1,4 @@
-# Install script for directory: /root/CLionProjects/tshark_shanghai/epan/dissectors/asn1/m3ap
+# Install script for directory: /root/CLionProjects/tshark_gongjv/epan/dissectors/asn1/m3ap
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -7,7 +7,7 @@ set -e
 # Defaults
 dmgbuild=""
 version="3.4.5"
-settings_file="/root/CLionProjects/tshark_shanghai/cmake-build-debug/packaging/macosx/dmgbuild-settings.py"
+settings_file="/root/CLionProjects/tshark_gongjv/cmake-build-debug/packaging/macosx/dmgbuild-settings.py"
 architecture="Intel 64"
 
 # Help message
