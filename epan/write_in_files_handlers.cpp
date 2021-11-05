@@ -255,7 +255,7 @@ struct comFiveEleContent{ //通信五元组内容及其他信息
     std::string dport;
     std::string protocol;//协议 如rtp
     std::string protocol_suffix;//子协议，如g722,g711
-    int frame_time; // 时间戳整数形式
+	unsigned int frame_time; // 时间戳整数形式
     unsigned int protocol_suffix_type{}; //子协议号,[0-127]
     int status{};
 };
@@ -1165,7 +1165,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             else if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
                 yy_proto_item_fill_label(child_finfo, &value_240,240);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value_240);
-                c5e->frame_time = std::stoi(value_240);
+                c5e->frame_time = std::stol(value_240);              // maybe 'std::out_of_range' error (ieee802154-association-data.pcap)
                 child = child->next;
                 continue;
             }
