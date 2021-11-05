@@ -227,132 +227,138 @@ typedef struct _telnet_conv_info
     guint32 starttls_port;         /* Source port for first sender */
 } telnet_conv_info_t;
 
-// 结构体
-typedef struct Telnet_urspwd
-{
-    char usr_info[20]; //用户
-    char pwd_info[20]; //密码
-    char dst_ip[30];   //ip地址
-    char src_ip[30];   //ip地址
-    int time_stamp;    //时间戳
-    int port;          //段口号
-    struct Telnet_urspwd *next;
-} telnet_urspwd;
-// 创建一个空的头指针
-telnet_urspwd *HEAD = NULL;
-// 定义一个指针状态
-gboolean HEAD_STAUTS = FALSE;
-
-// 创建一个头节点
-telnet_urspwd *creat_head()
-{
-    //创建一个节点
-    telnet_urspwd *Node = (telnet_urspwd *)malloc(sizeof(telnet_urspwd));
-
-    //节点数据进行赋值]
-    strcpy(Node->usr_info, "usr");
-    strcpy(Node->pwd_info, "pwd");
-    strcpy(Node->dst_ip, "dst_ip");
-    strcpy(Node->src_ip, "dst_ip");
-    Node->time_stamp = 123;
-    Node->port = 0;
-    Node->next = NULL;
-    return Node;
-}
-void add_list(telnet_urspwd *head, char usr_info[], char pwd_info[], char dst_ip[], char src_ip[], int port)
-{
-    time_t t_stamp = time(NULL);
-    if (!head)
-        return;
-    while (head->next)
-    {
-        head = head->next; //当指针不为空时，表明不是最后的节点，向后移动
-    }
-    telnet_urspwd *Node = (telnet_urspwd *)malloc(sizeof(telnet_urspwd));
-    strcpy(Node->usr_info, usr_info);
-    strcpy(Node->pwd_info, pwd_info);
-    strcpy(Node->dst_ip, dst_ip);
-    strcpy(Node->src_ip, src_ip);
-    Node->time_stamp = time(&t_stamp); //时间戳，用于检测当前节点已经生成多久了。
-    Node->port = port;
-
-    Node->next = NULL;
-    head->next = Node; //关联链表
-}
-
-telnet_urspwd *find_list(telnet_urspwd *head, char usr_info[], char pwd_info[], char dst_ip[], char src_ip[], int port)
-{
-    bool dst_ip_st = FALSE;
-    bool src_ip_st = FALSE;
-
-    while (head && head->port != port) // 如果不等于我们需要找的节点，就往下跳
-    {
-        head = head->next; //如果不是最后的节点或节点的值不相等，则指针后移
-        int i = 0;
-        for (i; i < (int)strlen(dst_ip); i++)
-        {
-            if (head->dst_ip[i] != dst_ip[i])
-                dst_ip_st = TRUE;
-        }
-        i = 0;
-        for (i; i < (int)strlen(src_ip); i++)
-        {
-            if (head->src_ip[i] != src_ip[i])
-            {
-                src_ip_st = TRUE;
-            }
-        }
-        if (dst_ip_st == TRUE && src_ip_st == TRUE)
-        {
-            break;
-        }
-    }
-    if (head)
-    {
-        strcat(head->usr_info, usr_info);
-        strcat(head->pwd_info, pwd_info);
-    }
-    return NULL;
-}
-
-telnet_urspwd *find_urs_or_pwd(telnet_urspwd *head, char dst_ip[], char src_ip[], int port,bool status)
-{
-    bool dst_ip_st = FALSE;
-    bool src_ip_st = FALSE;
-
-    while (head && head->port != port) // 如果不等于我们需要找的节点，就往下跳
-    {
-        head = head->next; //如果不是最后的节点或节点的值不相等，则指针后移
-        int i = 0;
-        for (i; i < (int)strlen(dst_ip); i++)
-        {
-            if (head->dst_ip[i] != dst_ip[i])
-                dst_ip_st = TRUE;
-        }
-        i = 0;
-        for (i; i < (int)strlen(src_ip); i++)
-        {
-            if (head->src_ip[i] != src_ip[i])
-            {
-                src_ip_st = TRUE;
-            }
-        }
-        if (dst_ip_st == TRUE && src_ip_st == TRUE)
-        {
-            break;
-        }
-    }
-    char usr[20] = {'\0'};
-    if (head && status)
-    {
-        strcpy(usr,head->usr_info);
-        return usr;
-    }else{
-        strcpy(usr,head->pwd_info);
-        return usr;
-    }
-    return NULL;
-}
+//// 结构体
+//typedef struct Telnet_urspwd
+//{
+//    char usr_info[20]; //用户
+//    char pwd_info[20]; //密码
+//    char dst_ip[30];   //ip地址
+//    char src_ip[30];   //ip地址
+//    int time_stamp;    //时间戳
+//    int port;          //端口号
+//    struct Telnet_urspwd *next;
+//} telnet_urspwd;
+//// 创建一个空的头指针
+//telnet_urspwd *HEAD = NULL;
+//// 定义一个指针状态
+//gboolean HEAD_STAUTS = FALSE;
+//
+//// 创建一个头节点
+//telnet_urspwd *creat_head()
+//{
+//    //创建一个节点
+//    telnet_urspwd *Node = (telnet_urspwd *)malloc(sizeof(telnet_urspwd));
+//
+//    //节点数据进行赋值]
+//    strcpy(Node->usr_info, "usr");
+//    strcpy(Node->pwd_info, "pwd");
+//    strcpy(Node->dst_ip, "dst_ip");
+//    strcpy(Node->src_ip, "dst_ip");
+//    Node->time_stamp = 123;
+//    Node->port = 0;
+//    Node->next = NULL;
+//    return Node;
+//}
+//void add_list(telnet_urspwd *head, char usr_info[], char pwd_info[], char dst_ip[], char src_ip[], int port)
+//{
+//    time_t t_stamp = time(NULL);
+//    if (!head)
+//        return;
+//    while (head->next)
+//    {
+//        head = head->next; //当指针不为空时，表明不是最后的节点，向后移动
+//    }
+//    telnet_urspwd *Node = (telnet_urspwd *)malloc(sizeof(telnet_urspwd));
+//    strcpy(Node->usr_info, usr_info);
+//    strcpy(Node->pwd_info, pwd_info);
+//    strcpy(Node->dst_ip, dst_ip);
+//    strcpy(Node->src_ip, src_ip);
+//    Node->time_stamp = time(&t_stamp); //时间戳，用于检测当前节点已经生成多久了。
+//    Node->port = port;
+//
+//    Node->next = NULL;
+//    head->next = Node; //关联链表
+//}
+//
+//telnet_urspwd *find_list(telnet_urspwd *head, char usr_info[], char pwd_info[], char dst_ip[], char src_ip[], int port)
+//{
+//    bool dst_ip_st = FALSE;
+//    bool src_ip_st = FALSE;
+//
+//    if (head->next == NULL){
+//        return NULL;
+//    }
+//    while (head && head->port != port) // 如果不等于我们需要找的节点，就往下跳
+//    {
+//        head = head->next; //如果不是最后的节点或节点的值不相等，则指针后移
+//        int i = 0;
+//        for (i; i < (int)strlen(dst_ip); i++)
+//        {
+//            if (head->dst_ip[i] != dst_ip[i])
+//                dst_ip_st = TRUE;
+//        }
+//        i = 0;
+//        for (i; i < (int)strlen(src_ip); i++)
+//        {
+//            if (head->src_ip[i] != src_ip[i])
+//            {
+//                src_ip_st = TRUE;
+//            }
+//        }
+//        if (dst_ip_st == TRUE && src_ip_st == TRUE)
+//        {
+//            break;
+//        }
+//    }
+//    if (head)
+//    {
+//        strcat(head->usr_info, usr_info);
+//        strcat(head->pwd_info, pwd_info);
+//    }
+//    return NULL;
+//}
+//
+//telnet_urspwd *find_urs_or_pwd(telnet_urspwd *head, char dst_ip[], char src_ip[], int port,bool status)
+//{
+//    bool dst_ip_st = FALSE;
+//    bool src_ip_st = FALSE;
+//
+//    if (head->next == NULL){
+//        return NULL;
+//    }
+//    while (head && head->port != port) // 如果不等于我们需要找的节点，就往下跳
+//    {
+//        head = head->next; //如果不是最后的节点或节点的值不相等，则指针后移
+//        int i = 0;
+//        for (i; i < (int)strlen(dst_ip); i++)
+//        {
+//            if (head->dst_ip[i] != dst_ip[i])
+//                dst_ip_st = TRUE;
+//        }
+//        i = 0;
+//        for (i; i < (int)strlen(src_ip); i++)
+//        {
+//            if (head->src_ip[i] != src_ip[i])
+//            {
+//                src_ip_st = TRUE;
+//            }
+//        }
+//        if (dst_ip_st == TRUE && src_ip_st == TRUE)
+//        {
+//            break;
+//        }
+//    }
+//    char usr[20] = {'\0'};
+//    if (head && status)
+//    {
+//        strcpy(usr,head->usr_info);
+//        return usr;
+//    }else{
+//        strcpy(usr,head->pwd_info);
+//        return usr;
+//    }
+//    return NULL;
+//}
 
 static void
 check_tn3270_model(packet_info *pinfo _U_, const char *terminaltype)
@@ -2120,72 +2126,72 @@ dissect_telnet(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data _
         }
     }
     /* Expert info */
-    if (HEAD_STAUTS == FALSE)
-    {
-        telnet_urspwd *head = creat_head(); //首先搞一个头结点
-        HEAD = head;
-        HEAD_STAUTS = TRUE;
-    }
+//    if (HEAD_STAUTS == FALSE)
+//    {
+//        telnet_urspwd *head = creat_head(); //首先搞一个头结点
+//        HEAD = head;
+//        HEAD_STAUTS = TRUE;
+//    }
 
-    if (strcmp(telnet_tree->first_child->finfo->hfinfo->name, "Data") == 0)
-    {
-        char src_ip[30] = {'\0'};
-        char dst_ip[30] = {'\0'};
-        inet_ntop(AF_INET, (void *)(pinfo->src.data), src_ip, 16);
-        inet_ntop(AF_INET, (void *)(pinfo->dst.data), dst_ip, 16);
-        int port_info = pinfo->srcport;
-        if (!start_get_username && strcmp(telnet_tree->first_child->finfo->value.value.string, "login: ") == 0)
-        { //识别到login的时候说明传输开始，需要进行初始化
-            /* 开始获取用户名，以四元组作为标识 */
-            
-            /* 需要取的用户名，把端口倒过来 */
-            user_port = pinfo->destport;
-            // 初始化用户名字、密码、目标ip、源地址ip、端口号，后三者用于唯一识别
-            add_list(HEAD, "", "", dst_ip, src_ip, port_info); //
-            start_get_username = TRUE;
-        }
-        else if (start_get_username && pinfo->srcport == user_port)
-        {
-            if (strcmp(telnet_tree->first_child->finfo->value.value.string, "\r") == 0)
-            { //这里是结束标志
-                char * des;
-                des = find_urs_or_pwd(HEAD, dst_ip, src_ip, port_info,TRUE); //加入端口跟ip判断哪一个是我们需要的
-                g_print("\n用户名：%s\n", username);
-                proto_tree_add_string(telnet_tree, hf_telnet_username, tvb, 0, 0, username);
-                start_get_username = FALSE;
-                user_port = -1;
-                memset(username, '\0', sizeof(username));
-            }
-            else
-            {
-                //进行字符串拼接
-                // 查找到符合标准的那一节点，然后往其中添加对应的值
-                find_list(HEAD, telnet_tree->first_child->finfo->value.value.string, "", dst_ip, src_ip, port_info);
-                strcat(username, telnet_tree->first_child->finfo->value.value.string);
-            }
-        }
-        else if (!start_get_pwd && strcmp(telnet_tree->first_child->finfo->value.value.string, "Password: ") == 0)
-        {
-            start_get_pwd = TRUE;
-        }
-        else if (start_get_pwd && pinfo->destport == 23)
-        {
-            if (strcmp(telnet_tree->first_child->finfo->value.value.string, "\r") == 0)
-            {
-                char * des;
-                des = find_urs_or_pwd(HEAD, dst_ip, src_ip, port_info,FALSE); //加入端口跟ip判断哪一个是我们需要的
-                g_print("\n密码：%s\n", password);
-                proto_tree_add_string(telnet_tree, hf_telnet_password, tvb, 0, 0, password);
-                start_get_pwd = FALSE;
-                memset(password, '\0', sizeof(password));
-            }
-            else
-            {
-                find_list(HEAD, "", telnet_tree->first_child->finfo->value.value.string, dst_ip, src_ip, port_info);
-                strcat(password, telnet_tree->first_child->finfo->value.value.string);
-            }
-        }
-    }
+//    if (strcmp(telnet_tree->first_child->finfo->hfinfo->name, "Data") == 0)
+//    {
+//        char src_ip[30] = {'\0'};
+//        char dst_ip[30] = {'\0'};
+//        inet_ntop(AF_INET, (void *)(pinfo->src.data), src_ip, 16);
+//        inet_ntop(AF_INET, (void *)(pinfo->dst.data), dst_ip, 16);
+//        int port_info = pinfo->srcport;
+//        if (!start_get_username && strcmp(telnet_tree->first_child->finfo->value.value.string, "login: ") == 0)
+//        { //识别到login的时候说明传输开始，需要进行初始化
+//            /* 开始获取用户名，以四元组作为标识 */
+//
+//            /* 需要取的用户名，把端口倒过来 */
+//            user_port = pinfo->destport;
+//            // 初始化用户名字、密码、目标ip、源地址ip、端口号，后三者用于唯一识别
+//            add_list(HEAD, "", "", dst_ip, src_ip, port_info); //
+//            start_get_username = TRUE;
+//        }
+//        else if (start_get_username && pinfo->srcport == user_port)
+//        {
+//            if (strcmp(telnet_tree->first_child->finfo->value.value.string, "\r") == 0)
+//            { //这里是结束标志
+//                char * des;
+//                des = find_urs_or_pwd(HEAD, dst_ip, src_ip, port_info,TRUE); //加入端口跟ip判断哪一个是我们需要的
+//                g_print("\n用户名：%s\n", username);
+//                proto_tree_add_string(telnet_tree, hf_telnet_username, tvb, 0, 0, username);
+//                start_get_username = FALSE;
+//                user_port = -1;
+//                memset(username, '\0', sizeof(username));
+//            }
+//            else
+//            {
+//                //进行字符串拼接
+//                // 查找到符合标准的那一节点，然后往其中添加对应的值
+//                find_list(HEAD, telnet_tree->first_child->finfo->value.value.string, "", dst_ip, src_ip, port_info);
+//                strcat(username, telnet_tree->first_child->finfo->value.value.string);
+//            }
+//        }
+//        else if (!start_get_pwd && strcmp(telnet_tree->first_child->finfo->value.value.string, "Password: ") == 0)
+//        {
+//            start_get_pwd = TRUE;
+//        }
+//        else if (start_get_pwd && pinfo->destport == 23)
+//        {
+//            if (strcmp(telnet_tree->first_child->finfo->value.value.string, "\r") == 0)
+//            {
+//                char * des;
+//                des = find_urs_or_pwd(HEAD, dst_ip, src_ip, port_info,FALSE); //加入端口跟ip判断哪一个是我们需要的
+//                g_print("\n密码：%s\n", password);
+//                proto_tree_add_string(telnet_tree, hf_telnet_password, tvb, 0, 0, password);
+//                start_get_pwd = FALSE;
+//                memset(password, '\0', sizeof(password));
+//            }
+//            else
+//            {
+//                find_list(HEAD, "", telnet_tree->first_child->finfo->value.value.string, dst_ip, src_ip, port_info);
+//                strcat(password, telnet_tree->first_child->finfo->value.value.string);
+//            }
+//        }
+//    }
 
     //    proto_item *sn_ti;
     //    sn_ti = proto_tree_add_item(telnet_tree, hf_telnet_asset, tvb, 0, 0, ENC_ASCII | ENC_NA);
