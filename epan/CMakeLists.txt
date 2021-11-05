@@ -291,10 +291,11 @@ set(LIBWIRESHARK_NONGENERATED_FILES
 	xdlc.c
 	protobuf-helper.c
 	protobuf_lang_tree.c
-		g711a_decode_zhr.c
-		g711u_decode_zhr.c
-		g722_decode_zhr.c
-		g729a_decode_zhr.c
+	g711a_decode_zhr.c
+	g711u_decode_zhr.c
+	g722_decode_zhr.c
+	g729a_decode_zhr.c
+
 	${CMAKE_CURRENT_BINARY_DIR}/ps.c
 )
 set(LIBWIRESHARK_FILES ${LIBWIRESHARK_NONGENERATED_FILES})

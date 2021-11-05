@@ -32,14 +32,6 @@
 #include <sys/stat.h>
 #include "curl/curl.h"
 #include "decode_zhr.h"
-//这样引用是否合理？//
-/*
-#include "g711u_decode_zhr.c"
-#include "g729a_decode_zhr.c"
-#include "g722_decode_zhr.c"
-#include "g711a_decode_zhr.c"
-*/
-
 
 #define __U__ __attribute__((unused))
 
@@ -1437,11 +1429,11 @@ void rtpVoiceMatching(rtpTotalBufferContent &info){
     std::vector<rtpMatchingInfo>::iterator it;
     for (it = rtpMachingVec.begin();it != rtpMachingVec.end(); it++ ) {
         if (it->sip == info.dip and it->dip == info.sip and it->sport == info.dport and it->dport == info.sport \
- and (std::abs(it->time_begin - info.time_begin) < 1000) and
+            and (std::abs(it->time_begin - info.time_begin) < 1000) and \
             it->rtpPayloadType == info.rtpPayloadType) { //这里不加结束时间的原因是程序最后的清空有可能没来得及给结束时间赋值，使用time_end可能会报错
             //匹配info.rtpPayloadType
             int payloadType_i = 0;
-            for (int i = 0;i <= 128;i++){
+            for (int i = 0;i < 128;i++){
                 if(strcmp(info.rtpPayloadType.c_str(),rtp_payload_type_to_str[i]) == 0){
                     payloadType_i = i;
                     break;
@@ -2230,7 +2222,7 @@ void clean_Temp_Files_All() {
         for (it = rtpMachingVec.begin();it != rtpMachingVec.end(); it++ ){
 
             int payloadType_i = 0;
-            for (int i = 0;i <= 128;i++){
+            for (int i = 0;i < 128;i++){
                 if(strcmp(it->rtpPayloadType.c_str(),rtp_payload_type_to_str[i]) == 0){
                     payloadType_i = i;
                     break;

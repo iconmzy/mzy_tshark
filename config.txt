@@ -1,8 +1,8 @@
 #注册文件的路径
-REGISTRATION_FILE_PATH:/home/ymq/aurora/activate
+REGISTRATION_FILE_PATH:./
 
 #配置是否新增协议JSON
-JSON_ADD_PROTO:1
+JSON_ADD_PROTO:0
 #新增协议JSON路径 不超过255字符
 JSON_ADD_PROTO_PATH:../../newproto/json
 
