@@ -1054,6 +1054,29 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
  * @return
  */
 void match_line_no(char *pattern, char *source_str, char * target) {
+    GRegex *regex;   //正则表达式对象
+    GMatchInfo *match_info;   //匹配后的集合
+    GError *error = NULL;
+    regex = g_regex_new(pattern, static_cast<GRegexCompileFlags>(0), static_cast<GRegexMatchFlags>(0),
+                        &error);  //创建正则表达式
+    g_regex_match(regex, source_str, static_cast<GRegexMatchFlags>(0), &match_info);   //匹配
+    while (g_match_info_matches(match_info)) {    //利用g_match_info_fetch把每一项fetch出来
+        gint count = g_match_info_get_match_count(match_info);
+//        g_print("match count:%d\n", count);
+
+        int i;
+        for (i = 0; i < count; i++) {
+            gchar *word = g_match_info_fetch(match_info, i);
+            strcpy(target, word);
+            g_free(word);
+        }
+        g_match_info_next(match_info, NULL);
+        if(strlen(target)>1) break;
+    }
+    g_match_info_free(match_info);  //释放空间
+    g_regex_unref(regex);
+}
+/*void match_line_no(char *pattern, char *source_str, char * target) {
     try{
 
         std::regex reg(pattern);  // TODO:这里的 (?<=_).*(?=_\w{8}T\w{6}) 这种表达式会格式错误。
@@ -1071,7 +1094,7 @@ void match_line_no(char *pattern, char *source_str, char * target) {
         g_print("regex grammar format error !\n");
         strcpy(target, "");
     }
-}
+}*/
 /**
  * 每解析一个新的文件开始时进行初始化，用OFFLINE_LINE_NO_REGEX对应的value，正则匹配新的文件名称，将该文件名匹配后的结果写入regex_dict_map中。
  * 注意每解析完一个文件后需要对regex_dict_map进行初始化。
@@ -1086,7 +1109,14 @@ void parse_offline_regex_dict(){
             regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
             temp = temp->next;
         }
+        auto iter = regex_dict_map.find("lineno");
+        if (iter != regex_dict_map.end())
+        {
+            // 找到了本地文件匹配的线路号
+            strcpy(OFFLINE_LINE_LINE_NO,iter->second.c_str());
+        }
     }
+
 }
 
 /**
@@ -2091,7 +2121,7 @@ void add_record_in_result_file() {
 void single_File_End_Init(){
     regex_dict_map.clear(); //每个文件的线路号清空
 }
-
+//尽可能短地计算处理时间，并根据时间控制打印格式//
 int calculate_cost_time(char* end_time_t,char* begin_time_t){
     int cut_length = 20;
     for(int i = 0; i <= 20; i++){
@@ -2129,9 +2159,13 @@ void change_result_file_name() {
     g_print("结束时间戳：%s \n", end_time_t);
     strcpy(begin_time_t,global_time_str.c_str());
     //int begin_time = (int)strtol(global_time_str.c_str(), nullptr,0);
-    int cost_time = calculate_cost_time(end_time_t,begin_time_t);
-    g_print("总计耗时：%d ms\n", cost_time);
-
+    long int cost_time = calculate_cost_time(end_time_t,begin_time_t);
+    if(cost_time >= 1000){
+        int ms = cost_time %1000;
+        g_print("总计耗时：%ld s %d ms\n", cost_time/1000,ms);
+    }else{
+        g_print("总计耗时：%ld ms\n", cost_time);
+    }
     curl_global_cleanup();  //在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数
 }
 

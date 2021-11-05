@@ -2421,6 +2421,10 @@ int main(int argc, char *argv[]) {
 
                         temp = temp->next;
                         cf_close(&cfile);  //关闭打开的pcap文件
+                        draw_taps = TRUE;
+                        if (draw_taps){
+                            draw_tap_listeners(TRUE);
+                        }
                     }
                 }
             }
@@ -2501,6 +2505,10 @@ int main(int argc, char *argv[]) {
                     g_free(pdu_export_arg);
                     g_free(exp_pdu_filename);
                 }
+            }
+            draw_taps = TRUE;
+            if (draw_taps){
+                draw_tap_listeners(TRUE);
             }
         }
         g_print("解析完成");
@@ -2652,12 +2660,12 @@ int main(int argc, char *argv[]) {
         cfile.provider.frames = NULL;
     }
 
-    //清理流统计。
+/*    //清理流统计old。
     draw_taps = TRUE;
     if (draw_taps){
         draw_tap_listeners(TRUE);
         followConnectFiveEleClear();
-    }
+    }*/
 
     /* Memory cleanup */
     reset_tap_listeners();
