@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/root/CLionProjects/tshark_shanghai/cli_main.c
+cli_main.h
+/root/CLionProjects/tshark_shanghai/cli_main.h
+stdlib.h
+-
+stdio.h
+-
+windows.h
+-
+
+/root/CLionProjects/tshark_shanghai/cli_main.h
+

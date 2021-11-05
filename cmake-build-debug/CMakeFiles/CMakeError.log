@@ -1,0 +1,416 @@
+Performing C SOURCE FILE Test C_Wheader_guard_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_bf220/fast && /usr/bin/gmake -f CMakeFiles/cmTC_bf220.dir/build.make CMakeFiles/cmTC_bf220.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bf220.dir/src.c.o
+/usr/bin/cc   -std=gnu99  -DC_Wheader_guard_VALID -fPIE    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wheader-guard -o CMakeFiles/cmTC_bf220.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option '-Wheader-guard'
+gmake[1]: *** [CMakeFiles/cmTC_bf220.dir/src.c.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_bf220/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test C_Wcomma_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_9f30c/fast && /usr/bin/gmake -f CMakeFiles/cmTC_9f30c.dir/build.make CMakeFiles/cmTC_9f30c.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9f30c.dir/src.c.o
+/usr/bin/cc   -std=gnu99  -DC_Wcomma_VALID -fPIE    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wcomma -o CMakeFiles/cmTC_9f30c.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option '-Wcomma'
+gmake[1]: *** [CMakeFiles/cmTC_9f30c.dir/src.c.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_9f30c/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test C_Wshorten_64_to_32_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_4be93/fast && /usr/bin/gmake -f CMakeFiles/cmTC_4be93.dir/build.make CMakeFiles/cmTC_4be93.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4be93.dir/src.c.o
+/usr/bin/cc   -std=gnu99  -DC_Wshorten_64_to_32_VALID -fPIE    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wshorten-64-to-32 -o CMakeFiles/cmTC_4be93.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option '-Wshorten-64-to-32'
+gmake[1]: *** [CMakeFiles/cmTC_4be93.dir/src.c.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_4be93/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test C_Wunused_const_variable_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_9fc10/fast && /usr/bin/gmake -f CMakeFiles/cmTC_9fc10.dir/build.make CMakeFiles/cmTC_9fc10.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9fc10.dir/src.c.o
+/usr/bin/cc   -std=gnu99  -DC_Wunused_const_variable_VALID -fPIE    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wunused-const-variable -o CMakeFiles/cmTC_9fc10.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option '-Wunused-const-variable'
+gmake[1]: *** [CMakeFiles/cmTC_9fc10.dir/src.c.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_9fc10/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_Wheader_guard_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_4affe/fast && /usr/bin/gmake -f CMakeFiles/cmTC_4affe.dir/build.make CMakeFiles/cmTC_4affe.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4affe.dir/src.cxx.o
+/usr/bin/c++    -DCXX_Wheader_guard_VALID -fPIE    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wheader-guard -o CMakeFiles/cmTC_4affe.dir/src.cxx.o -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-Wheader-guard'
+gmake[1]: *** [CMakeFiles/cmTC_4affe.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_4affe/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_Wcomma_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_6d07a/fast && /usr/bin/gmake -f CMakeFiles/cmTC_6d07a.dir/build.make CMakeFiles/cmTC_6d07a.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6d07a.dir/src.cxx.o
+/usr/bin/c++    -DCXX_Wcomma_VALID -fPIE    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wcomma -o CMakeFiles/cmTC_6d07a.dir/src.cxx.o -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-Wcomma'
+gmake[1]: *** [CMakeFiles/cmTC_6d07a.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_6d07a/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_Wshorten_64_to_32_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_41b6a/fast && /usr/bin/gmake -f CMakeFiles/cmTC_41b6a.dir/build.make CMakeFiles/cmTC_41b6a.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_41b6a.dir/src.cxx.o
+/usr/bin/c++    -DCXX_Wshorten_64_to_32_VALID -fPIE    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wshorten-64-to-32 -o CMakeFiles/cmTC_41b6a.dir/src.cxx.o -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-Wshorten-64-to-32'
+gmake[1]: *** [CMakeFiles/cmTC_41b6a.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_41b6a/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_Wextra_semi_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_ed5dc/fast && /usr/bin/gmake -f CMakeFiles/cmTC_ed5dc.dir/build.make CMakeFiles/cmTC_ed5dc.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ed5dc.dir/src.cxx.o
+/usr/bin/c++    -DCXX_Wextra_semi_VALID -fPIE    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wextra-semi -o CMakeFiles/cmTC_ed5dc.dir/src.cxx.o -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-Wextra-semi'
+gmake[1]: *** [CMakeFiles/cmTC_ed5dc.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_ed5dc/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test C_fmacro_prefix_map_old_new_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_ade0a/fast && /usr/bin/gmake -f CMakeFiles/cmTC_ade0a.dir/build.make CMakeFiles/cmTC_ade0a.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ade0a.dir/src.c.o
+/usr/bin/cc   -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DC_fmacro_prefix_map_old_new_VALID -fPIE   -fmacro-prefix-map=old=new -o CMakeFiles/cmTC_ade0a.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option '-fmacro-prefix-map=old=new'
+gmake[1]: *** [CMakeFiles/cmTC_ade0a.dir/src.c.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_ade0a/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_fmacro_prefix_map_old_new_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_3d7ad/fast && /usr/bin/gmake -f CMakeFiles/cmTC_3d7ad.dir/build.make CMakeFiles/cmTC_3d7ad.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3d7ad.dir/src.cxx.o
+/usr/bin/c++    -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768  -DCXX_fmacro_prefix_map_old_new_VALID -fPIE   -fmacro-prefix-map=old=new -o CMakeFiles/cmTC_3d7ad.dir/src.cxx.o -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-fmacro-prefix-map=old=new'
+gmake[1]: *** [CMakeFiles/cmTC_3d7ad.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_3d7ad/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Determining if the -no-pie option is supported for C language failed with the following output:
+cc: error: unrecognized command line option '-no-pie'
+
+Determining if the -no-pie option is supported for CXX language failed with the following output:
+c++: error: unrecognized command line option '-no-pie'
+
+Determining if the function pcap_open exists failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_bdc94/fast && /usr/bin/gmake -f CMakeFiles/cmTC_bdc94.dir/build.make CMakeFiles/cmTC_bdc94.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_bdc94.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DCHECK_FUNCTION_EXISTS=pcap_open -fPIE   -o CMakeFiles/cmTC_bdc94.dir/CheckFunctionExists.c.o   -c /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bdc94
+/home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bdc94.dir/link.txt --verbose=1
+/usr/bin/cc -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DCHECK_FUNCTION_EXISTS=pcap_open    -fPIE -pie CMakeFiles/cmTC_bdc94.dir/CheckFunctionExists.c.o  -o cmTC_bdc94 /usr/lib64/libpcap.so 
+CMakeFiles/cmTC_bdc94.dir/CheckFunctionExists.c.o：在函数‘main’中：
+CheckFunctionExists.c:(.text+0x10)：对‘pcap_open’未定义的引用
+collect2: 错误：ld 返回 1
+gmake[1]: *** [cmTC_bdc94] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_bdc94/fast] 错误 2
+
+
+
+Determining if the heimdal_version exist failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_0c9bc/fast && /usr/bin/gmake -f CMakeFiles/cmTC_0c9bc.dir/build.make CMakeFiles/cmTC_0c9bc.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_0c9bc.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99   -fPIE   -o CMakeFiles/cmTC_0c9bc.dir/CheckSymbolExists.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c: 在函数‘main’中:
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: 错误：‘heimdal_version’未声明(在此函数内第一次使用)
+   return ((int*)(&heimdal_version))[argc];
+                   ^
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: 附注：每个未声明的标识符在其出现的函数内只报告一次
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:4:14: 警告：形参‘argc’被设定但未被使用 [-Wunused-but-set-parameter]
+ int main(int argc, char** argv)
+              ^
+gmake[1]: *** [CMakeFiles/cmTC_0c9bc.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_0c9bc/fast] 错误 2
+
+
+File /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <krb5.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef heimdal_version
+  return ((int*)(&heimdal_version))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the include file sys/sockio.h exists failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_8dee4/fast && /usr/bin/gmake -f CMakeFiles/cmTC_8dee4.dir/build.make CMakeFiles/cmTC_8dee4.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_8dee4.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99   -fPIE   -o CMakeFiles/cmTC_8dee4.dir/CheckIncludeFile.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:24: 致命错误：sys/sockio.h：没有那个文件或目录
+ #include <sys/sockio.h>
+                        ^
+编译中断。
+gmake[1]: *** [CMakeFiles/cmTC_8dee4.dir/CheckIncludeFile.c.o] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_8dee4/fast] 错误 2
+
+
+
+Determining if the optreset exist failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_bf217/fast && /usr/bin/gmake -f CMakeFiles/cmTC_bf217.dir/build.make CMakeFiles/cmTC_bf217.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_bf217.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99   -fPIE   -o CMakeFiles/cmTC_bf217.dir/CheckSymbolExists.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c: 在函数‘main’中:
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: 错误：‘optreset’未声明(在此函数内第一次使用)
+   return ((int*)(&optreset))[argc];
+                   ^
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: 附注：每个未声明的标识符在其出现的函数内只报告一次
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:4:14: 警告：形参‘argc’被设定但未被使用 [-Wunused-but-set-parameter]
+ int main(int argc, char** argv)
+              ^
+gmake[1]: *** [CMakeFiles/cmTC_bf217.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_bf217/fast] 错误 2
+
+
+File /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <getopt.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef optreset
+  return ((int*)(&optreset))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function issetugid exists failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_0f436/fast && /usr/bin/gmake -f CMakeFiles/cmTC_0f436.dir/build.make CMakeFiles/cmTC_0f436.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_0f436.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DCHECK_FUNCTION_EXISTS=issetugid -fPIE   -o CMakeFiles/cmTC_0f436.dir/CheckFunctionExists.c.o   -c /home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckFunctionExists.c
+Linking C executable cmTC_0f436
+/home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f436.dir/link.txt --verbose=1
+/usr/bin/cc -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DCHECK_FUNCTION_EXISTS=issetugid    -fPIE -pie CMakeFiles/cmTC_0f436.dir/CheckFunctionExists.c.o  -o cmTC_0f436 
+CMakeFiles/cmTC_0f436.dir/CheckFunctionExists.c.o：在函数‘main’中：
+CheckFunctionExists.c:(.text+0x10)：对‘issetugid’未定义的引用
+collect2: 错误：ld 返回 1
+gmake[1]: *** [cmTC_0f436] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_0f436/fast] 错误 2
+
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_SOCKADDR_SA_LEN failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_e90c7/fast && /usr/bin/gmake -f CMakeFiles/cmTC_e90c7.dir/build.make CMakeFiles/cmTC_e90c7.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_e90c7.dir/src.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DHAVE_STRUCT_SOCKADDR_SA_LEN -fPIE   -o CMakeFiles/cmTC_e90c7.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:4:5: 警告：函数声明不是一个原型 [-Wstrict-prototypes]
+ int main()
+     ^
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c: 在函数‘main’中:
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:4:5: 警告：旧式的函数定义 [-Wold-style-definition]
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:6:38: 错误：‘struct sockaddr’没有名为‘sa_len’的成员
+   (void)sizeof(((struct sockaddr *)0)->sa_len);
+                                      ^
+gmake[1]: *** [CMakeFiles/cmTC_e90c7.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_e90c7/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/socket.h>
+
+int main()
+{
+  (void)sizeof(((struct sockaddr *)0)->sa_len);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_FLAGS failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_05890/fast && /usr/bin/gmake -f CMakeFiles/cmTC_05890.dir/build.make CMakeFiles/cmTC_05890.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_05890.dir/src.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DHAVE_STRUCT_STAT_ST_FLAGS -fPIE   -o CMakeFiles/cmTC_05890.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:4:5: 警告：函数声明不是一个原型 [-Wstrict-prototypes]
+ int main()
+     ^
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c: 在函数‘main’中:
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:4:5: 警告：旧式的函数定义 [-Wold-style-definition]
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:6:34: 错误：‘struct stat’没有名为‘st_flags’的成员
+   (void)sizeof(((struct stat *)0)->st_flags);
+                                  ^
+gmake[1]: *** [CMakeFiles/cmTC_05890.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_05890/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_flags);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_BIRTHTIME failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_69319/fast && /usr/bin/gmake -f CMakeFiles/cmTC_69319.dir/build.make CMakeFiles/cmTC_69319.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_69319.dir/src.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DHAVE_STRUCT_STAT_ST_BIRTHTIME -fPIE   -o CMakeFiles/cmTC_69319.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:4:5: 警告：函数声明不是一个原型 [-Wstrict-prototypes]
+ int main()
+     ^
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c: 在函数‘main’中:
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:4:5: 警告：旧式的函数定义 [-Wold-style-definition]
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:6:34: 错误：‘struct stat’没有名为‘st_birthtime’的成员
+   (void)sizeof(((struct stat *)0)->st_birthtime);
+                                  ^
+gmake[1]: *** [CMakeFiles/cmTC_69319.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_69319/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_birthtime);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT___ST_BIRTHTIME failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_7fafb/fast && /usr/bin/gmake -f CMakeFiles/cmTC_7fafb.dir/build.make CMakeFiles/cmTC_7fafb.dir/build
+gmake[1]: 进入目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_7fafb.dir/src.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DHAVE_STRUCT_STAT___ST_BIRTHTIME -fPIE   -o CMakeFiles/cmTC_7fafb.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:4:5: 警告：函数声明不是一个原型 [-Wstrict-prototypes]
+ int main()
+     ^
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c: 在函数‘main’中:
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:4:5: 警告：旧式的函数定义 [-Wold-style-definition]
+/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c:6:34: 错误：‘struct stat’没有名为‘__st_birthtime’的成员
+   (void)sizeof(((struct stat *)0)->__st_birthtime);
+                                  ^
+gmake[1]: *** [CMakeFiles/cmTC_7fafb.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_7fafb/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->__st_birthtime);
+  return 0;
+}
+
+Performing C SOURCE FILE Test C_Wimplicit_fallthrough_VALID failed with the following output:
+Change Dir: /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_badcd/fast && /usr/bin/gmake -f CMakeFiles/cmTC_badcd.dir/build.make CMakeFiles/cmTC_badcd.dir/build
+gmake[1]: Entering directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_badcd.dir/src.c.o
+/usr/bin/cc   -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -DC_Wimplicit_fallthrough_VALID -fPIE   -Wimplicit-fallthrough -o CMakeFiles/cmTC_badcd.dir/src.c.o   -c /root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option '-Wimplicit-fallthrough'
+gmake[1]: *** [CMakeFiles/cmTC_badcd.dir/src.c.o] Error 1
+gmake[1]: Leaving directory `/root/CLionProjects/tshark_shanghai/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_badcd/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }

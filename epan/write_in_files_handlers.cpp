@@ -661,7 +661,7 @@ int check_special_extract(const char* special_extract_protocol){
  * @return
  */
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
-    //g_print("test断点\n");
+ /*   //g_print("test断点\n");
     //判断希望特殊提取子段的协议类型 目前有telnet ftp的账号密码提取 smtp协议的账号口令提取//
     int special_extract = 0;
     special_extract = check_special_extract(node->parent->finfo->hfinfo->abbrev);
@@ -723,8 +723,29 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
             break;
         }
 
+    }*/
+    while(node != nullptr){
+        if(node->first_child == nullptr or node->last_child == nullptr){
+            dissect_Per_Node_No_Cursion(json_t,node,cookie);
+            node = node->next;
+        } else{
+            que.push(node);
+            node = node->next;
+        }
     }
-
+    while (!que.empty()){
+        proto_node* temp = que.front();
+        que.pop();
+        if(temp->first_child == nullptr or temp->last_child == nullptr){
+            dissect_Per_Node_No_Cursion(json_t,temp,cookie);
+        } else{
+            temp = temp->first_child;
+            while (temp != nullptr){
+                que.push(temp);
+                temp = temp->next;
+            }
+        }
+    }
     return true;
 }
 

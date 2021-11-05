@@ -1,0 +1,121 @@
+/home/mzy/Downloads/clion-2019.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" /root/CLionProjects/tshark_shanghai
+-- Generating build using CMake 3.15.3
+-- LTO/LPO is not enabled
+-- CMake build type: Release
+-- V: 3.4.5, MaV: 3, MiV: 4, PL: 5, EV: .
+-- Linker flags:  -Wl,--as-needed
+-- Could NOT find LIBSSH (missing: LIBSSH_LIBRARIES LIBSSH_INCLUDE_DIRS LIBSSH_VERSION) (Required is at least version "0.6")
+-- Checking for one of the modules 'libpcap'
+PCAP_INCLUDE_DIR : /usr/include
+-- Could NOT find Systemd (missing: SYSTEMD_LIBRARY SYSTEMD_INCLUDE_DIR) (found version "")
+-- Could NOT find MaxMindDB (missing: MAXMINDDB_LIBRARY MAXMINDDB_INCLUDE_DIR) 
+-- Could NOT find SMI (missing: SMI_LIBRARY SMI_INCLUDE_DIR) 
+-- Checking for one of the modules 'gnutls'
+-- Could NOT find GNUTLS: Found unsuitable version "", but required is at least "3.2.0" (found GNUTLS_LIBRARY-NOTFOUND)
+-- Could NOT find Minizip (missing: MINIZIP_LIBRARY MINIZIP_INCLUDE_DIR) (found version "")
+-- Could NOT find BROTLI (missing: BROTLIDEC_LIBRARY BROTLI_INCLUDE_DIR) 
+-- Checking for one of the modules 'lz4;liblz4'
+-- Could NOT find LZ4 (missing: LZ4_LIBRARY LZ4_INCLUDE_DIR) 
+-- Could NOT find SNAPPY (missing: SNAPPY_LIBRARY SNAPPY_INCLUDE_DIR) 
+-- Checking for one of the modules 'libzstd'
+-- Could NOT find ZSTD: Found unsuitable version "", but required is at least "1.0.0" (found ZSTD_LIBRARY-NOTFOUND)
+-- Checking for one of the modules 'libnghttp2'
+-- Could NOT find NGHTTP2 (missing: NGHTTP2_LIBRARY NGHTTP2_INCLUDE_DIR) 
+-- Checking for modules 'libnl-3.0;libnl-genl-3.0;libnl-route-3.0'
+--   No package 'libnl-3.0' found
+--   No package 'libnl-genl-3.0' found
+--   No package 'libnl-route-3.0' found
+-- Checking for one of the modules 'libnl-2.0'
+-- Checking for one of the modules 'libnl-1'
+-- Could NOT find NL (missing: NL_LIBRARY NL_INCLUDE_DIR) 
+-- Could NOT find SBC (missing: SBC_LIBRARY SBC_INCLUDE_DIR) 
+-- Checking for one of the modules 'libilbc'
+-- Could NOT find ILBC (missing: ILBC_LIBRARY ILBC_INCLUDE_DIR) 
+-- Checking for one of the modules 'opus'
+-- Could NOT find OPUS (missing: OPUS_LIBRARY OPUS_INCLUDE_DIR) 
+-- Could NOT find LibXml2 (missing: LIBXML2_LIBRARY LIBXML2_INCLUDE_DIR) 
+-- Checking for one of the modules 'libcap'
+-- Could NOT find CAP (missing: CAP_LIBRARY CAP_INCLUDE_DIR) 
+-- Could NOT find Asciidoctor (missing: ASCIIDOCTOR_EXECUTABLE) (Required is at least version "1.5")
+-- Could NOT find Asciidoctor (missing: ASCIIDOCTOR_EXECUTABLE) (Required is at least version "1.5")
+-- SSE4.2 compiler flag: -msse4.2
+-- C-Flags: -fvisibility=hidden  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768 -Wc++-compat -Wshadow -Wold-style-definition -Wstrict-prototypes -Wlogical-op -Wjump-misses-init -Werror=implicit -Wno-missing-braces -Wno-pointer-sign -std=gnu99  -O3 -DNDEBUG
+-- CXX-Flags:  -fexcess-precision=fast -Wall -Wextra -Wendif-labels -Wpointer-arith -Wformat-security -fwrapv -fno-strict-overflow -Wvla -Waddress -Wattributes -Wdiv-by-zero -Wignored-qualifiers -Wpragmas -Wno-overlength-strings -Wno-long-long -Wframe-larger-than=32768  -O3 -DNDEBUG
+-- Warnings as errors disabled
+-- The following OPTIONAL packages have been found:
+
+ * Git
+ * GMODULE2
+ * Gettext
+ * PCAP
+ * KERBEROS
+ * ZLIB
+ * LUA (required version >= 5.1)
+ * SPANDSP, a library of many DSP functions for telephony, <https://www.soft-switch.org>
+   Support for G.722 and G.726 codecs in RTP player
+ * BCG729, G.729 decoder, <https://www.linphone.org/technical-corner/bcg729/overview>
+   Support for G.729 codec in RTP player
+ * PkgConfig
+ * SETCAP
+ * DOXYGEN
+ * XSLTPROC
+
+-- The following REQUIRED packages have been found:
+
+ * GLIB2 (required version >= 2.32.0)
+ * GTHREAD2
+ * GCRYPT (required version >= 1.4.2)
+ * CARES (required version >= 1.5.0), Library for asynchronous DNS requests, <https://c-ares.haxx.se/>
+   DNS name resolution for captures
+ * LEX
+ * YACC
+ * Perl
+ * Python3 (required version >= 3.4)
+ * M
+ * POD
+
+-- The following OPTIONAL packages have not been found:
+
+ * LIBSSH (required version >= 0.6), Library for implementing SSH clients, <https://www.libssh.org/>
+   extcap remote SSH interfaces (sshdump, ciscodump)
+ * Systemd, System and Service Manager (libraries), <https://freedesktop.org/wiki/Software/systemd/>
+   Support for systemd journal extcap interface (sdjournal)
+ * MaxMindDB, C library for the MaxMind DB file format, <https://github.com/maxmind/libmaxminddb>
+   Support for GeoIP lookup
+ * SMI
+ * GNUTLS (required version >= 3.2.0)
+ * Minizip, C library for supporting zip/unzip functionality, <https://www.winimage.com/zLibDll/minizip.html>
+   Support for profiles import/export
+ * BROTLI
+ * LZ4, LZ4 is lossless compression algorithm used in some protocol (CQL...), <http://www.lz4.org>
+   LZ4 decompression in CQL and Kafka dissectors
+ * SNAPPY, A fast compressor/decompressor from Google, <https://google.github.io/snappy/>
+   Snappy decompression in CQL and Kafka dissectors
+ * ZSTD (required version >= 1.0.0), A compressor/decompressor from Facebook providing better compression than Snappy at a cost of speed, <https://facebook.github.io/zstd/>
+   Zstd decompression in Kafka dissector
+ * NGHTTP2, HTTP/2 C library and tools, <https://nghttp2.org>
+   Header decompression in HTTP2
+ * NL, Libraries for using the Netlink protocol on Linux, <https://www.infradead.org/~tgr/libnl/>
+   Support for managing wireless 802.11 interfaces
+ * SBC, Bluetooth low-complexity, subband codec (SBC) decoder, <https://git.kernel.org/pub/scm/bluetooth/sbc.git>
+   Support for playing SBC codec in RTP player
+ * ILBC, iLBC decoder, <https://github.com/TimothyGu/libilbc>
+   Support for iLBC codec in RTP player
+ * OPUS, opus decoder, <https://opus-codec.org/>
+   Support for opus codec in RTP player
+ * LibXml2
+ * CAP, The Libcap package implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels, <https://sites.google.com/site/fullycapable/>
+   Allow packet captures without running as root
+ * Asciidoctor (required version >= 1.5)
+
+CMake Warning at CMakeLists.txt:1763 (message):
+  Libgcrypt version 1.6.0 or newer is strongly recommended for improved
+  decryption support, found 1.5.3
+
+
+We are on tag v3.4.5.
+version.h unchanged.
+-------------------------WIRESHARK_INSTALL_CMAKEDIR: lib64/wireshark/cmake--------------------
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/CLionProjects/tshark_shanghai/cmake-build-release
