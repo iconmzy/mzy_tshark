@@ -862,8 +862,11 @@ static cJSON_bool parse_string(cJSON * const item, parse_buffer * const input_bu
                     }
                     break;
 
-                default:
-                    goto fail;
+//                default:
+//                    *output_pointer++ = *input_pointer;
+//                    *output_pointer++ = input_pointer[1];
+//                    break;
+//                    goto fail;
             }
             input_pointer += sequence_length;
         }
@@ -1168,7 +1171,7 @@ fail:
 }
 
 /* Default options for cJSON_Parse */
-CJSON_PUBLIC(cJSON *) cJSON_Parse(const char *value)
+cJSON * cJSON_Parse(const char *value)
 {
     return cJSON_ParseWithOpts(value, 0, 0);
 }
@@ -1247,7 +1250,8 @@ fail:
 /* Render a cJSON item/entity/structure to text. */
 CJSON_PUBLIC(char *) cJSON_Print(const cJSON *item)
 {
-    return (char*)print(item, true, &global_hooks);
+//    return (char*)print(item, true, &global_hooks);//true 格式化显示
+    return (char*)print(item, false, &global_hooks);//false 非格式化显示
 }
 
 CJSON_PUBLIC(char *) cJSON_PrintUnformatted(const cJSON *item)

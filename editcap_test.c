@@ -1148,17 +1148,22 @@ int readFileList(char *basePath,pfileNameNode head){
         }
         while ((ptr=readdir(dir)) != NULL)
         {
+            char *cc_ptr = strrchr(ptr->d_name, '.');
+            if(NULL != cc_ptr &&  !(strcmp(cc_ptr, ".cap")==0 || strcmp(cc_ptr, ".pcap")==0 || strcmp(cc_ptr, ".pcapng")==0)) continue;
+
             if(strcmp(ptr->d_name,".")==0 || strcmp(ptr->d_name,"..")==0)    ///current dir OR parrent dir
                 continue;
-            else if(ptr->d_type == 8)    ///file
+            else if(ptr->d_type == 8)   ///file
             {
+                pfileNameNode temp = malloc(sizeof(struct fileNameNode));
                 char basePath_t[256] = {0};
                 strcpy(basePath_t,basePath);
+                memset(temp->fileName,'\0',256);
+                strcpy(temp->fileName,ptr->d_name);
                 strcat(basePath_t,ptr->d_name);
-                pfileNameNode temp = malloc(sizeof(struct fileNameNode));
                 temp->next = head->next;
-                memset(temp->fileName,'\0',128);
-                strcpy(temp->fileName,basePath_t);
+                memset(temp->fileName_path,'\0',256);
+                strcpy(temp->fileName_path,basePath_t);
                 head->next = temp;
 //                printf("d_name:%s/%s\n", basePath, ptr->d_name);
             }
@@ -1169,8 +1174,8 @@ int readFileList(char *basePath,pfileNameNode head){
                 strcat(basePath_t,ptr->d_name);
                 pfileNameNode temp = malloc(sizeof(struct fileNameNode));
                 temp->next = head->next;
-                memset(temp->fileName,'\0',128);
-                strcpy(temp->fileName,basePath_t);
+                memset(temp->fileName_path,'\0',128);
+                strcpy(temp->fileName_path,basePath_t);
                 head->next = temp;
 //                printf("d_name:%s/%s\n",basePath,ptr->d_name);
             }

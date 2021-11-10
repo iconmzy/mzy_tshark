@@ -516,7 +516,7 @@ char *reverse(char *s) {
  * char s[] 的作用是存储整数的每一位
  */
 char *my_itoa(long int n) {
-    int i = 0, isNegative = 0;
+    long int i = 0, isNegative = 0;
     static char s[100];         //必须为static变量，或者是全局变量
     if ((isNegative = n) < 0) //如果是负数，先转为正数
     {
@@ -8783,22 +8783,28 @@ label_fill_descr(char *label_str, gsize pos, const header_field_info *hfinfo, co
     return pos;
 }
 
+gchar* yy_realloc(gchar **dst,int bufferlen){
+    g_free(*dst);
+    *dst = (gchar*)g_malloc_n(sizeof(gchar), (bufferlen + 1));
+    return *dst;
+}
 /**
  * 自定义取值的函数，和下面函数类似。精简而已。
  * @param fi
  * @param label_str
  */
-void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
+void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
     header_field_info *hfinfo;
     guint8 *bytes;
     guint32 integer;
     guint64 integer64;
     ws_in4_addr ipv4;
     e_guid_t *guid;
-    gchar *name;
     address addr;
     char *addr_str;
     char *tmp;
+    gchar* label_str = *label;
+    int len_t = 0;
 
     if (!fi) {
         if (label_str)
@@ -8812,6 +8818,14 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
     switch (hfinfo->type) {
         case FT_NONE:
             if (fi->rep) {
+
+                //内存重新分配 --begin
+                len_t = (int)strlen(fi->rep->representation);
+                if( len_t > bufferlen){
+                    label_str = yy_realloc(label,len_t);
+                }
+                //内存重新分配 --end
+
                 strcpy(label_str, fi->rep->representation);
                 break;
             }
@@ -8828,6 +8842,13 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
             tmp = hfinfo_format_bytes(NULL, hfinfo,
                                       (guint8 *) fvalue_get(&fi->value),
                                       fvalue_length(&fi->value));
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
@@ -8945,12 +8966,28 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
         case FT_ABSOLUTE_TIME:
             tmp = abs_time_to_str(NULL, (const nstime_t *) fvalue_get(&fi->value),
                                   (absolute_time_display_e) hfinfo->display, TRUE);
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
         case FT_RELATIVE_TIME:
             tmp = rel_time_to_secs_str(NULL, (const nstime_t *) fvalue_get(&fi->value));
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
@@ -8958,6 +8995,14 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
         case FT_IPXNET:
             integer = fvalue_get_uinteger(&fi->value);
             tmp = get_ipxnet_name(NULL, integer);
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
@@ -8968,6 +9013,14 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
             addr.data = (guint8 *) fvalue_get(&fi->value);
 
             addr_str = (char *) address_to_str(NULL, &addr);
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(addr_str);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, addr_str);
             wmem_free(NULL, addr_str);
             break;
@@ -8978,6 +9031,14 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
             addr.data = (guint8 *) fvalue_get(&fi->value);
 
             addr_str = (char *) address_to_str(NULL, &addr);
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(addr_str);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, addr_str);
             wmem_free(NULL, addr_str);
             break;
@@ -8990,6 +9051,14 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
             addr.data = bytes;
 
             addr_str = (char *) address_with_resolution_to_str(NULL, &addr);
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(addr_str);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, addr_str);
             wmem_free(NULL, addr_str);
             break;
@@ -9038,40 +9107,44 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
         case FT_GUID:
             guid = (e_guid_t *) fvalue_get(&fi->value);
             tmp = guid_to_str(NULL, guid);
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
         case FT_OID:
             bytes = (guint8 *) fvalue_get(&fi->value);
-            name = oid_resolved_from_encoded(NULL, bytes, fvalue_length(&fi->value));
             tmp = oid_encoded2string(NULL, bytes, fvalue_length(&fi->value));
-//            if (name)
-//            {
-//                label_fill_descr(label_str, 0, hfinfo, tmp, name);
-//                wmem_free(NULL, name);
-//            }
-//            else
-//            {
-//                label_fill(label_str, 0, hfinfo, tmp);
-//            }
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
         case FT_REL_OID:
             bytes = (guint8 *) fvalue_get(&fi->value);
-            name = rel_oid_resolved_from_encoded(NULL, bytes, fvalue_length(&fi->value));
             tmp = rel_oid_encoded2string(NULL, bytes, fvalue_length(&fi->value));
-//            if (name)
-//            {
-//                label_fill_descr(label_str, 0, hfinfo, tmp, name);
-//                wmem_free(NULL, name);
-//            }
-//            else
-//            {
-//                label_fill(label_str, 0, hfinfo, tmp);
-//            }
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
@@ -9079,6 +9152,14 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
         case FT_SYSTEM_ID:
             bytes = (guint8 *) fvalue_get(&fi->value);
             tmp = print_system_id(NULL, bytes, fvalue_length(&fi->value));
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
@@ -9098,6 +9179,14 @@ void yy_proto_item_fill_label(field_info *fi, gchar *label_str) {
         case FT_STRINGZTRUNC:
             bytes = (guint8 *) fvalue_get(&fi->value);
             tmp = hfinfo_format_text(NULL, hfinfo, bytes);  /* 进行格式化操作，例如\r会变成\\r，此举会导致字符串长度变长，给动态分配内存带来难度 */
+
+            //内存重新分配 --begin
+            len_t = (int)strlen(tmp);
+            if( len_t > bufferlen){
+                label_str = yy_realloc(label,len_t);
+            }
+            //内存重新分配 --end
+
             strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;

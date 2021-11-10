@@ -48,7 +48,7 @@ gboolean loadFile_ConfigFile(const char *filePath, char ***fileData, int *line)
     int lines = getLines_ConfigFile(file);
 
     //给每行数据开辟内存
-    char **temp = malloc(sizeof(char *) * lines);
+    char **temp = (char **)malloc(sizeof(char *) * lines);
 
     char buf[1024] = { 0 };
 
@@ -62,7 +62,7 @@ gboolean loadFile_ConfigFile(const char *filePath, char ***fileData, int *line)
             continue;
         }
 
-        temp[index] = malloc(strlen(buf) + 1);
+        temp[index] = (char *)malloc(strlen(buf) + 1);
         strcpy(temp[index], buf);
         ++index;
         //清空buf
@@ -82,7 +82,7 @@ gboolean loadFile_ConfigFile(const char *filePath, char ***fileData, int *line)
 void parseFile_ConfigFile(char **fileData, int lines, struct ConfigInfo **info)
 {
 
-    struct ConfigInfo *myinfo = malloc(sizeof(struct ConfigInfo) *lines);
+    struct ConfigInfo *myinfo = (struct ConfigInfo*)malloc(sizeof(struct ConfigInfo) *lines);
     memset(myinfo, 0, sizeof(struct ConfigInfo) *lines);
 
     for (int i = 0; i < lines; ++i)

@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include "epan.h"
 #include "proto.h"
-
+#include "decode_zhr.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -33,13 +33,14 @@ WS_DLL_PUBLIC char PACKET_PROTOCOL_PATH[256];
 
 WS_DLL_PUBLIC gboolean INSERT_MANY_PROTOCOL_STREAM_FLAG;  // 是否批量写入
 WS_DLL_PUBLIC int EDIT_FILES_SIZES;
+WS_DLL_PUBLIC int PER_FILES_MAX_LINES;//每个文件存放最大行数
 WS_DLL_PUBLIC int INSERT_MANY_PROTOCOL_STREAM_NUM;  // 每次每个协议批量写入行数
-WS_DLL_PUBLIC int EDIT_FILES_PROCESS_NUM;  // 并发进程数目 暂时未用
 WS_DLL_PUBLIC gboolean DISPLAY_PACKET_INFO_FLAG;
 WS_DLL_PUBLIC gboolean EDIT_FILES_DISSECT_FLAG;
 
-WS_DLL_PUBLIC char READ_FILE_PATH[256];
-WS_DLL_PUBLIC char FILE_NAME_T[128];
+WS_DLL_PUBLIC char READ_FILE_PATH[256];//文件名含路径
+WS_DLL_PUBLIC char FILE_NAME_T[256];//文件名
+
 WS_DLL_PUBLIC gboolean file_Name_From_Dir_Flag;
 WS_DLL_PUBLIC gboolean read_Pcap_From_File_Flag;
 WS_DLL_PUBLIC gboolean mutex_final_clean_flag;
@@ -50,6 +51,7 @@ WS_DLL_PUBLIC char *my_itoa(long int n);
 WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];
+
 //是否允许新增协议相关
 WS_DLL_PUBLIC gboolean JSON_ADD_PROTO;
 WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[256];
@@ -60,31 +62,30 @@ WS_DLL_PUBLIC gboolean READ_PACKET_FROM_FILES_FLAG;
 WS_DLL_PUBLIC char READ_PACKET_FROM_FILES_PATH[256];
 //线路号相关配置
 WS_DLL_PUBLIC char ONLINE_LINE_NO[32];  /* 实时接入数据的线路号 */
-WS_DLL_PUBLIC char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
 WS_DLL_PUBLIC char REGISTRATION_FILE_PATH[256];  /* 注册文件的路径 */
 WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则表达式提取出来的线路号 */
 
 #define MAXFILELENGTH 50
 #define MAXWRITEFILELENGTH 128
 
-
-WS_DLL_PUBLIC void do_write_in_files_handler(gchar *label_str, const gchar *abbrev, const gchar *name, int level);
-
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
 
-WS_DLL_PUBLIC gboolean initWriteJsonFiles(char *);
+WS_DLL_PUBLIC gboolean beginInitOnce(char *);
 
-WS_DLL_PUBLIC gboolean readConfigFilesStatus();
+WS_DLL_PUBLIC gboolean readConfigFilesStatus(void);
 
-WS_DLL_PUBLIC void clean_Temp_Files_All();
+WS_DLL_PUBLIC void clean_Temp_Files_All(void);
 
-WS_DLL_PUBLIC void add_record_in_result_file();
+WS_DLL_PUBLIC void add_record_in_result_file(void);
 
-WS_DLL_PUBLIC void change_result_file_name();
+WS_DLL_PUBLIC void single_File_End_Init(void);
 
+WS_DLL_PUBLIC void change_result_file_name(void);
+WS_DLL_PUBLIC int calculate_cost_time(char* global_time_str, char* end_time_str);
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
+WS_DLL_PUBLIC void parse_offline_regex_dict();
 
 /**
  * 下面是读取配置文件相关函数
@@ -104,7 +105,20 @@ WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 //判断当前行是否有效
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 
+//g711 A/U
+WS_DLL_PUBLIC void g711a_decode_zhr(char filename1[],  char filename2[]);
+WS_DLL_PUBLIC void g711u_decode_zhr(char filename1[],  char filename2[]);
+//g722 全文件解码器。
+WS_DLL_PUBLIC void g722_decode_zhr(char filename1[],  char filename2[]);
+//g729a 全文件解码器
+WS_DLL_PUBLIC void g729a_decode_zhr(char filename1[],  char filename2[]);
+//
 
+
+
+WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
+WS_DLL_PUBLIC void followConnectFiveEleClear();
+WS_DLL_PUBLIC gboolean streamFollowIntoFiles(guint8 *data,guint len);
 #ifdef __cplusplus
 }
 #endif

@@ -13,7 +13,9 @@
 #include <config.h>
 #include "epan/write_in_files_handlers.h"
 #include <sys/wait.h>
-
+#include "dirent.h"
+#include "wsutil/codecs.h"
+#include <curl/curl.h> //这个文件依赖libgnutls.so
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -21,7 +23,9 @@
 #include <limits.h>
 
 #ifdef HAVE_GETOPT_H
+
 #include <getopt.h>
+
 #endif
 
 #include <errno.h>
@@ -31,7 +35,9 @@
 #endif
 
 #ifndef _WIN32
+
 #include <signal.h>
+
 #endif
 
 #ifndef HAVE_GETOPT_LONG
@@ -75,7 +81,9 @@
 #include <epan/addr_resolv.h>
 
 #ifdef HAVE_LIBPCAP
+
 #include "ui/capture_ui_utils.h"
+
 #endif
 
 #include "ui/taps.h"
@@ -108,6 +116,7 @@
 #include "caputils/capture-pcap-util.h"
 
 #ifdef HAVE_LIBPCAP
+
 #include "caputils/capture_ifinfo.h"
 
 #ifdef _WIN32
@@ -165,13 +174,12 @@
 
 
 capture_file cfile;
-char READ_FILE_PATH[256] = {0};
+char READ_FILE_PATH[256] = {0}; //存放文件名——含路径。
+char FILE_NAME_T[256] = {0};//存放文件名。
+
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
-char FILE_NAME_T[128] = {0};
-char OFFLINE_LINE_NO_REGEX[256];  /* 离线接入数据的识别线路号的正则表达式 */
 char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
-
 
 static guint32 cum_bytes;
 static frame_data ref_frame;
@@ -294,8 +302,6 @@ static gboolean process_packet_single_pass(capture_file *cf,
 static void show_print_file_io_error(void);
 
 static gboolean write_preamble(capture_file *cf);
-
-static gboolean print_packet(capture_file *cf, epan_dissect_t *edt);
 
 static gboolean write_finale(void);
 
@@ -721,7 +727,7 @@ about_folders(void) {
 
 
 static gboolean
-must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,gchar *volatile pdu_export_arg) {
+must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode, gchar *volatile pdu_export_arg) {
     /* We have to dissect each packet if:
 
           we're printing information about each packet;
@@ -739,7 +745,18 @@ must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode,gchar *volatile pdu_expo
 
 struct protoInfo *allProtoInfo;
 
+
 int main(int argc, char *argv[]) {
+
+    cpu_id();
+
+    printf("                                        \n");
+    printf("    ___                                 \n");
+    printf("   /   | __  ___________  _________ _   \n");
+    printf("  / /| |/ / / / ___/ __ \\/ ___/ __ `/  \n");
+    printf(" / ___ / /_/ / /  / /_/ / /  / /_/ /    \n");
+    printf("/_/  |_\\__,_/_/   \\____/_/   \\__,_/  \n");
+    printf("                                        \n");
     struct allExProtocols protos;
 
     char *err_msg;
@@ -789,7 +806,7 @@ int main(int argc, char *argv[]) {
     char *volatile exp_pdu_filename = NULL;
     exp_pdu_t exp_pdu_tap_data;
     const gchar *elastic_mapping_filter = NULL;
-    pfileNameNode headOfDirPath = malloc(sizeof(struct fileNameNode) * 1);
+    pfileNameNode headOfDirPath = (pfileNameNode) malloc(sizeof(struct fileNameNode) * 1);
     headOfDirPath->next = NULL;
     memset(headOfDirPath->fileName, '\0', 128);
 /*
@@ -922,7 +939,7 @@ int main(int argc, char *argv[]) {
                 print_packet_info = TRUE;
                 print_summary = TRUE;
                 break;
-            case 'r': /* Read capture file x */
+            case 'r': /* Read config file config.txt */
                 config_file_path = g_strdup(optarg);
                 strcpy(CONFIG_FILES_PATH, config_file_path);
 
@@ -932,67 +949,12 @@ int main(int argc, char *argv[]) {
                     g_print("config files load fail!\n");
                     goto clean_exit;
                 }
-                if (!initWriteJsonFiles(&write_Json_Files_Init_Status)) {
-                    g_print("initWriteJsonFiles somthing error !\n");
+                if (!beginInitOnce(&write_Json_Files_Init_Status)) {
+                    g_print("beginInitOnce somthing error !\n");
                 }
 
                 /*添加注册码功能*/
-                char hname[128];
-                char *wid;
-                struct hostent *hent;
-                int i;
-                gethostname(hname, sizeof(hname));
-                hent = gethostbyname(hname);
-                char mac[30];
-                getMac(mac);
-                char id[50];
-                cpu_id(id);
-                strcat(id, mac);
-                calidenty(id);
-                addkey1(id);
-                printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-                printf("The machine id: %s\n", id);
-                char machine_id_path[100] = {"\0"};
-                strcpy(machine_id_path, REGISTRATION_FILE_PATH);
-                strcat(machine_id_path, "activecode.txt");
-                usersee(machine_id_path, id);
-                char active[80];
-                char *key = addkey2(id);
-                char sto[80];
-                char regist_path[100] = {"\0"};
-                strcpy(regist_path, REGISTRATION_FILE_PATH);
-                strcat(regist_path, "regist.txt");
-                FILE *infp = fopen(regist_path, "r");  //需要添加文件路径
-                if (infp == NULL) {
-                    printf("请输入激活码：\n");
-                    scanf("%s", &active);
-                    while (strcmp(active, key) != 0) {
-                        printf("请输入激活码：\n");
-                        scanf("%s", &active);
-                    }
-                    strcpy(sto, active);
-                    writefile(regist_path, sto);
-                } else {
-                    char sti[80];
-                    fscanf(infp, "%s", sti);
-                    fclose(infp);
-                    strcpy(active, sti);
-                    if (strcmp(key, active) != 0) {
-                        printf("激活码错误，请重新输入：\n");
-
-                        while (strcmp(key, active) != 0) {
-                            printf("激活码错误，请重新输入：\n");
-                            scanf("%s", &active);
-                        }
-                        strcpy(sti, active);
-                        writefile(regist_path, sti);
-                    } else {
-//            printf("You have a perpetual fallback license for this version.\n");
-                        printf("该设备已永久激活！\n");
-                    }
-
-                }
-                printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+                verify_identity_one(REGISTRATION_FILE_PATH);
                 /*注册码功能结束*/
 
                 /**
@@ -1017,10 +979,8 @@ int main(int argc, char *argv[]) {
                     goto clean_exit;
                 } else {
                     if (ONLINE_CAPTURE_DATA_FLAG) {
-//            ONLINE device name is next;
                         has_extcap_options = TRUE;
                     } else if (READ_PACKET_FROM_FILES_FLAG) {
-//            READ_FILES
                         cf_name = READ_PACKET_FROM_FILES_PATH;
                         /*这里设置读取文件的标志，同时设置文件路径变量。*/
                         strcpy(READ_FILE_PATH, cf_name);
@@ -1106,6 +1066,9 @@ int main(int argc, char *argv[]) {
         exit_status = INIT_FAILED;
         goto clean_exit;
     }
+
+    /* Register all audio codecs. */
+    codecs_init();
 
     /* Register all tap listeners; we do this before we parse the arguments,
        as the "-z" argument can specify a registered tap. */
@@ -1708,6 +1671,14 @@ int main(int argc, char *argv[]) {
             list_stat_cmd_args();
             g_print("someting error in conversation of tcp\n");
         }
+        for (int i = 0; i < 100; ++i) { //这里的循环次数是文件解析最后支持输出流的个数，有多少流就应该多大。
+            char arg_t_1[24] = "follow,udp,raw,";
+            strcat(arg_t_1,my_itoa(i));
+            if (!process_stat_cmd_arg(arg_t_1)) {
+                list_stat_cmd_args();
+                g_print("someting error in conversation of tcp\n");
+            }
+        }
     }
 
     /*
@@ -2249,9 +2220,9 @@ int main(int argc, char *argv[]) {
     }
 
     // tshark_debug("Aurora: do_dissection = %s", do_dissection ? "TRUE" : "FALSE");
-//  time_t begin_time = time(NULL);
-//  g_print(" begin %ld",begin_time);
+
     if (cf_name) {
+        verify_identity_two(REGISTRATION_FILE_PATH);
         if (EDIT_FILES_DISSECT_FLAG) {
             /*这里开始调用edit拆分大型pcap包*/
             g_print("split packet begin\n");
@@ -2369,11 +2340,6 @@ int main(int argc, char *argv[]) {
 
                 } else {
 //                /*父进程*/
-//                if(++edit_files_process_num % EDIT_FILES_PROCESS_NUM == 0){
-//                    int status;
-//                    g_print("now wating last %d process ending",edit_files_process_num);
-//                    waitpid(fpid,&status,0);
-//                }
                     pnext = pnext->next;
                 }
             }
@@ -2388,23 +2354,29 @@ int main(int argc, char *argv[]) {
         else {
             struct stat st;
             stat(cf_name, &st);
+            verify_identity_two(REGISTRATION_FILE_PATH);
             if (S_ISDIR(st.st_mode)) {
                 /*文件夹*/
                 if (access(cf_name, R_OK) == -1) {
                     /*路径无法访问*/
                     g_print("%s path not true !\n", cf_name);
                     exit(0);
-                } else {
+                }
+                else {
                     /*路径正常*/
                     readFileList(cf_name, headOfDirPath);
                     pfileNameNode temp = headOfDirPath->next;
                     gboolean mutex = TRUE;
+                    verify_identity_two(REGISTRATION_FILE_PATH);
                     while (temp != NULL) {
-                        cf_name = temp->fileName;
-                        /*将缓存的文件名字初始化*/
-                        memset(FILE_NAME_T, '\0', 128);
-                        strcpy(FILE_NAME_T, cf_name);
-                        match_line_no(OFFLINE_LINE_NO_REGEX, FILE_NAME_T, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+                        cf_name = temp->fileName_path;
+                        /*将缓存的文件名全路径初始化*/
+                        memset(FILE_NAME_T, '\0', 256);
+                        strcpy(FILE_NAME_T,temp->fileName);
+                        memset(READ_FILE_PATH, '\0', 256);
+                        strcpy(READ_FILE_PATH, cf_name);
+
+                        parse_offline_regex_dict();
                         if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                             temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                             continue;
@@ -2414,7 +2386,7 @@ int main(int argc, char *argv[]) {
                             do_dissection = must_do_dissection(rfcode, dfcode, pdu_export_arg);
                             mutex = FALSE;
                         }
-
+                        g_print("正在解析-->:%s\n",cf_name);
                         status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP
                                                   global_capture_opts.has_autostop_packets
@@ -2428,8 +2400,11 @@ int main(int argc, char *argv[]) {
                             0);
 #endif
                         /*直接清理最终缓存*/
+                        g_print("完成解析-->:%s\n",cf_name);
                         mutex_final_clean_flag = FALSE;
                         add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
+                        single_File_End_Init();
+
                         if (temp->next == NULL) {  //文件遍历结束
                             clean_Temp_Files_All();
                             draw_taps = TRUE;
@@ -2441,23 +2416,46 @@ int main(int argc, char *argv[]) {
                                 g_free(pdu_export_arg);
                                 g_free(exp_pdu_filename);
                             }
-                            change_result_file_name();
+                            change_result_file_name();//final_process_and_clean_memory()
                         }
 
                         temp = temp->next;
                         cf_close(&cfile);  //关闭打开的pcap文件
                     }
                 }
-            } else {
+            }
+            else {
                 //只有一个文件
                 /*文件名*/
+                /*将缓存的文件名字初始化*/
+                verify_identity_two(REGISTRATION_FILE_PATH);
+                memset(READ_FILE_PATH, '\0', 256);
+                strcpy(READ_FILE_PATH, cf_name); //文件名含路径
+                char file_name_t[256] = {0}; //获取文件名
+                for (int i = (int)strlen(cf_name),j = 0; i != 0 ; i--) {
+                    if(cf_name[i] == '.' && j == 0){
+                        j=i;
+                    }
+                    else if(cf_name[i] == '/' && j != 0){
+                        int a = 0;
+                        i++;
+                        while (i < j){
+                            file_name_t[a++] = cf_name[i++];
+                        }
+                        break;
+                    }
+                }
+                memset(FILE_NAME_T,'\0',256);
+                strcpy(FILE_NAME_T,file_name_t); //文件名
+
+                g_print("正在解析-->: %s\n",cf_name);
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
                     epan_cleanup();
                     extcap_cleanup();
                     exit_status = INVALID_FILE;
                     goto clean_exit;
                 }
-                match_line_no(OFFLINE_LINE_NO_REGEX, cf_name, OFFLINE_LINE_LINE_NO);  /* 匹配线路号 */
+                parse_offline_regex_dict();
                 /* Start statistics taps; we do so after successfully opening the
                    capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will
@@ -2473,8 +2471,7 @@ int main(int argc, char *argv[]) {
 
                 /* Process the packets in the file */
                 // tshark_debug("Aurora: invoking process_cap_file() to process the packets");
-//        TRY
-//                {
+
                 status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP
                                           global_capture_opts.has_autostop_packets
@@ -2488,51 +2485,13 @@ int main(int argc, char *argv[]) {
                             0);
 #endif
                 /*直接清理最终缓存*/
+                g_print("完成解析-->:%s\n",cf_name);
                 clean_Temp_Files_All();
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
+                single_File_End_Init();
                 change_result_file_name();
+
                 cf_close(&cfile);  //关闭打开的pcap文件
-//
-//                }
-//                CATCH(OutOfMemoryError)
-//                {
-//                    fprintf(stderr,
-//                            "Out Of Memory.\n"
-//                            "\n"
-//                            "Sorry, but TShark has to terminate now.\n"
-//                            "\n"
-//                            "More information and workarounds can be found at\n" WS_WIKI_URL("KnownBugs/OutOfMemory") "\n");
-//                    status = PROCESS_FILE_ERROR;
-//                }
-//        ENDTRY;
-//
-//        switch (status)
-//        {
-//
-//            case PROCESS_FILE_SUCCEEDED:
-//                /* Everything worked OK; draw the taps. */
-                draw_taps = TRUE;
-//                break;
-//
-//            case PROCESS_FILE_NO_FILE_PROCESSED:
-//                /* We never got to try to read the file, so there are no tap
-//                   results to dump.  Exit with an error status. */
-//                exit_status = 2;
-//                break;
-//
-//            case PROCESS_FILE_ERROR:
-//                /* We still dump out the results of taps, etc., as we might have
-//                   read some packets; however, we exit with an error status. */
-//                draw_taps = TRUE;
-//                exit_status = 2;
-//                break;
-//
-//            case PROCESS_FILE_INTERRUPTED:
-//                /* The user interrupted the read process; Don't dump out the
-//                   result of taps, etc., and exit with an error status. */
-//                exit_status = 2;
-//                break;
-//        }
 
                 if (pdu_export_arg) {
                     if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
@@ -2544,21 +2503,13 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+        g_print("解析完成");
     }
     else {
         /* No capture file specified, so we're supposed to do a live capture
            or get a list of link-layer types for a live capture device;
            do we have support for live captures? */
 #ifdef HAVE_LIBPCAP
-#ifdef _WIN32
-        /* Warn the user if npf.sys isn't loaded. */
-        if (!npf_sys_is_running())
-        {
-          fprintf(stderr, "The NPF driver isn't running.  You may have trouble "
-                          "capturing or\nlisting interfaces.\n");
-        }
-#endif /* _WIN32 */
-
         /* if no interface was specified, pick a default */
         exit_status = capture_opts_default_iface_if_necessary(&global_capture_opts,
                                                               ((prefs_p->capture_device) &&
@@ -2682,12 +2633,6 @@ int main(int argc, char *argv[]) {
         capture();
         exit_status = global_capture_session.fork_child_status;
 
-        if (print_packet_info) {
-            if (!write_finale()) {
-                show_print_file_io_error();
-            }
-        }
-
         /*
          * If we never got a capture file, don't draw the taps; we not only
          * didn't capture any packets, we never even did any capturing.
@@ -2707,8 +2652,13 @@ int main(int argc, char *argv[]) {
         cfile.provider.frames = NULL;
     }
 
-    if (draw_taps)
+    //清理流统计。
+    draw_taps = TRUE;
+    if (draw_taps){
         draw_tap_listeners(TRUE);
+        followConnectFiveEleClear();
+    }
+
     /* Memory cleanup */
     reset_tap_listeners();
     funnel_dump_all_text_windows();
@@ -2743,6 +2693,7 @@ int main(int argc, char *argv[]) {
     wtap_cleanup();
     free_progdirs();
     dfilter_free(dfcode);
+    verify_identity_two(REGISTRATION_FILE_PATH);
     return exit_status;
 }
 
@@ -3369,87 +3320,6 @@ capture_cleanup(int signum _U_) {
 #endif /* _WIN32 */
 #endif /* HAVE_LIBPCAP */
 
-static gboolean
-process_packet_first_pass(capture_file *cf, epan_dissect_t *edt,
-                          gint64 offset, wtap_rec *rec, Buffer *buf) {
-    frame_data fdlocal;
-    guint32 framenum;
-    gboolean passed;
-
-    /* The frame number of this packet is one more than the count of
-       frames in this packet. */
-    framenum = cf->count + 1;
-
-    /* If we're not running a display filter and we're not printing any
-       packet information, we don't need to do a dissection. This means
-       that all packets can be marked as 'passed'. */
-    passed = TRUE;
-
-    frame_data_init(&fdlocal, framenum, rec, offset, cum_bytes);
-
-    /* If we're going to run a read filter or a display filter, set up to
-       do a dissection and do so.  (This is the first pass of two passes
-       over the packets, so we will not be printing any information
-       from the dissection or running taps on the packet; if we're doing
-       any of that, we'll do it in the second pass.) */
-    if (edt) {
-        /* If we're running a read filter, prime the epan_dissect_t with that
-           filter. */
-        if (cf->rfcode)
-            epan_dissect_prime_with_dfilter(edt, cf->rfcode);
-
-        if (cf->dfcode)
-            epan_dissect_prime_with_dfilter(edt, cf->dfcode);
-
-        /* This is the first pass, so prime the epan_dissect_t with the
-           hfids postdissectors want on the first pass. */
-        prime_epan_dissect_with_postdissector_wanted_hfids(edt);
-
-        frame_data_set_before_dissect(&fdlocal, &cf->elapsed_time,
-                                      &cf->provider.ref, cf->provider.prev_dis);
-        if (cf->provider.ref == &fdlocal) {
-            ref_frame = fdlocal;
-            cf->provider.ref = &ref_frame;
-        }
-
-        epan_dissect_run(edt, cf->cd_t, rec,
-                         frame_tvbuff_new_buffer(&cf->provider, &fdlocal, buf),
-                         &fdlocal, NULL);  /* 执行协议解析 */
-
-        /* Run the read filter if we have one. */
-        if (cf->rfcode)
-            passed = dfilter_apply_edt(cf->rfcode, edt);
-    }
-
-    if (passed) {
-        frame_data_set_after_dissect(&fdlocal, &cum_bytes);
-        cf->provider.prev_cap = cf->provider.prev_dis = frame_data_sequence_add(cf->provider.frames, &fdlocal);
-
-        /* If we're not doing dissection then there won't be any dependent frames.
-         * More importantly, edt.pi.dependent_frames won't be initialized because
-         * epan hasn't been initialized.
-         * if we *are* doing dissection, then mark the dependent frames, but only
-         * if a display filter was given and it matches this packet.
-         */
-        if (edt && cf->dfcode) {
-            if (dfilter_apply_edt(cf->dfcode, edt)) {
-                g_slist_foreach(edt->pi.dependent_frames, find_and_mark_frame_depended_upon, cf->provider.frames);
-            }
-        }
-
-        cf->count++;
-    } else {
-        /* if we don't add it to the frame_data_sequence, clean it up right now
-         * to avoid leaks */
-        frame_data_destroy(&fdlocal);
-    }
-
-    if (edt)
-        epan_dissect_reset(edt);
-
-    return passed;
-}
-
 typedef enum {
     PASS_SUCCEEDED,
     PASS_READ_ERROR,
@@ -3477,7 +3347,7 @@ process_new_idbs(wtap *wth, wtap_dumper *pdh, int *err, gchar **err_info) {
 }
 
 static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper *pdh,
-                                                  int max_packet_count, gint64 max_byte_count,
+                                                  int unuse1, gint64 unuse2,
                                                   int *err, gchar **err_info,
                                                   volatile guint32 *err_framenum) {
     wtap_rec rec;
@@ -3512,8 +3382,8 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
      * one pass, so we can't do it in the background and fix up past
      * dissections.
      */
-//    set_resolution_synchrony(TRUE);
-    set_resolution_synchrony(FALSE);
+    set_resolution_synchrony(TRUE);
+//    set_resolution_synchrony(FALSE);
 
     *err = 0;
     while (wtap_read(cf->provider.wth, &rec, &buf, err, err_info, &data_offset)) {
@@ -3529,7 +3399,6 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
         }
 
 //        reset_epan_mem(cf, edt, create_proto_tree, print_packet_info && print_details);
-
         edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
         if (process_packet_single_pass(cf, edt, data_offset, &rec, &buf, tap_flags)) {
             /* Either there's no read filtering or this packet passed the
@@ -3553,9 +3422,6 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
         status = PASS_READ_ERROR;
     }
 
-//    if (edt)
-//        epan_dissect_free(edt);
-
     ws_buffer_free(&buf);
     wtap_rec_cleanup(&rec);
 
@@ -3563,8 +3429,8 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
 }
 
 static process_file_status_t
-process_cap_file(capture_file *cf, char *save_file, int out_file_type,
-                 gboolean out_file_name_res, int max_packet_count, gint64 max_byte_count) {
+process_cap_file(capture_file *cf, char *unuse1, int unuse2,
+                 gboolean unuse3, int max_packet_count, gint64 max_byte_count) {
 
     process_file_status_t status = PROCESS_FILE_SUCCEEDED;
     wtap_dumper *pdh = NULL;
@@ -3606,7 +3472,7 @@ int ALL_PACKET_COUNT = 0;  // 全局变量统计总共处理了多少个packet�
  */
 static gboolean
 process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
-                           wtap_rec *rec, Buffer *buf, guint tap_flags) {
+                           wtap_rec *rec, Buffer *buf, guint unuse1) {
     frame_data fdata;
     column_info *cinfo = NULL;
     gboolean passed;
@@ -3652,13 +3518,11 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
         if (DISPLAY_PACKET_INFO_FLAG) {
             if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
                 if (ALL_PACKET_COUNT % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
-                    g_print("have processed %d packets!", ALL_PACKET_COUNT);
-                    g_print("\r");
+                    g_print("have processed %d packets!\n", ALL_PACKET_COUNT);
                     fflush(stdout);
                 }
             } else {
-                g_print("have processed %d packets!", ALL_PACKET_COUNT);
-                g_print("\r");
+                g_print("have processed %d packets!\n", ALL_PACKET_COUNT);
                 fflush(stdout);
             }
         }
@@ -3703,388 +3567,6 @@ write_preamble(capture_file *cf) {
             g_assert_not_reached();
             return FALSE;
     }
-}
-
-static char *
-get_line_buf(size_t len) {
-    static char *line_bufp = NULL;
-    static size_t line_buf_len = 256;
-    size_t new_line_buf_len;
-
-    for (new_line_buf_len = line_buf_len; len > new_line_buf_len;
-         new_line_buf_len *= 2);
-    if (line_bufp == NULL) {
-        line_buf_len = new_line_buf_len;
-        line_bufp = (char *) g_malloc(line_buf_len + 1);
-    } else {
-        if (new_line_buf_len > line_buf_len) {
-            line_buf_len = new_line_buf_len;
-            line_bufp = (char *) g_realloc(line_bufp, line_buf_len + 1);
-        }
-    }
-    return line_bufp;
-}
-
-static inline void
-put_string(char *dest, const char *str, size_t str_len) {
-    memcpy(dest, str, str_len);
-    dest[str_len] = '\0';
-}
-
-static inline void
-put_spaces_string(char *dest, const char *str, size_t str_len, size_t str_with_spaces) {
-    size_t i;
-
-    for (i = str_len; i < str_with_spaces; i++)
-        *dest++ = ' ';
-
-    put_string(dest, str, str_len);
-}
-
-static inline void
-put_string_spaces(char *dest, const char *str, size_t str_len, size_t str_with_spaces) {
-    size_t i;
-
-    memcpy(dest, str, str_len);
-    for (i = str_len; i < str_with_spaces; i++)
-        dest[i] = ' ';
-
-    dest[str_with_spaces] = '\0';
-}
-
-static gboolean
-print_columns(capture_file *cf, const epan_dissect_t *edt) {
-    char *line_bufp;
-    int i;
-    size_t buf_offset;
-    size_t column_len;
-    size_t col_len;
-    col_item_t *col_item;
-    gchar str_format[11];
-    const color_filter_t *color_filter = NULL;
-
-    line_bufp = get_line_buf(256);
-    buf_offset = 0;
-    *line_bufp = '\0';
-
-    if (dissect_color)
-        color_filter = edt->pi.fd->color_filter;
-
-    for (i = 0; i < cf->cinfo.num_cols; i++) {
-        col_item = &cf->cinfo.columns[i];
-        printf("\ntitle %s, data: %s \n", col_item->col_title, col_item->col_data);
-        /* Skip columns not marked as visible. */
-        // if (!get_column_visible(i))
-        //   continue;
-        switch (col_item->col_fmt) {
-            case COL_NUMBER:
-                column_len = col_len = strlen(col_item->col_data);
-                if (column_len < 5)
-                    column_len = 5;
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_spaces_string(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
-                break;
-
-            case COL_CLS_TIME:
-            case COL_REL_TIME:
-            case COL_ABS_TIME:
-            case COL_ABS_YMD_TIME:  /* XXX - wider */
-            case COL_ABS_YDOY_TIME: /* XXX - wider */
-            case COL_UTC_TIME:
-            case COL_UTC_YMD_TIME:  /* XXX - wider */
-            case COL_UTC_YDOY_TIME: /* XXX - wider */
-                column_len = col_len = strlen(col_item->col_data);
-                if (column_len < 10)
-                    column_len = 10;
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_spaces_string(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
-                break;
-
-            case COL_DEF_SRC:
-            case COL_RES_SRC:
-            case COL_UNRES_SRC:
-            case COL_DEF_DL_SRC:
-            case COL_RES_DL_SRC:
-            case COL_UNRES_DL_SRC:
-            case COL_DEF_NET_SRC:
-            case COL_RES_NET_SRC:
-            case COL_UNRES_NET_SRC:
-                column_len = col_len = strlen(col_item->col_data);
-                if (column_len < 12)
-                    column_len = 12;
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_spaces_string(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
-                break;
-
-            case COL_DEF_DST:
-            case COL_RES_DST:
-            case COL_UNRES_DST:
-            case COL_DEF_DL_DST:
-            case COL_RES_DL_DST:
-            case COL_UNRES_DL_DST:
-            case COL_DEF_NET_DST:
-            case COL_RES_NET_DST:
-            case COL_UNRES_NET_DST:
-                column_len = col_len = strlen(col_item->col_data);
-                if (column_len < 12)
-                    column_len = 12;
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_string_spaces(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
-                break;
-
-            default:
-                column_len = strlen(col_item->col_data);
-                line_bufp = get_line_buf(buf_offset + column_len);
-                put_string(line_bufp + buf_offset, col_item->col_data, column_len);
-                break;
-        }
-        buf_offset += column_len;
-        if (i != cf->cinfo.num_cols - 1) {
-            /*
-             * This isn't the last column, so we need to print a
-             * separator between this column and the next.
-             *
-             * If we printed a network source and are printing a
-             * network destination of the same type next, separate
-             * them with a UTF-8 right arrow; if we printed a network
-             * destination and are printing a network source of the same
-             * type next, separate them with a UTF-8 left arrow;
-             * otherwise separate them with a space.
-             *
-             * We add enough space to the buffer for " \xe2\x86\x90 "
-             * or " \xe2\x86\x92 ", even if we're only adding " ".
-             */
-            line_bufp = get_line_buf(buf_offset + 5);
-            switch (col_item->col_fmt) {
-
-                case COL_DEF_SRC:
-                case COL_RES_SRC:
-                case COL_UNRES_SRC:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_DST:
-                        case COL_RES_DST:
-                        case COL_UNRES_DST:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_RIGHTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_DL_SRC:
-                case COL_RES_DL_SRC:
-                case COL_UNRES_DL_SRC:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_DL_DST:
-                        case COL_RES_DL_DST:
-                        case COL_UNRES_DL_DST:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_RIGHTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_NET_SRC:
-                case COL_RES_NET_SRC:
-                case COL_UNRES_NET_SRC:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_NET_DST:
-                        case COL_RES_NET_DST:
-                        case COL_UNRES_NET_DST:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_RIGHTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_DST:
-                case COL_RES_DST:
-                case COL_UNRES_DST:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_SRC:
-                        case COL_RES_SRC:
-                        case COL_UNRES_SRC:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_LEFTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_DL_DST:
-                case COL_RES_DL_DST:
-                case COL_UNRES_DL_DST:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_DL_SRC:
-                        case COL_RES_DL_SRC:
-                        case COL_UNRES_DL_SRC:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_LEFTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                case COL_DEF_NET_DST:
-                case COL_RES_NET_DST:
-                case COL_UNRES_NET_DST:
-                    switch (cf->cinfo.columns[i + 1].col_fmt) {
-
-                        case COL_DEF_NET_SRC:
-                        case COL_RES_NET_SRC:
-                        case COL_UNRES_NET_SRC:
-                            g_snprintf(str_format, sizeof(str_format), "%s%s%s", delimiter_char, UTF8_LEFTWARDS_ARROW,
-                                       delimiter_char);
-                            put_string(line_bufp + buf_offset, str_format, 5);
-                            buf_offset += 5;
-                            break;
-
-                        default:
-                            put_string(line_bufp + buf_offset, delimiter_char, 1);
-                            buf_offset += 1;
-                            break;
-                    }
-                    break;
-
-                default:
-                    put_string(line_bufp + buf_offset, delimiter_char, 1);
-                    buf_offset += 1;
-                    break;
-            }
-        }
-    }
-
-    if (dissect_color && color_filter != NULL)
-        return print_line_color(print_stream, 0, line_bufp, &color_filter->fg_color, &color_filter->bg_color);
-    else
-        return print_line(print_stream, 0, line_bufp);
-}
-
-static gboolean
-print_packet(capture_file *cf, epan_dissect_t *edt) {
-    if (print_summary || output_fields_has_cols(output_fields))
-        /* Just fill in the columns. */
-        epan_dissect_fill_in_columns(edt, FALSE, TRUE);
-
-    /* Print summary columns and/or protocol tree */
-    switch (output_action) {
-
-        case WRITE_TEXT:
-            if (print_summary && !print_columns(cf, edt))
-                return FALSE;
-            if (print_details) {
-                if (!proto_tree_print(print_details ? print_dissections_expanded : print_dissections_none, print_hex,
-                                      edt, output_only_tables,
-                                      print_stream))
-                    return FALSE;
-                if (!print_hex) {
-                    if (!print_line(print_stream, 0, separator))
-                        return FALSE;
-                }
-            }
-            break;
-
-        case WRITE_XML:
-            if (print_summary) {
-                write_psml_columns(edt, stdout, dissect_color);
-                return !ferror(stdout);
-            }
-            if (print_details) {
-                write_pdml_proto_tree(output_fields, protocolfilter, protocolfilter_flags, edt, &cf->cinfo, stdout,
-                                      dissect_color);
-                printf("\n");
-                return !ferror(stdout);
-            }
-            break;
-
-        case WRITE_FIELDS:
-            if (print_summary) {
-                /*No non-verbose "fields" format */
-                g_assert_not_reached();
-            }
-            if (print_details) {
-                write_fields_proto_tree(output_fields, edt, &cf->cinfo, stdout);
-                printf("\n");
-                return !ferror(stdout);
-            }
-            break;
-
-        case WRITE_JSON:
-            if (print_summary)
-                g_assert_not_reached();
-            if (print_details) {
-                write_json_proto_tree(output_fields, print_dissections_expanded,
-                                      print_hex, protocolfilter, protocolfilter_flags,
-                                      edt, &cf->cinfo, node_children_grouper, &jdumper);
-                return !ferror(stdout);
-            }
-            break;
-
-        case WRITE_JSON_RAW:
-            if (print_summary)
-                g_assert_not_reached();
-            if (print_details) {
-                write_json_proto_tree(output_fields, print_dissections_none, TRUE,
-                                      protocolfilter, protocolfilter_flags,
-                                      edt, &cf->cinfo, node_children_grouper, &jdumper);
-                return !ferror(stdout);
-            }
-            break;
-
-        case WRITE_EK:
-            write_ek_proto_tree(output_fields, print_summary, print_hex, protocolfilter,
-                                protocolfilter_flags, edt, &cf->cinfo, stdout);
-            return !ferror(stdout);
-    }
-
-    if (print_hex) {
-        if (print_summary || print_details) {
-            if (!print_line(print_stream, 0, ""))
-                return FALSE;
-        }
-        if (!print_hex_data(print_stream, edt))
-            return FALSE;
-        if (!print_line(print_stream, 0, separator))
-            return FALSE;
-    }
-    return TRUE;
 }
 
 static gboolean
