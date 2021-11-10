@@ -108,7 +108,7 @@ char *addkey1(char *str) {
 void usersee(char *machine_id_path, char *str) {
     FILE *fp = fopen(machine_id_path, "w");//添加文件路径
     if (fp == NULL) {
-        printf("can't open configure file\n");
+        printf("can't open configure file: %s\n", machine_id_path);
         exit(-1);
     }
     fprintf(fp, "%s", str);
@@ -120,7 +120,7 @@ void writefile(char *regist_path, char *str) {
 
     FILE *fp = fopen(regist_path, "w");//写入二进制文件,需要添加文件；
     if (fp == NULL) {
-        printf("can't open file\n");
+        printf("can't open file: %s\n", regist_path);
         exit(-1);
     }
     fprintf(fp, "%s", str);
