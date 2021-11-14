@@ -592,10 +592,12 @@ gboolean initial_All_para() {
  * @return
  */
 gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct totalParam *cookie __U__){
-    if(temp->finfo->length >= 1514 or temp->finfo->length <= 0) return false; //无意义的长值直接跳过
+    if(temp->finfo->length >= 1514 or temp->finfo->length <= 0)
+        return false; //无意义的长值直接跳过
 
     std::string key_str = temp->finfo->hfinfo->abbrev;
-    if(cursionkeyStrFilter(key_str.c_str())) return false; //无意义的字段过滤掉
+    if(cursionkeyStrFilter(key_str.c_str()))
+        return false; //无意义的字段过滤掉
 
     //获取value
     int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):1000;
@@ -817,7 +819,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     proto_node *stack_node_t = node;
 
     int stack_node_layer = 0;
-    while (stack_node_t != nullptr and ++stack_node_layer < 11) {
+    while (stack_node_t != nullptr and ++stack_node_layer < 15) {
         field_info *fi = stack_node_t->finfo;
         if (lastLayerProtocolFilter(fi->hfinfo->abbrev)) {
             stack_node_t = stack_node_t->next;
