@@ -1164,12 +1164,12 @@ gboolean readConfigFilesStatus() {
                 insert_many_protocol_stream_flag = getInfo_ConfigFile("INSERT_MANY_PROTOCOL_STREAM_FLAG", info, lines);
                 if (insert_many_protocol_stream_flag != nullptr) {
                     INSERT_MANY_PROTOCOL_STREAM_FLAG = *insert_many_protocol_stream_flag - '0';
-                } else INSERT_MANY_PROTOCOL_STREAM_FLAG = 0;
+                } else INSERT_MANY_PROTOCOL_STREAM_FLAG = 1;
 
                 insert_many_protocol_stream_num = getInfo_ConfigFile("INSERT_MANY_PROTOCOL_STREAM_NUM", info, lines);
                 if (insert_many_protocol_stream_num != nullptr) {
                     INSERT_MANY_PROTOCOL_STREAM_NUM = std::stoi(insert_many_protocol_stream_num);
-                } else INSERT_MANY_PROTOCOL_STREAM_NUM = 1000;
+                } else INSERT_MANY_PROTOCOL_STREAM_NUM = 10000;
 
                 edit_files_sizes = getInfo_ConfigFile("EDIT_FILES_SIZES", info, lines);
                 if (edit_files_sizes != nullptr) {
@@ -1179,7 +1179,7 @@ gboolean readConfigFilesStatus() {
                 per_files_max_linex = getInfo_ConfigFile("PER_FILES_MAX_LINES", info, lines);
                 if (per_files_max_linex != nullptr) {
                     PER_FILES_MAX_LINES = std::stoi(per_files_max_linex);
-                } else PER_FILES_MAX_LINES = 10000;
+                } else PER_FILES_MAX_LINES = 100000;
 
                 packet_protocol_flag = getInfo_ConfigFile("EDIT_FILES_DISSECT_FLAG", info, lines);
                 if (packet_protocol_flag != nullptr) {
