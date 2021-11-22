@@ -27,10 +27,10 @@ static header_field_info *hfi_urlencoded = NULL;
 #define URLENCODED_HFI_INIT HFI_INIT(proto_urlencoded)
 
 static header_field_info hfi_form_key URLENCODED_HFI_INIT =
-	{ "Key", "urlencoded-form.key", FT_STRINGZ, BASE_NONE, NULL, 0x0, NULL, HFILL };
+	{ "Key", "urlencoded-form_key", FT_STRINGZ, BASE_NONE, NULL, 0x0, NULL, HFILL };
 
 static header_field_info hfi_form_value URLENCODED_HFI_INIT =
-	{ "Value", "urlencoded-form.value", FT_STRINGZ, BASE_NONE, NULL, 0x0, NULL, HFILL };
+	{ "Value", "urlencoded-form_value", FT_STRINGZ, BASE_NONE, NULL, 0x0, NULL, HFILL };
 
 static gint ett_form_urlencoded = -1;
 static gint ett_form_keyvalue = -1;

@@ -119,40 +119,40 @@ proto_register_brcm_tag(void)
 {
    static hf_register_info hf[] = {
       { &hf_brcm_tag_opcode,
-         { "Opcode", "brcm_tag.opcode",
+         { "Opcode", "brcm_tag_opcode",
             FT_UINT8, BASE_HEX, VALS(brcm_tag_opcode_vals),
             BRCM_TAG_OPCODE_MASK << BRCM_TAG_OPCODE_SHIFT, NULL, HFILL }
       },
       { &hf_brcm_tag_mr,
-         { "Mirror bit", "brcm_tag.mr",
+         { "Mirror bit", "brcm_tag_mr",
             FT_UINT8, BASE_HEX, NULL, 1 << BRCM_TAG_MR_SHIFT, NULL, HFILL }
       },
       { &hf_brcm_tag_mo,
-         { "Mirror only", "brcm_tag.mo",
+         { "Mirror only", "brcm_tag_mo",
             FT_UINT8, BASE_HEX, NULL, 1 << BRCM_TAG_MO_SHIFT, NULL, HFILL }
       },
       { &hf_brcm_tag_reserved,
-         { "Reserved", "brcm_tag.reserved",
+         { "Reserved", "brcm_tag_reserved",
             FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }
       },
       { &hf_brcm_tag_frame_octet_cnt,
-         { "Frame octet count", "brcm_tag.frame_octet_cnt",
+         { "Frame octet count", "brcm_tag_frame_octet_cnt",
             FT_UINT16, BASE_DEC, NULL, 0xFFF, NULL, HFILL }
       },
       { &hf_brcm_tag_dest_dev_id,
-         { "Destination device ID", "brcm_tag.dest_dev_id",
+         { "Destination device ID", "brcm_tag_dest_dev_id",
             FT_UINT8, BASE_DEC, NULL, BRCM_TAG_DEV_ID_MASK, NULL, HFILL }
       },
       { &hf_brcm_tag_dest_port_id,
-         { "Destination port ID", "brcm_tag.dest_port_id",
+         { "Destination port ID", "brcm_tag_dest_port_id",
             FT_UINT8, BASE_DEC, NULL, BRCM_TAG_PORT_ID_MASK, NULL, HFILL }
       },
       { &hf_brcm_tag_src_dev_id,
-         { "Source device ID", "brcm_tag.src_dev_id",
+         { "Source device ID", "brcm_tag_src_dev_id",
             FT_UINT8, BASE_DEC, NULL, BRCM_TAG_DEV_ID_MASK << BRCM_TAG_SRC_DEV_ID_SHIFT, NULL, HFILL }
       },
       { &hf_brcm_tag_src_port_id,
-         { "Source port ID", "brcm_tag.src_port_id",
+         { "Source port ID", "brcm_tag_src_port_id",
             FT_UINT8, BASE_DEC, NULL, BRCM_TAG_PORT_ID_MASK, NULL, HFILL }
       },
    };

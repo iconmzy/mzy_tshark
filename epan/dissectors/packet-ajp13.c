@@ -862,231 +862,231 @@ proto_register_ajp13(void)
 
   static hf_register_info hf[] = {
     { &hf_ajp13_magic,
-      { "Magic",  "ajp13.magic", FT_BYTES, BASE_NONE, NULL, 0x0, "Magic Number",
+      { "Magic",  "ajp13_magic", FT_BYTES, BASE_NONE, NULL, 0x0, "Magic Number",
         HFILL }
     },
     { &hf_ajp13_len,
-      { "Length",  "ajp13.len", FT_UINT16, BASE_DEC, NULL, 0x0, "Data Length",
+      { "Length",  "ajp13_len", FT_UINT16, BASE_DEC, NULL, 0x0, "Data Length",
         HFILL }
     },
     { &hf_ajp13_code,
-      { "Code",  "ajp13.code", FT_UINT32, BASE_DEC, VALS(mtype_codes), 0x0, "Type Code",
+      { "Code",  "ajp13_code", FT_UINT32, BASE_DEC, VALS(mtype_codes), 0x0, "Type Code",
          HFILL }
     },
     { &hf_ajp13_method,
-      { "Method",  "ajp13.method", FT_UINT8, BASE_DEC, VALS(http_method_codes), 0x0, "HTTP Method",
+      { "Method",  "ajp13_method", FT_UINT8, BASE_DEC, VALS(http_method_codes), 0x0, "HTTP Method",
         HFILL }
     },
     { &hf_ajp13_ver,
-      { "Version",  "ajp13.ver", FT_STRING, BASE_NONE, NULL, 0x0, "HTTP Version",
+      { "Version",  "ajp13_ver", FT_STRING, BASE_NONE, NULL, 0x0, "HTTP Version",
         HFILL }
     },
     { &hf_ajp13_uri,
-      { "URI",  "ajp13.uri", FT_STRING, BASE_NONE, NULL, 0x0, "HTTP URI",
+      { "URI",  "ajp13_uri", FT_STRING, BASE_NONE, NULL, 0x0, "HTTP URI",
         HFILL }
     },
     { &hf_ajp13_raddr,
-      { "RADDR",  "ajp13.raddr", FT_STRING, BASE_NONE, NULL, 0x0, "Remote Address",
+      { "RADDR",  "ajp13_raddr", FT_STRING, BASE_NONE, NULL, 0x0, "Remote Address",
         HFILL }
     },
     { &hf_ajp13_rhost,
-      { "RHOST",  "ajp13.rhost", FT_STRING, BASE_NONE, NULL, 0x0, "Remote Host",
+      { "RHOST",  "ajp13_rhost", FT_STRING, BASE_NONE, NULL, 0x0, "Remote Host",
         HFILL }
     },
     { &hf_ajp13_srv,
-      { "SRV",  "ajp13.srv", FT_STRING, BASE_NONE, NULL, 0x0, "Server",
+      { "SRV",  "ajp13_srv", FT_STRING, BASE_NONE, NULL, 0x0, "Server",
         HFILL }
     },
     { &hf_ajp13_port,
-      { "PORT",  "ajp13.port", FT_UINT16, BASE_DEC, NULL, 0x0, NULL,
+      { "PORT",  "ajp13_port", FT_UINT16, BASE_DEC, NULL, 0x0, NULL,
         HFILL }
     },
     { &hf_ajp13_sslp,
-      { "SSLP",  "ajp13.sslp", FT_BOOLEAN, BASE_NONE, NULL, 0x0, "Is SSL?",
+      { "SSLP",  "ajp13_sslp", FT_BOOLEAN, BASE_NONE, NULL, 0x0, "Is SSL?",
         HFILL }
     },
     { &hf_ajp13_nhdr,
-      { "NHDR",  "ajp13.nhdr", FT_UINT16, BASE_DEC, NULL, 0x0, "Num Headers",
+      { "NHDR",  "ajp13_nhdr", FT_UINT16, BASE_DEC, NULL, 0x0, "Num Headers",
         HFILL }
     },
 /* response headers */
     { &hf_ajp13_unknown_header,
-      { "unknown_header",  "ajp13.unknown_header", FT_STRING, BASE_NONE, NULL, 0x0, "Unknown Header Type",
+      { "unknown_header",  "ajp13_unknown_header", FT_STRING, BASE_NONE, NULL, 0x0, "Unknown Header Type",
         HFILL }
     },
     { &hf_ajp13_additional_header,
-      { "additional_header",  "ajp13.additional_header", FT_STRING, BASE_NONE, NULL, 0x0, "Additional Header Type",
+      { "additional_header",  "ajp13_additional_header", FT_STRING, BASE_NONE, NULL, 0x0, "Additional Header Type",
         HFILL }
     },
     { &hf_ajp13_content_type,
-      { "Content-Type",  "ajp13.content_type", FT_STRING, BASE_NONE, NULL, 0x0, "Content-Type Header",
+      { "Content-Type",  "ajp13_content_type", FT_STRING, BASE_NONE, NULL, 0x0, "Content-Type Header",
         HFILL }
     },
     { &hf_ajp13_content_language,
-      { "Content-Language",  "ajp13.content_language", FT_STRING, BASE_NONE, NULL, 0x0, "Content-Language Header",
+      { "Content-Language",  "ajp13_content_language", FT_STRING, BASE_NONE, NULL, 0x0, "Content-Language Header",
         HFILL }
     },
     { &hf_ajp13_content_length,
-      { "Content-Length",  "ajp13.content_length", FT_STRING, BASE_NONE, NULL, 0x0, "Content-Length header",
+      { "Content-Length",  "ajp13_content_length", FT_STRING, BASE_NONE, NULL, 0x0, "Content-Length header",
         HFILL }
     },
     { &hf_ajp13_date,
-      { "Date",  "ajp13.date", FT_STRING, BASE_NONE, NULL, 0x0, "Date Header",
+      { "Date",  "ajp13_date", FT_STRING, BASE_NONE, NULL, 0x0, "Date Header",
         HFILL }
     },
     { &hf_ajp13_last_modified,
-      { "Last-Modified",  "ajp13.last_modified", FT_STRING, BASE_NONE, NULL, 0x0, "Last Modified Header",
+      { "Last-Modified",  "ajp13_last_modified", FT_STRING, BASE_NONE, NULL, 0x0, "Last Modified Header",
         HFILL }
     },
     { &hf_ajp13_location,
-      { "Location",  "ajp13.location", FT_STRING, BASE_NONE, NULL, 0x0, "Location Header",
+      { "Location",  "ajp13_location", FT_STRING, BASE_NONE, NULL, 0x0, "Location Header",
         HFILL }
     },
     { &hf_ajp13_set_cookie,
-      { "Set-Cookie",  "ajp13.set_cookie", FT_STRING, BASE_NONE, NULL, 0x0, "Set-Cookie Header",
+      { "Set-Cookie",  "ajp13_set_cookie", FT_STRING, BASE_NONE, NULL, 0x0, "Set-Cookie Header",
         HFILL }
     },
     { &hf_ajp13_set_cookie2,
-      { "Set-Cookie2",  "ajp13.set_cookie2", FT_STRING, BASE_NONE, NULL, 0x0, "Set-Cookie2 Header",
+      { "Set-Cookie2",  "ajp13_set_cookie2", FT_STRING, BASE_NONE, NULL, 0x0, "Set-Cookie2 Header",
         HFILL }
     },
     { &hf_ajp13_servlet_engine,
-      { "Servlet-Engine",  "ajp13.servlet_engine", FT_STRING, BASE_NONE, NULL, 0x0, "Servlet-Engine Header",
+      { "Servlet-Engine",  "ajp13_servlet_engine", FT_STRING, BASE_NONE, NULL, 0x0, "Servlet-Engine Header",
         HFILL }
     },
     { &hf_ajp13_status,
-      { "Status",  "ajp13.status", FT_STRING, BASE_NONE, NULL, 0x0, "Status Header",
+      { "Status",  "ajp13_status", FT_STRING, BASE_NONE, NULL, 0x0, "Status Header",
         HFILL }
     },
     { &hf_ajp13_www_authenticate,
-      { "WWW-Authenticate",  "ajp13.www_authenticate", FT_STRING, BASE_NONE, NULL, 0x0, "WWW-Authenticate Header",
+      { "WWW-Authenticate",  "ajp13_www_authenticate", FT_STRING, BASE_NONE, NULL, 0x0, "WWW-Authenticate Header",
         HFILL }
     },
 /* request headers */
     { &hf_ajp13_accept,
-      { "Accept",  "ajp13.accept", FT_STRING, BASE_NONE, NULL, 0x0, "Accept Header",
+      { "Accept",  "ajp13_accept", FT_STRING, BASE_NONE, NULL, 0x0, "Accept Header",
         HFILL }
     },
     { &hf_ajp13_accept_charset,
-      { "Accept-Charset",  "ajp13.accept_charset", FT_STRING, BASE_NONE, NULL, 0x0, "Accept-Charset Header",
+      { "Accept-Charset",  "ajp13_accept_charset", FT_STRING, BASE_NONE, NULL, 0x0, "Accept-Charset Header",
         HFILL }
     },
     { &hf_ajp13_accept_encoding,
-      { "Accept-Encoding",  "ajp13.accept_encoding", FT_STRING, BASE_NONE, NULL, 0x0, "Accept-Encoding Header",
+      { "Accept-Encoding",  "ajp13_accept_encoding", FT_STRING, BASE_NONE, NULL, 0x0, "Accept-Encoding Header",
         HFILL }
     },
     { &hf_ajp13_accept_language,
-      { "Accept-Language",  "ajp13.accept_language", FT_STRING, BASE_NONE, NULL, 0x0, "Accept-Language Header",
+      { "Accept-Language",  "ajp13_accept_language", FT_STRING, BASE_NONE, NULL, 0x0, "Accept-Language Header",
         HFILL }
     },
     { &hf_ajp13_authorization,
-      { "Authorization",  "ajp13.authorization", FT_STRING, BASE_NONE, NULL, 0x0, "Authorization Header",
+      { "Authorization",  "ajp13_authorization", FT_STRING, BASE_NONE, NULL, 0x0, "Authorization Header",
         HFILL }
     },
     { &hf_ajp13_connection,
-      { "Connection",  "ajp13.connection", FT_STRING, BASE_NONE, NULL, 0x0, "Connection Header",
+      { "Connection",  "ajp13_connection", FT_STRING, BASE_NONE, NULL, 0x0, "Connection Header",
         HFILL }
     },
     { &hf_ajp13_cookie,
-      { "Cookie",  "ajp13.cookie", FT_STRING, BASE_NONE, NULL, 0x0, "Cookie Header",
+      { "Cookie",  "ajp13_cookie", FT_STRING, BASE_NONE, NULL, 0x0, "Cookie Header",
         HFILL }
     },
     { &hf_ajp13_cookie2,
-      { "Cookie2",  "ajp13.cookie2", FT_STRING, BASE_NONE, NULL, 0x0, "Cookie2 Header",
+      { "Cookie2",  "ajp13_cookie2", FT_STRING, BASE_NONE, NULL, 0x0, "Cookie2 Header",
         HFILL }
     },
     { &hf_ajp13_host,
-      { "Host",  "ajp13.host", FT_STRING, BASE_NONE, NULL, 0x0, "Host Header",
+      { "Host",  "ajp13_host", FT_STRING, BASE_NONE, NULL, 0x0, "Host Header",
         HFILL }
     },
     { &hf_ajp13_pragma,
-      { "Pragma",  "ajp13.pragma", FT_STRING, BASE_NONE, NULL, 0x0, "Pragma Header",
+      { "Pragma",  "ajp13_pragma", FT_STRING, BASE_NONE, NULL, 0x0, "Pragma Header",
         HFILL }
     },
     { &hf_ajp13_referer,
-      { "Referer",  "ajp13.referer", FT_STRING, BASE_NONE, NULL, 0x0, "Referer Header",
+      { "Referer",  "ajp13_referer", FT_STRING, BASE_NONE, NULL, 0x0, "Referer Header",
         HFILL }
     },
     { &hf_ajp13_user_agent,
-      { "User-Agent",  "ajp13.user_agent", FT_STRING, BASE_NONE, NULL, 0x0, "User-Agent Header",
+      { "User-Agent",  "ajp13_user_agent", FT_STRING, BASE_NONE, NULL, 0x0, "User-Agent Header",
         HFILL }
     },
 /* request attributes */
     { &hf_ajp13_unknown_attribute,
-      { "unknown_attribute",  "ajp13.unknown_attribute", FT_STRING, BASE_NONE, NULL, 0x0, "Unknown Attribute Type",
+      { "unknown_attribute",  "ajp13_unknown_attribute", FT_STRING, BASE_NONE, NULL, 0x0, "Unknown Attribute Type",
         HFILL }
     },
     { &hf_ajp13_req_attribute,
-      { "req_attribute",  "ajp13.req_attribute", FT_STRING, BASE_NONE, NULL, 0x0, "Additional Attribute Type",
+      { "req_attribute",  "ajp13_req_attribute", FT_STRING, BASE_NONE, NULL, 0x0, "Additional Attribute Type",
         HFILL }
     },
     { &hf_ajp13_context,
-      { "Context",  "ajp13.context", FT_STRING, BASE_NONE, NULL, 0x0, "Context Attribute",
+      { "Context",  "ajp13_context", FT_STRING, BASE_NONE, NULL, 0x0, "Context Attribute",
         HFILL }
     },
     { &hf_ajp13_servlet_path,
-      { "Servlet-Path",  "ajp13.servlet_path", FT_STRING, BASE_NONE, NULL, 0x0, "Servlet-Path Attribute",
+      { "Servlet-Path",  "ajp13_servlet_path", FT_STRING, BASE_NONE, NULL, 0x0, "Servlet-Path Attribute",
         HFILL }
     },
     { &hf_ajp13_remote_user,
-      { "Remote-User",  "ajp13.remote_user", FT_STRING, BASE_NONE, NULL, 0x0, "Remote-User Attribute",
+      { "Remote-User",  "ajp13_remote_user", FT_STRING, BASE_NONE, NULL, 0x0, "Remote-User Attribute",
         HFILL }
     },
     { &hf_ajp13_auth_type,
-      { "Auth-Type",  "ajp13.auth_type", FT_STRING, BASE_NONE, NULL, 0x0, "Auth-Type Attribute",
+      { "Auth-Type",  "ajp13_auth_type", FT_STRING, BASE_NONE, NULL, 0x0, "Auth-Type Attribute",
         HFILL }
     },
     { &hf_ajp13_query_string,
-      { "Query-String",  "ajp13.query_string", FT_STRING, BASE_NONE, NULL, 0x0, "Query-String Attribute",
+      { "Query-String",  "ajp13_query_string", FT_STRING, BASE_NONE, NULL, 0x0, "Query-String Attribute",
         HFILL }
     },
     { &hf_ajp13_route,
-      { "Route",  "ajp13.route", FT_STRING, BASE_NONE, NULL, 0x0, "Route Attribute",
+      { "Route",  "ajp13_route", FT_STRING, BASE_NONE, NULL, 0x0, "Route Attribute",
         HFILL }
     },
     { &hf_ajp13_ssl_cert,
-      { "SSL-Cert",  "ajp13.ssl_cert", FT_STRING, BASE_NONE, NULL, 0x0, "SSL-Cert Attribute",
+      { "SSL-Cert",  "ajp13_ssl_cert", FT_STRING, BASE_NONE, NULL, 0x0, "SSL-Cert Attribute",
         HFILL }
     },
     { &hf_ajp13_ssl_cipher,
-      { "SSL-Cipher",  "ajp13.ssl_cipher", FT_STRING, BASE_NONE, NULL, 0x0, "SSL-Cipher Attribute",
+      { "SSL-Cipher",  "ajp13_ssl_cipher", FT_STRING, BASE_NONE, NULL, 0x0, "SSL-Cipher Attribute",
         HFILL }
     },
     { &hf_ajp13_ssl_session,
-      { "SSL-Session",  "ajp13.ssl_session", FT_STRING, BASE_NONE, NULL, 0x0, "SSL-Session Attribute",
+      { "SSL-Session",  "ajp13_ssl_session", FT_STRING, BASE_NONE, NULL, 0x0, "SSL-Session Attribute",
         HFILL }
     },
     { &hf_ajp13_ssl_key_size,
-      { "SSL-Key-Size",  "ajp13.ssl_key_size", FT_UINT16, BASE_DEC, NULL, 0x0, "SSL-Key-Size Attribute",
+      { "SSL-Key-Size",  "ajp13_ssl_key_size", FT_UINT16, BASE_DEC, NULL, 0x0, "SSL-Key-Size Attribute",
         HFILL }
     },
     { &hf_ajp13_secret,
-      { "Secret",  "ajp13.secret", FT_STRING, BASE_NONE, NULL, 0x0, "Secret Attribute",
+      { "Secret",  "ajp13_secret", FT_STRING, BASE_NONE, NULL, 0x0, "Secret Attribute",
         HFILL }
     },
     { &hf_ajp13_stored_method,
-      { "Stored-Method",  "ajp13.stored_method", FT_STRING, BASE_NONE, NULL, 0x0, "Stored-Method Attribute",
+      { "Stored-Method",  "ajp13_stored_method", FT_STRING, BASE_NONE, NULL, 0x0, "Stored-Method Attribute",
         HFILL }
     },
 
     { &hf_ajp13_rlen,
-      { "RLEN",  "ajp13.rlen", FT_UINT16, BASE_DEC, NULL, 0x0, "Requested Length",
+      { "RLEN",  "ajp13_rlen", FT_UINT16, BASE_DEC, NULL, 0x0, "Requested Length",
         HFILL }
     },
     { &hf_ajp13_reusep,
-      { "REUSEP",  "ajp13.reusep", FT_UINT8, BASE_DEC, NULL, 0x0, "Reuse Connection?",
+      { "REUSEP",  "ajp13_reusep", FT_UINT8, BASE_DEC, NULL, 0x0, "Reuse Connection?",
         HFILL }
     },
     { &hf_ajp13_rstatus,
-      { "RSTATUS",  "ajp13.rstatus", FT_UINT16, BASE_DEC, NULL, 0x0, "HTTP Status Code",
+      { "RSTATUS",  "ajp13_rstatus", FT_UINT16, BASE_DEC, NULL, 0x0, "HTTP Status Code",
         HFILL }
     },
     { &hf_ajp13_rsmsg,
-      { "RSMSG",  "ajp13.rmsg", FT_STRING, BASE_NONE, NULL, 0x0, "HTTP Status Message",
+      { "RSMSG",  "ajp13_rmsg", FT_STRING, BASE_NONE, NULL, 0x0, "HTTP Status Message",
         HFILL }
     },
     { &hf_ajp13_data,
-      { "Data",  "ajp13.data", FT_STRING, BASE_NONE, NULL, 0x0, NULL,
+      { "Data",  "ajp13_data", FT_STRING, BASE_NONE, NULL, 0x0, NULL,
         HFILL }
     },
   };

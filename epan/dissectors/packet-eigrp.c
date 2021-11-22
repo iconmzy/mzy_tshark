@@ -2606,40 +2606,40 @@ proto_register_eigrp(void)
          *   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
          */
         { &hf_eigrp_version,
-          { "Version", "eigrp.version",
+          { "Version", "eigrp_version",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Version - Version of EIGRP packet format", HFILL }
         },
         { &hf_eigrp_opcode,
-          { "Opcode", "eigrp.opcode",
+          { "Opcode", "eigrp_opcode",
             FT_UINT8, BASE_DEC, VALS(eigrp_opcode2string), 0x0,
             "Opcode - Operation code indicating the message type", HFILL }
         },
         { &hf_eigrp_flags,
-          { "Flags", "eigrp.flags",
+          { "Flags", "eigrp_flags",
             FT_UINT32, BASE_HEX, NULL, 0x0,
             "Flag - Initialization bit and is used in establishing "
             "a new neighbor relationship", HFILL }
         },
         { &hf_eigrp_sequence,
-          { "Sequence", "eigrp.seq",
+          { "Sequence", "eigrp_seq",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Sequence number -- used to send messages reliably", HFILL }
         },
         { &hf_eigrp_acknowledge,
-          { "Acknowledge", "eigrp.ack",
+          { "Acknowledge", "eigrp_ack",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Acknowledge number -- used to send messages reliably", HFILL }
         },
         { &hf_eigrp_vrid,
-          { "Virtual Router ID", "eigrp.vrid",
+          { "Virtual Router ID", "eigrp_vrid",
             FT_UINT16, BASE_DEC, NULL, 0,
             "Virtual Router ID - For each Virtual Router, there is a separate topology "
             "table and routing/service table; even for matching AS. "
             "This field allows the gateway to select which set router to use.", HFILL }
         },
         { &hf_eigrp_as,
-          { "Autonomous System", "eigrp.as",
+          { "Autonomous System", "eigrp_as",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Autonomous system number - Each AS has a separate topology table "
             "which for a give routing/service table. A gateway can participate "
@@ -2655,7 +2655,7 @@ proto_register_eigrp(void)
          * to send its full topology table.
          */
         { &hf_eigrp_flags_init,
-          { "Init", "eigrp.flags.init",
+          { "Init", "eigrp_flags_init",
             FT_BOOLEAN, 32, TFS(&tfs_set_notset), EIGRP_INIT_FLAG,
             "Init - tells the neighbor to send its full topology table", HFILL }
         },
@@ -2668,7 +2668,7 @@ proto_register_eigrp(void)
          * same time as unicasts are transmitted.
          */
         { &hf_eigrp_flags_condrecv,
-          { "Conditional Receive", "eigrp.flags.condrecv",
+          { "Conditional Receive", "eigrp_flags_condrecv",
             FT_BOOLEAN, 32, TFS(&tfs_set_notset), EIGRP_CR_FLAG,
             "Conditionally Received the next packet if address was in listed "
             "in the previous HELLO", HFILL }
@@ -2682,7 +2682,7 @@ proto_register_eigrp(void)
          * this flag to determine if the peer is helping out with the restart.
          */
         { &hf_eigrp_flags_restart,
-          { "Restart", "eigrp.flags.restart",
+          { "Restart", "eigrp_flags_restart",
             FT_BOOLEAN, 32, TFS(&tfs_set_notset), EIGRP_RS_FLAG,
             "Restart flag - Set in the HELLO and the initial "
             "UPDATE packets during the nsf signaling period.", HFILL },
@@ -2696,7 +2696,7 @@ proto_register_eigrp(void)
          * the stale routes from the restarting peer.
          */
         { &hf_eigrp_flags_eot,
-          { "End Of Table", "eigrp.flags.eot",
+          { "End Of Table", "eigrp_flags_eot",
             FT_BOOLEAN, 32, TFS(&tfs_set_notset), EIGRP_EOT_FLAG,
             "End-of-Table - Marks the end of the start-up UPDATES indicating the "
             "complete topology database has been sent to a new peer", HFILL }
@@ -2724,12 +2724,12 @@ proto_register_eigrp(void)
          * EIGRP_PEER_TERMINATION       0x0007          peer termination
          */
         { &hf_eigrp_tlv_type,
-          { "Type", "eigrp.tlv_type",
+          { "Type", "eigrp_tlv_type",
             FT_UINT16, BASE_HEX, VALS(eigrp_tlv2string), 0x0,
             "TLV Type", HFILL }
         },
         { &hf_eigrp_tlv_len,
-          { "Length", "eigrp.tlv.len",
+          { "Length", "eigrp_tlv_len",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "TLV Length", HFILL }
         },
@@ -2737,20 +2737,20 @@ proto_register_eigrp(void)
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Parameters TLV
  */
-        { &hf_eigrp_par_k1, { "K1", "eigrp.par.k1", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { &hf_eigrp_par_k1, { "K1", "eigrp_par_k1", FT_UINT8, BASE_DEC, NULL, 0x0,
                               "Bandwidth/Throughput Coefficient", HFILL }},
-        { &hf_eigrp_par_k2, { "K2", "eigrp.par.k2", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { &hf_eigrp_par_k2, { "K2", "eigrp_par_k2", FT_UINT8, BASE_DEC, NULL, 0x0,
                               "Load Coefficient", HFILL }},
-        { &hf_eigrp_par_k3, { "K3", "eigrp.par.k3", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { &hf_eigrp_par_k3, { "K3", "eigrp_par_k3", FT_UINT8, BASE_DEC, NULL, 0x0,
                               "Delay/Latency Coefficient", HFILL }},
-        { &hf_eigrp_par_k4, { "K4", "eigrp.par.k4", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { &hf_eigrp_par_k4, { "K4", "eigrp_par_k4", FT_UINT8, BASE_DEC, NULL, 0x0,
                               "Reliability Coefficient", HFILL }},
-        { &hf_eigrp_par_k5, { "K5", "eigrp.par.k5", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { &hf_eigrp_par_k5, { "K5", "eigrp_par_k5", FT_UINT8, BASE_DEC, NULL, 0x0,
                               "Reliability Coefficient", HFILL }},
-        { &hf_eigrp_par_k6, { "K6", "eigrp.par.k6", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { &hf_eigrp_par_k6, { "K6", "eigrp_par_k6", FT_UINT8, BASE_DEC, NULL, 0x0,
                               "Extended Metric Coefficient", HFILL }},
         { &hf_eigrp_par_holdtime,
-          { "Hold Time", "eigrp.par.holdtime", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "Hold Time", "eigrp_par_holdtime", FT_UINT16, BASE_DEC, NULL, 0x0,
             "How long to ignore lost HELLO's", HFILL }
         },
 
@@ -2758,27 +2758,27 @@ proto_register_eigrp(void)
  * Authentication TLV
  */
         { &hf_eigrp_auth_type,
-          { "Type", "eigrp.auth.type",
+          { "Type", "eigrp_auth_type",
             FT_UINT16, BASE_DEC, VALS(eigrp_auth2string), 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_auth_len,
-          { "Length", "eigrp.auth.length",
+          { "Length", "eigrp_auth_length",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_auth_keyid,
-          { "Key ID", "eigrp.auth.keyid",
+          { "Key ID", "eigrp_auth_keyid",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_auth_keyseq,
-          { "Key Sequence", "eigrp.auth.keyseq",
+          { "Key Sequence", "eigrp_auth_keyseq",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_auth_digest,
-          { "Digest", "eigrp.auth.digest",
+          { "Digest", "eigrp_auth_digest",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
@@ -2787,17 +2787,17 @@ proto_register_eigrp(void)
  * Sequence TLV
  */
         { &hf_eigrp_seq_addrlen,
-          { "Address length", "eigrp.seq.addrlen",
+          { "Address length", "eigrp_seq_addrlen",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_seq_ipv4addr,
-          { "IP Address", "eigrp.seq.ipv4addr",
+          { "IP Address", "eigrp_seq_ipv4addr",
             FT_IPv4, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_seq_ipv6addr,
-          { "IPv6 Address", "eigrp.seq.ipv6addr",
+          { "IPv6 Address", "eigrp_seq_ipv6addr",
             FT_IPv6, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
@@ -2812,7 +2812,7 @@ proto_register_eigrp(void)
          * is carried herein.
          */
         { &hf_eigrp_next_mcast_seq,
-          { "Multicast Sequence", "eigrp.next_mcast_seq",
+          { "Multicast Sequence", "eigrp_next_mcast_seq",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
@@ -2821,7 +2821,7 @@ proto_register_eigrp(void)
  * Peer Stub Information TLV
  */
         { &hf_eigrp_stub_flags,
-          { "Stub Options", "eigrp.stub_options",
+          { "Stub Options", "eigrp_stub_options",
             FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
@@ -2830,32 +2830,32 @@ proto_register_eigrp(void)
          * Define eigrp_stub_flags bits here
          */
         { &hf_eigrp_stub_flags_connected,
-          { "Connected", "eigrp.stub_options.connected",
+          { "Connected", "eigrp_stub_options_connected",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset), EIGRP_PEER_ALLOWS_CONNECTED,
             NULL, HFILL }
         },
         { &hf_eigrp_stub_flags_static,
-          { "Static", "eigrp.stub_options.static",
+          { "Static", "eigrp_stub_options_static",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset), EIGRP_PEER_ALLOWS_STATIC,
             NULL, HFILL }
         },
         { &hf_eigrp_stub_flags_summary,
-          { "Summary", "eigrp.stub_options.summary",
+          { "Summary", "eigrp_stub_options_summary",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset), EIGRP_PEER_ALLOWS_SUMMARY,
             NULL, HFILL }
         },
         { &hf_eigrp_stub_flags_redist,
-          { "Redistributed", "eigrp.stub_options.redist",
+          { "Redistributed", "eigrp_stub_options_redist",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset), EIGRP_PEER_ALLOWS_REDIST,
             NULL, HFILL }
         },
         { &hf_eigrp_stub_flags_leakmap,
-          { "Leak-Map", "eigrp.stub_options.leakmap",
+          { "Leak-Map", "eigrp_stub_options_leakmap",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset), EIGRP_PEER_ALLOWS_LEAKING,
             NULL, HFILL }
         },
         { &hf_eigrp_stub_flags_recvonly,
-          { "Receive-Only", "eigrp.stub_options.recvonly",
+          { "Receive-Only", "eigrp_stub_options_recvonly",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset), EIGRP_PEER_ALLOWS_RCVONLY,
             NULL, HFILL }
         },
@@ -2872,12 +2872,12 @@ proto_register_eigrp(void)
          * common header for all version 3 tlvs
          */
         { &hf_eigrp_tid,
-          { "Topology", "eigrp.tid",
+          { "Topology", "eigrp_tid",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_afi,
-          { "AFI", "eigrp.afi",
+          { "AFI", "eigrp_afi",
             FT_UINT16, BASE_DEC, VALS(eigrp_afi2string), 0x0,
             NULL, HFILL }
         },
@@ -2886,37 +2886,37 @@ proto_register_eigrp(void)
  * EIGRP TLV 1.2 (legacy) and TLV 3.0 Metric (deprecated) definition
  */
         { &hf_eigrp_legacy_metric_delay,
-          { "Scaled Delay", "eigrp.old_metric.delay",
+          { "Scaled Delay", "eigrp_old_metric_delay",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "delay, in 39.1 nanosec interments", HFILL }
         },
         { &hf_eigrp_legacy_metric_bw,
-          { "Scaled BW", "eigrp.old_metric.bw",
+          { "Scaled BW", "eigrp_old_metric_bw",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "bandwidth, in units of 1 Kbit/sec", HFILL }
         },
         { &hf_eigrp_legacy_metric_mtu,
-          { "MTU", "eigrp.old_metric.mtu",
+          { "MTU", "eigrp_old_metric_mtu",
             FT_UINT24, BASE_DEC, NULL, 0x0,
             "MTU, in octets", HFILL }
         },
         { &hf_eigrp_legacy_metric_hopcount,
-          { "Hop Count", "eigrp.old_metric.hopcount",
+          { "Hop Count", "eigrp_old_metric_hopcount",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Number of hops to destination", HFILL }
         },
         { &hf_eigrp_legacy_metric_rel,
-          { "Reliability", "eigrp.old_metric.rel",
+          { "Reliability", "eigrp_old_metric_rel",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "percent packets successfully tx/rx", HFILL }
         },
         { &hf_eigrp_legacy_metric_load,
-          { "Load", "eigrp.old_metric.load",
+          { "Load", "eigrp_old_metric_load",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "percent of channel occupied", HFILL }
         },
         { &hf_eigrp_legacy_metric_intag,
-          { "Route Tag", "eigrp.old_metric.intag",
+          { "Route Tag", "eigrp_old_metric_intag",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Internal Route Tag", HFILL }
         },
@@ -2925,27 +2925,27 @@ proto_register_eigrp(void)
  * EIGRP 3.0 TIDLIST TLV  (only survivor in MTR)
  */
         { &hf_eigrp_tidlist_tid,
-          { "TID List", "eigrp.tidlist",
+          { "TID List", "eigrp_tidlist",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_tidlist_flags,
-          { "TID List Flags", "eigrp.tidlist.flags",
+          { "TID List Flags", "eigrp_tidlist_flags",
             FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_tidlist_len,
-          { "TID List Size", "eigrp.tidlist.len",
+          { "TID List Size", "eigrp_tidlist_len",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_routerid,
-          { "RouterID", "eigrp.routerid",
+          { "RouterID", "eigrp_routerid",
             FT_IPv4, BASE_NONE, NULL, 0x0,
             "Router ID of injecting router", HFILL }
         },
         { &hf_eigrp_legacy_metric_tag,
-          { "Tag", "eigrp.old_metric.tag",
+          { "Tag", "eigrp_old_metric_tag",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "route tag", HFILL }
         },
@@ -2955,22 +2955,22 @@ proto_register_eigrp(void)
  * PDM opaque flag field definitions
  */
         { &hf_eigrp_metric_flags_srcwd,
-          { "Source Withdraw", "eigrp.metric.flags.srcwd",
+          { "Source Withdraw", "eigrp_metric_flags_srcwd",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), EIGRP_OPAQUE_SRCWD,
             "Route Source Withdraw", HFILL }
         },
         { &hf_eigrp_metric_flags_cd,
-          { "Candidate Default", "eigrp.metric.flags.cd",
+          { "Candidate Default", "eigrp_metric_flags_cd",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), EIGRP_OPAQUE_CD,
             NULL, HFILL }
         },
         { &hf_eigrp_metric_flags_active,
-          { "Route is Active", "eigrp.metric.flags.active",
+          { "Route is Active", "eigrp_metric_flags_active",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), EIGRP_OPAQUE_ACTIVE,
             "Route is currently in active state", HFILL }
         },
         { &hf_eigrp_metric_flags_repl,
-          { "Route is Replicated", "eigrp.metric.flags.repl",
+          { "Route is Replicated", "eigrp_metric_flags_repl",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), EIGRP_OPAQUE_REPL,
             "Route is replicated from different tableid", HFILL }
         },
@@ -2979,58 +2979,58 @@ proto_register_eigrp(void)
  * EIGRP TLV 1.2/3.0 ExtData Definitions
  */
         { &hf_eigrp_extdata_origrid,
-          { "Originating RouterID", "eigrp.extdata.origrid",
+          { "Originating RouterID", "eigrp_extdata_origrid",
             FT_IPv4, BASE_NONE, NULL, 0x0,
             "Router ID of redistributing router", HFILL }
         },
 
         { &hf_eigrp_extdata_as,
-          { "Originating A.S.", "eigrp.extdata.as",
+          { "Originating A.S.", "eigrp_extdata_as",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Autonomous System of redistributing protocol", HFILL }
         },
 
         { &hf_eigrp_extdata_tag,
-          { "Administrative Tag", "eigrp.extdata.tag",
+          { "Administrative Tag", "eigrp_extdata_tag",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Administrative Route Tag", HFILL }
         },
         { &hf_eigrp_extdata_metric,
-          { "External Metric", "eigrp.extdata.metric",
+          { "External Metric", "eigrp_extdata_metric",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Metric reported by redistributing protocol", HFILL }
         },
         { &hf_eigrp_extdata_reserved,
-          { "Reserved", "eigrp.extdata.reserved",
+          { "Reserved", "eigrp_extdata_reserved",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
 
         /* IPX ExtData Definitions */
         { &hf_eigrp_ipx_extdata_delay,
-          { "External Delay", "eigrp.extdata.ipx_delay",
+          { "External Delay", "eigrp_extdata_ipx_delay",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Delay reported by redistributing protocol", HFILL }
         },
         { &hf_eigrp_ipx_extdata_metric,
-          { "External Metric", "eigrp.extdata.ipx_metric",
+          { "External Metric", "eigrp_extdata_ipx_metric",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Delay reported by redistributing protocol", HFILL }
         },
 
         { &hf_eigrp_extdata_proto,
-          { "External Protocol ID", "eigrp.extdata.proto",
+          { "External Protocol ID", "eigrp_extdata_proto",
             FT_UINT8, BASE_DEC, VALS(eigrp_proto2string), 0x0,
             NULL, HFILL }
         },
 
         { &hf_eigrp_extdata_flag_ext,
-          { "Route is External", "eigrp.opaque.flag.ext",
+          { "Route is External", "eigrp_opaque_flag_ext",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), EIGRP_OPAQUE_EXT,
             "External route", HFILL }
         },
         { &hf_eigrp_extdata_flag_cd,
-          { "Route is Candidate Default", "eigrp.opaque.flag.cd",
+          { "Route is Candidate Default", "eigrp_opaque_flag_cd",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), EIGRP_OPAQUE_CD,
             "Candidate-Default route", HFILL }
         },
@@ -3042,7 +3042,7 @@ proto_register_eigrp(void)
          * start of the destination/attribute information.
          */
         { &hf_eigrp_metric_offset,
-          { "Offset", "eigrp.metric.offset",
+          { "Offset", "eigrp_metric_offset",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Number of 16bit words to reach the start of the"
             "destination/attribute information", HFILL }
@@ -3053,7 +3053,7 @@ proto_register_eigrp(void)
          * priority is set.
          */
         { &hf_eigrp_metric_priority,
-          { "Priority", "eigrp.metric.priority",
+          { "Priority", "eigrp_metric_priority",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Priority of the prefix for ordering transmission", HFILL }
         },
@@ -3062,7 +3062,7 @@ proto_register_eigrp(void)
          * percentage. A value of 255 indicates 100% reliability
          */
         { &hf_eigrp_metric_rel,
-          { "Reliability", "eigrp.metric.reliability",
+          { "Reliability", "eigrp_metric_reliability",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "percent packets successfully tx/rx", HFILL }
         },
@@ -3071,7 +3071,7 @@ proto_register_eigrp(void)
          * percentage of load. A value of 255 indicates 100% load.
          */
         { &hf_eigrp_metric_load,
-          { "Load", "eigrp.metric.load",
+          { "Load", "eigrp_metric_load",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "percent of channel occupied", HFILL }
         },
@@ -3081,21 +3081,21 @@ proto_register_eigrp(void)
          * underlying protocols
          */
         { &hf_eigrp_metric_mtu,
-          { "MTU", "eigrp.metric.mtu",
+          { "MTU", "eigrp_metric_mtu",
             FT_UINT24, BASE_DEC, NULL, 0x0,
             "MTU, in octets", HFILL }
         },
 
         /** number of router traversals to the destination */
         { &hf_eigrp_metric_hopcount,
-          { "Hop Count", "eigrp.metric.hopcount",
+          { "Hop Count", "eigrp_metric_hopcount",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Number of hops to destination", HFILL }
         },
 
         /* Reserved - Transmitted as 0x0000 */
         { &hf_eigrp_metric_reserved,
-          { "Reserved", "eigrp.metric.reserved",
+          { "Reserved", "eigrp_metric_reserved",
             FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
@@ -3104,37 +3104,37 @@ proto_register_eigrp(void)
  * EIGRP TLV 2.0 Extended Metric Attributes
  */
         { &hf_eigrp_attr_opcode,
-          { "Opcode", "eigrp.attr.opcode",
+          { "Opcode", "eigrp_attr_opcode",
             FT_UINT8, BASE_DEC, VALS(eigrp_attr_opcode2string), 0x0,
             "Opcode - Operation code indicating the attribute type", HFILL }
         },
         { &hf_eigrp_attr_offset,
-          { "Offset", "eigrp.attr.offset",
+          { "Offset", "eigrp_attr_offset",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Number of 2 byte words of data", HFILL }
         },
         { &hf_eigrp_attr_scaled,
-          { "Legacy Metric", "eigrp.attr.scaled",
+          { "Legacy Metric", "eigrp_attr_scaled",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Metric calculated from legacy TLVs", HFILL }
         },
         { &hf_eigrp_attr_tag,
-          { "Tag", "eigrp.attr.tag",
+          { "Tag", "eigrp_attr_tag",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Tag assigned by admin for dest", HFILL }
         },
         { &hf_eigrp_attr_jitter,
-          { "Jitter", "eigrp.attr.jitter",
+          { "Jitter", "eigrp_attr_jitter",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Variation in path delay", HFILL }
         },
         { &hf_eigrp_attr_qenergy,
-          { "Q-Energy", "eigrp.attr.qenergy",
+          { "Q-Energy", "eigrp_attr_qenergy",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Non-Active energy usage along path", HFILL }
         },
         { &hf_eigrp_attr_energy,
-          { "Energy", "eigrp.attr.energy",
+          { "Energy", "eigrp_attr_energy",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Active energy usage along path", HFILL }
         },
@@ -3144,12 +3144,12 @@ proto_register_eigrp(void)
  * IPv4 specific address definitions
  */
         { &hf_eigrp_ipv4_nexthop,
-          { "NextHop", "eigrp.ipv4.nexthop",
+          { "NextHop", "eigrp_ipv4_nexthop",
             FT_IPv4, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_ipv4_prefixlen,
-          { "Prefix Length", "eigrp.ipv4.prefixlen",
+          { "Prefix Length", "eigrp_ipv4_prefixlen",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
@@ -3159,13 +3159,13 @@ proto_register_eigrp(void)
  * IPv6 specific address definitions
  */
         { &hf_eigrp_ipv6_nexthop,
-          { "NextHop", "eigrp.ipv6.nexthop",
+          { "NextHop", "eigrp_ipv6_nexthop",
             FT_IPv6, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
 
         { &hf_eigrp_ipv6_prefixlen,
-          { "Prefix Length", "eigrp.ipv6.prefixlen",
+          { "Prefix Length", "eigrp_ipv6_prefixlen",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
@@ -3175,22 +3175,22 @@ proto_register_eigrp(void)
  * IPX specific address definitions
  */
         { &hf_eigrp_ipx_nexthop_net,
-          { "NextHop Net", "eigrp.ipx.nexthop_net",
+          { "NextHop Net", "eigrp_ipx_nexthop_net",
             FT_IPXNET, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_ipx_nexthop_host,
-          { "NextHop Host", "eigrp.ipx.nexthop_host",
+          { "NextHop Host", "eigrp_ipx_nexthop_host",
             FT_ETHER, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_ipx_extdata_routerid,
-          { "External RouterID", "eigrp.ipx.routerid",
+          { "External RouterID", "eigrp_ipx_routerid",
             FT_ETHER, BASE_NONE, NULL, 0x0,
             "Router ID of redistributing router", HFILL }
         },
         { &hf_eigrp_ipx_dest,
-          { "Destination", "eigrp.ipx.dest",
+          { "Destination", "eigrp_ipx_dest",
             FT_IPXNET, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
@@ -3200,7 +3200,7 @@ proto_register_eigrp(void)
  * AppleTalk specific address definitions
  */
         { &hf_eigrp_atalk_routerid,
-          { "AppleTalk Router ID", "eigrp.atalk.routerid",
+          { "AppleTalk Router ID", "eigrp_atalk_routerid",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
@@ -3209,102 +3209,102 @@ proto_register_eigrp(void)
  * Service Advertisement Framework definitions
  */
         { &hf_eigrp_saf_service,
-          { "Service", "eigrp.saf.service",
+          { "Service", "eigrp_saf_service",
             FT_UINT16, BASE_DEC, VALS(eigrp_saf_srv2string), 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_subservice,
-          { "Sub-Service", "eigrp.saf.subservice",
+          { "Sub-Service", "eigrp_saf_subservice",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_guid,
-          { "GUID", "eigrp.saf.guid",
+          { "GUID", "eigrp_saf_guid",
             FT_GUID, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_data_type,
-          { "Type", "eigrp.saf.data.type",
+          { "Type", "eigrp_saf_data_type",
             FT_UINT16, BASE_HEX, VALS(eigrp_saf_type2string), 0x0,
             "SAF Message Data Type", HFILL }
         },
         { &hf_eigrp_saf_data_length,
-          { "Length", "eigrp.saf.data.length",
+          { "Length", "eigrp_saf_data_length",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_data_sequence,
-          { "Sequence", "eigrp.saf.data.sequence",
+          { "Sequence", "eigrp_saf_data_sequence",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_reachability_afi,
-          { "AFI", "eigrp.saf.data.reachability.afi",
+          { "AFI", "eigrp_saf_data_reachability_afi",
             FT_UINT16, BASE_DEC, VALS(eigrp_afi2string), 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_reachability_port,
-          { "Port", "eigrp.saf.data.reachability.port",
+          { "Port", "eigrp_saf_data_reachability_port",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_reachability_protocol,
-          { "Protocol", "eigrp.saf.data.reachability.protocol",
+          { "Protocol", "eigrp_saf_data_reachability_protocol",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_reachability_addr_ipv4,
-          { "IPv4 Addr", "eigrp.saf.data.reachability.addr_ipv4",
+          { "IPv4 Addr", "eigrp_saf_data_reachability_addr_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_reachability_addr_ipv6,
-          { "IPv6 Addr", "eigrp.saf.data.reachability.addr_ipv6",
+          { "IPv6 Addr", "eigrp_saf_data_reachability_addr_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_eigrp_saf_reachability_addr_hex,
-          { "Addr", "eigrp.saf.data.reachability.addr_hex",
+          { "Addr", "eigrp_saf_data_reachability_addr_hex",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
 
         /* misc field used in a couple places */
         { &hf_eigrp_nullpad,
-          { "Nullpad", "eigrp.nullpad",
+          { "Nullpad", "eigrp_nullpad",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
 
       /* Generated from convert_proto_tree_add_text.pl */
-      { &hf_eigrp_ipx_address, { "IPX Address", "eigrp.ipx_address", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_release, { "EIGRP Release", "eigrp.release_version", FT_UINT16, BASE_CUSTOM, CF_FUNC(eigrp_fmt_version), 0x0, NULL, HFILL }},
-      { &hf_eigrp_tlv_version, { "EIGRP TLV version", "eigrp.tlv_version", FT_UINT16, BASE_CUSTOM, CF_FUNC(eigrp_fmt_version), 0x0, NULL, HFILL }},
-      { &hf_eigrp_ipv4_destination, { "Destination", "eigrp.ipv4.destination", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_ipv6_destination, { "Destination", "eigrp.ipv6.destination", FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_appletalk_cable_range, { "AppleTalk Cable Range", "eigrp.appletalk_cable_range", FT_UINT32, BASE_CUSTOM, CF_FUNC(eigrp_fmt_cable_range), 0x0, NULL, HFILL }},
-      { &hf_eigrp_nexthop_address, { "NextHop Address", "eigrp.nexthop_address", FT_UINT32, BASE_CUSTOM, CF_FUNC(eigrp_fmt_nexthop_address), 0x0, NULL, HFILL }},
-      { &hf_eigrp_cable_range, { "Cable range", "eigrp.cable_range", FT_UINT32, BASE_CUSTOM, CF_FUNC(eigrp_fmt_cable_range), 0x0, NULL, HFILL }},
-      { &hf_eigrp_metric_delay, { "Delay", "eigrp.metric.delay", FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_metric_bandwidth, { "Bandwidth", "eigrp.metric.bandwidth", FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_checksum, { "Checksum", "eigrp.checksum", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_checksum_status, { "Checksum Status", "eigrp.checksum.status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0, NULL, HFILL }},
-      { &hf_eigrp_metric_comm_type, { "Type", "eigrp.metric.comm_type", FT_UINT16, BASE_DEC, VALS(eigrp_metric_comm_type_vals), 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_flag, { "FLAG", "eigrp.extcomm.flag", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_tag, { "TAG", "eigrp.extcomm.tag", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_res, { "RES", "eigrp.extcomm.res", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_rid, { "RID", "eigrp.extcomm.rid", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_as, { "AS", "eigrp.extcomm.as", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_sdly, { "SDLY", "eigrp.extcomm.sdly", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_rel, { "RID", "eigrp.extcomm.rel", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_hop, { "AS", "eigrp.extcomm.hop", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_sbw, { "SDLY", "eigrp.extcomm.sbw", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_load, { "LOAD", "eigrp.extcomm.load", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_mtu, { "MTU", "eigrp.extcomm.mtu", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_xas, { "xAS", "eigrp.extcomm.xas", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_xrid, { "xRID", "eigrp.extcomm.xrid", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_xproto, { "xProto", "eigrp.extcomm.xproto", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
-      { &hf_eigrp_extcomm_eigrp_xmetric, { "xMETRIC", "eigrp.extcomm.xmetric", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_ipx_address, { "IPX Address", "eigrp_ipx_address", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_release, { "EIGRP Release", "eigrp_release_version", FT_UINT16, BASE_CUSTOM, CF_FUNC(eigrp_fmt_version), 0x0, NULL, HFILL }},
+      { &hf_eigrp_tlv_version, { "EIGRP TLV version", "eigrp_tlv_version", FT_UINT16, BASE_CUSTOM, CF_FUNC(eigrp_fmt_version), 0x0, NULL, HFILL }},
+      { &hf_eigrp_ipv4_destination, { "Destination", "eigrp_ipv4_destination", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_ipv6_destination, { "Destination", "eigrp_ipv6_destination", FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_appletalk_cable_range, { "AppleTalk Cable Range", "eigrp_appletalk_cable_range", FT_UINT32, BASE_CUSTOM, CF_FUNC(eigrp_fmt_cable_range), 0x0, NULL, HFILL }},
+      { &hf_eigrp_nexthop_address, { "NextHop Address", "eigrp_nexthop_address", FT_UINT32, BASE_CUSTOM, CF_FUNC(eigrp_fmt_nexthop_address), 0x0, NULL, HFILL }},
+      { &hf_eigrp_cable_range, { "Cable range", "eigrp_cable_range", FT_UINT32, BASE_CUSTOM, CF_FUNC(eigrp_fmt_cable_range), 0x0, NULL, HFILL }},
+      { &hf_eigrp_metric_delay, { "Delay", "eigrp_metric_delay", FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_metric_bandwidth, { "Bandwidth", "eigrp_metric_bandwidth", FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_checksum, { "Checksum", "eigrp_checksum", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_checksum_status, { "Checksum Status", "eigrp_checksum_status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0, NULL, HFILL }},
+      { &hf_eigrp_metric_comm_type, { "Type", "eigrp_metric_comm_type", FT_UINT16, BASE_DEC, VALS(eigrp_metric_comm_type_vals), 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_flag, { "FLAG", "eigrp_extcomm_flag", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_tag, { "TAG", "eigrp_extcomm_tag", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_res, { "RES", "eigrp_extcomm_res", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_rid, { "RID", "eigrp_extcomm_rid", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_as, { "AS", "eigrp_extcomm_as", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_sdly, { "SDLY", "eigrp_extcomm_sdly", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_rel, { "RID", "eigrp_extcomm_rel", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_hop, { "AS", "eigrp_extcomm_hop", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_sbw, { "SDLY", "eigrp_extcomm_sbw", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_load, { "LOAD", "eigrp_extcomm_load", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_mtu, { "MTU", "eigrp_extcomm_mtu", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_xas, { "xAS", "eigrp_extcomm_xas", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_xrid, { "xRID", "eigrp_extcomm_xrid", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_xproto, { "xProto", "eigrp_extcomm_xproto", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+      { &hf_eigrp_extcomm_eigrp_xmetric, { "xMETRIC", "eigrp_extcomm_xmetric", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
     };
 
     /* Setup protocol subtree array */

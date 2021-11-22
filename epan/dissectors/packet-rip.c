@@ -78,71 +78,71 @@ static header_field_info *hfi_rip = NULL;
 #define RIP_HFI_INIT HFI_INIT(proto_rip)
 
 static header_field_info hfi_rip_command RIP_HFI_INIT = {
-    "Command", "rip.command", FT_UINT8, BASE_DEC,
+    "Command", "rip_command", FT_UINT8, BASE_DEC,
     VALS(command_vals), 0, "What type of RIP Command is this", HFILL };
 
 static header_field_info hfi_rip_version RIP_HFI_INIT = {
-    "Version", "rip.version", FT_UINT8, BASE_DEC,
+    "Version", "rip_version", FT_UINT8, BASE_DEC,
     VALS(version_vals), 0, "Version of the RIP protocol", HFILL };
 
 static header_field_info hfi_rip_routing_domain RIP_HFI_INIT = {
-    "Routing Domain", "rip.routing_domain", FT_UINT16, BASE_DEC,
+    "Routing Domain", "rip_routing_domain", FT_UINT16, BASE_DEC,
     NULL, 0, "RIPv2 Routing Domain", HFILL };
 
 static header_field_info hfi_rip_ip RIP_HFI_INIT = {
-    "IP Address", "rip.ip", FT_IPv4, BASE_NONE,
+    "IP Address", "rip_ip", FT_IPv4, BASE_NONE,
     NULL, 0, NULL, HFILL};
 
 static header_field_info hfi_rip_netmask RIP_HFI_INIT = {
-    "Netmask", "rip.netmask", FT_IPv4, BASE_NETMASK,
+    "Netmask", "rip_netmask", FT_IPv4, BASE_NETMASK,
     NULL, 0, NULL, HFILL};
 
 static header_field_info hfi_rip_next_hop RIP_HFI_INIT = {
-    "Next Hop", "rip.next_hop", FT_IPv4, BASE_NONE,
+    "Next Hop", "rip_next_hop", FT_IPv4, BASE_NONE,
     NULL, 0, "Next Hop router for this route", HFILL};
 
 static header_field_info hfi_rip_metric RIP_HFI_INIT = {
-    "Metric", "rip.metric", FT_UINT16, BASE_DEC,
+    "Metric", "rip_metric", FT_UINT16, BASE_DEC,
     NULL, 0, "Metric for this route", HFILL };
 
 static header_field_info hfi_rip_auth RIP_HFI_INIT = {
-    "Authentication type", "rip.auth.type", FT_UINT16, BASE_DEC,
+    "Authentication type", "rip_auth_type", FT_UINT16, BASE_DEC,
     VALS(rip_auth_type), 0, "Type of authentication", HFILL };
 
 static header_field_info hfi_rip_auth_passwd RIP_HFI_INIT = {
-    "Password", "rip.auth.passwd", FT_STRING, BASE_NONE,
+    "Password", "rip_auth_passwd", FT_STRING, BASE_NONE,
     NULL, 0, "Authentication password", HFILL };
 
 static header_field_info hfi_rip_family RIP_HFI_INIT = {
-    "Address Family", "rip.family", FT_UINT16, BASE_DEC,
+    "Address Family", "rip_family", FT_UINT16, BASE_DEC,
     VALS(family_vals), 0, NULL, HFILL };
 
 static header_field_info hfi_rip_route_tag RIP_HFI_INIT = {
-    "Route Tag", "rip.route_tag", FT_UINT16, BASE_DEC,
+    "Route Tag", "rip_route_tag", FT_UINT16, BASE_DEC,
     NULL, 0, NULL, HFILL };
 
 static header_field_info hfi_rip_zero_padding RIP_HFI_INIT = {
-    "Zero adding", "rip.zero_padding", FT_STRING, BASE_NONE,
+    "Zero adding", "rip_zero_padding", FT_STRING, BASE_NONE,
     NULL, 0, "Authentication password", HFILL };
 
 static header_field_info hfi_rip_digest_offset RIP_HFI_INIT = {
-    "Digest Offset", "rip.digest_offset", FT_UINT16, BASE_DEC,
+    "Digest Offset", "rip_digest_offset", FT_UINT16, BASE_DEC,
     NULL, 0, NULL, HFILL };
 
 static header_field_info hfi_rip_key_id RIP_HFI_INIT = {
-    "Key ID", "rip.key_id", FT_UINT8, BASE_DEC,
+    "Key ID", "rip_key_id", FT_UINT8, BASE_DEC,
     NULL, 0, NULL, HFILL };
 
 static header_field_info hfi_rip_auth_data_len RIP_HFI_INIT = {
-    "Auth Data Len", "rip.auth_data_len", FT_UINT8, BASE_DEC,
+    "Auth Data Len", "rip_auth_data_len", FT_UINT8, BASE_DEC,
     NULL, 0, NULL, HFILL };
 
 static header_field_info hfi_rip_auth_seq_num RIP_HFI_INIT = {
-    "Seq num", "rip.seq_num", FT_UINT32, BASE_DEC,
+    "Seq num", "rip_seq_num", FT_UINT32, BASE_DEC,
     NULL, 0, NULL, HFILL };
 
 static header_field_info hfi_rip_authentication_data RIP_HFI_INIT = {
-    "Authentication Data", "rip.authentication_data", FT_BYTES, BASE_NONE,
+    "Authentication Data", "rip_authentication_data", FT_BYTES, BASE_NONE,
     NULL, 0, NULL, HFILL };
 
 static gint ett_rip = -1;

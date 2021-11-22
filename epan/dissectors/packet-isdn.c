@@ -205,11 +205,11 @@ proto_register_isdn(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_isdn_direction,
-		{ "Direction", "isdn.direction", FT_BOOLEAN, BASE_NONE,
+		{ "Direction", "isdn_direction", FT_BOOLEAN, BASE_NONE,
 		  TFS(&isdn_direction_tfs), 0x0, NULL, HFILL }},
 
 		{ &hf_isdn_channel,
-		{ "Channel",	"isdn.channel", FT_UINT8, BASE_DEC,
+		{ "Channel",	"isdn_channel", FT_UINT8, BASE_DEC,
 		  VALS(channel_vals), 0x0, NULL, HFILL }},
 	};
 	static gint *ett[] = {

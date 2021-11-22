@@ -253,7 +253,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_ftype,
             {
                 "F",
-                "rfc2190.ftype",
+                "rfc2190_ftype",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -265,7 +265,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_pbframes,
             {
                 "p/b frame",
-                "rfc2190.pbframes",
+                "rfc2190_pbframes",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -277,7 +277,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_sbit,
             {
                 "Start bit position",
-                "rfc2190.sbit",
+                "rfc2190_sbit",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -289,7 +289,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_ebit,
             {
                 "End bit position",
-                "rfc2190.ebit",
+                "rfc2190_ebit",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -301,7 +301,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_srcformat,
             {
                 "SRC format",
-                "rfc2190.srcformat",
+                "rfc2190_srcformat",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(h263_srcformat_vals),
@@ -313,7 +313,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_picture_coding_type_modeA,
             {
                 "Inter-coded frame",
-                "rfc2190.picture_coding_type",
+                "rfc2190_picture_coding_type",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -325,7 +325,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_unrestricted_motion_vector_modeA,
             {
                 "Motion vector",
-                "rfc2190.unrestricted_motion_vector",
+                "rfc2190_unrestricted_motion_vector",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -337,7 +337,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_syntax_based_arithmetic_modeA,
             {
                 "Syntax-based arithmetic coding",
-                "rfc2190.syntax_based_arithmetic",
+                "rfc2190_syntax_based_arithmetic",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -349,7 +349,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_advanced_prediction_modeA,
             {
                 "Advanced prediction option",
-                "rfc2190.advanced_prediction",
+                "rfc2190_advanced_prediction",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -361,7 +361,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_picture_coding_type_modeB,
             {
                 "Inter-coded frame",
-                "rfc2190.picture_coding_type",
+                "rfc2190_picture_coding_type",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -373,7 +373,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_unrestricted_motion_vector_modeB,
             {
                 "Motion vector",
-                "rfc2190.unrestricted_motion_vector",
+                "rfc2190_unrestricted_motion_vector",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -385,7 +385,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_syntax_based_arithmetic_modeB,
             {
                 "Syntax-based arithmetic coding",
-                "rfc2190.syntax_based_arithmetic",
+                "rfc2190_syntax_based_arithmetic",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -397,7 +397,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_advanced_prediction_modeB,
             {
                 "Advanced prediction option",
-                "rfc2190.advanced_prediction",
+                "rfc2190_advanced_prediction",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -409,7 +409,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_dbq,
             {
                 "Differential quantization parameter",
-                "rfc2190.dbq",
+                "rfc2190_dbq",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -421,7 +421,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_trb,
             {
                 "Temporal Reference for B frames",
-                "rfc2190.trb",
+                "rfc2190_trb",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -433,7 +433,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_tr,
             {
                 "Temporal Reference for P frames",
-                "rfc2190.tr",
+                "rfc2190_tr",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -445,7 +445,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_quant,
             {
                 "Quantizer",
-                "rfc2190.quant",
+                "rfc2190_quant",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -457,7 +457,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_gobn,
             {
                 "GOB Number",
-                "rfc2190.gobn",
+                "rfc2190_gobn",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -469,7 +469,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_mba,
             {
                 "Macroblock address",
-                "rfc2190.mba",
+                "rfc2190_mba",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -481,7 +481,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_hmv1,
             {
                 "Horizontal motion vector 1",
-                "rfc2190.hmv1",
+                "rfc2190_hmv1",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -493,7 +493,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_vmv1,
             {
                 "Vertical motion vector 1",
-                "rfc2190.vmv1",
+                "rfc2190_vmv1",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -505,7 +505,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_hmv2,
             {
                 "Horizontal motion vector 2",
-                "rfc2190.hmv2",
+                "rfc2190_hmv2",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -517,7 +517,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_vmv2,
             {
                 "Vertical motion vector 2",
-                "rfc2190.vmv2",
+                "rfc2190_vmv2",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -529,7 +529,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_r_modeA,
             {
                 "Reserved field",
-                "rfc2190.r",
+                "rfc2190_r",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -541,7 +541,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_r_modeB,
             {
                 "Reserved field",
-                "rfc2190.r",
+                "rfc2190_r",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -553,7 +553,7 @@ proto_register_rfc2190(void)
             &hf_rfc2190_rr,
             {
                 "Reserved field 2",
-                "rfc2190.rr",
+                "rfc2190_rr",
                 FT_UINT24,
                 BASE_DEC,
                 NULL,

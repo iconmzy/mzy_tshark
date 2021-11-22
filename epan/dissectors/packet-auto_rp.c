@@ -205,62 +205,62 @@ void proto_register_auto_rp(void)
 {
         static hf_register_info hf[] = {
                 { &hf_auto_rp_version,
-                  {"Protocol version", "auto_rp.version",
+                  {"Protocol version", "auto_rp_version",
                    FT_UINT8, BASE_DEC, VALS(auto_rp_ver_vals), AUTO_RP_VERSION_MASK,
                    "Auto-RP protocol version", HFILL }},
 
                 { &hf_auto_rp_type,
-                  {"Packet type", "auto_rp.type",
+                  {"Packet type", "auto_rp_type",
                    FT_UINT8, BASE_DEC, VALS(auto_rp_type_vals), AUTO_RP_TYPE_MASK,
                    "Auto-RP packet type", HFILL }},
 
                 { &hf_auto_rp_count,
-                  {"RP count", "auto_rp.rp_count",
+                  {"RP count", "auto_rp_rp_count",
                    FT_UINT8, BASE_DEC, NULL, 0,
                    "The number of RP addresses contained in this message", HFILL }},
 
                 { &hf_auto_rp_group_num,
-                  {"Number of groups this RP maps to", "auto_rp.group_num",
+                  {"Number of groups this RP maps to", "auto_rp_group_num",
                    FT_UINT8, BASE_DEC, NULL, 0,
                    NULL, HFILL }},
 
                 { &hf_auto_rp_holdtime,
-                  {"Holdtime", "auto_rp.holdtime",
+                  {"Holdtime", "auto_rp_holdtime",
                    FT_UINT16, BASE_DEC, NULL, 0,
                    "The amount of time in seconds this announcement is valid", HFILL }},
 
                 { &hf_auto_rp_pim_ver,
-                  {"Version", "auto_rp.pim_ver",
+                  {"Version", "auto_rp_pim_ver",
                    FT_UINT8, BASE_DEC, VALS(auto_rp_pim_ver_vals), AUTO_RP_PIM_VER_MASK,
                    "RP's highest PIM version", HFILL }},
 
                 { &hf_auto_rp_rp_addr,
-                  {"RP address", "auto_rp.rp_addr",
+                  {"RP address", "auto_rp_rp_addr",
                    FT_IPv4, BASE_NONE, NULL, 0,
                    "The unicast IP address of the RP", HFILL }},
 
                 { &hf_auto_rp_prefix_sgn,
-                  {"Sign", "auto_rp.prefix_sign",
+                  {"Sign", "auto_rp_prefix_sign",
                    FT_UINT8, BASE_DEC, VALS(auto_rp_mask_sign_vals), AUTO_RP_SIGN_MASK,
                    "Group prefix sign", HFILL }},
 
                 { &hf_auto_rp_mask_len,
-                  {"Mask length", "auto_rp.mask_len",
+                  {"Mask length", "auto_rp_mask_len",
                    FT_UINT8, BASE_DEC, NULL, 0x0,
                    "Length of group prefix", HFILL }},
 
                 { &hf_auto_rp_group_prefix,
-                  {"Prefix", "auto_rp.group_prefix",
+                  {"Prefix", "auto_rp_group_prefix",
                    FT_IPv4, BASE_NONE, NULL, 0,
                    "Group prefix", HFILL }},
 
                 { &hf_auto_rp_reserved,
-                  {"Reserved", "auto_rp.reserved",
+                  {"Reserved", "auto_rp_reserved",
                    FT_UINT32, BASE_HEX, NULL, 0,
                    NULL, HFILL }},
 
                 { &hf_auto_rp_trailing_junk,
-                  {"Trailing junk", "auto_rp.trailing_junk",
+                  {"Trailing junk", "auto_rp_trailing_junk",
                    FT_BYTES, BASE_NONE, NULL, 0,
                    NULL, HFILL }},
         };

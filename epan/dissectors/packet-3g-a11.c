@@ -2046,623 +2046,623 @@ proto_register_a11(void)
 /* Setup list of header fields */
     static hf_register_info hf[] = {
         { &hf_a11_type,
-          { "Message Type",           "a11.type",
+          { "Message Type",           "a11_type",
             FT_UINT8, BASE_DEC | BASE_EXT_STRING, &a11_types_ext, 0,
             "A11 Message Type", HFILL }
         },
         { &hf_a11_flags,
-          { "Flags", "a11.flags",
+          { "Flags", "a11_flags",
             FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL}
         },
         { &hf_a11_s,
-          { "Simultaneous Bindings",           "a11.s",
+          { "Simultaneous Bindings",           "a11_s",
             FT_BOOLEAN, 8, NULL, 128,
             "Simultaneous Bindings Allowed", HFILL }
         },
         { &hf_a11_b,
-          { "Broadcast Datagrams",           "a11.b",
+          { "Broadcast Datagrams",           "a11_b",
             FT_BOOLEAN, 8, NULL, 64,
             "Broadcast Datagrams requested", HFILL }
         },
         { &hf_a11_d,
-          { "Co-located Care-of Address",           "a11.d",
+          { "Co-located Care-of Address",           "a11_d",
             FT_BOOLEAN, 8, NULL, 32,
             "MN using Co-located Care-of address", HFILL }
         },
         { &hf_a11_m,
-          { "Minimal Encapsulation",           "a11.m",
+          { "Minimal Encapsulation",           "a11_m",
             FT_BOOLEAN, 8, NULL, 16,
             "MN wants Minimal encapsulation", HFILL }
         },
         { &hf_a11_g,
-          { "GRE",           "a11.g",
+          { "GRE",           "a11_g",
             FT_BOOLEAN, 8, NULL, 8,
             "MN wants GRE encapsulation", HFILL }
         },
         { &hf_a11_v,
-          { "Van Jacobson",           "a11.v",
+          { "Van Jacobson",           "a11_v",
             FT_BOOLEAN, 8, NULL, 4,
             NULL, HFILL }
         },
         { &hf_a11_t,
-          { "Reverse Tunneling",           "a11.t",
+          { "Reverse Tunneling",           "a11_t",
             FT_BOOLEAN, 8, NULL, 2,
             "Reverse tunneling requested", HFILL }
         },
         { &hf_a11_code,
-          { "Reply Code",           "a11.code",
+          { "Reply Code",           "a11_code",
             FT_UINT8, BASE_DEC | BASE_EXT_STRING, &a11_reply_codes_ext, 0,
             "A11 Registration Reply code", HFILL }
         },
         { &hf_a11_status,
-          { "Reply Status",           "a11.ackstat",
+          { "Reply Status",           "a11_ackstat",
             FT_UINT8, BASE_DEC | BASE_EXT_STRING, &a11_ack_status_ext, 0,
             "A11 Registration Ack Status", HFILL }
         },
         { &hf_a11_life,
-          { "Lifetime",           "a11.life",
+          { "Lifetime",           "a11_life",
             FT_UINT16, BASE_DEC, NULL, 0,
             "A11 Registration Lifetime", HFILL }
         },
         { &hf_a11_homeaddr,
-          { "Home Address",           "a11.homeaddr",
+          { "Home Address",           "a11_homeaddr",
             FT_IPv4, BASE_NONE, NULL, 0,
             "Mobile Node's home address", HFILL }
         },
 
         { &hf_a11_haaddr,
-          { "Home Agent",           "a11.haaddr",
+          { "Home Agent",           "a11_haaddr",
             FT_IPv4, BASE_NONE, NULL, 0,
             "Home agent IP Address", HFILL }
         },
         { &hf_a11_coa,
-          { "Care of Address",           "a11.coa",
+          { "Care of Address",           "a11_coa",
             FT_IPv4, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_ident,
-          { "Identification",           "a11.ident",
+          { "Identification",           "a11_ident",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
             "MN Identification", HFILL }
         },
         { &hf_a11_ext_type,
-          { "Extension Type",           "a11.ext.type",
+          { "Extension Type",           "a11_ext_type",
             FT_UINT8, BASE_DEC | BASE_EXT_STRING, &a11_ext_types_ext, 0,
             "Mobile IP Extension Type", HFILL }
         },
         { &hf_a11_ext_stype,
-          { "Gen Auth Ext SubType",           "a11.ext.auth.subtype",
+          { "Gen Auth Ext SubType",           "a11_ext_auth_subtype",
             FT_UINT8, BASE_DEC, VALS(a11_ext_stypes), 0,
             "Mobile IP Auth Extension Sub Type", HFILL }
         },
         { &hf_a11_ext_len,
-          { "Extension Length",         "a11.ext.len",
+          { "Extension Length",         "a11_ext_len",
             FT_UINT16, BASE_DEC, NULL, 0,
             "Mobile IP Extension Length", HFILL }
         },
         { &hf_a11_ext,
-          { "Extension",                      "a11.extension",
+          { "Extension",                      "a11_extension",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_aext_spi,
-          { "SPI",                      "a11.auth.spi",
+          { "SPI",                      "a11_auth_spi",
             FT_UINT32, BASE_HEX, NULL, 0,
             "Authentication Header Security Parameter Index", HFILL }
         },
         { &hf_a11_aext_auth,
-          { "Authenticator",            "a11.auth.auth",
+          { "Authenticator",            "a11_auth_auth",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_next_nai,
-          { "NAI",                      "a11.nai",
+          { "NAI",                      "a11_nai",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_ses_key,
-          { "Key",                      "a11.ext.key",
+          { "Key",                      "a11_ext_key",
             FT_UINT32, BASE_HEX, NULL, 0,
             "Session Key", HFILL }
         },
         { &hf_a11_ses_sidver,
-          { "Session ID Version",         "a11.ext.sidver",
+          { "Session ID Version",         "a11_ext_sidver",
             FT_UINT8, BASE_DEC, NULL, 3,
             NULL, HFILL}
         },
         { &hf_a11_ses_mnsrid,
-          { "MNSR-ID",                      "a11.ext.mnsrid",
+          { "MNSR-ID",                      "a11_ext_mnsrid",
             FT_UINT16, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_ses_msid_type,
-          { "MSID Type",                      "a11.ext.msid_type",
+          { "MSID Type",                      "a11_ext_msid_type",
             FT_UINT16, BASE_DEC, VALS(a11_ses_msid_type_vals), 0,
             NULL, HFILL }
         },
         { &hf_a11_ses_msid_len,
-          { "MSID Length",                      "a11.ext.msid_len",
+          { "MSID Length",                      "a11_ext_msid_len",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_ses_msid,
-          { "MSID(BCD)",                      "a11.ext.msid",
+          { "MSID(BCD)",                      "a11_ext_msid",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_ses_ptype,
-          { "Protocol Type",                      "a11.ext.ptype",
+          { "Protocol Type",                      "a11_ext_ptype",
             FT_UINT16, BASE_HEX, VALS(a11_ses_ptype_vals), 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_vid,
-          { "Vendor ID",                      "a11.ext.vid",
+          { "Vendor ID",                      "a11_ext_vid",
             FT_UINT32, BASE_ENTERPRISES, STRINGS_ENTERPRISES, 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_apptype,
-          { "Application Type",                      "a11.ext.apptype",
+          { "Application Type",                      "a11_ext_apptype",
             FT_UINT8, BASE_HEX | BASE_EXT_STRING, &a11_ext_app_ext, 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_ppaddr,
-          { "Anchor P-P Address",           "a11.ext.ppaddr",
+          { "Anchor P-P Address",           "a11_ext_ppaddr",
             FT_IPv4, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_dormant,
-          { "All Dormant Indicator",           "a11.ext.dormant",
+          { "All Dormant Indicator",           "a11_ext_dormant",
             FT_UINT16, BASE_HEX, VALS(a11_ext_dormant), 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_ehrpd_mode,
-          { "eHRPD Mode",           "a11.ext.ehrpd.mode",
+          { "eHRPD Mode",           "a11_ext_ehrpd_mode",
             FT_BOOLEAN, 8, TFS(&a11_tfs_ehrpd_mode), 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_ehrpd_pmk,
-          { "PMK",           "a11.ext.ehrpd.pmk",
+          { "PMK",           "a11_ext_ehrpd_pmk",
             FT_BOOLEAN, 8, TFS(&a11_tfs_ehrpd_pmk), 0x04,
             NULL, HFILL }
         },
         { &hf_a11_vse_ehrpd_handoff_info,
-          { "E-UTRAN Handoff Info",           "a11.ext.ehrpd.handoff_info",
+          { "E-UTRAN Handoff Info",           "a11_ext_ehrpd_handoff_info",
             FT_BOOLEAN, 8, TFS(&a11_tfs_ehrpd_handoff_info), 0x02,
             NULL, HFILL }
         },
         { &hf_a11_vse_ehrpd_tunnel_mode,
-          { "Tunnel Mode",           "a11.ext.ehrpd.tunnel_mode",
+          { "Tunnel Mode",           "a11_ext_ehrpd_tunnel_mode",
             FT_BOOLEAN, 8, TFS(&a11_tfs_ehrpd_tunnel_mode), 0x01,
             NULL, HFILL }
         },
         { &hf_a11_vse_code,
-          { "Reply Code",           "a11.ext.code",
+          { "Reply Code",           "a11_ext_code",
             FT_UINT8, BASE_DEC | BASE_EXT_STRING, &a11_reply_codes_ext, 0,
             NULL, HFILL }
         },
         /* XXX: Is this the correct filter name ?? */
         { &hf_a11_vse_pdit,
-          { "PDSN Code",                      "a11.ext.code",
+          { "PDSN Code",                      "a11_ext_code",
             FT_UINT8, BASE_HEX, VALS(a11_ext_nvose_pdsn_code), 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_session_parameter,
-          { "Session Parameter - Always On",                      "a11.ext.session_parameter",
+          { "Session Parameter - Always On",                      "a11_ext_session_parameter",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_srvopt,
-          { "Service Option",                      "a11.ext.srvopt",
+          { "Service Option",                      "a11_ext_srvopt",
             FT_UINT16, BASE_HEX, VALS(a11_ext_nvose_srvopt), 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_panid,
-          { "PANID",                      "a11.ext.panid",
+          { "PANID",                      "a11_ext_panid",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_canid,
-          { "CANID",                      "a11.ext.canid",
+          { "CANID",                      "a11_ext_canid",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_vse_qosmode,
-          { "QoS Mode",       "a11.ext.qosmode",
+          { "QoS Mode",       "a11_ext_qosmode",
             FT_UINT8, BASE_HEX, VALS(a11_ext_nvose_qosmode), 0,
             NULL, HFILL }
         },
         { &hf_a11_ase_len_type,
-          { "Entry Length",   "a11.ext.ase.len",
+          { "Entry Length",   "a11_ext_ase_len",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_ase_srid_type,
-          { "Service Reference ID (SRID)",   "a11.ext.ase.srid",
+          { "Service Reference ID (SRID)",   "a11_ext_ase_srid",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_ase_servopt_type,
-          { "Service Option", "a11.ext.ase.srvopt",
+          { "Service Option", "a11_ext_ase_srvopt",
             FT_UINT16, BASE_HEX, VALS(a11_ext_nvose_srvopt), 0,
             NULL, HFILL }
         },
         { &hf_a11_ase_gre_proto_type,
-          { "GRE Protocol Type",   "a11.ext.ase.ptype",
+          { "GRE Protocol Type",   "a11_ext_ase_ptype",
             FT_UINT16, BASE_HEX, VALS(a11_ses_ptype_vals), 0,
             NULL, HFILL }
         },
         { &hf_a11_ase_gre_key,
-          { "GRE Key",   "a11.ext.ase.key",
+          { "GRE Key",   "a11_ext_ase_key",
             FT_UINT32, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_ase_pcf_addr_key,
-          { "PCF IP Address",           "a11.ext.ase.pcfip",
+          { "PCF IP Address",           "a11_ext_ase_pcfip",
             FT_IPv4, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_fqi_srid,
-          { "SRID",   "a11.ext.fqi.srid",
+          { "SRID",   "a11_ext_fqi_srid",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Forward Flow Entry SRID", HFILL }
         },
         { &hf_a11_fqi_flags,
-          { "Flags",   "a11.ext.fqi.flags",
+          { "Flags",   "a11_ext_fqi_flags",
             FT_UINT8, BASE_HEX, NULL, 0,
             "Forward Flow Entry Flags", HFILL }
         },
         { &hf_a11_fqi_flags_ip_flow,
-          { "IP Flow Discriminator",   "a11.ext.fqi.flags.ip_flow",
+          { "IP Flow Discriminator",   "a11_ext_fqi_flags_ip_flow",
             FT_BOOLEAN, 8, TFS(&tfs_enabled_disabled), A11_FQI_IPFLOW_DISC_ENABLED,
             NULL, HFILL }
         },
         { &hf_a11_fqi_flags_dscp,
-          { "DSCP",   "a11.ext.fqi.flags.dscp",
+          { "DSCP",   "a11_ext_fqi_flags_dscp",
             FT_BOOLEAN, 8, TFS(&tfs_included_not_included), A11_FQI_DSCP_INCLUDED,
             NULL, HFILL }
         },
         { &hf_a11_fqi_entry_flag,
-          { "DSCP and Flow State",   "a11.ext.fqi.entry_flag",
+          { "DSCP and Flow State",   "a11_ext_fqi_entry_flag",
             FT_UINT8, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_fqi_entry_flag_dscp,
-          { "DSCP",   "a11.ext.fqi.entry_flag.dscp",
+          { "DSCP",   "a11_ext_fqi_entry_flag_dscp",
             FT_UINT8, BASE_HEX, NULL, 0x7E,
             NULL, HFILL }
         },
         { &hf_a11_fqi_entry_flag_flow_state,
-          { "Flow State",   "a11.ext.fqi.entry_flag.flow_state",
+          { "Flow State",   "a11_ext_fqi_entry_flag_flow_state",
             FT_BOOLEAN, 8, TFS(&tfs_active_inactive), 0x01,
             NULL, HFILL }
         },
         { &hf_a11_fqi_flowcount,
-          { "Forward Flow Count",   "a11.ext.fqi.flowcount",
+          { "Forward Flow Count",   "a11_ext_fqi_flowcount",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_fqi_flowid,
-          { "Forward Flow Id",   "a11.ext.fqi.flowid",
+          { "Forward Flow Id",   "a11_ext_fqi_flowid",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_fqi_entrylen,
-          { "Entry Length",   "a11.ext.fqi.entrylen",
+          { "Entry Length",   "a11_ext_fqi_entrylen",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Forward Entry Length", HFILL }
         },
 #if 0
         { &hf_a11_fqi_flowstate,
-          { "Forward Flow State",   "a11.ext.fqi.flowstate",
+          { "Forward Flow State",   "a11_ext_fqi_flowstate",
             FT_UINT8, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
 #endif
         { &hf_a11_fqi_requested_qoslen,
-          { "Requested QoS Length",   "a11.ext.fqi.reqqoslen",
+          { "Requested QoS Length",   "a11_ext_fqi_reqqoslen",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Forward Requested QoS Length", HFILL }
         },
         { &hf_a11_fqi_flow_priority,
-          { "Flow Priority",   "a11.ext.fqi.flow_priority",
+          { "Flow Priority",   "a11_ext_fqi_flow_priority",
             FT_UINT8, BASE_DEC, NULL, 0xF0,
             NULL, HFILL }
         },
         { &hf_a11_fqi_num_qos_attribute_set,
-          { "Number of QoS Attribute Sets",   "a11.ext.fqi.num_qos_attribute_set",
+          { "Number of QoS Attribute Sets",   "a11_ext_fqi_num_qos_attribute_set",
             FT_UINT8, BASE_DEC, NULL, 0x0E,
             NULL, HFILL }
         },
         { &hf_a11_fqi_qos_attribute_setlen,
-          { "QoS Attribute Set Length",   "a11.ext.fqi.qos_attribute_setlen",
+          { "QoS Attribute Set Length",   "a11_ext_fqi_qos_attribute_setlen",
             FT_UINT16, BASE_DEC, NULL, 0x01E0,
             NULL, HFILL }
         },
         { &hf_a11_fqi_qos_attribute_setid,
-          { "QoS Attribute SetID",   "a11.ext.fqi.qos_attribute_setid",
+          { "QoS Attribute SetID",   "a11_ext_fqi_qos_attribute_setid",
             FT_UINT16, BASE_DEC, NULL, 0x1FC0,
             NULL, HFILL }
         },
         { &hf_a11_fqi_verbose,
-          { "Verbose",   "a11.ext.fqi.verbose",
+          { "Verbose",   "a11_ext_fqi_verbose",
             FT_UINT8, BASE_DEC, NULL, 0x20,
             NULL, HFILL }
         },
         { &hf_a11_fqi_flow_profileid,
-          { "Flow Profile Id",   "a11.ext.fqi.flow_profileid",
+          { "Flow Profile Id",   "a11_ext_fqi_flow_profileid",
             FT_UINT24, BASE_DEC, NULL, 0x1FFFE0,
             NULL, HFILL }
         },
         { &hf_a11_fqi_qos_granted_attribute_setid,
-          { "QoS Attribute SetID",   "a11.ext.fqi.qos_granted_attribute_setid",
+          { "QoS Attribute SetID",   "a11_ext_fqi_qos_granted_attribute_setid",
             FT_UINT8, BASE_DEC, NULL, 0xFE,
             NULL, HFILL }
         },
         { &hf_a11_fqi_granted_qoslen,
-          { "Granted QoS Length",   "a11.ext.fqi.graqoslen",
+          { "Granted QoS Length",   "a11_ext_fqi_graqoslen",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Forward Granted QoS Length", HFILL }
         },
         { &hf_a11_rqi_flow_priority,
-          { "Flow Priority",   "a11.ext.rqi.flow_priority",
+          { "Flow Priority",   "a11_ext_rqi_flow_priority",
             FT_UINT8, BASE_DEC, NULL, 0xF0,
             NULL, HFILL }
         },
         { &hf_a11_rqi_num_qos_attribute_set,
-          { "Number of QoS Attribute Sets",   "a11.ext.rqi.num_qos_attribute_set",
+          { "Number of QoS Attribute Sets",   "a11_ext_rqi_num_qos_attribute_set",
             FT_UINT8, BASE_DEC, NULL, 0x0E,
             NULL, HFILL }
         },
         { &hf_a11_rqi_qos_attribute_setlen,
-          { "QoS Attribute Set Length",   "a11.ext.rqi.qos_attribute_setlen",
+          { "QoS Attribute Set Length",   "a11_ext_rqi_qos_attribute_setlen",
             FT_UINT16, BASE_DEC, NULL, 0x01E0,
             NULL, HFILL }
         },
         { &hf_a11_rqi_qos_attribute_setid,
-          { "QoS Attribute SetID",   "a11.ext.rqi.qos_attribute_setid",
+          { "QoS Attribute SetID",   "a11_ext_rqi_qos_attribute_setid",
             FT_UINT16, BASE_DEC, NULL, 0x1FC0,
             NULL, HFILL }
         },
         { &hf_a11_rqi_verbose,
-          { "Verbose",   "a11.ext.rqi.verbose",
+          { "Verbose",   "a11_ext_rqi_verbose",
             FT_UINT8, BASE_DEC, NULL, 0x20,
             NULL, HFILL }
         },
         { &hf_a11_rqi_flow_profileid,
-          { "Flow Profile Id",   "a11.ext.rqi.flow_profileid",
+          { "Flow Profile Id",   "a11_ext_rqi_flow_profileid",
             FT_UINT24, BASE_DEC, NULL, 0x1FFFE0,
             NULL, HFILL }
         },
         { &hf_a11_rqi_qos_granted_attribute_setid,
-          { "QoS Attribute SetID",   "a11.ext.rqi.qos_granted_attribute_setid",
+          { "QoS Attribute SetID",   "a11_ext_rqi_qos_granted_attribute_setid",
             FT_UINT8, BASE_DEC, NULL, 0xFE,
             NULL, HFILL }
         },
         { &hf_a11_rqi_srid,
-          { "SRID",   "a11.ext.rqi.srid",
+          { "SRID",   "a11_ext_rqi_srid",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Reverse Flow Entry SRID", HFILL }
         },
         { &hf_a11_rqi_flowcount,
-          { "Reverse Flow Count",   "a11.ext.rqi.flowcount",
+          { "Reverse Flow Count",   "a11_ext_rqi_flowcount",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_rqi_flowid,
-          { "Reverse Flow Id",   "a11.ext.rqi.flowid",
+          { "Reverse Flow Id",   "a11_ext_rqi_flowid",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_rqi_entrylen,
-          { "Entry Length",   "a11.ext.rqi.entrylen",
+          { "Entry Length",   "a11_ext_rqi_entrylen",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Reverse Flow Entry Length", HFILL }
         },
         { &hf_a11_rqi_entry_flag,
-          { "Flags",   "a11.ext.rqi.entry_flag",
+          { "Flags",   "a11_ext_rqi_entry_flag",
             FT_UINT8, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_rqi_entry_flag_flow_state,
-          { "Flow State",   "a11.ext.rqi.entry_flag.flow_state",
+          { "Flow State",   "a11_ext_rqi_entry_flag_flow_state",
             FT_BOOLEAN, 8, TFS(&tfs_active_inactive), 0x01,
             NULL, HFILL }
         },
 #if 0
         { &hf_a11_rqi_flowstate,
-          { "Flow State",   "a11.ext.rqi.flowstate",
+          { "Flow State",   "a11_ext_rqi_flowstate",
             FT_UINT8, BASE_HEX, NULL, 0,
             "Reverse Flow State", HFILL }
         },
 #endif
         { &hf_a11_rqi_requested_qoslen,
-          { "Requested QoS Length",   "a11.ext.rqi.reqqoslen",
+          { "Requested QoS Length",   "a11_ext_rqi_reqqoslen",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Reverse Requested QoS Length", HFILL }
         },
 #if 0
         { &hf_a11_rqi_requested_qos,
-          { "Requested QoS",   "a11.ext.rqi.reqqos",
+          { "Requested QoS",   "a11_ext_rqi_reqqos",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Reverse Requested QoS", HFILL }
         },
 #endif
         { &hf_a11_rqi_granted_qoslen,
-          { "Granted QoS Length",   "a11.ext.rqi.graqoslen",
+          { "Granted QoS Length",   "a11_ext_rqi_graqoslen",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Reverse Granted QoS Length", HFILL }
         },
 #if 0
         { &hf_a11_rqi_granted_qos,
-          { "Granted QoS",   "a11.ext.rqi.graqos",
+          { "Granted QoS",   "a11_ext_rqi_graqos",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Reverse Granted QoS", HFILL }
         },
 #endif
         { &hf_a11_fqui_flowcount,
-          { "Forward QoS Update Flow Count",   "a11.ext.fqui.flowcount",
+          { "Forward QoS Update Flow Count",   "a11_ext_fqui_flowcount",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_rqui_flowcount,
-          { "Reverse QoS Update Flow Count",   "a11.ext.rqui.flowcount",
+          { "Reverse QoS Update Flow Count",   "a11_ext_rqui_flowcount",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_fqui_updated_qoslen,
-          { "Forward Updated QoS Sub-Blob Length",   "a11.ext.fqui.updatedqoslen",
+          { "Forward Updated QoS Sub-Blob Length",   "a11_ext_fqui_updatedqoslen",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_fqui_updated_qos,
-          { "Forward Updated QoS Sub-Blob",   "a11.ext.fqui.updatedqos",
+          { "Forward Updated QoS Sub-Blob",   "a11_ext_fqui_updatedqos",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_rqui_updated_qoslen,
-          { "Reverse Updated QoS Sub-Blob Length",   "a11.ext.rqui.updatedqoslen",
+          { "Reverse Updated QoS Sub-Blob Length",   "a11_ext_rqui_updatedqoslen",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_rqui_updated_qos,
-          { "Reverse Updated QoS Sub-Blob",   "a11.ext.rqui.updatedqos",
+          { "Reverse Updated QoS Sub-Blob",   "a11_ext_rqui_updatedqos",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
 #if 0
         { &hf_a11_subsciber_profile_len,
-          { "Subscriber QoS Profile Length",   "a11.ext.sqp.profilelen",
+          { "Subscriber QoS Profile Length",   "a11_ext_sqp_profilelen",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
 #endif
         { &hf_a11_subsciber_profile,
-          { "Subscriber QoS Profile",   "a11.ext.sqp.profile",
+          { "Subscriber QoS Profile",   "a11_ext_sqp_profile",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_forward_rohc_info_len,
-          { "Forward ROHC Info Length",   "a11.ext.ase.forwardlen",
+          { "Forward ROHC Info Length",   "a11_ext_ase_forwardlen",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_forward_maxcid,
-          { "Forward MAXCID",   "a11.ext.ase.maxcid",
+          { "Forward MAXCID",   "a11_ext_ase_maxcid",
             FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_forward_mrru,
-          { "Forward MRRU",   "a11.ext.ase.mrru",
+          { "Forward MRRU",   "a11_ext_ase_mrru",
             FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_forward_large_cids,
-          { "Forward Large CIDS",   "a11.ext.ase.forwardlargecids",
+          { "Forward Large CIDS",   "a11_ext_ase_forwardlargecids",
             FT_BOOLEAN, 8, NULL, 0x80,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_forward_profile_count,
-          { "Forward Profile Count",   "a11.ext.ase.profilecount",
+          { "Forward Profile Count",   "a11_ext_ase_profilecount",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
 
 
         { &hf_a11_ase_forward_profile,
-          { "Forward Profile",   "a11.ext.ase.forwardprofile",
+          { "Forward Profile",   "a11_ext_ase_forwardprofile",
             FT_UINT16, BASE_DEC | BASE_EXT_STRING, &a11_rohc_profile_vals_ext, 0,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_reverse_rohc_info_len,
-          { "Reverse ROHC Info Length",   "a11.ext.ase.reverselen",
+          { "Reverse ROHC Info Length",   "a11_ext_ase_reverselen",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_reverse_maxcid,
-          { "Reverse MAXCID",   "a11.ext.ase.revmaxcid",
+          { "Reverse MAXCID",   "a11_ext_ase_revmaxcid",
             FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_reverse_mrru,
-          { "Reverse MRRU",   "a11.ext.ase.revmrru",
+          { "Reverse MRRU",   "a11_ext_ase_revmrru",
             FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_reverse_large_cids,
-          { "Reverse Large CIDS",   "a11.ext.ase.reverselargecids",
+          { "Reverse Large CIDS",   "a11_ext_ase_reverselargecids",
             FT_UINT8, BASE_DEC, NULL, 128,
             NULL, HFILL }
         },
 
         { &hf_a11_ase_reverse_profile_count,
-          { "Reverse Profile Count",   "a11.ext.ase.revprofilecount",
+          { "Reverse Profile Count",   "a11_ext_ase_revprofilecount",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
 
 
         { &hf_a11_ase_reverse_profile,
-          { "Reverse Profile",   "a11.ext.ase.reverseprofile",
+          { "Reverse Profile",   "a11_ext_ase_reverseprofile",
             FT_UINT16, BASE_DEC | BASE_EXT_STRING, &a11_rohc_profile_vals_ext, 0,
             NULL, HFILL }
         },
         { &hf_a11_aut_flow_prof_sub_type,
-          { "Sub type",   "a11.aut_flow_prof.sub_type",
+          { "Sub type",   "a11_aut_flow_prof_sub_type",
             FT_UINT8, BASE_DEC, VALS(a11_aut_flow_prof_subtype_vals), 0,
             NULL, HFILL }
         },
         { &hf_a11_aut_flow_prof_sub_type_len,
-          { "Length",   "a11.aut_flow_prof.length",
+          { "Length",   "a11_aut_flow_prof_length",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_aut_flow_prof_sub_type_value,
-          { "Value",   "a11.aut_flow_prof.value",
+          { "Value",   "a11_aut_flow_prof_value",
             FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_serv_opt_prof_max_serv,
-          { "Service-Connections-Per-Link-flow",   "a11.serv_opt_prof.scplf",
+          { "Service-Connections-Per-Link-flow",   "a11_serv_opt_prof_scplf",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_sub_type,
-          { "Sub-Type",   "a11.sub_type",
+          { "Sub-Type",   "a11_sub_type",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_sub_type_length,
-          { "Sub-Type Length",   "a11.sub_type_length",
+          { "Sub-Type Length",   "a11_sub_type_length",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_serv_opt,
-          { "Service Option",   "a11.serviceoption",
+          { "Service Option",   "a11_serviceoption",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_max_num_serv_opt,
-          { "Max number of service instances of Service Option",   "a11.max_serviceoptions",
+          { "Max number of service instances of Service Option",   "a11_max_serviceoptions",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_a11_bcmcs_stype,
-          { "Protocol Type",                      "a11.ext.bcmcs.ptype",
+          { "Protocol Type",                      "a11_ext_bcmcs_ptype",
             FT_UINT8, BASE_HEX, VALS(a11_bcmcs_stype_vals), 0,
             NULL, HFILL }
         },
         { &hf_a11_bcmcs_entry_len,
-          { "Entry length",                      "a11.ext.bcmcs.entry_len",
+          { "Entry length",                      "a11_ext_bcmcs_entry_len",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },

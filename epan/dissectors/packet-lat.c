@@ -1511,35 +1511,35 @@ proto_register_lat(void)
 {
 	static hf_register_info hf[] = {
 	    { &hf_lat_rrf,
-		{ "RRF", "lat.rrf", FT_BOOLEAN, 8,
+		{ "RRF", "lat_rrf", FT_BOOLEAN, 8,
 		  NULL, 0x01, NULL, HFILL}},
 
 	    { &hf_lat_master,
-		{ "Master", "lat.master", FT_BOOLEAN, 8,
+		{ "Master", "lat_master", FT_BOOLEAN, 8,
 		  NULL, 0x02, NULL, HFILL}},
 
 	    { &hf_lat_msg_typ,
-		{ "Message type", "lat.msg_typ", FT_UINT8, BASE_DEC,
+		{ "Message type", "lat_msg_typ", FT_UINT8, BASE_DEC,
 		  VALS(msg_typ_vals), 0xFC, NULL, HFILL}},
 
 	    { &hf_lat_nbr_slots,
-		{ "Number of slots", "lat.nbr_slots", FT_UINT8, BASE_DEC,
+		{ "Number of slots", "lat_nbr_slots", FT_UINT8, BASE_DEC,
 		  NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_dst_cir_id,
-		{ "Destination circuit ID", "lat.dst_cir_id", FT_UINT16,
+		{ "Destination circuit ID", "lat_dst_cir_id", FT_UINT16,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_src_cir_id,
-		{ "Source circuit ID", "lat.src_cir_id", FT_UINT16,
+		{ "Source circuit ID", "lat_src_cir_id", FT_UINT16,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_msg_seq_nbr,
-		{ "Message sequence number", "lat.msg_seq_nbr", FT_UINT8,
+		{ "Message sequence number", "lat_msg_seq_nbr", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_msg_ack_nbr,
-		{ "Message acknowledgment number", "lat.msg_ack_nbr", FT_UINT8,
+		{ "Message acknowledgment number", "lat_msg_ack_nbr", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    /*
@@ -1547,521 +1547,521 @@ proto_register_lat(void)
 	     * in the field description.  Go figure.
 	     */
 	    { &hf_lat_min_rcv_datagram_size,
-		{ "Maximum LAT message size", "lat.min_rcv_datagram_size", FT_UINT16,
+		{ "Maximum LAT message size", "lat_min_rcv_datagram_size", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_prtcl_ver,
-		{ "Protocol version of this session", "lat.prtcl_ver", FT_UINT8,
+		{ "Protocol version of this session", "lat_prtcl_ver", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_prtcl_eco,
-		{ "ECO level of protocol version of this session", "lat.prtcl_eco", FT_UINT8,
+		{ "ECO level of protocol version of this session", "lat_prtcl_eco", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_max_sim_slots,
-		{ "Maximum simultaneous sessions on this circuit", "lat.max_sim_slots", FT_UINT8,
+		{ "Maximum simultaneous sessions on this circuit", "lat_max_sim_slots", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_nbr_dl_bufs,
-		{ "Number of extra data link buffers queued", "lat.nbr_dl_bufs", FT_UINT8,
+		{ "Number of extra data link buffers queued", "lat_nbr_dl_bufs", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_server_circuit_timer,
-		{ "Server circuit timer", "lat.server_circuit_timer", FT_UINT8,
+		{ "Server circuit timer", "lat_server_circuit_timer", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_keep_alive_timer,
-		{ "Keep-alive timer", "lat.keep_alive_timer", FT_UINT8,
+		{ "Keep-alive timer", "lat_keep_alive_timer", FT_UINT8,
 		  BASE_DEC|BASE_UNIT_STRING, &units_second_seconds, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_facility_number,
-		{ "Facility number", "lat.facility_number", FT_UINT16,
+		{ "Facility number", "lat_facility_number", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_prod_type_code,
-		{ "Product type code", "lat.prod_type_code", FT_UINT8,
+		{ "Product type code", "lat_prod_type_code", FT_UINT8,
 		  BASE_DEC, VALS(prod_type_code_vals), 0x0, NULL, HFILL}},
 
 	    { &hf_lat_prod_vers_numb,
-		{ "Product version number", "lat.prod_vers_numb", FT_UINT8,
+		{ "Product version number", "lat_prod_vers_numb", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_slave_node_name,
-		{ "Slave node name", "lat.slave_node_name", FT_UINT_STRING,
+		{ "Slave node name", "lat_slave_node_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_master_node_name,
-		{ "Master node name", "lat.master_node_name", FT_UINT_STRING,
+		{ "Master node name", "lat_master_node_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_location_text,
-		{ "Location", "lat.location_text", FT_UINT_STRING,
+		{ "Location", "lat_location_text", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_param_code,
-		{ "Parameter code", "lat.param_code", FT_UINT8,
+		{ "Parameter code", "lat_param_code", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_param_len,
-		{ "Parameter length", "lat.param_len", FT_UINT8,
+		{ "Parameter length", "lat_param_len", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_param_data,
-		{ "Parameter data", "lat.param_data", FT_BYTES,
+		{ "Parameter data", "lat_param_data", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_slot_dst_slot_id,
-		{ "Destination slot ID", "lat.slot.dst_slot_id", FT_UINT8,
+		{ "Destination slot ID", "lat_slot_dst_slot_id", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_slot_src_slot_id,
-		{ "Source slot ID", "lat.slot.src_slot_id", FT_UINT8,
+		{ "Source slot ID", "lat_slot_src_slot_id", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_slot_byte_count,
-		{ "Slot data byte count", "lat.slot.byte_count", FT_UINT8,
+		{ "Slot data byte count", "lat_slot_byte_count", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_slot_credits,
-		{ "Credits", "lat.slot.credits", FT_UINT8,
+		{ "Credits", "lat_slot_credits", FT_UINT8,
 		  BASE_DEC, NULL, 0x0F, NULL, HFILL}},
 
 	    { &hf_lat_slot_type,
-		{ "Slot type", "lat.slot.type", FT_UINT8,
+		{ "Slot type", "lat_slot_type", FT_UINT8,
 		  BASE_HEX, VALS(slot_type_vals), 0xF0, NULL, HFILL}},
 
 	    { &hf_lat_start_slot_service_class,
-		{ "Service class", "lat.start_slot.service_class", FT_UINT8,
+		{ "Service class", "lat_start_slot_service_class", FT_UINT8,
 		  BASE_DEC, VALS(service_class_vals), 0x0, NULL, HFILL}},
 
 	    { &hf_lat_start_slot_minimum_attention_slot_size,
-		{ "Minimum attention slot size", "lat.start_slot.minimum_attention_slot_size", FT_UINT8,
+		{ "Minimum attention slot size", "lat_start_slot_minimum_attention_slot_size", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_start_slot_minimum_data_slot_size,
-		{ "Minimum data slot size", "lat.start_slot.minimum_data_slot_size", FT_UINT8,
+		{ "Minimum data slot size", "lat_start_slot_minimum_data_slot_size", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_start_slot_obj_srvc,
-		{ "Name of the destination service", "lat.start_slot.obj_srvc", FT_UINT_STRING,
+		{ "Name of the destination service", "lat_start_slot_obj_srvc", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_start_slot_subj_dscr,
-		{ "Description of the source service", "lat.start_slot.subj_dscr", FT_UINT_STRING,
+		{ "Description of the source service", "lat_start_slot_subj_dscr", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_start_slot_class_1_param_code,
-	        { "Parameter code", "lat.start_slot.class_1.param_code", FT_UINT8,
+	        { "Parameter code", "lat_start_slot_class_1_param_code", FT_UINT8,
 	          BASE_DEC, VALS(start_slot_class_1_param_code_vals),
 	          0x0, NULL, HFILL }},
 
 	    { &hf_lat_status_remaining,
-		{ "Remainder of status", "lat.slot.status_remaining", FT_BYTES,
+		{ "Remainder of status", "lat_slot_status_remaining", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_slot_data,
-		{ "Slot data", "lat.slot.slot_data", FT_BYTES,
+		{ "Slot data", "lat_slot_slot_data", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_data_b_slot_control_flags,
-	        { "Control flags", "lat.data_b_slot.control_flags", FT_UINT8,
+	        { "Control flags", "lat_data_b_slot_control_flags", FT_UINT8,
 	          BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_control_flags_enable_input_flow_control,
 	        { "Enable usage of input flow control characters",
-	          "lat.data_b_slot.control_flags.enable_input_flow_control",
+	          "lat_data_b_slot_control_flags_enable_input_flow_control",
 	          FT_BOOLEAN, 8, NULL, 0x01, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_control_flags_disable_input_flow_control,
 	        { "Disable recognition of input flow control characters",
-	          "lat.data_b_slot.control_flags.disable_input_flow_control",
+	          "lat_data_b_slot_control_flags_disable_input_flow_control",
 	          FT_BOOLEAN, 8, NULL, 0x02, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_control_flags_enable_output_flow_control,
 	        { "Enable usage of output flow control characters",
-	          "lat.data_b_slot.control_flags.enable_output_flow_control",
+	          "lat_data_b_slot_control_flags_enable_output_flow_control",
 	          FT_BOOLEAN, 8, NULL, 0x04, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_control_flags_disable_output_flow_control,
 	        { "Disable recognition of output flow control characters",
-	          "lat.data_b_slot.control_flags.disable_output_flow_control",
+	          "lat_data_b_slot_control_flags_disable_output_flow_control",
 	          FT_BOOLEAN, 8, NULL, 0x08, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_control_flags_break_detected,
 	        { "Break condition detected",
-	          "lat.data_b_slot.control_flags.break_detected",
+	          "lat_data_b_slot_control_flags_break_detected",
 	          FT_BOOLEAN, 8, NULL, 0x10, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_control_flags_set_port_char,
 	        { "Set port characteristics",
-	          "lat.data_b_slot.control_flags.set_port_characteristics",
+	          "lat_data_b_slot_control_flags_set_port_characteristics",
 	          FT_BOOLEAN, 8, NULL, 0x20, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_control_flags_report_port_char,
 	        { "Report port characteristics",
-	          "lat.data_b_slot.control_flags.report_port_characteristics",
+	          "lat_data_b_slot_control_flags_report_port_characteristics",
 	          FT_BOOLEAN, 8, NULL, 0x20, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_stop_output_channel_char,
 	        { "Output channel stop character",
-	          "lat.data_b_slot.stop_output_channel_char", FT_UINT8,
+	          "lat_data_b_slot_stop_output_channel_char", FT_UINT8,
 	          BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_start_output_channel_char,
 	        { "Output channel start character",
-	          "lat.data_b_slot.start_output_channel_char", FT_UINT8,
+	          "lat_data_b_slot_start_output_channel_char", FT_UINT8,
 	          BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_stop_input_channel_char,
 	        { "Input channel stop character",
-	          "lat.data_b_slot.stop_input_channel_char", FT_UINT8,
+	          "lat_data_b_slot_stop_input_channel_char", FT_UINT8,
 	          BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_start_input_channel_char,
 	        { "Input channel start character",
-	          "lat.data_b_slot.start_input_channel_char", FT_UINT8,
+	          "lat_data_b_slot_start_input_channel_char", FT_UINT8,
 	          BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_lat_data_b_slot_param_code,
-	        { "Parameter code", "lat.data_b_slot.param_code", FT_UINT8,
+	        { "Parameter code", "lat_data_b_slot_param_code", FT_UINT8,
 	          BASE_DEC, VALS(data_b_slot_param_code_vals),
 	          0x0, NULL, HFILL }},
 
 	    { &hf_lat_slot_data_remaining,
-		{ "Slot data remaining", "lat.slot.slot_data_remaining", FT_BYTES,
+		{ "Slot data remaining", "lat_slot_slot_data_remaining", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_attention_slot_control_flags,
-	        { "Control flags", "lat.attention_slot.control_flags", FT_UINT8,
+	        { "Control flags", "lat_attention_slot_control_flags", FT_UINT8,
 	          BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_lat_attention_slot_control_flags_abort,
-	        { "Abort", "lat.attention_slot.control_flags.abort", FT_BOOLEAN,
+	        { "Abort", "lat_attention_slot_control_flags_abort", FT_BOOLEAN,
 	          8, NULL, 0x20, NULL, HFILL }},
 
 	    { &hf_lat_mbz,
-		{ "MBZ", "lat.slot.mbz", FT_UINT8,
+		{ "MBZ", "lat_slot_mbz", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_reason,
-		{ "Reason", "lat.slot.reason", FT_UINT8,
+		{ "Reason", "lat_slot_reason", FT_UINT8,
 		  BASE_DEC, VALS(reason_code_vals), 0x0, NULL, HFILL}},
 
 	    { &hf_lat_circuit_disconnect_reason,
-		{ "Circuit disconnect reason", "lat.circuit_disconnect_reason", FT_UINT8,
+		{ "Circuit disconnect reason", "lat_circuit_disconnect_reason", FT_UINT8,
 		  BASE_DEC, VALS(circuit_disconnect_reason_code_vals), 0x0, NULL, HFILL}},
 
 	    { &hf_lat_reason_text,
-		{ "Reason", "lat.reason_text", FT_UINT_STRING,
+		{ "Reason", "lat_reason_text", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_high_prtcl_ver,
-		{ "Highest protocol version supported", "lat.high_prtcl_ver", FT_UINT8,
+		{ "Highest protocol version supported", "lat_high_prtcl_ver", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_low_prtcl_ver,
-		{ "Lowest protocol version supported", "lat.low_prtcl_ver", FT_UINT8,
+		{ "Lowest protocol version supported", "lat_low_prtcl_ver", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_cur_prtcl_ver,
-		{ "Protocol version of this message", "lat.cur_prtcl_ver", FT_UINT8,
+		{ "Protocol version of this message", "lat_cur_prtcl_ver", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_cur_prtcl_eco,
-		{ "ECO level of current protocol version", "lat.cur_prtcl_eco", FT_UINT8,
+		{ "ECO level of current protocol version", "lat_cur_prtcl_eco", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_msg_inc,
-		{ "Message incarnation", "lat.msg_inc", FT_UINT8,
+		{ "Message incarnation", "lat_msg_inc", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_change_flags,
-		{ "Change flags", "lat.change_flags", FT_UINT8,
+		{ "Change flags", "lat_change_flags", FT_UINT8,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_data_link_rcv_frame_size,
-		{ "Maximum LAT message size", "lat.data_link_rcv_frame_size", FT_UINT16,
+		{ "Maximum LAT message size", "lat_data_link_rcv_frame_size", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_node_multicast_timer,
-		{ "Node multicast timer", "lat.node_multicast_timer", FT_UINT8,
+		{ "Node multicast timer", "lat_node_multicast_timer", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_node_status,
-		{ "Node status", "lat.node_status", FT_UINT8,
+		{ "Node status", "lat_node_status", FT_UINT8,
 		  BASE_DEC, VALS(node_status_vals), 0x0, NULL, HFILL}},
 
 	    { &hf_lat_node_group_len,
-		{ "Node group length", "lat.node_group_len", FT_UINT8,
+		{ "Node group length", "lat_node_group_len", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_node_groups,
-		{ "Node groups", "lat.node_groups", FT_BYTES,
+		{ "Node groups", "lat_node_groups", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_node_name,
-		{ "Node name", "lat.node_name", FT_UINT_STRING,
+		{ "Node name", "lat_node_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_node_description,
-		{ "Node description", "lat.node_description", FT_UINT_STRING,
+		{ "Node description", "lat_node_description", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_service_name_count,
-		{ "Number of service names", "lat.service_name_count", FT_UINT8,
+		{ "Number of service names", "lat_service_name_count", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_service_rating,
-		{ "Service rating", "lat.service.rating", FT_UINT8,
+		{ "Service rating", "lat_service_rating", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_node_service_len,
-		{ "Node service classes length", "lat.node_service_len", FT_UINT8,
+		{ "Node service classes length", "lat_node_service_len", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_node_service_class,
-		{ "Node service classes", "lat.node_service_class", FT_UINT8,
+		{ "Node service classes", "lat_node_service_class", FT_UINT8,
 		  BASE_DEC, VALS(service_class_vals), 0x0, NULL, HFILL}},
 
 	    { &hf_lat_prtcl_format,
-		{ "Protocol format", "lat.prtcl_format", FT_UINT8,
+		{ "Protocol format", "lat_prtcl_format", FT_UINT8,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_request_identifier,
-		{ "Request identifier", "lat.request_identifier", FT_UINT16,
+		{ "Request identifier", "lat_request_identifier", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_entry_identifier,
-		{ "Entry identifier", "lat.entry_identifier", FT_UINT16,
+		{ "Entry identifier", "lat_entry_identifier", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_command_type,
-		{ "Command type", "lat.command_type", FT_UINT8,
+		{ "Command type", "lat_command_type", FT_UINT8,
 		  BASE_DEC, VALS(command_type_vals), 0x0, NULL, HFILL}},
 
 	    { &hf_lat_command_modifier,
-		{ "Command modifier", "lat.command_modifier", FT_UINT8,
+		{ "Command modifier", "lat_command_modifier", FT_UINT8,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_command_modifier_send_status_periodically,
 		{ "Send status of the entries periodically",
-		  "lat.command_modifier.send_status_periodically", FT_BOOLEAN,
+		  "lat_command_modifier_send_status_periodically", FT_BOOLEAN,
 		  8, NULL, 0x01, NULL, HFILL}},
 
 	    { &hf_lat_command_modifier_send_status_on_queue_depth_change,
 		{ "Send status of the entries every time the queue depth changes",
-		  "lat.command_modifier.send_status_on_queue_depth_change", FT_BOOLEAN,
+		  "lat_command_modifier_send_status_on_queue_depth_change", FT_BOOLEAN,
 		  8, NULL, 0x02, NULL, HFILL}},
 
 	    { &hf_lat_obj_node_name,
-		{ "Destination node name", "lat.obj_node.name", FT_UINT_STRING,
+		{ "Destination node name", "lat_obj_node_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0,
 		  NULL, HFILL}},
 
 	    { &hf_lat_subj_group_len,
-		{ "Subject group code length", "lat.subj_group_len", FT_UINT8,
+		{ "Subject group code length", "lat_subj_group_len", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_subj_group,
-		{ "Subject group code mask", "lat.subj_group", FT_BYTES,
+		{ "Subject group code mask", "lat_subj_group", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_subj_node_name,
-		{ "Subject node name", "lat.subj_node_name", FT_UINT_STRING,
+		{ "Subject node name", "lat_subj_node_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_subj_port_name,
-		{ "Subject port name", "lat.subj_port_name", FT_UINT_STRING,
+		{ "Subject port name", "lat_subj_port_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_status_retransmit_timer,
-		{ "Status retransmit timer", "lat.status_retransmit_timer", FT_UINT16,
+		{ "Status retransmit timer", "lat_status_retransmit_timer", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_entries_counter,
-		{ "Entries counter", "lat.entries_counter", FT_UINT8,
+		{ "Entries counter", "lat_entries_counter", FT_UINT8,
 		  BASE_DEC, NULL, 0x0,
 		  "Number of entries whose status is reported in the message",
 		  HFILL}},
 
 	    { &hf_lat_entry_length,
-		{ "Entry length", "lat.entry_length", FT_UINT8,
+		{ "Entry length", "lat_entry_length", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, "Length of status entry, in bytes",
 		  HFILL}},
 
 	    { &hf_lat_entry_status,
-		{ "Entry status", "lat.entry_status", FT_UINT8,
+		{ "Entry status", "lat_entry_status", FT_UINT8,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_entry_status_rejected,
-		{ "Rejected", "lat.entry_status.rejected", FT_BOOLEAN,
+		{ "Rejected", "lat_entry_status_rejected", FT_BOOLEAN,
 		  8, NULL, ENTRY_STATUS_REJECTED, "Solicitation request was rejected",
 		  HFILL}},
 
 	    { &hf_lat_entry_status_additional_information,
-		{ "Additional information", "lat.entry_status.additional_information", FT_UINT8,
+		{ "Additional information", "lat_entry_status_additional_information", FT_UINT8,
 		  BASE_DEC, VALS(additional_information_vals),
 		  ENTRY_STATUS_ADDITIONAL_INFORMATION, NULL, HFILL}},
 
 	    { &hf_lat_entry_error,
-		{ "Entry error", "lat.entry_error", FT_UINT8,
+		{ "Entry error", "lat_entry_error", FT_UINT8,
 		  BASE_DEC, VALS(entry_error_vals), 0x0,
 		  "Solicitation rejection reason", HFILL}},
 
 	    { &hf_lat_elapsed_queue_time,
-		{ "Elapsed queue time", "lat.elapsed_queue_time", FT_UINT16,
+		{ "Elapsed queue time", "lat_elapsed_queue_time", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_min_queue_position,
-		{ "Minimum queue position", "lat.min_queue_position", FT_UINT16,
+		{ "Minimum queue position", "lat_min_queue_position", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_max_queue_position,
-		{ "Maximum queue position", "lat.max_queue_position", FT_UINT16,
+		{ "Maximum queue position", "lat_max_queue_position", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_obj_srvc_name,
-		{ "Service name", "lat.obj_service_name", FT_UINT_STRING,
+		{ "Service name", "lat_obj_service_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_obj_port_name,
-		{ "Port name", "lat.obj_port_name", FT_UINT_STRING,
+		{ "Port name", "lat_obj_port_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_subj_description,
-		{ "Source service description", "lat.subj_description", FT_UINT_STRING,
+		{ "Source service description", "lat_subj_description", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_solicit_identifier,
-		{ "Solicit identifier", "lat.solicit_identifier", FT_UINT16,
+		{ "Solicit identifier", "lat_solicit_identifier", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_response_timer,
-		{ "Response timer", "lat.response_timer", FT_UINT16,
+		{ "Response timer", "lat_response_timer", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_dst_node_name,
-		{ "Destination node name", "lat.dst_node_name", FT_UINT_STRING,
+		{ "Destination node name", "lat_dst_node_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_src_node_group_len,
-		{ "Source node group length", "lat.src_node_group_len", FT_UINT8,
+		{ "Source node group length", "lat_src_node_group_len", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_src_node_groups,
-		{ "Source node groups", "lat.src_node_groups", FT_BYTES,
+		{ "Source node groups", "lat_src_node_groups", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_src_node_name,
-		{ "Source node name", "lat.src_node_name", FT_UINT_STRING,
+		{ "Source node name", "lat_src_node_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_dst_srvc_name,
-		{ "Destination service name", "lat.dst_srvc_name", FT_UINT_STRING,
+		{ "Destination service name", "lat_dst_srvc_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_response_status,
-		{ "Response status", "lat.response_status", FT_UINT16,
+		{ "Response status", "lat_response_status", FT_UINT16,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_response_status_node_does_not_offer_requested_service,
 		{ "Node does not offer requested service",
-		  "lat.response_status.node_does_not_offer_requested_service",
+		  "lat_response_status_node_does_not_offer_requested_service",
 		  FT_BOOLEAN, 16, NULL, 0x0002, NULL, HFILL}},
 
 	    { &hf_lat_src_node_status,
-		{ "Source node status", "lat.src_node_status", FT_UINT16,
+		{ "Source node status", "lat_src_node_status", FT_UINT16,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_src_node_status_node_is_disabled,
 		{ "Node is disabled",
-		  "lat.src_node_status.node_is_disabled",
+		  "lat_src_node_status_node_is_disabled",
 		  FT_BOOLEAN, 16, NULL, 0x0001, NULL, HFILL}},
 
 	    { &hf_lat_src_node_status_start_message_can_be_sent,
 		{ "Start message can be sent",
-		  "lat.src_node_status.start_message_can_be_sent",
+		  "lat_src_node_status_start_message_can_be_sent",
 		  FT_BOOLEAN, 16, NULL, 0x0002,
 		  "Start message can be sent by the subject node to this node",
 		  HFILL}},
 
 	    { &hf_lat_src_node_status_command_message_can_be_sent,
 		{ "Command message can be sent",
-		  "lat.src_node_status.command_message_can_be_sent",
+		  "lat_src_node_status_command_message_can_be_sent",
 		  FT_BOOLEAN, 16, NULL, 0x0004,
 		  "Command message can be sent by the subject node to this node",
 		  HFILL}},
 
 	    { &hf_lat_source_node_addr,
-		{ "Source node address", "lat.source_node_addr", FT_ETHER,
+		{ "Source node address", "lat_source_node_addr", FT_ETHER,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_src_node_mc_timer,
-		{ "Multicast timer", "lat.mc_timer", FT_UINT16,
+		{ "Multicast timer", "lat_mc_timer", FT_UINT16,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_src_node_desc,
-		{ "Source node description", "lat.src_node_desc", FT_UINT_STRING,
+		{ "Source node description", "lat_src_node_desc", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_srvc_count,
-		{ "Service count", "lat.srvc_status", FT_UINT8,
+		{ "Service count", "lat_srvc_status", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, "Total number of service entries in the message", HFILL}},
 
 	    { &hf_lat_srvc_entry_len,
-		{ "Service entry length", "lat.srvc_entry_len", FT_UINT8,
+		{ "Service entry length", "lat_srvc_entry_len", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, "Length of service entry, in bytes", HFILL}},
 
 	    { &hf_lat_srvc_class_len,
-		{ "Service class length", "lat.srvc_class_len", FT_UINT8,
+		{ "Service class length", "lat_srvc_class_len", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, "Length of service class list", HFILL}},
 
 	    { &hf_lat_srvc_class,
-		{ "Service class", "lat.srvc_class", FT_UINT8,
+		{ "Service class", "lat_srvc_class", FT_UINT8,
 		  BASE_DEC, VALS(service_class_vals), 0x0, NULL, HFILL}},
 
 	    { &hf_lat_srvc_status,
-		{ "Service status", "lat.srvc_status", FT_UINT8,
+		{ "Service status", "lat_srvc_status", FT_UINT8,
 		  BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_srvc_status_enabled,
-		{ "Service is enabled", "lat.srvc_status.enabled", FT_BOOLEAN,
+		{ "Service is enabled", "lat_srvc_status_enabled", FT_BOOLEAN,
 		  8, NULL, 0x01, NULL, HFILL}},
 
 	    { &hf_lat_srvc_status_supports_queueing,
-		{ "Service supports queueing", "lat.srvc_status.supports_queueing", FT_BOOLEAN,
+		{ "Service supports queueing", "lat_srvc_status_supports_queueing", FT_BOOLEAN,
 		  8, NULL, 0x02, NULL, HFILL}},
 
 	    { &hf_lat_srvc_rating,
-		{ "Service rating", "lat.srvc_rating", FT_UINT8,
+		{ "Service rating", "lat_srvc_rating", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_srvc_group_len,
-		{ "Service group code length", "lat.srvc_group_len", FT_UINT8,
+		{ "Service group code length", "lat_srvc_group_len", FT_UINT8,
 		  BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_srvc_groups,
-		{ "Service group code mask", "lat.srvc_groups", FT_BYTES,
+		{ "Service group code mask", "lat_srvc_groups", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_srvc_name,
-		{ "Service name", "lat.srvc_name", FT_UINT_STRING,
+		{ "Service name", "lat_srvc_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_srvc_desc,
-		{ "Service description", "lat.srvc_desc", FT_UINT_STRING,
+		{ "Service description", "lat_srvc_desc", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_service_name,
-		{ "Service name", "lat.service.name", FT_UINT_STRING,
+		{ "Service name", "lat_service_name", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_service_description,
-		{ "Service description", "lat.service.description", FT_UINT_STRING,
+		{ "Service description", "lat_service_description", FT_UINT_STRING,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
 	    { &hf_lat_unknown_command_data,
-		{ "Unknown command data", "lat.unknown_command_data", FT_BYTES,
+		{ "Unknown command data", "lat_unknown_command_data", FT_BYTES,
 		  BASE_NONE, NULL, 0x0, NULL, HFILL}},
 	};
 	static gint *ett[] = {

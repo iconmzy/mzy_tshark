@@ -93,15 +93,15 @@ proto_register_atmtcp(void)
 {
     static hf_register_info hf[] = {
         { &hf_atmtcp_vpi,
-            { "VPI",           "atmtcp.vpi", FT_UINT16, BASE_DEC, NULL, 0x0,
+            { "VPI",           "atmtcp_vpi", FT_UINT16, BASE_DEC, NULL, 0x0,
               "Virtual Path Identifier", HFILL }
         },
         { &hf_atmtcp_vci,
-            { "VCI",           "atmtcp.vci", FT_UINT16, BASE_DEC, NULL, 0x0,
+            { "VCI",           "atmtcp_vci", FT_UINT16, BASE_DEC, NULL, 0x0,
               "Virtual Channel Identifier", HFILL }
         },
         { &hf_atmtcp_length,
-            { "Length",        "atmtcp.length", FT_UINT32, BASE_DEC, NULL, 0x0,
+            { "Length",        "atmtcp_length", FT_UINT32, BASE_DEC, NULL, 0x0,
               "length of data", HFILL }
         }
     };

@@ -1977,199 +1977,199 @@ void
 proto_register_telnet(void) {
     static hf_register_info hf[] = {
             {&hf_telnet_cmd,
-                    {"Command",              "telnet.cmd",                                 FT_UINT8,   BASE_DEC,
+                    {"Command",              "telnet_cmd",                                 FT_UINT8,   BASE_DEC,
                             VALS(cmd_vals),                       0, NULL,                                                    HFILL}
             },
             {&hf_telnet_subcmd,
-                    {"Subcommand",           "telnet.subcmd",                              FT_UINT8,   BASE_DEC,
+                    {"Subcommand",           "telnet_subcmd",                              FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_auth_name,
-                    {"Name",                 "telnet.auth.name",                           FT_STRING,  BASE_NONE,
+                    {"Name",                 "telnet_auth_name",                           FT_STRING,  BASE_NONE,
                             NULL,                                 0,    "Name of user being authenticated",                   HFILL}
             },
             {&hf_telnet_auth_cmd,
-                    {"Auth Cmd",             "telnet.auth.cmd",                            FT_UINT8,   BASE_DEC,
+                    {"Auth Cmd",             "telnet_auth_cmd",                            FT_UINT8,   BASE_DEC,
                             VALS(auth_cmd_vals),                  0,    "Authentication Command",                             HFILL}
             },
             {&hf_telnet_auth_type,
-                    {"Auth Type",            "telnet.auth.type",                           FT_UINT8,   BASE_DEC,
+                    {"Auth Type",            "telnet_auth_type",                           FT_UINT8,   BASE_DEC,
                             VALS(auth_type_vals),                 0,    "Authentication Type",                                HFILL}
             },
             {&hf_telnet_auth_mod_cred_fwd,
-                    {"Cred Fwd",             "telnet.auth.mod.cred_fwd",                   FT_BOOLEAN, 8,
+                    {"Cred Fwd",             "telnet_auth_mod_cred_fwd",                   FT_BOOLEAN, 8,
                             TFS(&auth_mod_cred_fwd),              0x08, "Modifier: Whether client will forward creds or not", HFILL}
             },
             {&hf_telnet_auth_mod_who,
-                    {"Who",                  "telnet.auth.mod.who",                        FT_BOOLEAN, 8,
+                    {"Who",                  "telnet_auth_mod_who",                        FT_BOOLEAN, 8,
                             TFS(&auth_mod_who),                   0x01, "Modifier: Who to mask",                              HFILL}
             },
             {&hf_telnet_auth_mod_how,
-                    {"How",                  "telnet.auth.mod.how",                        FT_BOOLEAN, 8,
+                    {"How",                  "telnet_auth_mod_how",                        FT_BOOLEAN, 8,
                             TFS(&auth_mod_how),                   0x02, "Modifier: How to mask",                              HFILL}
             },
             {&hf_telnet_auth_mod_enc,
-                    {"Encrypt",              "telnet.auth.mod.enc",                        FT_UINT8,   BASE_DEC,
+                    {"Encrypt",              "telnet_auth_mod_enc",                        FT_UINT8,   BASE_DEC,
                             VALS(auth_mod_enc),                   0x14, "Modifier: How to enable Encryption",                 HFILL}
             },
             {&hf_telnet_auth_krb5_type,
-                    {"Command",              "telnet.auth.krb5.cmd",                       FT_UINT8,   BASE_DEC,
+                    {"Command",              "telnet_auth_krb5_cmd",                       FT_UINT8,   BASE_DEC,
                             VALS(auth_krb5_types),                0,    "Krb5 Authentication sub-command",                    HFILL}
             },
             {&hf_telnet_string_subopt_value,
-                    {"Value",                "telnet.string_subopt.value",                 FT_STRING,  BASE_NONE,
+                    {"Value",                "telnet_string_subopt_value",                 FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_naws_subopt_width,
-                    {"Width",                "telnet.naws_subopt.width",                   FT_UINT16,  BASE_DEC,
+                    {"Width",                "telnet_naws_subopt_width",                   FT_UINT16,  BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_naws_subopt_height,
-                    {"Height",               "telnet.naws_subopt.height",                  FT_UINT16,  BASE_DEC,
+                    {"Height",               "telnet_naws_subopt_height",                  FT_UINT16,  BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_outmark_subopt_cmd,
-                    {"Command",              "telnet.outmark_subopt.cmd",                  FT_CHAR,    BASE_HEX,
+                    {"Command",              "telnet_outmark_subopt_cmd",                  FT_CHAR,    BASE_HEX,
                             VALS(telnet_outmark_subopt_cmd_vals), 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_outmark_subopt_banner,
-                    {"Banner",               "telnet.outmark_subopt.banner",               FT_STRING,  BASE_NONE,
+                    {"Banner",               "telnet_outmark_subopt_banner",               FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_signature,
-                    {"Signature",            "telnet.comport_subopt.signature",            FT_STRING,  BASE_NONE,
+                    {"Signature",            "telnet_comport_subopt_signature",            FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_baud_rate,
-                    {"Baud Rate",            "telnet.comport_subopt.baud_rate",            FT_UINT32,  BASE_DEC,
+                    {"Baud Rate",            "telnet_comport_subopt_baud_rate",            FT_UINT32,  BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_data_size,
-                    {"Data Size",            "telnet.comport_subopt.data_size",            FT_UINT8,   BASE_DEC,
+                    {"Data Size",            "telnet_comport_subopt_data_size",            FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_parity,
-                    {"Parity",               "telnet.comport_subopt.parity",               FT_UINT8,   BASE_DEC,
+                    {"Parity",               "telnet_comport_subopt_parity",               FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_stop,
-                    {"Stop Bits",            "telnet.comport_subopt.stop",                 FT_UINT8,   BASE_DEC,
+                    {"Stop Bits",            "telnet_comport_subopt_stop",                 FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_control,
-                    {"Control",              "telnet.comport_subopt.control",              FT_UINT8,   BASE_DEC,
+                    {"Control",              "telnet_comport_subopt_control",              FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_linestate,
-                    {"Linestate",            "telnet.comport_subopt.linestate",            FT_STRING,  BASE_NONE,
+                    {"Linestate",            "telnet_comport_subopt_linestate",            FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_set_linestate_mask,
-                    {"Set Linestate Mask",   "telnet.comport_subopt.set_linestate_mask",   FT_STRING,  BASE_NONE,
+                    {"Set Linestate Mask",   "telnet_comport_subopt_set_linestate_mask",   FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_modemstate,
-                    {"Modemstate",           "telnet.comport_subopt.modemstate",           FT_STRING,  BASE_NONE,
+                    {"Modemstate",           "telnet_comport_subopt_modemstate",           FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_set_modemstate_mask,
-                    {"Set Modemstate Mask",  "telnet.comport_subopt.set_modemstate_mask",  FT_STRING,  BASE_NONE,
+                    {"Set Modemstate Mask",  "telnet_comport_subopt_set_modemstate_mask",  FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_flow_control_suspend,
-                    {"Flow Control Suspend", "telnet.comport_subopt.flow_control_suspend", FT_NONE,    BASE_NONE,
+                    {"Flow Control Suspend", "telnet_comport_subopt_flow_control_suspend", FT_NONE,    BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_flow_control_resume,
-                    {"Flow Control Resume",  "telnet.comport_subopt.flow_control_resume",  FT_NONE,    BASE_NONE,
+                    {"Flow Control Resume",  "telnet_comport_subopt_flow_control_resume",  FT_NONE,    BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_comport_subopt_purge,
-                    {"Purge",                "telnet.comport_subopt.purge",                FT_UINT8,   BASE_DEC,
+                    {"Purge",                "telnet_comport_subopt_purge",                FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_rfc_subopt_cmd,
-                    {"Command",              "telnet.rfc_subopt.cmd",                      FT_UINT8,   BASE_DEC,
+                    {"Command",              "telnet_rfc_subopt_cmd",                      FT_UINT8,   BASE_DEC,
                             VALS(rfc_opt_vals),                   0, NULL,                                                    HFILL}
             },
             {&hf_telnet_tabstop,
-                    {"Tabstop value",        "telnet.tabstop",                             FT_UINT8,   BASE_DEC,
+                    {"Tabstop value",        "telnet_tabstop",                             FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_enc_cmd,
-                    {"Enc Cmd",              "telnet.enc.cmd",                             FT_UINT8,   BASE_DEC,
+                    {"Enc Cmd",              "telnet_enc_cmd",                             FT_UINT8,   BASE_DEC,
                             VALS(enc_cmd_vals),                   0,    "Encryption command",                                 HFILL}
             },
             {&hf_telnet_enc_type,
-                    {"Enc Type",             "telnet.enc.type",                            FT_UINT8,   BASE_DEC,
+                    {"Enc Type",             "telnet_enc_type",                            FT_UINT8,   BASE_DEC,
                             VALS(enc_type_vals),                  0,    "Encryption type",                                    HFILL}
             },
             {&hf_telnet_enc_type_data,
-                    {"Type-specific data",   "telnet.enc.type_data",                       FT_BYTES,   BASE_NONE,
+                    {"Type-specific data",   "telnet_enc_type_data",                       FT_BYTES,   BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_enc_key_id,
-                    {"Key ID",               "telnet.enc.key_id",                          FT_BYTES,   BASE_NONE,
+                    {"Key ID",               "telnet_enc_key_id",                          FT_BYTES,   BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_data,
-                    {"Data",                 "telnet.data",                                FT_STRING,  BASE_NONE,
+                    {"Data",                 "telnet_data",                                FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_option_data,
-                    {"Option data",          "telnet.option_data",                         FT_BYTES,   BASE_NONE,
+                    {"Option data",          "telnet_option_data",                         FT_BYTES,   BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_subcommand_data,
-                    {"Subcommand data",      "telnet.subcommand_data",                     FT_BYTES,   BASE_NONE,
+                    {"Subcommand data",      "telnet_subcommand_data",                     FT_BYTES,   BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_tn3270_subopt,
-                    {"Suboption",            "telnet.tn3270.subopt",                       FT_UINT8,   BASE_DEC,
+                    {"Suboption",            "telnet_tn3270_subopt",                       FT_UINT8,   BASE_DEC,
                             VALS(tn3270_subopt_vals),             0, NULL,                                                    HFILL}
             },
             {&hf_tn3270_connect,
-                    {"Connect",              "telnet.tn3270.connect",                      FT_STRING,  BASE_NONE,
+                    {"Connect",              "telnet_tn3270_connect",                      FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_tn3270_is,
-                    {"Is",                   "telnet.tn3270.is",                           FT_STRING,  BASE_NONE,
+                    {"Is",                   "telnet_tn3270_is",                           FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_tn3270_request_string,
-                    {"Request",              "telnet.tn3270.request_string",               FT_STRING,  BASE_NONE,
+                    {"Request",              "telnet_tn3270_request_string",               FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_tn3270_reason,
-                    {"Reason",               "telnet.tn3270.reason",                       FT_UINT8,   BASE_DEC,
+                    {"Reason",               "telnet_tn3270_reason",                       FT_UINT8,   BASE_DEC,
                             VALS(tn3270_reason_vals),             0, NULL,                                                    HFILL}
             },
             {&hf_tn3270_request,
-                    {"Request",              "telnet.tn3270.request",                      FT_UINT8,   BASE_DEC,
+                    {"Request",              "telnet_tn3270_request",                      FT_UINT8,   BASE_DEC,
                             VALS(tn3270_request_vals),            0, NULL,                                                    HFILL}
             },
             {&hf_tn3270_regime_subopt_value,
-                    {"Value",                "telnet.tn3270.regime_subopt.value",          FT_STRING,  BASE_NONE,
+                    {"Value",                "telnet_tn3270_regime_subopt_value",          FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_tn3270_regime_cmd,
-                    {"Cmd",                  "telnet.regime_cmd",                          FT_UINT8,   BASE_DEC,
+                    {"Cmd",                  "telnet_regime_cmd",                          FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_starttls,
-                    {"Follows",              "telnet.starttls",                            FT_UINT8,   BASE_DEC,
+                    {"Follows",              "telnet_starttls",                            FT_UINT8,   BASE_DEC,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_asset,
-                    {"Asset",                "telnet.asset",                               FT_STRING,  BASE_NONE,
+                    {"Asset",                "telnet_asset",                               FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_username,
-                    {"Username",                "telnet.username",                               FT_STRING,  BASE_NONE,
+                    {"Username",                "telnet_username",                               FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
             {&hf_telnet_password,
-                    {"Password",                "telnet.password",                               FT_STRING,  BASE_NONE,
+                    {"Password",                "telnet_password",                               FT_STRING,  BASE_NONE,
                             NULL,                                 0, NULL,                                                    HFILL}
             },
     };

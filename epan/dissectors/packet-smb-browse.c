@@ -824,258 +824,258 @@ proto_register_smb_browse(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_command,
-			{ "Command", "browser.command", FT_UINT8, BASE_HEX,
+			{ "Command", "browser_command", FT_UINT8, BASE_HEX,
 			VALS(commands), 0, "Browse command opcode", HFILL }},
 
 		{ &hf_update_count,
-			{ "Update Count", "browser.update_count", FT_UINT8, BASE_DEC,
+			{ "Update Count", "browser_update_count", FT_UINT8, BASE_DEC,
 			NULL, 0, "Browse Update Count", HFILL }},
 
 		{ &hf_periodicity,
-			{ "Update Periodicity", "browser.period", FT_UINT32, BASE_DEC,
+			{ "Update Periodicity", "browser_period", FT_UINT32, BASE_DEC,
 			NULL, 0, "Update Periodicity in ms", HFILL }},
 
 		{ &hf_server_name,
-			{ "Server Name", "browser.server", FT_STRING, BASE_NONE,
+			{ "Server Name", "browser_server", FT_STRING, BASE_NONE,
 			NULL, 0, "BROWSE Server Name", HFILL }},
 
 		{ &hf_mb_server_name,
-			{ "Master Browser Server Name", "browser.mb_server", FT_STRING, BASE_NONE,
+			{ "Master Browser Server Name", "browser_mb_server", FT_STRING, BASE_NONE,
 			NULL, 0, "BROWSE Master Browser Server Name", HFILL }},
 
 		{ &hf_mb_reset_command,
-		  { "ResetBrowserState Command", "browser.reset_cmd", FT_UINT8,
+		  { "ResetBrowserState Command", "browser_reset_cmd", FT_UINT8,
 		    BASE_HEX, VALS(resetbrowserstate_command_names), 0,
 		    NULL, HFILL }},
 		{ &hf_mb_reset_demote,
-		  { "Demote LMB", "browser.reset_cmd.demote", FT_BOOLEAN,
+		  { "Demote LMB", "browser_reset_cmd_demote", FT_BOOLEAN,
 		    8, TFS(&tfs_demote_to_backup), 0x01, NULL, HFILL}},
 		{ &hf_mb_reset_flush,
-		  { "Flush Browse List", "browser.reset_cmd.flush", FT_BOOLEAN,
+		  { "Flush Browse List", "browser_reset_cmd_flush", FT_BOOLEAN,
 		    8, TFS(&tfs_flush_browse_list), 0x02, NULL, HFILL}},
 		{ &hf_mb_reset_stop,
-		  { "Stop Being LMB", "browser.reset_cmd.stop_lmb", FT_BOOLEAN,
+		  { "Stop Being LMB", "browser_reset_cmd_stop_lmb", FT_BOOLEAN,
 		    8, TFS(&tfs_stop_being_lmb), 0x04, NULL, HFILL}},
 		{ &hf_os_major,
-			{ "OS Major Version", "browser.os_major", FT_UINT8, BASE_DEC,
+			{ "OS Major Version", "browser_os_major", FT_UINT8, BASE_DEC,
 			NULL, 0, "Operating System Major Version", HFILL }},
 
 		{ &hf_os_minor,
-			{ "OS Minor Version", "browser.os_minor", FT_UINT8, BASE_DEC,
+			{ "OS Minor Version", "browser_os_minor", FT_UINT8, BASE_DEC,
 			NULL, 0, "Operating System Minor Version", HFILL }},
 
 		{ &hf_server_type,
-			{ "Server Type", "browser.server_type", FT_UINT32, BASE_HEX,
+			{ "Server Type", "browser_server_type", FT_UINT32, BASE_HEX,
 			NULL, 0, "Server Type Flags", HFILL }},
 
 		{ &hf_server_type_workstation,
-			{ "Workstation", "browser.server_type.workstation", FT_BOOLEAN, 32,
+			{ "Workstation", "browser_server_type_workstation", FT_BOOLEAN, 32,
 			TFS(&tfs_workstation), 1U<<SERVER_WORKSTATION, "Is This A Workstation?", HFILL }},
 
 		{ &hf_server_type_server,
-			{ "Server", "browser.server_type.server", FT_BOOLEAN, 32,
+			{ "Server", "browser_server_type_server", FT_BOOLEAN, 32,
 			TFS(&tfs_server), 1U<<SERVER_SERVER, "Is This A Server?", HFILL }},
 
 		{ &hf_server_type_sql,
-			{ "SQL", "browser.server_type.sql", FT_BOOLEAN, 32,
+			{ "SQL", "browser_server_type_sql", FT_BOOLEAN, 32,
 			TFS(&tfs_sql), 1U<<SERVER_SQL_SERVER, "Is This A SQL Server?", HFILL }},
 
 		{ &hf_server_type_domain,
-			{ "Domain Controller", "browser.server_type.domain_controller", FT_BOOLEAN, 32,
+			{ "Domain Controller", "browser_server_type_domain_controller", FT_BOOLEAN, 32,
 			TFS(&tfs_domain), 1U<<SERVER_DOMAIN_CONTROLLER, "Is This A Domain Controller?", HFILL }},
 
 		{ &hf_server_type_backup,
-			{ "Backup Controller", "browser.server_type.backup_controller", FT_BOOLEAN, 32,
+			{ "Backup Controller", "browser_server_type_backup_controller", FT_BOOLEAN, 32,
 			TFS(&tfs_backup), 1U<<SERVER_BACKUP_CONTROLLER, "Is This A Backup Domain Controller?", HFILL }},
 
 		{ &hf_server_type_time,
-			{ "Time Source", "browser.server_type.time", FT_BOOLEAN, 32,
+			{ "Time Source", "browser_server_type_time", FT_BOOLEAN, 32,
 			TFS(&tfs_time), 1U<<SERVER_TIME_SOURCE, "Is This A Time Source?", HFILL }},
 
 		{ &hf_server_type_apple,
-			{ "Apple", "browser.server_type.apple", FT_BOOLEAN, 32,
+			{ "Apple", "browser_server_type_apple", FT_BOOLEAN, 32,
 			TFS(&tfs_apple), 1U<<SERVER_APPLE_SERVER, "Is This An Apple Server ?", HFILL }},
 
 		{ &hf_server_type_novell,
-			{ "Novell", "browser.server_type.novell", FT_BOOLEAN, 32,
+			{ "Novell", "browser_server_type_novell", FT_BOOLEAN, 32,
 			TFS(&tfs_novell), 1U<<SERVER_NOVELL_SERVER, "Is This A Novell Server?", HFILL }},
 
 		{ &hf_server_type_member,
-			{ "Member", "browser.server_type.member", FT_BOOLEAN, 32,
+			{ "Member", "browser_server_type_member", FT_BOOLEAN, 32,
 			TFS(&tfs_member), 1U<<SERVER_DOMAIN_MEMBER_SERVER, "Is This A Domain Member Server?", HFILL }},
 
 		{ &hf_server_type_print,
-			{ "Print", "browser.server_type.print", FT_BOOLEAN, 32,
+			{ "Print", "browser_server_type_print", FT_BOOLEAN, 32,
 			TFS(&tfs_print), 1U<<SERVER_PRINT_QUEUE_SERVER, "Is This A Print Server?", HFILL }},
 
 		{ &hf_server_type_dialin,
-			{ "Dialin", "browser.server_type.dialin", FT_BOOLEAN, 32,
+			{ "Dialin", "browser_server_type_dialin", FT_BOOLEAN, 32,
 			TFS(&tfs_dialin), 1U<<SERVER_DIALIN_SERVER, "Is This A Dialin Server?", HFILL }},
 
 		{ &hf_server_type_xenix,
-			{ "Xenix", "browser.server_type.xenix", FT_BOOLEAN, 32,
+			{ "Xenix", "browser_server_type_xenix", FT_BOOLEAN, 32,
 			TFS(&tfs_xenix), 1U<<SERVER_XENIX_SERVER, "Is This A Xenix Server?", HFILL }},
 
 		{ &hf_server_type_ntw,
-			{ "NT Workstation", "browser.server_type.ntw", FT_BOOLEAN, 32,
+			{ "NT Workstation", "browser_server_type_ntw", FT_BOOLEAN, 32,
 			TFS(&tfs_ntw), 1U<<SERVER_NT_WORKSTATION, "Is This A NT Workstation?", HFILL }},
 
 		{ &hf_server_type_wfw,
-			{ "WfW", "browser.server_type.wfw", FT_BOOLEAN, 32,
+			{ "WfW", "browser_server_type_wfw", FT_BOOLEAN, 32,
 			TFS(&tfs_wfw), 1U<<SERVER_WINDOWS_FOR_WORKGROUPS, "Is This A Windows For Workgroups Server?", HFILL }},
 
 		{ &hf_server_type_nts,
-			{ "NT Server", "browser.server_type.nts", FT_BOOLEAN, 32,
+			{ "NT Server", "browser_server_type_nts", FT_BOOLEAN, 32,
 			TFS(&tfs_nts), 1U<<SERVER_NT_SERVER, "Is This A NT Server?", HFILL }},
 
 		{ &hf_server_type_potentialb,
-			{ "Potential Browser", "browser.server_type.browser.potential", FT_BOOLEAN, 32,
+			{ "Potential Browser", "browser_server_type_browser_potential", FT_BOOLEAN, 32,
 			TFS(&tfs_potentialb), 1U<<SERVER_POTENTIAL_BROWSER, "Is This A Potential Browser?", HFILL }},
 
 		{ &hf_server_type_backupb,
-			{ "Backup Browser", "browser.server_type.browser.backup", FT_BOOLEAN, 32,
+			{ "Backup Browser", "browser_server_type_browser_backup", FT_BOOLEAN, 32,
 			TFS(&tfs_backupb), 1U<<SERVER_BACKUP_BROWSER, "Is This A Backup Browser?", HFILL }},
 
 		{ &hf_server_type_masterb,
-			{ "Master Browser", "browser.server_type.browser.master", FT_BOOLEAN, 32,
+			{ "Master Browser", "browser_server_type_browser_master", FT_BOOLEAN, 32,
 			TFS(&tfs_masterb), 1U<<SERVER_MASTER_BROWSER, "Is This A Master Browser?", HFILL }},
 
 		{ &hf_server_type_domainmasterb,
-			{ "Domain Master Browser", "browser.server_type.browser.domain_master", FT_BOOLEAN, 32,
+			{ "Domain Master Browser", "browser_server_type_browser_domain_master", FT_BOOLEAN, 32,
 			TFS(&tfs_domainmasterb), 1U<<SERVER_DOMAIN_MASTER_BROWSER, "Is This A Domain Master Browser?", HFILL }},
 
 		{ &hf_server_type_osf,
-			{ "OSF", "browser.server_type.osf", FT_BOOLEAN, 32,
+			{ "OSF", "browser_server_type_osf", FT_BOOLEAN, 32,
 			TFS(&tfs_osf), 1U<<SERVER_OSF, "Is This An OSF server ?", HFILL }},
 
 		{ &hf_server_type_vms,
-			{ "VMS", "browser.server_type.vms", FT_BOOLEAN, 32,
+			{ "VMS", "browser_server_type_vms", FT_BOOLEAN, 32,
 			TFS(&tfs_vms), 1U<<SERVER_VMS, "Is This A VMS Server?", HFILL }},
 
 		{ &hf_server_type_w95,
-			{ "Windows 95+", "browser.server_type.w95", FT_BOOLEAN, 32,
+			{ "Windows 95+", "browser_server_type_w95", FT_BOOLEAN, 32,
 			TFS(&tfs_w95), 1U<<SERVER_WINDOWS_95, "Is This A Windows 95 or above server?", HFILL }},
 
 		{ &hf_server_type_dfs,
-			{ "DFS", "browser.server_type.dfs", FT_BOOLEAN, 32,
+			{ "DFS", "browser_server_type_dfs", FT_BOOLEAN, 32,
 			TFS(&tfs_dfs), 1U<<SERVER_DFS_SERVER, "Is This A DFS server?", HFILL }},
 
 		{ &hf_server_type_local,
-			{ "Local", "browser.server_type.local", FT_BOOLEAN, 32,
+			{ "Local", "browser_server_type_local", FT_BOOLEAN, 32,
 			TFS(&tfs_local), 1U<<SERVER_LOCAL_LIST_ONLY, "Is This A Local List Only request?", HFILL }},
 
 		{ &hf_server_type_domainenum,
-			{ "Domain Enum", "browser.server_type.domainenum", FT_BOOLEAN, 32,
+			{ "Domain Enum", "browser_server_type_domainenum", FT_BOOLEAN, 32,
 			TFS(&tfs_domainenum), 1U<<SERVER_DOMAIN_ENUM, "Is This A Domain Enum request?", HFILL }},
 
 		{ &hf_election_version,
-			{ "Election Version", "browser.election.version", FT_UINT8, BASE_DEC,
+			{ "Election Version", "browser_election_version", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_proto_major,
-			{ "Browser Protocol Major Version", "browser.proto_major", FT_UINT8, BASE_DEC,
+			{ "Browser Protocol Major Version", "browser_proto_major", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_proto_minor,
-			{ "Browser Protocol Minor Version", "browser.proto_minor", FT_UINT8, BASE_DEC,
+			{ "Browser Protocol Minor Version", "browser_proto_minor", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_sig_const,
-			{ "Signature", "browser.sig", FT_UINT16, BASE_HEX,
+			{ "Signature", "browser_sig", FT_UINT16, BASE_HEX,
 			NULL, 0, "Signature Constant", HFILL }},
 
 		{ &hf_server_comment,
-			{ "Host Comment", "browser.comment", FT_STRINGZ, BASE_NONE,
+			{ "Host Comment", "browser_comment", FT_STRINGZ, BASE_NONE,
 			NULL, 0, "Server Comment", HFILL }},
 
 		{ &hf_unused_flags,
-			{ "Unused flags", "browser.unused", FT_UINT8, BASE_HEX,
+			{ "Unused flags", "browser_unused", FT_UINT8, BASE_HEX,
 			NULL, 0, "Unused/unknown flags", HFILL }},
 
 		{ &hf_response_computer_name,
-			{ "Response Computer Name", "browser.response_computer_name", FT_STRINGZ, BASE_NONE,
+			{ "Response Computer Name", "browser_response_computer_name", FT_STRINGZ, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_election_criteria,
-			{ "Election Criteria", "browser.election.criteria", FT_UINT32, BASE_HEX,
+			{ "Election Criteria", "browser_election_criteria", FT_UINT32, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_election_desire,
-			{ "Election Desire", "browser.election.desire", FT_UINT8, BASE_HEX,
+			{ "Election Desire", "browser_election_desire", FT_UINT8, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_election_desire_flags_backup,
-			{ "Backup", "browser.election.desire.backup", FT_BOOLEAN, 8,
+			{ "Backup", "browser_election_desire_backup", FT_BOOLEAN, 8,
 			TFS(&tfs_desire_backup), 1U<<DESIRE_BACKUP, "Is this a backup server", HFILL }},
 
 		{ &hf_election_desire_flags_standby,
-			{ "Standby", "browser.election.desire.standby", FT_BOOLEAN, 8,
+			{ "Standby", "browser_election_desire_standby", FT_BOOLEAN, 8,
 			TFS(&tfs_desire_standby), 1U<<DESIRE_STANDBY, "Is this a standby server?", HFILL }},
 
 		{ &hf_election_desire_flags_master,
-			{ "Master", "browser.election.desire.master", FT_BOOLEAN, 8,
+			{ "Master", "browser_election_desire_master", FT_BOOLEAN, 8,
 			TFS(&tfs_desire_master), 1U<<DESIRE_MASTER, "Is this a master server", HFILL }},
 
 		{ &hf_election_desire_flags_domain_master,
-			{ "Domain Master", "browser.election.desire.domain_master", FT_BOOLEAN, 8,
+			{ "Domain Master", "browser_election_desire_domain_master", FT_BOOLEAN, 8,
 			TFS(&tfs_desire_domain_master), 1U<<DESIRE_DOMAIN_MASTER, "Is this a domain master", HFILL }},
 
 		{ &hf_election_desire_flags_wins,
-			{ "WINS", "browser.election.desire.wins", FT_BOOLEAN, 8,
+			{ "WINS", "browser_election_desire_wins", FT_BOOLEAN, 8,
 			TFS(&tfs_desire_wins), 1U<<DESIRE_WINS, "Is this a WINS server", HFILL }},
 
 		{ &hf_election_desire_flags_nt,
-			{ "NT", "browser.election.desire.nt", FT_BOOLEAN, 8,
+			{ "NT", "browser_election_desire_nt", FT_BOOLEAN, 8,
 			TFS(&tfs_desire_nt), 1U<<DESIRE_NT, "Is this a NT server", HFILL }},
 
 #if 0
 		{ &hf_election_revision,
-			{ "Election Revision", "browser.election.revision", FT_UINT16, BASE_DEC,
+			{ "Election Revision", "browser_election_revision", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 #endif
 
 		{ &hf_election_os,
-			{ "Election OS", "browser.election.os", FT_UINT8, BASE_HEX,
+			{ "Election OS", "browser_election_os", FT_UINT8, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_election_os_wfw,
-			{ "WfW", "browser.election.os.wfw", FT_BOOLEAN, 8,
+			{ "WfW", "browser_election_os_wfw", FT_BOOLEAN, 8,
 			TFS(&tfs_os_wfw), 1U<<OS_WFW, "Is this a WfW host?", HFILL }},
 
 		{ &hf_election_os_ntw,
-			{ "NT Workstation", "browser.election.os.ntw", FT_BOOLEAN, 8,
+			{ "NT Workstation", "browser_election_os_ntw", FT_BOOLEAN, 8,
 			TFS(&tfs_os_ntw), 1U<<OS_NTW, "Is this a NT Workstation?", HFILL }},
 
 		{ &hf_election_os_nts,
-			{ "NT Server", "browser.election.os.nts", FT_BOOLEAN, 8,
+			{ "NT Server", "browser_election_os_nts", FT_BOOLEAN, 8,
 			TFS(&tfs_os_nts), 1U<<OS_NTS, "Is this a NT Server?", HFILL }},
 
 		{ &hf_server_uptime,
-			{ "Uptime", "browser.uptime", FT_UINT32, BASE_DEC,
+			{ "Uptime", "browser_uptime", FT_UINT32, BASE_DEC,
 			NULL, 0, "Server uptime in ms", HFILL }},
 
 		{ &hf_backup_count,
-			{ "Backup List Requested Count", "browser.backup.count", FT_UINT8, BASE_DEC,
+			{ "Backup List Requested Count", "browser_backup_count", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_backup_token,
-			{ "Backup Request Token", "browser.backup.token", FT_UINT32, BASE_DEC,
+			{ "Backup Request Token", "browser_backup_token", FT_UINT32, BASE_DEC,
 			NULL, 0, "Backup requested/response token", HFILL }},
 
 		{ &hf_backup_server,
-			{ "Backup Server", "browser.backup.server", FT_STRING, BASE_NONE,
+			{ "Backup Server", "browser_backup_server", FT_STRING, BASE_NONE,
 			NULL, 0, "Backup Server Name", HFILL }},
 
 		{ &hf_browser_to_promote,
-			{ "Browser to Promote", "browser.browser_to_promote", FT_STRINGZ, BASE_NONE,
+			{ "Browser to Promote", "browser_browser_to_promote", FT_STRINGZ, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_windows_version,
-			{ "Windows version", "browser.windows_version", FT_STRING, BASE_NONE,
+			{ "Windows version", "browser_windows_version", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_mysterious_field,
-			{ "Mysterious Field", "browser.mysterious_field", FT_UINT32, BASE_HEX,
+			{ "Mysterious Field", "browser_mysterious_field", FT_UINT32, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 	};
 

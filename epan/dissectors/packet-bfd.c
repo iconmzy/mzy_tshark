@@ -656,201 +656,201 @@ proto_register_bfd(void)
     /* Setup list of header fields */
     static hf_register_info hf[] = {
         { &hf_bfd_version,
-          { "Protocol Version", "bfd.version",
+          { "Protocol Version", "bfd_version",
             FT_UINT8, BASE_DEC, NULL , 0xe0,
             "The version number of the BFD protocol", HFILL }
         },
         { &hf_bfd_diag,
-          { "Diagnostic Code", "bfd.diag",
+          { "Diagnostic Code", "bfd_diag",
             FT_UINT8, BASE_HEX, VALS(bfd_control_v1_diag_values), 0x1f,
             "This field give the reason for a BFD session failure", HFILL }
         },
         { &hf_bfd_sta,
-          { "Session State", "bfd.sta",
+          { "Session State", "bfd_sta",
             FT_UINT8, BASE_HEX, VALS(bfd_control_sta_values), 0xc0,
             "The BFD state as seen by the transmitting system", HFILL }
         },
         { &hf_bfd_flags,
-          { "Message Flags", "bfd.flags",
+          { "Message Flags", "bfd_flags",
             FT_UINT8, BASE_HEX, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_bfd_flags_h,
-          { "I hear you", "bfd.flags.h",
+          { "I hear you", "bfd_flags_h",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x80,
             NULL, HFILL }
         },
         { &hf_bfd_flags_d_v0,
-          { "Demand", "bfd.flags.d",
+          { "Demand", "bfd_flags_d",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x40,
             NULL, HFILL }
         },
         { &hf_bfd_flags_p_v0,
-          { "Poll", "bfd.flags.p",
+          { "Poll", "bfd_flags_p",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x20,
             NULL, HFILL }
         },
         { &hf_bfd_flags_f_v0,
-          { "Final", "bfd.flags.f",
+          { "Final", "bfd_flags_f",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x10,
             NULL, HFILL }
         },
         { &hf_bfd_flags_p,
-          { "Poll", "bfd.flags.p",
+          { "Poll", "bfd_flags_p",
             FT_BOOLEAN, 6, TFS(&tfs_set_notset), 0x20, /* 6 flag bits; Sta is shown separately */
             "If set, the transmitting system is expecting a packet with the Final (F) bit in reply",
             HFILL }
         },
         { &hf_bfd_flags_f,
-          { "Final", "bfd.flags.f",
+          { "Final", "bfd_flags_f",
             FT_BOOLEAN, 6, TFS(&tfs_set_notset), 0x10, /* 6 flag bits; Sta is shown separately */
             "If set, the transmitting system is replying to a packet with the Poll (P) bit set",
             HFILL }
         },
         { &hf_bfd_flags_c,
-          { "Control Plane Independent", "bfd.flags.c",
+          { "Control Plane Independent", "bfd_flags_c",
             FT_BOOLEAN, 6, TFS(&tfs_set_notset), 0x08, /* 6 flag bits; Sta is shown separately */
             "If set, the BFD implementation is implemented in the forwarding plane", HFILL }
         },
         { &hf_bfd_flags_a,
-          { "Authentication Present", "bfd.flags.a",
+          { "Authentication Present", "bfd_flags_a",
             FT_BOOLEAN, 6, TFS(&tfs_set_notset), 0x04, /* 6 flag bits; Sta is shown separately */
             "The Authentication Section is present", HFILL }
         },
         { &hf_bfd_flags_d,
-          { "Demand", "bfd.flags.d",
+          { "Demand", "bfd_flags_d",
             FT_BOOLEAN, 6, TFS(&tfs_set_notset), 0x02, /* 6 flag bits; Sta is shown separately */
             "If set, Demand mode is active in the transmitting system", HFILL }
         },
         { &hf_bfd_flags_m,
-          { "Multipoint", "bfd.flags.m",
+          { "Multipoint", "bfd_flags_m",
             FT_BOOLEAN, 6, TFS(&tfs_set_notset), 0x01, /* 6 flag bits; Sta is shown separately */
             "Reserved for future point-to-multipoint extensions", HFILL }
         },
         { &hf_bfd_detect_time_multiplier,
-          { "Detect Time Multiplier", "bfd.detect_time_multiplier",
+          { "Detect Time Multiplier", "bfd_detect_time_multiplier",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "The transmit interval multiplied by this value is the failure detection time", HFILL }
         },
         { &hf_bfd_message_length,
-          { "Message Length", "bfd.message_length",
+          { "Message Length", "bfd_message_length",
             FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_byte_bytes, 0x0,
             "Length of the BFD Control packet, in bytes", HFILL }
         },
         { &hf_bfd_my_discriminator,
-          { "My Discriminator", "bfd.my_discriminator",
+          { "My Discriminator", "bfd_my_discriminator",
             FT_UINT32, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bfd_your_discriminator,
-          { "Your Discriminator", "bfd.your_discriminator",
+          { "Your Discriminator", "bfd_your_discriminator",
             FT_UINT32, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bfd_desired_min_tx_interval,
-          { "Desired Min TX Interval", "bfd.desired_min_tx_interval",
+          { "Desired Min TX Interval", "bfd_desired_min_tx_interval",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "The minimum interval to use when transmitting BFD Control packets", HFILL }
         },
         { &hf_bfd_required_min_rx_interval,
-          { "Required Min RX Interval", "bfd.required_min_rx_interval",
+          { "Required Min RX Interval", "bfd_required_min_rx_interval",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "The minimum interval between received BFD Control packets that this system can support", HFILL }
         },
         { &hf_bfd_required_min_echo_interval,
-          { "Required Min Echo Interval", "bfd.required_min_echo_interval",
+          { "Required Min Echo Interval", "bfd_required_min_echo_interval",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "The minimum interval between received BFD Echo packets that this system can support", HFILL }
         },
         { &hf_bfd_checksum,
-          { "Checksum", "bfd.checksum",
+          { "Checksum", "bfd_checksum",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bfd_auth_type,
-          { "Authentication Type", "bfd.auth.type",
+          { "Authentication Type", "bfd_auth_type",
             FT_UINT8, BASE_DEC, VALS(bfd_control_auth_type_values), 0x0,
             "The type of authentication in use on this session", HFILL }
         },
         { &hf_bfd_auth_len,
-          { "Authentication Length", "bfd.auth.len",
+          { "Authentication Length", "bfd_auth_len",
             FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_byte_bytes, 0x0,
             "The length, in bytes, of the authentication section", HFILL }
         },
         { &hf_bfd_auth_key,
-          { "Authentication Key ID", "bfd.auth.key",
+          { "Authentication Key ID", "bfd_auth_key",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "The Authentication Key ID, identifies which password is in use for this packet", HFILL }
         },
         { &hf_bfd_auth_password,
-          { "Password", "bfd.auth.password",
+          { "Password", "bfd_auth_password",
             FT_STRING, BASE_NONE, NULL, 0x0,
             "The simple password in use on this session", HFILL }
         },
         { &hf_bfd_auth_seq_num,
-          { "Sequence Number", "bfd.auth.seq_num",
+          { "Sequence Number", "bfd_auth_seq_num",
             FT_UINT32, BASE_HEX, NULL, 0x0,
             "The Sequence Number is periodically incremented to prevent replay attacks", HFILL }
           },
          { &hf_mep_type,
-          { "Type", "bfd.mep.type",
+          { "Type", "bfd_mep_type",
             FT_UINT16, BASE_DEC, VALS(mplstp_mep_tlv_type_values), 0x0,
             "The type of the MEP Id", HFILL }
         },
         { &hf_mep_len,
-          { "Length", "bfd.mep.len",
+          { "Length", "bfd_mep_len",
             FT_UINT16, BASE_DEC, NULL , 0x0,
             "The length of the MEP Id", HFILL }
         },
         { &hf_mep_global_id,
-          { "Global Id", "bfd.mep.global.id",
+          { "Global Id", "bfd_mep_global_id",
             FT_UINT32, BASE_DEC, NULL , 0x0,
             "MPLS-TP  Global  MEP Id", HFILL }
         },
         { &hf_mep_node_id,
-          { "Node Id", "bfd.mep.node.id",
+          { "Node Id", "bfd_mep_node_id",
             FT_IPv4, BASE_NONE, NULL , 0x0,
             "MPLS-TP Node Identifier", HFILL }
         },
 #if 0
         { &hf_mep_interface_no,
-          { "Interface  Number", "bfd.mep.interface.no",
+          { "Interface  Number", "bfd_mep_interface_no",
             FT_UINT32, BASE_DEC, NULL , 0x0,
             "MPLS-TP Interface Number", HFILL }
         },
 #endif
         { &hf_mep_tunnel_no,
-          { "Tunnel Number", "bfd.mep.tunnel.no",
+          { "Tunnel Number", "bfd_mep_tunnel_no",
             FT_UINT16, BASE_DEC, NULL , 0x0,
             NULL, HFILL }
         },
         { &hf_mep_lsp_no,
-          { "LSP Number", "bfd.mep.lsp.no",
+          { "LSP Number", "bfd_mep_lsp_no",
             FT_UINT16, BASE_DEC, NULL , 0x0,
             NULL, HFILL }
         },
         { &hf_mep_ac_id,
-          { "AC Id", "bfd.mep.ac.id",
+          { "AC Id", "bfd_mep_ac_id",
             FT_UINT32, BASE_DEC, NULL , 0x0,
             NULL, HFILL }
         },
         { &hf_mep_agi_type,
-          { "AGI TYPE", "bfd.mep.agi.type",
+          { "AGI TYPE", "bfd_mep_agi_type",
             FT_UINT8, BASE_DEC, NULL , 0x0,
             NULL, HFILL }
         },
         { &hf_mep_agi_len,
-          { "AGI Length", "bfd.mep.agi.len",
+          { "AGI Length", "bfd_mep_agi_len",
             FT_UINT8, BASE_DEC, NULL , 0x0,
             NULL, HFILL }
         },
         { &hf_mep_agi_val,
-           { "AGI value", "bfd.mep.agi.val",
+           { "AGI value", "bfd_mep_agi_val",
              FT_STRING, BASE_NONE, NULL , 0x0,
              NULL, HFILL }
         },
         { &hf_section_interface_no,
-          { "Interface Number", "bfd.mep.interface.no",
+          { "Interface Number", "bfd_mep_interface_no",
             FT_UINT32, BASE_DEC, NULL , 0x0,
             "MPLS-TP Interface Number", HFILL }
         }
@@ -858,7 +858,7 @@ proto_register_bfd(void)
     /* BFD Echo */
     static hf_register_info hf_echo[] = {
         { &hf_bfd_echo,
-          { "Echo", "bfd_echo.packet",
+          { "Echo", "bfd_echo_packet",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             "Originator specific echo packet", HFILL }
         }

@@ -901,175 +901,175 @@ proto_register_igmp(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_type,
-			{ "Type", "igmp.type", FT_UINT8, BASE_HEX,
+			{ "Type", "igmp_type", FT_UINT8, BASE_HEX,
 			  VALS(commands), 0, "IGMP Packet Type", HFILL }},
 
 		{ &hf_reserved,
-			{ "Reserved", "igmp.reserved", FT_BYTES, BASE_NONE,
+			{ "Reserved", "igmp_reserved", FT_BYTES, BASE_NONE,
 			  NULL, 0, "IGMP Reserved", HFILL }},
 
 		{ &hf_version,
-			{ "IGMP Version", "igmp.version", FT_UINT8, BASE_DEC,
+			{ "IGMP Version", "igmp_version", FT_UINT8, BASE_DEC,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_group_type,
-			{ "Type Of Group", "igmp.group_type", FT_UINT8, BASE_DEC,
+			{ "Type Of Group", "igmp_group_type", FT_UINT8, BASE_DEC,
 			  VALS(vs_group_type), 0, "IGMP V0 Type Of Group", HFILL }},
 
 		{ &hf_reply_code,
-			{ "Reply", "igmp.reply", FT_UINT8, BASE_DEC,
+			{ "Reply", "igmp_reply", FT_UINT8, BASE_DEC,
 			  VALS(vs_reply_code), 0, "IGMP V0 Reply", HFILL }},
 
 		{ &hf_reply_pending,
-			{ "Reply Pending", "igmp.reply.pending", FT_UINT8, BASE_DEC,
+			{ "Reply Pending", "igmp_reply_pending", FT_UINT8, BASE_DEC,
 			  NULL, 0, "IGMP V0 Reply Pending, Retry in this many seconds", HFILL }},
 
 		{ &hf_checksum,
-			{ "Checksum", "igmp.checksum", FT_UINT16, BASE_HEX,
+			{ "Checksum", "igmp_checksum", FT_UINT16, BASE_HEX,
 			  NULL, 0, "IGMP Checksum", HFILL }},
 
 		{ &hf_checksum_status,
-			{ "Checksum Status", "igmp.checksum.status", FT_UINT8, BASE_NONE,
+			{ "Checksum Status", "igmp_checksum_status", FT_UINT8, BASE_NONE,
 			  VALS(proto_checksum_vals), 0x0, NULL, HFILL }},
 
 		{ &hf_identifier,
-			{ "Identifier", "igmp.identifier", FT_UINT32, BASE_DEC,
+			{ "Identifier", "igmp_identifier", FT_UINT32, BASE_DEC,
 			  NULL, 0, "IGMP V0 Identifier", HFILL }},
 
 		{ &hf_access_key,
-			{ "Access Key", "igmp.access_key", FT_BYTES, BASE_NONE,
+			{ "Access Key", "igmp_access_key", FT_BYTES, BASE_NONE,
 			  NULL, 0, "IGMP V0 Access Key", HFILL }},
 
 		{ &hf_max_resp,
-			{ "Max Resp Time", "igmp.max_resp", FT_UINT8, BASE_DEC,
+			{ "Max Resp Time", "igmp_max_resp", FT_UINT8, BASE_DEC,
 			  NULL, 0, "Max Response Time", HFILL }},
 
 		{ &hf_suppress,
-			{ "S", "igmp.s", FT_BOOLEAN, 8,
+			{ "S", "igmp_s", FT_BOOLEAN, 8,
 			  TFS(&tfs_s), IGMP_V3_S, "Suppress Router Side Processing", HFILL }},
 
 		{ &hf_qrv,
-			{ "QRV", "igmp.qrv", FT_UINT8, BASE_DEC,
+			{ "QRV", "igmp_qrv", FT_UINT8, BASE_DEC,
 			NULL, IGMP_V3_QRV_MASK, "Querier's Robustness Value", HFILL }},
 
 		{ &hf_qqic,
-			{ "QQIC", "igmp.qqic", FT_UINT8, BASE_DEC,
+			{ "QQIC", "igmp_qqic", FT_UINT8, BASE_DEC,
 			  NULL, 0, "Querier's Query Interval Code", HFILL }},
 
 		{ &hf_num_src,
-			{ "Num Src", "igmp.num_src", FT_UINT16, BASE_DEC,
+			{ "Num Src", "igmp_num_src", FT_UINT16, BASE_DEC,
 			  NULL, 0, "Number Of Sources", HFILL }},
 
 		{ &hf_saddr,
-			{ "Source Address", "igmp.saddr", FT_IPv4, BASE_NONE,
+			{ "Source Address", "igmp_saddr", FT_IPv4, BASE_NONE,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_num_grp_recs,
-			{ "Num Group Records", "igmp.num_grp_recs", FT_UINT16, BASE_DEC,
+			{ "Num Group Records", "igmp_num_grp_recs", FT_UINT16, BASE_DEC,
 			  NULL, 0, "Number Of Group Records", HFILL }},
 
 		{ &hf_record_type,
-			{ "Record Type", "igmp.record_type", FT_UINT8, BASE_DEC,
+			{ "Record Type", "igmp_record_type", FT_UINT8, BASE_DEC,
 			VALS(vs_record_type), 0, NULL, HFILL }},
 
 		{ &hf_aux_data_len,
-			{ "Aux Data Len", "igmp.aux_data_len", FT_UINT8, BASE_DEC,
+			{ "Aux Data Len", "igmp_aux_data_len", FT_UINT8, BASE_DEC,
 			NULL, 0, "Aux Data Len, In units of 32bit words", HFILL }},
 
 		{ &hf_maddr,
-			{ "Multicast Address", "igmp.maddr", FT_IPv4, BASE_NONE,
+			{ "Multicast Address", "igmp_maddr", FT_IPv4, BASE_NONE,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_aux_data,
-			{ "Aux Data", "igmp.aux_data", FT_BYTES, BASE_NONE,
+			{ "Aux Data", "igmp_aux_data", FT_BYTES, BASE_NONE,
 			  NULL, 0, "IGMP V3 Auxiliary Data", HFILL }},
 
 		{ &hf_data,
-			{ "Data", "igmp.data", FT_BYTES, BASE_NONE,
+			{ "Data", "igmp_data", FT_BYTES, BASE_NONE,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_max_resp_exp,
-			{ "Exponent", "igmp.max_resp.exp", FT_UINT8, BASE_HEX,
+			{ "Exponent", "igmp_max_resp_exp", FT_UINT8, BASE_HEX,
 			NULL, IGMP_MAX_RESP_EXP, "Maximum Response Time, Exponent", HFILL }},
 
 		{ &hf_max_resp_mant,
-			{ "Mantissa", "igmp.max_resp.mant", FT_UINT8, BASE_HEX,
+			{ "Mantissa", "igmp_max_resp_mant", FT_UINT8, BASE_HEX,
 			NULL, IGMP_MAX_RESP_MANT, "Maximum Response Time, Mantissa", HFILL }},
 
 		{ &hf_mtrace_max_hops,
-			{ "# hops", "igmp.mtrace.max_hops", FT_UINT8, BASE_DEC,
+			{ "# hops", "igmp_mtrace_max_hops", FT_UINT8, BASE_DEC,
 			NULL, 0, "Maximum Number of Hops to Trace", HFILL }},
 
 		{ &hf_mtrace_saddr,
-			{ "Source Address", "igmp.mtrace.saddr", FT_IPv4, BASE_NONE,
+			{ "Source Address", "igmp_mtrace_saddr", FT_IPv4, BASE_NONE,
 			  NULL, 0, "Multicast Source for the Path Being Traced", HFILL }},
 
 		{ &hf_mtrace_raddr,
-			{ "Receiver Address", "igmp.mtrace.raddr", FT_IPv4, BASE_NONE,
+			{ "Receiver Address", "igmp_mtrace_raddr", FT_IPv4, BASE_NONE,
 			  NULL, 0, "Multicast Receiver for the Path Being Traced", HFILL }},
 
 		{ &hf_mtrace_rspaddr,
-			{ "Response Address", "igmp.mtrace.rspaddr", FT_IPv4, BASE_NONE,
+			{ "Response Address", "igmp_mtrace_rspaddr", FT_IPv4, BASE_NONE,
 			  NULL, 0, "Destination of Completed Traceroute Response", HFILL }},
 
 		{ &hf_mtrace_resp_ttl,
-			{ "Response TTL", "igmp.mtrace.resp_ttl", FT_UINT8, BASE_DEC,
+			{ "Response TTL", "igmp_mtrace_resp_ttl", FT_UINT8, BASE_DEC,
 			NULL, 0, "TTL for Multicasted Responses", HFILL }},
 
 		{ &hf_mtrace_q_id,
-			{ "Query ID", "igmp.mtrace.q_id", FT_UINT24, BASE_DEC,
+			{ "Query ID", "igmp_mtrace_q_id", FT_UINT24, BASE_DEC,
 			NULL, 0, "Identifier for this Traceroute Request", HFILL }},
 
 		{ &hf_mtrace_q_arrival,
-			{ "Query Arrival", "igmp.mtrace.q_arrival", FT_UINT32, BASE_DEC,
+			{ "Query Arrival", "igmp_mtrace_q_arrival", FT_UINT32, BASE_DEC,
 			NULL, 0, "Query Arrival Time", HFILL }},
 
 		{ &hf_mtrace_q_inaddr,
-			{ "In itf addr", "igmp.mtrace.q_inaddr", FT_IPv4, BASE_NONE,
+			{ "In itf addr", "igmp_mtrace_q_inaddr", FT_IPv4, BASE_NONE,
 			NULL, 0, "Incoming Interface Address", HFILL }},
 
 		{ &hf_mtrace_q_outaddr,
-			{ "Out itf addr", "igmp.mtrace.q_outaddr", FT_IPv4, BASE_NONE,
+			{ "Out itf addr", "igmp_mtrace_q_outaddr", FT_IPv4, BASE_NONE,
 			NULL, 0, "Outgoing Interface Address", HFILL }},
 
 		{ &hf_mtrace_q_prevrtr,
-			{ "Previous rtr addr", "igmp.mtrace.q_prevrtr", FT_IPv4, BASE_NONE,
+			{ "Previous rtr addr", "igmp_mtrace_q_prevrtr", FT_IPv4, BASE_NONE,
 			NULL, 0, "Previous-Hop Router Address", HFILL }},
 
 		{ &hf_mtrace_q_inpkt,
-			{ "In pkts", "igmp.mtrace.q_inpkt", FT_UINT32, BASE_DEC,
+			{ "In pkts", "igmp_mtrace_q_inpkt", FT_UINT32, BASE_DEC,
 			NULL, 0, "Input packet count on incoming interface", HFILL }},
 
 		{ &hf_mtrace_q_outpkt,
-			{ "Out pkts", "igmp.mtrace.q_outpkt", FT_UINT32, BASE_DEC,
+			{ "Out pkts", "igmp_mtrace_q_outpkt", FT_UINT32, BASE_DEC,
 			NULL, 0, "Output packet count on outgoing interface", HFILL }},
 
 		{ &hf_mtrace_q_total,
-			{ "S,G pkt count", "igmp.mtrace.q_total", FT_UINT32, BASE_DEC,
+			{ "S,G pkt count", "igmp_mtrace_q_total", FT_UINT32, BASE_DEC,
 			NULL, 0, "Total number of packets for this source-group pair", HFILL }},
 
 		{ &hf_mtrace_q_rtg_proto,
-			{ "Rtg Protocol", "igmp.mtrace.q_rtg_proto", FT_UINT8, BASE_DEC,
+			{ "Rtg Protocol", "igmp_mtrace_q_rtg_proto", FT_UINT8, BASE_DEC,
 			VALS(mtrace_rtg_vals), 0, "Routing protocol between this and previous hop rtr", HFILL }},
 
 		{ &hf_mtrace_q_fwd_ttl,
-			{ "FwdTTL", "igmp.mtrace.q_fwd_ttl", FT_UINT8, BASE_DEC,
+			{ "FwdTTL", "igmp_mtrace_q_fwd_ttl", FT_UINT8, BASE_DEC,
 			NULL, 0, "TTL required for forwarding", HFILL }},
 
 		{ &hf_mtrace_q_mbz,
-			{ "MBZ", "igmp.mtrace.q_mbz", FT_UINT8, BASE_HEX,
+			{ "MBZ", "igmp_mtrace_q_mbz", FT_UINT8, BASE_HEX,
 			NULL, 0x80, "Must be zeroed on transmission and ignored on reception", HFILL }},
 
 		{ &hf_mtrace_q_s,
-			{ "S", "igmp.mtrace.q_s", FT_UINT8, BASE_HEX,
+			{ "S", "igmp_mtrace_q_s", FT_UINT8, BASE_HEX,
 			NULL, 0x40, "Set if S,G packet count is for source network", HFILL }},
 
 		{ &hf_mtrace_q_src_mask,
-			{ "Src Mask", "igmp.mtrace.q_src_mask", FT_UINT8, BASE_HEX,
+			{ "Src Mask", "igmp_mtrace_q_src_mask", FT_UINT8, BASE_HEX,
 			NULL, 0x3F, "Source mask length. 63 when forwarding on group state", HFILL }},
 
 		{ &hf_mtrace_q_fwd_code,
-			{ "Forwarding Code", "igmp.mtrace.q_fwd_code", FT_UINT8, BASE_HEX,
+			{ "Forwarding Code", "igmp_mtrace_q_fwd_code", FT_UINT8, BASE_HEX,
 			VALS(mtrace_fwd_code_vals), 0, "Forwarding information/error code", HFILL }},
 
 	};

@@ -308,7 +308,7 @@ proto_register_mpls_y1711(void)
         {
             &hf_mpls_y1711_function_type,
             {
-                "Function Type", "mpls_y1711.function_type", FT_UINT8,
+                "Function Type", "mpls_y1711_function_type", FT_UINT8,
                 BASE_HEX, VALS(y1711_function_type_vals),
                 0x0, "Function Type codepoint", HFILL
             }
@@ -318,7 +318,7 @@ proto_register_mpls_y1711(void)
             &hf_mpls_y1711_ttsi,
             {
                 "Trail Termination Source Identifier",
-                "mpls_y1711.ttsi",
+                "mpls_y1711_ttsi",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL
             }
         },
@@ -326,7 +326,7 @@ proto_register_mpls_y1711(void)
         {
             &hf_mpls_y1711_frequency,
             {
-                "Frequency", "mpls_y1711.frequency", FT_UINT8,
+                "Frequency", "mpls_y1711_frequency", FT_UINT8,
                 BASE_HEX, VALS(y1711_frequency_vals), 0x0,
                 "Frequency of probe injection", HFILL
             }
@@ -334,27 +334,27 @@ proto_register_mpls_y1711(void)
         {
             &hf_mpls_y1711_defect_type,
             {
-                "Defect Type", "mpls_y1711.defect_type", FT_UINT16,
+                "Defect Type", "mpls_y1711_defect_type", FT_UINT16,
                 BASE_HEX, VALS(y1711_defect_type_vals), 0x0, NULL, HFILL
             }
         },
         {
             &hf_mpls_y1711_defect_location,
             {
-                "Defect Location (AS)", "mpls_y1711.defect_location",
+                "Defect Location (AS)", "mpls_y1711_defect_location",
                 FT_UINT32, BASE_DEC, NULL, 0x0, "Defect Location", HFILL
             }
         },
         {
             &hf_mpls_y1711_bip16,
             {
-                "BIP16", "mpls_y1711.bip16", FT_UINT16,
+                "BIP16", "mpls_y1711_bip16", FT_UINT16,
                 BASE_HEX, NULL, 0x0, NULL, HFILL
             }
         },
       /* Generated from convert_proto_tree_add_text.pl */
-      { &hf_mpls_y1711_lsr_id, { "LSR ID", "mpls_y1711.lsr_id", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_mpls_y1711_lsp_id, { "LSP ID", "mpls_y1711.lsp_id", FT_INT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_mpls_y1711_lsr_id, { "LSR ID", "mpls_y1711_lsr_id", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_mpls_y1711_lsp_id, { "LSP ID", "mpls_y1711_lsp_id", FT_INT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
     };
 
     static gint *ett[] = {

@@ -133,27 +133,27 @@ proto_register_ascend(void)
 {
   static hf_register_info hf[] = {
     { &hf_link_type,
-      { "Link type",      "ascend.type",  FT_UINT32, BASE_DEC,    VALS(encaps_vals),      0x0,
+      { "Link type",      "ascend_type",  FT_UINT32, BASE_DEC,    VALS(encaps_vals),      0x0,
         NULL, HFILL }},
 
     { &hf_session_id,
-      { "Session ID",     "ascend.sess",  FT_UINT32, BASE_DEC,    NULL, 0x0,
+      { "Session ID",     "ascend_sess",  FT_UINT32, BASE_DEC,    NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_called_number,
-      { "Called number",  "ascend.number", FT_STRING, BASE_NONE,  NULL, 0x0,
+      { "Called number",  "ascend_number", FT_STRING, BASE_NONE,  NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_chunk,
-      { "WDD Chunk",      "ascend.chunk", FT_UINT32, BASE_HEX,    NULL, 0x0,
+      { "WDD Chunk",      "ascend_chunk", FT_UINT32, BASE_HEX,    NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_task,
-      { "Task",           "ascend.task",  FT_UINT32, BASE_HEX,    NULL, 0x0,
+      { "Task",           "ascend_task",  FT_UINT32, BASE_HEX,    NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_user_name,
-      { "User name",      "ascend.user",  FT_STRING, BASE_NONE,   NULL, 0x0,
+      { "User name",      "ascend_user",  FT_STRING, BASE_NONE,   NULL, 0x0,
         NULL, HFILL }},
   };
   static gint *ett[] = {

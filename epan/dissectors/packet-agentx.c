@@ -923,147 +923,147 @@ proto_register_agentx(void)
 	static hf_register_info hf[] = {
 
 		{ &hf_version,
-		  { "Version", "agentx.version", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Version", "agentx_version", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "header version", HFILL }},
 
 		{ &hf_type,
-		  { "Type", "agentx.type", FT_UINT8, BASE_DEC | BASE_EXT_STRING, &type_values_ext, 0x0,
+		  { "Type", "agentx_type", FT_UINT8, BASE_DEC | BASE_EXT_STRING, &type_values_ext, 0x0,
 		    "header type", HFILL }},
 
 		{ &hf_flags,
-		  { "Flags", "agentx.flags", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Flags", "agentx_flags", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "header type", HFILL }},
 
 		{ &hf_flags_register,
-		  { "Register", "agentx.flags.register", FT_BOOLEAN, 8, TFS(&tfs_yes_no),
+		  { "Register", "agentx_flags_register", FT_BOOLEAN, 8, TFS(&tfs_yes_no),
 		    INSTANCE_REGISTRATION, "Instance Registration",  HFILL }},
 
 		{ &hf_flags_newindex,
-		  { "New Index", "agentx.flags.newindex", FT_BOOLEAN, 8, TFS(&tfs_yes_no),
+		  { "New Index", "agentx_flags_newindex", FT_BOOLEAN, 8, TFS(&tfs_yes_no),
 		    NEW_INDEX, "New Index Requested",  HFILL }},
 
 		{ &hf_flags_anyindex,
-		  { "Any Index", "agentx.flags.anyindex", FT_BOOLEAN, 8, TFS(&tfs_yes_no),
+		  { "Any Index", "agentx_flags_anyindex", FT_BOOLEAN, 8, TFS(&tfs_yes_no),
 		    ANY_INDEX, "Any Index Requested",  HFILL }},
 
 		{ &hf_flags_context,
-		  { "Non-default Context", "agentx.flags.context", FT_BOOLEAN, 8, TFS(&tfs_agentx_context),
+		  { "Non-default Context", "agentx_flags_context", FT_BOOLEAN, 8, TFS(&tfs_agentx_context),
 		    NON_DEFAULT_CONTEXT, NULL,  HFILL }},
 
 		{ &hf_flags_byteorder,
-		  { "Byte Order", "agentx.flags.byteorder", FT_BOOLEAN, 8, TFS(&tfs_agentx_byteorder),
+		  { "Byte Order", "agentx_flags_byteorder", FT_BOOLEAN, 8, TFS(&tfs_agentx_byteorder),
 		    NETWORK_BYTE_ORDER, NULL,  HFILL }},
 
 		{ &hf_session_id,
-		  { "sessionID", "agentx.session_id", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "sessionID", "agentx_session_id", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    "Session ID", HFILL }},
 
 		{ &hf_trans_id,
-		  { "TransactionID", "agentx.transaction_id", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "TransactionID", "agentx_transaction_id", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    "Transaction ID", HFILL }},
 
 		{ &hf_packet_id,
-		  { "PacketID", "agentx.packet_id", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "PacketID", "agentx_packet_id", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    "Packet ID", HFILL }},
 
 		{ &hf_payload_len,
-		  { "Payload length", "agentx.payload_len", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "Payload length", "agentx_payload_len", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_ostring,
-		  { "Octet String", "agentx.ostring", FT_STRING, BASE_NONE, NULL, 0x0,
+		  { "Octet String", "agentx_ostring", FT_STRING, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_ostring_len,
-		  { "OString len", "agentx.ostring_len", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "OString len", "agentx_ostring_len", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    "Octet String Length", HFILL }},
 
 		{ &hf_oid_sub,
-		  { "Number subids", "agentx.n_subid", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Number subids", "agentx_n_subid", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_oid_prefix,
-		  { "OID prefix", "agentx.oid_prefix", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "OID prefix", "agentx_oid_prefix", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_oid_include,
-		  { "OID include", "agentx.oid_include", FT_BOOLEAN, 8, TFS(&tfs_yes_no),
+		  { "OID include", "agentx_oid_include", FT_BOOLEAN, 8, TFS(&tfs_yes_no),
 		    OID_IS_INCLUSIVE, NULL, HFILL }},
 
 		{ &hf_oid_str,
-		  { "OID", "agentx.oid", FT_STRING, BASE_NONE, NULL, 0x0,
+		  { "OID", "agentx_oid", FT_STRING, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_resp_uptime,
-		  { "sysUpTime", "agentx.r.uptime", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "sysUpTime", "agentx_r.uptime", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_resp_error,
-		  { "Resp. error", "agentx.r.error", FT_UINT16, BASE_DEC | BASE_EXT_STRING, &resp_errors_ext, 0x0,
+		  { "Resp. error", "agentx.r_error", FT_UINT16, BASE_DEC | BASE_EXT_STRING, &resp_errors_ext, 0x0,
 		    "response error", HFILL }},
 
 		{ &hf_resp_index,
-		  { "Resp. index", "agentx.r.index", FT_UINT16, BASE_DEC, NULL, 0x0,
+		  { "Resp. index", "agentx_r_index", FT_UINT16, BASE_DEC, NULL, 0x0,
 		    "response index", HFILL }},
 
 		{ &hf_vtag,
-		  { "Variable type", "agentx.v.tag", FT_UINT16, BASE_DEC | BASE_EXT_STRING, &vtag_values_ext, 0x0,
+		  { "Variable type", "agentx_v_tag", FT_UINT16, BASE_DEC | BASE_EXT_STRING, &vtag_values_ext, 0x0,
 		    "vtag", HFILL }},
 
 		{ &hf_val32,
-		  { "Value(32)", "agentx.v.val32", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "Value(32)", "agentx_v_val32", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    "val32", HFILL }},
 
 		{ &hf_val64,
-		  { "Value(64)", "agentx.v.val64", FT_UINT64, BASE_DEC, NULL, 0x0,
+		  { "Value(64)", "agentx_v_val64", FT_UINT64, BASE_DEC, NULL, 0x0,
 		    "val64", HFILL }},
 
 		{ &hf_open_timeout,
-		  { "Timeout", "agentx.o.timeout", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Timeout", "agentx_o_timeout", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "open timeout", HFILL }},
 
 		{ &hf_close_reason,
-		  { "Reason", "agentx.c.reason", FT_UINT8, BASE_DEC, VALS(close_reasons), 0x0,
+		  { "Reason", "agentx_c_reason", FT_UINT8, BASE_DEC, VALS(close_reasons), 0x0,
 		    "close reason", HFILL }},
 
 		{ &hf_reg_timeout,
-		  { "Timeout", "agentx.r.timeout", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Timeout", "agentx_r_timeout", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Register timeout", HFILL }},
 
 		{ &hf_reg_prio,
-		  { "Priority", "agentx.r.priority", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Priority", "agentx_r_priority", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Register Priority", HFILL }},
 
 		{ &hf_reg_rsid,
-		  { "Range_subid", "agentx.r.range_subid", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Range_subid", "agentx_r_range_subid", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Register range_subid", HFILL }},
 
 		{ &hf_reg_ubound,
-		  { "Upper bound", "agentx.r.upper_bound", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "Upper bound", "agentx_r_upper_bound", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    "Register upper bound", HFILL }},
 
 		{ &hf_unreg_timeout,
-		  { "Timeout", "agentx.u.timeout", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Timeout", "agentx_u_timeout", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Unregister timeout", HFILL }},
 
 		{ &hf_unreg_prio,
-		  { "Priority", "agentx.u.priority", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Priority", "agentx_u_priority", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Unregister Priority", HFILL }},
 
 		{ &hf_unreg_rsid,
-		  { "Range_subid", "agentx.u.range_subid", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Range_subid", "agentx_u_range_subid", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Unregister range_subid", HFILL }},
 
 		{ &hf_unreg_ubound,
-		  { "Upper bound", "agentx.u.upper_bound", FT_UINT32, BASE_DEC, NULL, 0x0,
+		  { "Upper bound", "agentx_u_upper_bound", FT_UINT32, BASE_DEC, NULL, 0x0,
 		    "Register upper bound", HFILL }},
 
 		{ &hf_gbulk_nrepeat,
-		  { "Repeaters", "agentx.gb.nrepeat", FT_UINT16, BASE_DEC, NULL, 0x0,
+		  { "Repeaters", "agentx_gb_nrepeat", FT_UINT16, BASE_DEC, NULL, 0x0,
 		    "getBulk Num. repeaters", HFILL }},
 
 		{ &hf_gbulk_mrepeat,
-		  { "Max Repetition", "agentx.gb.mrepeat", FT_UINT16, BASE_DEC, NULL, 0x0,
+		  { "Max Repetition", "agentx_gb_mrepeat", FT_UINT16, BASE_DEC, NULL, 0x0,
 		    "getBulk Max repetition", HFILL }},
 
 

@@ -710,7 +710,7 @@ proto_register_zrtp(void)
   static hf_register_info hf[] = {
     {&hf_zrtp_rtpversion,
      {
-       "RTP Version", "zrtp.rtpversion",
+       "RTP Version", "zrtp_rtpversion",
        FT_UINT8, BASE_DEC,
        NULL, 0xC0,
        NULL, HFILL
@@ -719,7 +719,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_rtppadding,
      {
-       "RTP padding", "zrtp.rtppadding",
+       "RTP padding", "zrtp_rtppadding",
        FT_BOOLEAN, 8,
        NULL, 0x20,
        NULL, HFILL
@@ -728,7 +728,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_rtpextension,
      {
-       "RTP Extension", "zrtp.rtpextension",
+       "RTP Extension", "zrtp_rtpextension",
        FT_BOOLEAN, 8,
        NULL, 0x10,
        NULL, HFILL
@@ -738,7 +738,7 @@ proto_register_zrtp(void)
 #if 0
     {&hf_zrtp_id,
      {
-       "ID", "zrtp.id",
+       "ID", "zrtp_id",
        FT_UINT8, BASE_HEX,
        NULL, 0x0,
        NULL, HFILL
@@ -748,7 +748,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_sequence,
      {
-       "Sequence", "zrtp.sequence",
+       "Sequence", "zrtp_sequence",
        FT_UINT16, BASE_DEC,
        NULL, 0x0,
        NULL, HFILL
@@ -757,7 +757,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_cookie,
      {
-       "Magic Cookie", "zrtp.cookie",
+       "Magic Cookie", "zrtp_cookie",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -766,7 +766,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_source_id,
      {
-       "Source Identifier", "zrtp.source_id",
+       "Source Identifier", "zrtp_source_id",
        FT_UINT32, BASE_HEX,
        NULL, 0x0,
        NULL, HFILL
@@ -778,7 +778,7 @@ proto_register_zrtp(void)
     */
     {&hf_zrtp_signature,
      {
-       "Signature", "zrtp.signature",
+       "Signature", "zrtp_signature",
        FT_UINT16, BASE_HEX,
        NULL, 0x0,
        NULL, HFILL
@@ -787,7 +787,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_length,
      {
-       "Length", "zrtp.length",
+       "Length", "zrtp_length",
        FT_UINT16, BASE_DEC,
        NULL, 0x0,
        NULL, HFILL
@@ -796,7 +796,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_type,
      {
-       "Type", "zrtp.type",
+       "Type", "zrtp_type",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -805,7 +805,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_version,
      {
-       "ZRTP protocol version", "zrtp.version",
+       "ZRTP protocol version", "zrtp_version",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -814,7 +814,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_client_id,
      {
-       "Client Identifier", "zrtp.client_source_id",
+       "Client Identifier", "zrtp_client_source_id",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -823,7 +823,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_hash_image,
      {
-       "Hash Image", "zrtp.hash_image",
+       "Hash Image", "zrtp_hash_image",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -832,7 +832,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_zid,
      {
-       "ZID", "zrtp.zid",
+       "ZID", "zrtp_zid",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -841,7 +841,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_sigcap,
      {
-       "Sig.capable", "zrtp.sigcap",
+       "Sig.capable", "zrtp_sigcap",
        FT_BOOLEAN, 8,
        NULL, 0x40,
        NULL, HFILL
@@ -850,7 +850,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_mitm,
      {
-       "MiTM", "zrtp.mitm",
+       "MiTM", "zrtp_mitm",
        FT_BOOLEAN, 8,
        NULL, 0x20,
        NULL, HFILL
@@ -859,7 +859,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_passive,
      {
-       "Passive", "zrtp.passive",
+       "Passive", "zrtp_passive",
        FT_BOOLEAN, 8,
        NULL, 0x10,
        NULL, HFILL
@@ -868,7 +868,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_hash_count,
      {
-       "Hash Count", "zrtp.hc",
+       "Hash Count", "zrtp_hc",
        FT_UINT8, BASE_DEC,
        NULL, 0x0F,
        NULL, HFILL
@@ -877,7 +877,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_cipher_count,
      {
-       "Cipher Count", "zrtp.cc",
+       "Cipher Count", "zrtp_cc",
        FT_UINT8, BASE_DEC,
        NULL, 0xF0,
        NULL, HFILL
@@ -886,7 +886,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_authtag_count,
      {
-       "Auth tag Count", "zrtp.ac",
+       "Auth tag Count", "zrtp_ac",
        FT_UINT8, BASE_DEC,
        NULL, 0x0F,
        NULL, HFILL
@@ -895,7 +895,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_key_count,
      {
-       "Key Agreement Count", "zrtp.kc",
+       "Key Agreement Count", "zrtp_kc",
        FT_UINT8, BASE_DEC,
        NULL, 0xF0,
        NULL, HFILL
@@ -904,7 +904,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_sas_count,
      {
-       "SAS Count", "zrtp.sc",
+       "SAS Count", "zrtp_sc",
        FT_UINT8, BASE_DEC,
        NULL, 0x0F,
        NULL, HFILL
@@ -913,7 +913,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_hash,
      {
-       "Hash", "zrtp.hash",
+       "Hash", "zrtp_hash",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -922,7 +922,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_cipher,
      {
-       "Cipher", "zrtp.cipher",
+       "Cipher", "zrtp_cipher",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -931,7 +931,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_at,
      {
-       "AT", "zrtp.at",
+       "AT", "zrtp_at",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -940,7 +940,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_keya,
      {
-       "Key Agreement", "zrtp.keya",
+       "Key Agreement", "zrtp_keya",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -949,7 +949,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_sas,
      {
-       "SAS", "zrtp.sas",
+       "SAS", "zrtp_sas",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -958,7 +958,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_rs1ID,
      {
-       "rs1ID", "zrtp.rs1id",
+       "rs1ID", "zrtp_rs1id",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -967,7 +967,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_rs2ID,
      {
-       "rs2ID", "zrtp.rs2id",
+       "rs2ID", "zrtp_rs2id",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -976,7 +976,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_auxs,
      {
-       "auxs", "zrtp.auxs",
+       "auxs", "zrtp_auxs",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -985,7 +985,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_pbxs,
      {
-       "pbxs", "zrtp.pbxs",
+       "pbxs", "zrtp_pbxs",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -994,7 +994,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_hmac,
      {
-       "HMAC", "zrtp.hmac",
+       "HMAC", "zrtp_hmac",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -1003,7 +1003,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_cfb,
      {
-       "CFB", "zrtp.cfb",
+       "CFB", "zrtp_cfb",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -1012,7 +1012,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_error,
      {
-       "Error", "zrtp.error",
+       "Error", "zrtp_error",
        FT_UINT32, BASE_DEC,
        VALS(zrtp_error_vals), 0x0,
        NULL, HFILL
@@ -1021,7 +1021,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_ping_version,
      {
-       "Ping Version", "zrtp.ping_version",
+       "Ping Version", "zrtp_ping_version",
        FT_STRING, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -1030,7 +1030,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_ping_endpointhash,
      {
-       "Ping Endpoint Hash", "zrtp.ping_endpointhash",
+       "Ping Endpoint Hash", "zrtp_ping_endpointhash",
        FT_UINT64, BASE_HEX,
        NULL, 0x0,
        NULL, HFILL
@@ -1039,7 +1039,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_pingack_endpointhash,
      {
-       "PingAck Endpoint Hash", "zrtp.pingack_endpointhash",
+       "PingAck Endpoint Hash", "zrtp_pingack_endpointhash",
        FT_UINT64, BASE_HEX,
        NULL, 0x0,
        NULL, HFILL
@@ -1048,7 +1048,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_ping_ssrc,
      {
-       "Ping SSRC", "zrtp.ping_ssrc",
+       "Ping SSRC", "zrtp_ping_ssrc",
        FT_UINT32, BASE_HEX,
        NULL, 0x0,
        NULL, HFILL
@@ -1057,7 +1057,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_checksum,
      {
-       "Checksum", "zrtp.checksum",
+       "Checksum", "zrtp_checksum",
        FT_UINT32, BASE_HEX,
        NULL, 0x0,
        NULL, HFILL
@@ -1066,7 +1066,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_checksum_status,
      {
-       "Checksum Status", "zrtp.checksum.status",
+       "Checksum Status", "zrtp_checksum_status",
        FT_UINT8, BASE_NONE,
        VALS(proto_checksum_vals), 0x0,
        NULL, HFILL
@@ -1075,7 +1075,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_hvi,
      {
-       "hvi", "zrtp.hvi",
+       "hvi", "zrtp_hvi",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -1084,7 +1084,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_nonce,
      {
-       "nonce", "zrtp.nonce",
+       "nonce", "zrtp_nonce",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL
@@ -1093,7 +1093,7 @@ proto_register_zrtp(void)
 
     {&hf_zrtp_msg_key_id,
      {
-       "key ID", "zrtp.key_id",
+       "key ID", "zrtp_key_id",
        FT_BYTES, BASE_NONE,
        NULL, 0x0,
        NULL, HFILL

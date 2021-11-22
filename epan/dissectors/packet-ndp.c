@@ -318,30 +318,30 @@ proto_register_ndp(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_ndp_ip_address,
-		  { "IP address",		"ndp.ipaddress",  FT_IPv4, BASE_NONE, NULL, 0x0,
+		  { "IP address",		"ndp_ipaddress",  FT_IPv4, BASE_NONE, NULL, 0x0,
 		    "IP address of the Network Management Module (NMM))", HFILL }},
 
 		{ &hf_ndp_segment_identifier,
-		  { "Segment Identifier",		"ndp.segmentident", FT_UINT24, BASE_HEX, NULL, 0x0,
+		  { "Segment Identifier",		"ndp_segmentident", FT_UINT24, BASE_HEX, NULL, 0x0,
 		    "Segment id of the segment from which the agent is sending the topology message", HFILL }},
 
 		{ &hf_ndp_chassis_type,
-		  { "Chassis type",		"ndp.chassis", FT_UINT8, BASE_DEC|BASE_EXT_STRING,
+		  { "Chassis type",		"ndp_chassis", FT_UINT8, BASE_DEC|BASE_EXT_STRING,
 		    &ndp_chassis_val_ext, 0x0,
 		    "Chassis type of the agent sending the topology message", HFILL }},
 
 		{ &hf_ndp_backplane_type,
-		  { "Backplane type",		"ndp.backplane", FT_UINT8, BASE_DEC|BASE_EXT_STRING,
+		  { "Backplane type",		"ndp_backplane", FT_UINT8, BASE_DEC|BASE_EXT_STRING,
 		    &ndp_backplane_val_ext, 0x0,
 		    "Backplane type of the agent sending the topology message", HFILL }},
 
 		{ &hf_ndp_state,
-		  { "State",		"ndp.state", FT_UINT8, BASE_DEC,
+		  { "State",		"ndp_state", FT_UINT8, BASE_DEC,
 		    VALS(ndp_state_val), 0x0,
 		    "Current state of this Network Management Module (NMM)", HFILL }},
 
 		{ &hf_ndp_number_of_links,
-		  { "Number of links",		"ndp.numberoflinks", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "Number of links",		"ndp_numberoflinks", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Number of interconnect ports", HFILL }},
 	};
 

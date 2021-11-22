@@ -280,42 +280,42 @@ proto_register_bthci_sco(void)
 {
     static hf_register_info hf[] = {
         { &hf_bthci_sco_reserved,
-            { "Reserved",                    "bthci_sco.reserved",
+            { "Reserved",                    "bthci_sco_reserved",
             FT_UINT16, BASE_HEX, NULL, 0xC000,
             NULL, HFILL }
         },
         { &hf_bthci_sco_packet_status,
-            { "Packet Status",               "bthci_sco.packet_status",
+            { "Packet Status",               "bthci_sco_packet_status",
             FT_UINT16, BASE_HEX, VALS(packet_status_vals), 0x3000,
             NULL, HFILL }
         },
         { &hf_bthci_sco_chandle,
-            { "Connection Handle",           "bthci_sco.chandle",
+            { "Connection Handle",           "bthci_sco_chandle",
             FT_UINT16, BASE_HEX, NULL, 0x0FFF,
             NULL, HFILL }
         },
         { &hf_bthci_sco_connect_in,
-            { "Connect in frame",            "bthci_sco.connect_in",
+            { "Connect in frame",            "bthci_sco_connect_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bthci_sco_disconnect_in,
-            { "Disconnect in frame",         "bthci_sco.disconnect_in",
+            { "Disconnect in frame",         "bthci_sco_disconnect_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bthci_sco_stream_number,
-            { "Stream Number",               "bthci_sco.stream_number",
+            { "Stream Number",               "bthci_sco_stream_number",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_bthci_sco_length,
-            { "Data Total Length",           "bthci_sco.length",
+            { "Data Total Length",           "bthci_sco_length",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bthci_sco_data,
-            { "Data",                        "bthci_sco.data",
+            { "Data",                        "bthci_sco_data",
             FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },

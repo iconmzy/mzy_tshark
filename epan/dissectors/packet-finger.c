@@ -143,25 +143,25 @@ proto_register_finger(void)
 
     static hf_register_info hf[] = {
         { &hf_finger_query,
-            { "Query", "finger.query", FT_STRING, BASE_NONE, NULL, 0x0,
+            { "Query", "finger_query", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_finger_response,
-            { "Response", "finger.response", FT_STRING, BASE_NONE, NULL, 0x0,
+            { "Response", "finger_response", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_finger_response_in,
-            { "Response In", "finger.response_in", FT_FRAMENUM, BASE_NONE, NULL,
+            { "Response In", "finger_response_in", FT_FRAMENUM, BASE_NONE, NULL,
               0x0, "The response to this FINGER query is in this frame",
               HFILL }
         },
         { &hf_finger_response_to,
-            { "Request In", "finger.response_to", FT_FRAMENUM, BASE_NONE, NULL,
+            { "Request In", "finger_response_to", FT_FRAMENUM, BASE_NONE, NULL,
               0x0, "This is a response to the FINGER query in this frame",
               HFILL }
         },
         { &hf_finger_response_time,
-            { "Response Time", "finger.response_time", FT_RELATIVE_TIME,
+            { "Response Time", "finger_response_time", FT_RELATIVE_TIME,
               BASE_NONE, NULL, 0x0,
               "The time between the Query and the Response", HFILL }
         }

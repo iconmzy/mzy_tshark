@@ -333,75 +333,75 @@ proto_register_ath(void)
 
   static hf_register_info hf[] = {
     { &hf_ath_begin,
-      { "Begin",  "ath.begin", FT_STRING, BASE_NONE, NULL, 0x0, "Begin mark",
+      { "Begin",  "ath_begin", FT_STRING, BASE_NONE, NULL, 0x0, "Begin mark",
         HFILL }
     },
     { &hf_ath_padding,
-      { "Padding",  "ath.padding", FT_UINT16, BASE_HEX, NULL, 0x0, NULL,
+      { "Padding",  "ath_padding", FT_UINT16, BASE_HEX, NULL, 0x0, NULL,
         HFILL }
     },
     { &hf_ath_length,
-      { "Length",  "ath.length", FT_UINT32, BASE_DEC, NULL, 0x0, "Data Length",
+      { "Length",  "ath_length", FT_UINT32, BASE_DEC, NULL, 0x0, "Data Length",
         HFILL }
     },
     { &hf_ath_alive,
-      { "Alive Time",  "ath.alive", FT_UINT64, BASE_DEC, NULL, 0x0, "Alive Time counter",
+      { "Alive Time",  "ath_alive", FT_UINT64, BASE_DEC, NULL, 0x0, "Alive Time counter",
         HFILL }
     },
     { &hf_ath_port,
-      { "Port",  "ath.port", FT_UINT32, BASE_DEC, NULL, 0x0, "RMI Port",
+      { "Port",  "ath_port", FT_UINT32, BASE_DEC, NULL, 0x0, "RMI Port",
         HFILL }
     },
     { &hf_ath_sport,
-      { "Secure Port",  "ath.sport", FT_INT32, BASE_DEC, NULL, 0x0, "RMI Secure Port",
+      { "Secure Port",  "ath_sport", FT_INT32, BASE_DEC, NULL, 0x0, "RMI Secure Port",
         HFILL }
     },
     { &hf_ath_uport,
-      { "UDP Port",  "ath.uport", FT_INT32, BASE_DEC, NULL, 0x0, "RMI UDP Port",
+      { "UDP Port",  "ath_uport", FT_INT32, BASE_DEC, NULL, 0x0, "RMI UDP Port",
         HFILL }
     },
     { &hf_ath_hlen,
-      { "Host Length",  "ath.hlen", FT_INT8, BASE_DEC, NULL, 0x0, "Host IP Length",
+      { "Host Length",  "ath_hlen", FT_INT8, BASE_DEC, NULL, 0x0, "Host IP Length",
         HFILL }
     },
     { &hf_ath_ipv4,
-      { "Host",  "ath.ipv4", FT_IPv4, BASE_NONE, NULL, 0x0, "IPv4 Host",
+      { "Host",  "ath_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0, "IPv4 Host",
         HFILL }
     },
     { &hf_ath_ipv6,
-      { "Host",  "ath.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0, "IPv6 Host",
+      { "Host",  "ath_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0, "IPv6 Host",
         HFILL }
     },
     { &hf_ath_clen,
-      { "Command Length",  "ath.clen", FT_INT32, BASE_DEC, NULL, 0x0, "Command Length for members",
+      { "Command Length",  "ath_clen", FT_INT32, BASE_DEC, NULL, 0x0, "Command Length for members",
         HFILL }
     },
     { &hf_ath_comm,
-      { "Command",  "ath.comm", FT_STRING, BASE_NONE, NULL, 0x0, "Command for members",
+      { "Command",  "ath_comm", FT_STRING, BASE_NONE, NULL, 0x0, "Command for members",
         HFILL }
     },
     { &hf_ath_dlen,
-      { "Domain Length",  "ath.dlen", FT_INT32, BASE_DEC, NULL, 0x0, "Cluster Domain Length",
+      { "Domain Length",  "ath_dlen", FT_INT32, BASE_DEC, NULL, 0x0, "Cluster Domain Length",
         HFILL }
     },
     { &hf_ath_domain,
-      { "Domain",  "ath.domain", FT_STRING, BASE_NONE, NULL, 0x0, "Cluster Domain",
+      { "Domain",  "ath_domain", FT_STRING, BASE_NONE, NULL, 0x0, "Cluster Domain",
         HFILL }
     },
     { &hf_ath_unique,
-      { "uniqueId",  "ath.unique", FT_BYTES, BASE_NONE, NULL, 0x0, "UniqueID identifier",
+      { "uniqueId",  "ath_unique", FT_BYTES, BASE_NONE, NULL, 0x0, "UniqueID identifier",
         HFILL }
     },
     { &hf_ath_plen,
-      { "Payload Length",  "ath.plen", FT_INT32, BASE_DEC, NULL, 0x0, "Packet Payload Length",
+      { "Payload Length",  "ath_plen", FT_INT32, BASE_DEC, NULL, 0x0, "Packet Payload Length",
         HFILL }
     },
     { &hf_ath_payload,
-      { "Payload",  "ath.payload", FT_STRING, BASE_NONE, NULL, 0x0, "Packet Payload",
+      { "Payload",  "ath_payload", FT_STRING, BASE_NONE, NULL, 0x0, "Packet Payload",
         HFILL }
     },
     { &hf_ath_end,
-      { "End",  "ath.end", FT_STRING, BASE_NONE, NULL, 0x0, "End mark",
+      { "End",  "ath_end", FT_STRING, BASE_NONE, NULL, 0x0, "End mark",
         HFILL }
     },
   };

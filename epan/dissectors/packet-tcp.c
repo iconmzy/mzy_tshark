@@ -6961,603 +6961,603 @@ proto_register_tcp(void)
     static hf_register_info hf[] = {
 
         { &hf_tcp_srcport,
-        { "Source Port",        "tcp.srcport", FT_UINT16, BASE_PT_TCP, NULL, 0x0,
+        { "Source Port",        "tcp_srcport", FT_UINT16, BASE_PT_TCP, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_dstport,
-        { "Destination Port",       "tcp.dstport", FT_UINT16, BASE_PT_TCP, NULL, 0x0,
+        { "Destination Port",       "tcp_dstport", FT_UINT16, BASE_PT_TCP, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_port,
-        { "Source or Destination Port", "tcp.port", FT_UINT16, BASE_PT_TCP, NULL, 0x0,
+        { "Source or Destination Port", "tcp_port", FT_UINT16, BASE_PT_TCP, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_stream,
-        { "Stream index",       "tcp.stream", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Stream index",       "tcp_stream", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_seq,
-        { "Sequence Number",        "tcp.seq", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Sequence Number",        "tcp_seq", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_seq_abs,
-        { "Sequence Number (raw)",        "tcp.seq_raw", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Sequence Number (raw)",        "tcp_seq_raw", FT_UINT32, BASE_DEC, NULL, 0x0,
             "This shows the raw value of the sequence number", HFILL }},
 
         { &hf_tcp_nxtseq,
-        { "Next Sequence Number",   "tcp.nxtseq", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Next Sequence Number",   "tcp_nxtseq", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_ack,
-        { "Acknowledgment Number", "tcp.ack", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Acknowledgment Number", "tcp_ack", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_ack_abs,
-        { "Acknowledgment number (raw)", "tcp.ack_raw", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Acknowledgment number (raw)", "tcp_ack_raw", FT_UINT32, BASE_DEC, NULL, 0x0,
             "This shows the raw value of the acknowledgment number", HFILL } },
 
         // "Data Offset" in https://tools.ietf.org/html/rfc793#section-3.1 and
         // "Data offset" in https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure
         { &hf_tcp_hdr_len,
-        { "Header Length",    "tcp.hdr_len", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Header Length",    "tcp_hdr_len", FT_UINT8, BASE_DEC, NULL, 0x0,
             "Data offset in 32-bit words", HFILL }},
 
         { &hf_tcp_flags,
-        { "Flags",          "tcp.flags", FT_UINT16, BASE_HEX, NULL, TH_MASK,
+        { "Flags",          "tcp_flags", FT_UINT16, BASE_HEX, NULL, TH_MASK,
             "Flags (12 bits)", HFILL }},
 
         { &hf_tcp_flags_res,
-        { "Reserved",            "tcp.flags.res", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_RES,
+        { "Reserved",            "tcp_flags_res", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_RES,
             "Three reserved bits (must be zero)", HFILL }},
 
         { &hf_tcp_flags_ns,
-        { "Nonce", "tcp.flags.ns", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_NS,
+        { "Nonce", "tcp_flags_ns", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_NS,
             "ECN concealment protection (RFC 3540)", HFILL }},
 
         { &hf_tcp_flags_cwr,
-        { "Congestion Window Reduced (CWR)",            "tcp.flags.cwr", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_CWR,
+        { "Congestion Window Reduced (CWR)",            "tcp_flags_cwr", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_CWR,
             NULL, HFILL }},
 
         { &hf_tcp_flags_ecn,
-        { "ECN-Echo",           "tcp.flags.ecn", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_ECN,
+        { "ECN-Echo",           "tcp_flags_ecn", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_ECN,
             NULL, HFILL }},
 
         { &hf_tcp_flags_urg,
-        { "Urgent",         "tcp.flags.urg", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_URG,
+        { "Urgent",         "tcp_flags_urg", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_URG,
             NULL, HFILL }},
 
         { &hf_tcp_flags_ack,
-        { "Acknowledgment",        "tcp.flags.ack", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_ACK,
+        { "Acknowledgment",        "tcp_flags_ack", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_ACK,
             NULL, HFILL }},
 
         { &hf_tcp_flags_push,
-        { "Push",           "tcp.flags.push", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_PUSH,
+        { "Push",           "tcp_flags_push", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_PUSH,
             NULL, HFILL }},
 
         { &hf_tcp_flags_reset,
-        { "Reset",          "tcp.flags.reset", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_RST,
+        { "Reset",          "tcp_flags_reset", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_RST,
             NULL, HFILL }},
 
         { &hf_tcp_flags_syn,
-        { "Syn",            "tcp.flags.syn", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_SYN,
+        { "Syn",            "tcp_flags_syn", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_SYN,
             NULL, HFILL }},
 
         { &hf_tcp_flags_fin,
-        { "Fin",            "tcp.flags.fin", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_FIN,
+        { "Fin",            "tcp_flags_fin", FT_BOOLEAN, 12, TFS(&tfs_set_notset), TH_FIN,
             NULL, HFILL }},
 
         { &hf_tcp_flags_str,
-        { "TCP Flags",          "tcp.flags.str", FT_STRING, STR_UNICODE, NULL, 0x0,
+        { "TCP Flags",          "tcp_flags_str", FT_STRING, STR_UNICODE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_window_size_value,
-        { "Window",        "tcp.window_size_value", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Window",        "tcp_window_size_value", FT_UINT16, BASE_DEC, NULL, 0x0,
             "The window size value from the TCP header", HFILL }},
 
         /* 32 bits so we can present some values adjusted to window scaling */
         { &hf_tcp_window_size,
-        { "Calculated window size",        "tcp.window_size", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Calculated window size",        "tcp_window_size", FT_UINT32, BASE_DEC, NULL, 0x0,
             "The scaled window size (if scaling has been used)", HFILL }},
 
         { &hf_tcp_window_size_scalefactor,
-        { "Window size scaling factor", "tcp.window_size_scalefactor", FT_INT32, BASE_DEC, NULL, 0x0,
+        { "Window size scaling factor", "tcp_window_size_scalefactor", FT_INT32, BASE_DEC, NULL, 0x0,
             "The window size scaling factor (-1 when unknown, -2 when no scaling is used)", HFILL }},
 
         { &hf_tcp_checksum,
-        { "Checksum",           "tcp.checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Checksum",           "tcp_checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
             "Details at: https://www.wireshark.org/docs/wsug_html_chunked/ChAdvChecksums.html", HFILL }},
 
         { &hf_tcp_checksum_status,
-        { "Checksum Status",      "tcp.checksum.status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
+        { "Checksum Status",      "tcp_checksum_status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_checksum_calculated,
-        { "Calculated Checksum", "tcp.checksum_calculated", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Calculated Checksum", "tcp_checksum_calculated", FT_UINT16, BASE_HEX, NULL, 0x0,
             "The expected TCP checksum field as calculated from the TCP segment", HFILL }},
 
         { &hf_tcp_analysis,
-        { "SEQ/ACK analysis",   "tcp.analysis", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "SEQ/ACK analysis",   "tcp_analysis", FT_NONE, BASE_NONE, NULL, 0x0,
             "This frame has some of the TCP analysis shown", HFILL }},
 
         { &hf_tcp_analysis_flags,
-        { "TCP Analysis Flags",     "tcp.analysis.flags", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "TCP Analysis Flags",     "tcp_analysis_flags", FT_NONE, BASE_NONE, NULL, 0x0,
             "This frame has some of the TCP analysis flags set", HFILL }},
 
         { &hf_tcp_analysis_duplicate_ack,
-        { "Duplicate ACK",      "tcp.analysis.duplicate_ack", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Duplicate ACK",      "tcp_analysis_duplicate_ack", FT_NONE, BASE_NONE, NULL, 0x0,
             "This is a duplicate ACK", HFILL }},
 
         { &hf_tcp_analysis_duplicate_ack_num,
-        { "Duplicate ACK #",        "tcp.analysis.duplicate_ack_num", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Duplicate ACK #",        "tcp_analysis_duplicate_ack_num", FT_UINT32, BASE_DEC, NULL, 0x0,
             "This is duplicate ACK number #", HFILL }},
 
         { &hf_tcp_analysis_duplicate_ack_frame,
-        { "Duplicate to the ACK in frame",      "tcp.analysis.duplicate_ack_frame", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_DUP_ACK), 0x0,
+        { "Duplicate to the ACK in frame",      "tcp_analysis_duplicate_ack_frame", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_DUP_ACK), 0x0,
             "This is a duplicate to the ACK in frame #", HFILL }},
 
         { &hf_tcp_continuation_to,
-        { "This is a continuation to the PDU in frame",     "tcp.continuation_to", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+        { "This is a continuation to the PDU in frame",     "tcp_continuation_to", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "This is a continuation to the PDU in frame #", HFILL }},
 
         { &hf_tcp_len,
-          { "TCP Segment Len",            "tcp.len", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "TCP Segment Len",            "tcp_len", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_analysis_acks_frame,
-          { "This is an ACK to the segment in frame",            "tcp.analysis.acks_frame", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_ACK), 0x0,
+          { "This is an ACK to the segment in frame",            "tcp_analysis_acks_frame", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_ACK), 0x0,
             "Which previous segment is this an ACK for", HFILL}},
 
         { &hf_tcp_analysis_bytes_in_flight,
-          { "Bytes in flight",            "tcp.analysis.bytes_in_flight", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "Bytes in flight",            "tcp_analysis_bytes_in_flight", FT_UINT32, BASE_DEC, NULL, 0x0,
             "How many bytes are now in flight for this connection", HFILL}},
 
         { &hf_tcp_analysis_push_bytes_sent,
-          { "Bytes sent since last PSH flag",            "tcp.analysis.push_bytes_sent", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "Bytes sent since last PSH flag",            "tcp_analysis_push_bytes_sent", FT_UINT32, BASE_DEC, NULL, 0x0,
             "How many bytes have been sent since the last PSH flag", HFILL}},
 
         { &hf_tcp_analysis_ack_rtt,
-          { "The RTT to ACK the segment was",            "tcp.analysis.ack_rtt", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+          { "The RTT to ACK the segment was",            "tcp_analysis_ack_rtt", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
             "How long time it took to ACK the segment (RTT)", HFILL}},
 
         { &hf_tcp_analysis_first_rtt,
-          { "iRTT",            "tcp.analysis.initial_rtt", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+          { "iRTT",            "tcp_analysis_initial_rtt", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
             "How long it took for the SYN to ACK handshake (iRTT)", HFILL}},
 
         { &hf_tcp_analysis_rto,
-          { "The RTO for this segment was",            "tcp.analysis.rto", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+          { "The RTO for this segment was",            "tcp_analysis_rto", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
             "How long transmission was delayed before this segment was retransmitted (RTO)", HFILL}},
 
         { &hf_tcp_analysis_rto_frame,
-          { "RTO based on delta from frame", "tcp.analysis.rto_frame", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+          { "RTO based on delta from frame", "tcp_analysis_rto_frame", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "This is the frame we measure the RTO from", HFILL }},
 
         { &hf_tcp_urgent_pointer,
-        { "Urgent Pointer",     "tcp.urgent_pointer", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Urgent Pointer",     "tcp_urgent_pointer", FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_segment_overlap,
-        { "Segment overlap",    "tcp.segment.overlap", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+        { "Segment overlap",    "tcp_segment_overlap", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
             "Segment overlaps with other segments", HFILL }},
 
         { &hf_tcp_segment_overlap_conflict,
-        { "Conflicting data in segment overlap",    "tcp.segment.overlap.conflict", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+        { "Conflicting data in segment overlap",    "tcp_segment_overlap_conflict", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
             "Overlapping segments contained conflicting data", HFILL }},
 
         { &hf_tcp_segment_multiple_tails,
-        { "Multiple tail segments found",   "tcp.segment.multipletails", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+        { "Multiple tail segments found",   "tcp_segment_multipletails", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
             "Several tails were found when reassembling the pdu", HFILL }},
 
         { &hf_tcp_segment_too_long_fragment,
-        { "Segment too long",   "tcp.segment.toolongfragment", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+        { "Segment too long",   "tcp_segment_toolongfragment", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
             "Segment contained data past end of the pdu", HFILL }},
 
         { &hf_tcp_segment_error,
-        { "Reassembling error", "tcp.segment.error", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+        { "Reassembling error", "tcp_segment_error", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "Reassembling error due to illegal segments", HFILL }},
 
         { &hf_tcp_segment_count,
-        { "Segment count", "tcp.segment.count", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Segment count", "tcp_segment_count", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_segment,
-        { "TCP Segment", "tcp.segment", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+        { "TCP Segment", "tcp_segment", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_segments,
-        { "Reassembled TCP Segments", "tcp.segments", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Reassembled TCP Segments", "tcp_segments", FT_NONE, BASE_NONE, NULL, 0x0,
             "TCP Segments", HFILL }},
 
         { &hf_tcp_reassembled_in,
-        { "Reassembled PDU in frame", "tcp.reassembled_in", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+        { "Reassembled PDU in frame", "tcp_reassembled_in", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "The PDU that doesn't end in this segment is reassembled in this frame", HFILL }},
 
         { &hf_tcp_reassembled_length,
-        { "Reassembled TCP length", "tcp.reassembled.length", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Reassembled TCP length", "tcp_reassembled_length", FT_UINT32, BASE_DEC, NULL, 0x0,
             "The total length of the reassembled payload", HFILL }},
 
         { &hf_tcp_reassembled_data,
-        { "Reassembled TCP Data", "tcp.reassembled.data", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "Reassembled TCP Data", "tcp_reassembled_data", FT_BYTES, BASE_NONE, NULL, 0x0,
             "The reassembled payload", HFILL }},
 
         { &hf_tcp_option_kind,
-          { "Kind", "tcp.option_kind", FT_UINT8,
+          { "Kind", "tcp_option_kind", FT_UINT8,
             BASE_DEC|BASE_EXT_STRING, &tcp_option_kind_vs_ext, 0x0, "This TCP option's kind", HFILL }},
 
         { &hf_tcp_option_len,
-          { "Length", "tcp.option_len", FT_UINT8,
+          { "Length", "tcp_option_len", FT_UINT8,
             BASE_DEC, NULL, 0x0, "Length of this TCP option in bytes (including kind and length fields)", HFILL }},
 
         { &hf_tcp_options,
-          { "TCP Options", "tcp.options", FT_BYTES,
+          { "TCP Options", "tcp_options", FT_BYTES,
             BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_mss_val,
-          { "MSS Value", "tcp.options.mss_val", FT_UINT16,
+          { "MSS Value", "tcp_options_mss_val", FT_UINT16,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_wscale_shift,
-          { "Shift count", "tcp.options.wscale.shift", FT_UINT8,
+          { "Shift count", "tcp_options_wscale_shift", FT_UINT8,
             BASE_DEC, NULL, 0x0, "Logarithmically encoded power of 2 scale factor", HFILL}},
 
         { &hf_tcp_option_wscale_multiplier,
-          { "Multiplier", "tcp.options.wscale.multiplier",  FT_UINT16,
+          { "Multiplier", "tcp_options_wscale_multiplier",  FT_UINT16,
             BASE_DEC, NULL, 0x0, "Multiply segment window size by this for scaled window size", HFILL}},
 
         { &hf_tcp_option_exp_data,
-          { "Data", "tcp.options.experimental.data", FT_BYTES,
+          { "Data", "tcp_options_experimental_data", FT_BYTES,
             BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_exp_magic_number,
-          { "Magic Number", "tcp.options.experimental.magic_number", FT_UINT16,
+          { "Magic Number", "tcp_options_experimental_magic_number", FT_UINT16,
             BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_unknown_payload,
-          { "Payload", "tcp.options.unknown.payload", FT_BYTES,
+          { "Payload", "tcp_options_unknown_payload", FT_BYTES,
             BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_sack_sle,
-          {"TCP SACK Left Edge", "tcp.options.sack_le", FT_UINT32,
+          {"TCP SACK Left Edge", "tcp_options_sack_le", FT_UINT32,
            BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_sack_sre,
-          {"TCP SACK Right Edge", "tcp.options.sack_re", FT_UINT32,
+          {"TCP SACK Right Edge", "tcp_options_sack_re", FT_UINT32,
            BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_sack_range_count,
-          { "TCP SACK Count", "tcp.options.sack.count", FT_UINT8,
+          { "TCP SACK Count", "tcp_options_sack_count", FT_UINT8,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_sack_dsack_le,
-          {"TCP D-SACK Left Edge", "tcp.options.sack.dsack_le", FT_UINT32,
+          {"TCP D-SACK Left Edge", "tcp_options_sack_dsack_le", FT_UINT32,
            BASE_DEC, NULL, 0x0, "Duplicate SACK Left Edge", HFILL}},
 
         { &hf_tcp_option_sack_dsack_re,
-          {"TCP D-SACK Right Edge", "tcp.options.sack.dsack_re", FT_UINT32,
+          {"TCP D-SACK Right Edge", "tcp_options_sack_dsack_re", FT_UINT32,
            BASE_DEC, NULL, 0x0, "Duplicate SACK Right Edge", HFILL}},
 
         { &hf_tcp_option_echo,
-          { "TCP Echo Option", "tcp.options.echo_value", FT_UINT32,
+          { "TCP Echo Option", "tcp_options_echo_value", FT_UINT32,
             BASE_DEC, NULL, 0x0, "TCP Sack Echo", HFILL}},
 
         { &hf_tcp_option_timestamp_tsval,
-          { "Timestamp value", "tcp.options.timestamp.tsval", FT_UINT32,
+          { "Timestamp value", "tcp_options_timestamp_tsval", FT_UINT32,
             BASE_DEC, NULL, 0x0, "Value of sending machine's timestamp clock", HFILL}},
 
         { &hf_tcp_option_timestamp_tsecr,
-          { "Timestamp echo reply", "tcp.options.timestamp.tsecr", FT_UINT32,
+          { "Timestamp echo reply", "tcp_options_timestamp_tsecr", FT_UINT32,
             BASE_DEC, NULL, 0x0, "Echoed timestamp from remote machine", HFILL}},
 
         { &hf_tcp_option_mptcp_subtype,
-          { "Multipath TCP subtype", "tcp.options.mptcp.subtype", FT_UINT8,
+          { "Multipath TCP subtype", "tcp_options_mptcp_subtype", FT_UINT8,
             BASE_DEC, VALS(mptcp_subtype_vs), 0xF0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_version,
-          { "Multipath TCP version", "tcp.options.mptcp.version", FT_UINT8,
+          { "Multipath TCP version", "tcp_options_mptcp_version", FT_UINT8,
             BASE_DEC, NULL, 0x0F, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_reserved,
-          { "Reserved", "tcp.options.mptcp.reserved", FT_UINT16,
+          { "Reserved", "tcp_options_mptcp_reserved", FT_UINT16,
             BASE_HEX, NULL, 0x0FFF, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_flags,
-          { "Multipath TCP flags", "tcp.options.mptcp.flags", FT_UINT8,
+          { "Multipath TCP flags", "tcp_options_mptcp_flags", FT_UINT8,
             BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_backup_flag,
-          { "Backup flag", "tcp.options.mptcp.backup.flag", FT_UINT8,
+          { "Backup flag", "tcp_options_mptcp_backup_flag", FT_UINT8,
             BASE_DEC, NULL, 0x01, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_checksum_flag,
-          { "Checksum required", "tcp.options.mptcp.checksumreq.flags", FT_UINT8,
+          { "Checksum required", "tcp_options_mptcp_checksumreq_flags", FT_UINT8,
             BASE_DEC, NULL, MPTCP_CHECKSUM_MASK, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_B_flag,
-          { "Extensibility", "tcp.options.mptcp.extensibility.flag", FT_UINT8,
+          { "Extensibility", "tcp_options_mptcp_extensibility_flag", FT_UINT8,
             BASE_DEC, NULL, 0x40, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_H_v0_flag,
-          { "Use HMAC-SHA1", "tcp.options.mptcp.sha1.flag", FT_UINT8,
+          { "Use HMAC-SHA1", "tcp_options_mptcp_sha1_flag", FT_UINT8,
             BASE_DEC, NULL, 0x01, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_H_v1_flag,
-          { "Use HMAC-SHA256", "tcp.options.mptcp.sha256.flag", FT_UINT8,
+          { "Use HMAC-SHA256", "tcp_options_mptcp_sha256_flag", FT_UINT8,
             BASE_DEC, NULL, 0x01, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_F_flag,
-          { "DATA_FIN", "tcp.options.mptcp.datafin.flag", FT_UINT8,
+          { "DATA_FIN", "tcp_options_mptcp_datafin_flag", FT_UINT8,
             BASE_DEC, NULL, MPTCP_DSS_FLAG_DATA_FIN_PRESENT, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_m_flag,
-          { "Data Sequence Number is 8 octets", "tcp.options.mptcp.dseqn8.flag", FT_UINT8,
+          { "Data Sequence Number is 8 octets", "tcp_options_mptcp_dseqn8_flag", FT_UINT8,
             BASE_DEC, NULL, MPTCP_DSS_FLAG_DSN_8BYTES, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_M_flag,
-          { "Data Sequence Number, Subflow Sequence Number, Data-level Length, Checksum present", "tcp.options.mptcp.dseqnpresent.flag", FT_UINT8,
+          { "Data Sequence Number, Subflow Sequence Number, Data-level Length, Checksum present", "tcp_options_mptcp_dseqnpresent_flag", FT_UINT8,
             BASE_DEC, NULL, MPTCP_DSS_FLAG_MAPPING_PRESENT, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_a_flag,
-          { "Data ACK is 8 octets", "tcp.options.mptcp.dataack8.flag", FT_UINT8,
+          { "Data ACK is 8 octets", "tcp_options_mptcp_dataack8_flag", FT_UINT8,
             BASE_DEC, NULL, MPTCP_DSS_FLAG_DATA_ACK_8BYTES, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_A_flag,
-          { "Data ACK is present", "tcp.options.mptcp.dataackpresent.flag", FT_UINT8,
+          { "Data ACK is present", "tcp_options_mptcp_dataackpresent_flag", FT_UINT8,
             BASE_DEC, NULL, MPTCP_DSS_FLAG_DATA_ACK_PRESENT, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_reserved_flag,
-          { "Reserved", "tcp.options.mptcp.reserved.flag", FT_UINT8,
+          { "Reserved", "tcp_options_mptcp_reserved_flag", FT_UINT8,
             BASE_HEX, NULL, 0x3E, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_address_id,
-          { "Address ID", "tcp.options.mptcp.addrid", FT_UINT8,
+          { "Address ID", "tcp_options_mptcp_addrid", FT_UINT8,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_sender_key,
-          { "Sender's Key", "tcp.options.mptcp.sendkey", FT_UINT64,
+          { "Sender's Key", "tcp_options_mptcp_sendkey", FT_UINT64,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_recv_key,
-          { "Receiver's Key", "tcp.options.mptcp.recvkey", FT_UINT64,
+          { "Receiver's Key", "tcp_options_mptcp_recvkey", FT_UINT64,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_recv_token,
-          { "Receiver's Token", "tcp.options.mptcp.recvtok", FT_UINT32,
+          { "Receiver's Token", "tcp_options_mptcp_recvtok", FT_UINT32,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_sender_rand,
-          { "Sender's Random Number", "tcp.options.mptcp.sendrand", FT_UINT32,
+          { "Sender's Random Number", "tcp_options_mptcp_sendrand", FT_UINT32,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_sender_trunc_hmac,
-          { "Sender's Truncated HMAC", "tcp.options.mptcp.sendtrunchmac", FT_UINT64,
+          { "Sender's Truncated HMAC", "tcp_options_mptcp_sendtrunchmac", FT_UINT64,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_sender_hmac,
-          { "Sender's HMAC", "tcp.options.mptcp.sendhmac", FT_BYTES,
+          { "Sender's HMAC", "tcp_options_mptcp_sendhmac", FT_BYTES,
             BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_addaddr_trunc_hmac,
-          { "Truncated HMAC", "tcp.options.mptcp.addaddrtrunchmac", FT_UINT64,
+          { "Truncated HMAC", "tcp_options_mptcp_addaddrtrunchmac", FT_UINT64,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_data_ack_raw,
-          { "Original MPTCP Data ACK", "tcp.options.mptcp.rawdataack", FT_UINT64,
+          { "Original MPTCP Data ACK", "tcp_options_mptcp_rawdataack", FT_UINT64,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_data_seq_no_raw,
-          { "Data Sequence Number", "tcp.options.mptcp.rawdataseqno", FT_UINT64,
+          { "Data Sequence Number", "tcp_options_mptcp_rawdataseqno", FT_UINT64,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_subflow_seq_no,
-          { "Subflow Sequence Number", "tcp.options.mptcp.subflowseqno", FT_UINT32,
+          { "Subflow Sequence Number", "tcp_options_mptcp_subflowseqno", FT_UINT32,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_data_lvl_len,
-          { "Data-level Length", "tcp.options.mptcp.datalvllen", FT_UINT16,
+          { "Data-level Length", "tcp_options_mptcp_datalvllen", FT_UINT16,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_checksum,
-          { "Checksum", "tcp.options.mptcp.checksum", FT_UINT16,
+          { "Checksum", "tcp_options_mptcp_checksum", FT_UINT16,
             BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_ipver,
-          { "IP version", "tcp.options.mptcp.ipver", FT_UINT8,
+          { "IP version", "tcp_options_mptcp_ipver", FT_UINT8,
             BASE_DEC, NULL, 0x0F, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_echo,
-          { "Echo", "tcp.options.mptcp.echo", FT_UINT8,
+          { "Echo", "tcp_options_mptcp_echo", FT_UINT8,
             BASE_DEC, NULL, 0x01, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_ipv4,
-          { "Advertised IPv4 Address", "tcp.options.mptcp.ipv4", FT_IPv4,
+          { "Advertised IPv4 Address", "tcp_options_mptcp_ipv4", FT_IPv4,
             BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_ipv6,
-          { "Advertised IPv6 Address", "tcp.options.mptcp.ipv6", FT_IPv6,
+          { "Advertised IPv6 Address", "tcp_options_mptcp_ipv6", FT_IPv6,
             BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_mptcp_port,
-          { "Advertised port", "tcp.options.mptcp.port", FT_UINT16,
+          { "Advertised port", "tcp_options_mptcp_port", FT_UINT16,
             BASE_DEC, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_cc,
-          { "TCP CC Option", "tcp.options.cc_value", FT_UINT32, BASE_DEC,
+          { "TCP CC Option", "tcp_options_cc_value", FT_UINT32, BASE_DEC,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_md5_digest,
-          { "MD5 digest", "tcp.options.md5.digest", FT_BYTES, BASE_NONE,
+          { "MD5 digest", "tcp_options_md5_digest", FT_BYTES, BASE_NONE,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_qs_rate,
-          { "QS Rate", "tcp.options.qs.rate", FT_UINT8, BASE_DEC|BASE_EXT_STRING,
+          { "QS Rate", "tcp_options_qs_rate", FT_UINT8, BASE_DEC|BASE_EXT_STRING,
             &qs_rate_vals_ext, 0x0F, NULL, HFILL}},
 
         { &hf_tcp_option_qs_ttl_diff,
-          { "QS Rate", "tcp.options.qs.ttl_diff", FT_UINT8, BASE_DEC,
+          { "QS Rate", "tcp_options_qs_ttl_diff", FT_UINT8, BASE_DEC,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_option_scps_vector,
-          { "TCP SCPS Capabilities Vector", "tcp.options.scps.vector",
+          { "TCP SCPS Capabilities Vector", "tcp_options_scps_vector",
             FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_option_scps_binding,
           { "Binding Space (Community) ID",
-            "tcp.options.scps.binding.id",
+            "tcp_options_scps_binding_id",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "TCP SCPS Extended Binding Space (Community) ID", HFILL}},
 
         { &hf_tcp_option_scps_binding_len,
           { "Extended Capability Length",
-            "tcp.options.scps.binding.len",
+            "tcp_options_scps_binding_len",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "TCP SCPS Extended Capability Length in bytes", HFILL}},
 
         { &hf_tcp_option_snack_offset,
-          { "TCP SNACK Offset", "tcp.options.snack.offset",
+          { "TCP SNACK Offset", "tcp_options_snack_offset",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_option_snack_size,
-          { "TCP SNACK Size", "tcp.options.snack.size",
+          { "TCP SNACK Size", "tcp_options_snack_size",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_option_snack_le,
-          { "TCP SNACK Left Edge", "tcp.options.snack.le",
+          { "TCP SNACK Left Edge", "tcp_options_snack_le",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_option_snack_re,
-          { "TCP SNACK Right Edge", "tcp.options.snack.re",
+          { "TCP SNACK Right Edge", "tcp_options_snack_re",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_scpsoption_flags_bets,
           { "Partial Reliability Capable (BETS)",
-            "tcp.options.scpsflags.bets", FT_BOOLEAN, 8,
+            "tcp_options_scpsflags_bets", FT_BOOLEAN, 8,
             TFS(&tfs_set_notset), 0x80, NULL, HFILL }},
 
         { &hf_tcp_scpsoption_flags_snack1,
           { "Short Form SNACK Capable (SNACK1)",
-            "tcp.options.scpsflags.snack1", FT_BOOLEAN, 8,
+            "tcp_options_scpsflags_snack1", FT_BOOLEAN, 8,
             TFS(&tfs_set_notset), 0x40, NULL, HFILL }},
 
         { &hf_tcp_scpsoption_flags_snack2,
           { "Long Form SNACK Capable (SNACK2)",
-            "tcp.options.scpsflags.snack2", FT_BOOLEAN, 8,
+            "tcp_options_scpsflags_snack2", FT_BOOLEAN, 8,
             TFS(&tfs_set_notset), 0x20, NULL, HFILL }},
 
         { &hf_tcp_scpsoption_flags_compress,
           { "Lossless Header Compression (COMP)",
-            "tcp.options.scpsflags.compress", FT_BOOLEAN, 8,
+            "tcp_options_scpsflags_compress", FT_BOOLEAN, 8,
             TFS(&tfs_set_notset), 0x10, NULL, HFILL }},
 
         { &hf_tcp_scpsoption_flags_nlts,
           { "Network Layer Timestamp (NLTS)",
-            "tcp.options.scpsflags.nlts", FT_BOOLEAN, 8,
+            "tcp_options_scpsflags_nlts", FT_BOOLEAN, 8,
             TFS(&tfs_set_notset), 0x8, NULL, HFILL }},
 
         { &hf_tcp_scpsoption_flags_reserved,
           { "Reserved",
-            "tcp.options.scpsflags.reserved", FT_UINT8, BASE_DEC,
+            "tcp_options_scpsflags_reserved", FT_UINT8, BASE_DEC,
             NULL, 0x7, NULL, HFILL }},
 
         { &hf_tcp_scpsoption_connection_id,
           { "Connection ID",
-            "tcp.options.scps.binding",
+            "tcp_options_scps_binding",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "TCP SCPS Connection ID", HFILL}},
 
         { &hf_tcp_option_user_to_granularity,
-          { "Granularity", "tcp.options.user_to_granularity", FT_BOOLEAN,
+          { "Granularity", "tcp_options_user_to_granularity", FT_BOOLEAN,
             16, TFS(&tcp_option_user_to_granularity), 0x8000, "TCP User Timeout Granularity", HFILL}},
 
         { &hf_tcp_option_user_to_val,
-          { "User Timeout", "tcp.options.user_to_val", FT_UINT16,
+          { "User Timeout", "tcp_options_user_to_val", FT_UINT16,
             BASE_DEC, NULL, 0x7FFF, "TCP User Timeout Value", HFILL}},
 
         { &hf_tcp_option_rvbd_probe_type1,
-          { "Type", "tcp.options.rvbd.probe.type1",
+          { "Type", "tcp_options_rvbd_probe_type1",
             FT_UINT8, BASE_DEC, NULL, 0xF0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_type2,
-          { "Type", "tcp.options.rvbd.probe.type2",
+          { "Type", "tcp_options_rvbd_probe_type2",
             FT_UINT8, BASE_DEC, NULL, 0xFE, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_version1,
-          { "Version", "tcp.options.rvbd.probe.version",
+          { "Version", "tcp_options_rvbd_probe_version",
             FT_UINT8, BASE_DEC, NULL, 0x0F, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_version2,
-          { "Version", "tcp.options.rvbd.probe.version_raw",
+          { "Version", "tcp_options_rvbd_probe_version_raw",
             FT_UINT8, BASE_DEC, NULL, 0x01, "Version 2 Raw Value", HFILL }},
 
         { &hf_tcp_option_rvbd_probe_prober,
-          { "CSH IP", "tcp.options.rvbd.probe.prober",
+          { "CSH IP", "tcp_options_rvbd_probe_prober",
             FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_proxy,
-          { "SSH IP", "tcp.options.rvbd.probe.proxy.ip",
+          { "SSH IP", "tcp_options_rvbd_probe_proxy_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_proxy_port,
-          { "SSH Port", "tcp.options.rvbd.probe.proxy.port",
+          { "SSH Port", "tcp_options_rvbd_probe_proxy_port",
             FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_appli_ver,
-          { "Application Version", "tcp.options.rvbd.probe.appli_ver",
+          { "Application Version", "tcp_options_rvbd_probe_appli_ver",
             FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_client,
-          { "Client IP", "tcp.options.rvbd.probe.client.ip",
+          { "Client IP", "tcp_options_rvbd_probe_client_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_storeid,
-          { "CFE Store ID", "tcp.options.rvbd.probe.storeid",
+          { "CFE Store ID", "tcp_options_rvbd_probe_storeid",
             FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_flags,
-          { "Probe Flags", "tcp.options.rvbd.probe.flags",
+          { "Probe Flags", "tcp_options_rvbd_probe_flags",
             FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_flag_not_cfe,
-          { "Not CFE", "tcp.options.rvbd.probe.flags.notcfe",
+          { "Not CFE", "tcp_options_rvbd_probe_flags_notcfe",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), RVBD_FLAGS_PROBE_NCFE,
             NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_flag_last_notify,
-          { "Last Notify", "tcp.options.rvbd.probe.flags.last",
+          { "Last Notify", "tcp_options_rvbd_probe_flags_last",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), RVBD_FLAGS_PROBE_LAST,
             NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_flag_probe_cache,
-          { "Disable Probe Cache on CSH", "tcp.options.rvbd.probe.flags.probe",
+          { "Disable Probe Cache on CSH", "tcp_options_rvbd_probe_flags_probe",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), RVBD_FLAGS_PROBE,
             NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_flag_sslcert,
-          { "SSL Enabled", "tcp.options.rvbd.probe.flags.ssl",
+          { "SSL Enabled", "tcp_options_rvbd_probe_flags_ssl",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), RVBD_FLAGS_PROBE_SSLCERT,
             NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_flag_server_connected,
-          { "SSH outer to server established", "tcp.options.rvbd.probe.flags.server",
+          { "SSH outer to server established", "tcp_options_rvbd_probe_flags_server",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), RVBD_FLAGS_PROBE_SERVER,
             NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_flags,
-          { "Transparency Options", "tcp.options.rvbd.trpy.flags",
+          { "Transparency Options", "tcp_options_rvbd_trpy_flags",
             FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_flag_fw_rst_probe,
-          { "Enable FW traversal feature", "tcp.options.rvbd.trpy.flags.fw_rst_probe",
+          { "Enable FW traversal feature", "tcp_options_rvbd_trpy_flags_fw_rst_probe",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset),
             RVBD_FLAGS_TRPY_FW_RST_PROBE,
             "Reset state created by probe on the nexthop firewall",
             HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_flag_fw_rst_inner,
-          { "Enable Inner FW feature on All FWs", "tcp.options.rvbd.trpy.flags.fw_rst_inner",
+          { "Enable Inner FW feature on All FWs", "tcp_options_rvbd_trpy_flags_fw_rst_inner",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset),
             RVBD_FLAGS_TRPY_FW_RST_INNER,
             "Reset state created by transparent inner on all firewalls"
@@ -7565,129 +7565,129 @@ proto_register_tcp(void)
             HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_flag_fw_rst,
-          { "Enable Transparency FW feature on All FWs", "tcp.options.rvbd.trpy.flags.fw_rst",
+          { "Enable Transparency FW feature on All FWs", "tcp_options_rvbd_trpy_flags_fw_rst",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset),
             RVBD_FLAGS_TRPY_FW_RST,
             "Reset state created by probe on all firewalls before "
             "establishing transparent inner connection", HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_flag_chksum,
-          { "Reserved", "tcp.options.rvbd.trpy.flags.chksum",
+          { "Reserved", "tcp_options_rvbd_trpy_flags_chksum",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset),
             RVBD_FLAGS_TRPY_CHKSUM, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_flag_oob,
-          { "Out of band connection", "tcp.options.rvbd.trpy.flags.oob",
+          { "Out of band connection", "tcp_options_rvbd_trpy_flags_oob",
             FT_BOOLEAN, 16, TFS(&tfs_set_notset),
             RVBD_FLAGS_TRPY_OOB, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_flag_mode,
-          { "Transparency Mode", "tcp.options.rvbd.trpy.flags.mode",
+          { "Transparency Mode", "tcp_options_rvbd_trpy_flags_mode",
             FT_BOOLEAN, 16, TFS(&trpy_mode_str),
             RVBD_FLAGS_TRPY_MODE, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_src,
-          { "Src SH IP Addr", "tcp.options.rvbd.trpy.src.ip",
+          { "Src SH IP Addr", "tcp_options_rvbd_trpy_src_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_dst,
-          { "Dst SH IP Addr", "tcp.options.rvbd.trpy.dst.ip",
+          { "Dst SH IP Addr", "tcp_options_rvbd_trpy_dst_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_src_port,
-          { "Src SH Inner Port", "tcp.options.rvbd.trpy.src.port",
+          { "Src SH Inner Port", "tcp_options_rvbd_trpy_src_port",
             FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_dst_port,
-          { "Dst SH Inner Port", "tcp.options.rvbd.trpy.dst.port",
+          { "Dst SH Inner Port", "tcp_options_rvbd_trpy_dst_port",
             FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_trpy_client_port,
-          { "Out of band connection Client Port", "tcp.options.rvbd.trpy.client.port",
+          { "Out of band connection Client Port", "tcp_options_rvbd_trpy_client_port",
             FT_UINT16, BASE_DEC, NULL , 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_fast_open_cookie_request,
-          { "Fast Open Cookie Request", "tcp.options.tfo.request", FT_NONE,
+          { "Fast Open Cookie Request", "tcp_options_tfo_request", FT_NONE,
             BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_tcp_option_fast_open_cookie,
-          { "Fast Open Cookie", "tcp.options.tfo.cookie", FT_BYTES,
+          { "Fast Open Cookie", "tcp_options_tfo_cookie", FT_BYTES,
             BASE_NONE, NULL, 0x0, NULL, HFILL}},
 
         { &hf_tcp_pdu_time,
-          { "Time until the last segment of this PDU", "tcp.pdu.time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+          { "Time until the last segment of this PDU", "tcp_pdu_time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
             "How long time has passed until the last frame of this PDU", HFILL}},
 
         { &hf_tcp_pdu_size,
-          { "PDU Size", "tcp.pdu.size", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "PDU Size", "tcp_pdu_size", FT_UINT32, BASE_DEC, NULL, 0x0,
             "The size of this PDU", HFILL}},
 
         { &hf_tcp_pdu_last_frame,
-          { "Last frame of this PDU", "tcp.pdu.last_frame", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+          { "Last frame of this PDU", "tcp_pdu_last_frame", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "This is the last frame of the PDU starting in this segment", HFILL }},
 
         { &hf_tcp_ts_relative,
-          { "Time since first frame in this TCP stream", "tcp.time_relative", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+          { "Time since first frame in this TCP stream", "tcp_time_relative", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
             "Time relative to first frame in this TCP stream", HFILL}},
 
         { &hf_tcp_ts_delta,
-          { "Time since previous frame in this TCP stream", "tcp.time_delta", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+          { "Time since previous frame in this TCP stream", "tcp_time_delta", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
             "Time delta from previous frame in this TCP stream", HFILL}},
 
         { &hf_tcp_proc_src_uid,
-          { "Source process user ID", "tcp.proc.srcuid", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "Source process user ID", "tcp_proc_srcuid", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_proc_src_pid,
-          { "Source process ID", "tcp.proc.srcpid", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "Source process ID", "tcp_proc_srcpid", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_proc_src_uname,
-          { "Source process user name", "tcp.proc.srcuname", FT_STRING, BASE_NONE, NULL, 0x0,
+          { "Source process user name", "tcp_proc_srcuname", FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_proc_src_cmd,
-          { "Source process name", "tcp.proc.srccmd", FT_STRING, BASE_NONE, NULL, 0x0,
+          { "Source process name", "tcp_proc_srccmd", FT_STRING, BASE_NONE, NULL, 0x0,
             "Source process command name", HFILL}},
 
         { &hf_tcp_proc_dst_uid,
-          { "Destination process user ID", "tcp.proc.dstuid", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "Destination process user ID", "tcp_proc_dstuid", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_proc_dst_pid,
-          { "Destination process ID", "tcp.proc.dstpid", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "Destination process ID", "tcp_proc_dstpid", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_proc_dst_uname,
-          { "Destination process user name", "tcp.proc.dstuname", FT_STRING, BASE_NONE, NULL, 0x0,
+          { "Destination process user name", "tcp_proc_dstuname", FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL}},
 
         { &hf_tcp_proc_dst_cmd,
-          { "Destination process name", "tcp.proc.dstcmd", FT_STRING, BASE_NONE, NULL, 0x0,
+          { "Destination process name", "tcp_proc_dstcmd", FT_STRING, BASE_NONE, NULL, 0x0,
             "Destination process command name", HFILL}},
 
         { &hf_tcp_segment_data,
-          { "TCP segment data", "tcp.segment_data", FT_BYTES, BASE_NONE, NULL, 0x0,
+          { "TCP segment data", "tcp_segment_data", FT_BYTES, BASE_NONE, NULL, 0x0,
             "A data segment used in reassembly of a lower-level protocol", HFILL}},
 
         { &hf_tcp_payload,
-          { "TCP payload", "tcp.payload", FT_BYTES, BASE_NONE, NULL, 0x0,
+          { "TCP payload", "tcp_payload", FT_BYTES, BASE_NONE, NULL, 0x0,
             "The TCP payload of this packet", HFILL}},
 
         { &hf_tcp_option_scps_binding_data,
-          { "Binding Space Data", "tcp.options.scps.binding.data", FT_BYTES, BASE_NONE, NULL, 0x0,
+          { "Binding Space Data", "tcp_options_scps_binding_data", FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_option_rvbd_probe_reserved,
-          { "Reserved", "tcp.options.rvbd.probe.reserved", FT_UINT8, BASE_HEX, NULL, 0x0,
+          { "Reserved", "tcp_options_rvbd_probe_reserved", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_fin_retransmission,
-          { "Retransmission of FIN from frame", "tcp.fin_retransmission", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+          { "Retransmission of FIN from frame", "tcp_fin_retransmission", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_tcp_reset_cause,
-          { "Reset cause", "tcp.reset_cause", FT_STRING, BASE_NONE, NULL, 0x0,
+          { "Reset cause", "tcp_reset_cause", FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
     };
 

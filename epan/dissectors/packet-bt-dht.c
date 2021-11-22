@@ -555,67 +555,67 @@ proto_register_bt_dht(void)
 
   static hf_register_info hf[] = {
     { &hf_bencoded_string,
-      { "String", "bt-dht.bencoded.string",
+      { "String", "bt-dht_bencoded_string",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bencoded_list,
-      { "List", "bt-dht.bencoded.list",
+      { "List", "bt-dht_bencoded_list",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bencoded_int,
-      { "Int", "bt-dht.bencoded.int",
+      { "Int", "bt-dht_bencoded_int",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bencoded_dict,
-      { "Dictionary", "bt-dht.bencoded.dict",
+      { "Dictionary", "bt-dht_bencoded_dict",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bencoded_dict_entry,
-      { "Dictionary Entry", "bt-dht.bencoded.dict_entry",
+      { "Dictionary Entry", "bt-dht_bencoded_dict_entry",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bencoded_list_terminator,
-      { "Terminator", "bt-dht.bencoded.list.terminator",
+      { "Terminator", "bt-dht_bencoded_list_terminator",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bt_dht_error,
-      { "Error", "bt-dht.error",
+      { "Error", "bt-dht_error",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bt_dht_peer,
-      { "Peer", "bt-dht.peer",
+      { "Peer", "bt-dht_peer",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bt_dht_peers,
-      { "Peers", "bt-dht.peers",
+      { "Peers", "bt-dht_peers",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bt_dht_node,
-      { "Node", "bt-dht.node",
+      { "Node", "bt-dht_node",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bt_dht_nodes,
-      { "Nodes", "bt-dht.nodes",
+      { "Nodes", "bt-dht_nodes",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_bt_dht_id,
-      { "ID", "bt-dht.id",
+      { "ID", "bt-dht_id",
         FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_ip,
-      { "IP", "bt-dht.ip",
+      { "IP", "bt-dht_ip",
         FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_ip6,
-      { "IP", "bt-dht.ip6",
+      { "IP", "bt-dht_ip6",
         FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL }
     },
     { &hf_port,
-      { "Port", "bt-dht.port",
+      { "Port", "bt-dht_port",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }
     },
     { &hf_truncated_data,
-      { "Truncated data", "bt-dht.truncated_data",
+      { "Truncated data", "bt-dht_truncated_data",
         FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }
     }
   };

@@ -213,7 +213,7 @@ proto_register_ax25_nol3(void)
 #if 0 /* not used ? */
 	static hf_register_info hf[] = {
 		{ &hf_text,
-			{ "Text",			"ax25_nol3.text",
+			{ "Text",			"ax25_nol3_text",
 			FT_STRING, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }
 		},
@@ -222,7 +222,7 @@ proto_register_ax25_nol3(void)
 
 	static hf_register_info hf_dx[] = {
 		{ &hf_dx_report,
-			{ "DX",				"ax25_nol3.dx",
+			{ "DX",				"ax25_nol3_dx",
 			FT_STRING, BASE_NONE, NULL, 0x0,
 			"DX cluster", HFILL }
 		},

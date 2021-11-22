@@ -356,52 +356,52 @@ proto_register_ax25_kiss(void)
 	/* Setup list of header fields */
 	static hf_register_info hf[] = {
 		{ &hf_ax25_kiss_cmd,
-			{ "Cmd",			"ax25_kiss.cmd",
+			{ "Cmd",			"ax25_kiss_cmd",
 			FT_UINT8, BASE_DEC, VALS(kiss_frame_types), KISS_CMD_MASK,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_port,
-			{ "Port",			"ax25_kiss.port",
+			{ "Port",			"ax25_kiss_port",
 			FT_UINT8, BASE_DEC, NULL, KISS_PORT_MASK,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_txdelay,
-			{ "Tx delay",			"ax25_kiss.txdelay",
+			{ "Tx delay",			"ax25_kiss_txdelay",
 			FT_UINT8, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_persistence,
-			{ "Persistence",		"ax25_kiss.persistence",
+			{ "Persistence",		"ax25_kiss_persistence",
 			FT_UINT8, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_slottime,
-			{ "Slot time",			"ax25_kiss.slottime",
+			{ "Slot time",			"ax25_kiss_slottime",
 			FT_UINT8, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_txtail,
-			{ "Tx tail",			"ax25_kiss.txtail",
+			{ "Tx tail",			"ax25_kiss_txtail",
 			FT_UINT8, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_fullduplex,
-			{ "Full duplex",		"ax25_kiss.fullduplex",
+			{ "Full duplex",		"ax25_kiss_fullduplex",
 			FT_UINT8, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_sethardware,
-			{ "Set hardware",		"ax25_kiss.sethardware",
+			{ "Set hardware",		"ax25_kiss_sethardware",
 			FT_BYTES, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_data_ack,
-			{ "Data ack",		"ax25_kiss.data_ack",
+			{ "Data ack",		"ax25_kiss_data_ack",
 			FT_UINT16, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }
 		},
 		{ &hf_ax25_kiss_cksum,
-			{ "Checksum",		"ax25_kiss.cksum",
+			{ "Checksum",		"ax25_kiss_cksum",
 			FT_UINT16, BASE_HEX, NULL, 0x0,
 			NULL, HFILL }
 		},

@@ -524,7 +524,7 @@ proto_register_osi(void)
 {
   static hf_register_info hf[] = {
     { &hf_osi_nlpid,
-      { "Network Layer Protocol Identifier", "osi.nlpid", FT_UINT8, BASE_HEX,
+      { "Network Layer Protocol Identifier", "osi_nlpid", FT_UINT8, BASE_HEX,
         VALS(nlpid_vals), 0x0, NULL, HFILL }},
   };
   module_t *osi_module;

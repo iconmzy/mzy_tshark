@@ -683,7 +683,7 @@ proto_register_h263_data(void)
 			&hf_h263_psc,
 			{
 				"H.263 Picture start Code",
-				"h263.psc",
+				"h263_psc",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -694,7 +694,7 @@ proto_register_h263_data(void)
 		{ &hf_h263_gbsc,
 			{
 				"H.263 Group of Block Start Code",
-				"h263.gbsc",
+				"h263_gbsc",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -706,7 +706,7 @@ proto_register_h263_data(void)
 			&hf_h263_TR,
 			{
 				"H.263 Temporal Reference",
-				"h263.tr2",
+				"h263_tr2",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,
@@ -718,7 +718,7 @@ proto_register_h263_data(void)
 			&hf_h263_trb,
 			{
 				"Temporal Reference for B frames",
-				"h263.trb",
+				"h263_trb",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -730,7 +730,7 @@ proto_register_h263_data(void)
 			&hf_h263_split_screen_indicator,
 			{
 				"H.263 Split screen indicator",
-				"h263.split_screen_indicator",
+				"h263_split_screen_indicator",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&tfs_on_off),
@@ -742,7 +742,7 @@ proto_register_h263_data(void)
 			&hf_h263_document_camera_indicator,
 			{
 				"H.263 Document camera indicator",
-				"h263.document_camera_indicator",
+				"h263_document_camera_indicator",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&tfs_on_off),
@@ -754,7 +754,7 @@ proto_register_h263_data(void)
 			&hf_h263_full_picture_freeze_release,
 			{
 				"H.263 Full Picture Freeze Release",
-				"h263.split_screen_indicator",
+				"h263_split_screen_indicator",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&tfs_on_off),
@@ -766,7 +766,7 @@ proto_register_h263_data(void)
 			&hf_h263_source_format,
 			{
 				"H.263 Source Format",
-				"h263.source_format",
+				"h263_source_format",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(h263_srcformat_vals),
@@ -778,7 +778,7 @@ proto_register_h263_data(void)
 			&hf_h263_ext_source_format,
 			{
 				"H.263 Source Format",
-				"h263.ext_source_format",
+				"h263_ext_source_format",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(ext_srcformat_vals),
@@ -790,7 +790,7 @@ proto_register_h263_data(void)
 			&hf_h263_UFEP,
 			{
 				"H.263 Update Full Extended PTYPE",
-				"h263.ufep",
+				"h263_ufep",
 				FT_UINT16,
 				BASE_DEC,
 				VALS(h263_ufep_vals),
@@ -802,7 +802,7 @@ proto_register_h263_data(void)
 			&hf_h263_opptype,
 			{
 				"H.263 Optional Part of PLUSPTYPE",
-				"h263.opptype",
+				"h263_opptype",
 				FT_UINT24,
 				BASE_DEC,
 				NULL,
@@ -814,7 +814,7 @@ proto_register_h263_data(void)
 			&hf_h263_payload_picture_coding_type,
 			{
 				"H.263 Picture Coding Type",
-				"h263.picture_coding_type",
+				"h263_picture_coding_type",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&picture_coding_type_flg),
@@ -826,7 +826,7 @@ proto_register_h263_data(void)
 			&hf_h263_opt_unres_motion_vector_mode,
 			{
 				"H.263 Optional Unrestricted Motion Vector mode",
-				"h263.opt_unres_motion_vector_mode",
+				"h263_opt_unres_motion_vector_mode",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&tfs_on_off),
@@ -838,7 +838,7 @@ proto_register_h263_data(void)
 			&hf_h263_syntax_based_arithmetic_coding_mode,
 			{
 				"H.263 Optional Syntax-based Arithmetic Coding mode",
-				"h263.syntax_based_arithmetic_coding_mode",
+				"h263_syntax_based_arithmetic_coding_mode",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&tfs_on_off),
@@ -850,7 +850,7 @@ proto_register_h263_data(void)
 			&hf_h263_optional_advanced_prediction_mode,
 			{
 				"H.263 Optional Advanced Prediction mode",
-				"h263.optional_advanced_prediction_mode",
+				"h263_optional_advanced_prediction_mode",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&tfs_on_off),
@@ -862,7 +862,7 @@ proto_register_h263_data(void)
 			&hf_h263_PB_frames_mode,
 			{
 				"H.263 Optional PB-frames mode",
-				"h263.PB_frames_mode",
+				"h263_PB_frames_mode",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&PB_frames_mode_flg),
@@ -874,7 +874,7 @@ proto_register_h263_data(void)
 			&hf_h263_GN,
 			{
 				"H.263 Group Number",
-				"h263.gn",
+				"h263_gn",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,
@@ -886,7 +886,7 @@ proto_register_h263_data(void)
 			&hf_h263_pquant,
 			{
 				"H.263 Quantizer Information (PQUANT)",
-				"h263.pquant",
+				"h263_pquant",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,
@@ -898,7 +898,7 @@ proto_register_h263_data(void)
 			&hf_h263_cpm,
 			{
 				"H.263 Continuous Presence Multipoint and Video Multiplex (CPM)",
-				"h263.cpm",
+				"h263_cpm",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&tfs_on_off),
@@ -910,7 +910,7 @@ proto_register_h263_data(void)
 			&hf_h263_psbi,
 			{
 				"H.263 Picture Sub-Bitstream Indicator (PSBI)",
-				"h263.psbi",
+				"h263_psbi",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,
@@ -922,7 +922,7 @@ proto_register_h263_data(void)
 			&hf_h263_picture_type_code,
 			{
 				"H.263 Picture Type Code",
-				"h263.psi",
+				"h263_psi",
 				FT_UINT32,
 				BASE_DEC,
 				VALS(picture_type_code_vals),
@@ -934,7 +934,7 @@ proto_register_h263_data(void)
 			&hf_h263_custom_pcf,
 			{
 				"H.263 Custom PCF",
-				"h263.custom_pcf",
+				"h263_custom_pcf",
 				FT_BOOLEAN,
 				BASE_NONE,
 				TFS(&custom_pcf_flg),
@@ -946,7 +946,7 @@ proto_register_h263_data(void)
 			&hf_h263_pei,
 			{
 				"H.263 Extra Insertion Information (PEI)",
-				"h263.pei",
+				"h263_pei",
 				FT_BOOLEAN,
 				BASE_NONE,
 				NULL,
@@ -958,7 +958,7 @@ proto_register_h263_data(void)
 			&hf_h263_psupp,
 			{
 				"H.263 Supplemental Enhancement Information (PSUPP)",
-				"h263.psupp",
+				"h263_psupp",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,
@@ -970,7 +970,7 @@ proto_register_h263_data(void)
 			&hf_h263_data,
 			{
 				"H.263 stream",
-				"h263.stream",
+				"h263_stream",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -982,7 +982,7 @@ proto_register_h263_data(void)
 			&hf_h263_not_dissected,
 			{
 				"H.263 Bits currently not dissected",
-				"h263.not_dis",
+				"h263_not_dis",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,

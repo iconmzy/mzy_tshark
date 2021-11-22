@@ -1118,193 +1118,193 @@ proto_register_llcgprs(void)
 /* Setup list of header fields  See Section 1.6.1 for details */
 	static hf_register_info hf[] = {
 		{ &hf_llcgprs_sapi,
-		  { "SAPI", "llcgprs.sapi", FT_UINT8, BASE_DEC|BASE_EXT_STRING,
+		  { "SAPI", "llcgprs_sapi", FT_UINT8, BASE_DEC|BASE_EXT_STRING,
 		    &sapi_abrv_ext, 0x0, "Service Access Point Identifier", HFILL }},
 
 		{ &hf_llcgprs_pd,
-		  { "Protocol Discriminator_bit", "llcgprs.pd", FT_BOOLEAN, 8,
+		  { "Protocol Discriminator_bit", "llcgprs_pd", FT_BOOLEAN, 8,
 		    TFS(&pd_bit), 0x80, "Protocol Discriminator bit (should be 0)", HFILL }},
 
 		{ &hf_llcgprs_fcs,
-		  { "FCS", "llcgprs.fcs", FT_UINT24, BASE_HEX,
+		  { "FCS", "llcgprs_fcs", FT_UINT24, BASE_HEX,
 		    NULL, 0, NULL, HFILL }},
 
 		{ &hf_llcgprs_sjsd,
-		  { "Supervisory function bits", "llcgprs.s1s2", FT_UINT16, BASE_HEX,
+		  { "Supervisory function bits", "llcgprs_s1s2", FT_UINT16, BASE_HEX,
 		    VALS(cr_formats_ipluss), 0x3, NULL, HFILL }},
 
 		{ &hf_llcgprs_cr,
-		  { "Command/Response bit", "llcgprs.cr", FT_BOOLEAN, 8,
+		  { "Command/Response bit", "llcgprs_cr", FT_BOOLEAN, 8,
 		    TFS(&cr_bit), 0x40, NULL, HFILL }},
 
 		{ &hf_llcgprs_sapib,
-		  { "SAPI", "llcgprs.sapib", FT_UINT8, BASE_DEC|BASE_EXT_STRING ,
+		  { "SAPI", "llcgprs_sapib", FT_UINT8, BASE_DEC|BASE_EXT_STRING ,
 		    &sapi_t_ext, 0xf, "Service Access Point Identifier", HFILL }},
 
 		{ &hf_llcgprs_U_fmt,
-		  { "UI format", "llcgprs.ui", FT_UINT16, BASE_HEX,
+		  { "UI format", "llcgprs_ui", FT_UINT16, BASE_HEX,
 		    NULL, UI_MASK_FMT, "UI frame format", HFILL }},
 
 		{ &hf_llcgprs_Un,
-		  { "U format", "llcgprs.u", FT_UINT8, BASE_HEX,
+		  { "U format", "llcgprs_u", FT_UINT8, BASE_HEX,
 		    NULL, 0xe0, "U frame format", HFILL }},
 
 		{ &hf_llcgprs_sp_bits,
-		  { "Spare bits", "llcgprs.ui_sp_bit", FT_UINT16, BASE_HEX,
+		  { "Spare bits", "llcgprs_ui_sp_bit", FT_UINT16, BASE_HEX,
 		    NULL, UI_MASK_SPB, NULL, HFILL }},
 
 		{ &hf_llcgprs_NU,
-		  { "N(U)", "llcgprs.nu", FT_UINT16, BASE_DEC,
+		  { "N(U)", "llcgprs_nu", FT_UINT16, BASE_DEC,
 		    NULL, UI_MASK_NU, "Transmitted unconfirmed sequence number", HFILL }},
 
 		{ &hf_llcgprs_E_bit,
-		  { "E bit", "llcgprs.e", FT_BOOLEAN, 16,
+		  { "E bit", "llcgprs_e", FT_BOOLEAN, 16,
 		    TFS(&e_bit), UI_MASK_E, "Encryption mode bit", HFILL }},
 
 		{ &hf_llcgprs_PM_bit,
-		  { "PM bit", "llcgprs.pm", FT_BOOLEAN, 16,
+		  { "PM bit", "llcgprs_pm", FT_BOOLEAN, 16,
 		    TFS(&pm_bit), UI_MASK_PM, "Protected mode bit", HFILL }},
 
 		{ &hf_llcgprs_As,
-		  { "Ackn request bit", "llcgprs.as", FT_BOOLEAN, 16,
+		  { "Ackn request bit", "llcgprs_as", FT_BOOLEAN, 16,
 		    TFS(&a_bit), 0x2000 , "Acknowledgement request bit A", HFILL }},
 
 		{ &hf_llcgprs_PF,
-		  { "P/F bit", "llcgprs.pf", FT_BOOLEAN, 8,
+		  { "P/F bit", "llcgprs_pf", FT_BOOLEAN, 8,
 		    NULL, 0x10, "Poll/Final bit", HFILL }},
 
 		{ &hf_llcgprs_ucom,
-		  { "Command/Response", "llcgprs.ucom", FT_UINT8, BASE_HEX,
+		  { "Command/Response", "llcgprs_ucom", FT_UINT8, BASE_HEX,
 		    VALS(cr_formats_unnumb), 0xf, "Commands and Responses", HFILL }},
 
 		{ &hf_llcgprs_NR,
-		  { "Receive sequence number", "llcgprs.nr", FT_UINT16, BASE_DEC,
+		  { "Receive sequence number", "llcgprs_nr", FT_UINT16, BASE_DEC,
 		    NULL, UI_MASK_NU, "Receive sequence number N(R)", HFILL }},
 
 		{ &hf_llcgprs_S_fmt,
-		  { "S format", "llcgprs.s", FT_UINT16, BASE_HEX,
+		  { "S format", "llcgprs_s", FT_UINT16, BASE_HEX,
 		    NULL, 0xc000, "Supervisory format S", HFILL }},
 
 		{ &hf_llcgprs_kmask,
-		  { "ignored", "llcgprs.kmask", FT_UINT8, BASE_DEC,
+		  { "ignored", "llcgprs_kmask", FT_UINT8, BASE_DEC,
 		    NULL, 0xE0, NULL, HFILL }},
 
 		{ &hf_llcgprs_k,
-		  { "k", "llcgprs.k", FT_UINT8, BASE_DEC,
+		  { "k", "llcgprs_k", FT_UINT8, BASE_DEC,
 		    NULL, 0x1F, "k counter", HFILL }},
 
 		{ &hf_llcgprs_isack_ns,
-		  { "N(S)", "llcgprs.sackns", FT_UINT24, BASE_DEC,
+		  { "N(S)", "llcgprs_sackns", FT_UINT24, BASE_DEC,
 		    NULL, 0x1FF000, NULL, HFILL }},
 
 		{ &hf_llcgprs_isack_nr,
-		  { "N(R)", "llcgprs.sacknr", FT_UINT24, BASE_DEC,
+		  { "N(R)", "llcgprs_sacknr", FT_UINT24, BASE_DEC,
 		    NULL, 0x0007FC, NULL, HFILL }},
 
 		{ &hf_llcgprs_isack_sfb,
-		  { "Supervisory function bits", "llcgprs.sacksfb", FT_UINT24, BASE_HEX,
+		  { "Supervisory function bits", "llcgprs_sacksfb", FT_UINT24, BASE_HEX,
 		    VALS(cr_formats_ipluss), 0x000003, NULL, HFILL }},
 
 		{ &hf_llcgprs_ifmt,
-		  { "I Format", "llcgprs.ifmt", FT_UINT24, BASE_HEX,
+		  { "I Format", "llcgprs_ifmt", FT_UINT24, BASE_HEX,
 		    NULL, 0x800000, "I Fmt Bit", HFILL }},
 
 		{ &hf_llcgprs_Ai,
-		  { "Ackn request bit", "llcgprs.ai", FT_BOOLEAN, 24,
+		  { "Ackn request bit", "llcgprs_ai", FT_BOOLEAN, 24,
 		    TFS(&a_bit), 0x400000, "Acknowledgement request bit A", HFILL }},
 
 		{ &hf_llcgprs_izerobit,
-		  { "Spare", "llcgprs.iignore", FT_UINT24, BASE_DEC,
+		  { "Spare", "llcgprs_iignore", FT_UINT24, BASE_DEC,
 		    NULL, 0x200000, "Ignore Bit", HFILL }},
 
 		{ &hf_llcgprs_sspare,
-		  { "Spare", "llcgprs.sspare", FT_UINT16, BASE_DEC,
+		  { "Spare", "llcgprs_sspare", FT_UINT16, BASE_DEC,
 		    NULL, 0x1800, "Ignore Bit", HFILL }},
 
 		{ &hf_llcgprs_rbyte,
-		  { "R Bitmap Bits", "llcgprs.sackrbits", FT_UINT8, BASE_HEX,
+		  { "R Bitmap Bits", "llcgprs_sackrbits", FT_UINT8, BASE_HEX,
 		    NULL, 0xFF, "R Bitmap", HFILL }},
 
 		/* XID Parameter Parsing Info */
 		{ &hf_llcgprs_xid_xl,
-		  { "XL Bit", "llcgprs.xidxl", FT_UINT8, BASE_HEX,
+		  { "XL Bit", "llcgprs_xidxl", FT_UINT8, BASE_HEX,
 		    NULL, 0x80, "XL", HFILL }},
 
 		{ &hf_llcgprs_xid_type,
-		  { "Type", "llcgprs.xidtype", FT_UINT8, BASE_DEC,
+		  { "Type", "llcgprs_xidtype", FT_UINT8, BASE_DEC,
 		    NULL, 0x7C, NULL, HFILL }},
 
 		{ &hf_llcgprs_xid_len1,
-		  { "Length", "llcgprs.xidlen1", FT_UINT8, BASE_DEC,
+		  { "Length", "llcgprs_xidlen1", FT_UINT8, BASE_DEC,
 		    NULL, 0x03, NULL, HFILL }},
 
 		{ &hf_llcgprs_xid_len2,
-		  { "Length continued", "llcgprs.xidlen2", FT_UINT8, BASE_DEC,
+		  { "Length continued", "llcgprs_xidlen2", FT_UINT8, BASE_DEC,
 		    NULL, 0xFC, NULL, HFILL }},
 
 		{ &hf_llcgprs_xid_spare,
-		  { "Spare", "llcgprs.xidspare", FT_UINT8, BASE_HEX,
+		  { "Spare", "llcgprs_xidspare", FT_UINT8, BASE_HEX,
 		    NULL, 0x03, "Ignore", HFILL }},
 
 		{ &hf_llcgprs_xid_byte,
-		  { "Parameter Byte", "llcgprs.xidbyte", FT_UINT8, BASE_HEX,
+		  { "Parameter Byte", "llcgprs_xidbyte", FT_UINT8, BASE_HEX,
 		    NULL, 0xFF, "Data", HFILL }},
 
 		/* FRMR Parsing Information */
 		{ &hf_llcgprs_frmr_cf,
-		  { "Control Field Octet", "llcgprs.frmrrfcf", FT_UINT16, BASE_DEC,
+		  { "Control Field Octet", "llcgprs_frmrrfcf", FT_UINT16, BASE_DEC,
 		    NULL, 0xFFFF, "Rejected Frame CF", HFILL }},
 
 		{ &hf_llcgprs_frmr_spare,
-		  { "X", "llcgprs.frmrspare", FT_UINT32, BASE_HEX,
+		  { "X", "llcgprs_frmrspare", FT_UINT32, BASE_HEX,
 		    NULL, 0xF00400F0, "Filler", HFILL }},
 
 		{ &hf_llcgprs_frmr_vs,
-		  { "V(S)", "llcgprs.frmrvs", FT_UINT32, BASE_DEC,
+		  { "V(S)", "llcgprs_frmrvs", FT_UINT32, BASE_DEC,
 		    NULL, 0x0FF80000, "Current send state variable", HFILL }},
 
 		{ &hf_llcgprs_frmr_vr,
-		  { "V(R)", "llcgprs.frmrvr", FT_UINT32, BASE_DEC,
+		  { "V(R)", "llcgprs_frmrvr", FT_UINT32, BASE_DEC,
 		    NULL, 0x0003FE00, "Current receive state variable", HFILL }},
 
 		{ &hf_llcgprs_frmr_cr,
-		  { "C/R", "llcgprs.frmrcr", FT_UINT32, BASE_DEC,
+		  { "C/R", "llcgprs_frmrcr", FT_UINT32, BASE_DEC,
 		    NULL, 0x00000100, "Rejected command response", HFILL }},
 
 		{ &hf_llcgprs_frmr_w4,
-		  { "W4", "llcgprs.frmrw4", FT_UINT32, BASE_DEC,
+		  { "W4", "llcgprs_frmrw4", FT_UINT32, BASE_DEC,
 		    NULL, 0x00000008, "LLE was in ABM when rejecting", HFILL }},
 
 		{ &hf_llcgprs_frmr_w3,
-		  { "W3", "llcgprs.frmrw3", FT_UINT32, BASE_DEC,
+		  { "W3", "llcgprs_frmrw3", FT_UINT32, BASE_DEC,
 		    NULL, 0x00000004, "Undefined control field", HFILL }},
 
 		{ &hf_llcgprs_frmr_w2,
-		  { "W2", "llcgprs.frmrw2", FT_UINT32, BASE_DEC,
+		  { "W2", "llcgprs_frmrw2", FT_UINT32, BASE_DEC,
 		    NULL, 0x00000002, "Info exceeded N201", HFILL }},
 
 		{ &hf_llcgprs_frmr_w1,
-		  { "W1", "llcgprs.frmrw1", FT_UINT32, BASE_DEC,
+		  { "W1", "llcgprs_frmrw1", FT_UINT32, BASE_DEC,
 		    NULL, 0x00000001, "Invalid - info not permitted", HFILL }},
 
 		{ &hf_llcgprs_tom_rl,
-		  { "Remaining Length of TOM Protocol Header", "llcgprs.romrl", FT_UINT8, BASE_DEC,
+		  { "Remaining Length of TOM Protocol Header", "llcgprs_romrl", FT_UINT8, BASE_DEC,
 		    NULL, 0xF0, "RL", HFILL }},
 
 		{ &hf_llcgprs_tom_pd,
-		  { "TOM Protocol Discriminator", "llcgprs.tompd", FT_UINT8, BASE_HEX,
+		  { "TOM Protocol Discriminator", "llcgprs_tompd", FT_UINT8, BASE_HEX,
 		    NULL, 0x0F, "TPD", HFILL }},
 
 		{ &hf_llcgprs_tom_header,
-		  { "TOM Header Byte", "llcgprs.tomhead", FT_UINT8, BASE_HEX,
+		  { "TOM Header Byte", "llcgprs_tomhead", FT_UINT8, BASE_HEX,
 		    NULL, 0xFF, "thb", HFILL }},
 
 		{ &hf_llcgprs_tom_data,
-		  { "TOM Message Capsule Byte", "llcgprs.tomdata", FT_UINT8, BASE_HEX,
+		  { "TOM Message Capsule Byte", "llcgprs_tomdata", FT_UINT8, BASE_HEX,
 		    NULL, 0xFF, "tdb", HFILL }},
 
 		{ &hf_llcgprs_dummy_ui,
-		  { "Dummy UI Command", "llcgprs.dummy_ui", FT_BOOLEAN, BASE_NONE,
+		  { "Dummy UI Command", "llcgprs_dummy_ui", FT_BOOLEAN, BASE_NONE,
 		    NULL, 0x00, NULL, HFILL }},
 	};
 

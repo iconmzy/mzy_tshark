@@ -363,37 +363,37 @@ proto_register_adb_cs(void)
 
     static hf_register_info hf[] = {
         { &hf_role,
-            { "Role",                            "adb_cs.role",
+            { "Role",                            "adb_cs_role",
             FT_UINT8, BASE_HEX, VALS(role_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_hex_ascii_length,
-            { "Hex ASCII Length",                "adb_cs.hex_ascii_length",
+            { "Hex ASCII Length",                "adb_cs_hex_ascii_length",
             FT_STRING, STR_ASCII, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_length,
-            { "Length",                          "adb_cs.length",
+            { "Length",                          "adb_cs_length",
             FT_UINT32, BASE_DEC_HEX, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_service,
-            { "Service",                         "adb_cs.service",
+            { "Service",                         "adb_cs_service",
             FT_STRING, STR_ASCII, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_fail_reason,
-            { "Fail Reason",                     "adb_cs.fail_reason",
+            { "Fail Reason",                     "adb_cs_fail_reason",
             FT_STRING, STR_ASCII, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_status,
-            { "Status",                          "adb_cs.status",
+            { "Status",                          "adb_cs_status",
             FT_STRING, STR_ASCII, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_data,
-            { "Data",                            "adb_cs.data",
+            { "Data",                            "adb_cs_data",
             FT_BYTES, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },

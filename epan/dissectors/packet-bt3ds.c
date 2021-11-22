@@ -119,27 +119,27 @@ proto_register_bt3ds(void)
 
     static hf_register_info hf[] = {
         { &hf_message_opcode,
-            { "Message Opcode",                            "bt3ds.message_opcode",
+            { "Message Opcode",                            "bt3ds_message_opcode",
             FT_UINT8, BASE_HEX, VALS(message_opcode_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_association_notification,
-            { "Association Notification",                  "bt3ds.association_notification",
+            { "Association Notification",                  "bt3ds_association_notification",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL }
         },
         { &hf_user_request_for_battery_level_display,
-            { "User Request for Battery Level Display",    "bt3ds.user_request_for_battery_level_display",
+            { "User Request for Battery Level Display",    "bt3ds_user_request_for_battery_level_display",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL }
         },
         { &hf_reserved,
-            { "Reserved",                                  "bt3ds.reserved",
+            { "Reserved",                                  "bt3ds_reserved",
             FT_UINT8, BASE_HEX, NULL, 0xFC,
             NULL, HFILL }
         },
         { &hf_battery_level,
-            { "Battery Level",                             "bt3ds.battery_level",
+            { "Battery Level",                             "bt3ds_battery_level",
             FT_UINT8, BASE_DEC, NULL, 0x00,
             "0-100% of current charge level of battery", HFILL }
         }

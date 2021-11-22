@@ -2631,886 +2631,886 @@ proto_register_ntp(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_ntp_flags, {
-			"Flags", "ntp.flags", FT_UINT8, BASE_HEX,
+			"Flags", "ntp_flags", FT_UINT8, BASE_HEX,
 			NULL, 0, "Flags (Leap/Version/Mode)", HFILL }},
 		{ &hf_ntp_flags_li, {
-			"Leap Indicator", "ntp.flags.li", FT_UINT8, BASE_DEC,
+			"Leap Indicator", "ntp_flags_li", FT_UINT8, BASE_DEC,
 			VALS(li_types), NTP_LI_MASK, "Warning of an impending leap second to be inserted or deleted in the last minute of the current month", HFILL }},
 		{ &hf_ntp_flags_vn, {
-			"Version number", "ntp.flags.vn", FT_UINT8, BASE_DEC,
+			"Version number", "ntp_flags_vn", FT_UINT8, BASE_DEC,
 			VALS(ver_nums), NTP_VN_MASK, NULL, HFILL }},
 		{ &hf_ntp_flags_mode, {
-			"Mode", "ntp.flags.mode", FT_UINT8, BASE_DEC,
+			"Mode", "ntp_flags_mode", FT_UINT8, BASE_DEC,
 			VALS(mode_types), NTP_MODE_MASK, NULL, HFILL }},
 		{ &hf_ntp_stratum, {
-			"Peer Clock Stratum", "ntp.stratum", FT_UINT8, BASE_DEC|BASE_RANGE_STRING,
+			"Peer Clock Stratum", "ntp_stratum", FT_UINT8, BASE_DEC|BASE_RANGE_STRING,
 			RVALS(stratum_rvals), 0, NULL, HFILL }},
 		{ &hf_ntp_ppoll, {
-			"Peer Polling Interval", "ntp.ppoll", FT_UINT8, BASE_DEC,
+			"Peer Polling Interval", "ntp_ppoll", FT_UINT8, BASE_DEC,
 			NULL, 0, "Maximum interval between successive messages", HFILL }},
 		{ &hf_ntp_precision, {
-			"Peer Clock Precision", "ntp.precision", FT_UINT8, BASE_DEC,
+			"Peer Clock Precision", "ntp_precision", FT_UINT8, BASE_DEC,
 			NULL, 0, "The precision of the system clock", HFILL }},
 		{ &hf_ntp_rootdelay, {
-			"Root Delay", "ntp.rootdelay", FT_UINT32, BASE_DEC,
+			"Root Delay", "ntp_rootdelay", FT_UINT32, BASE_DEC,
 			NULL, 0, "Total round-trip delay to the reference clock", HFILL }},
 		{ &hf_ntp_rootdispersion, {
-			"Root Dispersion", "ntp.rootdispersion", FT_UINT32, BASE_DEC,
+			"Root Dispersion", "ntp_rootdispersion", FT_UINT32, BASE_DEC,
 			NULL, 0, "Total dispersion to the reference clock", HFILL }},
 		{ &hf_ntp_refid, {
-			"Reference ID", "ntp.refid", FT_BYTES, BASE_NONE,
+			"Reference ID", "ntp_refid", FT_BYTES, BASE_NONE,
 			NULL, 0, "Particular server or reference clock being used", HFILL }},
 		{ &hf_ntp_reftime, {
-			"Reference Timestamp", "ntp.reftime", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
+			"Reference Timestamp", "ntp_reftime", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
 			NULL, 0, "Time when the system clock was last set or corrected", HFILL }},
 		{ &hf_ntp_org, {
-			"Origin Timestamp", "ntp.org", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
+			"Origin Timestamp", "ntp_org", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
 			NULL, 0, "Time at the client when the request departed for the server", HFILL }},
 		{ &hf_ntp_rec, {
-			"Receive Timestamp", "ntp.rec", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
+			"Receive Timestamp", "ntp_rec", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
 			NULL, 0, "Time at the server when the request arrived from the client", HFILL }},
 		{ &hf_ntp_xmt, {
-			"Transmit Timestamp", "ntp.xmt", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
+			"Transmit Timestamp", "ntp_xmt", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
 			NULL, 0, "Time at the server when the response left for the client", HFILL }},
 		{ &hf_ntp_keyid, {
-			"Key ID", "ntp.keyid", FT_BYTES, BASE_NONE,
+			"Key ID", "ntp_keyid", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntp_mac, {
-			"Message Authentication Code", "ntp.mac", FT_BYTES, BASE_NONE,
+			"Message Authentication Code", "ntp_mac", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntp_padding, {
-			"Padding", "ntp.padding", FT_BYTES, BASE_NONE,
+			"Padding", "ntp_padding", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntp_key_type, {
-			"Key type", "ntp.key_type", FT_UINT8, BASE_DEC,
+			"Key type", "ntp_key_type", FT_UINT8, BASE_DEC,
 			VALS(authentication_types), 0, "Authentication algorithm used", HFILL }},
 		{ &hf_ntp_key_index, {
-			"KeyIndex", "ntp.key_index", FT_UINT32, BASE_HEX,
+			"KeyIndex", "ntp_key_index", FT_UINT32, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntp_key_signature, {
-			"Signature", "ntp.key_signature", FT_BYTES, BASE_NONE,
+			"Signature", "ntp_key_signature", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntp_response_in, {
-			"Response In", "ntp.response_in", FT_FRAMENUM, BASE_NONE,
+			"Response In", "ntp_response_in", FT_FRAMENUM, BASE_NONE,
 			FRAMENUM_TYPE(FT_FRAMENUM_RESPONSE), 0, NULL, HFILL }},
 		{ &hf_ntp_request_in, {
-			"Request In", "ntp.request_in", FT_FRAMENUM, BASE_NONE,
+			"Request In", "ntp_request_in", FT_FRAMENUM, BASE_NONE,
 			FRAMENUM_TYPE(FT_FRAMENUM_REQUEST), 0, NULL, HFILL }},
 		{ &hf_ntp_delta_time, {
-			"Delta Time", "ntp.delta_time", FT_RELATIVE_TIME, BASE_NONE,
+			"Delta Time", "ntp_delta_time", FT_RELATIVE_TIME, BASE_NONE,
 			NULL, 0, "Time between request and response", HFILL }},
 
 		{ &hf_ntp_ext, {
-			"Extension", "ntp.ext", FT_NONE, BASE_NONE,
+			"Extension", "ntp_ext", FT_NONE, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntp_ext_type, {
-			"Field Type", "ntp.ext.type", FT_UINT16, BASE_HEX,
+			"Field Type", "ntp_ext_type", FT_UINT16, BASE_HEX,
 			VALS(ntp_ext_field_types), 0, NULL, HFILL }},
 		{ &hf_ntp_ext_length, {
-			"Length", "ntp.ext.length", FT_UINT16, BASE_DEC,
+			"Length", "ntp_ext_length", FT_UINT16, BASE_DEC,
 			NULL, 0, "Entire extension length including padding", HFILL }},
 		{ &hf_ntp_ext_value, {
-			"Value", "ntp.ext.value", FT_BYTES, BASE_NONE,
+			"Value", "ntp_ext_value", FT_BYTES, BASE_NONE,
 			NULL, 0, "Type-specific value", HFILL }},
 
 		{ &hf_ntpctrl_flags2, {
-			"Flags 2", "ntp.ctrl.flags2", FT_UINT8, BASE_HEX,
+			"Flags 2", "ntp_ctrl_flags2", FT_UINT8, BASE_HEX,
 			NULL, 0, "Flags (Response/Error/More/Opcode)", HFILL }},
 		{ &hf_ntpctrl_flags2_r, {
-			"Response bit", "ntp.ctrl.flags2.r", FT_UINT8, BASE_DEC,
+			"Response bit", "ntp_ctrl_flags2_r", FT_UINT8, BASE_DEC,
 			VALS(ctrl_r_types), NTPCTRL_R_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_flags2_error, {
-			"Error bit", "ntp.ctrl.flags2.error", FT_UINT8, BASE_DEC,
+			"Error bit", "ntp_ctrl_flags2_error", FT_UINT8, BASE_DEC,
 			NULL, NTPCTRL_ERROR_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_flags2_more, {
-			"More bit", "ntp.ctrl.flags2.more", FT_UINT8, BASE_DEC,
+			"More bit", "ntp_ctrl_flags2_more", FT_UINT8, BASE_DEC,
 			NULL, NTPCTRL_MORE_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_flags2_opcode, {
-			"Opcode", "ntp.ctrl.flags2.opcode", FT_UINT8, BASE_DEC,
+			"Opcode", "ntp_ctrl_flags2_opcode", FT_UINT8, BASE_DEC,
 			VALS(ctrl_op_types), NTPCTRL_OP_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_sequence, {
-			"Sequence", "ntp.ctrl.sequence", FT_UINT16, BASE_DEC,
+			"Sequence", "ntp_ctrl_sequence", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_status, {
-			"Status", "ntp.ctrl.status", FT_UINT16, BASE_HEX,
+			"Status", "ntp_ctrl_status", FT_UINT16, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_error_status_word, {
-			"Error Status Word", "ntp.ctrl.err_status", FT_UINT16, BASE_DEC,
+			"Error Status Word", "ntp_ctrl_err_status", FT_UINT16, BASE_DEC,
 			VALS(ctrl_err_status_types), NTP_CTRL_ERRSTATUS_CODE_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_sys_status_li, {
-			"Leap Indicator", "ntp.ctrl.sys_status.li", FT_UINT16, BASE_DEC,
+			"Leap Indicator", "ntp_ctrl_sys_status_li", FT_UINT16, BASE_DEC,
 			VALS(li_types), NTPCTRL_SYSSTATUS_LI_MASK, "Warning of an impending leap second to be inserted or deleted in the last minute of the current month", HFILL }},
 		{ &hf_ntpctrl_sys_status_clksrc, {
-			"Clock Source", "ntp.ctrl.sys_status.clksrc", FT_UINT16, BASE_DEC,
+			"Clock Source", "ntp_ctrl_sys_status_clksrc", FT_UINT16, BASE_DEC,
 			VALS(ctrl_sys_status_clksource_types), NTPCTRL_SYSSTATUS_CLK_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_sys_status_count, {
-			"System Event Counter", "ntp.ctrl.sys_status.count", FT_UINT16, BASE_DEC,
+			"System Event Counter", "ntp_ctrl_sys_status_count", FT_UINT16, BASE_DEC,
 			NULL, NTPCTRL_SYSSTATUS_COUNT_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_sys_status_code, {
-			"System Event Code", "ntp.ctrl.sys_status.code", FT_UINT16, BASE_DEC,
+			"System Event Code", "ntp_ctrl_sys_status_code", FT_UINT16, BASE_DEC,
 			VALS(ctrl_sys_status_event_types), NTPCTRL_SYSSTATUS_CODE_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_peer_status_b0, {
-			"Peer Status", "ntp.ctrl.peer_status.config", FT_BOOLEAN, 16,
+			"Peer Status", "ntp_ctrl_peer_status_config", FT_BOOLEAN, 16,
 			TFS(&tfs_ctrl_peer_status_config), NTPCTRL_PEERSTATUS_CONFIG_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_peer_status_b1, {
-			"Peer Status", "ntp.ctrl.peer_status.authenable", FT_BOOLEAN, 16,
+			"Peer Status", "ntp_ctrl_peer_status_authenable", FT_BOOLEAN, 16,
 			TFS(&tfs_ctrl_peer_status_authenable), NTPCTRL_PEERSTATUS_AUTHENABLE_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_peer_status_b2, {
-			"Peer Status", "ntp.ctrl.peer_status.authentic", FT_BOOLEAN, 16,
+			"Peer Status", "ntp_ctrl_peer_status_authentic", FT_BOOLEAN, 16,
 			TFS(&tfs_ctrl_peer_status_authentic), NTPCTRL_PEERSTATUS_AUTHENTIC_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_peer_status_b3, {
-			"Peer Status", "ntp.ctrl.peer_status.reach", FT_BOOLEAN, 16,
+			"Peer Status", "ntp_ctrl_peer_status_reach", FT_BOOLEAN, 16,
 			TFS(&tfs_ctrl_peer_status_reach), NTPCTRL_PEERSTATUS_REACH_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_peer_status_b4, {
-			"Peer Status broadcast association", "ntp.ctrl.peer_status.bcast", FT_BOOLEAN, 16,
+			"Peer Status broadcast association", "ntp_ctrl_peer_status_bcast", FT_BOOLEAN, 16,
 			TFS(&tfs_set_notset), NTPCTRL_PEERSTATUS_BCAST_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_peer_status_selection, {
-			"Peer Selection", "ntp.ctrl.peer_status.selection", FT_UINT16, BASE_DEC,
+			"Peer Selection", "ntp_ctrl_peer_status_selection", FT_UINT16, BASE_DEC,
 			VALS(ctrl_peer_status_selection_types), NTPCTRL_PEERSTATUS_SEL_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_peer_status_count, {
-			"Peer Event Counter", "ntp.ctrl.peer_status.count", FT_UINT16, BASE_DEC,
+			"Peer Event Counter", "ntp_ctrl_peer_status_count", FT_UINT16, BASE_DEC,
 			NULL, NTPCTRL_PEERSTATUS_COUNT_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_peer_status_code, {
-			"Peer Event Code", "ntp.ctrl.peer_status.code", FT_UINT16, BASE_DEC,
+			"Peer Event Code", "ntp_ctrl_peer_status_code", FT_UINT16, BASE_DEC,
 			VALS(ctrl_peer_status_event_types), NTPCTRL_PEERSTATUS_CODE_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_clk_status, {
-			"Clock Status", "ntp.ctrl.clock_status.status", FT_UINT16, BASE_DEC,
+			"Clock Status", "ntp_ctrl_clock_status_status", FT_UINT16, BASE_DEC,
 			VALS(ctrl_clk_status_types), NTPCTRL_CLKSTATUS_STATUS_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_clk_status_code, {
-			"Clock Event Code", "ntp.ctrl.clock_status.code", FT_UINT16, BASE_DEC,
+			"Clock Event Code", "ntp_ctrl_clock_status_code", FT_UINT16, BASE_DEC,
 			NULL, NTPCTRL_CLKSTATUS_CODE_MASK, NULL, HFILL }},
 		{ &hf_ntpctrl_data, {
-			"Data", "ntp.ctrl.data", FT_NONE, BASE_NONE,
+			"Data", "ntp_ctrl_data", FT_NONE, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_item, {
-			"Item", "ntp.ctrl.item", FT_NONE, BASE_NONE,
+			"Item", "ntp_ctrl_item", FT_NONE, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_associd, {
-			"AssociationID", "ntp.ctrl.associd", FT_UINT16, BASE_DEC,
+			"AssociationID", "ntp_ctrl_associd", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_offset, {
-			"Offset", "ntp.ctrl.offset", FT_UINT16, BASE_DEC,
+			"Offset", "ntp_ctrl_offset", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_count, {
-			"Count", "ntp.ctrl.count", FT_UINT16, BASE_DEC,
+			"Count", "ntp_ctrl_count", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_trapmsg, {
-			"Trap message", "ntp.ctrl.trapmsg", FT_STRING, BASE_NONE,
+			"Trap message", "ntp_ctrl_trapmsg", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_configuration, {
-			"Configuration", "ntp.ctrl.configuration", FT_STRING, BASE_NONE,
+			"Configuration", "ntp_ctrl_configuration", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_mru, {
-			"MRU", "ntp.ctrl.mru", FT_STRING, BASE_NONE,
+			"MRU", "ntp_ctrl_mru", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_ordlist, {
-			"Ordered List", "ntp.ctrl.ordlist", FT_STRING, BASE_NONE,
+			"Ordered List", "ntp_ctrl_ordlist", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntpctrl_nonce, {
-			"Nonce", "ntp.ctrl.nonce", FT_STRING, BASE_NONE,
+			"Nonce", "ntp_ctrl_nonce", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_ntppriv_flags_r, {
-			"Response bit", "ntp.priv.flags.r", FT_UINT8, BASE_DEC,
+			"Response bit", "ntp_priv_flags_r", FT_UINT8, BASE_DEC,
 			VALS(priv_r_types), NTPPRIV_R_MASK, NULL, HFILL }},
 		{ &hf_ntppriv_flags_more, {
-			"More bit", "ntp.priv.flags.more", FT_UINT8, BASE_DEC,
+			"More bit", "ntp_priv_flags_more", FT_UINT8, BASE_DEC,
 			NULL, NTPPRIV_MORE_MASK, NULL, HFILL }},
 		{ &hf_ntppriv_auth_seq, {
-			"Auth, sequence", "ntp.priv.auth_seq", FT_UINT8, BASE_DEC,
+			"Auth, sequence", "ntp_priv_auth_seq", FT_UINT8, BASE_DEC,
 			NULL, 0, "Auth bit, sequence number", HFILL }},
 		{ &hf_ntppriv_auth, {
-			"Auth bit", "ntp.priv.auth", FT_UINT8, BASE_DEC,
+			"Auth bit", "ntp_priv_auth", FT_UINT8, BASE_DEC,
 			NULL, NTPPRIV_AUTH_MASK, NULL, HFILL }},
 		{ &hf_ntppriv_seq, {
-			"Sequence number", "ntp.priv.seq", FT_UINT8, BASE_DEC,
+			"Sequence number", "ntp_priv_seq", FT_UINT8, BASE_DEC,
 			NULL, NTPPRIV_SEQ_MASK, NULL, HFILL }},
 		{ &hf_ntppriv_impl, {
-			"Implementation", "ntp.priv.impl", FT_UINT8, BASE_DEC,
+			"Implementation", "ntp_priv_impl", FT_UINT8, BASE_DEC,
 			VALS(priv_impl_types), 0, NULL, HFILL }},
 		{ &hf_ntppriv_reqcode, {
-			"Request code", "ntp.priv.reqcode", FT_UINT8, BASE_DEC | BASE_EXT_STRING,
+			"Request code", "ntp_priv_reqcode", FT_UINT8, BASE_DEC | BASE_EXT_STRING,
 			&priv_rc_types_ext, 0, NULL, HFILL }},
 		{ &hf_ntppriv_errcode, {
-			"Err", "ntp.priv.err", FT_UINT8, BASE_HEX,
+			"Err", "ntp_priv_err", FT_UINT8, BASE_HEX,
 			VALS(err_values_types), 0, NULL, HFILL }},
 		{ &hf_ntppriv_numitems, {
-			"Number of data items", "ntp.priv.numitems", FT_UINT16, BASE_DEC,
+			"Number of data items", "ntp_priv_numitems", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mbz, {
-			"Reserved", "ntp.priv.reserved", FT_UINT8, BASE_HEX,
+			"Reserved", "ntp_priv_reserved", FT_UINT8, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_item, {
-			"Mode7 item", "ntp.priv.mode7.item",
+			"Mode7 item", "ntp_priv_mode7_item",
 			FT_STRINGZ, BASE_NONE, NULL, 0x00, NULL, HFILL }},
 		{ &hf_ntppriv_itemsize, {
-			"Size of data item", "ntp.priv.itemsize", FT_UINT16, BASE_DEC,
+			"Size of data item", "ntp_priv_itemsize", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_avgint, {
-			"avgint", "ntp.priv.monlist.avgint", FT_UINT32, BASE_DEC,
+			"avgint", "ntp_priv_monlist_avgint", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_lsint, {
-			"lsint", "ntp.priv.monlist.lsint", FT_UINT32, BASE_DEC,
+			"lsint", "ntp_priv_monlist_lsint", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_restr, {
-			"restr", "ntp.priv.monlist.restr", FT_UINT32, BASE_HEX,
+			"restr", "ntp_priv_monlist_restr", FT_UINT32, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_count, {
-			"count", "ntp.priv.monlist.count", FT_UINT32, BASE_DEC,
+			"count", "ntp_priv_monlist_count", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_addr, {
-			"remote address", "ntp.priv.monlist.remote_address", FT_IPv4, BASE_NONE,
+			"remote address", "ntp_priv_monlist_remote_address", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_daddr, {
-			"local address", "ntp.priv.monlist.local_address", FT_IPv4, BASE_NONE,
+			"local address", "ntp_priv_monlist_local_address", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_flags, {
-			"flags", "ntp.priv.monlist.flags", FT_UINT32, BASE_HEX,
+			"flags", "ntp_priv_monlist_flags", FT_UINT32, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_port, {
-			"port", "ntp.priv.monlist.port", FT_UINT16, BASE_DEC,
+			"port", "ntp_priv_monlist_port", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode, {
-			"mode", "ntp.priv.monlist.mode", FT_UINT8, BASE_DEC,
+			"mode", "ntp_priv_monlist_mode", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_version, {
-			"version", "ntp.priv.monlist.version", FT_UINT8, BASE_DEC,
+			"version", "ntp_priv_monlist_version", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_v6_flag, {
-			"ipv6", "ntp.priv.monlist.ipv6", FT_UINT32, BASE_HEX,
+			"ipv6", "ntp_priv_monlist_ipv6", FT_UINT32, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_unused, {
-			"unused", "ntp.priv.monlist.unused", FT_UINT32, BASE_HEX,
+			"unused", "ntp_priv_monlist_unused", FT_UINT32, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_addr6, {
-			"ipv6 remote addr", "ntp.priv.monlist.addr6", FT_IPv6, BASE_NONE,
+			"ipv6 remote addr", "ntp_priv_monlist_addr6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_daddr6, {
-			"ipv6 local addr", "ntp.priv.monlist.daddr6", FT_IPv6, BASE_NONE,
+			"ipv6 local addr", "ntp_priv_monlist_daddr6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_tstamp, {
-			"Authentication timestamp", "ntp.priv.tstamp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
+			"Authentication timestamp", "ntp_priv_tstamp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_NTP_UTC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_addr, {
-			"Address", "ntp.priv.mode7.address", FT_IPv4, BASE_NONE,
+			"Address", "ntp_priv_mode7_address", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_mask, {
-			"Mask", "ntp.priv.mode7.mask", FT_IPv4, BASE_NONE,
+			"Mask", "ntp_priv_mode7_mask", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_bcast, {
-			"Bcast", "ntp.priv.mode7.bcast", FT_IPv4, BASE_NONE,
+			"Bcast", "ntp_priv_mode7_bcast", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_port, {
-			"Port", "ntp.priv.mode7.port", FT_UINT16, BASE_DEC,
+			"Port", "ntp_priv_mode7_port", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_hmode, {
-			"HMode", "ntp.priv.mode7.hmode", FT_UINT8, BASE_DEC,
+			"HMode", "ntp_priv_mode7_hmode", FT_UINT8, BASE_DEC,
 			VALS(mode_types), 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags, {
-			"Flags", "ntp.priv.mode7.peer.flags", FT_UINT8, BASE_HEX,
+			"Flags", "ntp_priv_mode7_peer_flags", FT_UINT8, BASE_HEX,
 			NULL, 0xFF, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_v6_flag, {
-			"IPv6 Flag", "ntp.priv.mode7.ipv6_flag", FT_UINT32, BASE_DEC,
+			"IPv6 Flag", "ntp_priv_mode7_ipv6_flag", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_unused, {
-			"Unused", "ntp.priv.mode7.unused", FT_BYTES, BASE_NONE,
+			"Unused", "ntp_priv_mode7_unused", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_addr6, {
-			"IPv6 addr", "ntp.priv.mode7.address6", FT_IPv6, BASE_NONE,
+			"IPv6 addr", "ntp_priv_mode7_address6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_mask6, {
-			"IPv6 mask", "ntp.priv.mode7.mask6", FT_IPv6, BASE_NONE,
+			"IPv6 mask", "ntp_priv_mode7_mask6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_bcast6, {
-			"IPv6 bcast", "ntp.priv.mode7.bcast6", FT_IPv6, BASE_NONE,
+			"IPv6 bcast", "ntp_priv_mode7_bcast6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags_config, {
-			"Config", "ntp.priv.mode7.peer.flags.config", FT_BOOLEAN, 8,
+			"Config", "ntp_priv_mode7_peer_flags_config", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_INFO_FLAG_CONFIG, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags_syspeer, {
-			"Syspeer", "ntp.priv.mode7.peer.flags.syspeer", FT_BOOLEAN, 8,
+			"Syspeer", "ntp_priv_mode7_peer_flags_syspeer", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_INFO_FLAG_SYSPEER, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags_burst, {
-			"Burst", "ntp.priv.mode7.peer.flags.burst", FT_BOOLEAN, 8,
+			"Burst", "ntp_priv_mode7_peer_flags_burst", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_INFO_FLAG_BURST, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags_refclock, {
-			"Refclock", "ntp.priv.mode7.peer.flags.refclock", FT_BOOLEAN, 8,
+			"Refclock", "ntp_priv_mode7_peer_flags_refclock", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_INFO_FLAG_REFCLOCK, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags_prefer, {
-			"Prefer", "ntp.priv.mode7.peer.flags.prefer", FT_BOOLEAN, 8,
+			"Prefer", "ntp_priv_mode7_peer_flags_prefer", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_INFO_FLAG_PREFER, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags_authenable, {
-			"Auth enable", "ntp.priv.mode7.peer.flags.authenable", FT_BOOLEAN, 8,
+			"Auth enable", "ntp_priv_mode7_peer_flags_authenable", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_INFO_FLAG_AUTHENABLE, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags_sel_candidate, {
-			"Sel Candidate", "ntp.priv.mode7.peer.flags.sel_candidate", FT_BOOLEAN, 8,
+			"Sel Candidate", "ntp_priv_mode7_peer_flags_sel_candidate", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_INFO_FLAG_SEL_CANDIDATE, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peer_flags_shortlist, {
-			"Shortlist", "ntp.priv.mode7.peer.flags.shortlist", FT_BOOLEAN, 8,
+			"Shortlist", "ntp_priv_mode7_peer_flags_shortlist", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_INFO_FLAG_SHORTLIST, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_dstaddr, {
-			"Destination address", "ntp.priv.mode7.dstaddress", FT_IPv4, BASE_NONE,
+			"Destination address", "ntp_priv_mode7_dstaddress", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_srcaddr, {
-			"Source address", "ntp.priv.mode7.srcaddress", FT_IPv4, BASE_NONE,
+			"Source address", "ntp_priv_mode7_srcaddress", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_srcport, {
-			"Source port", "ntp.priv.mode7.srcport", FT_UINT16, BASE_DEC,
+			"Source port", "ntp_priv_mode7_srcport", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_count, {
-			"Count", "ntp.priv.mode7.count", FT_UINT32, BASE_DEC,
+			"Count", "ntp_priv_mode7_count", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_hpoll, {
-			"Host polling interval", "ntp.priv.mode7.hpoll", FT_INT8, BASE_DEC,
+			"Host polling interval", "ntp_priv_mode7_hpoll", FT_INT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reach, {
-			"Reach", "ntp.priv.mode7.reach", FT_UINT8, BASE_DEC,
+			"Reach", "ntp_priv_mode7_reach", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_delay, {
-			"Delay", "ntp.priv.mode7.delay", FT_INT32, BASE_DEC,
+			"Delay", "ntp_priv_mode7_delay", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_offset, {
-			"Offset", "ntp.priv.mode7.offset", FT_UINT64, BASE_DEC,
+			"Offset", "ntp_priv_mode7_offset", FT_UINT64, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_dispersion, {
-			"Dispersion", "ntp.priv.mode7.dispersion", FT_UINT32, BASE_DEC,
+			"Dispersion", "ntp_priv_mode7_dispersion", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_dstaddr6, {
-			"IPv6 destination addr", "ntp.priv.mode7.dstaddress6", FT_IPv6, BASE_NONE,
+			"IPv6 destination addr", "ntp_priv_mode7_dstaddress6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_srcaddr6, {
-			"IPv6 source addr", "ntp.priv.mode7.srcaddress6", FT_IPv6, BASE_NONE,
+			"IPv6 source addr", "ntp_priv_mode7_srcaddress6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_leap, {
-			"Leap", "ntp.priv.mode7.leap", FT_UINT8, BASE_DEC,
+			"Leap", "ntp_priv_mode7_leap", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_pmode, {
-			"Peer mode", "ntp.priv.mode7.pmode", FT_UINT8, BASE_DEC,
+			"Peer mode", "ntp_priv_mode7_pmode", FT_UINT8, BASE_DEC,
 			VALS(mode_types), 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_version, {
-			"Version", "ntp.priv.mode7.version", FT_UINT8, BASE_DEC,
+			"Version", "ntp_priv_mode7_version", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_unreach, {
-			"Unreach", "ntp.priv.mode7.unreach", FT_UINT8, BASE_DEC,
+			"Unreach", "ntp_priv_mode7_unreach", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_flash, {
-			"Flash", "ntp.priv.mode7.flash", FT_UINT8, BASE_DEC,
+			"Flash", "ntp_priv_mode7_flash", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_ttl, {
-			"TTL", "ntp.priv.mode7.ttl", FT_UINT8, BASE_DEC,
+			"TTL", "ntp_priv_mode7_ttl", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_flash2, {
-			"Flash new", "ntp.priv.mode7.flash2", FT_UINT16, BASE_DEC,
+			"Flash new", "ntp_priv_mode7_flash2", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_associd, {
-			"Association ID", "ntp.priv.mode7.associd", FT_UINT16, BASE_DEC,
+			"Association ID", "ntp_priv_mode7_associd", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_pkeyid, {
-			"Peer Key ID", "ntp.priv.mode7.pkeyid", FT_UINT32, BASE_DEC,
+			"Peer Key ID", "ntp_priv_mode7_pkeyid", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_timer, {
-			"Timer", "ntp.priv.mode7.timer", FT_UINT32, BASE_DEC,
+			"Timer", "ntp_priv_mode7_timer", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_filtdelay, {
-			"Filt delay", "ntp.priv.mode7.filtdelay", FT_INT32, BASE_DEC,
+			"Filt delay", "ntp_priv_mode7_filtdelay", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_filtoffset, {
-			"Filt offset", "ntp.priv.mode7.filtoffset", FT_INT64, BASE_DEC,
+			"Filt offset", "ntp_priv_mode7_filtoffset", FT_INT64, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_order, {
-			"Order", "ntp.priv.mode7.order", FT_UINT8, BASE_DEC,
+			"Order", "ntp_priv_mode7_order", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_selectdis, {
-			"Selectdis", "ntp.priv.mode7.selectdis", FT_UINT32, BASE_DEC,
+			"Selectdis", "ntp_priv_mode7_selectdis", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_estbdelay, {
-			"Estbdelay", "ntp.priv.mode7.estbdelay", FT_INT32, BASE_DEC,
+			"Estbdelay", "ntp_priv_mode7_estbdelay", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_bdelay, {
-			"Bdelay", "ntp.priv.mode7.bdelay", FT_INT32, BASE_DEC,
+			"Bdelay", "ntp_priv_mode7_bdelay", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_authdelay, {
-			"Auth delay", "ntp.priv.mode7.authdelay", FT_INT64, BASE_DEC,
+			"Auth delay", "ntp_priv_mode7_authdelay", FT_INT64, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_minpoll, {
-			"Minpoll", "ntp.priv.mode7.minpoll", FT_UINT8, BASE_DEC,
+			"Minpoll", "ntp_priv_mode7_minpoll", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_maxpoll, {
-			"Maxpoll", "ntp.priv.mode7.maxpoll", FT_UINT8, BASE_DEC,
+			"Maxpoll", "ntp_priv_mode7_maxpoll", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_config_flags, {
-			"Flags", "ntp.priv.config.flags", FT_UINT8, BASE_HEX,
+			"Flags", "ntp_priv_config_flags", FT_UINT8, BASE_HEX,
 			NULL, 0xFF, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_config_flags_auth, {
-			"Authenable", "ntp.priv.mode7.config.flags.authenable", FT_BOOLEAN, 8,
+			"Authenable", "ntp_priv_mode7_config_flags_authenable", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_CONF_FLAG_AUTHENABLE, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_config_flags_prefer, {
-			"Prefer", "ntp.priv.mode7.config.flags.prefer", FT_BOOLEAN, 8,
+			"Prefer", "ntp_priv_mode7_config_flags_prefer", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_CONF_FLAG_PREFER, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_config_flags_burst, {
-			"Burst", "ntp.priv.mode7.config.flags.burst", FT_BOOLEAN, 8,
+			"Burst", "ntp_priv_mode7_config_flags_burst", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_CONF_FLAG_BURST, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_config_flags_iburst, {
-			"IBurst", "ntp.priv.mode7.config.flags.iburst", FT_BOOLEAN, 8,
+			"IBurst", "ntp_priv_mode7_config_flags_iburst", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_CONF_FLAG_IBURST, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_config_flags_noselect, {
-			"No Select", "ntp.priv.mode7.config.flags.no_select", FT_BOOLEAN, 8,
+			"No Select", "ntp_priv_mode7_config_flags_no_select", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_CONF_FLAG_NOSELECT, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_config_flags_skey, {
-			"Skey", "ntp.priv.mode7.config.flags.skey", FT_BOOLEAN, 8,
+			"Skey", "ntp_priv_mode7_config_flags_skey", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_CONF_FLAG_SKEY, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_key_file, {
-			"Key file name", "ntp.priv.mode7.key_file", FT_STRING, BASE_NONE,
+			"Key file name", "ntp_priv_mode7_key_file", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags, {
-			"Flags", "ntp.priv.mode7.sys.flags", FT_UINT32, BASE_HEX,
+			"Flags", "ntp_priv_mode7_sys_flags", FT_UINT32, BASE_HEX,
 			NULL, 0xFF, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags_bclient, {
-			"Bclient", "ntp.priv.mode7.sys.flags.bclient", FT_BOOLEAN, 8,
+			"Bclient", "ntp_priv_mode7_sys_flags_bclient", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_SYS_FLAG_BCLIENT, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags_pps, {
-			"PPS", "ntp.priv.mode7.sys.flags.pps", FT_BOOLEAN, 8,
+			"PPS", "ntp_priv_mode7_sys_flags_pps", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_SYS_FLAG_PPS, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags_ntp, {
-			"NTP", "ntp.priv.mode7.sys.flags.ntp", FT_BOOLEAN, 8,
+			"NTP", "ntp_priv_mode7_sys_flags_ntp", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_SYS_FLAG_NTP, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags_kernel, {
-			"Kernel", "ntp.priv.mode7.sys.flags.kernel", FT_BOOLEAN, 8,
+			"Kernel", "ntp_priv_mode7_sys_flags_kernel", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_SYS_FLAG_KERNEL, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags_monitor, {
-			"Monitor", "ntp.priv.mode7.sys.flags.monitor", FT_BOOLEAN, 8,
+			"Monitor", "ntp_priv_mode7_sys_flags_monitor", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_SYS_FLAG_MONITOR, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags_filegen, {
-			"Filegen", "ntp.priv.mode7.sys.flags.filegen", FT_BOOLEAN, 8,
+			"Filegen", "ntp_priv_mode7_sys_flags_filegen", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_SYS_FLAG_FILEGEN, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags_auth, {
-			"Auth", "ntp.priv.mode7.sys.flags.auth", FT_BOOLEAN, 8,
+			"Auth", "ntp_priv_mode7_sys_flags_auth", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_SYS_FLAG_AUTH, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags_cal, {
-			"Cal", "ntp.priv.mode7.sys.flags.cal", FT_BOOLEAN, 8,
+			"Cal", "ntp_priv_mode7_sys_flags_cal", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), PRIV_SYS_FLAG_CAL, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reset_stats_flags, {
-			"Flags", "ntp.priv.mode7.reset_stats.flags", FT_UINT32, BASE_HEX,
+			"Flags", "ntp_priv_mode7_reset_stats_flags", FT_UINT32, BASE_HEX,
 			NULL, 0xFF, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reset_stats_flags_allpeers, {
-			"All Peers", "ntp.priv.mode7.reset_stats.flags.allpeers", FT_BOOLEAN, 32,
+			"All Peers", "ntp_priv_mode7_reset_stats_flags_allpeers", FT_BOOLEAN, 32,
 			TFS(&tfs_set_notset), PRIV_RESET_FLAG_ALLPEERS, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reset_stats_flags_io, {
-			"IO", "ntp.priv.mode7.reset_stats.flags.io", FT_BOOLEAN, 32,
+			"IO", "ntp_priv_mode7_reset_stats_flags_io", FT_BOOLEAN, 32,
 			TFS(&tfs_set_notset), PRIV_RESET_FLAG_IO, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reset_stats_flags_sys, {
-			"Sys", "ntp.priv.mode7.reset_stats.flags.sys", FT_BOOLEAN, 32,
+			"Sys", "ntp_priv_mode7_reset_stats_flags_sys", FT_BOOLEAN, 32,
 			TFS(&tfs_set_notset), PRIV_RESET_FLAG_SYS, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reset_stats_flags_mem, {
-			"Mem", "ntp.priv.mode7.reset_stats.flags.mem", FT_BOOLEAN, 32,
+			"Mem", "ntp_priv_mode7_reset_stats_flags_mem", FT_BOOLEAN, 32,
 			TFS(&tfs_set_notset), PRIV_RESET_FLAG_MEM, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reset_stats_flags_timer, {
-			"Timer", "ntp.priv.mode7.reset_stats.flags.timer", FT_BOOLEAN, 32,
+			"Timer", "ntp_priv_mode7_reset_stats_flags_timer", FT_BOOLEAN, 32,
 			TFS(&tfs_set_notset), PRIV_RESET_FLAG_TIMER, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reset_stats_flags_auth, {
-			"Auth", "ntp.priv.mode7.reset_stats.flags.auth", FT_BOOLEAN, 32,
+			"Auth", "ntp_priv_mode7_reset_stats_flags_auth", FT_BOOLEAN, 32,
 			TFS(&tfs_set_notset), PRIV_RESET_FLAG_AUTH, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_reset_stats_flags_ctl, {
-			"Ctl", "ntp.priv.mode7.reset_stats.flags.ctl", FT_BOOLEAN, 32,
+			"Ctl", "ntp_priv_mode7_reset_stats_flags_ctl", FT_BOOLEAN, 32,
 			TFS(&tfs_set_notset), PRIV_RESET_FLAG_CTL, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_key, {
-			"Key", "ntp.priv.mode7.key", FT_UINT64, BASE_HEX,
+			"Key", "ntp_priv_mode7_key", FT_UINT64, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_timeup, {
-			"Time up", "ntp.priv.mode7.timeup", FT_UINT32, BASE_DEC,
+			"Time up", "ntp_priv_mode7_timeup", FT_UINT32, BASE_DEC,
 			NULL, 0, "time counters were reset", HFILL }},
 		{ &hf_ntppriv_mode7_timereset, {
-			"Time reset", "ntp.priv.mode7.timereset", FT_UINT32, BASE_DEC,
+			"Time reset", "ntp_priv_mode7_timereset", FT_UINT32, BASE_DEC,
 			NULL, 0, "time counters were reset", HFILL }},
 		{ &hf_ntppriv_mode7_timereceived, {
-			"Time received", "ntp.priv.mode7.timereceived", FT_UINT32, BASE_DEC,
+			"Time received", "ntp_priv_mode7_timereceived", FT_UINT32, BASE_DEC,
 			NULL, 0, "time since a packet received", HFILL }},
 		{ &hf_ntppriv_mode7_timetosend, {
-			"Time to send", "ntp.priv.mode7.timetosend", FT_UINT32, BASE_DEC,
+			"Time to send", "ntp_priv_mode7_timetosend", FT_UINT32, BASE_DEC,
 			NULL, 0, "time until a packet sent", HFILL }},
 		{ &hf_ntppriv_mode7_timereachable, {
-			"Time reachable", "ntp.priv.mode7.timereachable", FT_UINT32, BASE_DEC,
+			"Time reachable", "ntp_priv_mode7_timereachable", FT_UINT32, BASE_DEC,
 			NULL, 0, "time peer has been reachable", HFILL }},
 		{ &hf_ntppriv_mode7_sent, {
-			"Sent", "ntp.priv.mode7.sent", FT_UINT32, BASE_DEC,
+			"Sent", "ntp_priv_mode7_sent", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_processed, {
-			"Processed", "ntp.priv.mode7.processed", FT_UINT32, BASE_DEC,
+			"Processed", "ntp_priv_mode7_processed", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_badauth, {
-			"Bad authentication", "ntp.priv.mode7.badauth", FT_UINT32, BASE_DEC,
+			"Bad authentication", "ntp_priv_mode7_badauth", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_bogusorg, {
-			"Bogus origin", "ntp.priv.mode7.bogusorg", FT_UINT32, BASE_DEC,
+			"Bogus origin", "ntp_priv_mode7_bogusorg", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_oldpkt, {
-			"Old packet", "ntp.priv.mode7.oldpkt", FT_UINT32, BASE_DEC,
+			"Old packet", "ntp_priv_mode7_oldpkt", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_seldisp, {
-			"Bad dispersion", "ntp.priv.mode7.seldisp", FT_UINT32, BASE_DEC,
+			"Bad dispersion", "ntp_priv_mode7_seldisp", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_selbroken, {
-			"Bad reference time", "ntp.priv.mode7.selbroken", FT_UINT32, BASE_DEC,
+			"Bad reference time", "ntp_priv_mode7_selbroken", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_candidate, {
-			"Candidate", "ntp.priv.mode7.candidate", FT_UINT32, BASE_DEC,
+			"Candidate", "ntp_priv_mode7_candidate", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_numkeys, {
-			"Num keys", "ntp.priv.mode7.numkeys", FT_UINT32, BASE_DEC,
+			"Num keys", "ntp_priv_mode7_numkeys", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_numfreekeys, {
-			"Num free keys", "ntp.priv.mode7.numfreekeys", FT_UINT32, BASE_DEC,
+			"Num free keys", "ntp_priv_mode7_numfreekeys", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_keylookups, {
-			"Keylookups", "ntp.priv.mode7.keylookups", FT_UINT32, BASE_DEC,
+			"Keylookups", "ntp_priv_mode7_keylookups", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_keynotfound, {
-			"Key not found", "ntp.priv.mode7.keynotfound", FT_UINT32, BASE_DEC,
+			"Key not found", "ntp_priv_mode7_keynotfound", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_encryptions, {
-			"Encryptions", "ntp.priv.mode7.encryptions", FT_UINT32, BASE_DEC,
+			"Encryptions", "ntp_priv_mode7_encryptions", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_decryptions, {
-			"Decryptions", "ntp.priv.mode7.decryptions", FT_UINT32, BASE_DEC,
+			"Decryptions", "ntp_priv_mode7_decryptions", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_expired, {
-			"Expired", "ntp.priv.mode7.expired", FT_UINT32, BASE_DEC,
+			"Expired", "ntp_priv_mode7_expired", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_keyuncached, {
-			"Key uncached", "ntp.priv.mode7.keyuncached", FT_UINT32, BASE_DEC,
+			"Key uncached", "ntp_priv_mode7_keyuncached", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_local_addr, {
-			"Local address", "ntp.priv.mode7.local_address", FT_IPv4, BASE_NONE,
+			"Local address", "ntp_priv_mode7_local_address", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_trap_addr, {
-			"Trap address", "ntp.priv.mode7.trap_address", FT_IPv4, BASE_NONE,
+			"Trap address", "ntp_priv_mode7_trap_address", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_trap_port, {
-			"Trap port", "ntp.priv.mode7.trap_port", FT_UINT16, BASE_DEC,
+			"Trap port", "ntp_priv_mode7_trap_port", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sequence, {
-			"Sequence number", "ntp.priv.mode7.sequence", FT_UINT16, BASE_DEC,
+			"Sequence number", "ntp_priv_mode7_sequence", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_settime, {
-			"Trap set time", "ntp.priv.mode7.settime", FT_UINT32, BASE_DEC,
+			"Trap set time", "ntp_priv_mode7_settime", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_origtime, {
-			"Trap originally time", "ntp.priv.mode7.origtime", FT_UINT32, BASE_DEC,
+			"Trap originally time", "ntp_priv_mode7_origtime", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_resets, {
-			"Resets", "ntp.priv.mode7.resets", FT_UINT32, BASE_DEC,
+			"Resets", "ntp_priv_mode7_resets", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_traps_flags, {
-			"Flags", "ntp.priv.traps.flags", FT_UINT32, BASE_HEX,
+			"Flags", "ntp_priv_traps_flags", FT_UINT32, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_local_addr6, {
-			"IPv6 local addr", "ntp.priv.mode7.local_address6", FT_IPv6, BASE_NONE,
+			"IPv6 local addr", "ntp_priv_mode7_local_address6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_trap_addr6, {
-			"IPv6 trap addr", "ntp.priv.mode7.trap_address6", FT_IPv6, BASE_NONE,
+			"IPv6 trap addr", "ntp_priv_mode7_trap_address6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_req, {
-			"Requests", "ntp.priv.mode7.requests", FT_UINT32, BASE_DEC,
+			"Requests", "ntp_priv_mode7_requests", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_badpkts, {
-			"Bad packets", "ntp.priv.mode7.bad_packets", FT_UINT32, BASE_DEC,
+			"Bad packets", "ntp_priv_mode7_bad_packets", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_responses, {
-			"Responses", "ntp.priv.mode7.responses", FT_UINT32, BASE_DEC,
+			"Responses", "ntp_priv_mode7_responses", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_frags, {
-			"Fragments", "ntp.priv.mode7.fragments", FT_UINT32, BASE_DEC,
+			"Fragments", "ntp_priv_mode7_fragments", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_errors, {
-			"Errors", "ntp.priv.mode7.errors", FT_UINT32, BASE_DEC,
+			"Errors", "ntp_priv_mode7_errors", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_tooshort, {
-			"Too short packets", "ntp.priv.mode7.too_short", FT_UINT32, BASE_DEC,
+			"Too short packets", "ntp_priv_mode7_too_short", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_inputresp, {
-			"Responses on input", "ntp.priv.mode7.input_responses", FT_UINT32, BASE_DEC,
+			"Responses on input", "ntp_priv_mode7_input_responses", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_inputfrag, {
-			"Fragments on input", "ntp.priv.mode7.input_fragments", FT_UINT32, BASE_DEC,
+			"Fragments on input", "ntp_priv_mode7_input_fragments", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_inputerr, {
-			"Errors on input", "ntp.priv.mode7.input_errors", FT_UINT32, BASE_DEC,
+			"Errors on input", "ntp_priv_mode7_input_errors", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_badoffset, {
-			"Non zero offset packets", "ntp.priv.mode7.bad_offset", FT_UINT32, BASE_DEC,
+			"Non zero offset packets", "ntp_priv_mode7_bad_offset", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_badversion, {
-			"Unknown version packets", "ntp.priv.mode7.bad_version", FT_UINT32, BASE_DEC,
+			"Unknown version packets", "ntp_priv_mode7_bad_version", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_datatooshort, {
-			"Data too short", "ntp.priv.mode7.data_too_short", FT_UINT32, BASE_DEC,
+			"Data too short", "ntp_priv_mode7_data_too_short", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_badop, {
-			"Bad op code found", "ntp.priv.mode7.badop", FT_UINT32, BASE_DEC,
+			"Bad op code found", "ntp_priv_mode7_badop", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_asyncmsgs, {
-			"Async messages", "ntp.priv.mode7.async_messages", FT_UINT32, BASE_DEC,
+			"Async messages", "ntp_priv_mode7_async_messages", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_type, {
-			"Type", "ntp.priv.mode7.type", FT_UINT8, BASE_DEC,
+			"Type", "ntp_priv_mode7_type", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_clock_flags, {
-			"Clock Flags", "ntp.priv.mode7.clock_flags", FT_UINT8, BASE_DEC,
+			"Clock Flags", "ntp_priv_mode7_clock_flags", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_lastevent, {
-			"Last event", "ntp.priv.mode7.lastevent", FT_UINT8, BASE_DEC,
+			"Last event", "ntp_priv_mode7_lastevent", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_currentstatus, {
-			"Current status", "ntp.priv.mode7.currentstatus", FT_UINT8, BASE_DEC,
+			"Current status", "ntp_priv_mode7_currentstatus", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_polls, {
-			"Polls", "ntp.priv.mode7.polls", FT_UINT32, BASE_DEC,
+			"Polls", "ntp_priv_mode7_polls", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_noresponse, {
-			"Noresponse", "ntp.priv.mode7.noresponse", FT_UINT32, BASE_DEC,
+			"Noresponse", "ntp_priv_mode7_noresponse", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_badformat, {
-			"Bad format", "ntp.priv.mode7.badformat", FT_UINT32, BASE_DEC,
+			"Bad format", "ntp_priv_mode7_badformat", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_baddata, {
-			"Bad data", "ntp.priv.mode7.baddata", FT_UINT32, BASE_DEC,
+			"Bad data", "ntp_priv_mode7_baddata", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_timestarted, {
-			"Time started", "ntp.priv.mode7.timestarted", FT_UINT32, BASE_DEC,
+			"Time started", "ntp_priv_mode7_timestarted", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_fudgetime1, {
-			"Fudge time 1", "ntp.priv.mode7.fudgetime1", FT_UINT64, BASE_HEX,
+			"Fudge time 1", "ntp_priv_mode7_fudgetime1", FT_UINT64, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_fudgetime2, {
-			"Fudge time 2", "ntp.priv.mode7.fudgetime2", FT_UINT64, BASE_HEX,
+			"Fudge time 2", "ntp_priv_mode7_fudgetime2", FT_UINT64, BASE_HEX,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_fudgeval1, {
-			"Fudge val 1", "ntp.priv.mode7.fudgeval1", FT_INT32, BASE_DEC,
+			"Fudge val 1", "ntp_priv_mode7_fudgeval1", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_fudgeval2, {
-			"Fudge val 2", "ntp.priv.mode7.fudgeval2", FT_UINT32, BASE_DEC,
+			"Fudge val 2", "ntp_priv_mode7_fudgeval2", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_kernel_offset, {
-			"Offset", "ntp.priv.mode7.kernel_offset", FT_INT32, BASE_DEC,
+			"Offset", "ntp_priv_mode7_kernel_offset", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_freq, {
-			"Freq", "ntp.priv.mode7.freq", FT_INT32, BASE_DEC,
+			"Freq", "ntp_priv_mode7_freq", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_stability, {
-			"Stability (ppm)", "ntp.priv.mode7.stability", FT_UINT32, BASE_DEC,
+			"Stability (ppm)", "ntp_priv_mode7_stability", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_maxerror, {
-			"Max error", "ntp.priv.mode7.maxerror", FT_INT32, BASE_DEC,
+			"Max error", "ntp_priv_mode7_maxerror", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_esterror, {
-			"Est error", "ntp.priv.mode7.esterror", FT_INT32, BASE_DEC,
+			"Est error", "ntp_priv_mode7_esterror", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_status, {
-			"Status", "ntp.priv.mode7.status", FT_UINT16, BASE_DEC,
+			"Status", "ntp_priv_mode7_status", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_shift, {
-			"Shift", "ntp.priv.mode7.shift", FT_UINT16, BASE_DEC,
+			"Shift", "ntp_priv_mode7_shift", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_constant, {
-			"Constant", "ntp.priv.mode7.constant", FT_INT32, BASE_DEC,
+			"Constant", "ntp_priv_mode7_constant", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_precision, {
-			"Precision", "ntp.priv.mode7.precision", FT_INT32, BASE_DEC,
+			"Precision", "ntp_priv_mode7_precision", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_tolerance, {
-			"tolerance", "ntp.priv.mode7.tolerance", FT_INT32, BASE_DEC,
+			"tolerance", "ntp_priv_mode7_tolerance", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_ppsfreq, {
-			"ppsfreq", "ntp.priv.mode7.ppsfreq", FT_INT32, BASE_DEC,
+			"ppsfreq", "ntp_priv_mode7_ppsfreq", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_jitter, {
-			"jitter", "ntp.priv.mode7.jitter", FT_INT32, BASE_DEC,
+			"jitter", "ntp_priv_mode7_jitter", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_stabil, {
-			"stabil", "ntp.priv.mode7.stabil", FT_INT32, BASE_DEC,
+			"stabil", "ntp_priv_mode7_stabil", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_jitcnt, {
-			"jitcnt", "ntp.priv.mode7.jitcnt", FT_INT32, BASE_DEC,
+			"jitcnt", "ntp_priv_mode7_jitcnt", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_calcnt, {
-			"calcnt", "ntp.priv.mode7.calcnt", FT_INT32, BASE_DEC,
+			"calcnt", "ntp_priv_mode7_calcnt", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_errcnt, {
-			"errcnt", "ntp.priv.mode7.errcnt", FT_INT32, BASE_DEC,
+			"errcnt", "ntp_priv_mode7_errcnt", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_stbcnt, {
-			"stbcnt", "ntp.priv.mode7.stbcnt", FT_INT32, BASE_DEC,
+			"stbcnt", "ntp_priv_mode7_stbcnt", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_last_offset, {
-			"Last offset", "ntp.priv.mode7.last_offset", FT_INT64, BASE_DEC,
+			"Last offset", "ntp_priv_mode7_last_offset", FT_INT64, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_drift_comp, {
-			"Drift comp", "ntp.priv.mode7.drift_comp", FT_INT64, BASE_DEC,
+			"Drift comp", "ntp_priv_mode7_drift_comp", FT_INT64, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_compliance, {
-			"Compliance", "ntp.priv.mode7.compliance", FT_UINT32, BASE_DEC,
+			"Compliance", "ntp_priv_mode7_compliance", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_watchdog_timer, {
-			"Watchdog timer", "ntp.priv.mode7.watchdog_timer", FT_UINT32, BASE_DEC,
+			"Watchdog timer", "ntp_priv_mode7_watchdog_timer", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_poll32, {
-			"Poll", "ntp.priv.mode7.poll", FT_UINT32, BASE_DEC,
+			"Poll", "ntp_priv_mode7_poll", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_sys_flags8, {
-			"Flags", "ntp.priv.mode7.sys.flags8", FT_UINT8, BASE_HEX,
+			"Flags", "ntp_priv_mode7_sys_flags8", FT_UINT8, BASE_HEX,
 			NULL, 0xFF, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_denied, {
-			"Denied", "ntp.priv.mode7.denied", FT_UINT32, BASE_DEC,
+			"Denied", "ntp_priv_mode7_denied", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_oldversion, {
-			"Old version", "ntp.priv.mode7.oldversion", FT_UINT32, BASE_DEC,
+			"Old version", "ntp_priv_mode7_oldversion", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_newversion, {
-			"New version", "ntp.priv.mode7.newversion", FT_UINT32, BASE_DEC,
+			"New version", "ntp_priv_mode7_newversion", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_badlength, {
-			"Bad length", "ntp.priv.mode7.badlength", FT_UINT32, BASE_DEC,
+			"Bad length", "ntp_priv_mode7_badlength", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_limitrejected, {
-			"Limit rejected", "ntp.priv.mode7.limitrejected", FT_UINT32, BASE_DEC,
+			"Limit rejected", "ntp_priv_mode7_limitrejected", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_lamport, {
-			"Lamport violation", "ntp.priv.mode7.lamport", FT_UINT32, BASE_DEC,
+			"Lamport violation", "ntp_priv_mode7_lamport", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_tsrounding, {
-			"Timestamp rounding error", "ntp.priv.mode7.tsrounding", FT_UINT32, BASE_DEC,
+			"Timestamp rounding error", "ntp_priv_mode7_tsrounding", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_totalmem, {
-			"Total memory", "ntp.priv.mode7.totalmem", FT_UINT16, BASE_DEC,
+			"Total memory", "ntp_priv_mode7_totalmem", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_freemem, {
-			"Free memory", "ntp.priv.mode7.freemem", FT_UINT16, BASE_DEC,
+			"Free memory", "ntp_priv_mode7_freemem", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_findpeer_calls, {
-			"Find peer calls", "ntp.priv.mode7.findpeer_calls", FT_UINT32, BASE_DEC,
+			"Find peer calls", "ntp_priv_mode7_findpeer_calls", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_allocations, {
-			"Allocations", "ntp.priv.mode7.allocations", FT_UINT32, BASE_DEC,
+			"Allocations", "ntp_priv_mode7_allocations", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_demobilizations, {
-			"Demobilizations", "ntp.priv.mode7.demobilizations", FT_UINT32, BASE_DEC,
+			"Demobilizations", "ntp_priv_mode7_demobilizations", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_hashcount, {
-			"Hashcount", "ntp.priv.mode7.hashcount", FT_BYTES, BASE_NONE,
+			"Hashcount", "ntp_priv_mode7_hashcount", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_totalrecvbufs, {
-			"Toal receive buffer", "ntp.priv.mode7.totalrecvbufs", FT_UINT16, BASE_DEC,
+			"Toal receive buffer", "ntp_priv_mode7_totalrecvbufs", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_freerecvbufs, {
-			"Free receive buffer", "ntp.priv.mode7.freerecvbufs", FT_UINT16, BASE_DEC,
+			"Free receive buffer", "ntp_priv_mode7_freerecvbufs", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_fullrecvbufs, {
-			"Full receive buffer", "ntp.priv.mode7.fullrecvbufs", FT_UINT16, BASE_DEC,
+			"Full receive buffer", "ntp_priv_mode7_fullrecvbufs", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_lowwater, {
-			"Low water", "ntp.priv.mode7.lowwater", FT_UINT16, BASE_DEC,
+			"Low water", "ntp_priv_mode7_lowwater", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_dropped, {
-			"Dropped packets", "ntp.priv.mode7.dropped", FT_UINT32, BASE_DEC,
+			"Dropped packets", "ntp_priv_mode7_dropped", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_ignored, {
-			"Ignored packets", "ntp.priv.mode7.ignored", FT_UINT32, BASE_DEC,
+			"Ignored packets", "ntp_priv_mode7_ignored", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_received, {
-			"Received packets", "ntp.priv.mode7.received", FT_UINT32, BASE_DEC,
+			"Received packets", "ntp_priv_mode7_received", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_notsent, {
-			"Not sent packets", "ntp.priv.mode7.notsent", FT_UINT32, BASE_DEC,
+			"Not sent packets", "ntp_priv_mode7_notsent", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_interrupts, {
-			"Interrupts", "ntp.priv.mode7.interrupts", FT_UINT32, BASE_DEC,
+			"Interrupts", "ntp_priv_mode7_interrupts", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_int_received, {
-			"Received by interrupt handler", "ntp.priv.mode7.int_received", FT_UINT32, BASE_DEC,
+			"Received by interrupt handler", "ntp_priv_mode7_int_received", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_alarms, {
-			"Alarms", "ntp.priv.mode7.alarms", FT_UINT32, BASE_DEC,
+			"Alarms", "ntp_priv_mode7_alarms", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_overflows, {
-			"Overflows", "ntp.priv.mode7.overflows", FT_UINT32, BASE_DEC,
+			"Overflows", "ntp_priv_mode7_overflows", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_xmtcalls, {
-			"Transmitted calls", "ntp.priv.mode7.xmtcalls", FT_UINT32, BASE_DEC,
+			"Transmitted calls", "ntp_priv_mode7_xmtcalls", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_rflags, {
-			"Rflags", "ntp.priv.mode7.rflags", FT_UINT16, BASE_DEC,
+			"Rflags", "ntp_priv_mode7_rflags", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_mflags, {
-			"Mflags", "ntp.priv.mode7.mflags", FT_UINT16, BASE_DEC,
+			"Mflags", "ntp_priv_mode7_mflags", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_int_name, {
-			"Interface name", "ntp.priv.mode7.int_name", FT_STRING, BASE_NONE,
+			"Interface name", "ntp_priv_mode7_int_name", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_int_flags, {
-			"Interface flags", "ntp.priv.mode7.int_flags", FT_INT32, BASE_DEC,
+			"Interface flags", "ntp_priv_mode7_int_flags", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_last_ttl, {
-			"Last TTL specified", "ntp.priv.mode7.last_ttl", FT_INT32, BASE_DEC,
+			"Last TTL specified", "ntp_priv_mode7_last_ttl", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_num_mcast, {
-			"Numer multicast sockets", "ntp.priv.mode7.num_mcast", FT_INT32, BASE_DEC,
+			"Numer multicast sockets", "ntp_priv_mode7_num_mcast", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_uptime, {
-			"Uptime", "ntp.priv.mode7.uptime", FT_INT32, BASE_DEC,
+			"Uptime", "ntp_priv_mode7_uptime", FT_INT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_scopeid, {
-			"Scopeid", "ntp.priv.mode7.scopeid", FT_UINT32, BASE_DEC,
+			"Scopeid", "ntp_priv_mode7_scopeid", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_ifindex, {
-			"Ifindex", "ntp.priv.mode7.ifindex", FT_UINT32, BASE_DEC,
+			"Ifindex", "ntp_priv_mode7_ifindex", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_ifnum, {
-			"Ifnum", "ntp.priv.mode7.ifnum", FT_UINT32, BASE_DEC,
+			"Ifnum", "ntp_priv_mode7_ifnum", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_peercnt, {
-			"Peer count", "ntp.priv.mode7.peercnt", FT_UINT32, BASE_DEC,
+			"Peer count", "ntp_priv_mode7_peercnt", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_family, {
-			"Address family", "ntp.priv.mode7.family", FT_UINT16, BASE_DEC,
+			"Address family", "ntp_priv_mode7_family", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_ignore_pkt, {
-			"Ignore packets", "ntp.priv.mode7.ignore_pkts", FT_UINT8, BASE_DEC,
+			"Ignore packets", "ntp_priv_mode7_ignore_pkts", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_action, {
-			"Action", "ntp.priv.mode7.action", FT_UINT8, BASE_DEC,
+			"Action", "ntp_priv_mode7_action", FT_UINT8, BASE_DEC,
 			VALS(priv_mode7_int_action), 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_nvalues, {
-			"Nvalues", "ntp.priv.mode7.nvalues", FT_UINT8, BASE_DEC,
+			"Nvalues", "ntp_priv_mode7_nvalues", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_ntimes, {
-			"Ntimes", "ntp.priv.mode7.ntimes", FT_UINT8, BASE_DEC,
+			"Ntimes", "ntp_priv_mode7_ntimes", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_svalues, {
-			"Svalues", "ntp.priv.mode7.svalues", FT_UINT16, BASE_DEC,
+			"Svalues", "ntp_priv_mode7_svalues", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_stimes, {
-			"Stimes", "ntp.priv.mode7.stimes", FT_UINT32, BASE_DEC,
+			"Stimes", "ntp_priv_mode7_stimes", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_values, {
-			"Values", "ntp.priv.mode7.values", FT_BYTES, BASE_NONE,
+			"Values", "ntp_priv_mode7_values", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_times, {
-			"Times", "ntp.priv.mode7.times", FT_BYTES, BASE_NONE,
+			"Times", "ntp_priv_mode7_times", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_which, {
-			"Which", "ntp.priv.mode7.which", FT_UINT32, BASE_DEC,
+			"Which", "ntp_priv_mode7_which", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_fudgetime, {
-			"Fudgetime", "ntp.priv.mode7.fudgetime", FT_UINT64, BASE_DEC,
+			"Fudgetime", "ntp_priv_mode7_fudgetime", FT_UINT64, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_fudgeval_flags, {
-			"Fudgeval flags", "ntp.priv.mode7.fudgeval_flags", FT_UINT32, BASE_DEC,
+			"Fudgeval flags", "ntp_priv_mode7_fudgeval_flags", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_ippeerlimit, {
-			"IP peer limit", "ntp.priv.mode7.ippeerlimit", FT_INT16, BASE_DEC,
+			"IP peer limit", "ntp_priv_mode7_ippeerlimit", FT_INT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_ntppriv_mode7_restrict_flags, {
-			"Restrict flags", "ntp.priv.mode7.restrict_flags", FT_UINT16, BASE_DEC,
+			"Restrict flags", "ntp_priv_mode7_restrict_flags", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }},
 		/* Todo */
 	};

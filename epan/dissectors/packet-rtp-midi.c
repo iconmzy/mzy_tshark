@@ -6268,7 +6268,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_bflag,
 			{
 				"B-Flag",
-				"rtpmidi.b_flag",
+				"rtpmidi_b_flag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cs_flag_b),
@@ -6280,7 +6280,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_jflag,
 			{
 				"J-Flag",
-				"rtpmidi.j_flag",
+				"rtpmidi_j_flag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cs_flag_j),
@@ -6292,7 +6292,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_zflag,
 			{
 				"Z-Flag",
-				"rtpmidi.z_flag",
+				"rtpmidi_z_flag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cs_flag_z),
@@ -6304,7 +6304,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_pflag,
 			{
 				"P-Flag",
-				"rtpmidi.p_flag",
+				"rtpmidi_p_flag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cs_flag_p),
@@ -6316,7 +6316,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_shortlen,
 			{
 				"Command length (short)",
-				"rtpmidi.cmd_length_short",
+				"rtpmidi_cmd_length_short",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6328,7 +6328,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_longlen,
 			{
 				"Command length (long)",
-				"rtpmidi.cmd_length_long",
+				"rtpmidi_cmd_length_long",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -6340,7 +6340,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sflag,
 			{
 				"S-Flag",
-				"rtpmidi.s_flag",
+				"rtpmidi_s_flag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -6352,7 +6352,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_yflag,
 			{
 				"Y-Flag",
-				"rtpmidi.y_flag",
+				"rtpmidi_y_flag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_y),
@@ -6364,7 +6364,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_aflag,
 			{
 				"A-Flag",
-				"rtpmidi.a_flag",
+				"rtpmidi_a_flag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_a),
@@ -6376,7 +6376,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_hflag,
 			{
 				"H-Flag",
-				"rtpmidi.h_flag",
+				"rtpmidi_h_flag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_h),
@@ -6388,7 +6388,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_totchan,
 			{
 				"Total channels",
-				"rtpmidi.total_channels",
+				"rtpmidi_total_channels",
 				FT_UINT8,
 				BASE_DEC,
 				VALS(rtp_midi_js_tot_channels),
@@ -6400,7 +6400,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_check_seq_num,
 			{
 				"Checkpoint Packet Seqnum",
-				"rtpmidi.check_Seq_num",
+				"rtpmidi_check_Seq_num",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -6412,7 +6412,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_deltatime1,
 			{
 				"Delta Time (one octet)",
-				"rtpmidi.deltatime_1",
+				"rtpmidi_deltatime_1",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -6424,7 +6424,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_deltatime2,
 			{
 				"Delta Time (two octets)",
-				"rtpmidi.deltatime_2",
+				"rtpmidi_deltatime_2",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -6436,7 +6436,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_deltatime3,
 			{
 				"Delta Time (three octets)",
-				"rtpmidi.deltatime_3",
+				"rtpmidi_deltatime_3",
 				FT_UINT24,
 				BASE_HEX,
 				NULL,
@@ -6448,7 +6448,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_deltatime4,
 			{
 				"Delta Time (four octets)",
-				"rtpmidi.deltatime_4",
+				"rtpmidi_deltatime_4",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -6460,7 +6460,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_channel_status,
 			{
 				"Channel Status",
-				"rtpmidi.channel_status",
+				"rtpmidi_channel_status",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_channel_status),
@@ -6472,7 +6472,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_common_status,
 			{
 				"Common Status",
-				"rtpmidi.common_status",
+				"rtpmidi_common_status",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_common_status),
@@ -6484,7 +6484,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_channel,
 			{
 				"Channel",
-				"rtpmidi.channel",
+				"rtpmidi_channel",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_channels),
@@ -6496,7 +6496,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_note,
 			{
 				"Note",
-				"rtpmidi.note",
+				"rtpmidi_note",
 				FT_UINT8,
 				BASE_DEC | BASE_EXT_STRING,
 				&rtp_midi_note_values_ext,
@@ -6508,7 +6508,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_velocity,
 			{
 				"Velocity",
-				"rtpmidi.velocity",
+				"rtpmidi_velocity",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6520,7 +6520,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_pressure,
 			{
 				"Pressure",
-				"rtpmidi.pressure",
+				"rtpmidi_pressure",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6532,7 +6532,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_controller,
 			{
 				"Controller",
-				"rtpmidi.controller",
+				"rtpmidi_controller",
 				FT_UINT8,
 				BASE_DEC | BASE_EXT_STRING,
 				&rtp_midi_controller_values_ext,
@@ -6544,7 +6544,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_controller_value,
 			{
 				"Value",
-				"rtpmidi.controller_value",
+				"rtpmidi_controller_value",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6556,7 +6556,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_program,
 			{
 				"Program",
-				"rtpmidi.program",
+				"rtpmidi_program",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6568,7 +6568,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_channel_pressure,
 			{
 				"Pressure",
-				"rtpmidi.channel_pressure",
+				"rtpmidi_channel_pressure",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6580,7 +6580,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_pitch_bend,
 			{
 				"Pitch Bend",
-				"rtpmidi.pitch_bend",
+				"rtpmidi_pitch_bend",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -6593,7 +6593,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_pitch_bend_truncated,
 			{
 				"Pitch Bend (truncated)",
-				"rtpmidi.pitch_bend_truncated",
+				"rtpmidi_pitch_bend_truncated",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6606,7 +6606,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_manu_short,
 			{
 				"Manufacturer (short)",
-				"rtpmidi.manufacturer_short",
+				"rtpmidi_manufacturer_short",
 				FT_UINT8,
 				BASE_HEX | BASE_EXT_STRING,
 				&rtp_midi_manu_short_values_ext,
@@ -6618,7 +6618,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_manu_long,
 			{
 				"Manufacturer (long)",
-				"rtpmidi.manufacturer_long",
+				"rtpmidi_manufacturer_long",
 				FT_UINT16,
 				BASE_HEX | BASE_EXT_STRING,
 				&rtp_midi_manu_long_values_ext,
@@ -6630,7 +6630,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysjour_toc_s,
 			{
 				"System-Journal TOC-S-Flag",
-				"rtpmidi.sysjour_toc_s",
+				"rtpmidi_sysjour_toc_s",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_js_flag_s),
@@ -6642,7 +6642,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysjour_toc_d,
 			{
 				"System-Journal TOC-D-Flag",
-				"rtpmidi.sysjour_toc_d",
+				"rtpmidi_sysjour_toc_d",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_sj_flag_d),
@@ -6654,7 +6654,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysjour_toc_v,
 			{
 				"System-Journal TOC-V-Flag",
-				"rtpmidi.sysjour_toc_v",
+				"rtpmidi_sysjour_toc_v",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_sj_flag_v),
@@ -6666,7 +6666,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysjour_toc_q,
 			{
 				"System-Journal TOC-Q-Flag",
-				"rtpmidi.sysjour_toc_q",
+				"rtpmidi_sysjour_toc_q",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_sj_flag_q),
@@ -6678,7 +6678,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysjour_toc_f,
 			{
 				"System-Journal TOC-F-Flag",
-				"rtpmidi.sysjour_toc_f",
+				"rtpmidi_sysjour_toc_f",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_sj_flag_f),
@@ -6690,7 +6690,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysjour_toc_x,
 			{
 				"System-Journal TOC-X-Flag",
-				"rtpmidi.sysjour_toc_x",
+				"rtpmidi_sysjour_toc_x",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_sj_flag_x),
@@ -6702,7 +6702,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysjour_len,
 			{
 				"System-Journal-Length",
-				"rtpmidi.cmd_sysjour_len",
+				"rtpmidi_cmd_sysjour_len",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -6714,7 +6714,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_sflag,
 			{
 				"Channel-Journal S-Flag",
-				"rtpmidi.chanjour_s",
+				"rtpmidi_chanjour_s",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_js_flag_s),
@@ -6726,7 +6726,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_chan,
 			{
 				"Channel",
-				"rtpmidi.chanjour_channel",
+				"rtpmidi_chanjour_channel",
 				FT_UINT24,
 				BASE_HEX,
 				VALS(rtp_midi_channels),
@@ -6738,7 +6738,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_hflag,
 			{
 				"Channel-Journal H-Flag",
-				"rtpmidi.chanjour_h",
+				"rtpmidi_chanjour_h",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_js_flag_h),
@@ -6750,7 +6750,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_len,
 			{
 				"Channel-Journal-Length",
-				"rtpmidi.cmd_chanjour_len",
+				"rtpmidi_cmd_chanjour_len",
 				FT_UINT24,
 				BASE_DEC,
 				NULL,
@@ -6762,7 +6762,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_toc_p,
 			{
 				"Channel-Journal TOC-P-Flag",
-				"rtpmidi.chanjour_toc_p",
+				"rtpmidi_chanjour_toc_p",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_cj_flag_p),
@@ -6774,7 +6774,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_toc_c,
 			{
 				"Channel-Journal TOC-C-Flag",
-				"rtpmidi.chanjour_toc_c",
+				"rtpmidi_chanjour_toc_c",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_cj_flag_c),
@@ -6786,7 +6786,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_toc_m,
 			{
 				"Channel-Journal TOC-M-Flag",
-				"rtpmidi.chanjour_toc_m",
+				"rtpmidi_chanjour_toc_m",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_cj_flag_m),
@@ -6798,7 +6798,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_toc_w,
 			{
 				"Channel-Journal TOC-W-Flag",
-				"rtpmidi.chanjour_toc_w",
+				"rtpmidi_chanjour_toc_w",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_cj_flag_w),
@@ -6810,7 +6810,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_toc_n,
 			{
 				"Channel-Journal TOC-N-Flag",
-				"rtpmidi.chanjour_toc_n",
+				"rtpmidi_chanjour_toc_n",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_cj_flag_n),
@@ -6822,7 +6822,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_toc_e,
 			{
 				"Channel-Journal TOC-E-Flag",
-				"rtpmidi.chanjour_toc_e",
+				"rtpmidi_chanjour_toc_e",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_cj_flag_e),
@@ -6834,7 +6834,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_toc_t,
 			{
 				"Channel-Journal TOC-T-Flag",
-				"rtpmidi.chanjour_toc_t",
+				"rtpmidi_chanjour_toc_t",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_cj_flag_t),
@@ -6846,7 +6846,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_chanjour_toc_a,
 			{
 				"Channel-Journal TOC-A-Flag",
-				"rtpmidi.chanjour_toc_a",
+				"rtpmidi_chanjour_toc_a",
 				FT_BOOLEAN,
 				24,
 				TFS(&rtp_midi_cj_flag_a),
@@ -6859,7 +6859,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_p_sflag,
 			{
 				"Chapter P S-Flag",
-				"rtpmidi.cj_chapter_p_sflag",
+				"rtpmidi_cj_chapter_p_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -6872,7 +6872,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_p_program,
 			{
 				"Chapter P Program",
-				"rtpmidi.cj_chapter_p_program",
+				"rtpmidi_cj_chapter_p_program",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6885,7 +6885,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_p_bflag,
 			{
 				"Chapter P B-Flag",
-				"rtpmidi.cj_chapter_p_bflag",
+				"rtpmidi_cj_chapter_p_bflag",
 				FT_BOOLEAN,
 				8,
 				NULL,
@@ -6898,7 +6898,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_p_bank_msb,
 			{
 				"Chapter P Bank-MSB",
-				"rtpmidi.cj_chapter_p_bank_msb",
+				"rtpmidi_cj_chapter_p_bank_msb",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -6911,7 +6911,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_p_xflag,
 			{
 				"Chapter P X-Flag",
-				"rtpmidi.cj_chapter_p_xflag",
+				"rtpmidi_cj_chapter_p_xflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_p_log_flag_x),
@@ -6923,7 +6923,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_p_bank_lsb,
 			{
 				"Chapter P Bank-LSB",
-				"rtpmidi.cj_chapter_p_bank_lsb",
+				"rtpmidi_cj_chapter_p_bank_lsb",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -6936,7 +6936,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_c_sflag,
 			{
 				"Chapter C S-Flag",
-				"rtpmidi.cj_chapter_c_sflag",
+				"rtpmidi_cj_chapter_c_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -6949,7 +6949,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_c_length,
 			{
 				"Chapter C Length",
-				"rtpmidi.cj_chapter_c_length",
+				"rtpmidi_cj_chapter_c_length",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -6962,7 +6962,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_c_number,
 			{
 				"Chapter C Number",
-				"rtpmidi.cj_chapter_c_number",
+				"rtpmidi_cj_chapter_c_number",
 				FT_UINT8,
 				BASE_DEC | BASE_EXT_STRING,
 				&rtp_midi_controller_values_ext,
@@ -6975,7 +6975,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_c_aflag,
 			{
 				"Chapter C A-Flag",
-				"rtpmidi.cj_chapter_c_aflag",
+				"rtpmidi_cj_chapter_c_aflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_c_flag_a),
@@ -6988,7 +6988,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_c_tflag,
 			{
 				"Chapter C T-Flag",
-				"rtpmidi.cj_chapter_c_tflag",
+				"rtpmidi_cj_chapter_c_tflag",
 				FT_BOOLEAN,
 				8,
 				NULL,
@@ -7001,7 +7001,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_c_value,
 			{
 				"Chapter C Value",
-				"rtpmidi.cj_chapter_c_value",
+				"rtpmidi_cj_chapter_c_value",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7014,7 +7014,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_c_alt,
 			{
 				"Chapter C Alt",
-				"rtpmidi.cj_chapter_c_alt",
+				"rtpmidi_cj_chapter_c_alt",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7027,7 +7027,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_sflag,
 			{
 				"Chapter M S-Flag",
-				"rtpmidi.cj_chapter_m_sflag",
+				"rtpmidi_cj_chapter_m_sflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_js_flag_s),
@@ -7040,7 +7040,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_pflag,
 			{
 				"Chapter M P-Flag",
-				"rtpmidi.cj_chapter_m_pflag",
+				"rtpmidi_cj_chapter_m_pflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_flag_p),
@@ -7053,7 +7053,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_eflag,
 			{
 				"Chapter M E-Flag",
-				"rtpmidi.cj_chapter_m_eflag",
+				"rtpmidi_cj_chapter_m_eflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_flag_e),
@@ -7066,7 +7066,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_uflag,
 			{
 				"Chapter M U-Flag",
-				"rtpmidi.cj_chapter_m_uflag",
+				"rtpmidi_cj_chapter_m_uflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_flag_u),
@@ -7079,7 +7079,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_wflag,
 			{
 				"Chapter M W-Flag",
-				"rtpmidi.cj_chapter_m_wflag",
+				"rtpmidi_cj_chapter_m_wflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_flag_w),
@@ -7092,7 +7092,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_zflag,
 			{
 				"Chapter M Z-Flag",
-				"rtpmidi.cj_chapter_m_zflag",
+				"rtpmidi_cj_chapter_m_zflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_flag_z),
@@ -7105,7 +7105,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_length,
 			{
 				"Chapter M Length",
-				"rtpmidi.cj_chapter_m_length",
+				"rtpmidi_cj_chapter_m_length",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -7118,7 +7118,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_qflag,
 			{
 				"Chapter M Q-Flag",
-				"rtpmidi.cj_chapter_m_qflag",
+				"rtpmidi_cj_chapter_m_qflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_flag_q),
@@ -7131,7 +7131,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_pending,
 			{
 				"Chapter M Pending",
-				"rtpmidi.cj_chapter_m_pending",
+				"rtpmidi_cj_chapter_m_pending",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7144,7 +7144,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_sflag,
 			{
 				"Chapter M Log S-Flag",
-				"rtpmidi.cj_chapter_m_log_sflag",
+				"rtpmidi_cj_chapter_m_log_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7157,7 +7157,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_pnum_lsb,
 			{
 				"Chapter M Log PNUM-LSB",
-				"rtpmidi.cj_chapter_m_log_pnum_lsb",
+				"rtpmidi_cj_chapter_m_log_pnum_lsb",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7170,7 +7170,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_qflag,
 			{
 				"Chapter M Log Q-Flag",
-				"rtpmidi.cj_chapter_m_log_qflag",
+				"rtpmidi_cj_chapter_m_log_qflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_q),
@@ -7183,7 +7183,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_pnum_msb,
 			{
 				"Chapter M Log PNUM-MSB",
-				"rtpmidi.cj_chapter_m_log_pnum_msb",
+				"rtpmidi_cj_chapter_m_log_pnum_msb",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7196,7 +7196,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_jflag,
 			{
 				"Chapter M Log J-Flag",
-				"rtpmidi.cj_chapter_m_log_jflag",
+				"rtpmidi_cj_chapter_m_log_jflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_j),
@@ -7209,7 +7209,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_kflag,
 			{
 				"Chapter M Log K-Flag",
-				"rtpmidi.cj_chapter_m_log_kflag",
+				"rtpmidi_cj_chapter_m_log_kflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_k),
@@ -7222,7 +7222,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_lflag,
 			{
 				"Chapter M Log L-Flag",
-				"rtpmidi.cj_chapter_m_log_lflag",
+				"rtpmidi_cj_chapter_m_log_lflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_l),
@@ -7235,7 +7235,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_mflag,
 			{
 				"Chapter M Log M-Flag",
-				"rtpmidi.cj_chapter_m_log_mflag",
+				"rtpmidi_cj_chapter_m_log_mflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_m),
@@ -7248,7 +7248,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_nflag,
 			{
 				"Chapter M Log N-Flag",
-				"rtpmidi.cj_chapter_m_log_nflag",
+				"rtpmidi_cj_chapter_m_log_nflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_n),
@@ -7261,7 +7261,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_tflag,
 			{
 				"Chapter M Log T-Flag",
-				"rtpmidi.cj_chapter_m_log_tflag",
+				"rtpmidi_cj_chapter_m_log_tflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_t),
@@ -7274,7 +7274,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_vflag,
 			{
 				"Chapter M Log V-Flag",
-				"rtpmidi.cj_chapter_m_log_vflag",
+				"rtpmidi_cj_chapter_m_log_vflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_v),
@@ -7287,7 +7287,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_rflag,
 			{
 				"Chapter M Log R-Flag",
-				"rtpmidi.cj_chapter_m_log_rflag",
+				"rtpmidi_cj_chapter_m_log_rflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_r),
@@ -7300,7 +7300,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_msb_entry,
 			{
 				"Entry MSB",
-				"rtpmidi.cj_chapter_m_log_msb_entry",
+				"rtpmidi_cj_chapter_m_log_msb_entry",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7313,7 +7313,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_msb_x,
 			{
 				"Chapter M Log MSB X-Flag",
-				"rtpmidi.cj_chapter_m_log_msb_xflag",
+				"rtpmidi_cj_chapter_m_log_msb_xflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_x),
@@ -7326,7 +7326,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_msb,
 			{
 				"Chapter M Log MSB",
-				"rtpmidi.cj_chapter_m_log_msb",
+				"rtpmidi_cj_chapter_m_log_msb",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7339,7 +7339,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_lsb_entry,
 			{
 				"Entry LSB",
-				"rtpmidi.cj_chapter_m_log_lsb_entry",
+				"rtpmidi_cj_chapter_m_log_lsb_entry",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7352,7 +7352,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_lsb_x,
 			{
 				"Chapter M Log LSB X-Flag",
-				"rtpmidi.cj_chapter_m_log_lsb_xflag",
+				"rtpmidi_cj_chapter_m_log_lsb_xflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_x),
@@ -7365,7 +7365,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_lsb,
 			{
 				"Chapter M Log LSB",
-				"rtpmidi.cj_chapter_m_log_lsb",
+				"rtpmidi_cj_chapter_m_log_lsb",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7378,7 +7378,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_a_button_g,
 			{
 				"Chapter M Log A-Button G-Flag",
-				"rtpmidi.cj_chapter_m_log_a_button_gflag",
+				"rtpmidi_cj_chapter_m_log_a_button_gflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_g),
@@ -7391,7 +7391,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_a_button_x,
 			{
 				"Chapter M Log A-Button X-Flag",
-				"rtpmidi.cj_chapter_m_log_a_button_xflag",
+				"rtpmidi_cj_chapter_m_log_a_button_xflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_x),
@@ -7404,7 +7404,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_a_button,
 			{
 				"Chapter M Log A-Button",
-				"rtpmidi.cj_chapter_m_log_a_button",
+				"rtpmidi_cj_chapter_m_log_a_button",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -7417,7 +7417,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_a_button_full,
 			{
 				"A-Button",
-				"rtpmidi.cj_chapter_m_log_a_button_full",
+				"rtpmidi_cj_chapter_m_log_a_button_full",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -7430,7 +7430,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_c_button_g,
 			{
 				"Chapter M Log C-Button G-Flag",
-				"rtpmidi.cj_chapter_m_log_c_button_gflag",
+				"rtpmidi_cj_chapter_m_log_c_button_gflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_g),
@@ -7443,7 +7443,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_c_button_r,
 			{
 				"Chapter M Log C-Button R-Flag",
-				"rtpmidi.cj_chapter_m_log_c_button_rflag",
+				"rtpmidi_cj_chapter_m_log_c_button_rflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_r),
@@ -7456,7 +7456,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_c_button,
 			{
 				"Chapter M Log C-Button",
-				"rtpmidi.cj_chapter_m_log_c_button",
+				"rtpmidi_cj_chapter_m_log_c_button",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -7469,7 +7469,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_c_button_full,
 			{
 				"C-Button",
-				"rtpmidi.cj_chapter_m_log_c_button_full",
+				"rtpmidi_cj_chapter_m_log_c_button_full",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -7482,7 +7482,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_count_x,
 			{
 				"Chapter M Log Count X-Flag",
-				"rtpmidi.cj_chapter_m_log_count_xflag",
+				"rtpmidi_cj_chapter_m_log_count_xflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_x),
@@ -7495,7 +7495,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_count,
 			{
 				"Chapter M Log Count",
-				"rtpmidi.cj_chapter_m_log_count",
+				"rtpmidi_cj_chapter_m_log_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7508,7 +7508,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_m_log_count_full,
 			{
 				"Count",
-				"rtpmidi.cj_chapter_m_log_count_full",
+				"rtpmidi_cj_chapter_m_log_count_full",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7521,7 +7521,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_w_sflag,
 			{
 				"Chapter W S-Flag",
-				"rtpmidi.cj_chapter_w_sflag",
+				"rtpmidi_cj_chapter_w_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7534,7 +7534,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_w_first,
 			{
 				"Chapter W First",
-				"rtpmidi.cj_chapter_w_first",
+				"rtpmidi_cj_chapter_w_first",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7547,7 +7547,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_w_rflag,
 			{
 				"Chapter W R-Flag",
-				"rtpmidi.cj_chapter_w_rflag",
+				"rtpmidi_cj_chapter_w_rflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_m_log_flag_r),
@@ -7560,7 +7560,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_w_second,
 			{
 				"Chapter W Second",
-				"rtpmidi.cj_chapter_w_second",
+				"rtpmidi_cj_chapter_w_second",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7573,7 +7573,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_bflag,
 			{
 				"Chapter N B-Flag",
-				"rtpmidi.cj_chapter_n_bflag",
+				"rtpmidi_cj_chapter_n_bflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_js_flag_s),
@@ -7586,7 +7586,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_len,
 			{
 				"Chapter N Length",
-				"rtpmidi.cj_chapter_n_length",
+				"rtpmidi_cj_chapter_n_length",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -7599,7 +7599,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_low,
 			{
 				"Chapter N Low",
-				"rtpmidi.cj_chapter_n_low",
+				"rtpmidi_cj_chapter_n_low",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -7612,7 +7612,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_high,
 			{
 				"Chapter N High",
-				"rtpmidi.cj_chapter_n_high",
+				"rtpmidi_cj_chapter_n_high",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -7625,7 +7625,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_log_sflag,
 			{
 				"Chapter N Log S-Flag",
-				"rtpmidi.cj_chapter_n_log_sflag",
+				"rtpmidi_cj_chapter_n_log_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7638,7 +7638,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_log_notenum,
 			{
 				"Chapter N Log Note",
-				"rtpmidi.cj_chapter_n_log_note",
+				"rtpmidi_cj_chapter_n_log_note",
 				FT_UINT8,
 				BASE_DEC | BASE_EXT_STRING,
 				&rtp_midi_note_values_ext,
@@ -7651,7 +7651,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_log_yflag,
 			{
 				"Chapter N Log Y-Flag",
-				"rtpmidi.cj_chapter_n_log_yflag",
+				"rtpmidi_cj_chapter_n_log_yflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_n_log_flag_y),
@@ -7664,7 +7664,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_log_velocity,
 			{
 				"Chapter N Log Velocity",
-				"rtpmidi.cj_chapter_n_log_velocity",
+				"rtpmidi_cj_chapter_n_log_velocity",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7677,7 +7677,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_n_log_octet,
 			{
 				"Chapter N Log Octet",
-				"rtpmidi.cj_chapter_n_log_octet",
+				"rtpmidi_cj_chapter_n_log_octet",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7690,7 +7690,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_e_sflag,
 			{
 				"Chapter E S-Flag",
-				"rtpmidi.cj_chapter_e_sflag",
+				"rtpmidi_cj_chapter_e_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7703,7 +7703,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_e_len,
 			{
 				"Chapter E Length",
-				"rtpmidi.cj_chapter_e_length",
+				"rtpmidi_cj_chapter_e_length",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7716,7 +7716,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_e_log_sflag,
 			{
 				"Chapter E Log S-Flag",
-				"rtpmidi.cj_chapter_e_log_sflag",
+				"rtpmidi_cj_chapter_e_log_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7729,7 +7729,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_e_log_notenum,
 			{
 				"Chapter E Log Note",
-				"rtpmidi.cj_chapter_e_log_note",
+				"rtpmidi_cj_chapter_e_log_note",
 				FT_UINT8,
 				BASE_DEC | BASE_EXT_STRING,
 				&rtp_midi_note_values_ext,
@@ -7742,7 +7742,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_e_log_vflag,
 			{
 				"Chapter N Log V-Flag",
-				"rtpmidi.cj_chapter_n_log_vflag",
+				"rtpmidi_cj_chapter_n_log_vflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_e_log_flag_v),
@@ -7755,7 +7755,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_e_log_velocity,
 			{
 				"Chapter E Log Velocity",
-				"rtpmidi.cj_chapter_e_log_velocity",
+				"rtpmidi_cj_chapter_e_log_velocity",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7768,7 +7768,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_e_log_count,
 			{
 				"Chapter E Log Count",
-				"rtpmidi.cj_chapter_e_log_count",
+				"rtpmidi_cj_chapter_e_log_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7781,7 +7781,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_t_channel_aftertouch,
 			{
 				"Channel Aftertouch",
-				"rtpmidi.cj_chapter_t_channel_aftertouch",
+				"rtpmidi_cj_chapter_t_channel_aftertouch",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7794,7 +7794,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_t_sflag,
 			{
 				"Chapter T S-Flag",
-				"rtpmidi.cj_chapter_t_sflag",
+				"rtpmidi_cj_chapter_t_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7807,7 +7807,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_t_pressure,
 			{
 				"Chapter T Pressure",
-				"rtpmidi.cj_chapter_t_pressure",
+				"rtpmidi_cj_chapter_t_pressure",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7820,7 +7820,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_a_sflag,
 			{
 				"Chapter A S-Flag",
-				"rtpmidi.cj_chapter_a_sflag",
+				"rtpmidi_cj_chapter_a_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7833,7 +7833,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_a_len,
 			{
 				"Chapter A Length",
-				"rtpmidi.cj_chapter_a_length",
+				"rtpmidi_cj_chapter_a_length",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7846,7 +7846,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_a_log_sflag,
 			{
 				"Chapter A Log S-Flag",
-				"rtpmidi.cj_chapter_a_log_sflag",
+				"rtpmidi_cj_chapter_a_log_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7859,7 +7859,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_a_log_notenum,
 			{
 				"Chapter A Log Note",
-				"rtpmidi.cj_chapter_a_log_note",
+				"rtpmidi_cj_chapter_a_log_note",
 				FT_UINT8,
 				BASE_DEC | BASE_EXT_STRING,
 				&rtp_midi_note_values_ext,
@@ -7872,7 +7872,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_a_log_xflag,
 			{
 				"Chapter A Log X-Flag",
-				"rtpmidi.cj_chapter_a_log_xflag",
+				"rtpmidi_cj_chapter_a_log_xflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_cj_chapter_a_log_flag_x),
@@ -7885,7 +7885,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_cj_chapter_a_log_pressure,
 			{
 				"Chapter A Log Pressure",
-				"rtpmidi.cj_chapter_a_log_pressure",
+				"rtpmidi_cj_chapter_a_log_pressure",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7898,7 +7898,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_v,
 			{
 				"Active Sensing",
-				"rtpmidi.sj_chapter_v",
+				"rtpmidi_sj_chapter_v",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7911,7 +7911,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_v_sflag,
 			{
 				"Chapter V S-Flag",
-				"rtpmidi.sj_chapter_v_sflag",
+				"rtpmidi_sj_chapter_v_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7924,7 +7924,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_v_count,
 			{
 				"Chapter V Count",
-				"rtpmidi.sj_chapter_v_count",
+				"rtpmidi_sj_chapter_v_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -7937,7 +7937,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_simple_system_commands,
 			{
 				"Simple System Commands",
-				"rtpmidi.sj_chapter_d_simple_system_commands",
+				"rtpmidi_sj_chapter_d_simple_system_commands",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -7950,7 +7950,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_sflag,
 			{
 				"Chapter D S-Flag",
-				"rtpmidi.sj_chapter_d_sflag",
+				"rtpmidi_sj_chapter_d_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -7963,7 +7963,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_bflag,
 			{
 				"Chapter D B-Flag",
-				"rtpmidi.sj_chapter_d_bflag",
+				"rtpmidi_sj_chapter_d_bflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_flag_b),
@@ -7976,7 +7976,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_gflag,
 			{
 				"Chapter D G-Flag",
-				"rtpmidi.sj_chapter_d_gflag",
+				"rtpmidi_sj_chapter_d_gflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_flag_g),
@@ -7989,7 +7989,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_hflag,
 			{
 				"Chapter D H-Flag",
-				"rtpmidi.sj_chapter_d_hflag",
+				"rtpmidi_sj_chapter_d_hflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_flag_h),
@@ -8002,7 +8002,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_jflag,
 			{
 				"Chapter D J-Flag",
-				"rtpmidi.sj_chapter_d_jflag",
+				"rtpmidi_sj_chapter_d_jflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_flag_j),
@@ -8015,7 +8015,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_kflag,
 			{
 				"Chapter D K-Flag",
-				"rtpmidi.sj_chapter_d_kflag",
+				"rtpmidi_sj_chapter_d_kflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_flag_k),
@@ -8028,7 +8028,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_yflag,
 			{
 				"Chapter D Y-Flag",
-				"rtpmidi.sj_chapter_d_yflag",
+				"rtpmidi_sj_chapter_d_yflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_flag_y),
@@ -8041,7 +8041,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_zflag,
 			{
 				"Chapter D Z-Flag",
-				"rtpmidi.sj_chapter_d_zflag",
+				"rtpmidi_sj_chapter_d_zflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_flag_z),
@@ -8054,7 +8054,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_reset,
 			{
 				"Reset Field",
-				"rtpmidi.cj_chapter_d_reset",
+				"rtpmidi_cj_chapter_d_reset",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -8067,7 +8067,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_reset_sflag,
 			{
 				"Chapter D Reset S-Flag",
-				"rtpmidi.sj_chapter_d_reset_sflag",
+				"rtpmidi_sj_chapter_d_reset_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -8080,7 +8080,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_reset_count,
 			{
 				"Chapter D Reset Count",
-				"rtpmidi.cj_chapter_d_reset_count",
+				"rtpmidi_cj_chapter_d_reset_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8093,7 +8093,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_tune,
 			{
 				"Tune Request Field",
-				"rtpmidi.cj_chapter_d_tune",
+				"rtpmidi_cj_chapter_d_tune",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -8106,7 +8106,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_tune_sflag,
 			{
 				"Chapter D Tune Request S-Flag",
-				"rtpmidi.sj_chapter_d_tune_sflag",
+				"rtpmidi_sj_chapter_d_tune_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -8119,7 +8119,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_tune_count,
 			{
 				"Chapter D Tune Request Count",
-				"rtpmidi.cj_chapter_d_tune_count",
+				"rtpmidi_cj_chapter_d_tune_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8132,7 +8132,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_song_sel,
 			{
 				"Song Select Field",
-				"rtpmidi.cj_chapter_d_song_sel",
+				"rtpmidi_cj_chapter_d_song_sel",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -8145,7 +8145,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_song_sel_sflag,
 			{
 				"Chapter D Song Select S-Flag",
-				"rtpmidi.sj_chapter_d_song_sel_sflag",
+				"rtpmidi_sj_chapter_d_song_sel_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -8158,7 +8158,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_song_sel_value,
 			{
 				"Chapter D Song Select Value",
-				"rtpmidi.cj_chapter_d_song_sel_value",
+				"rtpmidi_cj_chapter_d_song_sel_value",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8171,7 +8171,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_sflag,
 			{
 				"Chapter D System Common (F4/F5) S-Flag",
-				"rtpmidi.sj_chapter_d_syscom_sflag",
+				"rtpmidi_sj_chapter_d_syscom_sflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_js_flag_s),
@@ -8184,7 +8184,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_cflag,
 			{
 				"Chapter D System Common (F4/F5) C-Flag",
-				"rtpmidi.sj_chapter_d_syscom_cflag",
+				"rtpmidi_sj_chapter_d_syscom_cflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_sj_chapter_d_syscom_flag_c),
@@ -8196,7 +8196,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_vflag,
 			{
 				"Chapter D System Common (F4/F5) V-Flag",
-				"rtpmidi.sj_chapter_d_syscom_vflag",
+				"rtpmidi_sj_chapter_d_syscom_vflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_sj_chapter_d_syscom_flag_v),
@@ -8208,7 +8208,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_lflag,
 			{
 				"Chapter D System Common (F4/F5) L-Flag",
-				"rtpmidi.sj_chapter_d_syscom_lflag",
+				"rtpmidi_sj_chapter_d_syscom_lflag",
 				FT_BOOLEAN,
 				16,
 				TFS(&rtp_midi_sj_chapter_d_syscom_flag_l),
@@ -8220,7 +8220,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_dsz,
 			{
 				"Chapter D System Common (F4/F5) DSZ",
-				"rtpmidi.sj_chapter_d_syscom_dsz",
+				"rtpmidi_sj_chapter_d_syscom_dsz",
 				FT_UINT16,
 				BASE_DEC,
 				VALS(rtp_midi_sj_chapter_d_syscom_dsz_values),
@@ -8232,7 +8232,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_length,
 			{
 				"Chapter D System Common (F4/F5) Length",
-				"rtpmidi.sj_chapter_d_syscom_len",
+				"rtpmidi_sj_chapter_d_syscom_len",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -8244,7 +8244,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_count,
 			{
 				"Chapter D System Common (F4/F5) Count",
-				"rtpmidi.sj_chapter_d_syscom_count",
+				"rtpmidi_sj_chapter_d_syscom_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8256,7 +8256,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_value,
 			{
 				"Chapter D System Common (F4/F5) Value",
-				"rtpmidi.sj_chapter_d_syscom_value",
+				"rtpmidi_sj_chapter_d_syscom_value",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8268,7 +8268,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_legal,
 			{
 				"Chapter D System Common (F4/F5) Legal - for future extension",
-				"rtpmidi.sj_chapter_d_syscom_legal",
+				"rtpmidi_sj_chapter_d_syscom_legal",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8280,7 +8280,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_syscom_data,
 			{
 				"Chapter D System Common (F4/F5) Erroneous Data",
-				"rtpmidi.sj_chapter_d_syscom_data",
+				"rtpmidi_sj_chapter_d_syscom_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8292,7 +8292,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_sysreal_sflag,
 			{
 				"Chapter D System Realtime (F9/FD) S-Flag",
-				"rtpmidi.sj_chapter_d_sysreal_sflag",
+				"rtpmidi_sj_chapter_d_sysreal_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -8304,7 +8304,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_sysreal_cflag,
 			{
 				"Chapter D System Realtime (F9/FF) C-Flag",
-				"rtpmidi.sj_chapter_d_sysreal_cflag",
+				"rtpmidi_sj_chapter_d_sysreal_cflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_syscom_flag_c),
@@ -8316,7 +8316,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_sysreal_lflag,
 			{
 				"Chapter D System Realtime (F9/FD) L-Flag",
-				"rtpmidi.sj_chapter_d_sysreal_lflag",
+				"rtpmidi_sj_chapter_d_sysreal_lflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_d_syscom_flag_l),
@@ -8328,7 +8328,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_sysreal_length,
 			{
 				"Chapter D System Realtime (F9/FD) Length",
-				"rtpmidi.sj_chapter_d_sysreal_len",
+				"rtpmidi_sj_chapter_d_sysreal_len",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8340,7 +8340,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_sysreal_count,
 			{
 				"Chapter D System Realtime (F9/FD) Count",
-				"rtpmidi.sj_chapter_d_sysreal_count",
+				"rtpmidi_sj_chapter_d_sysreal_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8352,7 +8352,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_sysreal_legal,
 			{
 				"Chapter D System Realtime (F9/FD) Legal - for future extension",
-				"rtpmidi.sj_chapter_d_sysreal_legal",
+				"rtpmidi_sj_chapter_d_sysreal_legal",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8364,7 +8364,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_d_sysreal_data,
 			{
 				"Chapter D System Realtime (F9/FD) Erroneous Data",
-				"rtpmidi.sj_chapter_d_sysreal_data",
+				"rtpmidi_sj_chapter_d_sysreal_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8377,7 +8377,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_q_sflag,
 			{
 				"Chapter Q Sequencer State S-Flag",
-				"rtpmidi.sj_chapter_q_sflag",
+				"rtpmidi_sj_chapter_q_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -8390,7 +8390,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_q_nflag,
 			{
 				"Chapter Q Sequencer State N-Flag",
-				"rtpmidi.sj_chapter_q_nflag",
+				"rtpmidi_sj_chapter_q_nflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_q_flag_n),
@@ -8403,7 +8403,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_q_dflag,
 			{
 				"Chapter Q Sequencer State D-Flag",
-				"rtpmidi.sj_chapter_q_dflag",
+				"rtpmidi_sj_chapter_q_dflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_q_flag_d),
@@ -8416,7 +8416,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_q_cflag,
 			{
 				"Chapter Q Sequencer State C-Flag",
-				"rtpmidi.sj_chapter_q_cflag",
+				"rtpmidi_sj_chapter_q_cflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_q_flag_c),
@@ -8428,7 +8428,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_q_tflag,
 			{
 				"Chapter Q Sequencer State T-Flag",
-				"rtpmidi.sj_chapter_q_tflag",
+				"rtpmidi_sj_chapter_q_tflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_q_flag_t),
@@ -8440,7 +8440,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_q_top,
 			{
 				"Chapter Q Sequencer State Top",
-				"rtpmidi.sj_chapter_q_top",
+				"rtpmidi_sj_chapter_q_top",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8452,7 +8452,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_q_clock,
 			{
 				"Chapter Q Sequencer State Clock",
-				"rtpmidi.sj_chapter_q_clock",
+				"rtpmidi_sj_chapter_q_clock",
 				FT_UINT24,
 				BASE_DEC,
 				NULL,
@@ -8465,7 +8465,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_q_timetools,
 			{
 				"Chapter Q Sequencer State Timetools",
-				"rtpmidi.sj_chapter_q_timetools",
+				"rtpmidi_sj_chapter_q_timetools",
 				FT_UINT24,
 				BASE_DEC,
 				NULL,
@@ -8478,7 +8478,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_sflag,
 			{
 				"Chapter F MTC S-Flag",
-				"rtpmidi.sj_chapter_f_sflag",
+				"rtpmidi_sj_chapter_f_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -8490,7 +8490,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_cflag,
 			{
 				"Chapter F MTC C-Flag",
-				"rtpmidi.sj_chapter_f_cflag",
+				"rtpmidi_sj_chapter_f_cflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_f_flag_c),
@@ -8502,7 +8502,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_pflag,
 			{
 				"Chapter F MTC P-Flag",
-				"rtpmidi.sj_chapter_f_pflag",
+				"rtpmidi_sj_chapter_f_pflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_f_flag_p),
@@ -8514,7 +8514,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_qflag,
 			{
 				"Chapter F MTC Q-Flag",
-				"rtpmidi.sj_chapter_f_qflag",
+				"rtpmidi_sj_chapter_f_qflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_f_flag_q),
@@ -8526,7 +8526,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_dflag,
 			{
 				"Chapter F MTC D-Flag",
-				"rtpmidi.sj_chapter_f_dflag",
+				"rtpmidi_sj_chapter_f_dflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_f_flag_d),
@@ -8538,7 +8538,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_point,
 			{
 				"Chapter F MTC Point",
-				"rtpmidi.sj_chapter_f_point",
+				"rtpmidi_sj_chapter_f_point",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8550,7 +8550,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_complete,
 			{
 				"Complete field",
-				"rtpmidi.sj_chapter_f_complete",
+				"rtpmidi_sj_chapter_f_complete",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8562,7 +8562,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_partial,
 			{
 				"Partial field",
-				"rtpmidi.sj_chapter_f_partial",
+				"rtpmidi_sj_chapter_f_partial",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8574,7 +8574,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mt0,
 			{
 				"Chapter F MTC MT0",
-				"rtpmidi.sj_chapter_f_mt0",
+				"rtpmidi_sj_chapter_f_mt0",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8586,7 +8586,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mt1,
 			{
 				"Chapter F MTC MT1",
-				"rtpmidi.sj_chapter_f_mt1",
+				"rtpmidi_sj_chapter_f_mt1",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8598,7 +8598,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mt2,
 			{
 				"Chapter F MTC MT2",
-				"rtpmidi.sj_chapter_f_mt2",
+				"rtpmidi_sj_chapter_f_mt2",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8610,7 +8610,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mt3,
 			{
 				"Chapter F MTC MT3",
-				"rtpmidi.sj_chapter_f_mt3",
+				"rtpmidi_sj_chapter_f_mt3",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8622,7 +8622,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mt4,
 			{
 				"Chapter F MTC MT4",
-				"rtpmidi.sj_chapter_f_mt4",
+				"rtpmidi_sj_chapter_f_mt4",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8634,7 +8634,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mt5,
 			{
 				"Chapter F MTC MT5",
-				"rtpmidi.sj_chapter_f_mt5",
+				"rtpmidi_sj_chapter_f_mt5",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8646,7 +8646,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mt6,
 			{
 				"Chapter F MTC MT6",
-				"rtpmidi.sj_chapter_f_mt6",
+				"rtpmidi_sj_chapter_f_mt6",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8658,7 +8658,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mt7,
 			{
 				"Chapter F MTC MT7",
-				"rtpmidi.sj_chapter_f_mt7",
+				"rtpmidi_sj_chapter_f_mt7",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8670,7 +8670,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_hr,
 			{
 				"Chapter F MTC Hour",
-				"rtpmidi.sj_chapter_f_hr",
+				"rtpmidi_sj_chapter_f_hr",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8682,7 +8682,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_mn,
 			{
 				"Chapter F MTC Minute",
-				"rtpmidi.sj_chapter_f_mn",
+				"rtpmidi_sj_chapter_f_mn",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8694,7 +8694,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_sc,
 			{
 				"Chapter F MTC Second",
-				"rtpmidi.sj_chapter_f_sc",
+				"rtpmidi_sj_chapter_f_sc",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8706,7 +8706,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_f_fr,
 			{
 				"Chapter F MTC Frame",
-				"rtpmidi.sj_chapter_f_fr",
+				"rtpmidi_sj_chapter_f_fr",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8718,7 +8718,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_sflag,
 			{
 				"Chapter X Sysex S-Flag",
-				"rtpmidi.sj_chapter_x_sflag",
+				"rtpmidi_sj_chapter_x_sflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_js_flag_s),
@@ -8730,7 +8730,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_tflag,
 			{
 				"Chapter X Sysex T-Flag",
-				"rtpmidi.sj_chapter_x_tflag",
+				"rtpmidi_sj_chapter_x_tflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_x_flag_t),
@@ -8742,7 +8742,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_cflag,
 			{
 				"Chapter X Sysex C-Flag",
-				"rtpmidi.sj_chapter_x_cflag",
+				"rtpmidi_sj_chapter_x_cflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_x_flag_c),
@@ -8754,7 +8754,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_fflag,
 			{
 				"Chapter X Sysex F-Flag",
-				"rtpmidi.sj_chapter_x_fflag",
+				"rtpmidi_sj_chapter_x_fflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_x_flag_f),
@@ -8766,7 +8766,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_dflag,
 			{
 				"Chapter X Sysex D-Flag",
-				"rtpmidi.sj_chapter_x_dflag",
+				"rtpmidi_sj_chapter_x_dflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_x_flag_d),
@@ -8778,7 +8778,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_lflag,
 			{
 				"Chapter X Sysex L-Flag",
-				"rtpmidi.sj_chapter_x_lflag",
+				"rtpmidi_sj_chapter_x_lflag",
 				FT_BOOLEAN,
 				8,
 				TFS(&rtp_midi_sj_chapter_x_flag_l),
@@ -8790,7 +8790,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_sta,
 			{
 				"Chapter X Sysex STA",
-				"rtpmidi.sj_chapter_x_sta",
+				"rtpmidi_sj_chapter_x_sta",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -8802,7 +8802,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_tcount,
 			{
 				"Chapter X Sysex TCOUT",
-				"rtpmidi.sj_chapter_x_tcount",
+				"rtpmidi_sj_chapter_x_tcount",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8814,7 +8814,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_count,
 			{
 				"Chapter X Sysex COUNT",
-				"rtpmidi.sj_chapter_x_count",
+				"rtpmidi_sj_chapter_x_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8826,7 +8826,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_first1,
 			{
 				"Chapter X Sysex FIRST (one octet)",
-				"rtpmidi.sj_chapter_x_first_1",
+				"rtpmidi_sj_chapter_x_first_1",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -8838,7 +8838,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_first2,
 			{
 				"Chapter X Sysex FIRST (two octets)",
-				"rtpmidi.sj_chapter_x_first_2",
+				"rtpmidi_sj_chapter_x_first_2",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -8850,7 +8850,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_first3,
 			{
 				"Chapter X Sysex FIRST (three octets)",
-				"rtpmidi.sj_chapter_x_first_3",
+				"rtpmidi_sj_chapter_x_first_3",
 				FT_UINT24,
 				BASE_HEX,
 				NULL,
@@ -8862,7 +8862,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_first4,
 			{
 				"Chapter X Sysex FIRST (four octets)",
-				"rtpmidi.sj_chapter_x_first_4",
+				"rtpmidi_sj_chapter_x_first_4",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -8874,7 +8874,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_data,
 			{
 				"Chapter X Sysex Data",
-				"rtpmidi.sj_chapter_x_data",
+				"rtpmidi_sj_chapter_x_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8886,7 +8886,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sj_chapter_x_invalid_data,
 			{
 				"Chapter X Invalid Sysex Data",
-				"rtpmidi.sj_chapter_x_invalid_data",
+				"rtpmidi_sj_chapter_x_invalid_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8898,7 +8898,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_quarter_frame_type,
 			{
 				"MTC-quarter-frame-type",
-				"rtpmidi.mtc_quarter_frame_type",
+				"rtpmidi_mtc_quarter_frame_type",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_qft_values),
@@ -8910,7 +8910,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_quarter_frame_value,
 			{
 				"MTC-quarter-frame-value",
-				"rtpmidi.mtc_quarter_frame_value",
+				"rtpmidi_mtc_quarter_frame_value",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -8922,7 +8922,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_spp,
 			{
 				"Song Position Pointer",
-				"rtpmidi.song_position_pointer",
+				"rtpmidi_song_position_pointer",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -8935,7 +8935,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_spp_truncated,
 			{
 				"Song Position Pointer (truncated)",
-				"rtpmidi.song_position_pointer_truncated",
+				"rtpmidi_song_position_pointer_truncated",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8948,7 +8948,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_song_select,
 			{
 				"Song Select",
-				"rtpmidi.song_select",
+				"rtpmidi_song_select",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -8960,7 +8960,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_manu_data,
 			{
 				"Manufacturer specific data",
-				"rtpmidi.manu_data",
+				"rtpmidi_manu_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8972,7 +8972,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_edu_data,
 			{
 				"Educational command data",
-				"rtpmidi.edu_data",
+				"rtpmidi_edu_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8984,7 +8984,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_unknown_data,
 			{
 				"Unknown Data",
-				"rtpmidi.unknown_data",
+				"rtpmidi_unknown_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -8996,7 +8996,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_realtime,
 			{
 				"Sysex Common Realtime",
-				"rtpmidi.sysex_common_realtime",
+				"rtpmidi_sysex_common_realtime",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_rt),
@@ -9008,7 +9008,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_non_realtime,
 			{
 				"Sysex Common Non-Realtime",
-				"rtpmidi.sysex_common_non_realtime",
+				"rtpmidi_sysex_common_non_realtime",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_nrt),
@@ -9020,7 +9020,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_device_id,
 			{
 				"Sysex Common Device ID",
-				"rtpmidi.sysex_common_device_id",
+				"rtpmidi_sysex_common_device_id",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9032,7 +9032,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_ext,
 			{
 				"Sysex Common Non-Realtime Sample Dump Extension",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_ext",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_ext",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_nrt_sd_ext),
@@ -9044,7 +9044,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_gi,
 			{
 				"Sysex Common Non-Realtime General Information",
-				"rtpmidi.sysex_common_non_realtime_general_information",
+				"rtpmidi_sysex_common_non_realtime_general_information",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_nrt_gi),
@@ -9056,7 +9056,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd,
 			{
 				"Sysex Common Non-Realtime File Dump",
-				"rtpmidi.sysex_common_non_realtime_file_dump",
+				"rtpmidi_sysex_common_non_realtime_file_dump",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_nrt_fd),
@@ -9068,7 +9068,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_tuning,
 			{
 				"Sysex Common (Non-)Realtime Tuning",
-				"rtpmidi.sysex_common_tuning",
+				"rtpmidi_sysex_common_tuning",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_tuning),
@@ -9080,7 +9080,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_gm,
 			{
 				"Sysex Common Non-Realtime General MIDI (GM)",
-				"rtpmidi.sysex_common_non_realtime_gm",
+				"rtpmidi_sysex_common_non_realtime_gm",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_nrt_gm),
@@ -9092,7 +9092,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_dls,
 			{
 				"Sysex Common Non-Realtime Downloadable Sounds (DLS)",
-				"rtpmidi.sysex_common_non_realtime_dls",
+				"rtpmidi_sysex_common_non_realtime_dls",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_nrt_dls),
@@ -9104,7 +9104,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc,
 			{
 				"Sysex Common Realtime MTC",
-				"rtpmidi.sysex_common_realtime_mtc",
+				"rtpmidi_sysex_common_realtime_mtc",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_rt_mtc),
@@ -9116,7 +9116,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_sc,
 			{
 				"Sysex Common Realtime Show Control",
-				"rtpmidi.sysex_common_realtime_sc",
+				"rtpmidi_sysex_common_realtime_sc",
 				FT_UINT8,
 				BASE_HEX | BASE_EXT_STRING,
 				&rtp_midi_sysex_common_rt_show_control_ext,
@@ -9128,7 +9128,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_ni,
 			{
 				"Sysex Common Realtime Notation Information",
-				"rtpmidi.sysex_common_realtime_ni",
+				"rtpmidi_sysex_common_realtime_ni",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_rt_notations),
@@ -9140,7 +9140,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_dc,
 			{
 				"Sysex Common Realtime Device Control",
-				"rtpmidi.sysex_common_realtime_dc",
+				"rtpmidi_sysex_common_realtime_dc",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_rt_device_control),
@@ -9152,7 +9152,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_cueing,
 			{
 				"Sysex Common Realtime MTC Cueing",
-				"rtpmidi.sysex_common_rt_mtc_cue",
+				"rtpmidi_sysex_common_rt_mtc_cue",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_rt_mtc_cue),
@@ -9164,7 +9164,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc,
 			{
 				"Sysex Common Non-Realtime MTC",
-				"rtpmidi.sysex_common_nrt_mtc",
+				"rtpmidi_sysex_common_nrt_mtc",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_nrt_mtc),
@@ -9176,7 +9176,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mmc_commands,
 			{
 				"Sysex Common Realtime Machine Control Commands",
-				"rtpmidi.sysex_common_realtime_mmc_cmds",
+				"rtpmidi_sysex_common_realtime_mmc_cmds",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_rt_mmc_commands),
@@ -9188,7 +9188,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mmc_responses,
 			{
 				"Sysex Common Realtime Machine Control Responses",
-				"rtpmidi.sysex_common_realtime_mmc_resps",
+				"rtpmidi_sysex_common_realtime_mmc_resps",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_sysex_common_rt_mmc_responses),
@@ -9200,7 +9200,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_gi_device_family,
 			{
 				"Sysex Common Non-Realtime General Information Device Family",
-				"rtpmidi.sysex_common_non_realtime_general_information_device_family",
+				"rtpmidi_sysex_common_non_realtime_general_information_device_family",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -9212,7 +9212,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_gi_device_family_member,
 			{
 				"Sysex Common Non-Realtime General Information Device Family Member",
-				"rtpmidi.sysex_common_non_realtime_general_information_device_family_member",
+				"rtpmidi_sysex_common_non_realtime_general_information_device_family_member",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -9224,7 +9224,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_gi_software_rev,
 			{
 				"Sysex Common Non-Realtime General Information Software Revision",
-				"rtpmidi.sysex_common_non_realtime_general_information_software_revision",
+				"rtpmidi_sysex_common_non_realtime_general_information_software_revision",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -9236,7 +9236,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_packet_number,
 			{
 				"Sysex Common Non-Realtime Sample Dump Packet Number",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_packet_number",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_packet_number",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9248,7 +9248,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_header_sn,
 			{
 				"Sysex Common Non-Realtime Sample Dump Sample Number",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_sample_number",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_sample_number",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -9260,7 +9260,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_header_sf,
 			{
 				"Sysex Common Non-Realtime Sample Dump Sample Format",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_sample_format",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_sample_format",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9272,7 +9272,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_header_sp,
 			{
 				"Sysex Common Non-Realtime Sample Dump Sample Period",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_sample_period",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_sample_period",
 				FT_UINT24,
 				BASE_DEC,
 				NULL,
@@ -9284,7 +9284,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_header_sl,
 			{
 				"Sysex Common Non-Realtime Sample Dump Sample Length",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_sample_length",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_sample_length",
 				FT_UINT24,
 				BASE_DEC,
 				NULL,
@@ -9296,7 +9296,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_header_ls,
 			{
 				"Sysex Common Non-Realtime Sample Dump Loop Start",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_loop_start",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_loop_start",
 				FT_UINT24,
 				BASE_DEC,
 				NULL,
@@ -9308,7 +9308,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_header_le,
 			{
 				"Sysex Common Non-Realtime Sample Dump Loop End",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_loop_end",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_loop_end",
 				FT_UINT24,
 				BASE_DEC,
 				NULL,
@@ -9320,7 +9320,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_header_lt,
 			{
 				"Sysex Common Non-Realtime Sample Dump Loop Type",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_loop_type",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_loop_type",
 				FT_UINT8,
 				BASE_DEC,
 				VALS(rtp_midi_sysex_common_nrt_sd_lt),
@@ -9332,7 +9332,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_packet_count,
 			{
 				"Sysex Common Non-Realtime Sample Dump Running Packet Count",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_packet_count",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_packet_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9344,7 +9344,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_packet_check,
 			{
 				"Sysex Common Non-Realtime Sample Dump Checksum",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_checksum",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_checksum",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9356,7 +9356,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_packet_data,
 			{
 				"Sysex Common Non-Realtime Sample Dump Data Byte",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_data",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -9368,7 +9368,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_sd_ext_ln,
 			{
 				"Sysex Common Non-Realtime Sample Dump LP Transmission Loop Number",
-				"rtpmidi.sysex_common_non_realtime_sample_dump_lp_trans_ln",
+				"rtpmidi_sysex_common_non_realtime_sample_dump_lp_trans_ln",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -9380,7 +9380,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd_device_id,
 			{
 				"Sysex Common Non-Realtime File Dump Device ID",
-				"rtpmidi.sysex_common_non_realtime_fd_device_id",
+				"rtpmidi_sysex_common_non_realtime_fd_device_id",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9392,7 +9392,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd_type,
 			{
 				"Sysex Common Non-Realtime File Dump File Type",
-				"rtpmidi.sysex_common_non_realtime_fd_type",
+				"rtpmidi_sysex_common_non_realtime_fd_type",
 				FT_STRING,
 				BASE_NONE,
 				NULL,
@@ -9404,7 +9404,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd_name,
 			{
 				"Sysex Common Non-Realtime File Dump File Name",
-				"rtpmidi.sysex_common_non_realtime_fd_name",
+				"rtpmidi_sysex_common_non_realtime_fd_name",
 				FT_STRING,
 				BASE_NONE,
 				NULL,
@@ -9416,7 +9416,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd_length,
 			{
 				"Sysex Common Non-Realtime File Dump Length",
-				"rtpmidi.sysex_common_non_realtime_fd_length",
+				"rtpmidi_sysex_common_non_realtime_fd_length",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,
@@ -9428,7 +9428,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd_packet_num,
 			{
 				"Sysex Common Non-Realtime File Packet Number",
-				"rtpmidi.sysex_common_non_realtime_fd_packet_num",
+				"rtpmidi_sysex_common_non_realtime_fd_packet_num",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9440,7 +9440,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd_byte_count,
 			{
 				"Sysex Common Non-Realtime File Byte Count",
-				"rtpmidi.sysex_common_non_realtime_fd_byte_count",
+				"rtpmidi_sysex_common_non_realtime_fd_byte_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9452,7 +9452,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd_packet_data,
 			{
 				"Sysex Common Non-Realtime File Packet Data",
-				"rtpmidi.sysex_common_non_realtime_fd_packet_data",
+				"rtpmidi_sysex_common_non_realtime_fd_packet_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -9464,7 +9464,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_fd_checksum,
 			{
 				"Sysex Common Non-Realtime File Checksum",
-				"rtpmidi.sysex_common_non_realtime_fd_checksum",
+				"rtpmidi_sysex_common_non_realtime_fd_checksum",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9476,7 +9476,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_tune_program,
 			{
 				"Sysex Common (Non-)Realtime Tuning Program",
-				"rtpmidi.sysex_common_tune_program",
+				"rtpmidi_sysex_common_tune_program",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9488,7 +9488,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_tune_name,
 			{
 				"Sysex Common (Non-)Realtime Tuning Name",
-				"rtpmidi.sysex_common_tune_name",
+				"rtpmidi_sysex_common_tune_name",
 				FT_STRING,
 				BASE_NONE,
 				NULL,
@@ -9500,7 +9500,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_tune_freq,
 			{
 				"Sysex Common (Non-)Realtime Tuning Frequency",
-				"rtpmidi.sysex_common_tune_freq",
+				"rtpmidi_sysex_common_tune_freq",
 				FT_UINT24,
 				BASE_HEX,
 				NULL,
@@ -9512,7 +9512,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_tune_checksum,
 			{
 				"Sysex Common (Non-)Realtime Tuning Checksum",
-				"rtpmidi.sysex_common_tune_checksum",
+				"rtpmidi_sysex_common_tune_checksum",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9524,7 +9524,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_tune_changes,
 			{
 				"Sysex Common (Non-)Realtime Tuning Changes",
-				"rtpmidi.sysex_common_tune_changes",
+				"rtpmidi_sysex_common_tune_changes",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9536,7 +9536,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_tune_note,
 			{
 				"Sysex Common (Non-)Realtime Tuning Note",
-				"rtpmidi.sysex_common_tune_note",
+				"rtpmidi_sysex_common_tune_note",
 				FT_UINT8,
 				BASE_DEC | BASE_EXT_STRING,
 				&rtp_midi_note_values_ext,
@@ -9548,7 +9548,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_fm_type,
 			{
 				"Sysex Common Realtime MTC Full Message Type",
-				"rtpmidi.sysex_common_rt_mtc_fm_type",
+				"rtpmidi_sysex_common_rt_mtc_fm_type",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_mtc_fm_type_values),
@@ -9560,7 +9560,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_fm_hr,
 			{
 				"Sysex Common Realtime MTC Full Message Hour",
-				"rtpmidi.sysex_common_rt_mtc_fm_hour",
+				"rtpmidi_sysex_common_rt_mtc_fm_hour",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9572,7 +9572,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_fm_mn,
 			{
 				"Sysex Common Realtime MTC Full Message Minute",
-				"rtpmidi.sysex_common_rt_mtc_fm_minute",
+				"rtpmidi_sysex_common_rt_mtc_fm_minute",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9584,7 +9584,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_fm_sc,
 			{
 				"Sysex Common Realtime MTC Full Message Second",
-				"rtpmidi.sysex_common_rt_mtc_fm_second",
+				"rtpmidi_sysex_common_rt_mtc_fm_second",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9596,7 +9596,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_fm_fr,
 			{
 				"Sysex Common Realtime MTC Full Message Frame",
-				"rtpmidi.sysex_common_rt_mtc_fm_frame",
+				"rtpmidi_sysex_common_rt_mtc_fm_frame",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9608,7 +9608,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u1,
 			{
 				"Sysex Common Realtime MTC User Bits U1",
-				"rtpmidi.sysex_common_rt_mtc_ub_u1",
+				"rtpmidi_sysex_common_rt_mtc_ub_u1",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9620,7 +9620,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u2,
 			{
 				"Sysex Common Realtime MTC User Bits U2",
-				"rtpmidi.sysex_common_rt_mtc_ub_u2",
+				"rtpmidi_sysex_common_rt_mtc_ub_u2",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9632,7 +9632,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u3,
 			{
 				"Sysex Common Realtime MTC User Bits U3",
-				"rtpmidi.sysex_common_rt_mtc_ub_u3",
+				"rtpmidi_sysex_common_rt_mtc_ub_u3",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9644,7 +9644,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u4,
 			{
 				"Sysex Common Realtime MTC User Bits U4",
-				"rtpmidi.sysex_common_rt_mtc_ub_u4",
+				"rtpmidi_sysex_common_rt_mtc_ub_u4",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9656,7 +9656,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u5,
 			{
 				"Sysex Common Realtime MTC User Bits U5",
-				"rtpmidi.sysex_common_rt_mtc_ub_u5",
+				"rtpmidi_sysex_common_rt_mtc_ub_u5",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9668,7 +9668,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u6,
 			{
 				"Sysex Common Realtime MTC User Bits U6",
-				"rtpmidi.sysex_common_rt_mtc_ub_u6",
+				"rtpmidi_sysex_common_rt_mtc_ub_u6",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9680,7 +9680,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u7,
 			{
 				"Sysex Common Realtime MTC User Bits U7",
-				"rtpmidi.sysex_common_rt_mtc_ub_u7",
+				"rtpmidi_sysex_common_rt_mtc_ub_u7",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9692,7 +9692,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u8,
 			{
 				"Sysex Common Realtime MTC User Bits U8",
-				"rtpmidi.sysex_common_rt_mtc_ub_u8",
+				"rtpmidi_sysex_common_rt_mtc_ub_u8",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9704,7 +9704,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_ub_u9,
 			{
 				"Sysex Common Realtime MTC User Bits U9",
-				"rtpmidi.sysex_common_rt_mtc_ub_u9",
+				"rtpmidi_sysex_common_rt_mtc_ub_u9",
 				FT_UINT8,
 				BASE_HEX,
 				NULL,
@@ -9716,7 +9716,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_type,
 			{
 				"Sysex Common Non-Realtime MTC Type",
-				"rtpmidi.sysex_common_nrt_mtc_type",
+				"rtpmidi_sysex_common_nrt_mtc_type",
 				FT_UINT8,
 				BASE_HEX,
 				VALS(rtp_midi_mtc_fm_type_values),
@@ -9728,7 +9728,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_hr,
 			{
 				"Sysex Common Non-Realtime MTC Hour",
-				"rtpmidi.sysex_common_nrt_mtc_hour",
+				"rtpmidi_sysex_common_nrt_mtc_hour",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9740,7 +9740,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_mn,
 			{
 				"Sysex Common Non-Realtime MTCMinute",
-				"rtpmidi.sysex_common_nrt_mtc_minute",
+				"rtpmidi_sysex_common_nrt_mtc_minute",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9752,7 +9752,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_sc,
 			{
 				"Sysex Common Non-Realtime MTC Second",
-				"rtpmidi.sysex_common_nrt_mtc_second",
+				"rtpmidi_sysex_common_nrt_mtc_second",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9764,7 +9764,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_fr,
 			{
 				"Sysex Common Non-Realtime MTC Frame",
-				"rtpmidi.sysex_common_nrt_mtc_frame",
+				"rtpmidi_sysex_common_nrt_mtc_frame",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9776,7 +9776,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_ff,
 			{
 				"Sysex Common Non-Realtime MTC Fractional Frame",
-				"rtpmidi.sysex_common_nrt_mtc_fract_frame",
+				"rtpmidi_sysex_common_nrt_mtc_fract_frame",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9788,7 +9788,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_enl,
 			{
 				"Sysex Common Non-Realtime MTC Event Number (LSB)",
-				"rtpmidi.sysex_common_nrt_mtc_en_lsb",
+				"rtpmidi_sysex_common_nrt_mtc_en_lsb",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9800,7 +9800,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_enm,
 			{
 				"Sysex Common Non-Realtime MTC Event Number (MSB)",
-				"rtpmidi.sysex_common_nrt_mtc_en_msb",
+				"rtpmidi_sysex_common_nrt_mtc_en_msb",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9812,7 +9812,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_nrt_mtc_add,
 			{
 				"Sysex Common Non-Realtime MTC Additional Info",
-				"rtpmidi.sysex_common_nrt_mtc_add",
+				"rtpmidi_sysex_common_nrt_mtc_add",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -9824,7 +9824,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_cue_enl,
 			{
 				"Sysex Common Realtime MTC Cue Event Number (LSB)",
-				"rtpmidi.sysex_common_rt_mtc_cue_en_lsb",
+				"rtpmidi_sysex_common_rt_mtc_cue_en_lsb",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9836,7 +9836,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_cue_enm,
 			{
 				"Sysex Common Realtime MTC Cue Event Number (MSB)",
-				"rtpmidi.sysex_common_rt_mtc_cue_en_msb",
+				"rtpmidi_sysex_common_rt_mtc_cue_en_msb",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9848,7 +9848,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_mtc_cue_add,
 			{
 				"Sysex Common Realtime MTC Cue Additional Info",
-				"rtpmidi.sysex_common_rt_mtc_cue_add",
+				"rtpmidi_sysex_common_rt_mtc_cue_add",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,
@@ -9860,7 +9860,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_ni_bar_num,
 			{
 				"Sysex Common Realtime NI Bar Number",
-				"rtpmidi.sysex_common_rt_ni_barnum",
+				"rtpmidi_sysex_common_rt_ni_barnum",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -9872,7 +9872,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_ni_bytes,
 			{
 				"Sysex Common Realtime NI Bytes",
-				"rtpmidi.sysex_common_rt_ni_bytes",
+				"rtpmidi_sysex_common_rt_ni_bytes",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9884,7 +9884,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_ni_numerator,
 			{
 				"Sysex Common Realtime NI Numerator",
-				"rtpmidi.sysex_common_rt_ni_numerator",
+				"rtpmidi_sysex_common_rt_ni_numerator",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9896,7 +9896,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_ni_denominator,
 			{
 				"Sysex Common Realtime NI Denominator",
-				"rtpmidi.sysex_common_rt_ni_denominator",
+				"rtpmidi_sysex_common_rt_ni_denominator",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9908,7 +9908,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_ni_midi_clocks,
 			{
 				"Sysex Common Realtime NI MIDI clocks in click",
-				"rtpmidi.sysex_common_rt_ni_midiclock",
+				"rtpmidi_sysex_common_rt_ni_midiclock",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9920,7 +9920,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_ni_32nds,
 			{
 				"Sysex Common Realtime NI 32nd notes in MIDI quarter note",
-				"rtpmidi.sysex_common_rt_ni_32nds",
+				"rtpmidi_sysex_common_rt_ni_32nds",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -9932,7 +9932,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_dc_volume,
 			{
 				"Sysex Common Realtime DC Volume",
-				"rtpmidi.sysex_common_rt_dc_volume",
+				"rtpmidi_sysex_common_rt_dc_volume",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -9944,7 +9944,7 @@ proto_register_rtp_midi( void )
 			&hf_rtp_midi_sysex_common_rt_dc_balance,
 			{
 				"Sysex Common Realtime DC Balance",
-				"rtpmidi.sysex_common_rt_dc_balance",
+				"rtpmidi_sysex_common_rt_dc_balance",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,

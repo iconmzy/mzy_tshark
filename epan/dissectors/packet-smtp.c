@@ -1248,100 +1248,100 @@ proto_register_smtp(void)
 {
   static hf_register_info hf[] = {
     { &hf_smtp_req,
-      { "Request", "smtp.req",
+      { "Request", "smtp_req",
         FT_BOOLEAN, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_rsp,
-      { "Response", "smtp.rsp",
+      { "Response", "smtp_rsp",
         FT_BOOLEAN, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_message,
-      { "Message", "smtp.message",
+      { "Message", "smtp_message",
         FT_STRING,  BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_command_line,
-      { "Command Line", "smtp.command_line",
+      { "Command Line", "smtp_command_line",
         FT_STRING,  BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_req_command,
-      { "Command", "smtp.req.command",
+      { "Command", "smtp_req_command",
         FT_STRING,  BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_req_parameter,
-      { "Request parameter", "smtp.req.parameter",
+      { "Request parameter", "smtp_req_parameter",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_response,
-      { "Response", "smtp.response",
+      { "Response", "smtp_response",
         FT_STRING,  BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_rsp_code,
-      { "Response code", "smtp.response.code",
+      { "Response code", "smtp_response_code",
         FT_UINT32, BASE_DEC|BASE_EXT_STRING, &response_codes_vs_ext, 0x0, NULL, HFILL }},
 
     { &hf_smtp_rsp_parameter,
-      { "Response parameter", "smtp.rsp.parameter",
+      { "Response parameter", "smtp_rsp_parameter",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 
 
 
     { &hf_smtp_username,
-      { "Username", "smtp.auth.username",
+      { "Username", "smtp_auth_username",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_password,
-      { "Password", "smtp.auth.password",
+      { "Password", "smtp_auth_password",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_username_password,
-      { "Username/Password", "smtp.auth.username_password",
+      { "Username/Password", "smtp_auth_username_password",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_smtp_eom,
-      { "EOM", "smtp.eom",
+      { "EOM", "smtp_eom",
         FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL } },
 
     /* Fragment entries */
     { &hf_smtp_data_fragments,
-      { "DATA fragments", "smtp.data.fragments",
+      { "DATA fragments", "smtp_data_fragments",
         FT_NONE, BASE_NONE, NULL, 0x00, "Message fragments", HFILL } },
 
     { &hf_smtp_data_fragment,
-      { "DATA fragment", "smtp.data.fragment",
+      { "DATA fragment", "smtp_data_fragment",
         FT_FRAMENUM, BASE_NONE, NULL, 0x00, "Message fragment", HFILL } },
 
     { &hf_smtp_data_fragment_overlap,
-      { "DATA fragment overlap", "smtp.data.fragment.overlap", FT_BOOLEAN,
+      { "DATA fragment overlap", "smtp_data_fragment_overlap", FT_BOOLEAN,
         BASE_NONE, NULL, 0x0, "Message fragment overlap", HFILL } },
 
     { &hf_smtp_data_fragment_overlap_conflicts,
       { "DATA fragment overlapping with conflicting data",
-        "smtp.data.fragment.overlap.conflicts", FT_BOOLEAN, BASE_NONE, NULL,
+        "smtp_data_fragment_overlap_conflicts", FT_BOOLEAN, BASE_NONE, NULL,
         0x0, "Message fragment overlapping with conflicting data", HFILL } },
 
     { &hf_smtp_data_fragment_multiple_tails,
-      { "DATA has multiple tail fragments", "smtp.data.fragment.multiple_tails",
+      { "DATA has multiple tail fragments", "smtp_data_fragment_multiple_tails",
         FT_BOOLEAN, BASE_NONE, NULL, 0x0, "Message has multiple tail fragments", HFILL } },
 
     { &hf_smtp_data_fragment_too_long_fragment,
-      { "DATA fragment too long", "smtp.data.fragment.too_long_fragment",
+      { "DATA fragment too long", "smtp_data_fragment_too_long_fragment",
         FT_BOOLEAN, BASE_NONE, NULL, 0x0, "Message fragment too long", HFILL } },
 
     { &hf_smtp_data_fragment_error,
-      { "DATA defragmentation error", "smtp.data.fragment.error",
+      { "DATA defragmentation error", "smtp_data_fragment_error",
         FT_FRAMENUM, BASE_NONE, NULL, 0x00, "Message defragmentation error", HFILL } },
 
     { &hf_smtp_data_fragment_count,
-      { "DATA fragment count", "smtp.data.fragment.count",
+      { "DATA fragment count", "smtp_data_fragment_count",
         FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL } },
 
     { &hf_smtp_data_reassembled_in,
-      { "Reassembled DATA in frame", "smtp.data.reassembled.in",
+      { "Reassembled DATA in frame", "smtp_data_reassembled_in",
         FT_FRAMENUM, BASE_NONE, NULL, 0x00, "This DATA fragment is reassembled in this frame", HFILL } },
 
     { &hf_smtp_data_reassembled_length,
-      { "Reassembled DATA length", "smtp.data.reassembled.length",
+      { "Reassembled DATA length", "smtp_data_reassembled_length",
         FT_UINT32, BASE_DEC, NULL, 0x00, "The total length of the reassembled payload", HFILL } },
   };
   static gint *ett[] = {

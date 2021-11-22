@@ -78,10 +78,10 @@ static header_field_info hfi_udp_length UDP_HFI_INIT =
 
 static header_field_info hfi_udp_checksum UDP_HFI_INIT =
 { "Checksum", "udp.checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
-  "Details at: https://www.wireshark.org/docs/wsug_html_chunked/ChAdvChecksums.html", HFILL };
+  "Details at: https://www.wireshark.org/docs/wsug.html.chunked/ChAdvChecksums.html", HFILL };
 
 static header_field_info hfi_udp_checksum_calculated UDP_HFI_INIT =
-{ "Calculated Checksum", "udp.checksum_calculated", FT_UINT16, BASE_HEX, NULL, 0x0,
+{ "Calculated Checksum", "udp.checksum.calculated", FT_UINT16, BASE_HEX, NULL, 0x0,
   "The expected UDP checksum field as calculated from the UDP packet", HFILL };
 
 static header_field_info hfi_udp_checksum_status UDP_HFI_INIT =
@@ -89,56 +89,57 @@ static header_field_info hfi_udp_checksum_status UDP_HFI_INIT =
   NULL, HFILL };
 
 static header_field_info hfi_udp_proc_src_uid UDP_HFI_INIT =
-{ "Source process user ID", "udp.proc.srcuid", FT_UINT32, BASE_DEC, NULL, 0x0,
+{ "Source process user ID", "udp_proc_srcuid", FT_UINT32, BASE_DEC, NULL, 0x0,
   NULL, HFILL};
 
 static header_field_info hfi_udp_proc_src_pid UDP_HFI_INIT =
-{ "Source process ID", "udp.proc.srcpid", FT_UINT32, BASE_DEC, NULL, 0x0,
+{ "Source process ID", "udp_proc_srcpid", FT_UINT32, BASE_DEC, NULL, 0x0,
   NULL, HFILL};
 
 static header_field_info hfi_udp_proc_src_uname UDP_HFI_INIT =
-{ "Source process user name", "udp.proc.srcuname", FT_STRING, BASE_NONE, NULL, 0x0,
+{ "Source process user name", "udp_proc_srcuname", FT_STRING, BASE_NONE, NULL, 0x0,
   NULL, HFILL};
 
 static header_field_info hfi_udp_proc_src_cmd UDP_HFI_INIT =
-{ "Source process name", "udp.proc.srccmd", FT_STRING, BASE_NONE, NULL, 0x0,
+{ "Source process name", "udp_proc_srccmd", FT_STRING, BASE_NONE, NULL, 0x0,
   "Source process command name", HFILL};
 
 static header_field_info hfi_udp_proc_dst_uid UDP_HFI_INIT =
-{ "Destination process user ID", "udp.proc.dstuid", FT_UINT32, BASE_DEC, NULL, 0x0,
+{ "Destination process user ID", "udp_proc_dstuid", FT_UINT32, BASE_DEC, NULL, 0x0,
   NULL, HFILL};
 
 static header_field_info hfi_udp_proc_dst_pid UDP_HFI_INIT =
-{ "Destination process ID", "udp.proc.dstpid", FT_UINT32, BASE_DEC, NULL, 0x0,
+{ "Destination process ID", "udp_proc_dstpid", FT_UINT32, BASE_DEC, NULL, 0x0,
   NULL, HFILL};
 
 static header_field_info hfi_udp_proc_dst_uname UDP_HFI_INIT =
-{ "Destination process user name", "udp.proc.dstuname", FT_STRING, BASE_NONE, NULL, 0x0,
+{ "Destination process user name", "udp_proc_dstuname", FT_STRING, BASE_NONE, NULL, 0x0,
   NULL, HFILL};
 
 static header_field_info hfi_udp_proc_dst_cmd UDP_HFI_INIT =
-{ "Destination process name", "udp.proc.dstcmd", FT_STRING, BASE_NONE, NULL, 0x0,
+{ "Destination process name", "udp_proc_dstcmd", FT_STRING, BASE_NONE, NULL, 0x0,
   "Destination process command name", HFILL};
 
 static header_field_info hfi_udp_pdu_size UDP_HFI_INIT =
-{ "PDU Size", "udp.pdu.size", FT_UINT32, BASE_DEC, NULL, 0x0,
+{ "PDU Size", "udp_pdu_size", FT_UINT32, BASE_DEC, NULL, 0x0,
   "The size of this PDU", HFILL };
 
 static header_field_info hfi_udp_ts_relative UDP_HFI_INIT =
-{ "Time since first frame", "udp.time_relative", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+{ "Time since first frame", "udp_time_relative", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
   "Time relative to first frame in this UDP stream", HFILL };
 
 static header_field_info hfi_udp_ts_delta UDP_HFI_INIT =
-{ "Time since previous frame", "udp.time_delta", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+{ "Time since previous frame", "udp_time_delta", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
   "Time delta from previous frame in this UDP stream", HFILL };
 
 static header_field_info hfi_udplite_checksum_coverage UDPLITE_HFI_INIT =
-{ "Checksum coverage", "udp.checksum_coverage", FT_UINT16, BASE_DEC, NULL, 0x0,
+{ "Checksum coverage", "udp_checksum_coverage", FT_UINT16, BASE_DEC, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_payload UDP_HFI_INIT =
-{ "Payload", "udp.payload", FT_BYTES, BASE_NONE, NULL, 0x0,
+{ "Payload", "udp_payload", FT_BYTES, BASE_NONE, NULL, 0x0,
   NULL, HFILL };
+
 
 
 static gint ett_udp = -1;

@@ -434,13 +434,13 @@ proto_register_rfc7468(void)
 {
     static hf_register_info hf[] = {
         { &hf_rfc7468_preeb_label,
-            { "Pre-encapsulation boundary label", "rfc7468.preeb_label", FT_STRING, BASE_NONE,
+            { "Pre-encapsulation boundary label", "rfc7468_preeb_label", FT_STRING, BASE_NONE,
                 NULL, 0, NULL, HFILL } },
         { &hf_rfc7468_ber_data,
-            { "BER data", "rfc7468.ber_data", FT_NONE, BASE_NONE,
+            { "BER data", "rfc7468_ber_data", FT_NONE, BASE_NONE,
                 NULL, 0, NULL, HFILL } },
         { &hf_rfc7468_posteb_label,
-            { "Post-encapsulation boundary label", "rfc7468.posteb_label", FT_STRING, BASE_NONE,
+            { "Post-encapsulation boundary label", "rfc7468_posteb_label", FT_STRING, BASE_NONE,
                 NULL, 0, NULL, HFILL } },
     };
 

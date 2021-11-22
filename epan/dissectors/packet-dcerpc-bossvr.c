@@ -76,7 +76,7 @@ proto_register_dcerpc_bossvr (void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_bossvr_opnum,
-		  { "Operation", "bossvr.opnum", FT_UINT16, BASE_DEC,
+		  { "Operation", "bossvr_opnum", FT_UINT16, BASE_DEC,
 		    NULL, 0x0, NULL, HFILL }}
 	};
 

@@ -84,11 +84,11 @@ proto_register_3com_xns(void)
 	static hf_register_info hf[] = {
 		/* registered here but handled in ethertype.c */
 		{ &hf_3com_xns_type_ethertype,
-		{ "Type", "3comxns.type", FT_UINT16, BASE_HEX,
+		{ "Type", "3comxns_type", FT_UINT16, BASE_HEX,
 			VALS(etype_vals), 0x0, NULL, HFILL }},
 
 		{ &hf_3com_xns_type_retix_bpdu,
-		{ "Type", "3comxns.type", FT_UINT16, BASE_HEX,
+		{ "Type", "3comxns_type", FT_UINT16, BASE_HEX,
 			VALS(retix_bpdu_type_vals), 0x0, NULL, HFILL }},
 	};
 

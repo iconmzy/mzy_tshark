@@ -31,32 +31,32 @@ static header_field_info *hfi_acap = NULL;
 #define HFI_ACAP HFI_INIT(proto_acap)
 
 static header_field_info hfi_acap_response HFI_ACAP = {
-    "Response",           "acap.response",
+    "Response",           "acap_response",
     FT_BOOLEAN, BASE_NONE, NULL, 0x0,
     "TRUE if ACAP response", HFILL };
 
 static header_field_info hfi_acap_request HFI_ACAP = {
-    "Request",            "acap.request",
+    "Request",            "acap_request",
     FT_BOOLEAN, BASE_NONE, NULL, 0x0,
     "TRUE if ACAP request", HFILL };
 
 static header_field_info hfi_acap_request_tag HFI_ACAP = {
-    "Request Tag",            "acap.request_tag",
+    "Request Tag",            "acap_request_tag",
     FT_STRING, BASE_NONE, NULL, 0x0,
     NULL, HFILL };
 
 static header_field_info hfi_acap_response_tag HFI_ACAP = {
-    "Response Tag",            "acap.response_tag",
+    "Response Tag",            "acap_response_tag",
     FT_STRING, BASE_NONE, NULL, 0x0,
     NULL, HFILL };
 
 static header_field_info hfi_acap_request_data HFI_ACAP = {
-    "Request",            "acap.request_data",
+    "Request",            "acap_request_data",
     FT_STRING, BASE_NONE, NULL, 0x0,
     NULL, HFILL };
 
 static header_field_info hfi_acap_response_data HFI_ACAP = {
-    "Response",            "acap.response_data",
+    "Response",            "acap_response_data",
     FT_STRING, BASE_NONE, NULL, 0x0,
     NULL, HFILL };
 

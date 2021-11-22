@@ -120,56 +120,56 @@ proto_register_idp(void)
 {
 	static hf_register_info hf_idp[] = {
 		{ &hf_idp_checksum,
-		    { "Checksum",	"idp.checksum", FT_UINT16, BASE_HEX,
+		    { "Checksum",	"idp_checksum", FT_UINT16, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }},
 
 #if 0
 		{ &hf_idp_src,
-		    { "Source Address",	"idp.src", FT_STRING, BASE_NONE,
+		    { "Source Address",	"idp_src", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }},
 #endif
 
 #if 0
 		{ &hf_idp_dst,
-		    { "Destination Address",	"idp.dst", FT_STRING, BASE_NONE,
+		    { "Destination Address",	"idp_dst", FT_STRING, BASE_NONE,
 			NULL, 0x0,  NULL, HFILL }},
 #endif
 
 		{ &hf_idp_len,
-		    { "Length",		"idp.len", FT_UINT16, BASE_DEC|BASE_UNIT_STRING,
+		    { "Length",		"idp_len", FT_UINT16, BASE_DEC|BASE_UNIT_STRING,
 			&units_byte_bytes, 0x0, NULL, HFILL }},
 
 		/* XXX - does this have separate hop count and time subfields? */
 		{ &hf_idp_hops,
-		    { "Transport Control (Hops)", "idp.hops", FT_UINT8, BASE_DEC,
+		    { "Transport Control (Hops)", "idp_hops", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }},
 
 		{ &hf_idp_packet_type,
-		    { "Packet Type",	"idp.packet_type", FT_UINT8, BASE_DEC,
+		    { "Packet Type",	"idp_packet_type", FT_UINT8, BASE_DEC,
 			VALS(idp_packet_type_vals), 0x0, NULL, HFILL }},
 
 		{ &hf_idp_dnet,
-		    { "Destination Network","idp.dst.net", FT_UINT32, BASE_HEX,
+		    { "Destination Network","idp_dst_net", FT_UINT32, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }},
 
 		{ &hf_idp_dnode,
-		    { "Destination Node",	"idp.dst.node", FT_ETHER, BASE_NONE,
+		    { "Destination Node",	"idp_dst_node", FT_ETHER, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }},
 
 		{ &hf_idp_dsocket,
-		    { "Destination Socket",	"idp.dst.socket", FT_UINT16, BASE_HEX,
+		    { "Destination Socket",	"idp_dst_socket", FT_UINT16, BASE_HEX,
 			VALS(idp_socket_vals), 0x0, NULL, HFILL }},
 
 		{ &hf_idp_snet,
-		    { "Source Network","idp.src.net", FT_UINT32, BASE_HEX,
+		    { "Source Network","idp_src_net", FT_UINT32, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }},
 
 		{ &hf_idp_snode,
-		    { "Source Node",	"idp.src.node", FT_ETHER, BASE_NONE,
+		    { "Source Node",	"idp_src_node", FT_ETHER, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }},
 
 		{ &hf_idp_ssocket,
-		    { "Source Socket",	"idp.src.socket", FT_UINT16, BASE_HEX,
+		    { "Source Socket",	"idp_src_socket", FT_UINT16, BASE_HEX,
 			VALS(idp_socket_vals), 0x0, NULL, HFILL }},
 	};
 

@@ -558,31 +558,31 @@ proto_register_blip(void)
 {
 	static hf_register_info hf[] = {
 	{ &hf_blip_message_number,
-		{ "Message Number", "blip.messagenum", FT_UINT64, BASE_DEC,
+		{ "Message Number", "blip_messagenum", FT_UINT64, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 	},
 	{ &hf_blip_frame_flags,
-		{ "Frame Flags", "blip.frameflags", FT_UINT8, BASE_HEX | BASE_EXT_STRING,
+		{ "Frame Flags", "blip_frameflags", FT_UINT8, BASE_HEX | BASE_EXT_STRING,
 			&flag_combos_ext, 0x0, NULL, HFILL }
 	},
 	{ &hf_blip_properties_length,
-		{ "Properties Length", "blip.propslength", FT_UINT64, BASE_DEC,
+		{ "Properties Length", "blip_propslength", FT_UINT64, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 	},
 	{ &hf_blip_properties,
-		{ "Properties", "blip.props", FT_STRING, STR_UNICODE,
+		{ "Properties", "blip_props", FT_STRING, STR_UNICODE,
 			NULL, 0x0, NULL, HFILL }
 		},
 	{ &hf_blip_message_body,
-		{ "Message Body", "blip.messagebody", FT_STRING, STR_UNICODE,
+		{ "Message Body", "blip_messagebody", FT_STRING, STR_UNICODE,
 			NULL, 0x0, NULL, HFILL }
 	},
 	{ &hf_blip_ack_size,
-		{ "ACK num bytes", "blip.numackbytes", FT_UINT64, BASE_DEC,
+		{ "ACK num bytes", "blip_numackbytes", FT_UINT64, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 	},
 	{ &hf_blip_checksum,
-		{ "Checksum", "blip.checksum", FT_UINT32, BASE_DEC,
+		{ "Checksum", "blip_checksum", FT_UINT32, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 	}
 	};

@@ -133,51 +133,51 @@ proto_register_aruba_iap(void)
 {
     static hf_register_info hf[] = {
         { &hf_iap_magic,
-        { "Magic", "aruba_iap.magic", FT_UINT16, BASE_HEX, NULL,0x0,
+        { "Magic", "aruba_iap_magic", FT_UINT16, BASE_HEX, NULL,0x0,
         "Magic Number of IAP traffic (Always 0x8ffd)", HFILL}},
 
         { &hf_iap_version,
-        { "Version", "aruba_iap.version", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Version", "aruba_iap_version", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL}},
 
         { &hf_iap_type,
-        { "Type", "aruba_iap.type", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Type", "aruba_iap_type", FT_UINT8, BASE_DEC, NULL, 0x0,
         "Type of message", HFILL}},
 
         { &hf_iap_length,
-        { "Length", "aruba_iap.length", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Length", "aruba_iap_length", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL}},
 
         { &hf_iap_id,
-        { "Id", "aruba_iap.id", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Id", "aruba_iap_id", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL}},
 
         { &hf_iap_status,
-        { "Status", "aruba_iap.status", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Status", "aruba_iap_status", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL}},
 
         { &hf_iap_uptime,
-        { "Uptime", "aruba_iap.uptime", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Uptime", "aruba_iap_uptime", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL}},
 
         { &hf_iap_vc_ip,
-        { "VC IP", "aruba_iap.vc_ip", FT_IPv4, BASE_NONE, NULL, 0x0,
+        { "VC IP", "aruba_iap_vc_ip", FT_IPv4, BASE_NONE, NULL, 0x0,
         "Address IP of Virtual Controller", HFILL}},
 
         { &hf_iap_pvid,
-        { "PVID (Port Vlan ID)", "aruba_iap.pvid", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "PVID (Port Vlan ID)", "aruba_iap_pvid", FT_UINT16, BASE_DEC, NULL, 0x0,
         "Vlan ID (of Uplink)", HFILL}},
 
         { &hf_iap_model,
-        { "Model", "aruba_iap.model", FT_UINT32, BASE_DEC_HEX, VALS(iap_model), 0x0,
+        { "Model", "aruba_iap_model", FT_UINT32, BASE_DEC_HEX, VALS(iap_model), 0x0,
         NULL, HFILL}},
 
         { &hf_iap_unknown_bytes,
-        { "Unknown", "aruba_iap.unknown.bytes", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "Unknown", "aruba_iap_unknown_bytes", FT_BYTES, BASE_NONE, NULL, 0x0,
         "Unknown Data...", HFILL}},
 
         { &hf_iap_unknown_uint,
-        { "Unknown", "aruba_iap.unknown.uint", FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
+        { "Unknown", "aruba_iap_unknown_uint", FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         "Unknown (UINT) Data...", HFILL}},
 
 

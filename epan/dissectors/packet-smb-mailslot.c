@@ -204,23 +204,23 @@ proto_register_smb_mailslot(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_opcode,
-		  { "Opcode", "mailslot.opcode", FT_UINT16, BASE_DEC,
+		  { "Opcode", "mailslot_opcode", FT_UINT16, BASE_DEC,
 		    VALS(opcode_vals), 0, "MAILSLOT OpCode", HFILL }},
 
 		{ &hf_priority,
-		  { "Priority", "mailslot.priority", FT_UINT16, BASE_DEC,
+		  { "Priority", "mailslot_priority", FT_UINT16, BASE_DEC,
 		    NULL, 0, "MAILSLOT Priority of transaction", HFILL }},
 
 		{ &hf_class,
-		  { "Class", "mailslot.class", FT_UINT16, BASE_DEC,
+		  { "Class", "mailslot_class", FT_UINT16, BASE_DEC,
 		    VALS(class_vals), 0, "MAILSLOT Class of transaction", HFILL }},
 
 		{ &hf_size,
-		  { "Size", "mailslot.size", FT_UINT16, BASE_DEC,
+		  { "Size", "mailslot_size", FT_UINT16, BASE_DEC,
 		    NULL, 0, "MAILSLOT Total size of mail data", HFILL }},
 
 		{ &hf_name,
-		  { "Mailslot Name", "mailslot.name", FT_STRING, BASE_NONE,
+		  { "Mailslot Name", "mailslot_name", FT_STRING, BASE_NONE,
 		    NULL, 0, "MAILSLOT Name of mailslot", HFILL }},
 
 	};

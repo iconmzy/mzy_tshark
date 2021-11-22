@@ -161,42 +161,42 @@ proto_register_isis(void)
 {
   static hf_register_info hf[] = {
     { &hf_isis_irpd,
-      { "Intradomain Routing Protocol Discriminator",    "isis.irpd",
+      { "Intradomain Routing Protocol Discriminator",    "isis_irpd",
         FT_UINT8, BASE_HEX, VALS(nlpid_vals), 0x0, NULL, HFILL }},
 
     { &hf_isis_header_length,
-      { "Length Indicator", "isis.len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Length Indicator", "isis_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_isis_version,
-      { "Version/Protocol ID Extension", "isis.version", FT_UINT8,
+      { "Version/Protocol ID Extension", "isis_version", FT_UINT8,
          BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_isis_system_id_length,
-      { "ID Length", "isis.sysid_len",
+      { "ID Length", "isis_sysid_len",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_isis_type,
-      { "PDU Type", "isis.type", FT_UINT8, BASE_DEC,
+      { "PDU Type", "isis_type", FT_UINT8, BASE_DEC,
         VALS(isis_vals), ISIS_TYPE_MASK, NULL, HFILL }},
 
     { &hf_isis_type_reserved,
-      { "Reserved", "isis.type.reserved", FT_UINT8, BASE_HEX,
+      { "Reserved", "isis_type_reserved", FT_UINT8, BASE_HEX,
         NULL, ISIS_TYPE_RESERVED_MASK, NULL, HFILL }},
 
     { &hf_isis_version2,
-      { "Version", "isis.version2", FT_UINT8, BASE_DEC, NULL,
+      { "Version", "isis_version2", FT_UINT8, BASE_DEC, NULL,
         0x0, NULL, HFILL }},
 
     { &hf_isis_reserved,
-      { "Reserved", "isis.reserved", FT_UINT8, BASE_DEC, NULL,
+      { "Reserved", "isis_reserved", FT_UINT8, BASE_DEC, NULL,
         0x0, NULL, HFILL }},
 
     { &hf_isis_max_area_adr,
-      { "Maximum Area Addresses", "isis.max_area_adr", FT_UINT8, BASE_DEC, NULL,
+      { "Maximum Area Addresses", "isis_max_area_adr", FT_UINT8, BASE_DEC, NULL,
         0x0, "Maximum Area Addresses, 0 means 3", HFILL }},
 
     { &hf_isis_clv_key_id,
-      { "Key ID", "isis.clv.key_id", FT_UINT16, BASE_DEC, NULL,
+      { "Key ID", "isis_clv_key_id", FT_UINT16, BASE_DEC, NULL,
         0x0, NULL, HFILL }},
   };
     /*

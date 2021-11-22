@@ -86,14 +86,14 @@ proto_register_ap1394(void)
 {
   static hf_register_info hf[] = {
     { &hf_ap1394_dst,
-      { "Destination", "ap1394.dst", FT_BYTES, BASE_NONE,
+      { "Destination", "ap1394_dst", FT_BYTES, BASE_NONE,
         NULL, 0x0, "Destination address", HFILL }},
     { &hf_ap1394_src,
-      { "Source", "ap1394.src", FT_BYTES, BASE_NONE,
+      { "Source", "ap1394_src", FT_BYTES, BASE_NONE,
         NULL, 0x0, "Source address", HFILL }},
     /* registered here but handled in ethertype.c */
     { &hf_ap1394_type,
-      { "Type", "ap1394.type", FT_UINT16, BASE_HEX,
+      { "Type", "ap1394_type", FT_UINT16, BASE_HEX,
         VALS(etype_vals), 0x0, NULL, HFILL }},
   };
   static gint *ett[] = {

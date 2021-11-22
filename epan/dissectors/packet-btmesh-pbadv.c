@@ -382,120 +382,120 @@ proto_register_btmesh_pbadv(void)
     static hf_register_info hf[] = {
         //PB-ADV
         { &hf_btmesh_pbadv_linkid,
-            { "Link ID", "pbadv.linkid",
+            { "Link ID", "pbadv_linkid",
                 FT_UINT32, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }
         },
         { &hf_btmesh_pbadv_trnumber,
-            { "Transaction Number", "pbadv.trnumber",
+            { "Transaction Number", "pbadv_trnumber",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }
         },
         //Generic Provisioning Control
         { &hf_btmesh_generic_provisioning_control_format,
-            { "Generic Provisioning Control Format", "pbadv.gen_prov.gpcf",
+            { "Generic Provisioning Control Format", "pbadv_gen_prov_gpcf",
                 FT_UINT8, BASE_DEC, VALS(btmesh_generic_provisioning_control_format), 0x03,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_segn,
-            { "The last segment number", "pbadv.gen_prov.gpcf.segn",
+            { "The last segment number", "pbadv_gen_prov_gpcf_segn",
                 FT_UINT8, BASE_DEC, NULL, 0xFC,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_total_length,
-            { "Total Length", "pbadv.gen_prov.gpcf.total_length",
+            { "Total Length", "pbadv_gen_prov_gpcf_total_length",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_fcs,
-            { "Frame Check Sequence", "pbadv.gen_prov.gpcf.fcs",
+            { "Frame Check Sequence", "pbadv_gen_prov_gpcf_fcs",
                 FT_UINT8, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_padding,
-            { "Padding", "pbadv.gen_prov.gpcf.padding",
+            { "Padding", "pbadv_gen_prov_gpcf_padding",
                 FT_UINT8, BASE_DEC, NULL, 0xFC,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_segment_index,
-            { "Segment number of the transaction", "pbadv.gen_prov.gpcf.segment_index",
+            { "Segment number of the transaction", "pbadv_gen_prov_gpcf_segment_index",
                 FT_UINT8, BASE_DEC, NULL, 0xFC,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_bearer_opcode,
-            { "Bearer Opcode", "pbadv.gen_prov.gpcf.bearer_opcode",
+            { "Bearer Opcode", "pbadv_gen_prov_gpcf_bearer_opcode",
                 FT_UINT8, BASE_DEC, VALS(btmesh_gpcf_bearer_opcode_format), 0xFC,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_bearer_opcode_device_UUID,
-            { "Device UUID", "pbadv.gen_prov.gpcf.bearer_opcode.device_uuid",
+            { "Device UUID", "pbadv_gen_prov_gpcf_bearer_opcode_device_uuid",
                 FT_GUID, BASE_NONE, NULL, 0x00,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_bearer_opcode_reason,
-            { "Reason", "pbadv.gen_prov.gpcf.bearer_opcode.reason",
+            { "Reason", "pbadv_gen_prov_gpcf_bearer_opcode_reason",
                 FT_UINT8, BASE_DEC, VALS(btmesh_gpcf_bearer_opcode_reason_format), 0x00,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpcf_bearer_unknown_data,
-            { "Unknown Data", "pbadv.gen_prov.gpcf.unknown_data",
+            { "Unknown Data", "pbadv_gen_prov_gpcf_unknown_data",
                 FT_BYTES, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }
         },
         //Generic Provisioning Payload
         { &hf_btmesh_gpp_payload,
-            { "Generic Provisioning Payload", "pbadv.gen_prov.gpp.payload",
+            { "Generic Provisioning Payload", "pbadv_gen_prov_gpp_payload",
                 FT_BYTES, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpp_payload_fragment,
-            { "Generic Provisioning Payload Fragment", "pbadv.gen_prov.gpp.payload.fragment",
+            { "Generic Provisioning Payload Fragment", "pbadv_gen_prov_gpp_payload_fragment",
                 FT_BYTES, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }
         },
         //Generic Provisioning Payload Reassembly
         { &hf_btmesh_gpp_fragments,
-            { "Reassembled Generic Provisioning Payload Fragments", "pbadv.gen_prov.gpp.fragments",
+            { "Reassembled Generic Provisioning Payload Fragments", "pbadv_gen_prov_gpp_fragments",
                 FT_NONE, BASE_NONE, NULL, 0x0,
                 "Generic Provisioning Payload Fragments", HFILL }
         },
         { &hf_btmesh_gpp_fragment,
-            { "Generic Provisioning Payload Fragment", "pbadv.gen_prov.gpp.fragment",
+            { "Generic Provisioning Payload Fragment", "pbadv_gen_prov_gpp_fragment",
                 FT_FRAMENUM, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpp_fragment_overlap,
-            { "Fragment overlap", "pbadv.gen_prov.gpp.fragment.overlap",
+            { "Fragment overlap", "pbadv_gen_prov_gpp_fragment_overlap",
                 FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 "Fragment overlaps with other fragments", HFILL }
         },
         { &hf_btmesh_gpp_fragment_overlap_conflict,
-            { "Conflicting data in fragment overlap", "pbadv.gen_prov.gpp.fragment.overlap.conflict",
+            { "Conflicting data in fragment overlap", "pbadv_gen_prov_gpp_fragment_overlap_conflict",
                 FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 "Overlapping fragments contained conflicting data", HFILL }
         },
         { &hf_btmesh_gpp_fragment_multiple_tails,
-            { "Multiple tail fragments found", "pbadv.gen_prov.gpp.fragment.multipletails",
+            { "Multiple tail fragments found", "pbadv_gen_prov_gpp_fragment_multipletails",
                 FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 "Several tails were found when defragmenting the packet", HFILL }
         },
         { &hf_btmesh_gpp_fragment_too_long_fragment,
-            { "Fragment too long", "pbadv.gen_prov.gpp.fragment.toolongfragment",
+            { "Fragment too long", "pbadv_gen_prov_gpp_fragment_toolongfragment",
                 FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 "Fragment contained data past end of packet", HFILL }
         },
         { &hf_btmesh_gpp_fragment_error,
-            { "Defragmentation error", "pbadv.gen_prov.gpp.fragment.error",
+            { "Defragmentation error", "pbadv_gen_prov_gpp_fragment_error",
                 FT_FRAMENUM, BASE_NONE, NULL, 0x0,
                 "Defragmentation error due to illegal fragments", HFILL }
         },
         { &hf_btmesh_gpp_fragment_count,
-            { "Fragment count", "pbadv.gen_prov.gpp.fragment.count",
+            { "Fragment count", "pbadv_gen_prov_gpp_fragment_count",
                 FT_UINT32, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }
         },
         { &hf_btmesh_gpp_reassembled_length,
-            { "Reassembled Generic Provisioning Payload length", "pbadv.gen_prov.gpp.reassembled.length",
+            { "Reassembled Generic Provisioning Payload length", "pbadv_gen_prov_gpp_reassembled_length",
                 FT_UINT32, BASE_DEC, NULL, 0x0,
                 "The total length of the reassembled payload", HFILL }
         },

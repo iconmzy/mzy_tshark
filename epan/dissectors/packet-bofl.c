@@ -86,17 +86,17 @@ proto_register_bofl(void)
 {
     static hf_register_info hf[] = {
         { &hf_bofl_pdu,
-          { "PDU", "bofl.pdu",
+          { "PDU", "bofl_pdu",
             FT_UINT32, BASE_HEX, NULL, 0,
             "PDU; normally equals 0x01010000 or 0x01011111", HFILL }
         },
         { &hf_bofl_sequence,
-          { "Sequence", "bofl.sequence",
+          { "Sequence", "bofl_sequence",
             FT_UINT32, BASE_DEC, NULL, 0,
             "incremental counter", HFILL }
         },
         { &hf_bofl_padding,
-          { "Padding", "bofl.padding",
+          { "Padding", "bofl_padding",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         }

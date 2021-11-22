@@ -90,27 +90,27 @@ proto_register_cgmp(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_cgmp_version,
-		{ "Version",	"cgmp.version",	FT_UINT8, BASE_DEC, NULL, 0xF0,
+		{ "Version",	"cgmp_version",	FT_UINT8, BASE_DEC, NULL, 0xF0,
 			NULL, HFILL }},
 
 		{ &hf_cgmp_type,
-		{ "Type",	"cgmp.type",	FT_UINT8, BASE_DEC, VALS(type_vals), 0x0F,
+		{ "Type",	"cgmp_type",	FT_UINT8, BASE_DEC, VALS(type_vals), 0x0F,
 			NULL, HFILL }},
 
 		{ &hf_cgmp_reserved,
-		{ "Reserved",	"cgmp.reserved", FT_UINT8, BASE_HEX, NULL, 0x0,
+		{ "Reserved",	"cgmp_reserved", FT_UINT8, BASE_HEX, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_cgmp_count,
-		{ "Count",	"cgmp.count", FT_UINT8, BASE_DEC, NULL, 0x0,
+		{ "Count",	"cgmp_count", FT_UINT8, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_cgmp_gda,
-		{ "Group Destination Address",	"cgmp.gda", FT_ETHER, BASE_NONE, NULL, 0x0,
+		{ "Group Destination Address",	"cgmp_gda", FT_ETHER, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_cgmp_usa,
-		{ "Unicast Source Address",	"cgmp.usa", FT_ETHER, BASE_NONE, NULL, 0x0,
+		{ "Unicast Source Address",	"cgmp_usa", FT_ETHER, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }},
 	};
 	static gint *ett[] = {

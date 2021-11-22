@@ -307,83 +307,83 @@ proto_register_btmcap(void)
 
     static hf_register_info hf[] = {
         { &hf_btmcap_op_code,
-            { "Op Code",                         "btmcap.op_code",
+            { "Op Code",                         "btmcap_op_code",
             FT_UINT8, BASE_HEX, VALS(op_code_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_btmcap_response_code,
-            { "Response Code",                   "btmcap.response_code",
+            { "Response Code",                   "btmcap_response_code",
             FT_UINT8, BASE_HEX, VALS(response_code_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_btmcap_mdl_id,
-            { "MDL ID",                          "btmcap.mdl_id",
+            { "MDL ID",                          "btmcap_mdl_id",
             FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_btmcap_mdep_id,
-            { "MDEP ID",                         "btmcap.mdep_id",
+            { "MDEP ID",                         "btmcap_mdep_id",
             FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_btmcap_configuration,
-            { "Configuration",                   "btmcap.configuration",
+            { "Configuration",                   "btmcap_configuration",
             FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_btmcap_timestamp_required_accuracy,
-            { "Timestamp Required Accuracy",     "btmcap.timestamp_required_accuracy",
+            { "Timestamp Required Accuracy",     "btmcap_timestamp_required_accuracy",
             FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_ppm, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_timestamp_update_information,
-            { "Timestamp Update Information",    "btmcap.timestamp_update_information",
+            { "Timestamp Update Information",    "btmcap_timestamp_update_information",
             FT_UINT8, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_bluetooth_clock_sync_time,
-            { "Bluetooth Clock Sync Time",       "btmcap.bluetooth_clock_sync_time",
+            { "Bluetooth Clock Sync Time",       "btmcap_bluetooth_clock_sync_time",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_timestamp_sync_time,
-            { "Timestamp Sync Time",             "btmcap.timestamp_sync_time",
+            { "Timestamp Sync Time",             "btmcap_timestamp_sync_time",
             FT_UINT64, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_timestamp_sample_accuracy,
-            { "Timestamp Sample Accuracy",       "btmcap.timestamp_sample_accuracy",
+            { "Timestamp Sample Accuracy",       "btmcap_timestamp_sample_accuracy",
             FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_bluetooth_clock_access_resolution,
-            { "Bluetooth Clock Access Resolution","btmcap.bluetooth_clock_access_resolution",
+            { "Bluetooth Clock Access Resolution","btmcap_bluetooth_clock_access_resolution",
             FT_UINT8, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_sync_lead_time,
-            { "Sync Lead Time",                  "btmcap.sync_lead_time",
+            { "Sync Lead Time",                  "btmcap_sync_lead_time",
             FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_milliseconds, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_timestamp_native_resolution,
-            { "Timestamp Native Resolution",     "btmcap.timestamp_native_resolution",
+            { "Timestamp Native Resolution",     "btmcap_timestamp_native_resolution",
             FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_timestamp_native_accuracy,
-            { "Timestamp Native Accuracy",       "btmcap.timestamp_native_accuracy",
+            { "Timestamp Native Accuracy",       "btmcap_timestamp_native_accuracy",
             FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_ppm, 0x00,
             NULL, HFILL }
         },
         { &hf_btmcap_response_parameters,
-            { "Response Parameters",             "btmcap.response_parameters",
+            { "Response Parameters",             "btmcap_response_parameters",
             FT_BYTES, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
 
         { &hf_btmcap_data,
-            { "Data",                            "btmcap.data",
+            { "Data",                            "btmcap_data",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },

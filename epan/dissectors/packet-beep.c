@@ -879,68 +879,68 @@ proto_register_beep(void)
 {
   static hf_register_info hf[] = {
     { &hf_beep_req,
-      { "Request", "beep.req", FT_BOOLEAN, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { "Request", "beep_req", FT_BOOLEAN, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_cmd,
-      { "Command", "beep.command", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { "Command", "beep_command", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_req_chan,
-      { "Request Channel Number", "beep.req.channel", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Request Channel Number", "beep_req_channel", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
 #if 0
     { &hf_beep_rsp,
-      { "Response", "beep.rsp", FT_BOOLEAN, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { "Response", "beep_rsp", FT_BOOLEAN, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_rsp_chan,
-      { "Response Channel Number", "beep.rsp.channel", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Response Channel Number", "beep_rsp_channel", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 #endif
 
     { &hf_beep_seq_chan,
-      { "Sequence Channel Number", "beep.seq.channel", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Sequence Channel Number", "beep_seq_channel", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_more,
-      { "More", "beep.more", FT_CHAR, BASE_HEX, VALS(beep_more_vals), 0x0, NULL, HFILL }},
+      { "More", "beep_more", FT_CHAR, BASE_HEX, VALS(beep_more_vals), 0x0, NULL, HFILL }},
 
     { &hf_beep_msgno,
-      { "Msgno", "beep.msgno", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Msgno", "beep_msgno", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_ansno,
-      { "Ansno", "beep.ansno", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Ansno", "beep_ansno", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_seqno,
-      { "Seqno", "beep.seqno", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Seqno", "beep_seqno", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_size,
-      { "Size", "beep.size", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Size", "beep_size", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_channel,
-      { "Channel", "beep.channel", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Channel", "beep_channel", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_mime_header,
-      { "Mime header", "beep.mime_header", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { "Mime header", "beep_mime_header", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_header,
-      { "Header", "beep.header", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { "Header", "beep_header", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 #if 0
     { &hf_beep_status,
-      { "Status", "beep.status", FT_UINT8, BASE_HEX, VALS(beep_status_vals), 0x0, NULL, HFILL }},
+      { "Status", "beep_status", FT_UINT8, BASE_HEX, VALS(beep_status_vals), 0x0, NULL, HFILL }},
 #endif
 
     { &hf_beep_ackno,
-      { "Ackno", "beep.seq.ackno", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Ackno", "beep_seq_ackno", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_window,
-      { "Window", "beep.seq.window", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { "Window", "beep_seq_window", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_payload,
-      { "Payload", "beep.payload", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { "Payload", "beep_payload", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_payload_undissected,
-      { "Undissected Payload", "beep.payload_undissected", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { "Undissected Payload", "beep_payload_undissected", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     { &hf_beep_crlf_terminator,
-      { "Terminator: CRLF", "beep.crlf_terminator", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { "Terminator: CRLF", "beep_crlf_terminator", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
   };
   static gint *ett[] = {
     &ett_beep,

@@ -105,7 +105,7 @@ proto_register_h261(void)
 			&hf_h261_sbit,
 			{
 				"Start bit position",
-				"h261.sbit",
+				"h261_sbit",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -117,7 +117,7 @@ proto_register_h261(void)
 			&hf_h261_ebit,
 			{
 				"End bit position",
-				"h261.ebit",
+				"h261_ebit",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -129,7 +129,7 @@ proto_register_h261(void)
 			&hf_h261_ibit,
 			{
 				"Intra frame encoded data flag",
-				"h261.i",
+				"h261_i",
 				FT_BOOLEAN,
 				8,
 				NULL,
@@ -141,7 +141,7 @@ proto_register_h261(void)
 			&hf_h261_vbit,
 			{
 				"Motion vector flag",
-				"h261.v",
+				"h261_v",
 				FT_BOOLEAN,
 				8,
 				NULL,
@@ -153,7 +153,7 @@ proto_register_h261(void)
 			&hf_h261_gobn,
 			{
 				"GOB Number",
-				"h261.gobn",
+				"h261_gobn",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -165,7 +165,7 @@ proto_register_h261(void)
 			&hf_h261_mbap,
 			{
 				"Macroblock address predictor",
-				"h261.mbap",
+				"h261_mbap",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -177,7 +177,7 @@ proto_register_h261(void)
 			&hf_h261_quant,
 			{
 				"Quantizer",
-				"h261.quant",
+				"h261_quant",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -189,7 +189,7 @@ proto_register_h261(void)
 			&hf_h261_hmvd,
 			{
 				"Horizontal motion vector data",
-				"h261.hmvd",
+				"h261_hmvd",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -201,7 +201,7 @@ proto_register_h261(void)
 			&hf_h261_vmvd,
 			{
 				"Vertical motion vector data",
-				"h261.vmvd",
+				"h261_vmvd",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -213,7 +213,7 @@ proto_register_h261(void)
 			&hf_h261_data,
 			{
 				"H.261 stream",
-				"h261.stream",
+				"h261_stream",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,

@@ -654,95 +654,95 @@ proto_register_lapd(void)
 	static hf_register_info hf[] = {
 
 		{ &hf_lapd_direction,
-		  { "Direction", "lapd.direction", FT_UINT32, BASE_DEC, VALS(lapd_direction_vals), 0x0,
+		  { "Direction", "lapd_direction", FT_UINT32, BASE_DEC, VALS(lapd_direction_vals), 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_lapd_address,
-		  { "Address Field", "lapd.address", FT_UINT16, BASE_HEX, NULL, 0x0,
+		  { "Address Field", "lapd_address", FT_UINT16, BASE_HEX, NULL, 0x0,
 		    "Address", HFILL }},
 
 		{ &hf_lapd_sapi,
-		  { "SAPI", "lapd.sapi", FT_UINT16, BASE_DEC, VALS(lapd_sapi_vals), LAPD_SAPI,
+		  { "SAPI", "lapd_sapi", FT_UINT16, BASE_DEC, VALS(lapd_sapi_vals), LAPD_SAPI,
 		    "Service Access Point Identifier", HFILL }},
 
 		{ &hf_lapd_gsm_sapi,
-		  { "SAPI", "lapd.sapi", FT_UINT16, BASE_DEC, VALS(lapd_gsm_sapi_vals), LAPD_SAPI,
+		  { "SAPI", "lapd_sapi", FT_UINT16, BASE_DEC, VALS(lapd_gsm_sapi_vals), LAPD_SAPI,
 		    "Service Access Point Identifier", HFILL }},
 
 		{ &hf_lapd_cr,
-		  { "C/R", "lapd.cr", FT_UINT16, BASE_DEC, NULL, LAPD_CR,
+		  { "C/R", "lapd_cr", FT_UINT16, BASE_DEC, NULL, LAPD_CR,
 		    "Command/Response bit", HFILL }},
 
 		{ &hf_lapd_ea1,
-		  { "EA1", "lapd.ea1", FT_UINT16, BASE_DEC, NULL, LAPD_EA1,
+		  { "EA1", "lapd_ea1", FT_UINT16, BASE_DEC, NULL, LAPD_EA1,
 		    "First Address Extension bit", HFILL }},
 
 		{ &hf_lapd_tei,
-		  { "TEI", "lapd.tei", FT_UINT16, BASE_DEC, NULL, LAPD_TEI,
+		  { "TEI", "lapd_tei", FT_UINT16, BASE_DEC, NULL, LAPD_TEI,
 		    "Terminal Endpoint Identifier", HFILL }},
 
 		{ &hf_lapd_ea2,
-		  { "EA2", "lapd.ea2", FT_UINT16, BASE_DEC, NULL, LAPD_EA2,
+		  { "EA2", "lapd_ea2", FT_UINT16, BASE_DEC, NULL, LAPD_EA2,
 		    "Second Address Extension bit", HFILL }},
 
 		{ &hf_lapd_control,
-		  { "Control Field", "lapd.control", FT_UINT16, BASE_HEX, NULL, 0x0,
+		  { "Control Field", "lapd_control", FT_UINT16, BASE_HEX, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_lapd_n_r,
-		  { "N(R)", "lapd.control.n_r", FT_UINT16, BASE_DEC,
+		  { "N(R)", "lapd_control_n_r", FT_UINT16, BASE_DEC,
 		    NULL, XDLC_N_R_EXT_MASK, NULL, HFILL }},
 
 		{ &hf_lapd_n_s,
-		  { "N(S)", "lapd.control.n_s", FT_UINT16, BASE_DEC,
+		  { "N(S)", "lapd_control_n_s", FT_UINT16, BASE_DEC,
 		    NULL, XDLC_N_S_EXT_MASK, NULL, HFILL }},
 
 		{ &hf_lapd_p,
-		  { "Poll", "lapd.control.p", FT_BOOLEAN, 8,
+		  { "Poll", "lapd_control_p", FT_BOOLEAN, 8,
 		    TFS(&tfs_set_notset), XDLC_P_F, NULL, HFILL }},
 
 		{ &hf_lapd_p_ext,
-		  { "Poll", "lapd.control.p", FT_BOOLEAN, 16,
+		  { "Poll", "lapd_control_p", FT_BOOLEAN, 16,
 		    TFS(&tfs_set_notset), XDLC_P_F_EXT, NULL, HFILL }},
 
 		{ &hf_lapd_f,
-		  { "Final", "lapd.control.f", FT_BOOLEAN, 8,
+		  { "Final", "lapd_control_f", FT_BOOLEAN, 8,
 		    TFS(&tfs_set_notset), XDLC_P_F, NULL, HFILL }},
 
 		{ &hf_lapd_f_ext,
-		  { "Final", "lapd.control.f", FT_BOOLEAN, 16,
+		  { "Final", "lapd_control_f", FT_BOOLEAN, 16,
 		    TFS(&tfs_set_notset), XDLC_P_F_EXT, NULL, HFILL }},
 
 		{ &hf_lapd_s_ftype,
-		  { "Supervisory frame type", "lapd.control.s_ftype", FT_UINT16, BASE_HEX,
+		  { "Supervisory frame type", "lapd_control_s_ftype", FT_UINT16, BASE_HEX,
 		    VALS(stype_vals), XDLC_S_FTYPE_MASK, NULL, HFILL }},
 
 		{ &hf_lapd_u_modifier_cmd,
-		  { "Command", "lapd.control.u_modifier_cmd", FT_UINT8, BASE_HEX,
+		  { "Command", "lapd_control_u_modifier_cmd", FT_UINT8, BASE_HEX,
 		    VALS(modifier_vals_cmd), XDLC_U_MODIFIER_MASK, NULL, HFILL }},
 
 		{ &hf_lapd_u_modifier_resp,
-		  { "Response", "lapd.control.u_modifier_resp", FT_UINT8, BASE_HEX,
+		  { "Response", "lapd_control_u_modifier_resp", FT_UINT8, BASE_HEX,
 		    VALS(modifier_vals_resp), XDLC_U_MODIFIER_MASK, NULL, HFILL }},
 
 		{ &hf_lapd_ftype_i,
-		  { "Frame type", "lapd.control.ftype", FT_UINT16, BASE_HEX,
+		  { "Frame type", "lapd_control_ftype", FT_UINT16, BASE_HEX,
 		    VALS(ftype_vals), XDLC_I_MASK, NULL, HFILL }},
 
 		{ &hf_lapd_ftype_s_u,
-		  { "Frame type", "lapd.control.ftype", FT_UINT8, BASE_HEX,
+		  { "Frame type", "lapd_control_ftype", FT_UINT8, BASE_HEX,
 		    VALS(ftype_vals), XDLC_S_U_MASK, NULL, HFILL }},
 
 		{ &hf_lapd_ftype_s_u_ext,
-		  { "Frame type", "lapd.control.ftype", FT_UINT16, BASE_HEX,
+		  { "Frame type", "lapd_control_ftype", FT_UINT16, BASE_HEX,
 		    VALS(ftype_vals), XDLC_S_U_MASK, NULL, HFILL }},
 
 		{ &hf_lapd_checksum,
-		  { "Checksum", "lapd.checksum", FT_UINT16, BASE_HEX,
+		  { "Checksum", "lapd_checksum", FT_UINT16, BASE_HEX,
 		    NULL, 0x0, "Details at: https://www.wireshark.org/docs/wsug_html_chunked/ChAdvChecksums.html", HFILL }},
 
 		{ &hf_lapd_checksum_status,
-		  { "Checksum Status", "lapd.checksum.status", FT_UINT8, BASE_NONE,
+		  { "Checksum Status", "lapd_checksum_status", FT_UINT8, BASE_NONE,
 		    VALS(proto_checksum_vals), 0x0, NULL, HFILL }},
 	};
 	static gint *ett[] = {

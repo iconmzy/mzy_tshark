@@ -889,15 +889,15 @@ void proto_register_1722(void)
 {
     static hf_register_info hf[] = {
         { &hf_1722_subtype,
-            { "AVBTP Subtype", "ieee1722.subtype",
+            { "AVBTP Subtype", "ieee1722_subtype",
               FT_UINT8, BASE_HEX | BASE_RANGE_STRING, RVALS(subtype_range_rvals), 0x00, NULL, HFILL }
         },
         { &hf_1722_svfield,
-            { "AVTP Stream ID Valid", "ieee1722.svfield",
+            { "AVTP Stream ID Valid", "ieee1722_svfield",
               FT_BOOLEAN, 8, NULL, IEEE_1722_SV_MASK, NULL, HFILL }
         },
         { &hf_1722_verfield,
-            { "AVTP Version", "ieee1722.verfield",
+            { "AVTP Version", "ieee1722_verfield",
               FT_UINT8, BASE_HEX, NULL, IEEE_1722_VER_MASK, NULL, HFILL }
         }
     };

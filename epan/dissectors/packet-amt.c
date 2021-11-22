@@ -204,82 +204,82 @@ proto_register_amt(void)
 
     static hf_register_info hf[] = {
         { &hf_amt_version,
-          { "Version", "amt.version",
+          { "Version", "amt_version",
             FT_UINT8, BASE_DEC, NULL, 0xF0,
             "Must be always 0", HFILL }
         },
         { &hf_amt_type,
-          { "Type", "amt.type",
+          { "Type", "amt_type",
             FT_UINT8, BASE_DEC, VALS(amt_type_vals), 0x0F,
             NULL, HFILL }
         },
         { &hf_amt_reserved,
-          { "Reserved", "amt.reserved",
+          { "Reserved", "amt_reserved",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_amt_discovery_nonce,
-          { "Discovery Nonce", "amt.discovery_nonce",
+          { "Discovery Nonce", "amt_discovery_nonce",
             FT_UINT32, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_amt_relay_address_ipv4,
-          { "Relay Address (IPv4)", "amt.relay_address.ipv4",
+          { "Relay Address (IPv4)", "amt_relay_address_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_amt_relay_address_ipv6,
-          { "Relay Address (IPv6)", "amt.relay_address.ipv6",
+          { "Relay Address (IPv6)", "amt_relay_address_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_amt_request_nonce,
-          { "Request Nonce", "amt.request_nonce",
+          { "Request Nonce", "amt_request_nonce",
             FT_UINT32, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_amt_request_reserved,
-          { "Reserved", "amt.request.reserved",
+          { "Reserved", "amt_request_reserved",
             FT_UINT8, BASE_HEX, NULL, 0xFE,
             NULL, HFILL }
         },
         { &hf_amt_request_p,
-          { "P Flags", "amt.request.p",
+          { "P Flags", "amt_request_p",
             FT_BOOLEAN, 8, TFS(&tfs_request_p), 0x01,
             NULL, HFILL }
         },
         { &hf_amt_membership_query_reserved,
-          { "Reserved", "amt.membership_query.reserved",
+          { "Reserved", "amt_membership_query_reserved",
             FT_UINT8, BASE_HEX, NULL, 0xFC,
             NULL, HFILL }
         },
         { &hf_amt_membership_query_l,
-          { "L Flags", "amt.membership_query.l",
+          { "L Flags", "amt_membership_query_l",
             FT_UINT8, BASE_DEC, NULL, 0x02,
             NULL, HFILL }
         },
         { &hf_amt_membership_query_g,
-          { "G Flags", "amt.membership_query.g",
+          { "G Flags", "amt_membership_query_g",
             FT_UINT8, BASE_DEC, NULL, 0x01,
             NULL, HFILL }
         },
         { &hf_amt_response_mac,
-          { "Response MAC", "amt.response_mac",
+          { "Response MAC", "amt_response_mac",
             FT_UINT48, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_amt_gateway_port_number,
-          { "Gateway Port Number", "amt.gateway.port_number",
+          { "Gateway Port Number", "amt_gateway_port_number",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_amt_gateway_ip_address,
-          { "Gateway IP Address", "amt.gateway.ip_address",
+          { "Gateway IP Address", "amt_gateway_ip_address",
             FT_IPv6, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_amt_multicast_data,
-          { "Multicast Data", "amt.multicast_data",
+          { "Multicast Data", "amt_multicast_data",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },

@@ -1111,27 +1111,27 @@ proto_register_dcerpc_browser(void)
 static hf_register_info hf[] = {
 
 	{ &hf_browser_opnum, {
-		"Operation", "rpc_browser.opnum", FT_UINT16, BASE_DEC,
+		"Operation", "rpc_browser_opnum", FT_UINT16, BASE_DEC,
 		NULL, 0x0, NULL, HFILL }},
 
 	{ &hf_browser_rc, {
-		"Return code", "rpc_browser.rc", FT_UINT32, BASE_HEX | BASE_EXT_STRING,
+		"Return code", "rpc_browser_rc", FT_UINT32, BASE_HEX | BASE_EXT_STRING,
 		&NT_errors_ext, 0x0, "Browser return code", HFILL }},
 
 	{ &hf_browser_unknown_long, {
-		"Unknown long", "rpc_browser.unknown.long", FT_UINT32, BASE_HEX,
+		"Unknown long", "rpc_browser_unknown_long", FT_UINT32, BASE_HEX,
 		NULL, 0x0, "Unknown long. If you know what this is, contact wireshark developers.", HFILL }},
 
 	{ &hf_browser_unknown_hyper, {
-		"Unknown hyper", "rpc_browser.unknown.hyper", FT_UINT64, BASE_HEX,
+		"Unknown hyper", "rpc_browser_unknown_hyper", FT_UINT64, BASE_HEX,
 		NULL, 0x0, "Unknown hyper. If you know what this is, contact wireshark developers.", HFILL }},
 
 	{ &hf_browser_unknown_bytes, {
-		"Unknown bytes", "rpc_browser.unknown.bytes", FT_BYTES, BASE_NONE,
+		"Unknown bytes", "rpc_browser_unknown_bytes", FT_BYTES, BASE_NONE,
 		NULL, 0x0, "Unknown bytes. If you know what this is, contact wireshark developers.", HFILL }},
 
 	{ &hf_browser_unknown_string, {
-		"Unknown string", "rpc_browser.unknown.string", FT_STRING, BASE_NONE,
+		"Unknown string", "rpc_browser_unknown_string", FT_STRING, BASE_NONE,
 		NULL, 0x0, "Unknown string. If you know what this is, contact wireshark developers.", HFILL }}
 
 	};

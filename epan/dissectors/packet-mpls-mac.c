@@ -114,7 +114,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_reserved,
             {
-                "Reserved", "mpls_mac.reserved",
+                "Reserved", "mpls_mac_reserved",
                 FT_BYTES, BASE_NONE, NULL, 0x0,
                 NULL, HFILL
             }
@@ -122,7 +122,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_tlv_length_total,
             {
-                "TLV Length (Total)", "mpls_mac.tlv_length_total",
+                "TLV Length (Total)", "mpls_mac_tlv_length_total",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL
             }
@@ -130,7 +130,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_flags,
             {
-                "Flags", "mpls_mac.flags",
+                "Flags", "mpls_mac_flags",
                 FT_UINT8, BASE_HEX, NULL, 0x0,
                 NULL, HFILL
             }
@@ -138,7 +138,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_flags_a,
             {
-                "Flags A", "mpls_mac.flags.a",
+                "Flags A", "mpls_mac_flags_a",
                 FT_BOOLEAN, 8, NULL, 0x80,
                 "set by a receiver to acknowledge receipt and processing of a MAC Address Withdraw OAM Message", HFILL
             }
@@ -146,7 +146,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_flags_r,
             {
-                "Flags R", "mpls_mac.flags.r",
+                "Flags R", "mpls_mac_flags_r",
                 FT_BOOLEAN, 8, NULL, 0x40,
                 "Set to indicate if the sender is requesting reset of the sequence numbers", HFILL
             }
@@ -154,7 +154,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_flags_reserved,
             {
-                "Flags Reserved", "mpls_mac.flags.reserved",
+                "Flags Reserved", "mpls_mac_flags_reserved",
                 FT_UINT8, BASE_HEX, NULL, 0x3F,
                 NULL, HFILL
             }
@@ -162,7 +162,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_tlv,
             {
-                "TLV", "mpls_mac.tlv",
+                "TLV", "mpls_mac_tlv",
                 FT_NONE, BASE_NONE, NULL, 0x0,
                 NULL, HFILL
             }
@@ -170,7 +170,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_tlv_res,
             {
-                "Res(erved)", "mpls_mac.tlv.res",
+                "Res(erved)", "mpls_mac_tlv_res",
                 FT_UINT16, BASE_HEX, NULL, 0xC000,
                 NULL, HFILL
             }
@@ -178,7 +178,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_tlv_type,
             {
-                "TLV Type", "mpls_mac.tlv.type",
+                "TLV Type", "mpls_mac_tlv_type",
                 FT_UINT16, BASE_HEX, NULL, 0x3FFF,
                 NULL, HFILL
             }
@@ -186,7 +186,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_tlv_length,
             {
-                "TLV Length", "mpls_mac.tlv.length",
+                "TLV Length", "mpls_mac_tlv_length",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL
             }
@@ -194,7 +194,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_tlv_value,
             {
-                "TLV Value", "mpls_mac.tlv.value",
+                "TLV Value", "mpls_mac_tlv_value",
                 FT_BYTES, BASE_NONE, NULL, 0x0,
                 NULL, HFILL
             }
@@ -202,7 +202,7 @@ proto_register_mpls_mac(void)
         {
             &hf_mpls_mac_tlv_sequence_number,
             {
-                "Sequence Number", "mpls_mac.tlv.sequence_number",
+                "Sequence Number", "mpls_mac_tlv_sequence_number",
                 FT_UINT32, BASE_DEC, NULL, 0x0,
                 NULL, HFILL
             }

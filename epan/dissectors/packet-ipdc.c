@@ -934,97 +934,97 @@ proto_register_ipdc(void)
 
 	static hf_register_info hf[] = {
 		{ &hf_ipdc_nr,
-		  { "N(r)",	"ipdc.nr",
+		  { "N(r)",	"ipdc_nr",
 		    FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Receive sequence number", HFILL }
 		},
 
 		{ &hf_ipdc_ns,
-		  { "N(s)",	"ipdc.ns",
+		  { "N(s)",	"ipdc_ns",
 		    FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "Transmit sequence number", HFILL }
 		},
 
 		{ &hf_ipdc_payload_len,
-		  { "Payload length",	"ipdc.length",
+		  { "Payload length",	"ipdc_length",
 		    FT_UINT16, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_protocol_id,
-		  { "Protocol ID",	"ipdc.protocol_id",
+		  { "Protocol ID",	"ipdc_protocol_id",
 		    FT_UINT8, BASE_HEX, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_trans_id_size,
-		  { "Transaction ID size",	"ipdc.trans_id_size",
+		  { "Transaction ID size",	"ipdc_trans_id_size",
 		    FT_UINT8, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_trans_id,
-		  { "Transaction ID",	"ipdc.trans_id",
+		  { "Transaction ID",	"ipdc_trans_id",
 		    FT_BYTES, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_message_code,
-		  { "Message code",	"ipdc.message_code",
+		  { "Message code",	"ipdc_message_code",
 		    FT_UINT16, BASE_HEX|BASE_EXT_STRING, &message_code_vals_ext, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_ascii,
-		  { "ASCII value",	"ipdc.ascii",
+		  { "ASCII value",	"ipdc_ascii",
 		    FT_STRING, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_uint,
-		  { "Byte/UINT value",	"ipdc.uint",
+		  { "Byte/UINT value",	"ipdc_uint",
 		    FT_UINT32, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_ipv4,
-		  { "IPv4 value",	"ipdc.ipv4",
+		  { "IPv4 value",	"ipdc_ipv4",
 		    FT_IPv4, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_line_status,
-		  { "Line Status value",	"ipdc.line_status",
+		  { "Line Status value",	"ipdc_line_status",
 		    FT_UINT8, BASE_DEC, VALS(line_status_vals), 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_channel_status,
-		  { "Channel Status value",	"ipdc.channel_status",
+		  { "Channel Status value",	"ipdc_channel_status",
 		    FT_UINT8, BASE_DEC, VALS(channel_status_vals), 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_enctype,
-		  { "Enctype value",	"ipdc.enctype",
+		  { "Enctype value",	"ipdc_enctype",
 		    FT_UINT16, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_end_of_tags,
-		  { "end of tags",	"ipdc.end_of_tags",
+		  { "end of tags",	"ipdc_end_of_tags",
 		    FT_NONE, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_data_trailing_end_of_tags,
-		  { "data trailing end of tags",	"ipdc.data_trailing_end_of_tags",
+		  { "data trailing end of tags",	"ipdc_data_trailing_end_of_tags",
 		    FT_NONE, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }
 		},
 
 		{ &hf_ipdc_type_unknown,
-		  { "Unknown type",	"ipdc.type_unknown",
+		  { "Unknown type",	"ipdc_type_unknown",
 		    FT_BYTES, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }
 		},

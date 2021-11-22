@@ -239,79 +239,79 @@ proto_register_bmc(void)
 {
     static hf_register_info hf[] = {
         { &hf_bmc_message_type,
-            { "Message Type", "bmc.message_type",
+            { "Message Type", "bmc_message_type",
             FT_UINT8, BASE_DEC, VALS(message_type_vals), 0,
             NULL, HFILL }
         },
         { &hf_bmc_message_id,
-            { "Message ID", "bmc.message_id",
+            { "Message ID", "bmc_message_id",
             FT_UINT16, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_serial_number,
-            { "Serial Number", "bmc.serial_number",
+            { "Serial Number", "bmc_serial_number",
             FT_UINT16, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
 #if 0
         { &hf_bmc_data_coding_scheme,
-            { "Data Coding Scheme", "bmc.data_coding_scheme",
+            { "Data Coding Scheme", "bmc_data_coding_scheme",
             FT_UINT8, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_cb_data,
-            { "CB Data", "bmc.cb_data",
+            { "CB Data", "bmc_cb_data",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
 #endif
         { &hf_bmc_offset_to_begin_ctch_bs_index,
-            { "Offset to Begin CTCH Block Set Index", "bmc.offset_to_begin_ctch_bs_index",
+            { "Offset to Begin CTCH Block Set Index", "bmc_offset_to_begin_ctch_bs_index",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_length_of_cbs_schedule_period,
-            { "Length of CBS Schedule Period", "bmc.length_of_cbs_schedule_period",
+            { "Length of CBS Schedule Period", "bmc_length_of_cbs_schedule_period",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_new_message_bitmap,
-            { "New Message Bitmap", "bmc.new_message_bitmap",
+            { "New Message Bitmap", "bmc_new_message_bitmap",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_message_description_type,
-            { "Message Description Type", "bmc.message_description_type",
+            { "Message Description Type", "bmc_message_description_type",
             FT_UINT8, BASE_DEC, VALS(message_description_type_vals), 0,
             NULL, HFILL }
         },
         { &hf_bmc_offset_to_ctch_bs_index_of_first_transmission,
-            { "Offset to CTCH BS index of first transmission", "bmc.offset_to_ctch_bs_index_of_first_transmission",
+            { "Offset to CTCH BS index of first transmission", "bmc_offset_to_ctch_bs_index_of_first_transmission",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_broadcast_address,
-            { "Broadcast Address", "bmc.broadcast_address",
+            { "Broadcast Address", "bmc_broadcast_address",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_cb_data41,
-            { "CB Data41", "bmc.cb_data41",
+            { "CB Data41", "bmc_cb_data41",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_future_extension_bitmap,
-            { "Future Extension Bitmap", "bmc.future_extension_bitmap",
+            { "Future Extension Bitmap", "bmc_future_extension_bitmap",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_length_of_serial_number_list,
-            { "Length of Serial Number List", "bmc.length_of_serial_number_list",
+            { "Length of Serial Number List", "bmc_length_of_serial_number_list",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_bmc_ctch_bs_index,
-            { "CTCH BS Index", "bmc.ctch_bs_index",
+            { "CTCH BS Index", "bmc_ctch_bs_index",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         }

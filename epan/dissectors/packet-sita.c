@@ -235,136 +235,136 @@ proto_register_sita(void)
 {
     static hf_register_info hf[] = {
         { &hf_proto,
-          { "Protocol", "sita.errors.protocol",
+          { "Protocol", "sita_errors_protocol",
             FT_UINT8, BASE_HEX, VALS(tfs_sita_proto), 0,
             "Protocol value", HFILL }
         },
 
         { &hf_dir,
-          { "Direction", "sita.flags.flags",
+          { "Direction", "sita_flags_flags",
             FT_BOOLEAN, 8, TFS(&tfs_sita_flags), SITA_FRAME_DIR,
             "TRUE 'from Remote', FALSE 'from Local'",   HFILL }
         },
         { &hf_droppedframe,
-          { "No Buffers", "sita.flags.droppedframe",
+          { "No Buffers", "sita_flags_droppedframe",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_NO_BUFFER,
             "TRUE if Buffer Failure", HFILL }
         },
 
         { &hf_framing,
-          { "Framing", "sita.errors.framing",
+          { "Framing", "sita_errors_framing",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_FRAMING,
             "TRUE if Framing Error", HFILL }
         },
         { &hf_parity,
-          { "Parity", "sita.errors.parity",
+          { "Parity", "sita_errors_parity",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_PARITY,
             "TRUE if Parity Error", HFILL }
         },
         { &hf_collision,
-          { "Collision", "sita.errors.collision",
+          { "Collision", "sita_errors_collision",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_COLLISION,
             "TRUE if Collision", HFILL }
         },
         { &hf_longframe,
-          { "Long Frame", "sita.errors.longframe",
+          { "Long Frame", "sita_errors_longframe",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_FRAME_LONG,
             "TRUE if Long Frame Received", HFILL }
         },
         { &hf_shortframe,
-          { "Short Frame", "sita.errors.shortframe",
+          { "Short Frame", "sita_errors_shortframe",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_FRAME_SHORT,
             "TRUE if Short Frame", HFILL }
         },
         { &hf_nonaligned,
-          { "NonAligned", "sita.errors.nonaligned",
+          { "NonAligned", "sita_errors_nonaligned",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_NONOCTET_ALIGNED,
             "TRUE if NonAligned Frame", HFILL }
         },
         { &hf_abort,
-          { "Abort", "sita.errors.abort",
+          { "Abort", "sita_errors_abort",
             FT_BOOLEAN, 8, TFS(&tfs_sita_received), SITA_ERROR_RX_ABORT,
             "TRUE if Abort Received", HFILL }
         },
         { &hf_lostcd,
-          { "Carrier", "sita.errors.lostcd",
+          { "Carrier", "sita_errors_lostcd",
             FT_BOOLEAN, 8, TFS(&tfs_sita_lost), SITA_ERROR_RX_CD_LOST,
             "TRUE if Carrier Lost", HFILL }
         },
         { &hf_rxdpll,
-          { "DPLL", "sita.errors.rxdpll",
+          { "DPLL", "sita_errors_rxdpll",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_DPLL,
             "TRUE if DPLL Error", HFILL }
         },
         { &hf_overrun,
-          { "Overrun", "sita.errors.overrun",
+          { "Overrun", "sita_errors_overrun",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_OVERRUN,
             "TRUE if Overrun Error", HFILL }
         },
         { &hf_length,
-          { "Length", "sita.errors.length",
+          { "Length", "sita_errors_length",
             FT_BOOLEAN, 8, TFS(&tfs_sita_violation), SITA_ERROR_RX_FRAME_LEN_VIOL,
             "TRUE if Length Violation", HFILL }
         },
         { &hf_crc,
-          { "CRC", "sita.errors.crc",
+          { "CRC", "sita_errors_crc",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_RX_CRC,
             "TRUE if CRC Error", HFILL }
         },
         { &hf_break,
-          { "Break", "sita.errors.break",
+          { "Break", "sita_errors_break",
             FT_BOOLEAN, 8, TFS(&tfs_sita_received), SITA_ERROR_RX_BREAK,
             "TRUE if Break Received", HFILL }
         },
 
         { &hf_underrun,
-          { "Underrun", "sita.errors.underrun",
+          { "Underrun", "sita_errors_underrun",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_TX_UNDERRUN,
             "TRUE if Tx Underrun", HFILL }
         },
         { &hf_lostcts,
-          { "Clear To Send", "sita.errors.lostcts",
+          { "Clear To Send", "sita_errors_lostcts",
             FT_BOOLEAN, 8, TFS(&tfs_sita_lost), SITA_ERROR_TX_CTS_LOST,
             "TRUE if Clear To Send Lost", HFILL }
         },
         { &hf_uarterror,
-          { "UART", "sita.errors.uarterror",
+          { "UART", "sita_errors_uarterror",
             FT_BOOLEAN, 8, TFS(&tfs_sita_error), SITA_ERROR_TX_UART_ERROR,
             "TRUE if UART Error", HFILL }
         },
         { &hf_rtxlimit,
-          { "Retx Limit", "sita.errors.rtxlimit",
+          { "Retx Limit", "sita_errors_rtxlimit",
             FT_BOOLEAN, 8, TFS(&tfs_sita_exceeded), SITA_ERROR_TX_RETX_LIMIT,
             "TRUE if Retransmit Limit reached", HFILL }
         },
 
         { &hf_dsr,
-          { "DSR", "sita.signals.dsr",
+          { "DSR", "sita_signals_dsr",
             FT_BOOLEAN, 8, TFS(&tfs_on_off), SITA_SIG_DSR,
             "TRUE if Data Set Ready", HFILL }
         },
         { &hf_dtr,
-          { "DTR", "sita.signals.dtr",
+          { "DTR", "sita_signals_dtr",
             FT_BOOLEAN, 8, TFS(&tfs_on_off), SITA_SIG_DTR,
             "TRUE if Data Terminal Ready", HFILL }
         },
         { &hf_cts,
-          { "CTS", "sita.signals.cts",
+          { "CTS", "sita_signals_cts",
             FT_BOOLEAN, 8, TFS(&tfs_on_off), SITA_SIG_CTS,
             "TRUE if Clear To Send", HFILL }
         },
         { &hf_rts,
-          { "RTS", "sita.signals.rts",
+          { "RTS", "sita_signals_rts",
             FT_BOOLEAN, 8, TFS(&tfs_on_off), SITA_SIG_RTS,
             "TRUE if Request To Send", HFILL }
         },
         { &hf_dcd,
-          { "DCD", "sita.signals.dcd",
+          { "DCD", "sita_signals_dcd",
             FT_BOOLEAN, 8, TFS(&tfs_on_off), SITA_SIG_DCD,
             "TRUE if Data Carrier Detect", HFILL }
         },
         { &hf_signals,
-          { "Signals", "sita.signals",
+          { "Signals", "sita_signals",
             FT_UINT8, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },

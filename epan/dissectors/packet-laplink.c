@@ -163,27 +163,27 @@ proto_register_laplink(void)
 /* Setup list of header fields  See Section 1.6.1 for details*/
 	static hf_register_info hf[] = {
 		{ &hf_laplink_udp_ident,
-			{ "UDP Ident", "laplink.udp_ident",
+			{ "UDP Ident", "laplink_udp_ident",
 			FT_UINT32, BASE_HEX, VALS(laplink_udp_magic), 0x0,
 			"Unknown magic", HFILL }
 		},
 		{ &hf_laplink_udp_name,
-			{ "UDP Name", "laplink.udp_name",
+			{ "UDP Name", "laplink_udp_name",
 			FT_STRINGZ, BASE_NONE, NULL, 0x0,
 			"Machine name", HFILL }
 		},
 		{ &hf_laplink_tcp_ident,
-			{ "TCP Ident", "laplink.tcp_ident",
+			{ "TCP Ident", "laplink_tcp_ident",
 			FT_UINT32, BASE_HEX, VALS(laplink_tcp_magic), 0x0,
 			"Unknown magic", HFILL }
 		},
 		{ &hf_laplink_tcp_length,
-			{ "TCP Data payload length", "laplink.tcp_length",
+			{ "TCP Data payload length", "laplink_tcp_length",
 			FT_UINT16, BASE_DEC, NULL, 0x0,
 			"Length of remaining payload", HFILL }
 		},
 		{ &hf_laplink_tcp_data,
-			{ "Unknown TCP data", "laplink.tcp_data",
+			{ "Unknown TCP data", "laplink_tcp_data",
 			FT_BYTES, BASE_NONE, NULL, 0x0,
 			"TCP data", HFILL }
 		},

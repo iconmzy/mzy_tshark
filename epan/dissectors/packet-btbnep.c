@@ -473,128 +473,128 @@ proto_register_btbnep(void)
 
     static hf_register_info hf[] = {
         { &hf_btbnep_bnep_type,
-            { "BNEP Type",                         "btbnep.bnep_type",
+            { "BNEP Type",                         "btbnep_bnep_type",
             FT_UINT8, BASE_HEX, VALS(bnep_type_vals), 0x7F,
             NULL, HFILL }
         },
         { &hf_btbnep_extension_flag,
-            { "Extension Flag",                    "btbnep.extension_flag",
+            { "Extension Flag",                    "btbnep_extension_flag",
             FT_BOOLEAN, 8, NULL, 0x80,
             NULL, HFILL }
         },
         { &hf_btbnep_control_type,
-            { "Control Type",                      "btbnep.control_type",
+            { "Control Type",                      "btbnep_control_type",
             FT_UINT8, BASE_HEX, VALS(control_type_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_extension_type,
-            { "Extension Type",                    "btbnep.extension_type",
+            { "Extension Type",                    "btbnep_extension_type",
             FT_UINT8, BASE_HEX, VALS(extension_type_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_extension_length,
-            { "Extension Length",                  "btbnep.extension_length",
+            { "Extension Length",                  "btbnep_extension_length",
             FT_UINT16, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_unknown_control_type,
-            { "Unknown Control Type",              "btbnep.unknown_control_type",
+            { "Unknown Control Type",              "btbnep_unknown_control_type",
             FT_UINT8, BASE_HEX, VALS(control_type_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_uuid_size,
-            { "UIDD Size",                         "btbnep.uuid_size",
+            { "UIDD Size",                         "btbnep_uuid_size",
             FT_UINT8, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_destination_service_uuid,
-            { "Destination Service UUID",          "btbnep.destination_service_uuid",
+            { "Destination Service UUID",          "btbnep_destination_service_uuid",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_source_service_uuid,
-            { "Source Service UUID",               "btbnep.source_service_uuid",
+            { "Source Service UUID",               "btbnep_source_service_uuid",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_setup_connection_response_message,
-            { "Response Message",                  "btbnep.setup_connection_response_message",
+            { "Response Message",                  "btbnep_setup_connection_response_message",
             FT_UINT16, BASE_HEX, VALS(setup_connection_response_message_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_filter_net_type_response_message,
-            { "Response Message",                  "btbnep.filter_net_type_response_message",
+            { "Response Message",                  "btbnep_filter_net_type_response_message",
             FT_UINT16, BASE_HEX, VALS(filter_net_type_response_message_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_filter_multi_addr_response_message,
-            { "Response Message",                  "btbnep.filter_multi_addr_response_message",
+            { "Response Message",                  "btbnep_filter_multi_addr_response_message",
             FT_UINT16, BASE_HEX, VALS(filter_multi_addr_response_message_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_list_length,
-            { "List Length",                       "btbnep.list_length",
+            { "List Length",                       "btbnep_list_length",
             FT_UINT16, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         /* http://www.iana.org/assignments/ethernet-numbers */
         { &hf_btbnep_network_type_start,
-            { "Network Protocol Type Range Start", "btbnep.network_type_start",
+            { "Network Protocol Type Range Start", "btbnep_network_type_start",
             FT_UINT16, BASE_HEX, VALS(etype_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_network_type_end,
-            { "Network Protocol Type Range End",   "btbnep.network_type_end",
+            { "Network Protocol Type Range End",   "btbnep_network_type_end",
             FT_UINT16, BASE_HEX, VALS(etype_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_multicast_address_start,
-            { "Multicast Address Start",           "btbnep.multicast_address_start",
+            { "Multicast Address Start",           "btbnep_multicast_address_start",
             FT_ETHER, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_multicast_address_end,
-            { "Multicast Address End",             "btbnep.multicast_address_end",
+            { "Multicast Address End",             "btbnep_multicast_address_end",
             FT_ETHER, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btbnep_dst,
-            { "Destination",                       "btbnep.dst",
+            { "Destination",                       "btbnep_dst",
             FT_ETHER, BASE_NONE, NULL, 0x0,
             "Destination Hardware Address", HFILL }
         },
         { &hf_btbnep_src,
-            { "Source",                            "btbnep.src",
+            { "Source",                            "btbnep_src",
             FT_ETHER, BASE_NONE, NULL, 0x0,
             "Source Hardware Address", HFILL }
         },
         { &hf_btbnep_len,
-            { "Length",                            "btbnep.len",
+            { "Length",                            "btbnep_len",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_btbnep_invalid_lentype,
-            { "Invalid length/type",               "btbnep.invalid_lentype",
+            { "Invalid length/type",               "btbnep_invalid_lentype",
             FT_UINT16, BASE_HEX_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_btbnep_type,
-            { "Type",                              "btbnep.type",
+            { "Type",                              "btbnep_type",
             FT_UINT16, BASE_HEX, VALS(etype_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_btbnep_addr,
-            { "Address",                           "btbnep.addr",
+            { "Address",                           "btbnep_addr",
             FT_ETHER, BASE_NONE, NULL, 0x0,
             "Source or Destination Hardware Address", HFILL }
         },
         { &hf_btbnep_lg,
-            { "LG bit",                            "btbnep.lg",
+            { "LG bit",                            "btbnep_lg",
             FT_BOOLEAN, 24, TFS(&lg_tfs), 0x020000,
             "Specifies if this is a locally administered or globally unique (IEEE assigned) address", HFILL }
         },
         { &hf_btbnep_ig,
-            { "IG bit",                            "btbnep.ig",
+            { "IG bit",                            "btbnep_ig",
             FT_BOOLEAN, 24, TFS(&ig_tfs), 0x010000,
             "Specifies if this is an individual (unicast) or group (broadcast/multicast) address", HFILL }
         }

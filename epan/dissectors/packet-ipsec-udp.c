@@ -67,9 +67,9 @@ void
 proto_register_udpencap(void)
 {
   static hf_register_info hf[] = {
-    { &hf_nat_keepalive, { "NAT-keepalive packet", "udpencap.nat_keepalive",
+    { &hf_nat_keepalive, { "NAT-keepalive packet", "udpencap_nat_keepalive",
           FT_NONE, BASE_NONE, NULL, 0, NULL, HFILL }},
-    { &hf_non_esp_marker, { "Non-ESP Marker", "udpencap.non_esp_marker",
+    { &hf_non_esp_marker, { "Non-ESP Marker", "udpencap_non_esp_marker",
           FT_NONE, BASE_NONE, NULL, 0, NULL, HFILL }},
   };
 

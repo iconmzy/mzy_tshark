@@ -221,43 +221,43 @@ void zbee_security_register(module_t *zbee_prefs, int proto)
 {
     static hf_register_info hf[] = {
         { &hf_zbee_sec_field,
-          { "Security Control Field",   "zbee.sec.field", FT_UINT8, BASE_HEX, NULL,
+          { "Security Control Field",   "zbee_sec_field", FT_UINT8, BASE_HEX, NULL,
             0x0, NULL, HFILL }},
 
         { &hf_zbee_sec_key_id,
-          { "Key Id",                    "zbee.sec.key_id", FT_UINT8, BASE_HEX, VALS(zbee_sec_key_names),
+          { "Key Id",                    "zbee_sec_key_id", FT_UINT8, BASE_HEX, VALS(zbee_sec_key_names),
             ZBEE_SEC_CONTROL_KEY, NULL, HFILL }},
 
         { &hf_zbee_sec_nonce,
-          { "Extended Nonce",         "zbee.sec.ext_nonce", FT_BOOLEAN, 8, NULL, ZBEE_SEC_CONTROL_NONCE,
+          { "Extended Nonce",         "zbee_sec_ext_nonce", FT_BOOLEAN, 8, NULL, ZBEE_SEC_CONTROL_NONCE,
             NULL, HFILL }},
 
         { &hf_zbee_sec_counter,
-          { "Frame Counter",          "zbee.sec.counter", FT_UINT32, BASE_DEC, NULL, 0x0,
+          { "Frame Counter",          "zbee_sec_counter", FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zbee_sec_src64,
-          { "Extended Source",                 "zbee.sec.src64", FT_EUI64, BASE_NONE, NULL, 0x0,
+          { "Extended Source",                 "zbee_sec_src64", FT_EUI64, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zbee_sec_key_seqno,
-          { "Key Sequence Number",    "zbee.sec.key_seqno", FT_UINT8, BASE_DEC, NULL, 0x0,
+          { "Key Sequence Number",    "zbee_sec_key_seqno", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zbee_sec_mic,
-          { "Message Integrity Code", "zbee.sec.mic", FT_BYTES, BASE_NONE, NULL, 0x0,
+          { "Message Integrity Code", "zbee_sec_mic", FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zbee_sec_key,
-          { "Key", "zbee.sec.key", FT_BYTES, BASE_NONE, NULL, 0x0,
+          { "Key", "zbee_sec_key", FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zbee_sec_key_origin,
-          { "Key Origin", "zbee.sec.key.origin", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+          { "Key Origin", "zbee_sec_key_origin", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zbee_sec_decryption_key,
-          { "Key Label", "zbee.sec.decryption_key", FT_STRING, BASE_NONE, NULL, 0x0,
+          { "Key Label", "zbee_sec_decryption_key", FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }}
     };
 

@@ -493,31 +493,31 @@ void proto_register_autosar_nm(void)
 
   static hf_register_info hf_autosar_nm[] = {
     { &hf_autosar_nm_control_bit_vector,
-    { "Control Bit Vector", "autosar-nm.ctrl", FT_UINT8, BASE_HEX, NULL, 0x0, "The Control Bit Vector", HFILL } },
+    { "Control Bit Vector", "autosar-nm_ctrl", FT_UINT8, BASE_HEX, NULL, 0x0, "The Control Bit Vector", HFILL } },
     { &hf_autosar_nm_control_bit_vector_repeat_msg_req,
-    { "Repeat Message Request", "autosar-nm.ctrl.repeat_msg_req", FT_BOOLEAN, 8, TFS(&tfs_autosar_nm_control_rep_msg_req), 0x01, "The Repeat Message Request Bit", HFILL } },
+    { "Repeat Message Request", "autosar-nm_ctrl_repeat_msg_req", FT_BOOLEAN, 8, TFS(&tfs_autosar_nm_control_rep_msg_req), 0x01, "The Repeat Message Request Bit", HFILL } },
     { &hf_autosar_nm_control_bit_vector_reserved1,
-    { "Reserved Bit 1", "autosar-nm.ctrl.reserved1", FT_UINT8, BASE_DEC, NULL, 0x02, "The Reserved Bit 1", HFILL } },
+    { "Reserved Bit 1", "autosar-nm_ctrl_reserved1", FT_UINT8, BASE_DEC, NULL, 0x02, "The Reserved Bit 1", HFILL } },
     { &hf_autosar_nm_control_bit_vector_reserved2,
-    { "Reserved Bit 2", "autosar-nm.ctrl.reserved2", FT_UINT8, BASE_DEC, NULL, 0x04, "The Reserved Bit 2", HFILL } },
+    { "Reserved Bit 2", "autosar-nm_ctrl_reserved2", FT_UINT8, BASE_DEC, NULL, 0x04, "The Reserved Bit 2", HFILL } },
     { &hf_autosar_nm_control_bit_vector_nm_coord_id,
-    { "NM Coordinator Id", "autosar-nm.ctrl.nm_coord_id", FT_UINT8, BASE_DEC, NULL, 0x06, "The NM Coordinator Identifier", HFILL } },
+    { "NM Coordinator Id", "autosar-nm_ctrl_nm_coord_id", FT_UINT8, BASE_DEC, NULL, 0x06, "The NM Coordinator Identifier", HFILL } },
     { &hf_autosar_nm_control_bit_vector_nm_coord_sleep,
-    { "NM Coordinator Sleep", "autosar-nm.ctrl.nm_coord_sleep", FT_BOOLEAN, 8, TFS(&tfs_autosar_nm_control_sleep_bit), 0x08, "NM Coordinator Sleep Bit", HFILL } },
+    { "NM Coordinator Sleep", "autosar-nm_ctrl_nm_coord_sleep", FT_BOOLEAN, 8, TFS(&tfs_autosar_nm_control_sleep_bit), 0x08, "NM Coordinator Sleep Bit", HFILL } },
     { &hf_autosar_nm_control_bit_vector_active_wakeup,
-    { "Active Wakeup", "autosar-nm.ctrl.active_wakeup", FT_BOOLEAN, 8, TFS(&tfs_autosar_nm_control_active_wakeup), 0x10, "Active Wakeup Bit", HFILL } },
+    { "Active Wakeup", "autosar-nm_ctrl_active_wakeup", FT_BOOLEAN, 8, TFS(&tfs_autosar_nm_control_active_wakeup), 0x10, "Active Wakeup Bit", HFILL } },
     { &hf_autosar_nm_control_bit_vector_reserved5,
-    { "Reserved Bit 5", "autosar-nm.ctrl.reserved5", FT_UINT8, BASE_DEC, NULL, 0x20, "The Reserved Bit 5", HFILL } },
+    { "Reserved Bit 5", "autosar-nm_ctrl_reserved5", FT_UINT8, BASE_DEC, NULL, 0x20, "The Reserved Bit 5", HFILL } },
     { &hf_autosar_nm_control_bit_vector_pni,
-    { "Partial Network Information", "autosar-nm.ctrl.pni", FT_BOOLEAN, 8, TFS(&tfs_autosar_nm_control_pni), 0x40, "Partial Network Information Bit", HFILL } },
+    { "Partial Network Information", "autosar-nm_ctrl_pni", FT_BOOLEAN, 8, TFS(&tfs_autosar_nm_control_pni), 0x40, "Partial Network Information Bit", HFILL } },
     { &hf_autosar_nm_control_bit_vector_reserved7,
-    { "Reserved Bit 7", "autosar-nm.ctrl.reserved7", FT_UINT8, BASE_DEC, NULL, 0x80, "The Reserved Bit 7", HFILL } },
+    { "Reserved Bit 7", "autosar-nm_ctrl_reserved7", FT_UINT8, BASE_DEC, NULL, 0x80, "The Reserved Bit 7", HFILL } },
 
     { &hf_autosar_nm_source_node_identifier,
-    { "Source Node Identifier", "autosar-nm.src", FT_UINT8, BASE_DEC, NULL, 0x0, "The identification of the sending node", HFILL } },
+    { "Source Node Identifier", "autosar-nm_src", FT_UINT8, BASE_DEC, NULL, 0x0, "The identification of the sending node", HFILL } },
 
     { &hf_autosar_nm_user_data,
-    { "User Data", "autosar-nm.user_data", FT_BYTES, BASE_NONE, NULL, 0x0, "The User Data", HFILL } },
+    { "User Data", "autosar-nm_user_data", FT_BYTES, BASE_NONE, NULL, 0x0, "The User Data", HFILL } },
   };
 
   static gint *ett[] = {

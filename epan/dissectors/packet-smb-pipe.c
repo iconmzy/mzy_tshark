@@ -2861,354 +2861,354 @@ proto_register_pipe_lanman(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_function_code,
-			{ "Function Code", "lanman.function_code", FT_UINT16, BASE_DEC|BASE_EXT_STRING,
+			{ "Function Code", "lanman_function_code", FT_UINT16, BASE_DEC|BASE_EXT_STRING,
 			&commands_ext, 0, "LANMAN Function Code/Command", HFILL }},
 
 		{ &hf_param_desc,
-			{ "Parameter Descriptor", "lanman.param_desc", FT_STRING, BASE_NONE,
+			{ "Parameter Descriptor", "lanman_param_desc", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Parameter Descriptor", HFILL }},
 
 		{ &hf_return_desc,
-			{ "Return Descriptor", "lanman.ret_desc", FT_STRING, BASE_NONE,
+			{ "Return Descriptor", "lanman_ret_desc", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Return Descriptor", HFILL }},
 
 		{ &hf_aux_data_desc,
-			{ "Auxiliary Data Descriptor", "lanman.aux_data_desc", FT_STRING, BASE_NONE,
+			{ "Auxiliary Data Descriptor", "lanman_aux_data_desc", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Auxiliary Data Descriptor", HFILL }},
 
 		{ &hf_detail_level,
-			{ "Detail Level", "lanman.level", FT_UINT16, BASE_DEC,
+			{ "Detail Level", "lanman_level", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Detail Level", HFILL }},
 
 		{ &hf_padding,
-			{ "Padding", "lanman.padding", FT_BYTES, BASE_NONE,
+			{ "Padding", "lanman_padding", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_recv_buf_len,
-			{ "Receive Buffer Length", "lanman.recv_buf_len", FT_UINT16, BASE_DEC,
+			{ "Receive Buffer Length", "lanman_recv_buf_len", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Receive Buffer Length", HFILL }},
 
 		{ &hf_send_buf_len,
-			{ "Send Buffer Length", "lanman.send_buf_len", FT_UINT16, BASE_DEC,
+			{ "Send Buffer Length", "lanman_send_buf_len", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Send Buffer Length", HFILL }},
 
 #if 0
 		{ &hf_continuation_from,
-			{ "Continuation from message in frame", "lanman.continuation_from", FT_UINT32, BASE_DEC,
+			{ "Continuation from message in frame", "lanman_continuation_from", FT_UINT32, BASE_DEC,
 			NULL, 0, "This is a LANMAN continuation from the message in the frame in question", HFILL }},
 #endif
 
 		{ &hf_status,
-			{ "Status", "lanman.status", FT_UINT16, BASE_DEC,
+			{ "Status", "lanman_status", FT_UINT16, BASE_DEC,
 			VALS(status_vals), 0, "LANMAN Return status", HFILL }},
 
 		{ &hf_convert,
-			{ "Convert", "lanman.convert", FT_UINT16, BASE_DEC,
+			{ "Convert", "lanman_convert", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Convert", HFILL }},
 
 		{ &hf_param_no_descriptor,
-			{ "Parameters (no descriptor available)", "lanman.param_no_descriptor", FT_BYTES, BASE_NONE,
+			{ "Parameters (no descriptor available)", "lanman_param_no_descriptor", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_data_no_descriptor,
-			{ "Data (no descriptor available)", "lanman.data_no_descriptor", FT_BYTES, BASE_NONE,
+			{ "Data (no descriptor available)", "lanman_data_no_descriptor", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_data_no_recv_buffer,
-			{ "Data (no receive buffer)", "lanman.data_no_recv_buffer", FT_BYTES, BASE_NONE,
+			{ "Data (no receive buffer)", "lanman_data_no_recv_buffer", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_ecount,
-			{ "Entry Count", "lanman.entry_count", FT_UINT16, BASE_DEC,
+			{ "Entry Count", "lanman_entry_count", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Number of Entries", HFILL }},
 
 		{ &hf_acount,
-			{ "Available Entries", "lanman.available_count", FT_UINT16, BASE_DEC,
+			{ "Available Entries", "lanman_available_count", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Number of Available Entries", HFILL }},
 
 		{ &hf_share,
-			{ "Share", "lanman.share", FT_NONE, BASE_NONE,
+			{ "Share", "lanman_share", FT_NONE, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_share_name,
-			{ "Share Name", "lanman.share.name", FT_STRING, BASE_NONE,
+			{ "Share Name", "lanman_share_name", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Name of Share", HFILL }},
 
 		{ &hf_share_type,
-			{ "Share Type", "lanman.share.type", FT_UINT16, BASE_DEC,
+			{ "Share Type", "lanman_share_type", FT_UINT16, BASE_DEC,
 			VALS(share_type_vals), 0, "LANMAN Type of Share", HFILL }},
 
 		{ &hf_share_comment,
-			{ "Share Comment", "lanman.share.comment", FT_STRING, BASE_NONE,
+			{ "Share Comment", "lanman_share_comment", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Share Comment", HFILL }},
 
 		{ &hf_share_permissions,
-			{ "Share Permissions", "lanman.share.permissions", FT_UINT16, BASE_DEC,
+			{ "Share Permissions", "lanman_share_permissions", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Permissions on share", HFILL }},
 
 		{ &hf_share_max_uses,
-			{ "Share Max Uses", "lanman.share.max_uses", FT_UINT16, BASE_DEC,
+			{ "Share Max Uses", "lanman_share_max_uses", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Max connections allowed to share", HFILL }},
 
 		{ &hf_share_current_uses,
-			{ "Share Current Uses", "lanman.share.current_uses", FT_UINT16, BASE_DEC,
+			{ "Share Current Uses", "lanman_share_current_uses", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Current connections to share", HFILL }},
 
 		{ &hf_share_path,
-			{ "Share Path", "lanman.share.path", FT_STRING, BASE_NONE,
+			{ "Share Path", "lanman_share_path", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Share Path", HFILL }},
 
 		{ &hf_share_password,
-			{ "Share Password", "lanman.share.password", FT_STRING, BASE_NONE,
+			{ "Share Password", "lanman_share_password", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Share Password", HFILL }},
 
 		{ &hf_server,
-			{ "Server", "lanman.server", FT_NONE, BASE_NONE,
+			{ "Server", "lanman_server", FT_NONE, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 
 		{ &hf_server_name,
-			{ "Server Name", "lanman.server.name", FT_STRING, BASE_NONE,
+			{ "Server Name", "lanman_server_name", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Name of Server", HFILL }},
 
 		{ &hf_server_major,
-			{ "Major Version", "lanman.server.major", FT_UINT8, BASE_DEC,
+			{ "Major Version", "lanman_server_major", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Server Major Version", HFILL }},
 
 		{ &hf_server_minor,
-			{ "Minor Version", "lanman.server.minor", FT_UINT8, BASE_DEC,
+			{ "Minor Version", "lanman_server_minor", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Server Minor Version", HFILL }},
 
 		{ &hf_server_comment,
-			{ "Server Comment", "lanman.server.comment", FT_STRING, BASE_NONE,
+			{ "Server Comment", "lanman_server_comment", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Server Comment", HFILL }},
 
 		{ &hf_abytes,
-			{ "Available Bytes", "lanman.available_bytes", FT_UINT16, BASE_DEC,
+			{ "Available Bytes", "lanman_available_bytes", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Number of Available Bytes", HFILL }},
 
 		{ &hf_current_time,
-			{ "Current Date/Time", "lanman.current_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+			{ "Current Date/Time", "lanman_current_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
 			NULL, 0, "LANMAN Current date and time, in seconds since 00:00:00, January 1, 1970", HFILL }},
 
 		{ &hf_msecs,
-			{ "Milliseconds", "lanman.msecs", FT_UINT32, BASE_DEC,
+			{ "Milliseconds", "lanman_msecs", FT_UINT32, BASE_DEC,
 			NULL, 0, "LANMAN Milliseconds since arbitrary time in the past (typically boot time)", HFILL }},
 
 		{ &hf_hour,
-			{ "Hour", "lanman.hour", FT_UINT8, BASE_DEC,
+			{ "Hour", "lanman_hour", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Current hour", HFILL }},
 
 		{ &hf_minute,
-			{ "Minute", "lanman.minute", FT_UINT8, BASE_DEC,
+			{ "Minute", "lanman_minute", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Current minute", HFILL }},
 
 		{ &hf_second,
-			{ "Second", "lanman.second", FT_UINT8, BASE_DEC,
+			{ "Second", "lanman_second", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Current second", HFILL }},
 
 		{ &hf_hundredths,
-			{ "Hundredths of a second", "lanman.hundredths", FT_UINT8, BASE_DEC,
+			{ "Hundredths of a second", "lanman_hundredths", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Current hundredths of a second", HFILL }},
 
 		{ &hf_tzoffset,
-			{ "Time Zone Offset", "lanman.tzoffset", FT_INT16, BASE_DEC,
+			{ "Time Zone Offset", "lanman_tzoffset", FT_INT16, BASE_DEC,
 			NULL, 0, "LANMAN Offset of time zone from GMT, in minutes", HFILL }},
 
 		{ &hf_timeinterval,
-			{ "Time Interval", "lanman.timeinterval", FT_UINT16, BASE_DEC,
+			{ "Time Interval", "lanman_timeinterval", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN .0001 second units per clock tick", HFILL }},
 
 		{ &hf_day,
-			{ "Day", "lanman.day", FT_UINT8, BASE_DEC,
+			{ "Day", "lanman_day", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Current day", HFILL }},
 
 		{ &hf_month,
-			{ "Month", "lanman.month", FT_UINT8, BASE_DEC,
+			{ "Month", "lanman_month", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Current month", HFILL }},
 
 		{ &hf_year,
-			{ "Year", "lanman.year", FT_UINT16, BASE_DEC,
+			{ "Year", "lanman_year", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Current year", HFILL }},
 
 		{ &hf_weekday,
-			{ "Weekday", "lanman.weekday", FT_UINT8, BASE_DEC,
+			{ "Weekday", "lanman_weekday", FT_UINT8, BASE_DEC,
 			VALS(weekday_vals), 0, "LANMAN Current day of the week", HFILL }},
 
 		{ &hf_enumeration_domain,
-			{ "Enumeration Domain", "lanman.enumeration_domain", FT_STRING, BASE_NONE,
+			{ "Enumeration Domain", "lanman_enumeration_domain", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Domain in which to enumerate servers", HFILL }},
 
 		{ &hf_last_entry,
-			{ "Last Entry", "lanman.last_entry", FT_STRING, BASE_NONE,
+			{ "Last Entry", "lanman_last_entry", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN last reported entry of the enumerated servers", HFILL }},
 
 		{ &hf_computer_name,
-			{ "Computer Name", "lanman.computer_name", FT_STRING, BASE_NONE,
+			{ "Computer Name", "lanman_computer_name", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Computer Name", HFILL }},
 
 		{ &hf_user_name,
-			{ "User Name", "lanman.user_name", FT_STRING, BASE_NONE,
+			{ "User Name", "lanman_user_name", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN User Name", HFILL }},
 
 		{ &hf_group_name,
-			{ "Group Name", "lanman.group_name", FT_STRING, BASE_NONE,
+			{ "Group Name", "lanman_group_name", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Group Name", HFILL }},
 
 		{ &hf_workstation_domain,
-			{ "Workstation Domain", "lanman.workstation_domain", FT_STRING, BASE_NONE,
+			{ "Workstation Domain", "lanman_workstation_domain", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Workstation Domain", HFILL }},
 
 		{ &hf_workstation_major,
-			{ "Workstation Major Version", "lanman.workstation_major", FT_UINT8, BASE_DEC,
+			{ "Workstation Major Version", "lanman_workstation_major", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Workstation Major Version", HFILL }},
 
 		{ &hf_workstation_minor,
-			{ "Workstation Minor Version", "lanman.workstation_minor", FT_UINT8, BASE_DEC,
+			{ "Workstation Minor Version", "lanman_workstation_minor", FT_UINT8, BASE_DEC,
 			NULL, 0, "LANMAN Workstation Minor Version", HFILL }},
 
 		{ &hf_logon_domain,
-			{ "Logon Domain", "lanman.logon_domain", FT_STRING, BASE_NONE,
+			{ "Logon Domain", "lanman_logon_domain", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Logon Domain", HFILL }},
 
 		{ &hf_other_domains,
-			{ "Other Domains", "lanman.other_domains", FT_STRING, BASE_NONE,
+			{ "Other Domains", "lanman_other_domains", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Other Domains", HFILL }},
 
 		{ &hf_password,
-			{ "Password", "lanman.password", FT_STRING, BASE_NONE,
+			{ "Password", "lanman_password", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Password", HFILL }},
 
 		{ &hf_workstation_name,
-			{ "Workstation Name", "lanman.workstation_name", FT_STRING, BASE_NONE,
+			{ "Workstation Name", "lanman_workstation_name", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Workstation Name", HFILL }},
 
 		{ &hf_ustruct_size,
-			{ "Length of UStruct", "lanman.ustruct_size", FT_UINT16, BASE_DEC,
+			{ "Length of UStruct", "lanman_ustruct_size", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN UStruct Length", HFILL }},
 
 		{ &hf_logon_code,
-			{ "Logon Code", "lanman.logon_code", FT_UINT16, BASE_DEC,
+			{ "Logon Code", "lanman_logon_code", FT_UINT16, BASE_DEC,
 			VALS(status_vals), 0, "LANMAN Logon Code", HFILL }},
 
 		{ &hf_privilege_level,
-			{ "Privilege Level", "lanman.privilege_level", FT_UINT16, BASE_DEC,
+			{ "Privilege Level", "lanman_privilege_level", FT_UINT16, BASE_DEC,
 			VALS(privilege_vals), 0, "LANMAN Privilege Level", HFILL }},
 
 		{ &hf_operator_privileges,
-			{ "Operator Privileges", "lanman.operator_privileges", FT_UINT32, BASE_DEC,
+			{ "Operator Privileges", "lanman_operator_privileges", FT_UINT32, BASE_DEC,
 			VALS(op_privilege_vals), 0, "LANMAN Operator Privileges", HFILL }},
 
 		{ &hf_num_logons,
-			{ "Number of Logons", "lanman.num_logons", FT_UINT16, BASE_DEC,
+			{ "Number of Logons", "lanman_num_logons", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Number of Logons", HFILL }},
 
 		{ &hf_bad_pw_count,
-			{ "Bad Password Count", "lanman.bad_pw_count", FT_UINT16, BASE_DEC,
+			{ "Bad Password Count", "lanman_bad_pw_count", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Number of incorrect passwords entered since last successful login", HFILL }},
 
 		{ &hf_last_logon,
-			{ "Last Logon Date/Time", "lanman.last_logon", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+			{ "Last Logon Date/Time", "lanman_last_logon", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
 			NULL, 0, "LANMAN Date and time of last logon", HFILL }},
 
 		{ &hf_last_logoff,
-			{ "Last Logoff Date/Time", "lanman.last_logoff", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+			{ "Last Logoff Date/Time", "lanman_last_logoff", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
 			NULL, 0, "LANMAN Date and time of last logoff", HFILL }},
 
 		{ &hf_logoff_time,
-			{ "Logoff Date/Time", "lanman.logoff_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+			{ "Logoff Date/Time", "lanman_logoff_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
 			NULL, 0, "LANMAN Date and time when user should log off", HFILL }},
 
 		{ &hf_kickoff_time,
-			{ "Kickoff Date/Time", "lanman.kickoff_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+			{ "Kickoff Date/Time", "lanman_kickoff_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
 			NULL, 0, "LANMAN Date and time when user will be logged off", HFILL }},
 
 		{ &hf_password_age,
-			{ "Password Age", "lanman.password_age", FT_RELATIVE_TIME, BASE_NONE,
+			{ "Password Age", "lanman_password_age", FT_RELATIVE_TIME, BASE_NONE,
 			NULL, 0, "LANMAN Time since user last changed his/her password", HFILL }},
 
 		{ &hf_password_can_change,
-			{ "Password Can Change", "lanman.password_can_change", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+			{ "Password Can Change", "lanman_password_can_change", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
 			NULL, 0, "LANMAN Date and time when user can change their password", HFILL }},
 
 		{ &hf_password_must_change,
-			{ "Password Must Change", "lanman.password_must_change", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+			{ "Password Must Change", "lanman_password_must_change", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
 			NULL, 0, "LANMAN Date and time when user must change their password", HFILL }},
 
 		{ &hf_script_path,
-			{ "Script Path", "lanman.script_path", FT_STRING, BASE_NONE,
+			{ "Script Path", "lanman_script_path", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Pathname of user's logon script", HFILL }},
 
 		{ &hf_logoff_code,
-			{ "Logoff Code", "lanman.logoff_code", FT_UINT16, BASE_DEC,
+			{ "Logoff Code", "lanman_logoff_code", FT_UINT16, BASE_DEC,
 			VALS(status_vals), 0, "LANMAN Logoff Code", HFILL }},
 
 		{ &hf_duration,
-			{ "Duration of Session", "lanman.duration", FT_RELATIVE_TIME, BASE_NONE,
+			{ "Duration of Session", "lanman_duration", FT_RELATIVE_TIME, BASE_NONE,
 			NULL, 0, "LANMAN Number of seconds the user was logged on", HFILL }},
 
 		{ &hf_comment,
-			{ "Comment", "lanman.comment", FT_STRING, BASE_NONE,
+			{ "Comment", "lanman_comment", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Comment", HFILL }},
 
 		{ &hf_user_comment,
-			{ "User Comment", "lanman.user_comment", FT_STRING, BASE_NONE,
+			{ "User Comment", "lanman_user_comment", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN User Comment", HFILL }},
 
 		{ &hf_full_name,
-			{ "Full Name", "lanman.full_name", FT_STRING, BASE_NONE,
+			{ "Full Name", "lanman_full_name", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Full Name", HFILL }},
 
 		{ &hf_homedir,
-			{ "Home Directory", "lanman.homedir", FT_STRING, BASE_NONE,
+			{ "Home Directory", "lanman_homedir", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Home Directory", HFILL }},
 
 		{ &hf_parameters,
-			{ "Parameters", "lanman.parameters", FT_STRING, BASE_NONE,
+			{ "Parameters", "lanman_parameters", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Parameters", HFILL }},
 
 		{ &hf_logon_server,
-			{ "Logon Server", "lanman.logon_server", FT_STRING, BASE_NONE,
+			{ "Logon Server", "lanman_logon_server", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Logon Server", HFILL }},
 
 		{ &hf_country_code,
-			{ "Country Code", "lanman.country_code", FT_UINT16, BASE_DEC | BASE_EXT_STRING,
+			{ "Country Code", "lanman_country_code", FT_UINT16, BASE_DEC | BASE_EXT_STRING,
 			&ms_country_codes_ext, 0, "LANMAN Country Code", HFILL }},
 
 		{ &hf_workstations,
-			{ "Workstations", "lanman.workstations", FT_STRING, BASE_NONE,
+			{ "Workstations", "lanman_workstations", FT_STRING, BASE_NONE,
 			NULL, 0, "LANMAN Workstations", HFILL }},
 
 		{ &hf_max_storage,
-			{ "Max Storage", "lanman.max_storage", FT_UINT32, BASE_DEC,
+			{ "Max Storage", "lanman_max_storage", FT_UINT32, BASE_DEC,
 			NULL, 0, "LANMAN Max Storage", HFILL }},
 
 		{ &hf_units_per_week,
-			{ "Units Per Week", "lanman.units_per_week", FT_UINT16, BASE_DEC,
+			{ "Units Per Week", "lanman_units_per_week", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Units Per Week", HFILL }},
 
 		{ &hf_logon_hours,
-			{ "Logon Hours", "lanman.logon_hours", FT_BYTES, BASE_NONE,
+			{ "Logon Hours", "lanman_logon_hours", FT_BYTES, BASE_NONE,
 			NULL, 0, "LANMAN Logon Hours", HFILL }},
 
 		/* XXX - we should have a value_string table for this */
 		{ &hf_code_page,
-			{ "Code Page", "lanman.code_page", FT_UINT16, BASE_DEC,
+			{ "Code Page", "lanman_code_page", FT_UINT16, BASE_DEC,
 			NULL, 0, "LANMAN Code Page", HFILL }},
 
 		{ &hf_new_password,
-			{ "New Password", "lanman.new_password", FT_BYTES, BASE_NONE,
+			{ "New Password", "lanman_new_password", FT_BYTES, BASE_NONE,
 			NULL, 0, "LANMAN New Password (encrypted)", HFILL }},
 
 		{ &hf_old_password,
-			{ "Old Password", "lanman.old_password", FT_BYTES, BASE_NONE,
+			{ "Old Password", "lanman_old_password", FT_BYTES, BASE_NONE,
 			NULL, 0, "LANMAN Old Password (encrypted)", HFILL }},
 
 		{ &hf_reserved,
-			{ "Reserved", "lanman.reserved", FT_UINT32, BASE_HEX,
+			{ "Reserved", "lanman_reserved", FT_UINT32, BASE_HEX,
 			NULL, 0, "LANMAN Reserved", HFILL }},
 
 		{ &hf_aux_data_struct_count,
-			{ "Auxiliary data structure count", "lanman.aux_data_struct_count", FT_UINT16, BASE_DEC_HEX,
+			{ "Auxiliary data structure count", "lanman_aux_data_struct_count", FT_UINT16, BASE_DEC_HEX,
 			NULL, 0, NULL, HFILL }},
 
 	};

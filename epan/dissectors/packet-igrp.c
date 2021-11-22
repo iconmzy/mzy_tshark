@@ -189,30 +189,30 @@ void proto_register_igrp(void)
   static hf_register_info hf[] = {
 
     { &hf_igrp_update,
-      { "Update Release",           "igrp.update",
+      { "Update Release",           "igrp_update",
       FT_UINT8, BASE_DEC, NULL, 0x0 ,
       "Update Release number", HFILL }
     },
     { &hf_igrp_as,
-      { "Autonomous System",           "igrp.as",
+      { "Autonomous System",           "igrp_as",
       FT_UINT16, BASE_DEC, NULL, 0x0 ,
       "Autonomous System number", HFILL }
     },
 
     /* Generated from convert_proto_tree_add_text.pl */
-    { &hf_igrp_version, { "IGRP Version", "igrp.version", FT_UINT8, BASE_DEC, NULL, 0xF0, NULL, HFILL }},
-    { &hf_igrp_command, { "Command", "igrp.command", FT_UINT8, BASE_DEC, NULL, 0x0F, NULL, HFILL }},
-    { &hf_igrp_interior_routes, { "Interior routes", "igrp.interior_routes", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_system_routes, { "System routes", "igrp.system_routes", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_exterior_routes, { "Exterior routes", "igrp.exterior_routes", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_checksum, { "Checksum", "igrp.checksum", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_network, { "Network", "igrp.network", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_delay, { "Delay", "igrp.delay", FT_UINT24, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_bandwidth, { "Bandwidth", "igrp.bandwidth", FT_UINT24, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_mtu, { "MTU", "igrp.mtu", FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_byte_bytes, 0x0, NULL, HFILL }},
-    { &hf_igrp_reliability, { "Reliability", "igrp.reliability", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_load, { "Load", "igrp.load", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-    { &hf_igrp_hop_count, { "Hop count", "igrp.hop_count", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_version, { "IGRP Version", "igrp_version", FT_UINT8, BASE_DEC, NULL, 0xF0, NULL, HFILL }},
+    { &hf_igrp_command, { "Command", "igrp_command", FT_UINT8, BASE_DEC, NULL, 0x0F, NULL, HFILL }},
+    { &hf_igrp_interior_routes, { "Interior routes", "igrp_interior_routes", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_system_routes, { "System routes", "igrp_system_routes", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_exterior_routes, { "Exterior routes", "igrp_exterior_routes", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_checksum, { "Checksum", "igrp_checksum", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_network, { "Network", "igrp_network", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_delay, { "Delay", "igrp_delay", FT_UINT24, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_bandwidth, { "Bandwidth", "igrp_bandwidth", FT_UINT24, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_mtu, { "MTU", "igrp_mtu", FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_byte_bytes, 0x0, NULL, HFILL }},
+    { &hf_igrp_reliability, { "Reliability", "igrp_reliability", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_load, { "Load", "igrp_load", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+    { &hf_igrp_hop_count, { "Hop count", "igrp_hop_count", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
   };
 
   /* Setup protocol subtree array */

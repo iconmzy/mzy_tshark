@@ -292,60 +292,60 @@ proto_register_asf(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_asf_iana, {
-			"IANA Enterprise Number", "asf.iana",
+			"IANA Enterprise Number", "asf_iana",
 			FT_UINT32, BASE_ENTERPRISES, STRINGS_ENTERPRISES, 0,
 			NULL, HFILL }},
 		{ &hf_asf_type, {
-			"Message Type", "asf.type",
+			"Message Type", "asf_type",
 			FT_UINT8, BASE_HEX, VALS(asf_type_vals), 0,
 			"ASF Message Type", HFILL }},
 		{ &hf_asf_tag, {
-			"Message Tag", "asf.tag",
+			"Message Tag", "asf_tag",
 			FT_UINT8, BASE_HEX, NULL, 0,
 			"ASF Message Tag", HFILL }},
 		{ &hf_asf_len, {
-			"Data Length", "asf.len",
+			"Data Length", "asf_len",
 			FT_UINT8, BASE_DEC, NULL, 0,
 			"ASF Data Length", HFILL }},
 		{ &hf_asf_rssp_status_code, {
-			"Status Code", "asf.rssp_status_code",
+			"Status Code", "asf_rssp_status_code",
 			FT_UINT8, BASE_DEC, VALS(asf_rssp_status_code_vals), 0,
 			"Identifies the status of the previous message", HFILL }},
 		{ &hf_asf_mgt_console_id, {
-			"Mgt Console Session ID", "asf.mgt_console_id",
+			"Mgt Console Session ID", "asf_mgt_console_id",
 			FT_UINT32, BASE_DEC, NULL, 0,
 			NULL, HFILL }},
 		{ &hf_asf_client_id, {
-			"Managed Client Session ID", "asf.client_id",
+			"Managed Client Session ID", "asf_client_id",
 			FT_UINT32, BASE_DEC, NULL, 0,
 			NULL, HFILL }},
 		{ &hf_asf_payload, {
-			"Payload", "asf.payload",
+			"Payload", "asf_payload",
 			FT_NONE, BASE_NONE, NULL, 0,
 			NULL, HFILL }},
 		{ &hf_asf_payload_type, {
-			"Payload Type", "asf.payload.type",
+			"Payload Type", "asf_payload_type",
 			FT_UINT8, BASE_DEC, VALS(asf_payload_type_vals), 0,
 			"Identifies the type of payload that follows", HFILL }},
 		{ &hf_asf_payload_len, {
-			"Payload Length", "asf.payload.len",
+			"Payload Length", "asf_payload_len",
 			FT_UINT16, BASE_DEC, NULL, 0,
 			"The total length in bytes of the payload including the header",
 			HFILL }},
 		{ &hf_asf_payload_data, {
-			"Data", "asf.payload.data",
+			"Data", "asf_payload_data",
 			FT_NONE, BASE_NONE, NULL, 0,
 			NULL, HFILL }},
 		{ &hf_asf_auth_alg, {
-			"Authentication Algorithm", "asf.auth_alg",
+			"Authentication Algorithm", "asf_auth_alg",
 			FT_UINT8, BASE_DEC, VALS(asf_authentication_type_vals), 0,
 			NULL, HFILL }},
 		{ &hf_asf_integrity_alg, {
-			"Integrity Algorithm", "asf.integrity_alg",
+			"Integrity Algorithm", "asf_integrity_alg",
 			FT_UINT8, BASE_DEC, VALS(asf_integrity_type_vals), 0,
 			NULL, HFILL }},
 		{ &hf_asf_reserved, {
-			"Reserved", "asf.reserved",
+			"Reserved", "asf_reserved",
 			FT_NONE, BASE_NONE, NULL, 0,
 			NULL, HFILL }},
 	};

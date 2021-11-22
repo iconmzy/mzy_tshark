@@ -252,32 +252,32 @@ void proto_register_armagetronad(void)
 {
 	static hf_register_info hf[] = {
 		{&hf_armagetronad_descriptor_id,
-		 {"Descriptor", "armagetronad.descriptor_id",
+		 {"Descriptor", "armagetronad_descriptor_id",
 		  FT_UINT16, BASE_DEC, VALS(descriptors), 0x0,
 		  "The ID of the descriptor (the command)", HFILL}
 		 },
 		{&hf_armagetronad_message_id,
-		 {"MessageID", "armagetronad.message_id",
+		 {"MessageID", "armagetronad_message_id",
 		  FT_UINT16, BASE_HEX, NULL, 0x0,
 		  "The ID of the message (to ack it)", HFILL}
 		 },
 		{&hf_armagetronad_data_len,
-		 {"DataLen", "armagetronad.data_len",
+		 {"DataLen", "armagetronad_data_len",
 		  FT_UINT16, BASE_DEC, NULL, 0x0,
 		  "The length of the data (in shorts)", HFILL}
 		 },
 		{&hf_armagetronad_data,
-		 {"Data", "armagetronad.data",
+		 {"Data", "armagetronad_data",
 		  FT_BYTES, BASE_NONE, NULL, 0x0,
 		  "The actual data (array of shorts in network order)", HFILL}
 		 },
 		{&hf_armagetronad_sender_id,
-		 {"SenderID", "armagetronad.sender_id",
+		 {"SenderID", "armagetronad_sender_id",
 		  FT_UINT16, BASE_HEX, NULL, 0x0,
 		  "The ID of the sender (0x0000 for the server)", HFILL}
 		 },
 		{&hf_armagetronad_msg_subtree,
-		 {"Message", "armagetronad.message",
+		 {"Message", "armagetronad_message",
 		  FT_NONE, BASE_NONE, NULL, 0x0,
 		  "A message", HFILL}
 		 }

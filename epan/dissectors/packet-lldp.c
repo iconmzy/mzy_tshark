@@ -4604,1567 +4604,1567 @@ proto_register_lldp(void)
 	/* Setup list of header fields */
 	static hf_register_info hf[] = {
 		{ &hf_lldp_tlv_type,
-			{ "TLV Type", "lldp.tlv.type", FT_UINT16, BASE_DEC,
+			{ "TLV Type", "lldp_tlv_type", FT_UINT16, BASE_DEC,
 			VALS(tlv_types), TLV_TYPE_MASK, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_len,
-			{ "TLV Length", "lldp.tlv.len", FT_UINT16, BASE_DEC,
+			{ "TLV Length", "lldp_tlv_len", FT_UINT16, BASE_DEC,
 			NULL, TLV_INFO_LEN_MASK, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap,
-			{ "Capabilities", "lldp.tlv.system_cap", FT_UINT16, BASE_HEX,
+			{ "Capabilities", "lldp_tlv_system_cap", FT_UINT16, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap_other,
-			{ "Other", "lldp.tlv.system_cap.other", FT_BOOLEAN, 16,
+			{ "Other", "lldp_tlv_system_cap_other", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_OTHER, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap_repeater,
-			{ "Repeater", "lldp.tlv.system_cap.repeater", FT_BOOLEAN, 16,
+			{ "Repeater", "lldp_tlv_system_cap_repeater", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_REPEATER, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap_bridge,
-			{ "Bridge", "lldp.tlv.system_cap.bridge", FT_BOOLEAN, 16,
+			{ "Bridge", "lldp_tlv_system_cap_bridge", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_BRIDGE, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap_wlan_access_pt,
-			{ "WLAN access point", "lldp.tlv.system_cap.wlan_access_pt", FT_BOOLEAN, 16,
+			{ "WLAN access point", "lldp_tlv_system_cap_wlan_access_pt", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_WLAN, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap_router,
-			{ "Router", "lldp.tlv.system_cap.router", FT_BOOLEAN, 16,
+			{ "Router", "lldp_tlv_system_cap_router", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_ROUTER, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap_telephone,
-			{ "Telephone", "lldp.tlv.system_cap.telephone", FT_BOOLEAN, 16,
+			{ "Telephone", "lldp_tlv_system_cap_telephone", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_TELEPHONE, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap_docsis_cable_device,
-			{ "DOCSIS cable device", "lldp.tlv.system_cap.docsis_cable_device", FT_BOOLEAN, 16,
+			{ "DOCSIS cable device", "lldp_tlv_system_cap_docsis_cable_device", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_DOCSIS, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_cap_station_only,
-			{ "Station only", "lldp.tlv.system_cap.station_only", FT_BOOLEAN, 16,
+			{ "Station only", "lldp_tlv_system_cap_station_only", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_STATION, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_name,
-			{ "System Name", "lldp.tlv.system.name", FT_STRING, BASE_NONE,
+			{ "System Name", "lldp_tlv_system_name", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_system_desc,
-			{ "System Description", "lldp.tlv.system.desc", FT_STRING, BASE_NONE,
+			{ "System Description", "lldp_tlv_system_desc", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap,
-			{ "Enabled Capabilities", "lldp.tlv.enable_system_cap", FT_UINT16, BASE_HEX,
+			{ "Enabled Capabilities", "lldp_tlv_enable_system_cap", FT_UINT16, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap_other,
-			{ "Other", "lldp.tlv.enable_system_cap.other", FT_BOOLEAN, 16,
+			{ "Other", "lldp_tlv_enable_system_cap_other", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_OTHER, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap_repeater,
-			{ "Repeater", "lldp.tlv.enable_system_cap.repeater", FT_BOOLEAN, 16,
+			{ "Repeater", "lldp_tlv_enable_system_cap_repeater", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_REPEATER, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap_bridge,
-			{ "Bridge", "lldp.tlv.enable_system_cap.bridge", FT_BOOLEAN, 16,
+			{ "Bridge", "lldp_tlv_enable_system_cap_bridge", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_BRIDGE, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap_wlan_access_pt,
-			{ "WLAN access point", "lldp.tlv.enable_system_cap.wlan_access_pt", FT_BOOLEAN, 16,
+			{ "WLAN access point", "lldp_tlv_enable_system_cap_wlan_access_pt", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_WLAN, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap_router,
-			{ "Router", "lldp.tlv.enable_system_cap.router", FT_BOOLEAN, 16,
+			{ "Router", "lldp_tlv_enable_system_cap_router", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_ROUTER, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap_telephone,
-			{ "Telephone", "lldp.tlv.enable_system_cap.telephone", FT_BOOLEAN, 16,
+			{ "Telephone", "lldp_tlv_enable_system_cap_telephone", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_TELEPHONE, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap_docsis_cable_device,
-			{ "DOCSIS cable device", "lldp.tlv.enable_system_cap.docsis_cable_device", FT_BOOLEAN, 16,
+			{ "DOCSIS cable device", "lldp_tlv_enable_system_cap_docsis_cable_device", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_DOCSIS, NULL, HFILL }
 		},
 		{ &hf_lldp_tlv_enable_system_cap_station_only,
-			{ "Station only", "lldp.tlv.enable_system_cap.station_only", FT_BOOLEAN, 16,
+			{ "Station only", "lldp_tlv_enable_system_cap_station_only", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), SYSTEM_CAPABILITY_STATION, NULL, HFILL }
 		},
 		{ &hf_chassis_id_subtype,
-			{ "Chassis Id Subtype", "lldp.chassis.subtype", FT_UINT8, BASE_DEC,
+			{ "Chassis Id Subtype", "lldp_chassis_subtype", FT_UINT8, BASE_DEC,
 			VALS(chassis_id_subtypes), 0, NULL, HFILL }
 		},
 		{ &hf_chassis_id,
-			{ "Chassis Id", "lldp.chassis.id", FT_BYTES, BASE_NONE,
+			{ "Chassis Id", "lldp_chassis_id", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_chassis_id_mac,
-			{ "Chassis Id", "lldp.chassis.id.mac", FT_ETHER, BASE_NONE,
+			{ "Chassis Id", "lldp_chassis_id_mac", FT_ETHER, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_chassis_id_ip4,
-			{ "Chassis Id", "lldp.chassis.id.ip4", FT_IPv4, BASE_NONE,
+			{ "Chassis Id", "lldp_chassis_id_ip4", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_chassis_id_ip6,
-			{ "Chassis Id", "lldp.chassis.id.ip6", FT_IPv6, BASE_NONE,
+			{ "Chassis Id", "lldp_chassis_id_ip6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_port_id_subtype,
-			{ "Port Id Subtype", "lldp.port.subtype", FT_UINT8, BASE_DEC,
+			{ "Port Id Subtype", "lldp_port_subtype", FT_UINT8, BASE_DEC,
 			VALS(port_id_subtypes), 0, NULL, HFILL }
 		},
 		{ &hf_port_id,
-			{ "Port Id", "lldp.port.id", FT_STRING, BASE_NONE,
+			{ "Port Id", "lldp_port_id", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_port_desc,
-			{ "Port Description", "lldp.port.desc", FT_STRING, BASE_NONE,
+			{ "Port Description", "lldp_port_desc", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_port_id_mac,
-			{ "Port Id", "lldp.port.id.mac", FT_ETHER, BASE_NONE,
+			{ "Port Id", "lldp_port_id_mac", FT_ETHER, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_lldp_network_address_family,
-			{ "Network Address family", "lldp.network_address.subtype", FT_UINT8, BASE_DEC,
+			{ "Network Address family", "lldp_network_address_subtype", FT_UINT8, BASE_DEC,
 			VALS(afn_vals), 0, NULL, HFILL }
 		},
 		{ &hf_port_id_ip4,
-			{ "Port Id", "lldp.port.id.ip4", FT_IPv4, BASE_NONE,
+			{ "Port Id", "lldp_port_id_ip4", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_port_id_ip6,
-			{ "Port Id", "lldp.port.id.ip6", FT_IPv6, BASE_NONE,
+			{ "Port Id", "lldp_port_id_ip6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_time_to_live,
-			{ "Seconds", "lldp.time_to_live", FT_UINT16, BASE_DEC,
+			{ "Seconds", "lldp_time_to_live", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_mgn_address_len,
-			{ "Address String Length", "lldp.mgn.address.len", FT_UINT8, BASE_DEC,
+			{ "Address String Length", "lldp_mgn_address_len", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_mgn_address_subtype,
-			{ "Address Subtype", "lldp.mgn.address.subtype", FT_UINT8, BASE_DEC,
+			{ "Address Subtype", "lldp_mgn_address_subtype", FT_UINT8, BASE_DEC,
 			VALS(afn_vals), 0, "Undefined", HFILL }
 		},
 		{ &hf_mgn_addr_ipv4,
-			{ "Management Address", "lldp.mgn.addr.ip4", FT_IPv4, BASE_NONE,
+			{ "Management Address", "lldp_mgn_addr_ip4", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_mgn_addr_ipv6,
-			{ "Management Address", "lldp.mgn.addr.ip6", FT_IPv6, BASE_NONE,
+			{ "Management Address", "lldp_mgn_addr_ip6", FT_IPv6, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_mgn_addr_hex,
-			{ "Management Address", "lldp.mgn.addr.hex", FT_BYTES, BASE_NONE,
+			{ "Management Address", "lldp_mgn_addr_hex", FT_BYTES, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_mgn_interface_subtype,
-			{ "Interface Subtype", "lldp.mgn.interface.subtype", FT_UINT8, BASE_DEC,
+			{ "Interface Subtype", "lldp_mgn_interface_subtype", FT_UINT8, BASE_DEC,
 			VALS(interface_subtype_values), 0, "Undefined", HFILL }
 		},
 		{ &hf_mgn_interface_number,
-			{ "Interface Number", "lldp.mgn.interface.number", FT_UINT32, BASE_DEC,
+			{ "Interface Number", "lldp_mgn_interface_number", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_mgn_oid_len,
-			{ "OID String Length", "lldp.mgn.obj.len", FT_UINT8, BASE_DEC,
+			{ "OID String Length", "lldp_mgn_obj_len", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_mgn_obj_id,
-			{ "Object Identifier", "lldp.mgn.obj.id", FT_OID, BASE_NONE,
+			{ "Object Identifier", "lldp_mgn_obj_id", FT_OID, BASE_NONE,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_org_spc_oui,
-			{ "Organization Unique Code", "lldp.orgtlv.oui", FT_UINT24, BASE_OUI,
+			{ "Organization Unique Code", "lldp_orgtlv_oui", FT_UINT24, BASE_OUI,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_dcbx_type,
-			{ "DCBx Protocol", "lldp.dcbx.proto", FT_UINT8, BASE_HEX,
+			{ "DCBx Protocol", "lldp_dcbx_proto", FT_UINT8, BASE_HEX,
 			VALS(dcbx_protocol_types), 0x0, NULL, HFILL }
 		},
 		{ &hf_dcbx_tlv_type,
-			{ "DCBx TLV Type", "lldp.dcbx.type", FT_UINT16, BASE_DEC,
+			{ "DCBx TLV Type", "lldp_dcbx_type", FT_UINT16, BASE_DEC,
 			VALS(dcbx_subtypes), TLV_TYPE_MASK, NULL, HFILL }
 		},
 		{ &hf_dcbx_tlv_len,
-			{ "DCBx TLV Length", "lldp.dcbx.len", FT_UINT16, BASE_DEC,
+			{ "DCBx TLV Length", "lldp_dcbx_len", FT_UINT16, BASE_DEC,
 			NULL, TLV_INFO_LEN_MASK, NULL, HFILL }
 		},
 		{ &hf_dcbx_tlv_oper_version,
-			{ "Operating Version", "lldp.dcbx.version", FT_UINT8, BASE_HEX,
+			{ "Operating Version", "lldp_dcbx_version", FT_UINT8, BASE_HEX,
 			VALS(dcbx_protocol_types), 0x0, "Unknown", HFILL }
 		},
 		{ &hf_dcbx_tlv_max_version,
-			{ "Max Version", "lldp.dcbx.max_version", FT_UINT8, BASE_HEX,
+			{ "Max Version", "lldp_dcbx_max_version", FT_UINT8, BASE_HEX,
 			VALS(dcbx_protocol_types), 0x0, "Unknown", HFILL }
 		},
 		{ &hf_dcbx_control_sequence,
-			{ "Sequence No", "lldp.dcbx.control.seq", FT_UINT32, BASE_DEC,
+			{ "Sequence No", "lldp_dcbx_control_seq", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_control_ack,
-			{ "Ack No", "lldp.dcbx.control.ack", FT_UINT32, BASE_DEC,
+			{ "Ack No", "lldp_dcbx_control_ack", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_flag_enabled,
-			{ "Feature", "lldp.dcbx.feature.enabled", FT_BOOLEAN , 8,
+			{ "Feature", "lldp_dcbx_feature_enabled", FT_BOOLEAN , 8,
 			TFS(&tfs_enabled_disabled), 0x80, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_flag_willing,
-			{ "Willing", "lldp.dcbx.feature.willing", FT_BOOLEAN , 8,
+			{ "Willing", "lldp_dcbx_feature_willing", FT_BOOLEAN , 8,
 			TFS(&tfs_yes_no), 0x40, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_flag_error,
-			{ "Error", "lldp.dcbx.feature.error", FT_BOOLEAN , 8,
+			{ "Error", "lldp_dcbx_feature_error", FT_BOOLEAN , 8,
 			TFS(&tfs_set_notset), 0x20, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_subtype,
-			{ "Subtype", "lldp.dcbx.feature.subtype", FT_UINT8, BASE_HEX,
+			{ "Subtype", "lldp_dcbx_feature_subtype", FT_UINT8, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_reserved,
-			{ "Reserved", "lldp.dcbx.feature.pg.reserved", FT_UINT8, BASE_HEX,
+			{ "Reserved", "lldp_dcbx_feature_pg_reserved", FT_UINT8, BASE_HEX,
 			NULL, 0xF000, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_prio_0,
-			{ "PGID for Prio 0", "lldp.dcbx.feature.pg.pgid_prio0", FT_UINT16, BASE_DEC,
+			{ "PGID for Prio 0", "lldp_dcbx_feature_pg_pgid_prio0", FT_UINT16, BASE_DEC,
 			NULL, 0xF000, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_prio_1,
-			{ "PGID for Prio 1", "lldp.dcbx.feature.pg.pgid_prio1", FT_UINT16, BASE_DEC,
+			{ "PGID for Prio 1", "lldp_dcbx_feature_pg_pgid_prio1", FT_UINT16, BASE_DEC,
 			NULL, 0xF00, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_prio_2,
-			{ "PGID for Prio 2", "lldp.dcbx.feature.pg.pgid_prio2", FT_UINT16, BASE_DEC,
+			{ "PGID for Prio 2", "lldp_dcbx_feature_pg_pgid_prio2", FT_UINT16, BASE_DEC,
 			NULL, 0xF0, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_prio_3,
-			{ "PGID for Prio 3", "lldp.dcbx.feature.pg.pgid_prio3", FT_UINT16, BASE_DEC,
+			{ "PGID for Prio 3", "lldp_dcbx_feature_pg_pgid_prio3", FT_UINT16, BASE_DEC,
 			NULL, 0xF, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_prio_4,
-			{ "PGID for Prio 4", "lldp.dcbx.feature.pg.pgid_prio4", FT_UINT16, BASE_DEC,
+			{ "PGID for Prio 4", "lldp_dcbx_feature_pg_pgid_prio4", FT_UINT16, BASE_DEC,
 			NULL, 0xF000, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_prio_5,
-			{ "PGID for Prio 5", "lldp.dcbx.feature.pg.pgid_prio5", FT_UINT16, BASE_DEC,
+			{ "PGID for Prio 5", "lldp_dcbx_feature_pg_pgid_prio5", FT_UINT16, BASE_DEC,
 			NULL, 0xF00, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_prio_6,
-			{ "PGID for Prio 6", "lldp.dcbx.feature.pg.pgid_prio6", FT_UINT16, BASE_DEC,
+			{ "PGID for Prio 6", "lldp_dcbx_feature_pg_pgid_prio6", FT_UINT16, BASE_DEC,
 			NULL, 0xF0, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pgid_prio_7,
-			{ "PGID for Prio 7", "lldp.dcbx.feature.pg.pgid_prio7", FT_UINT16, BASE_DEC,
+			{ "PGID for Prio 7", "lldp_dcbx_feature_pg_pgid_prio7", FT_UINT16, BASE_DEC,
 			NULL, 0xF, 0, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_per_0,
-			{ "Bandwidth for PGID 0", "lldp.dcbx.feature.pg.per0", FT_UINT8, BASE_DEC,
+			{ "Bandwidth for PGID 0", "lldp_dcbx_feature_pg_per0", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_per_1,
-			{ "Bandwidth for PGID 1", "lldp.dcbx.feature.pg.per1", FT_UINT8, BASE_DEC,
+			{ "Bandwidth for PGID 1", "lldp_dcbx_feature_pg_per1", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_per_2,
-			{ "Bandwidth for PGID 2", "lldp.dcbx.feature.pg.per2", FT_UINT8, BASE_DEC,
+			{ "Bandwidth for PGID 2", "lldp_dcbx_feature_pg_per2", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_per_3,
-			{ "Bandwidth for PGID 3", "lldp.dcbx.feature.pg.per3", FT_UINT8, BASE_DEC,
+			{ "Bandwidth for PGID 3", "lldp_dcbx_feature_pg_per3", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_per_4,
-			{ "Bandwidth for PGID 4", "lldp.dcbx.feature.pg.per4", FT_UINT8, BASE_DEC,
+			{ "Bandwidth for PGID 4", "lldp_dcbx_feature_pg_per4", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_per_5,
-			{ "Bandwidth for PGID 5", "lldp.dcbx.feature.pg.per5", FT_UINT8, BASE_DEC,
+			{ "Bandwidth for PGID 5", "lldp_dcbx_feature_pg_per5", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_per_6,
-			{ "Bandwidth for PGID 6", "lldp.dcbx.feature.pg.per6", FT_UINT8, BASE_DEC,
+			{ "Bandwidth for PGID 6", "lldp_dcbx_feature_pg_per6", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_per_7,
-			{ "Bandwidth for PGID 7", "lldp.dcbx.feature.pg.per7", FT_UINT8, BASE_DEC,
+			{ "Bandwidth for PGID 7", "lldp_dcbx_feature_pg_per7", FT_UINT8, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pg_numtcs,
-			{ "Number of Traffic Classes Supported", "lldp.dcbx.feature.pg.numtcs", FT_UINT8, BASE_HEX,
+			{ "Number of Traffic Classes Supported", "lldp_dcbx_feature_pg_numtcs", FT_UINT8, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_prio0,
-			{ "PFC for Priority 0", "lldp.dcbx.feature.pfc.prio0", FT_BOOLEAN, 8,
+			{ "PFC for Priority 0", "lldp_dcbx_feature_pfc_prio0", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x1, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_prio1,
-			{ "PFC for Priority 1", "lldp.dcbx.feature.pfc.prio1", FT_BOOLEAN, 8,
+			{ "PFC for Priority 1", "lldp_dcbx_feature_pfc_prio1", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x2, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_prio2,
-			{ "PFC for Priority 2", "lldp.dcbx.feature.pfc.prio2", FT_BOOLEAN, 8,
+			{ "PFC for Priority 2", "lldp_dcbx_feature_pfc_prio2", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x4, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_prio3,
-			{ "PFC for Priority 3", "lldp.dcbx.feature.pfc.prio3", FT_BOOLEAN, 8,
+			{ "PFC for Priority 3", "lldp_dcbx_feature_pfc_prio3", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x8, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_prio4,
-			{ "PFC for Priority 4", "lldp.dcbx.feature.pfc.prio4", FT_BOOLEAN, 8,
+			{ "PFC for Priority 4", "lldp_dcbx_feature_pfc_prio4", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x10, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_prio5,
-			{ "PFC for Priority 5", "lldp.dcbx.feature.pfc.prio5", FT_BOOLEAN, 8,
+			{ "PFC for Priority 5", "lldp_dcbx_feature_pfc_prio5", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x20, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_prio6,
-			{ "PFC for Priority 6", "lldp.dcbx.feature.pfc.prio6", FT_BOOLEAN, 8,
+			{ "PFC for Priority 6", "lldp_dcbx_feature_pfc_prio6", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x40, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_prio7,
-			{ "PFC for Priority 7", "lldp.dcbx.feature.pfc.prio7", FT_BOOLEAN, 8,
+			{ "PFC for Priority 7", "lldp_dcbx_feature_pfc_prio7", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x80, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_pfc_numtcs,
-			{ "Number of Traffic Classes Supported", "lldp.dcbx.feature.pfc.numtcs", FT_UINT8, BASE_HEX,
+			{ "Number of Traffic Classes Supported", "lldp_dcbx_feature_pfc_numtcs", FT_UINT8, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_app_proto,
-			{ "Application Protocol Id", "lldp.dcbx.feature.app.proto", FT_UINT16, BASE_HEX,
+			{ "Application Protocol Id", "lldp_dcbx_feature_app_proto", FT_UINT16, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_app_selector,
-			{ "Selector Field", "lldp.dcbx.feature.app.sf", FT_UINT24, BASE_DEC,
+			{ "Selector Field", "lldp_dcbx_feature_app_sf", FT_UINT24, BASE_DEC,
 			VALS(dcbx_app_selector), 0x3 << 16, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_app_oui,
-			{ "Application OUI", "lldp.dcbx.feature.app.oui", FT_UINT24, BASE_HEX,
+			{ "Application OUI", "lldp_dcbx_feature_app_oui", FT_UINT24, BASE_HEX,
 			NULL, ~(0x3 << 16), NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_app_prio,
-			{ "Application Priority", "lldp.dcbx.feature.app.prio", FT_UINT8, BASE_DEC,
+			{ "Application Priority", "lldp_dcbx_feature_app_prio", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_dcbx_feature_flag_llink_type,
-			{ "Logical Link Down Type", "lldp.dcbx.feature.llink.type", FT_UINT8, BASE_HEX,
+			{ "Logical Link Down Type", "lldp_dcbx_feature_llink_type", FT_UINT8, BASE_HEX,
 			VALS(dcbx_llink_types), 0x80, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_subtype,
-			{ "IEEE 802.1 Subtype", "lldp.ieee.802_1.subtype", FT_UINT8, BASE_HEX,
+			{ "IEEE 802.1 Subtype", "lldp_ieee_802_1_subtype", FT_UINT8, BASE_HEX,
 			VALS(ieee_802_1_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_port_and_vlan_id_flag,
-			{ "Flags", "lldp.ieee.802_1.port_and_vlan_id_flag", FT_UINT8, BASE_HEX,
+			{ "Flags", "lldp_ieee_802_1_port_and_vlan_id_flag", FT_UINT8, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_port_and_vlan_id_flag_supported,
-			{ "Port and Protocol VLAN", "lldp.ieee.802_1.port_and_vlan_id_flag.supported", FT_BOOLEAN, 8,
+			{ "Port and Protocol VLAN", "lldp_ieee_802_1_port_and_vlan_id_flag_supported", FT_BOOLEAN, 8,
 			TFS(&tfs_supported_not_supported), 0x02, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_port_and_vlan_id_flag_enabled,
-			{ "Port and Protocol VLAN", "lldp.ieee.802_1.port_and_vlan_id_flag.enabled", FT_BOOLEAN, 8,
+			{ "Port and Protocol VLAN", "lldp_ieee_802_1_port_and_vlan_id_flag_enabled", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x04, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_port_vlan_id,
-			{ "Port VLAN Identifier", "lldp.ieee.802_1.port_vlan.id", FT_UINT16, BASE_DEC_HEX,
+			{ "Port VLAN Identifier", "lldp_ieee_802_1_port_vlan_id", FT_UINT16, BASE_DEC_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_port_proto_vlan_id,
-			{ "Port and Protocol VLAN Identifier", "lldp.ieee.802_1.port_proto_vlan.id", FT_UINT16, BASE_DEC_HEX,
+			{ "Port and Protocol VLAN Identifier", "lldp_ieee_802_1_port_proto_vlan_id", FT_UINT16, BASE_DEC_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_vlan_id,
-			{ "VLAN Identifier", "lldp.ieee.802_1.vlan.id", FT_UINT16, BASE_DEC_HEX,
+			{ "VLAN Identifier", "lldp_ieee_802_1_vlan_id", FT_UINT16, BASE_DEC_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_vlan_name_length,
-			{ "VLAN Name Length", "lldp.ieee.802_1.vlan.name_len", FT_UINT8, BASE_DEC,
+			{ "VLAN Name Length", "lldp_ieee_802_1_vlan_name_len", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_vlan_name,
-			{ "VLAN Name", "lldp.ieee.802_1.vlan.name", FT_STRINGZ, BASE_NONE,
+			{ "VLAN Name", "lldp_ieee_802_1_vlan_name", FT_STRINGZ, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_proto_id_length,
-			{ "Protocol Identity Length", "lldp.ieee.802_1.proto.id_length", FT_UINT8, BASE_DEC,
+			{ "Protocol Identity Length", "lldp_ieee_802_1_proto_id_length", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_proto_id,
-			{ "Protocol Identity", "lldp.ieee.802_1.proto.id", FT_BYTES, BASE_NONE,
+			{ "Protocol Identity", "lldp_ieee_802_1_proto_id", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_aggregation_status,
-			{ "Aggregation Status", "lldp.ieee.802_1.aggregation_status", FT_UINT8, BASE_HEX,
+			{ "Aggregation Status", "lldp_ieee_802_1_aggregation_status", FT_UINT8, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_aggregation_status_cap,
-			{ "Aggregation Capability", "lldp.ieee.802_1.aggregation_status.cap", FT_BOOLEAN, 8,
+			{ "Aggregation Capability", "lldp_ieee_802_1_aggregation_status_cap", FT_BOOLEAN, 8,
 			TFS(&tfs_yes_no), 0x01, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_aggregation_status_enabled,
-			{ "Aggregation Status", "lldp.ieee.802_1.aggregation_status.enabled", FT_BOOLEAN, 8,
+			{ "Aggregation Status", "lldp_ieee_802_1_aggregation_status_enabled", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x02, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_aggregation_status_porttype,
-			{ "Aggregation Status", "lldp.ieee.802_1.aggregation_status.porttype", FT_UINT8, BASE_DEC,
+			{ "Aggregation Status", "lldp_ieee_802_1_aggregation_status_porttype", FT_UINT8, BASE_DEC,
 			VALS(porttype_values), 0x0c, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1_aggregated_port_id,
-			{ "Aggregated Port Id", "lldp.ieee.802_1.aggregated_port_id", FT_UINT32, BASE_DEC,
+			{ "Aggregated Port Id", "lldp_ieee_802_1_aggregated_port_id", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_cnpv_prio0,
-			{ "Priority 0 CNPV Capability", "lldp.ieee.802_1qau.cnpv.prio0", FT_BOOLEAN, 8,
+			{ "Priority 0 CNPV Capability", "lldp_ieee_802_1qau_cnpv_prio0", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x01, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_cnpv_prio1,
-			{ "Priority 1 CNPV Capability", "lldp.ieee.802_1qau.cnpv.prio1", FT_BOOLEAN, 8,
+			{ "Priority 1 CNPV Capability", "lldp_ieee_802_1qau_cnpv_prio1", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x02, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_cnpv_prio2,
-			{ "Priority 2 CNPV Capability", "lldp.ieee.802_1qau.cnpv.prio2", FT_BOOLEAN, 8,
+			{ "Priority 2 CNPV Capability", "lldp_ieee_802_1qau_cnpv_prio2", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x04, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_cnpv_prio3,
-			{ "Priority 3 CNPV Capability", "lldp.ieee.802_1qau.cnpv.prio3", FT_BOOLEAN, 8,
+			{ "Priority 3 CNPV Capability", "lldp_ieee_802_1qau_cnpv_prio3", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x08, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_cnpv_prio4,
-			{ "Priority 4 CNPV Capability", "lldp.ieee.802_1qau.cnpv.prio4", FT_BOOLEAN, 8,
+			{ "Priority 4 CNPV Capability", "lldp_ieee_802_1qau_cnpv_prio4", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x10, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_cnpv_prio5,
-			{ "Priority 5 CNPV Capability", "lldp.ieee.802_1qau.cnpv.prio5", FT_BOOLEAN, 8,
+			{ "Priority 5 CNPV Capability", "lldp_ieee_802_1qau_cnpv_prio5", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x20, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_cnpv_prio6,
-			{ "Priority 6 CNPV Capability", "lldp.ieee.802_1qau.cnpv.prio6", FT_BOOLEAN, 8,
+			{ "Priority 6 CNPV Capability", "lldp_ieee_802_1qau_cnpv_prio6", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x40, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_cnpv_prio7,
-			{ "Priority 7 CNPV Capability", "lldp.ieee.802_1qau.cnpv.prio7", FT_BOOLEAN, 8,
+			{ "Priority 7 CNPV Capability", "lldp_ieee_802_1qau_cnpv_prio7", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x80, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_ready_prio0,
-			{ "Priority 0 Ready Indicator", "lldp.ieee.802_1qau.ready.prio0", FT_BOOLEAN, 8,
+			{ "Priority 0 Ready Indicator", "lldp_ieee_802_1qau_ready_prio0", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), 0x01, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_ready_prio1,
-			{ "Priority 1 Ready Indicator", "lldp.ieee.802_1qau.ready.prio1", FT_BOOLEAN, 8,
+			{ "Priority 1 Ready Indicator", "lldp_ieee_802_1qau_ready_prio1", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), 0x02, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_ready_prio2,
-			{ "Priority 2 Ready Indicator", "lldp.ieee.802_1qau.ready.prio2", FT_BOOLEAN, 8,
+			{ "Priority 2 Ready Indicator", "lldp_ieee_802_1qau_ready_prio2", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), 0x04, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_ready_prio3,
-			{ "Priority 3 Ready Indicator", "lldp.ieee.802_1qau.ready.prio3", FT_BOOLEAN, 8,
+			{ "Priority 3 Ready Indicator", "lldp_ieee_802_1qau_ready_prio3", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), 0x08, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_ready_prio4,
-			{ "Priority 4 Ready Indicator", "lldp.ieee.802_1qau.ready.prio4", FT_BOOLEAN, 8,
+			{ "Priority 4 Ready Indicator", "lldp_ieee_802_1qau_ready_prio4", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), 0x10, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_ready_prio5,
-			{ "Priority 5 Ready Indicator", "lldp.ieee.802_1qau.ready.prio5", FT_BOOLEAN, 8,
+			{ "Priority 5 Ready Indicator", "lldp_ieee_802_1qau_ready_prio5", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), 0x20, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_ready_prio6,
-			{ "Priority 6 Ready Indicator", "lldp.ieee.802_1qau.ready.prio6", FT_BOOLEAN, 8,
+			{ "Priority 6 Ready Indicator", "lldp_ieee_802_1qau_ready_prio6", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), 0x40, NULL, HFILL }
 		},
 		{ &hf_ieee_8021qau_ready_prio7,
-			{ "Priority 7 Ready Indicator", "lldp.ieee.802_1qau.ready.prio7", FT_BOOLEAN, 8,
+			{ "Priority 7 Ready Indicator", "lldp_ieee_802_1qau_ready_prio7", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), 0x80, NULL, HFILL }
 		},
 		{ &hf_ieee_8021az_feature_flag_willing,
-			{ "Willing", "lldp.dcbx.ieee.willing", FT_BOOLEAN , 8,
+			{ "Willing", "lldp_dcbx_ieee_willing", FT_BOOLEAN , 8,
 			TFS(&tfs_yes_no), 0x80, NULL, HFILL }
 		},
 		{ &hf_ieee_8021az_feature_flag_cbs,
-			{ "Credit-Based Shaper", "lldp.dcbx.ieee.ets.cbs", FT_BOOLEAN, 8,
+			{ "Credit-Based Shaper", "lldp_dcbx_ieee_ets_cbs", FT_BOOLEAN, 8,
 			TFS(&tfs_supported_not_supported), 0x40, NULL, HFILL }
 		},
 		{ &hf_ieee_8021az_maxtcs,
-			{ "Maximum Number of Traffic Classes", "lldp.dcbx.ieee.ets.maxtcs", FT_UINT8, BASE_DEC,
+			{ "Maximum Number of Traffic Classes", "lldp_dcbx_ieee_ets_maxtcs", FT_UINT8, BASE_DEC,
 			NULL, 0x7, NULL, HFILL }
 		},
 		{ &hf_ieee_8021az_tsa_class0,
-			{ "TSA for Traffic Class 0", "lldp.dcbx.ieee.ets.tsa0", FT_UINT8, BASE_DEC,
+			{ "TSA for Traffic Class 0", "lldp_dcbx_ieee_ets_tsa0", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_tsa), 0, "Reserved", HFILL }
 		},
 		{ &hf_ieee_8021az_tsa_class1,
-			{ "TSA for Traffic Class 1", "lldp.dcbx.ieee.ets.tsa1", FT_UINT8, BASE_DEC,
+			{ "TSA for Traffic Class 1", "lldp_dcbx_ieee_ets_tsa1", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_tsa), 0, "Reserved", HFILL }
 		},
 		{ &hf_ieee_8021az_tsa_class2,
-			{ "TSA for Traffic Class 2", "lldp.dcbx.ieee.ets.tsa2", FT_UINT8, BASE_DEC,
+			{ "TSA for Traffic Class 2", "lldp_dcbx_ieee_ets_tsa2", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_tsa), 0, "Reserved", HFILL }
 		},
 		{ &hf_ieee_8021az_tsa_class3,
-			{ "TSA for Traffic Class 3", "lldp.dcbx.ieee.ets.tsa3", FT_UINT8, BASE_DEC,
+			{ "TSA for Traffic Class 3", "lldp_dcbx_ieee_ets_tsa3", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_tsa), 0, "Reserved", HFILL }
 		},
 		{ &hf_ieee_8021az_tsa_class4,
-			{ "TSA for Traffic Class 4", "lldp.dcbx.ieee.ets.tsa4", FT_UINT8, BASE_DEC,
+			{ "TSA for Traffic Class 4", "lldp_dcbx_ieee_ets_tsa4", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_tsa), 0, "Reserved", HFILL }
 		},
 		{ &hf_ieee_8021az_tsa_class5,
-			{ "TSA for Traffic Class 5", "lldp.dcbx.ieee.ets.tsa5", FT_UINT8, BASE_DEC,
+			{ "TSA for Traffic Class 5", "lldp_dcbx_ieee_ets_tsa5", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_tsa), 0, "Reserved", HFILL }
 		},
 		{ &hf_ieee_8021az_tsa_class6,
-			{ "TSA for Traffic Class 6", "lldp.dcbx.ieee.ets.tsa6", FT_UINT8, BASE_DEC,
+			{ "TSA for Traffic Class 6", "lldp_dcbx_ieee_ets_tsa6", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_tsa), 0, "Reserved", HFILL }
 		},
 		{ &hf_ieee_8021az_tsa_class7,
-			{ "TSA for Traffic Class 7", "lldp.dcbx.ieee.ets.tsa7", FT_UINT8, BASE_DEC,
+			{ "TSA for Traffic Class 7", "lldp_dcbx_ieee_ets_tsa7", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_tsa), 0, "Reserved", HFILL }
 		},
 		{ &hf_ieee_8021az_feature_flag_mbc,
-			{ "MACsec Bypass Capability", "lldp.dcbx.ieee.pfc.mbc", FT_BOOLEAN, 8,
+			{ "MACsec Bypass Capability", "lldp_dcbx_ieee_pfc_mbc", FT_BOOLEAN, 8,
 			TFS(&tfs_capable_not_capable), 0x40, NULL, HFILL }
 		},
 		{ &hf_ieee_8021az_pfc_numtcs,
-			{ "Max PFC Enabled Traffic Classes", "lldp.dcbx.ieee.pfc.numtcs", FT_UINT8, BASE_DEC,
+			{ "Max PFC Enabled Traffic Classes", "lldp_dcbx_ieee_pfc_numtcs", FT_UINT8, BASE_DEC,
 			NULL, 0xF, NULL, HFILL }
 		},
 		{ &hf_ieee_8021az_app_reserved,
-			{ "Reserved", "lldp.dcbx.ieee.app.reserved", FT_UINT8, BASE_HEX,
+			{ "Reserved", "lldp_dcbx_ieee_app_reserved", FT_UINT8, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_8021az_app_prio,
-			{ "Application Priority", "lldp.dcbx.ieee.app.prio", FT_UINT8, BASE_DEC,
+			{ "Application Priority", "lldp_dcbx_ieee_app_prio", FT_UINT8, BASE_DEC,
 			NULL, 0xE0, NULL, HFILL }
 		},
 		{ &hf_ieee_8021az_app_selector,
-			{ "Application Selector", "lldp.dcbx.iee.app.sf", FT_UINT8, BASE_DEC,
+			{ "Application Selector", "lldp_dcbx_iee_app_sf", FT_UINT8, BASE_DEC,
 			VALS(dcbx_ieee_8021az_sf), 0x7, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_subtype,
-			{ "IEEE 802.3 Subtype", "lldp.ieee.802_3.subtype", FT_UINT8, BASE_HEX,
+			{ "IEEE 802.3 Subtype", "lldp_ieee_802_3_subtype", FT_UINT8, BASE_HEX,
 			VALS(ieee_802_3_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mac_phy_auto_neg_status,
-			{ "Auto-Negotiation Support/Status", "lldp.ieee.802_3.mac_phy_auto_neg_status", FT_UINT8, BASE_HEX,
+			{ "Auto-Negotiation Support/Status", "lldp_ieee_802_3_mac_phy_auto_neg_status", FT_UINT8, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mac_phy_auto_neg_status_supported,
-			{ "Auto-Negotiation", "lldp.ieee.802_3.mac_phy_auto_neg_status.supported", FT_BOOLEAN, 8,
+			{ "Auto-Negotiation", "lldp_ieee_802_3_mac_phy_auto_neg_status_supported", FT_BOOLEAN, 8,
 			TFS(&tfs_supported_not_supported), 0x01, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mac_phy_auto_neg_status_enabled,
-			{ "Auto-Negotiation", "lldp.ieee.802_3.mac_phy_auto_neg_status.enabled", FT_BOOLEAN, 8,
+			{ "Auto-Negotiation", "lldp_ieee_802_3_mac_phy_auto_neg_status_enabled", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x02, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps,
-			{ "PMD Auto-Negotiation Advertised Capability", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps", FT_UINT16, BASE_HEX,
+			{ "PMD Auto-Negotiation Advertised Capability", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps", FT_UINT16, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_tfd,
-			{ "1000BASE-T (full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_tfd", FT_BOOLEAN, 16,
+			{ "1000BASE-T (full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_tfd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_1000BASE_TFD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_t,
-			{ "1000BASE-T (half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_t", FT_BOOLEAN, 16,
+			{ "1000BASE-T (half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_t", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_1000BASE_T, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_xfd,
-			{ "1000BASE-X (-LX, -SX, -CX full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_xfd", FT_BOOLEAN, 16,
+			{ "1000BASE-X (-LX, -SX, -CX full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_xfd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_1000BASE_XFD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_x,
-			{ "1000BASE-X (-LX, -SX, -CX half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_x", FT_BOOLEAN, 16,
+			{ "1000BASE-X (-LX, -SX, -CX half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_x", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_1000BASE_X, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_bpause,
-			{ "Asymmetric and Symmetric PAUSE (for full-duplex links)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_bpause", FT_BOOLEAN, 16,
+			{ "Asymmetric and Symmetric PAUSE (for full-duplex links)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_bpause", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_FDX_BPAUSE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_spause,
-			{ "Symmetric PAUSE (for full-duplex links)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_spause", FT_BOOLEAN, 16,
+			{ "Symmetric PAUSE (for full-duplex links)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_spause", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_FDX_SPAUSE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_apause,
-			{ "Asymmetric PAUSE (for full-duplex links)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_apause", FT_BOOLEAN, 16,
+			{ "Asymmetric PAUSE (for full-duplex links)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_apause", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_FDX_APAUSE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_pause,
-			{ "PAUSE (for full-duplex links)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_pause", FT_BOOLEAN, 16,
+			{ "PAUSE (for full-duplex links)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_pause", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_FDX_PAUSE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t2fd,
-			{ "100BASE-T2 (full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t2fd", FT_BOOLEAN, 16,
+			{ "100BASE-T2 (full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t2fd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_100BASE_T2FD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t2,
-			{ "100BASE-T2 (half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t2", FT_BOOLEAN, 16,
+			{ "100BASE-T2 (half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t2", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_100BASE_T2, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_100base_txfd,
-			{ "100BASE-TX (full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_txfd", FT_BOOLEAN, 16,
+			{ "100BASE-TX (full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_txfd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_100BASE_TXFD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_100base_tx,
-			{ "100BASE-TX (half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_tx", FT_BOOLEAN, 16,
+			{ "100BASE-TX (half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_tx", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_100BASE_TX, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t4,
-			{ "100BASE-T4", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t4", FT_BOOLEAN, 16,
+			{ "100BASE-T4", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t4", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_100BASE_T4, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_10base_tfd,
-			{ "10BASE-T (full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.10base_tfd", FT_BOOLEAN, 16,
+			{ "10BASE-T (full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_10base_tfd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_10BASET_FD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_10base_t,
-			{ "10BASE-T (half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.10base_t", FT_BOOLEAN, 16,
+			{ "10BASE-T (half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_10base_t", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_10BASE_T, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_other,
-			{ "Other or unknown", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps.other", FT_BOOLEAN, 16,
+			{ "Other or unknown", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_other", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), AUTONEG_OTHER, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_tfd,
-			{ "1000BASE-T (full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_tfd", FT_BOOLEAN, 16,
+			{ "1000BASE-T (full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_tfd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_1000BASE_TFD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_t,
-			{ "1000BASE-T (half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_t", FT_BOOLEAN, 16,
+			{ "1000BASE-T (half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_t", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_1000BASE_T, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_xfd,
-			{ "1000BASE-X (-LX, -SX, -CX full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_xfd", FT_BOOLEAN, 16,
+			{ "1000BASE-X (-LX, -SX, -CX full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_xfd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_1000BASE_XFD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_x,
-			{ "1000BASE-X (-LX, -SX, -CX half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_x", FT_BOOLEAN, 16,
+			{ "1000BASE-X (-LX, -SX, -CX half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_x", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_1000BASE_X, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_bpause,
-			{ "Asymmetric and Symmetric PAUSE (for full-duplex links)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_bpause", FT_BOOLEAN, 16,
+			{ "Asymmetric and Symmetric PAUSE (for full-duplex links)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_bpause", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_FDX_BPAUSE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_spause,
-			{ "Symmetric PAUSE (for full-duplex links)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_spause", FT_BOOLEAN, 16,
+			{ "Symmetric PAUSE (for full-duplex links)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_spause", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_FDX_SPAUSE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_apause,
-			{ "Asymmetric PAUSE (for full-duplex links)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_apause", FT_BOOLEAN, 16,
+			{ "Asymmetric PAUSE (for full-duplex links)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_apause", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_FDX_APAUSE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_pause,
-			{ "PAUSE (for full-duplex links)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_pause", FT_BOOLEAN, 16,
+			{ "PAUSE (for full-duplex links)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_pause", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_FDX_PAUSE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t2fd,
-			{ "100BASE-T2 (full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t2fd", FT_BOOLEAN, 16,
+			{ "100BASE-T2 (full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t2fd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_100BASE_T2FD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t2,
-			{ "100BASE-T2 (half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t2", FT_BOOLEAN, 16,
+			{ "100BASE-T2 (half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t2", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_100BASE_T2, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_txfd,
-			{ "100BASE-TX (full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_txfd", FT_BOOLEAN, 16,
+			{ "100BASE-TX (full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_txfd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_100BASE_TXFD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_tx,
-			{ "100BASE-TX (half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_tx", FT_BOOLEAN, 16,
+			{ "100BASE-TX (half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_tx", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_100BASE_TX, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t4,
-			{ "100BASE-T4", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t4", FT_BOOLEAN, 16,
+			{ "100BASE-T4", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t4", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_100BASE_T4, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_10base_tfd,
-			{ "10BASE-T (full duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.10base_tfd", FT_BOOLEAN, 16,
+			{ "10BASE-T (full duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_10base_tfd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_10BASET_FD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_10base_t,
-			{ "10BASE-T (half duplex mode)", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.10base_t", FT_BOOLEAN, 16,
+			{ "10BASE-T (half duplex mode)", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_10base_t", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_10BASE_T, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_auto_neg_advertised_caps_inv_other,
-			{ "Other or unknown", "lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.other", FT_BOOLEAN, 16,
+			{ "Other or unknown", "lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_other", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), INV_AUTONEG_OTHER, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_pmd_mau_type,
-			{ "Operational MAU Type", "lldp.ieee.802_3.pmd_mau_type", FT_UINT16, BASE_HEX,
+			{ "Operational MAU Type", "lldp_ieee_802_3_pmd_mau_type", FT_UINT16, BASE_HEX,
 			VALS(operational_mau_type_values), 0x0, "Unknown", HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_support,
-			{ "MDI Power Support", "lldp.ieee.802_3.mdi_power_support", FT_UINT8, BASE_HEX,
+			{ "MDI Power Support", "lldp_ieee_802_3_mdi_power_support", FT_UINT8, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_support_port_class,
-			{ "Port Class", "lldp.ieee.802_3.mdi_power_support.port_class", FT_BOOLEAN, 8,
+			{ "Port Class", "lldp_ieee_802_3_mdi_power_support_port_class", FT_BOOLEAN, 8,
 			TFS(&tfs_ieee_802_3_pse_pd), 0x01, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_support_pse_power_support,
-			{ "PSE MDI Power", "lldp.ieee.802_3.mdi_power_support.supported", FT_BOOLEAN, 8,
+			{ "PSE MDI Power", "lldp_ieee_802_3_mdi_power_support_supported", FT_BOOLEAN, 8,
 			TFS(&tfs_supported_not_supported), 0x02, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_support_pse_power_enabled,
-			{ "PSE MDI Power", "lldp.ieee.802_3.mdi_power_support.enabled", FT_BOOLEAN, 8,
+			{ "PSE MDI Power", "lldp_ieee_802_3_mdi_power_support_enabled", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x04, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_support_pse_pairs,
-			{ "PSE Pairs Control Ability", "lldp.ieee.802_3.mdi_power_support.pse_pairs", FT_BOOLEAN, 8,
+			{ "PSE Pairs Control Ability", "lldp_ieee_802_3_mdi_power_support_pse_pairs", FT_BOOLEAN, 8,
 			TFS(&tfs_yes_no), 0x08, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_pse_pair,
-			{ "PSE Power Pair", "lldp.ieee.802_3.mdi_pse_pair", FT_UINT8, BASE_DEC,
+			{ "PSE Power Pair", "lldp_ieee_802_3_mdi_pse_pair", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_class,
-			{ "Power Class", "lldp.ieee.802_3.mdi_power_class", FT_UINT8, BASE_DEC,
+			{ "Power Class", "lldp_ieee_802_3_mdi_power_class", FT_UINT8, BASE_DEC,
 			VALS(power_class_802_3), 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_type,
-			{ "Power Type", "lldp.ieee.802_3.mdi_power_type", FT_UINT8, BASE_DEC,
+			{ "Power Type", "lldp_ieee_802_3_mdi_power_type", FT_UINT8, BASE_DEC,
 			VALS(power_type_802_3), 0xC0, "Unknown", HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_source,
-			{ "Power Source", "lldp.ieee.802_3.mdi_power_source", FT_UINT8, BASE_DEC,
+			{ "Power Source", "lldp_ieee_802_3_mdi_power_source", FT_UINT8, BASE_DEC,
 			NULL, 0x30, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_power_priority,
-			{ "Power Priority", "lldp.ieee.802_3.mdi_power_priority", FT_UINT8, BASE_DEC,
+			{ "Power Priority", "lldp_ieee_802_3_mdi_power_priority", FT_UINT8, BASE_DEC,
 			VALS(media_power_priority), 0x0F, "Reserved", HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_requested_power,
-			{ "PD Requested Power Value", "lldp.ieee.802_3.mdi_pde_requested", FT_UINT16, BASE_CUSTOM,
+			{ "PD Requested Power Value", "lldp_ieee_802_3_mdi_pde_requested", FT_UINT16, BASE_CUSTOM,
 			CF_FUNC(mdi_power_base), 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_mdi_allocated_power,
-			{ "PSE Allocated Power Value", "lldp.ieee.802_3.mdi_pse_allocated", FT_UINT16, BASE_CUSTOM,
+			{ "PSE Allocated Power Value", "lldp_ieee_802_3_mdi_pse_allocated", FT_UINT16, BASE_CUSTOM,
 			CF_FUNC(mdi_power_base), 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_ds_pd_requested_power_value_mode_a,
-			{ "DS PD Requested Power Value Mode A", "lldp.ieee.802_3.bt_ds_pd_requested_power_value_mode_a", FT_UINT16, BASE_DEC,
+			{ "DS PD Requested Power Value Mode A", "lldp_ieee_802_3_bt_ds_pd_requested_power_value_mode_a", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_ds_pd_requested_power_value_mode_b,
-			{ "DS PD Requested Power Value Mode B", "lldp.ieee.802_3.bt_ds_pd_requested_power_value_mode_b", FT_UINT16, BASE_DEC,
+			{ "DS PD Requested Power Value Mode B", "lldp_ieee_802_3_bt_ds_pd_requested_power_value_mode_b", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_ds_pse_allocated_power_value_alt_a,
-			{ "DS PSE Allocated Power Value Alt A", "lldp.ieee.802_3.bt_ds_pse_allocated_power_value_alt_a", FT_UINT16, BASE_DEC,
+			{ "DS PSE Allocated Power Value Alt A", "lldp_ieee_802_3_bt_ds_pse_allocated_power_value_alt_a", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_ds_pse_allocated_power_value_alt_b,
-			{ "DS PSE Allocated Power Value Alt B", "lldp.ieee.802_3.bt_ds_pse_allocated_power_value_alt_b", FT_UINT16, BASE_DEC,
+			{ "DS PSE Allocated Power Value Alt B", "lldp_ieee_802_3_bt_ds_pse_allocated_power_value_alt_b", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_power_status,
-			{ "Power Status", "lldp.ieee.802_3.bt_power_status", FT_UINT16, BASE_HEX,
+			{ "Power Status", "lldp_ieee_802_3_bt_power_status", FT_UINT16, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_pse_powering_status,
-			{ "PSE Powering Status", "lldp.ieee.802_3.bt_pse_powering_status", FT_UINT16, BASE_DEC,
+			{ "PSE Powering Status", "lldp_ieee_802_3_bt_pse_powering_status", FT_UINT16, BASE_DEC,
 			NULL, 0xC000, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_pd_powered_status,
-			{ "PD Powered Status", "lldp.ieee.802_3.bt_pd_powered_status", FT_UINT16, BASE_DEC,
+			{ "PD Powered Status", "lldp_ieee_802_3_bt_pd_powered_status", FT_UINT16, BASE_DEC,
 			NULL, 0x3000, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_pse_power_pairs_ext,
-			{ "PSE Power Pairs ext", "lldp.ieee.802_3.bt_pse_power_pairs_ext", FT_UINT16, BASE_DEC,
+			{ "PSE Power Pairs ext", "lldp_ieee_802_3_bt_pse_power_pairs_ext", FT_UINT16, BASE_DEC,
 			NULL, 0x0C00, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_ds_pwr_class_ext_a,
-			{ "DS Pwr Class Ext A", "lldp.ieee.802_3.bt_ds_pwr_class_ext_a", FT_UINT16, BASE_DEC,
+			{ "DS Pwr Class Ext A", "lldp_ieee_802_3_bt_ds_pwr_class_ext_a", FT_UINT16, BASE_DEC,
 			NULL, 0x0380, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_ds_pwr_class_ext_b,
-			{ "DS Pwr Class Ext B", "lldp.ieee.802_3.bt_ds_pwr_class_ext_b", FT_UINT16, BASE_DEC,
+			{ "DS Pwr Class Ext B", "lldp_ieee_802_3_bt_ds_pwr_class_ext_b", FT_UINT16, BASE_DEC,
 			NULL, 0x0070, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_pwr_class_ext,
-			{ "Pwr Class Ext", "lldp.ieee.802_3.bt_pwr_class_ext_", FT_UINT16, BASE_DEC,
+			{ "Pwr Class Ext", "lldp_ieee_802_3_bt_pwr_class_ext_", FT_UINT16, BASE_DEC,
 			NULL, 0x000F, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_system_setup,
-			{ "System Setup", "lldp.ieee.802_3.bt_system_setup", FT_UINT8, BASE_HEX,
+			{ "System Setup", "lldp_ieee_802_3_bt_system_setup", FT_UINT8, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_power_type_ext,
-			{ "Power Type Ext", "lldp.ieee.802_3.bt_power_type_ext", FT_UINT8, BASE_DEC,
+			{ "Power Type Ext", "lldp_ieee_802_3_bt_power_type_ext", FT_UINT8, BASE_DEC,
 			NULL, 0x0E, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_pse_maximum_available_power_value,
-			{ "PSE Maximum Available Power Value", "lldp.ieee.802_3.bt_pse_maximum_available_power_value", FT_UINT16, BASE_DEC,
+			{ "PSE Maximum Available Power Value", "lldp_ieee_802_3_bt_pse_maximum_available_power_value", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_autoclass,
-			{ "Autoclass", "lldp.ieee.802_3.bt_autoclass", FT_UINT8, BASE_HEX,
+			{ "Autoclass", "lldp_ieee_802_3_bt_autoclass", FT_UINT8, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_pse_autoclass_support,
-			{ "PSE Autoclass support", "lldp.ieee.802_3.bt_pse_autoclass_support", FT_UINT8, BASE_DEC,
+			{ "PSE Autoclass support", "lldp_ieee_802_3_bt_pse_autoclass_support", FT_UINT8, BASE_DEC,
 			NULL, 0x04, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_autoclass_completed,
-			{ "Autoclass Completed", "lldp.ieee.802_3.bt_autoclass_completed", FT_UINT8, BASE_DEC,
+			{ "Autoclass Completed", "lldp_ieee_802_3_bt_autoclass_completed", FT_UINT8, BASE_DEC,
 			NULL, 0x02, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_autoclass_request,
-			{ "Autoclass Request", "lldp.ieee.802_3.bt_autoclass_request", FT_UINT8, BASE_DEC,
+			{ "Autoclass Request", "lldp_ieee_802_3_bt_autoclass_request", FT_UINT8, BASE_DEC,
 			NULL, 0x01, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_autoclass_reserved,
-			{ "Autoclass Reserved", "lldp.ieee.802_3.bt_autoclass_reserved", FT_UINT8, BASE_HEX,
+			{ "Autoclass Reserved", "lldp_ieee_802_3_bt_autoclass_reserved", FT_UINT8, BASE_HEX,
 			NULL, 0xF8, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_power_down,
-			{ "Power down", "lldp.ieee.802_3.bt_power_down", FT_UINT24, BASE_HEX,
+			{ "Power down", "lldp_ieee_802_3_bt_power_down", FT_UINT24, BASE_HEX,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_power_down_request,
-			{ "Power down request", "lldp.ieee.802_3.bt_power_down_request", FT_UINT24, BASE_DEC,
+			{ "Power down request", "lldp_ieee_802_3_bt_power_down_request", FT_UINT24, BASE_DEC,
 			NULL, 0xFC0000, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_bt_power_down_time,
-			{ "Power down time", "lldp.ieee.802_3.bt_power_down_time", FT_UINT24, BASE_DEC,
+			{ "Power down time", "lldp_ieee_802_3_bt_power_down_time", FT_UINT24, BASE_DEC,
 			NULL, 0x03FFFF, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_aggregation_status,
-			{ "Aggregation Status", "lldp.ieee.802_3.aggregation_status", FT_UINT8, BASE_HEX,
+			{ "Aggregation Status", "lldp_ieee_802_3_aggregation_status", FT_UINT8, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_aggregation_status_cap,
-			{ "Aggregation Capability", "lldp.ieee.802_3.aggregation_status.cap", FT_BOOLEAN, 8,
+			{ "Aggregation Capability", "lldp_ieee_802_3_aggregation_status_cap", FT_BOOLEAN, 8,
 			TFS(&tfs_yes_no), 0x01, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_aggregation_status_enabled,
-			{ "Aggregation Status", "lldp.ieee.802_3.aggregation_status.enabled", FT_BOOLEAN, 8,
+			{ "Aggregation Status", "lldp_ieee_802_3_aggregation_status_enabled", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x02, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_aggregated_port_id,
-			{ "Aggregated Port Id", "lldp.ieee.802_3.aggregated_port_id", FT_UINT32, BASE_DEC,
+			{ "Aggregated Port Id", "lldp_ieee_802_3_aggregated_port_id", FT_UINT32, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_max_frame_size,
-			{ "Maximum Frame Size", "lldp.ieee.802_3.max_frame_size", FT_UINT16, BASE_DEC,
+			{ "Maximum Frame Size", "lldp_ieee_802_3_max_frame_size", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_eee_transmit,
-			{ "Transmit", "lldp.ieee.802_3.eee.transmit", FT_UINT16, BASE_DEC,
+			{ "Transmit", "lldp_ieee_802_3_eee_transmit", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_eee_receive,
-			{ "Receive", "lldp.ieee.802_3.eee.receive", FT_UINT16, BASE_DEC,
+			{ "Receive", "lldp_ieee_802_3_eee_receive", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_eee_fallback_receive,
-			{ "Fallback Receive", "lldp.ieee.802_3.eee.fallback_receive", FT_UINT16, BASE_DEC,
+			{ "Fallback Receive", "lldp_ieee_802_3_eee_fallback_receive", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_eee_echo_transmit,
-			{ "Echo Transmit", "lldp.ieee.802_3.eee.echo_transmit", FT_UINT16, BASE_DEC,
+			{ "Echo Transmit", "lldp_ieee_802_3_eee_echo_transmit", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3_eee_echo_receive,
-			{ "Echo Receive", "lldp.ieee.802_3.eee.echo_receive", FT_UINT16, BASE_DEC,
+			{ "Echo Receive", "lldp_ieee_802_3_eee_echo_receive", FT_UINT16, BASE_DEC,
 			NULL, 0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_subtype,
-			{ "IEEE 802.1Qbg Subtype", "lldp.ieee.802_1qbg.subtype", FT_UINT8, BASE_HEX,
+			{ "IEEE 802.1Qbg Subtype", "lldp_ieee_802_1qbg_subtype", FT_UINT8, BASE_HEX,
 			VALS(ieee_802_1qbg_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_support_caps,
-			{ "Supported capabilities", "lldp.ieee.802_1qbg.evb_support_caps", FT_UINT16, BASE_HEX,
+			{ "Supported capabilities", "lldp_ieee_802_1qbg_evb_support_caps", FT_UINT16, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_support_caps_std,
-			{ "Standard bridging (STD)", "lldp.ieee.802_1qbg.evb_support_caps.std", FT_BOOLEAN, 16,
+			{ "Standard bridging (STD)", "lldp_ieee_802_1qbg_evb_support_caps_std", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_STD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_support_caps_rr,
-			{ "Reflective relay (RR)", "lldp.ieee.802_1qbg.evb_support_caps.rr", FT_BOOLEAN, 16,
+			{ "Reflective relay (RR)", "lldp_ieee_802_1qbg_evb_support_caps_rr", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_RR, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_support_caps_rte,
-			{ "Retransmission timer exponent (RTE)", "lldp.ieee.802_1qbg.evb_support_caps.rte", FT_BOOLEAN, 16,
+			{ "Retransmission timer exponent (RTE)", "lldp_ieee_802_1qbg_evb_support_caps_rte", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_RTE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_support_caps_ecp,
-			{ "Edge control protocol (ECP)", "lldp.ieee.802_1qbg.evb_support_caps.ecp", FT_BOOLEAN, 16,
+			{ "Edge control protocol (ECP)", "lldp_ieee_802_1qbg_evb_support_caps_ecp", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_ECP, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_support_caps_vdp,
-			{ "VSI discovery protocol (VDP)", "lldp.ieee.802_1qbg.evb_support_caps.vdp", FT_BOOLEAN, 16,
+			{ "VSI discovery protocol (VDP)", "lldp_ieee_802_1qbg_evb_support_caps_vdp", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_VDP, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_configure_caps,
-			{ "Configured capabilities", "lldp.ieee.802_1qbg.evb_configure_caps", FT_UINT16, BASE_HEX,
+			{ "Configured capabilities", "lldp_ieee_802_1qbg_evb_configure_caps", FT_UINT16, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_configure_caps_std,
-			{ "Standard bridging (STD)", "lldp.ieee.802_1qbg.evb_configure_caps.std", FT_BOOLEAN, 16,
+			{ "Standard bridging (STD)", "lldp_ieee_802_1qbg_evb_configure_caps_std", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_STD, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_configure_caps_rr,
-			{ "Reflective relay (RR)", "lldp.ieee.802_1qbg.evb_configure_caps.rr", FT_BOOLEAN, 16,
+			{ "Reflective relay (RR)", "lldp_ieee_802_1qbg_evb_configure_caps_rr", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_RR, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_configure_caps_rte,
-			{ "Retransmission timer exponent (RTE)", "lldp.ieee.802_1qbg.evb_configure_caps.rte", FT_BOOLEAN, 16,
+			{ "Retransmission timer exponent (RTE)", "lldp_ieee_802_1qbg_evb_configure_caps_rte", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_RTE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_configure_caps_ecp,
-			{ "Edge control protocol (ECP)", "lldp.ieee.802_1qbg.evb_configure_caps.ecp", FT_BOOLEAN, 16,
+			{ "Edge control protocol (ECP)", "lldp_ieee_802_1qbg_evb_configure_caps_ecp", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_ECP, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_configure_caps_vdp,
-			{ "VSI discovery protocol (VDP)", "lldp.ieee.802_1qbg.evb_configure_caps.vdp", FT_BOOLEAN, 16,
+			{ "VSI discovery protocol (VDP)", "lldp_ieee_802_1qbg_evb_configure_caps_vdp", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), EVB_CAPA_VDP, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_supported_vsi,
-			{ "Supported No of VSIs", "lldp.ieee.802_1qbg.evb_supported_vsi", FT_UINT16, BASE_DEC,
+			{ "Supported No of VSIs", "lldp_ieee_802_1qbg_evb_supported_vsi", FT_UINT16, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_configured_vsi,
-			{ "Configured No of VSIs", "lldp.ieee.802_1qbg.evb_configured_vsi", FT_UINT16, BASE_DEC,
+			{ "Configured No of VSIs", "lldp_ieee_802_1qbg_evb_configured_vsi", FT_UINT16, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_1qbg_evb_retrans_timer,
-			{ "Retransmission timer exponent", "lldp.ieee.802_1qbg.evb_retrans_timer", FT_UINT8, BASE_DEC,
+			{ "Retransmission timer exponent", "lldp_ieee_802_1qbg_evb_retrans_timer", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3br_aec,
-			{ "Additional Ethernet Capabilities", "lldp.ieee.802_3br.eac", FT_UINT16, BASE_HEX,
+			{ "Additional Ethernet Capabilities", "lldp_ieee_802_3br_eac", FT_UINT16, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3br_aec_support,
-			{ "Preemption capabilities support", "lldp.ieee.802_3br.aec.support", FT_BOOLEAN, 16,
+			{ "Preemption capabilities support", "lldp_ieee_802_3br_aec_support", FT_BOOLEAN, 16,
 			TFS(&tfs_supported_not_supported), IEEE_802_3BR_AEC_SUPPORT, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3br_aec_enable,
-			{ "Preemption capabilities enable", "lldp.ieee.802_3br.aec.enable", FT_BOOLEAN, 16,
+			{ "Preemption capabilities enable", "lldp_ieee_802_3br_aec_enable", FT_BOOLEAN, 16,
 			TFS(&tfs_enabled_disabled), IEEE_802_3BR_AEC_ENABLE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3br_aec_active,
-			{ "Preemption capabilities active", "lldp.ieee.802_3br.aec.active", FT_BOOLEAN, 16,
+			{ "Preemption capabilities active", "lldp_ieee_802_3br_aec_active", FT_BOOLEAN, 16,
 			TFS(&tfs_active_inactive), IEEE_802_3BR_AEC_ACTIVE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3br_aec_addfragsize,
-			{ "Additional Fragment Size", "lldp.ieee.802_3br.aec.addfragsize", FT_UINT16, BASE_DEC,
+			{ "Additional Fragment Size", "lldp_ieee_802_3br_aec_addfragsize", FT_UINT16, BASE_DEC,
 			NULL, IEEE_802_3BR_AEC_ADDFRAGSIZE, NULL, HFILL }
 		},
 		{ &hf_ieee_802_3br_aec_reserved,
-			{ "Reserved", "lldp.ieee.802_3br.aec.reserved", FT_UINT16, BASE_HEX,
+			{ "Reserved", "lldp_ieee_802_3br_aec_reserved", FT_UINT16, BASE_HEX,
 			NULL, IEEE_802_3BR_AEC_RESERVED, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype,
-			{ "Media Subtype",	"lldp.media.subtype", FT_UINT8, BASE_HEX,
+			{ "Media Subtype",	"lldp_media_subtype", FT_UINT8, BASE_HEX,
 			VALS(media_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype_caps,
-			{ "Capabilities", "lldp.media.subtype.caps", FT_UINT16, BASE_HEX,
+			{ "Capabilities", "lldp_media_subtype_caps", FT_UINT16, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype_caps_llpd,
-			{ "LLDP-MED Capabilities", "lldp.media.subtype.caps.llpd", FT_BOOLEAN, 16,
+			{ "LLDP-MED Capabilities", "lldp_media_subtype_caps_llpd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), MEDIA_CAPABILITY_LLDP, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype_caps_network_policy,
-			{ "Network Policy", "lldp.media.subtype.caps.network_policy", FT_BOOLEAN, 16,
+			{ "Network Policy", "lldp_media_subtype_caps_network_policy", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), MEDIA_CAPABILITY_NETWORK_POLICY, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype_caps_location_id,
-			{ "Location Identification", "lldp.media.subtype.caps.location_id", FT_BOOLEAN, 16,
+			{ "Location Identification", "lldp_media_subtype_caps_location_id", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), MEDIA_CAPABILITY_LOCATION_ID, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype_caps_mdi_pse,
-			{ "Extended Power via MDI-PSE", "lldp.media.subtype.caps.mdi_pse", FT_BOOLEAN, 16,
+			{ "Extended Power via MDI-PSE", "lldp_media_subtype_caps_mdi_pse", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), MEDIA_CAPABILITY_MDI_PSE, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype_caps_mid_pd,
-			{ "Extended Power via MDI-PD", "lldp.media.subtype.caps.mid_pd", FT_BOOLEAN, 16,
+			{ "Extended Power via MDI-PD", "lldp_media_subtype_caps_mid_pd", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), MEDIA_CAPABILITY_MDI_PD, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype_caps_inventory,
-			{ "Inventory", "lldp.media.subtype.caps.inventory", FT_BOOLEAN, 16,
+			{ "Inventory", "lldp_media_subtype_caps_inventory", FT_BOOLEAN, 16,
 			TFS(&tfs_capable_not_capable), MEDIA_CAPABILITY_INVENTORY, NULL, HFILL }
 		},
 		{ &hf_media_tlv_subtype_class,
-			{ "Class Type", "lldp.media.subtype.class", FT_UINT8, BASE_DEC,
+			{ "Class Type", "lldp_media_subtype_class", FT_UINT8, BASE_DEC,
 			VALS(media_class_values), 0x0, "Unknown", HFILL }
 		},
 		{ &hf_media_application_type,
-			{ "Application Type", "lldp.media.app_type", FT_UINT8, BASE_DEC,
+			{ "Application Type", "lldp_media_app_type", FT_UINT8, BASE_DEC,
 			VALS(media_application_type), 0x0, "Unknown", HFILL }
 		},
 		{ &hf_media_policy_flag,
-			{ "Policy", "lldp.media.policy_flag", FT_BOOLEAN, 24,
+			{ "Policy", "lldp_media_policy_flag", FT_BOOLEAN, 24,
 			TFS(&tfs_unknown_defined), 0x800000, NULL, HFILL }
 		},
 		{ &hf_media_tag_flag,
-			{ "Tagged", "lldp.media.tag_flag", FT_BOOLEAN, 24,
+			{ "Tagged", "lldp_media_tag_flag", FT_BOOLEAN, 24,
 			TFS(&tfs_yes_no), 0x400000, NULL, HFILL }
 		},
 		{ &hf_media_vlan_id,
-			{ "VLAN Id", "lldp.media.vlan_id", FT_UINT24, BASE_DEC,
+			{ "VLAN Id", "lldp_media_vlan_id", FT_UINT24, BASE_DEC,
 			NULL, 0x1FFE00, NULL, HFILL }
 		},
 		{ &hf_media_l2_prio,
-			{ "L2 Priority", "lldp.media.l2_prio", FT_UINT24, BASE_DEC,
+			{ "L2 Priority", "lldp_media_l2_prio", FT_UINT24, BASE_DEC,
 			NULL, 0x1C0, NULL, HFILL }
 		},
 		{ &hf_media_dscp,
-			{ "DSCP Priority", "lldp.media.dscp", FT_UINT24, BASE_DEC,
+			{ "DSCP Priority", "lldp_media_dscp", FT_UINT24, BASE_DEC,
 			NULL, 0x3F, NULL, HFILL }
 		},
 		{ &hf_media_loc_data_format,
-			{ "Location Data Format", "lldp.media.loc.data_format", FT_UINT8, BASE_DEC,
+			{ "Location Data Format", "lldp_media_loc_data_format", FT_UINT8, BASE_DEC,
 			VALS(location_data_format), 0x0, NULL, HFILL }
 		},
 		{ &hf_media_loc_lat_resolution,
-			{ "Latitude Resolution", "lldp.media.loc.lat_resolution", FT_UINT8, BASE_DEC,
+			{ "Latitude Resolution", "lldp_media_loc_lat_resolution", FT_UINT8, BASE_DEC,
 			NULL, 0xFC, NULL, HFILL }
 		},
 		{ &hf_media_loc_lat,
-			{ "Latitude", "lldp.media.loc.latitude", FT_UINT40, BASE_CUSTOM,
+			{ "Latitude", "lldp_media_loc_latitude", FT_UINT40, BASE_CUSTOM,
 			CF_FUNC(latitude_base), 0x0, NULL, HFILL }
 		},
 		{ &hf_media_loc_long_resolution,
-			{ "Longitude Resolution", "lldp.media.loc.long_resolution", FT_UINT8, BASE_DEC,
+			{ "Longitude Resolution", "lldp_media_loc_long_resolution", FT_UINT8, BASE_DEC,
 			NULL, 0xFC, NULL, HFILL }
 		},
 		{ &hf_media_loc_long,
-			{ "Longitude", "lldp.media.loc.longitude", FT_UINT40, BASE_CUSTOM,
+			{ "Longitude", "lldp_media_loc_longitude", FT_UINT40, BASE_CUSTOM,
 			CF_FUNC(longitude_base), 0x0, NULL, HFILL }
 		},
 		{ &hf_media_loc_alt_type,
-			{ "Altitude Type", "lldp.media.loc.alt_type", FT_UINT8, BASE_DEC,
+			{ "Altitude Type", "lldp_media_loc_alt_type", FT_UINT8, BASE_DEC,
 			VALS(altitude_type), 0xF0, "Unknown", HFILL }
 		},
 		{ &hf_media_loc_alt_resolution,
-			{ "Altitude Resolution", "lldp.media.loc.alt_resolution", FT_UINT16, BASE_DEC,
+			{ "Altitude Resolution", "lldp_media_loc_alt_resolution", FT_UINT16, BASE_DEC,
 			NULL, 0x0FC0, NULL, HFILL }
 		},
 		{ &hf_media_loc_alt,
-			{ "Altitude", "lldp.media.loc.altitude", FT_UINT32, BASE_DEC,
+			{ "Altitude", "lldp_media_loc_altitude", FT_UINT32, BASE_DEC,
 			NULL, 0x03FFFFFFF, NULL, HFILL }
 		},
 		{ &hf_media_loc_datum,
-			{ "Datum", "lldp.media.loc.datum", FT_UINT8, BASE_DEC,
+			{ "Datum", "lldp_media_loc_datum", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_civic_lci_length,
-			{ "LCI Length", "lldp.media.civic.length", FT_UINT8, BASE_DEC,
+			{ "LCI Length", "lldp_media_civic_length", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_civic_what,
-			{ "What", "lldp.media.civic.what", FT_UINT8, BASE_DEC,
+			{ "What", "lldp_media_civic_what", FT_UINT8, BASE_DEC,
 			VALS(civic_address_what_values), 0x0, "Unknown", HFILL }
 		},
 		{ &hf_media_civic_country,
-			{ "Country", "lldp.media.civic.country", FT_STRING, BASE_NONE,
+			{ "Country", "lldp_media_civic_country", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_civic_addr_type,
-			{ "CA Type", "lldp.media.civic.type", FT_UINT8, BASE_DEC,
+			{ "CA Type", "lldp_media_civic_type", FT_UINT8, BASE_DEC,
 			VALS(civic_address_type_values), 0x0, "Unknown", HFILL }
 		},
 		{ &hf_media_civic_addr_len,
-			{ "CA Length", "lldp.media.civic.length", FT_UINT8, BASE_DEC,
+			{ "CA Length", "lldp_media_civic_length", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_civic_addr_value,
-			{ "CA Value", "lldp.media.civic.value", FT_STRINGZ, BASE_NONE,
+			{ "CA Value", "lldp_media_civic_value", FT_STRINGZ, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_ecs,
-			{ "ELIN", "lldp.media.ecs", FT_STRINGZ, BASE_NONE,
+			{ "ELIN", "lldp_media_ecs", FT_STRINGZ, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_power_type,
-			{ "Power Type", "lldp.media.power.type", FT_UINT8, BASE_DEC,
+			{ "Power Type", "lldp_media_power_type", FT_UINT8, BASE_DEC,
 			VALS(media_power_type), 0xC0, "Unknown", HFILL }
 		},
 		{ &hf_media_power_source,
-			{ "Power Source", "lldp.media.power.source", FT_UINT8, BASE_DEC,
+			{ "Power Source", "lldp_media_power_source", FT_UINT8, BASE_DEC,
 			NULL, 0x30, NULL, HFILL }
 		},
 		{ &hf_media_power_priority,
-			{ "Power Priority", "lldp.media.power.prio", FT_UINT8, BASE_DEC,
+			{ "Power Priority", "lldp_media_power_prio", FT_UINT8, BASE_DEC,
 			VALS(media_power_priority), 0x0F, "Reserved", HFILL }
 		},
 		{ &hf_media_power_value,
-			{ "Power Value", "lldp.media.power.value", FT_UINT16, BASE_CUSTOM,
+			{ "Power Value", "lldp_media_power_value", FT_UINT16, BASE_CUSTOM,
 			CF_FUNC(media_power_base), 0x0, NULL, HFILL }
 		},
 		{ &hf_media_hardware,
-			{ "Hardware Revision", "lldp.media.hardware", FT_STRINGZPAD, BASE_NONE,
+			{ "Hardware Revision", "lldp_media_hardware", FT_STRINGZPAD, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_firmware,
-			{ "Firmware Revision", "lldp.media.firmware", FT_STRINGZPAD, BASE_NONE,
+			{ "Firmware Revision", "lldp_media_firmware", FT_STRINGZPAD, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_software,
-			{ "Software Revision", "lldp.media.software", FT_STRINGZPAD, BASE_NONE,
+			{ "Software Revision", "lldp_media_software", FT_STRINGZPAD, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_sn,
-			{ "Serial Number", "lldp.media.sn", FT_STRINGZPAD, BASE_NONE,
+			{ "Serial Number", "lldp_media_sn", FT_STRINGZPAD, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_manufacturer,
-			{ "Manufacturer Name", "lldp.media.manufacturer", FT_STRINGZPAD, BASE_NONE,
+			{ "Manufacturer Name", "lldp_media_manufacturer", FT_STRINGZPAD, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_model,
-			{ "Model Name", "lldp.media.model", FT_STRINGZPAD, BASE_NONE,
+			{ "Model Name", "lldp_media_model", FT_STRINGZPAD, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_media_asset,
-			{ "Asset ID", "lldp.media.asset", FT_STRINGZPAD, BASE_NONE,
+			{ "Asset ID", "lldp_media_asset", FT_STRINGZPAD, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_tlv_subtype,
-			{ "Subtype",	"lldp.profinet.subtype", FT_UINT8, BASE_HEX,
+			{ "Subtype",	"lldp_profinet_subtype", FT_UINT8, BASE_HEX,
 			VALS(profinet_subtypes), 0x0, "PROFINET Subtype", HFILL }
 		},
 		{ &hf_profinet_port_rx_delay_local,
-			{ "Port RX Delay Local",	"lldp.profinet.port_rx_delay_local", FT_UINT32, BASE_DEC,
+			{ "Port RX Delay Local",	"lldp_profinet_port_rx_delay_local", FT_UINT32, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_port_rx_delay_remote,
-			{ "Port RX Delay Remote",	"lldp.profinet.port_rx_delay_remote", FT_UINT32, BASE_DEC,
+			{ "Port RX Delay Remote",	"lldp_profinet_port_rx_delay_remote", FT_UINT32, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_port_tx_delay_local,
-			{ "Port TX Delay Local",	"lldp.profinet.port_tx_delay_local", FT_UINT32, BASE_DEC,
+			{ "Port TX Delay Local",	"lldp_profinet_port_tx_delay_local", FT_UINT32, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_port_tx_delay_remote,
-			{ "Port TX Delay Remote",	"lldp.profinet.port_tx_delay_remote", FT_UINT32, BASE_DEC,
+			{ "Port TX Delay Remote",	"lldp_profinet_port_tx_delay_remote", FT_UINT32, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_cable_delay_local,
-			{ "Port Cable Delay Local",	"lldp.profinet.cable_delay_local", FT_UINT32, BASE_DEC,
+			{ "Port Cable Delay Local",	"lldp_profinet_cable_delay_local", FT_UINT32, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_class2_port_status,
-			{ "RTClass2 Port Status",	"lldp.profinet.rtc2_port_status", FT_UINT16, BASE_HEX,
+			{ "RTClass2 Port Status",	"lldp_profinet_rtc2_port_status", FT_UINT16, BASE_HEX,
 			VALS(profinet_port2_status_vals), 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_class3_port_status,
-			{ "RTClass3 Port Status",	"lldp.profinet.rtc3_port_status", FT_UINT16, BASE_HEX,
+			{ "RTClass3 Port Status",	"lldp_profinet_rtc3_port_status", FT_UINT16, BASE_HEX,
 			VALS(profinet_port3_status_vals), 0x07, NULL, HFILL }
 		},
 		/* class3_port state got some new BITs */
 		{ &hf_profinet_class3_port_status_Fragmentation,
-			{ "RTClass3_PortStatus.Fragmentation",	"lldp.profinet.rtc3_port_status.fragmentation", FT_UINT16, BASE_HEX,
+			{ "RTClass3_PortStatus.Fragmentation",	"lldp_profinet_rtc3_port_status_fragmentation", FT_UINT16, BASE_HEX,
 			VALS(profinet_port3_status_OnOff), 0x1000, NULL, HFILL }
 		},
 		{ &hf_profinet_class3_port_status_reserved,
-			{ "RTClass3_PortStatus.reserved",	"lldp.profinet.rtc3_port_status.reserved", FT_UINT16, BASE_HEX,
+			{ "RTClass3_PortStatus.reserved",	"lldp_profinet_rtc3_port_status_reserved", FT_UINT16, BASE_HEX,
 			  NULL, 0x0FF8, "reserved", HFILL }
 		},
 		{ &hf_profinet_class3_port_status_PreambleLength,
-			{ "RTClass3_PortStatus.PreambleLength",	"lldp.profinet.rtc3_port_status.preambleLength", FT_UINT16, BASE_HEX,
+			{ "RTClass3_PortStatus.PreambleLength",	"lldp_profinet_rtc3_port_status_preambleLength", FT_UINT16, BASE_HEX,
 			VALS(profinet_port3_status_PreambleLength), 0x2000, NULL, HFILL }
 		},
 		{ &hf_profinet_mrp_domain_uuid,
-			{ "MRP DomainUUID",	"lldp.profinet.mrp_domain_uuid", FT_GUID, BASE_NONE,
+			{ "MRP DomainUUID",	"lldp_profinet_mrp_domain_uuid", FT_GUID, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_mrrt_port_status,
-			{ "MRRT PortStatus",	"lldp.profinet.mrrt_port_status", FT_UINT16, BASE_HEX,
+			{ "MRRT PortStatus",	"lldp_profinet_mrrt_port_status", FT_UINT16, BASE_HEX,
 			VALS(profinet_mrrt_port_status_vals), 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_cm_mac,
-			{ "CMMacAdd",	"lldp.profinet.cm_mac_add", FT_ETHER, BASE_NONE,
+			{ "CMMacAdd",	"lldp_profinet_cm_mac_add", FT_ETHER, BASE_NONE,
 			NULL, 0x0, "CMResponderMacAdd or CMInitiatorMacAdd", HFILL }
 		},
 		{ &hf_profinet_master_source_address,
-			{ "MasterSourceAddress",	"lldp.profinet.master_source_address", FT_ETHER, BASE_NONE,
+			{ "MasterSourceAddress",	"lldp_profinet_master_source_address", FT_ETHER, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_subdomain_uuid,
-			{ "SubdomainUUID",	"lldp.profinet.subdomain_uuid", FT_GUID, BASE_NONE,
+			{ "SubdomainUUID",	"lldp_profinet_subdomain_uuid", FT_GUID, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_ir_data_uuid,
-			{ "IRDataUUID",	"lldp.profinet.ir_data_uuid", FT_GUID, BASE_NONE,
+			{ "IRDataUUID",	"lldp_profinet_ir_data_uuid", FT_GUID, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_profinet_length_of_period_valid,
-			{ "LengthOfPeriod.Valid",	"lldp.profinet.length_of_period_valid", FT_UINT32, BASE_DEC,
+			{ "LengthOfPeriod.Valid",	"lldp_profinet_length_of_period_valid", FT_UINT32, BASE_DEC,
 			NULL, 0x80000000, "Length field is valid/invalid", HFILL }
 		},
 		{ &hf_profinet_length_of_period_length,
-			{ "LengthOfPeriod.Length",	"lldp.profinet.length_of_period_length", FT_UINT32, BASE_DEC,
+			{ "LengthOfPeriod.Length",	"lldp_profinet_length_of_period_length", FT_UINT32, BASE_DEC,
 			NULL, 0x7FFFFFFF, "Duration of a cycle in nanoseconds", HFILL }
 		},
 		{ &hf_profinet_red_period_begin_valid,
-			{ "RedPeriodBegin.Valid",	"lldp.profinet.red_period_begin_valid", FT_UINT32, BASE_DEC,
+			{ "RedPeriodBegin.Valid",	"lldp_profinet_red_period_begin_valid", FT_UINT32, BASE_DEC,
 			NULL, 0x80000000, "Offset field is valid/invalid", HFILL }
 		},
 		{ &hf_profinet_red_period_begin_offset,
-			{ "RedPeriodBegin.Offset",	"lldp.profinet.red_period_begin_offset", FT_UINT32, BASE_DEC,
+			{ "RedPeriodBegin.Offset",	"lldp_profinet_red_period_begin_offset", FT_UINT32, BASE_DEC,
 			NULL, 0x7FFFFFFF, "RT_CLASS_3 period, offset to cycle begin in nanoseconds", HFILL }
 		},
 		{ &hf_profinet_orange_period_begin_valid,
-			{ "OrangePeriodBegin.Valid",	"lldp.profinet.orange_period_begin_valid", FT_UINT32, BASE_DEC,
+			{ "OrangePeriodBegin.Valid",	"lldp_profinet_orange_period_begin_valid", FT_UINT32, BASE_DEC,
 			NULL, 0x80000000, "Offset field is valid/invalid", HFILL }
 		},
 		{ &hf_profinet_orange_period_begin_offset,
-			{ "OrangePeriodBegin.Offset","lldp.profinet.orange_period_begin_offset", FT_UINT32, BASE_DEC,
+			{ "OrangePeriodBegin.Offset","lldp_profinet_orange_period_begin_offset", FT_UINT32, BASE_DEC,
 			NULL, 0x7FFFFFFF, "RT_CLASS_2 period, offset to cycle begin in nanoseconds", HFILL }
 		},
 		{ &hf_profinet_green_period_begin_valid,
-			{ "GreenPeriodBegin.Valid",	"lldp.profinet.green_period_begin_valid", FT_UINT32, BASE_DEC,
+			{ "GreenPeriodBegin.Valid",	"lldp_profinet_green_period_begin_valid", FT_UINT32, BASE_DEC,
 			NULL, 0x80000000, "Offset field is valid/invalid", HFILL }
 		},
 		{ &hf_profinet_green_period_begin_offset,
-			{ "GreenPeriodBegin.Offset",	"lldp.profinet.green_period_begin_offset", FT_UINT32, BASE_DEC,
+			{ "GreenPeriodBegin.Offset",	"lldp_profinet_green_period_begin_offset", FT_UINT32, BASE_DEC,
 			NULL, 0x7FFFFFFF, "Unrestricted period, offset to cycle begin in nanoseconds", HFILL }
 		},
 	/* Cisco generic */
 		{ &hf_cisco_subtype,
-			{ "Cisco Subtype",	"lldp.cisco.subtype", FT_UINT8, BASE_HEX,
+			{ "Cisco Subtype",	"lldp_cisco_subtype", FT_UINT8, BASE_HEX,
 			VALS(cisco_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_upoe,
-			{ "UPOE Capabilities", "lldp.cisco.upoe", FT_UINT8, BASE_HEX,
+			{ "UPOE Capabilities", "lldp_cisco_upoe", FT_UINT8, BASE_HEX,
 			NULL, 0x0, "PSE/PD Capabilities", HFILL }
 		},
 		{ &hf_cisco_upoe_supported,
-			{ "UPOE Supported", "lldp.cisco.upoe.supported", FT_BOOLEAN, 8,
+			{ "UPOE Supported", "lldp_cisco_upoe_supported", FT_BOOLEAN, 8,
 			TFS(&tfs_yes_no), 0x01, "UPOE (4-pair POE) Supported", HFILL }
 		},
 		{ &hf_cisco_upoe_altb_detection,
-			{ "ALT-B Detection required", "lldp.cisco.upoe.altb_detection_required", FT_BOOLEAN, 8,
+			{ "ALT-B Detection required", "lldp_cisco_upoe_altb_detection_required", FT_BOOLEAN, 8,
 			TFS(&tfs_yes_no), 0x02, "ALT-B pair Detection/Classification Required", HFILL }
 		},
 		{ &hf_cisco_upoe_req_spare_pair,
-			{ "PD Request Spare Pair PoE", "lldp.cisco.upoe.pd_altb_desired", FT_BOOLEAN, 8,
+			{ "PD Request Spare Pair PoE", "lldp_cisco_upoe_pd_altb_desired", FT_BOOLEAN, 8,
 			TFS(&tfs_desired_not_desired), 0x04, "PD ALT-B Pair Desired", HFILL }
 		},
 		{ &hf_cisco_upoe_pse_spare_pair_oper,
-			{ "PSE Spare Pair PoE", "lldp.cisco.upoe.pse_altb_oper", FT_BOOLEAN, 8,
+			{ "PSE Spare Pair PoE", "lldp_cisco_upoe_pse_altb_oper", FT_BOOLEAN, 8,
 			TFS(&tfs_enabled_disabled), 0x08, "PSE ALT-B Pair Operational State", HFILL }
 		},
 	/* Cisco ACI */
 		{ &hf_cisco_aci_portstate,
-			{ "Port State", "lldp.cisco.portstate", FT_UINT8, BASE_NONE,
+			{ "Port State", "lldp_cisco_portstate", FT_UINT8, BASE_NONE,
 			VALS(cisco_portstate_vals), 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_noderole,
-			{ "Node Role", "lldp.cisco.noderole", FT_UINT8, BASE_DEC,
+			{ "Node Role", "lldp_cisco_noderole", FT_UINT8, BASE_DEC,
 			VALS(cisco_noderole_vals), 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_nodeid,
-			{ "Node ID", "lldp.cisco.nodeid", FT_UINT32, BASE_DEC,
+			{ "Node ID", "lldp_cisco_nodeid", FT_UINT32, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_spinelevel,
-			{ "Spine Level", "lldp.cisco.spinelevel", FT_UINT8, BASE_DEC,
+			{ "Spine Level", "lldp_cisco_spinelevel", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_podid,
-			{ "Pod ID", "lldp.cisco.podid", FT_UINT16, BASE_DEC,
+			{ "Pod ID", "lldp_cisco_podid", FT_UINT16, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_fabricname,
-			{ "Fabric Name", "lldp.cisco.fabricname", FT_STRING, BASE_NONE,
+			{ "Fabric Name", "lldp_cisco_fabricname", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_apiclist,
-			{ "Appliance Vector", "lldp.cisco.apiclist", FT_BYTES, BASE_NONE,
+			{ "Appliance Vector", "lldp_cisco_apiclist", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_apicid,
-			{ "APIC ID", "lldp.cisco.apicid", FT_UINT8, BASE_DEC,
+			{ "APIC ID", "lldp_cisco_apicid", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_apicipv4,
-			{ "APIC IPv4", "lldp.cisco.apicipv4", FT_IPv4, BASE_NONE,
+			{ "APIC IPv4", "lldp_cisco_apicipv4", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_apicuuid,
-			{ "APIC UUID", "lldp.cisco.apicuuid", FT_STRING, BASE_NONE,
+			{ "APIC UUID", "lldp_cisco_apicuuid", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_nodeip,
-			{ "Node IP", "lldp.cisco.nodeip", FT_IPv4, BASE_NONE,
+			{ "Node IP", "lldp_cisco_nodeip", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_portrole,
-			{ "Port Role", "lldp.cisco.portrole", FT_UINT8, BASE_NONE,
+			{ "Port Role", "lldp_cisco_portrole", FT_UINT8, BASE_NONE,
 			VALS(cisco_portrole_vals), 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_version,
-			{ "Version", "lldp.cisco.version", FT_STRING, BASE_NONE,
+			{ "Version", "lldp_cisco_version", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_fabricvlan,
-			{ "Fabric VLAN", "lldp.cisco.fabricvlan", FT_UINT16, BASE_DEC,
+			{ "Fabric VLAN", "lldp_cisco_fabricvlan", FT_UINT16, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_serialno,
-			{ "Serial No", "lldp.cisco.serialno", FT_STRING, BASE_NONE,
+			{ "Serial No", "lldp_cisco_serialno", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_model,
-			{ "Model", "lldp.cisco.model", FT_STRING, BASE_NONE,
+			{ "Model", "lldp_cisco_model", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_nodename,
-			{ "Node Name", "lldp.cisco.nodename", FT_STRING, BASE_NONE,
+			{ "Node Name", "lldp_cisco_nodename", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_portmode,
-			{ "Port Mode", "lldp.cisco.portmode", FT_UINT8, BASE_NONE,
+			{ "Port Mode", "lldp_cisco_portmode", FT_UINT8, BASE_NONE,
 			VALS(cisco_portmode_vals), 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_authcookie,
-			{ "Authentication Cookie", "lldp.cisco.authcookie", FT_BYTES, BASE_NONE,
+			{ "Authentication Cookie", "lldp_cisco_authcookie", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_apicmode,
-			{ "APIC Mode", "lldp.cisco.apicmode", FT_UINT8, BASE_DEC,
+			{ "APIC Mode", "lldp_cisco_apicmode", FT_UINT8, BASE_DEC,
 			VALS(cisco_apicmode_vals), 0x0, NULL, HFILL }
 		},
 		{ &hf_cisco_aci_fabricid,
-			{ "Fabric ID", "lldp.cisco.fabricd", FT_UINT16, BASE_DEC,
+			{ "Fabric ID", "lldp_cisco_fabricd", FT_UINT16, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 	/* Hytec */
 		{ &hf_hytec_tlv_subtype,
-			{ "Hytec Subtype",	"lldp.hytec.tlv_subtype", FT_UINT8, BASE_DEC,
+			{ "Hytec Subtype",	"lldp_hytec_tlv_subtype", FT_UINT8, BASE_DEC,
 			VALS(hytec_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_hytec_group,
-			{ "Group", "lldp.hytec.group", FT_UINT8, BASE_DEC,
+			{ "Group", "lldp_hytec_group", FT_UINT8, BASE_DEC,
 			NULL, HYTEC_GROUP_MASK, NULL, HFILL }
 		},
 		{ &hf_hytec_identifier,
-			{ "Identifier", "lldp.hytec.identifier", FT_UINT8, BASE_DEC,
+			{ "Identifier", "lldp_hytec_identifier", FT_UINT8, BASE_DEC,
 			NULL, HYTEC_IDENTIFIER_MASK, NULL, HFILL }
 		},
 		{ &hf_hytec_transceiver_vendor_product_revision,
-			{ HYTEC_TID__VENDOR_PRODUCT_REVISION_STR, "lldp.hytec.transceiver_vendor_product_revision", FT_STRING, BASE_NONE,
+			{ HYTEC_TID__VENDOR_PRODUCT_REVISION_STR, "lldp_hytec_transceiver_vendor_product_revision", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_hytec_single_mode,
-			{ HYTEC_TBD__SINGLE_MODE_STR, "lldp.hytec.single_mode", FT_UINT32, BASE_DEC|BASE_UNIT_STRING,
+			{ HYTEC_TBD__SINGLE_MODE_STR, "lldp_hytec_single_mode", FT_UINT32, BASE_DEC|BASE_UNIT_STRING,
 			&units_m, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_multi_mode_50,
-			{ HYTEC_TBD__MULTI_MODE_50_STR, "lldp.hytec.multi_mode_50", FT_UINT32, BASE_DEC|BASE_UNIT_STRING,
+			{ HYTEC_TBD__MULTI_MODE_50_STR, "lldp_hytec_multi_mode_50", FT_UINT32, BASE_DEC|BASE_UNIT_STRING,
 			&units_m, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_multi_mode_62_5,
-			{ HYTEC_TBD__MULTI_MODE_62_5_STR, "lldp.hytec.multi_mode_62_5", FT_UINT32, BASE_DEC|BASE_UNIT_STRING,
+			{ HYTEC_TBD__MULTI_MODE_62_5_STR, "lldp_hytec_multi_mode_62_5", FT_UINT32, BASE_DEC|BASE_UNIT_STRING,
 			&units_m, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_tx_current_output_power,
-			{ HYTEC_MD__TX_CURRENT_OUTPUT_POWER_STR, "lldp.hytec.tx_current_output_power", FT_FLOAT, BASE_NONE|BASE_UNIT_STRING,
+			{ HYTEC_MD__TX_CURRENT_OUTPUT_POWER_STR, "lldp_hytec_tx_current_output_power", FT_FLOAT, BASE_NONE|BASE_UNIT_STRING,
 			&units_microwatts, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_rx_current_input_power,
-			{ HYTEC_MD__RX_CURRENT_INPUT_POWER_STR, "lldp.hytec.rx_current_input_power", FT_FLOAT, BASE_NONE|BASE_UNIT_STRING,
+			{ HYTEC_MD__RX_CURRENT_INPUT_POWER_STR, "lldp_hytec_rx_current_input_power", FT_FLOAT, BASE_NONE|BASE_UNIT_STRING,
 			&units_microwatts, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_rx_input_snr,
-			{ HYTEC_MD__RX_INPUT_SNR_STR, "lldp.hytec.rx_input_snr", FT_FLOAT, BASE_NONE|BASE_UNIT_STRING,
+			{ HYTEC_MD__RX_INPUT_SNR_STR, "lldp_hytec_rx_input_snr", FT_FLOAT, BASE_NONE|BASE_UNIT_STRING,
 			&units_decibels, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_lineloss,
-			{ HYTEC_MD__LINELOSS_STR, "lldp.hytec.lineloss", FT_FLOAT, BASE_NONE|BASE_UNIT_STRING,
+			{ HYTEC_MD__LINELOSS_STR, "lldp_hytec_lineloss", FT_FLOAT, BASE_NONE|BASE_UNIT_STRING,
 			&units_decibels, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_mac_trace_request,
-			{ HYTEC_MC__MAC_TRACE_REQUEST_STR, "lldp.hytec.mac_trace_request", FT_NONE, BASE_NONE,
+			{ HYTEC_MC__MAC_TRACE_REQUEST_STR, "lldp_hytec_mac_trace_request", FT_NONE, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_trace_mac_address,
-			{ "Trace MAC address", "lldp.hytec.trace_mac_address", FT_ETHER, BASE_NONE,
+			{ "Trace MAC address", "lldp_hytec_trace_mac_address", FT_ETHER, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_request_mac_address,
-			{ "Requester's MAC address", "lldp.hytec.requesters_mac_address", FT_ETHER, BASE_NONE,
+			{ "Requester's MAC address", "lldp_hytec_requesters_mac_address", FT_ETHER, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_maximum_depth,
-			{ "Maximum depth", "lldp.hytec.maximum_depth", FT_UINT8, BASE_DEC,
+			{ "Maximum depth", "lldp_hytec_maximum_depth", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_mac_trace_reply,
-			{ HYTEC_MC__MAC_TRACE_REPLY_STR, "lldp.hytec.mac_trace_reply", FT_NONE, BASE_NONE,
+			{ HYTEC_MC__MAC_TRACE_REPLY_STR, "lldp_hytec_mac_trace_reply", FT_NONE, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_answering_mac_address,
-			{ "Answering MAC address", "lldp.hytec.answering_mac_address", FT_ETHER, BASE_NONE,
+			{ "Answering MAC address", "lldp_hytec_answering_mac_address", FT_ETHER, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_actual_depth,
-			{ "Actual depth", "lldp.hytec.actual_depth", FT_UINT8, BASE_DEC,
+			{ "Actual depth", "lldp_hytec_actual_depth", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_name_of_replying_device,
-			{ HYTEC_MC__NAME_OF_REPLYING_DEVICE_STR, "lldp.hytec.name_of_replying_device", FT_STRING, BASE_NONE,
+			{ HYTEC_MC__NAME_OF_REPLYING_DEVICE_STR, "lldp_hytec_name_of_replying_device", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_outgoing_port_name,
-			{ HYTEC_MC__OUTGOING_PORT_NAME_STR, "lldp.hytec.outgoing_port_name", FT_STRING, BASE_NONE,
+			{ HYTEC_MC__OUTGOING_PORT_NAME_STR, "lldp_hytec_outgoing_port_name", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_ipv4_address_of_replying_device,
-			{ HYTEC_MC__IPV4_ADDRESS_OF_REPLYING_DEVICE_STR, "lldp.hytec.ipv4_address_of_replying_device", FT_IPv4, BASE_NONE,
+			{ HYTEC_MC__IPV4_ADDRESS_OF_REPLYING_DEVICE_STR, "lldp_hytec_ipv4_address_of_replying_device", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_end_of_trace,
-			{ HYTEC_MC__END_OF_TRACE_STR, "lldp.hytec.end_of_trace", FT_UINT8, BASE_HEX,
+			{ HYTEC_MC__END_OF_TRACE_STR, "lldp_hytec_end_of_trace", FT_UINT8, BASE_HEX,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_ipv6_address_of_replying_device,
-			{ HYTEC_MC__IPV6_ADDRESS_OF_REPLYING_DEVICE_STR, "lldp.hytec.ipv6_address_of_replying_device", FT_IPv6, BASE_NONE,
+			{ HYTEC_MC__IPV6_ADDRESS_OF_REPLYING_DEVICE_STR, "lldp_hytec_ipv6_address_of_replying_device", FT_IPv6, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_incoming_port_name,
-			{ HYTEC_MC__INCOMING_PORT_NAME_STR, "lldp.hytec.incoming_port_name", FT_STRING, BASE_NONE,
+			{ HYTEC_MC__INCOMING_PORT_NAME_STR, "lldp_hytec_incoming_port_name", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_trace_identifier,
-			{ HYTEC_MC__TRACE_IDENTIFIER_STR, "lldp.hytec.trace_identifier", FT_UINT32, BASE_HEX,
+			{ HYTEC_MC__TRACE_IDENTIFIER_STR, "lldp_hytec_trace_identifier", FT_UINT32, BASE_HEX,
 			NULL, 0x0, NULL, HFILL}
 		},
 		{ &hf_hytec_invalid_object_data,
-			{ "Invalid object data", "lldp.hytec.invalid_object_data", FT_BYTES, BASE_NONE,
+			{ "Invalid object data", "lldp_hytec_invalid_object_data", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_hytec_unknown_identifier_content,
-			{ "Unknown Identifier Content","lldp.hytec.unknown_identifier_content", FT_BYTES, BASE_NONE,
+			{ "Unknown Identifier Content","lldp_hytec_unknown_identifier_content", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_subtype,
-			{ "Avaya Subtype", "lldp.avaya.subtype", FT_UINT8, BASE_HEX,
+			{ "Avaya Subtype", "lldp_avaya_subtype", FT_UINT8, BASE_HEX,
 			VALS(avaya_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_poe,
-			{ "PoE Conservation Level Support", "lldp.avaya.poe", FT_BYTES, BASE_NONE,
+			{ "PoE Conservation Level Support", "lldp_avaya_poe", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_call_server,
-			{ "Call Server IP Address", "lldp.avaya.callserver", FT_IPv4, BASE_NONE,
+			{ "Call Server IP Address", "lldp_avaya_callserver", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_cna_server,
-			{ "CNA Server IP Address", "lldp.avaya.cnaserver", FT_IPv4, BASE_NONE,
+			{ "CNA Server IP Address", "lldp_avaya_cnaserver", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_file_server,
-			{ "File Server", "lldp.avaya.fileserver", FT_IPv4, BASE_NONE,
+			{ "File Server", "lldp_avaya_fileserver", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_dot1q,
-			{ "802.1Q Framing", "lldp.avaya.dot1q", FT_UINT8, BASE_HEX,
+			{ "802.1Q Framing", "lldp_avaya_dot1q", FT_UINT8, BASE_HEX,
 			VALS(avaya_dot1q_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_ipphone,
-			{ "IP Phone Addresses", "lldp.avaya.ipphone", FT_BYTES, BASE_NONE,
+			{ "IP Phone Addresses", "lldp_avaya_ipphone", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_ipphone_ip,
-			{ "IP Address", "lldp.avaya.ipphone.ip", FT_IPv4, BASE_NONE,
+			{ "IP Address", "lldp_avaya_ipphone_ip", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_ipphone_mask,
-			{ "Subnet Mask", "lldp.avaya.ipphone.mask", FT_IPv4, BASE_NONE,
+			{ "Subnet Mask", "lldp_avaya_ipphone_mask", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_avaya_ipphone_gateway,
-			{ "Gateway IP", "lldp.avaya.ipphone.gateway", FT_IPv4, BASE_NONE,
+			{ "Gateway IP", "lldp_avaya_ipphone_gateway", FT_IPv4, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_iana_subtype,
-			{ "IANA Subtype", "lldp.iana.subtype", FT_UINT8, BASE_HEX,
+			{ "IANA Subtype", "lldp_iana_subtype", FT_UINT8, BASE_HEX,
 			  VALS(iana_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_iana_mudurl,
-			{ "Manufacturer Usage Description URL", "lldp.iana.mudurl", FT_STRING, BASE_NONE,
+			{ "Manufacturer Usage Description URL", "lldp_iana_mudurl", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_onos_subtype,
-			{ "ONOS Subtype", "lldp.onos.subtype", FT_UINT8, BASE_HEX,
+			{ "ONOS Subtype", "lldp_onos_subtype", FT_UINT8, BASE_HEX,
 			  VALS(onos_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_onos_chassis,
-			{ "Chassis", "lldp.onos.chassis", FT_STRING, BASE_NONE,
+			{ "Chassis", "lldp_onos_chassis", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_onos_port,
-			{ "Port", "lldp.onos.port", FT_STRING, BASE_NONE,
+			{ "Port", "lldp_onos_port", FT_STRING, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_onos_ttl,
-			{ "ttl", "lldp.onos.ttl", FT_UINT32, BASE_DEC,
+			{ "ttl", "lldp_onos_ttl", FT_UINT32, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_unknown_subtype,
-			{ "Unknown Subtype","lldp.unknown_subtype", FT_UINT8, BASE_DEC,
+			{ "Unknown Subtype","lldp_unknown_subtype", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_unknown_subtype_content,
-			{ "Unknown Subtype Content","lldp.unknown_subtype.content", FT_BYTES, BASE_NONE,
+			{ "Unknown Subtype Content","lldp_unknown_subtype_content", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_subtype_content_remaining,
-			{ "Subtype Unknown Trailing Bytes","lldp.subtype.content_remaining", FT_BYTES, BASE_NONE,
+			{ "Subtype Unknown Trailing Bytes","lldp_subtype_content_remaining", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_tlv_subtype,
-			{ "Subtype", "lldp.extreme_avaya_ap.subtype", FT_UINT8, BASE_DEC,
+			{ "Subtype", "lldp_extreme_avaya_ap_subtype", FT_UINT8, BASE_DEC,
 			VALS(ex_avaya_subtypes), 0x0, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_hmac_shi,
-			{ "HMAC-SHA Digest", "lldp.extreme_avaya_ap.hmac_sha_digest", FT_BYTES, BASE_NONE,
+			{ "HMAC-SHA Digest", "lldp_extreme_avaya_ap_hmac_sha_digest", FT_BYTES, BASE_NONE,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_element_type,
-			{ "Element Type", "lldp.extreme_avaya_ap.element_type", FT_UINT24, BASE_DEC,
+			{ "Element Type", "lldp_extreme_avaya_ap_element_type", FT_UINT24, BASE_DEC,
 			NULL, 0xfc0000, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_state,
-			{ "State", "lldp.extreme_avaya_ap.state", FT_UINT24, BASE_DEC,
+			{ "State", "lldp_extreme_avaya_ap_state", FT_UINT24, BASE_DEC,
 			NULL, 0x03f000, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_mgnt_vlan,
-			{ "Mgmt VLAN", "lldp.extreme_avaya_ap.mgnt_vlan", FT_UINT24, BASE_DEC,
+			{ "Mgmt VLAN", "lldp_extreme_avaya_ap_mgnt_vlan", FT_UINT24, BASE_DEC,
 			NULL, 0xfff, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_vlan,
-			{ "VLAN", "lldp.extreme_avaya_ap.mgnt_vlan", FT_UINT16, BASE_DEC,
+			{ "VLAN", "lldp_extreme_avaya_ap_mgnt_vlan", FT_UINT16, BASE_DEC,
 			NULL, 0xfff, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_rsvd,
-			{ "Reserved", "lldp.extreme_avaya_ap.rsvd", FT_UINT8, BASE_DEC,
+			{ "Reserved", "lldp_extreme_avaya_ap_rsvd", FT_UINT8, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_system_id,
-			{ "System ID", "lldp.extreme_avaya_ap.system_id", FT_BYTES, SEP_COLON,
+			{ "System ID", "lldp_extreme_avaya_ap_system_id", FT_BYTES, SEP_COLON,
 			NULL, 0x0, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_status,
-			{ "Assignment Status", "lldp.extreme_avaya_ap.status", FT_UINT16, BASE_DEC,
+			{ "Assignment Status", "lldp_extreme_avaya_ap_status", FT_UINT16, BASE_DEC,
 			NULL, 0xf000, NULL, HFILL }
 		},
 		{ &hf_ex_avaya_i_sid,
-			{ "I-SID", "lldp.extreme_avaya_ap.i_sid", FT_UINT24, BASE_DEC,
+			{ "I-SID", "lldp_extreme_avaya_ap_i_sid", FT_UINT24, BASE_DEC,
 			NULL, 0x0, NULL, HFILL }
 		},
 	};

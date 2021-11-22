@@ -714,92 +714,92 @@ proto_register_llc(void)
 
 	static hf_register_info hf[] = {
 		{ &hf_llc_dsap,
-		{ "DSAP",	"llc.dsap", FT_UINT8, BASE_HEX,
+		{ "DSAP",	"llc_dsap", FT_UINT8, BASE_HEX,
 			VALS(sap_vals), 0x0, "Destination Service Access Point", HFILL }},
 
 		{ &hf_llc_dsap_sap,
-		{ "SAP",	"llc.dsap.sap", FT_UINT8, BASE_CUSTOM,
+		{ "SAP",	"llc_dsap_sap", FT_UINT8, BASE_CUSTOM,
 			CF_FUNC(llc_sap_value), 0xFE, "Service Access Point", HFILL }},
 
 		{ &hf_llc_dsap_ig,
-		{ "IG Bit",	"llc.dsap.ig", FT_BOOLEAN, 8,
+		{ "IG Bit",	"llc_dsap_ig", FT_BOOLEAN, 8,
 			TFS(&ig_bit), DSAP_GI_BIT, "Individual/Group", HFILL }},
 
 		{ &hf_llc_ssap,
-		{ "SSAP", "llc.ssap", FT_UINT8, BASE_HEX,
+		{ "SSAP", "llc_ssap", FT_UINT8, BASE_HEX,
 			VALS(sap_vals), 0x0, "Source Service Access Point", HFILL }},
 
 		{ &hf_llc_ssap_sap,
-		{ "SAP",	"llc.ssap.sap", FT_UINT8, BASE_CUSTOM,
+		{ "SAP",	"llc_ssap_sap", FT_UINT8, BASE_CUSTOM,
 			CF_FUNC(llc_sap_value), 0xFE, "Service Access Point", HFILL }},
 
 		{ &hf_llc_ssap_cr,
-		{ "CR Bit", "llc.ssap.cr", FT_BOOLEAN, 8,
+		{ "CR Bit", "llc_ssap_cr", FT_BOOLEAN, 8,
 			TFS(&cr_bit), SSAP_CR_BIT, "Command/Response", HFILL }},
 
 		{ &hf_llc_ctrl,
-		{ "Control", "llc.control", FT_UINT16, BASE_HEX,
+		{ "Control", "llc_control", FT_UINT16, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }},
 
 		{ &hf_llc_n_r,
-		{ "N(R)", "llc.control.n_r", FT_UINT16, BASE_DEC,
+		{ "N(R)", "llc_control_n_r", FT_UINT16, BASE_DEC,
 			NULL, XDLC_N_R_EXT_MASK, NULL, HFILL }},
 
 		{ &hf_llc_n_s,
-		{ "N(S)", "llc.control.n_s", FT_UINT16, BASE_DEC,
+		{ "N(S)", "llc_control_n_s", FT_UINT16, BASE_DEC,
 			NULL, XDLC_N_S_EXT_MASK, NULL, HFILL }},
 
 		{ &hf_llc_p,
-		{ "Poll", "llc.control.p", FT_BOOLEAN, 8,
+		{ "Poll", "llc_control_p", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), XDLC_P_F, NULL, HFILL }},
 
 		{ &hf_llc_p_ext,
-		{ "Poll", "llc.control.p", FT_BOOLEAN, 16,
+		{ "Poll", "llc_control_p", FT_BOOLEAN, 16,
 			TFS(&tfs_set_notset), XDLC_P_F_EXT, NULL, HFILL }},
 
 		{ &hf_llc_f,
-		{ "Final", "llc.control.f", FT_BOOLEAN, 8,
+		{ "Final", "llc_control_f", FT_BOOLEAN, 8,
 			TFS(&tfs_set_notset), XDLC_P_F, NULL, HFILL }},
 
 		{ &hf_llc_f_ext,
-		{ "Final", "llc.control.f", FT_BOOLEAN, 16,
+		{ "Final", "llc_control_f", FT_BOOLEAN, 16,
 			TFS(&tfs_set_notset), XDLC_P_F_EXT, NULL, HFILL }},
 
 		{ &hf_llc_s_ftype,
-		{ "Supervisory frame type", "llc.control.s_ftype", FT_UINT16, BASE_HEX,
+		{ "Supervisory frame type", "llc_control_s_ftype", FT_UINT16, BASE_HEX,
 			VALS(stype_vals), XDLC_S_FTYPE_MASK, NULL, HFILL }},
 
 		{ &hf_llc_u_modifier_cmd,
-		{ "Command", "llc.control.u_modifier_cmd", FT_UINT8, BASE_HEX,
+		{ "Command", "llc_control_u_modifier_cmd", FT_UINT8, BASE_HEX,
 			VALS(modifier_vals_cmd), XDLC_U_MODIFIER_MASK, NULL, HFILL }},
 
 		{ &hf_llc_u_modifier_resp,
-		{ "Response", "llc.control.u_modifier_resp", FT_UINT8, BASE_HEX,
+		{ "Response", "llc_control_u_modifier_resp", FT_UINT8, BASE_HEX,
 			VALS(modifier_vals_resp), XDLC_U_MODIFIER_MASK, NULL, HFILL }},
 
 		{ &hf_llc_ftype_i,
-		{ "Frame type", "llc.control.ftype", FT_UINT16, BASE_HEX,
+		{ "Frame type", "llc_control_ftype", FT_UINT16, BASE_HEX,
 			VALS(ftype_vals), XDLC_I_MASK, NULL, HFILL }},
 
 		{ &hf_llc_ftype_s_u,
-		{ "Frame type", "llc.control.ftype", FT_UINT8, BASE_HEX,
+		{ "Frame type", "llc_control_ftype", FT_UINT8, BASE_HEX,
 			VALS(ftype_vals), XDLC_S_U_MASK, NULL, HFILL }},
 
 		{ &hf_llc_ftype_s_u_ext,
-		{ "Frame type", "llc.control.ftype", FT_UINT16, BASE_HEX,
+		{ "Frame type", "llc_control_ftype", FT_UINT16, BASE_HEX,
 			VALS(ftype_vals), XDLC_S_U_MASK, NULL, HFILL }},
 
 		/* registered here but handled in ethertype.c */
 		{ &hf_llc_type,
-		{ "Type", "llc.type", FT_UINT16, BASE_HEX,
+		{ "Type", "llc_type", FT_UINT16, BASE_HEX,
 			VALS(etype_vals), 0x0, NULL, HFILL }},
 
 		{ &hf_llc_oui,
-		{ "Organization Code",	"llc.oui", FT_UINT24, BASE_OUI,
+		{ "Organization Code",	"llc_oui", FT_UINT24, BASE_OUI,
 			NULL, 0x0, NULL, HFILL }},
 
 		{ &hf_llc_pid,
-		{ "Protocol ID", "llc.pid", FT_UINT16, BASE_HEX,
+		{ "Protocol ID", "llc_pid", FT_UINT16, BASE_HEX,
 			NULL, 0x0, NULL, HFILL }}
 	};
 	static gint *ett[] = {

@@ -2641,7 +2641,7 @@ proto_register_pkt_ccc(void)
             &hf_pkt_ccc_id,
             {
                 "PacketCable CCC Identifier",
-                "pkt_ccc.ccc_id",
+                "pkt_ccc_ccc_id",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -2653,7 +2653,7 @@ proto_register_pkt_ccc(void)
             &hf_pkt_ccc_ts,
             {
                 "PacketCable CCC Timestamp",
-                "pkt_ccc.ts",
+                "pkt_ccc_ts",
                 FT_ABSOLUTE_TIME,
                 ABSOLUTE_TIME_UTC,
                 NULL,

@@ -10783,2580 +10783,2580 @@ proto_register_amqp(void)
      */
     static hf_register_info hf[] = {
         {&hf_amqp_1_0_size, {
-            "Length", "amqp.length",
+            "Length", "amqp_length",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Length of the frame", HFILL}},
         {&hf_amqp_1_0_doff, {
-            "Doff", "amqp.doff",
+            "Doff", "amqp_doff",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Data offset", HFILL}},
         {&hf_amqp_1_0_type, {
-            "Type", "amqp.type",
+            "Type", "amqp_type",
             FT_UINT8, BASE_DEC, VALS(amqp_1_0_type), 0x0,
             "Frame type", HFILL}},
         {&hf_amqp_1_0_amqp_performative, {
-            "Performative", "amqp.performative",
+            "Performative", "amqp_performative",
             FT_UINT8, BASE_DEC, VALS(amqp_1_0_AMQP_performatives), 0x0,
             NULL, HFILL}},
         {&hf_amqp_1_0_sasl_method, {
-            "SASL Method", "amqp.sasl.method",
+            "SASL Method", "amqp_sasl_method",
             FT_UINT8, BASE_DEC, VALS(amqp_1_0_SASL_methods), 0x0,
             NULL, HFILL}},
         {&hf_amqp_1_0_list, {
-            "list-item", "amqp.list",
+            "list-item", "amqp_list",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_map, {
-            "map-item", "amqp.map",
+            "map-item", "amqp_map",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_containerId, {
-            "Container-Id", "amqp.performative.arguments.containerId",
+            "Container-Id", "amqp_performative_arguments_containerId",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_hostname, {
-            "Hostname", "amqp.performative.arguments.hostname",
+            "Hostname", "amqp_performative_arguments_hostname",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_maxFrameSize, {
-            "Max-Frame-Size", "amqp.performative.arguments.maxFrameSize",
+            "Max-Frame-Size", "amqp_performative_arguments_maxFrameSize",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_channelMax, {
-            "Channel-Max", "amqp.performative.arguments.channelMax",
+            "Channel-Max", "amqp_performative_arguments_channelMax",
             FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_idleTimeOut, {
-            "Idle-Timeout", "amqp.performative.arguments.idleTimeout",
+            "Idle-Timeout", "amqp_performative_arguments_idleTimeout",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_outgoingLocales, {
-            "Outgoing-Locales", "amqp.performative.arguments.outgoingLocales",
+            "Outgoing-Locales", "amqp_performative_arguments_outgoingLocales",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_incomingLocales, {
-            "Incoming-Locales", "amqp.performative.arguments.incomingLocales",
+            "Incoming-Locales", "amqp_performative_arguments_incomingLocales",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_offeredCapabilities, {
-            "Offered-Capabilities", "amqp.arguments.offeredCapabilities",
+            "Offered-Capabilities", "amqp_arguments_offeredCapabilities",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_desiredCapabilities, {
-            "Desired-Capabilities", "amqp.performative.arguments.desiredCapabilities",
+            "Desired-Capabilities", "amqp_performative_arguments_desiredCapabilities",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_properties, {
-            "Properties", "amqp.performative.arguments.properties",
+            "Properties", "amqp_performative_arguments_properties",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_nextIncomingId, {
-            "Next-Incoming-Id", "amqp.performative.arguments.nextIncomingId",
+            "Next-Incoming-Id", "amqp_performative_arguments_nextIncomingId",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_deliveryCount, {
-            "Delivery-Count", "amqp.performative.arguments.deliveryCount",
+            "Delivery-Count", "amqp_performative_arguments_deliveryCount",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_sectionNumber, {
-            "Section-Number", "amqp.received.sectionNumber",
+            "Section-Number", "amqp_received_sectionNumber",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Section number of received message", HFILL}},
         {&hf_amqp_1_0_sectionOffset, {
-            "Section-Offset", "amqp.received.sectionOffset",
+            "Section-Offset", "amqp_received_sectionOffset",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Section offset of received message", HFILL}},
         {&hf_amqp_1_0_deliveryFailed, {
-            "Delivery-Failed", "amqp.modified.deliveryFailed",
+            "Delivery-Failed", "amqp_modified_deliveryFailed",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_undeliverableHere, {
-            "Undeliverable-Here", "amqp.modified.undeliverableHere",
+            "Undeliverable-Here", "amqp_modified_undeliverableHere",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_linkCredit, {
-            "Link-Credit", "amqp.performative.arguments.linkCredit",
+            "Link-Credit", "amqp_performative_arguments_linkCredit",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_available, {
-            "Available", "amqp.performative.arguments.available",
+            "Available", "amqp_performative_arguments_available",
             FT_UINT32, BASE_DEC, NULL, 0,
             "The number of available messages", HFILL}},
         {&hf_amqp_1_0_drain, {
-            "Drain", "amqp.performative.arguments.drain",
+            "Drain", "amqp_performative_arguments_drain",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Drain mode", HFILL}},
         {&hf_amqp_1_0_echo, {
-            "Echo", "amqp.performative.arguments.echo",
+            "Echo", "amqp_performative_arguments_echo",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Request state from partner", HFILL}},
         {&hf_amqp_1_0_deliveryId, {
-            "Delivery-Id", "amqp.performative.arguments.deliveryId",
+            "Delivery-Id", "amqp_performative_arguments_deliveryId",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_deliveryTag, {
-            "Delivery-Tag", "amqp.performative.arguments.deliveryTag",
+            "Delivery-Tag", "amqp_performative_arguments_deliveryTag",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_messageFormat, {
-            "Message-Format", "amqp.performative.arguments.messageFormat",
+            "Message-Format", "amqp_performative_arguments_messageFormat",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_settled, {
-            "Settled", "amqp.performative.arguments.settled",
+            "Settled", "amqp_performative_arguments_settled",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_more, {
-            "More", "amqp.performative.arguments.more",
+            "More", "amqp_performative_arguments_more",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "The message has more content", HFILL}},
         {&hf_amqp_1_0_state, {
-            "State", "amqp.performative.arguments.state",
+            "State", "amqp_performative_arguments_state",
             FT_NONE, BASE_NONE, NULL, 0,
             "State of the delivery at sender", HFILL}},
         {&hf_amqp_1_0_resume, {
-            "Resume", "amqp.performative.arguments.resume",
+            "Resume", "amqp_performative_arguments_resume",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Resumed delivery", HFILL}},
         {&hf_amqp_1_0_aborted, {
-            "Aborted", "amqp.performative.arguments.aborted",
+            "Aborted", "amqp_performative_arguments_aborted",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Message is aborted", HFILL}},
         {&hf_amqp_1_0_batchable, {
-            "Batchable", "amqp.performative.arguments.batchable",
+            "Batchable", "amqp_performative_arguments_batchable",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Batchable hint", HFILL}},
         {&hf_amqp_1_0_first, {
-            "First", "amqp.performative.arguments.first",
+            "First", "amqp_performative_arguments_first",
             FT_UINT32, BASE_DEC, NULL, 0,
             "Lower bound of deliveries", HFILL}},
         {&hf_amqp_1_0_last, {
-            "Last", "amqp.performative.arguments.last",
+            "Last", "amqp_performative_arguments_last",
             FT_UINT32, BASE_DEC, NULL, 0,
             "Upper bound of deliveries", HFILL}},
         {&hf_amqp_1_0_closed, {
-            "Closed", "amqp.performative.arguments.closed",
+            "Closed", "amqp_performative_arguments_closed",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Sender closed the link", HFILL}},
         {&hf_amqp_1_0_remoteChannel, {
-            "Remote-Channel", "amqp.performative.arguments.remoteChannel",
+            "Remote-Channel", "amqp_performative_arguments_remoteChannel",
             FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_nextOutgoingId, {
-            "Next-Outgoing-Id", "amqp.performative.arguments.nextOutgoingId",
+            "Next-Outgoing-Id", "amqp_performative_arguments_nextOutgoingId",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_incomingWindow, {
-            "Incoming-Window", "amqp.performative.arguments.incomingWindow",
+            "Incoming-Window", "amqp_performative_arguments_incomingWindow",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_outgoingWindow, {
-            "Outgoing-Window", "amqp.performative.arguments.outgoingWindow",
+            "Outgoing-Window", "amqp_performative_arguments_outgoingWindow",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_handleMax, {
-            "Handle-Max", "amqp.performative.arguments.handleMax",
+            "Handle-Max", "amqp_performative_arguments_handleMax",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_name, {
-            "Name", "amqp.performative.arguments.name",
+            "Name", "amqp_performative_arguments_name",
             FT_STRING, BASE_NONE, NULL, 0,
             "Name of the link", HFILL}},
         {&hf_amqp_1_0_handle, {
-            "Handle", "amqp.performative.arguments.handle",
+            "Handle", "amqp_performative_arguments_handle",
             FT_UINT32, BASE_DEC, NULL, 0,
             "Handle for the link while attached", HFILL}},
         {&hf_amqp_1_0_role, {
-            "Role", "amqp.performative.arguments.role",
+            "Role", "amqp_performative_arguments_role",
             FT_BOOLEAN, BASE_NONE, TFS(&amqp_1_0_role_value), 0,
             "Role of the link endpoint", HFILL}},
         {&hf_amqp_1_0_sndSettleMode, {
-            "Send-Settle-Mode", "amqp.performative.arguments.sndSettleMode",
+            "Send-Settle-Mode", "amqp_performative_arguments_sndSettleMode",
             FT_UINT8, BASE_DEC, VALS(amqp_1_0_sndSettleMode_value), 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_rcvSettleMode, {
-            "Receive-Settle-Mode", "amqp.performative.arguments.rcvSettleMode",
+            "Receive-Settle-Mode", "amqp_performative_arguments_rcvSettleMode",
             FT_UINT8, BASE_DEC, VALS(amqp_1_0_rcvSettleMode_value), 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_source, {
-            "Source", "amqp.performative.arguments.source",
+            "Source", "amqp_performative_arguments_source",
             FT_NONE, BASE_NONE, NULL, 0,
             "Source for messages", HFILL}},
         {&hf_amqp_1_0_target, {
-            "Target", "amqp.performative.arguments.target",
+            "Target", "amqp_performative_arguments_target",
             FT_NONE, BASE_NONE, NULL, 0,
             "Target for messages", HFILL}},
         {&hf_amqp_1_0_deleteOnClose, {
-            "Delete-On-Close", "amqp.lifetime-policy.deleteOnClose",
+            "Delete-On-Close", "amqp_lifetime-policy_deleteOnClose",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_deleteOnNoLinks, {
-            "Delete-On-No-Links", "amqp.lifetime-policy.deleteOnNoLinks",
+            "Delete-On-No-Links", "amqp_lifetime-policy_deleteOnNoLinks",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_deleteOnNoMessages, {
-            "Delete-On-No-Messages", "amqp.lifetime-policy.deleteOnNoMessages",
+            "Delete-On-No-Messages", "amqp_lifetime-policy_deleteOnNoMessages",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_deleteOnNoLinksOrMessages, {
-            "Delete-On-No-Links-Or-Messages", "amqp.lifetime-policy.deleteOnNoLinksOrMessages",
+            "Delete-On-No-Links-Or-Messages", "amqp_lifetime-policy_deleteOnNoLinksOrMessages",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_coordinator, {
-            "Coordinator", "amqp.tx.coordinator",
+            "Coordinator", "amqp_tx_coordinator",
             FT_NONE, BASE_NONE, NULL, 0,
             "Transaction coordinator", HFILL}},
         {&hf_amqp_1_0_declare, {
-            "Declare", "amqp.tx.declare",
+            "Declare", "amqp_tx_declare",
             FT_NONE, BASE_NONE, NULL, 0,
             "Declare transaction", HFILL}},
         {&hf_amqp_1_0_globalId, {
-            "Global-Id", "amqp.tx.arguments.globalId",
+            "Global-Id", "amqp_tx_arguments_globalId",
             FT_NONE, BASE_NONE, NULL, 0,
             "Global id of a transaction", HFILL}},
         {&hf_amqp_1_0_discharge, {
-            "Discharge", "amqp.tx.discharge",
+            "Discharge", "amqp_tx_discharge",
             FT_NONE, BASE_NONE, NULL, 0,
             "Discharge transaction", HFILL}},
         {&hf_amqp_1_0_txnId, {
-            "Txn-Id", "amqp.tx.arguments.txnId",
+            "Txn-Id", "amqp_tx_arguments_txnId",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Transaction id", HFILL}},
         {&hf_amqp_1_0_fail, {
-            "Fail", "amqp.tx.arguments.fail",
+            "Fail", "amqp_tx_arguments_fail",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Fail flag of transaction", HFILL}},
         {&hf_amqp_1_0_declared, {
-            "Declared", "amqp.tx.declared",
+            "Declared", "amqp_tx_declared",
             FT_NONE, BASE_NONE, NULL, 0,
             "Declared transaction", HFILL}},
         {&hf_amqp_1_0_transactionalState, {
-            "Transactional-State", "amqp.tx.transactionalState",
+            "Transactional-State", "amqp_tx_transactionalState",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_outcome, {
-            "Outcome", "amqp.tx.arguments.outcome",
+            "Outcome", "amqp_tx_arguments_outcome",
             FT_NONE, BASE_NONE, NULL, 0,
             "Outcome of transaction", HFILL}},
         {&hf_amqp_1_0_unsettled, {
-            "Unsettled", "amqp.performative.arguments.unsettled",
+            "Unsettled", "amqp_performative_arguments_unsettled",
             FT_NONE, BASE_NONE, NULL, 0,
             "Unsettled delivery state", HFILL}},
         {&hf_amqp_1_0_incompleteUnsettled, {
-            "Incomplete-Unsettled", "amqp.performative.arguments.incompleteUnsettled",
+            "Incomplete-Unsettled", "amqp_performative_arguments_incompleteUnsettled",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_initialDeliveryCount, {
-            "Initial-Delivery-Count", "amqp.performative.arguments.initDeliveryCount",
+            "Initial-Delivery-Count", "amqp_performative_arguments_initDeliveryCount",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_maxMessageSize, {
-            "Max-Message-Size", "amqp.performative.arguments.maxMessageSize",
+            "Max-Message-Size", "amqp_performative_arguments_maxMessageSize",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_error, {
-            "Error", "amqp.performative.arguments.error",
+            "Error", "amqp_performative_arguments_error",
             FT_NONE, BASE_NONE, NULL, 0,
             "Error in a performative", HFILL}},
         {&hf_amqp_1_0_messageHeader, {
-            "Message-Header", "amqp.header",
+            "Message-Header", "amqp_header",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_messageProperties, {
-            "Message-Properties", "amqp.properties",
+            "Message-Properties", "amqp_properties",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_deliveryAnnotations, {
-            "Delivery-Annotations", "amqp.deliveryAnnotations",
+            "Delivery-Annotations", "amqp_deliveryAnnotations",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_messageAnnotations, {
-            "Message-Annotations", "amqp.messageAnnotations",
+            "Message-Annotations", "amqp_messageAnnotations",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_applicationProperties, {
-            "Application-Properties", "amqp.applicationProperties",
+            "Application-Properties", "amqp_applicationProperties",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_data, {
-            "Data", "amqp.data",
+            "Data", "amqp_data",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Opaque binary data", HFILL}},
         {&hf_amqp_1_0_amqp_sequence, {
-            "AMQP-Sequence", "amqp.sequence",
+            "AMQP-Sequence", "amqp_sequence",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_amqp_value, {
-            "AMQP-Value", "amqp.value",
+            "AMQP-Value", "amqp_value",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_footer, {
-            "Footer", "amqp.footer",
+            "Footer", "amqp_footer",
             FT_NONE, BASE_NONE, NULL, 0,
             "Message footer", HFILL}},
         {&hf_amqp_1_0_received, {
-            "Received", "amqp.delivery-state.received",
+            "Received", "amqp_delivery-state_received",
             FT_NONE, BASE_NONE, NULL, 0,
             "Received messages", HFILL}},
         {&hf_amqp_1_0_accepted, {
-            "Accepted", "amqp.delivery-state.accepted",
+            "Accepted", "amqp_delivery-state_accepted",
             FT_NONE, BASE_NONE, NULL, 0,
             "Accepted messages", HFILL}},
         {&hf_amqp_1_0_rejected, {
-            "Rejected", "amqp.delivery-state.rejected",
+            "Rejected", "amqp_delivery-state_rejected",
             FT_NONE, BASE_NONE, NULL, 0,
             "Rejected messages", HFILL}},
         {&hf_amqp_1_0_released, {
-            "Released", "amqp.delivery-state.released",
+            "Released", "amqp_delivery-state_released",
             FT_NONE, BASE_NONE, NULL, 0,
             "Released messages", HFILL}},
         {&hf_amqp_1_0_modified, {
-            "Modified", "amqp.delivery-state.modified",
+            "Modified", "amqp_delivery-state_modified",
             FT_NONE, BASE_NONE, NULL, 0,
             "Modified messages", HFILL}},
         {&hf_amqp_1_0_condition, {
-            "Condition", "amqp.error.condition",
+            "Condition", "amqp_error_condition",
             FT_STRING, BASE_NONE, NULL, 0,
             "Error condition", HFILL}},
         {&hf_amqp_1_0_description, {
-            "Description", "amqp.error.description",
+            "Description", "amqp_error_description",
             FT_STRING, BASE_NONE, NULL, 0,
             "Error description", HFILL}},
         {&hf_amqp_1_0_info, {
-            "Info", "amqp.error.info",
+            "Info", "amqp_error_info",
             FT_NONE, BASE_NONE, NULL, 0,
             "Error info", HFILL}},
         {&hf_amqp_1_0_address, {
-            "Address", "amqp.performative.arguments.address",
+            "Address", "amqp_performative_arguments_address",
             FT_NONE, BASE_NONE, NULL, 0,
             "Address of a node", HFILL}},
         {&hf_amqp_1_0_durable, {
-            "Durable", "amqp.message.durable",
+            "Durable", "amqp_message_durable",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Message durability", HFILL}},
         {&hf_amqp_1_0_terminusDurable, {
-            "Terminus-Durable", "amqp.performative.arguments.terminusDurable",
+            "Terminus-Durable", "amqp_performative_arguments_terminusDurable",
             FT_UINT8, BASE_DEC, VALS(amqp_1_0_terminus_durable_value), 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_priority, {
-            "Priority", "amqp.message.priority",
+            "Priority", "amqp_message_priority",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Message priority", HFILL}},
         {&hf_amqp_1_0_ttl, {
-            "Ttl", "amqp.message.ttl",
+            "Ttl", "amqp_message_ttl",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Time to live", HFILL}},
         {&hf_amqp_1_0_firstAcquirer, {
-            "First-Acquirer", "amqp.message.firstAcquirer",
+            "First-Acquirer", "amqp_message_firstAcquirer",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_expiryPolicy, {
-            "Expiry-Policy", "amqp.properties.expiryPolicy",
+            "Expiry-Policy", "amqp_properties_expiryPolicy",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_timeout, {
-            "Timeout", "amqp.properties.timeout",
+            "Timeout", "amqp_properties_timeout",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Duration that an expiring target will be retained", HFILL}},
         {&hf_amqp_1_0_dynamic, {
-            "Dynamic", "amqp.properties.dynamic",
+            "Dynamic", "amqp_properties_dynamic",
             FT_BOOLEAN, BASE_NONE, NULL, 0,
             "Dynamic creation of a remote node", HFILL}},
         {&hf_amqp_1_0_dynamicNodeProperties, {
-            "Dynamic-Node-Properties", "amqp.properties.dynamicNodeProperties",
+            "Dynamic-Node-Properties", "amqp_properties_dynamicNodeProperties",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_distributionMode, {
-            "Distribution-Mode", "amqp.properties.distributionMode",
+            "Distribution-Mode", "amqp_properties_distributionMode",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_filter, {
-            "Filter", "amqp.properties.filter",
+            "Filter", "amqp_properties_filter",
             FT_NONE, BASE_NONE, NULL, 0,
             "Predicates to filter messages admitted to the link", HFILL}},
         {&hf_amqp_1_0_defaultOutcome, {
-            "Default-Outcome", "amqp.properties.defaultOutcome",
+            "Default-Outcome", "amqp_properties_defaultOutcome",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_outcomes, {
-            "Outcomes", "amqp.properties.outcomes",
+            "Outcomes", "amqp_properties_outcomes",
             FT_NONE, BASE_NONE, NULL, 0,
             "Outcomes descriptors for the link", HFILL}},
         {&hf_amqp_1_0_capabilities, {
-            "Capabilities", "amqp.properties.capabilities",
+            "Capabilities", "amqp_properties_capabilities",
             FT_NONE, BASE_NONE, NULL, 0,
             "Extension capabilities of the sender", HFILL}},
         {&hf_amqp_1_0_messageId, {
-            "Message-Id", "amqp.message.messageId",
+            "Message-Id", "amqp_message_messageId",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_userId, {
-            "User-Id", "amqp.message.userId",
+            "User-Id", "amqp_message_userId",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_to, {
-            "To", "amqp.message.to",
+            "To", "amqp_message_to",
             FT_NONE, BASE_NONE, NULL, 0,
             "Destination address of the message", HFILL}},
         {&hf_amqp_1_0_subject, {
-            "Subject", "amqp.message.subject",
+            "Subject", "amqp_message_subject",
             FT_STRING, BASE_NONE, NULL, 0,
             "Message subject", HFILL}},
         {&hf_amqp_1_0_replyTo, {
-            "Reply-To", "amqp.message.replyTo",
+            "Reply-To", "amqp_message_replyTo",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_correlationId, {
-            "Correlation-Id", "amqp.message.correlationId",
+            "Correlation-Id", "amqp_message_correlationId",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_contentType, {
-            "Content-Type", "amqp.message.contentType",
+            "Content-Type", "amqp_message_contentType",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_contentEncoding, {
-            "Content-Encoding", "amqp.message.contentEncoding",
+            "Content-Encoding", "amqp_message_contentEncoding",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_absoluteExpiryTime, {
-            "Expiry-Time", "amqp.message.expiryTime",
+            "Expiry-Time", "amqp_message_expiryTime",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
             "Absolute expiry time", HFILL}},
         {&hf_amqp_1_0_creationTime, {
-            "Creation-Time", "amqp.message.creationTime",
+            "Creation-Time", "amqp_message_creationTime",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_groupId, {
-            "Group-Id", "amqp.message.groupId",
+            "Group-Id", "amqp_message_groupId",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_groupSequence, {
-            "Group-Sequence", "amqp.message.groupSequence",
+            "Group-Sequence", "amqp_message_groupSequence",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_replyToGroupId, {
-            "Reply-To-Group-Id", "amqp.message.replyToGroupId",
+            "Reply-To-Group-Id", "amqp_message_replyToGroupId",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_mechanisms, {
-            "Mechanisms", "amqp.sasl.mechanisms",
+            "Mechanisms", "amqp_sasl_mechanisms",
             FT_NONE, BASE_NONE, NULL, 0,
             "Supported security mechanisms", HFILL}},
         {&hf_amqp_1_0_mechanism, {
-            "Mechanism", "amqp.sasl.mechanism",
+            "Mechanism", "amqp_sasl_mechanism",
             FT_STRING, BASE_NONE, NULL, 0,
             "Chosen security mechanism", HFILL}},
         {&hf_amqp_1_0_initResponse, {
-            "Init-Response", "amqp.sasl.initResponse",
+            "Init-Response", "amqp_sasl_initResponse",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_saslChallenge, {
-            "Challenge", "amqp.sasl.challenge",
+            "Challenge", "amqp_sasl_challenge",
             FT_BYTES, BASE_NONE, NULL, 0,
             "SASL challenge", HFILL}},
         {&hf_amqp_1_0_saslResponse, {
-            "Response", "amqp.sasl.response",
+            "Response", "amqp_sasl_response",
             FT_BYTES, BASE_NONE, NULL, 0,
             "SASL response", HFILL}},
         {&hf_amqp_1_0_saslCode, {
-            "Code", "amqp.sasl.saslCode",
+            "Code", "amqp_sasl_saslCode",
             FT_UINT8, BASE_DEC, VALS(amqp_1_0_SASL_code_value), 0,
             "SASL outcome code", HFILL}},
         {&hf_amqp_1_0_saslAdditionalData, {
-            "Additional-Data", "amqp.sasl.addData",
+            "Additional-Data", "amqp_sasl_addData",
             FT_BYTES, BASE_NONE, NULL, 0,
             "SASL outcome additional data", HFILL}},
         {&hf_amqp_1_0_outgoingLocales_sym, {
-            "Outgoing-Locales", "amqp.performative.arguments.outgoingLocales_sym",
+            "Outgoing-Locales", "amqp_performative_arguments_outgoingLocales_sym",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_incomingLocales_sym, {
-            "Incoming-Locales", "amqp.performative.arguments.incomingLocales_sym",
+            "Incoming-Locales", "amqp_performative_arguments_incomingLocales_sym",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_offeredCapabilities_sym, {
-            "Offered-Capabilities", "amqp.arguments.offeredCapabilities_sym",
+            "Offered-Capabilities", "amqp_arguments_offeredCapabilities_sym",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_desiredCapabilities_sym, {
-            "Desired-Capabilities", "amqp.performative.arguments.desiredCapabilities_sym",
+            "Desired-Capabilities", "amqp_performative_arguments_desiredCapabilities_sym",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_address_str, {
-            "Address", "amqp.performative.arguments.address.string",
+            "Address", "amqp_performative_arguments_address_string",
             FT_STRING, BASE_NONE, NULL, 0,
             "Address of a node", HFILL}},
         {&hf_amqp_1_0_source_str, {
-            "Source", "amqp.performative.arguments.source.string",
+            "Source", "amqp_performative_arguments_source_string",
             FT_STRING, BASE_NONE, NULL, 0,
             "Source for messages", HFILL}},
         {&hf_amqp_1_0_target_str, {
-            "Target", "amqp.performative.arguments.target.string",
+            "Target", "amqp_performative_arguments_target_string",
             FT_STRING, BASE_NONE, NULL, 0,
             "Target for messages", HFILL}},
         {&hf_amqp_1_0_outcomes_sym, {
-            "Outcomes", "amqp.properties.outcomes_sym",
+            "Outcomes", "amqp_properties_outcomes_sym",
             FT_STRING, BASE_NONE, NULL, 0,
             "Outcomes descriptors for the link", HFILL}},
         {&hf_amqp_1_0_capabilities_sym, {
-            "Capabilities", "amqp.properties.capabilities_sym",
+            "Capabilities", "amqp_properties_capabilities_sym",
             FT_STRING, BASE_NONE, NULL, 0,
             "Extension capabilities of the sender", HFILL}},
         {&hf_amqp_1_0_messageId_uint, {
-            "Message-Id", "amqp.message.messageId.uint",
+            "Message-Id", "amqp_message_messageId_uint",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_messageId_str, {
-            "Message-Id", "amqp.message.messageId.string",
+            "Message-Id", "amqp_message_messageId_string",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_messageId_bin, {
-            "Message-Id", "amqp.message.messageId.bytes",
+            "Message-Id", "amqp_message_messageId_bytes",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_messageId_uuid, {
-            "Message-Id", "amqp.message.messageId.guid",
+            "Message-Id", "amqp_message_messageId_guid",
             FT_GUID, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_correlationId_uint, {
-            "Correlation-Id", "amqp.message.correlationId.uint",
+            "Correlation-Id", "amqp_message_correlationId_uint",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_correlationId_str, {
-            "Correlation-Id", "amqp.message.correlationId.string",
+            "Correlation-Id", "amqp_message_correlationId_string",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_correlationId_bin, {
-            "Correlation-Id", "amqp.message.correlationId.bytes",
+            "Correlation-Id", "amqp_message_correlationId_bytes",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_correlationId_uuid, {
-            "Correlation-Id", "amqp.message.correlationId.guid",
+            "Correlation-Id", "amqp_message_correlationId_guid",
             FT_GUID, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_to_str, {
-            "To", "amqp.message.to.string",
+            "To", "amqp_message_to_string",
             FT_STRING, BASE_NONE, NULL, 0,
             "Destination address of the message", HFILL}},
         {&hf_amqp_1_0_replyTo_str, {
-            "Reply-To", "amqp.message.replyTo.string",
+            "Reply-To", "amqp_message_replyTo_string",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_1_0_mechanisms_sym, {
-            "Mechanisms", "amqp.sasl.mechanisms_sym",
+            "Mechanisms", "amqp_sasl_mechanisms_sym",
             FT_STRING, BASE_NONE, NULL, 0,
             "Supported security mechanisms", HFILL}},
         {&hf_amqp_0_10_format, {
-            "Format", "amqp.format",
+            "Format", "amqp_format",
             FT_UINT8, BASE_DEC, NULL, 0xc0,
             "Framing version", HFILL}},
         {&hf_amqp_0_10_position, {
-            "Position", "amqp.frame-position",
+            "Position", "amqp_frame-position",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_frame_position), 0x0f,
             "Framing position", HFILL}},
         {&hf_amqp_0_10_type, {
-            "Type", "amqp.type",
+            "Type", "amqp_type",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_frame_types), 0x0,
             "Frame type", HFILL}},
         {&hf_amqp_0_10_size, {
-            "Length", "amqp.length",
+            "Length", "amqp_length",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Length of the frame", HFILL}},
         {&hf_amqp_0_10_track, {
-            "Track", "amqp.track-number",
+            "Track", "amqp_track-number",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_frame_tracks), 0x0,
             "Track number", HFILL}},
         {&hf_amqp_0_10_class, {
-            "Class", "amqp.class",
+            "Class", "amqp_class",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_class), 0x0,
             "Class ID", HFILL}},
         {&hf_amqp_0_10_connection_method, {
-            "Method", "amqp.connection.method",
+            "Method", "amqp_connection_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_connection_methods), 0x0,
             "Connection Class Method", HFILL}},
         {&hf_amqp_0_10_session_method, {
-            "Method", "amqp.session.method",
+            "Method", "amqp_session_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_session_methods), 0x0,
             "Session Class Method", HFILL}},
         {&hf_amqp_0_10_execution_method, {
-            "Method", "amqp.execution.method",
+            "Method", "amqp_execution_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_execution_methods), 0x0,
             "Execution Class Method", HFILL}},
         {&hf_amqp_0_10_message_method, {
-            "Method", "amqp.message.method",
+            "Method", "amqp_message_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_message_methods), 0x0,
             "Message Class Method", HFILL}},
         {&hf_amqp_0_10_tx_method, {
-            "Method", "amqp.tx.method",
+            "Method", "amqp_tx_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_tx_methods), 0x0,
             "Tx Class Method", HFILL}},
         {&hf_amqp_0_10_dtx_method, {
-            "Method", "amqp.dtx.method",
+            "Method", "amqp_dtx_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_dtx_methods), 0x0,
             "Dtx Class Method", HFILL}},
         {&hf_amqp_0_10_exchange_method, {
-            "Method", "amqp.exchange.method",
+            "Method", "amqp_exchange_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_exchange_methods), 0x0,
             "Exchange Class Method", HFILL}},
         {&hf_amqp_0_10_queue_method, {
-            "Method", "amqp.queue.method",
+            "Method", "amqp_queue_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_queue_methods), 0x0,
             "Queue Class Method", HFILL}},
         {&hf_amqp_0_10_file_method, {
-            "Method", "amqp.file.method",
+            "Method", "amqp_file_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_file_methods), 0x0,
             "File Class Method", HFILL}},
         {&hf_amqp_0_10_stream_method, {
-            "Method", "amqp.stream.method",
+            "Method", "amqp_stream_method",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_stream_methods), 0x0,
             "Stream Class Method", HFILL}},
         {&hf_amqp_0_10_message_body, {
-            "Message body", "amqp.message-body",
+            "Message body", "amqp_message-body",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Message body content", HFILL}},
         {&hf_amqp_0_10_dtx_xid, {
-            "Xid", "amqp.dtx.xid",
+            "Xid", "amqp_dtx_xid",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Dtx transaction id", HFILL}},
         {&hf_amqp_0_10_dtx_xid_format, {
-            "Format", "amqp.dtx.xid.format",
+            "Format", "amqp_dtx_xid_format",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Implementation-specific xid format code", HFILL}},
         {&hf_amqp_0_10_dtx_xid_global_id, {
-            "Global-id", "amqp.dtx.xid.global-id",
+            "Global-id", "amqp_dtx_xid_global-id",
             FT_UINT_BYTES, BASE_NONE, NULL, 0x0,
             "Global transaction id", HFILL}},
         {&hf_amqp_0_10_dtx_xid_branch_id, {
-            "Branch-id", "amqp.dtx.xid.branch-id",
+            "Branch-id", "amqp_dtx_xid_branch-id",
             FT_UINT_BYTES, BASE_NONE, NULL, 0x0,
             "Transaction branch qualifier", HFILL}},
         {&hf_amqp_0_10_struct32_size, {
-            "Size", "amqp.struct32_size",
+            "Size", "amqp_struct32_size",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct32, {
-            "struct", "amqp.struct32",
+            "struct", "amqp_struct32",
             FT_UINT16, BASE_HEX, VALS(amqp_0_10_struct32_vals), 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct32_class, {
-            "Class", "amqp.struct32.class",
+            "Class", "amqp_struct32_class",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_class), 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct32_struct, {
-            "Struct", "amqp.struct32.struct",
+            "Struct", "amqp_struct32_struct",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct32_padding, {
-            "Padding", "amqp.struct32.padding",
+            "Padding", "amqp_struct32_padding",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_array_type, {
-            "Type", "amqp.array.type",
+            "Type", "amqp_array_type",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_array_type_vals), 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_array_element_count, {
-            "Element count", "amqp.array.element_count",
+            "Element count", "amqp_array_element_count",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_array_string, {
-            "String", "amqp.array.string",
+            "String", "amqp_array_string",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_discard_unroutable, {
-            "Discard-unroutable", "amqp.message.delivery-properties.discard-unroutable",
+            "Discard-unroutable", "amqp_message_delivery-properties_discard-unroutable",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x01,
             "Discard message if unroutable", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_immediate, {
-            "Immediate", "amqp.message.delivery-properties.immediate",
+            "Immediate", "amqp_message_delivery-properties_immediate",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Consider unroutable if can't be routed immediately", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_redelivered, {
-            "Redelivered", "amqp.message.delivery-properties.redelivered",
+            "Redelivered", "amqp_message_delivery-properties_redelivered",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x04,
             "Message may have been previously delivered", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_priority, {
-            "Delivery-priority", "amqp.message.delivery-properties.delivery-priority",
+            "Delivery-priority", "amqp_message_delivery-properties_delivery-priority",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_struct_delivery_properties_priorities), 0x0,
             "Message delivery priority", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_mode, {
-            "Delivery-mode", "amqp.message.delivery-properties.delivery-mode",
+            "Delivery-mode", "amqp_message_delivery-properties_delivery-mode",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_struct_delivery_properties_modes), 0x0,
             "Message delivery persistence mode", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_ttl, {
-            "TTL", "amqp.message.delivery-properties.ttl",
+            "TTL", "amqp_message_delivery-properties_ttl",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Message time-to-live in msec", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_timestamp, {
-            "Timestamp", "amqp.message.delivery-properties.timestamp",
+            "Timestamp", "amqp_message_delivery-properties_timestamp",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
             "Time of arrival at broker", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_expiration, {
-            "Expiration", "amqp.message.delivery-properties.expiration",
+            "Expiration", "amqp_message_delivery-properties_expiration",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
             "Expiration time calculated by broker", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_exchange, {
-            "Exchange", "amqp.message.delivery-properties.exchange",
+            "Exchange", "amqp_message_delivery-properties_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "Originating exchange", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_routing_key, {
-            "Routing-key", "amqp.message.delivery-properties.routing-key",
+            "Routing-key", "amqp_message_delivery-properties_routing-key",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "Message routing key", HFILL}},
         {&hf_amqp_0_10_struct_delivery_properties_resume_ttl, {
-            "Resume-ttl", "amqp.message.delivery-properties.resume-ttl",
+            "Resume-ttl", "amqp_message_delivery-properties_resume-ttl",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "TTL to use when resuming", HFILL}},
         {&hf_amqp_0_10_struct_fragment_properties_first, {
-            "First", "amqp.message.fragment-properties.first",
+            "First", "amqp_message_fragment-properties_first",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x01,
             "Fragment contains the start of the message", HFILL}},
         {&hf_amqp_0_10_struct_fragment_properties_last, {
-            "Last", "amqp.message.fragment-properties.last",
+            "Last", "amqp_message_fragment-properties_last",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Fragment contains the end of the message", HFILL}},
         {&hf_amqp_0_10_struct_fragment_properties_size, {
-            "Fragment-size", "amqp.message.fragment-properties.fragment-size",
+            "Fragment-size", "amqp_message_fragment-properties_fragment-size",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Size of the message fragment", HFILL}},
 #if 0
         {&hf_amqp_0_10_struct_message_properties, {
-            "message.message-properties", "amqp.message.message-properties",
+            "message.message-properties", "amqp_message_message-properties",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Message properties struct", HFILL}},
 #endif
         {&hf_amqp_0_10_struct_message_properties_content_len, {
-            "Content-length", "amqp.message.message-properties.content-length",
+            "Content-length", "amqp_message_message-properties_content-length",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Length of associated message", HFILL}},
         {&hf_amqp_0_10_struct_message_properties_message_id, {
-            "Message-id", "amqp.message.message-properties.message-id",
+            "Message-id", "amqp_message_message-properties_message-id",
             FT_GUID, BASE_NONE, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_message_properties_correlation, {
-            "Correlation-id", "amqp.message.message-properties.correlation-id",
+            "Correlation-id", "amqp_message_message-properties_correlation-id",
             FT_UINT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_message_properties_reply_to, {
-            "Reply-to", "amqp.message.message-properties.reply-to",
+            "Reply-to", "amqp_message_message-properties_reply-to",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Address to reply to", HFILL}},
         {&hf_amqp_0_10_struct_message_properties_content_type, {
-            "Content-type", "amqp.message.message-properties.content-type",
+            "Content-type", "amqp_message_message-properties_content-type",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "MIME content type", HFILL}},
         {&hf_amqp_0_10_struct_message_properties_content_encoding, {
-            "Content-encoding", "amqp.message.message-properties.content-encoding",
+            "Content-encoding", "amqp_message_message-properties_content-encoding",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "MIME content encoding method", HFILL}},
         {&hf_amqp_0_10_struct_message_properties_user_id, {
-            "User-id", "amqp.message.message-properties.user-id",
+            "User-id", "amqp_message_message-properties_user-id",
             FT_UINT_BYTES, BASE_NONE, NULL, 0x0,
             "Creating user id", HFILL}},
         {&hf_amqp_0_10_struct_message_properties_app_id, {
-            "App-id", "amqp.message.message-properties.app-id",
+            "App-id", "amqp_message_message-properties_app-id",
             FT_UINT_BYTES, BASE_NONE, NULL, 0x0,
             "Creating user id", HFILL}},
         {&hf_amqp_0_10_struct_message_properties_application_headers, {
-            "Application-headers", "amqp.message.message-properties.application-headers",
+            "Application-headers", "amqp_message_message-properties_application-headers",
             FT_NONE, BASE_NONE, NULL, 0,
             "Application-private headers", HFILL}},
         {&hf_amqp_0_10_struct_reply_to_exchange, {
-            "Exchange", "amqp.message.message-properties.reply-to.exchange",
+            "Exchange", "amqp_message_message-properties_reply-to_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "Exchange to reply to", HFILL}},
         {&hf_amqp_0_10_struct_reply_to_routing_key, {
-            "Routing-key", "amqp.message.message-properties.reply-to.routing-key",
+            "Routing-key", "amqp_message_message-properties_reply-to_routing-key",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "Routing key to reply with", HFILL}},
         {&hf_amqp_0_10_struct_acquired_transfers, {
-            "Transfers", "amqp.message.acquired.transfers",
+            "Transfers", "amqp_message_acquired_transfers",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Command set", HFILL}},
         {&hf_amqp_0_10_struct_resume_result_offset, {
-            "Offset", "amqp.message.resume-result.offset",
+            "Offset", "amqp_message_resume-result_offset",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Amount of data already transferred", HFILL}},
         {&hf_amqp_0_10_struct_exchange_query_result_durable, {
-            "Durable", "amqp.exchange.exchange-query-result.durable",
+            "Durable", "amqp_exchange_exchange-query-result_durable",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Exchange is durable", HFILL}},
         {&hf_amqp_0_10_struct_exchange_query_result_not_found, {
-            "Not-found", "amqp.exchange.exchange-query-result.not-found",
+            "Not-found", "amqp_exchange_exchange-query-result_not-found",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04,
             "Exchange was not found", HFILL}},
         {&hf_amqp_0_10_struct_exchange_bound_result_exchange_not_found, {
-            "Exchange-not-found", "amqp.exchange.exchange-bound-result.exchange-not-found",
+            "Exchange-not-found", "amqp_exchange_exchange-bound-result_exchange-not-found",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x01,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_exchange_bound_result_queue_not_found, {
-            "Queue-not-found", "amqp.exchange.exchange-bound-result.queue-not-found",
+            "Queue-not-found", "amqp_exchange_exchange-bound-result_queue-not-found",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x02,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_exchange_bound_result_queue_not_matched, {
-            "Queue-not-matched", "amqp.exchange.exchange-bound-result.queue-not-matched",
+            "Queue-not-matched", "amqp_exchange_exchange-bound-result_queue-not-matched",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04,
             "No binding from exchange to queue", HFILL}},
         {&hf_amqp_0_10_struct_exchange_bound_result_key_not_matched, {
-            "Key-not-matched", "amqp.exchange.exchange-bound-result.key-not-matched",
+            "Key-not-matched", "amqp_exchange_exchange-bound-result_key-not-matched",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x08,
             "No binding from exchange with binding-key", HFILL}},
         {&hf_amqp_0_10_struct_exchange_bound_result_args_not_matched, {
-            "Args-not-matched", "amqp.exchange.exchange-bound-result.args-not-matched",
+            "Args-not-matched", "amqp_exchange_exchange-bound-result_args-not-matched",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x10,
             "No binding from exchange with specified arguments", HFILL}},
         {&hf_amqp_0_10_struct_queue_query_result_durable, {
-            "Durable", "amqp.queue.queue-query-result.durable",
+            "Durable", "amqp_queue_queue-query-result_durable",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x04,
             "Queue is durable", HFILL}},
         {&hf_amqp_0_10_struct_queue_query_result_exclusive, {
-            "Exclusive", "amqp.queue.queue-query-result.exclusive",
+            "Exclusive", "amqp_queue_queue-query-result_exclusive",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x08,
             "Queue created exclusive-use", HFILL}},
         {&hf_amqp_0_10_struct_queue_query_result_auto_delete, {
-            "Auto-delete", "amqp.queue.queue-query-result.auto-delete",
+            "Auto-delete", "amqp_queue_queue-query-result_auto-delete",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x10,
             "Queue created auto-delete", HFILL}},
         {&hf_amqp_0_10_struct_queue_query_result_message_count, {
-            "Message-count", "amqp.queue.queue-query-result.message-count",
+            "Message-count", "amqp_queue_queue-query-result_message-count",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Number of messages in the queue", HFILL}},
         {&hf_amqp_0_10_struct_queue_query_result_subscriber_count, {
-            "Subscriber-count", "amqp.queue.queue-query-result.subscriber-count",
+            "Subscriber-count", "amqp_queue_queue-query-result_subscriber-count",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Number of subscribers for the queue", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_content_type, {
-            "Content-type", "amqp.file.file-properties.content-type",
+            "Content-type", "amqp_file_file-properties_content-type",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "MIME content type", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_content_encoding, {
-            "Content-encoding", "amqp.file.file-properties.content-encoding",
+            "Content-encoding", "amqp_file_file-properties_content-encoding",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "MIME content encoding", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_headers, {
-            "Headers", "amqp.file.file-properties.headers",
+            "Headers", "amqp_file_file-properties_headers",
             FT_NONE, BASE_NONE, NULL, 0,
             "Message header fields", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_priority, {
-            "Priority", "amqp.file.file-properties.priority",
+            "Priority", "amqp_file_file-properties_priority",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Message priority, 0 to 9", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_reply_to, {
-            "Reply-to", "amqp.file.file-properties.reply-to",
+            "Reply-to", "amqp_file_file-properties_reply-to",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "Destination to reply to", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_message_id, {
-            "Message-id", "amqp.file.file-properties.message-id",
+            "Message-id", "amqp_file_file-properties_message-id",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "Application message identifier", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_filename, {
-            "Filename", "amqp.file.file-properties.filename",
+            "Filename", "amqp_file_file-properties_filename",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "Message filename", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_timestamp, {
-            "Timestamp", "amqp.file.file-properties.timestamp",
+            "Timestamp", "amqp_file_file-properties_timestamp",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
             "Message timestamp", HFILL}},
         {&hf_amqp_0_10_struct_file_properties_cluster_id, {
-            "Cluster-id", "amqp.file.file-properties.cluster-id",
+            "Cluster-id", "amqp_file_file-properties_cluster-id",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "Intra-cluster routing identifier", HFILL}},
         {&hf_amqp_0_10_struct_stream_properties_content_type, {
-            "Content-type", "amqp.stream.stream-properties.content-type",
+            "Content-type", "amqp_stream_stream-properties_content-type",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "MIME content type", HFILL}},
         {&hf_amqp_0_10_struct_stream_properties_content_encoding, {
-            "Content-encoding", "amqp.stream.stream-properties.content-encoding",
+            "Content-encoding", "amqp_stream_stream-properties_content-encoding",
             FT_UINT_STRING, BASE_NONE, NULL, 0x0,
             "MIME content encoding", HFILL}},
         {&hf_amqp_0_10_struct_stream_properties_headers, {
-            "Headers", "amqp.stream.stream-properties.headers",
+            "Headers", "amqp_stream_stream-properties_headers",
             FT_NONE, BASE_NONE, NULL, 0,
             "Message header fields", HFILL}},
         {&hf_amqp_0_10_struct_stream_properties_priority, {
-            "Priority", "amqp.stream.stream-properties.priority",
+            "Priority", "amqp_stream_stream-properties_priority",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Message priority, 0 to 9", HFILL}},
         {&hf_amqp_0_10_struct_stream_properties_timestamp, {
-            "Timestamp", "amqp.stream.stream-properties.timestamp",
+            "Timestamp", "amqp_stream_stream-properties_timestamp",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
             "Message timestamp", HFILL}},
         {&hf_amqp_0_10_argument_packing_flags, {
-            "Packing Flags", "amqp.struct.packing",
+            "Packing Flags", "amqp_struct_packing",
             FT_UINT16, BASE_HEX, NULL, 0xffff,
             "Argument Struct Packing Flags", HFILL}},
         {&hf_amqp_0_10_session_header, {
-            "Session header", "amqp.session.header",
+            "Session header", "amqp_session_header",
             FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_session_header_sync, {
-            "Sync", "amqp.session.header.sync",
+            "Sync", "amqp_session_header_sync",
             FT_BOOLEAN, 8, TFS(&amqp_0_10_session_header_sync), 0x01,
             "Sync requested", HFILL}},
         {&hf_amqp_0_10_method_session_attach_name, {
-            "Session Name", "amqp.session.attach.name",
+            "Session Name", "amqp_session_attach_name",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_session_attach_name_size, {
-            "Size", "amqp.session.attach.name.size",
+            "Size", "amqp_session_attach_name_size",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_session_attach_force, {
-            "Session forced", "amqp.session.attach.force",
+            "Session forced", "amqp_session_attach_force",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_session_detached_code, {
-            "Code", "amqp.session.detached.code",
+            "Code", "amqp_session_detached_code",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_method_session_detached_codes), 0x0,
             "Reason for detach", HFILL}},
         {&hf_amqp_0_10_method_session_timeout, {
-            "Timeout", "amqp.session.timeout",
+            "Timeout", "amqp_session_timeout",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Session timeout (seconds)", HFILL}},
         {&hf_amqp_0_10_method_session_completed_timely, {
-            "Timely-reply", "amqp.session.completed.timely-reply",
+            "Timely-reply", "amqp_session_completed_timely-reply",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Timely reply requested", HFILL}},
         {&hf_amqp_0_10_method_session_flush_expected, {
-            "Expected", "amqp.session.flush.expected",
+            "Expected", "amqp_session_flush_expected",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x01,
             "Request notification of expected commands", HFILL}},
         {&hf_amqp_0_10_method_session_flush_confirmed, {
-            "Confirmed", "amqp.session.flush.confirmed",
+            "Confirmed", "amqp_session_flush_confirmed",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02,
             "Request notification of confirmed commands", HFILL}},
         {&hf_amqp_0_10_method_session_flush_completed, {
-            "Completed", "amqp.session.flush.completed",
+            "Completed", "amqp_session_flush_completed",
             FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x04,
             "Request notification of completed commands", HFILL}},
         {&hf_amqp_0_10_method_session_command_point_id, {
-            "Command-id", "amqp.session.command_point.command_id",
+            "Command-id", "amqp_session_command_point_command_id",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Next command's sequence number", HFILL}},
         {&hf_amqp_0_10_method_session_command_point_offset, {
-            "Command-offset", "amqp.session.command_point.command_offset",
+            "Command-offset", "amqp_session_command_point_command_offset",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Byte offset within command", HFILL}},
         {&hf_amqp_0_10_method_session_commands, {
-            "Commands", "amqp.session.expected.commands",
+            "Commands", "amqp_session_expected_commands",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Command set", HFILL}},
         {&hf_amqp_0_10_method_session_fragments, {
-            "Fragments", "amqp.session.expected.fragments",
+            "Fragments", "amqp_session_expected_fragments",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Command Fragments", HFILL}},
         {&hf_amqp_0_10_method_execution_command_id, {
-            "Command-id", "amqp.execution.command_id",
+            "Command-id", "amqp_execution_command_id",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Command's sequence number", HFILL}},
         {&hf_amqp_0_10_method_execution_exception_error, {
-            "Error-code", "amqp.execution.exception.error-code",
+            "Error-code", "amqp_execution_exception_error-code",
             FT_UINT16, BASE_DEC, VALS(amqp_0_10_method_execution_exception_errors), 0x0,
             "Exception error code", HFILL}},
         {&hf_amqp_0_10_method_execution_field_index, {
-            "Field-index", "amqp.execution.exception.field-index",
+            "Field-index", "amqp_execution_exception_field-index",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "0-based index of exceptional field", HFILL}},
         {&hf_amqp_0_10_method_execution_description, {
-            "Description", "amqp.execution.exception.description",
+            "Description", "amqp_execution_exception_description",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Description of exception", HFILL}},
         {&hf_amqp_0_10_method_execution_error_info, {
-            "Error-info", "amqp.execution.exception.error-info",
+            "Error-info", "amqp_execution_exception_error-info",
             FT_NONE, BASE_NONE, NULL, 0,
             "client-properties", HFILL}},
         {&hf_amqp_0_10_method_message_transfer_destination, {
-            "Description", "amqp.message.transfer.destination",
+            "Description", "amqp_message_transfer_destination",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Message destination", HFILL}},
         {&hf_amqp_0_10_method_message_transfer_accept_mode, {
-            "Accept-mode", "amqp.message.transfer.accept-mode",
+            "Accept-mode", "amqp_message_transfer_accept-mode",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_message_transfer_accept_modes), 0x0,
             "Message accept mode", HFILL}},
         {&hf_amqp_0_10_method_message_transfer_acquire_mode, {
-            "Acquire-mode", "amqp.message.transfer.acquire-mode",
+            "Acquire-mode", "amqp_message_transfer_acquire-mode",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_message_transfer_acquire_modes), 0x0,
             "Message acquire mode", HFILL}},
         {&hf_amqp_0_10_method_message_accept_transfers, {
-            "Commands", "amqp.message.accept.transfers",
+            "Commands", "amqp_message_accept_transfers",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Previously transferred messages", HFILL}},
         {&hf_amqp_0_10_method_message_transfer_reject_code, {
-            "Reject-code", "amqp.message.reject.reject-code",
+            "Reject-code", "amqp_message_reject_reject-code",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_message_transfer_reject_codes), 0x0,
             "Message reject code", HFILL}},
         {&hf_amqp_0_10_method_message_reject_text, {
-            "Text", "amqp.message.reject.text",
+            "Text", "amqp_message_reject_text",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Reject description", HFILL}},
         {&hf_amqp_0_10_method_message_release_set_redelivered, {
-            "Set-redelivered", "amqp.message.release.set-redelivered",
+            "Set-redelivered", "amqp_message_release_set-redelivered",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Mark redelivered on next transfer from queue", HFILL}},
         {&hf_amqp_0_10_method_message_dest, {
-            "Destination", "amqp.message.destination",
+            "Destination", "amqp_message_destination",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Message destination", HFILL}},
         {&hf_amqp_0_10_method_message_resume_id, {
-            "Resume-Id", "amqp.message.resume.id",
+            "Resume-Id", "amqp_message_resume_id",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Message id to resume", HFILL}},
         {&hf_amqp_0_10_method_message_subscribe_queue, {
-            "Queue", "amqp.message.subscribe.queue",
+            "Queue", "amqp_message_subscribe_queue",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Queue to subscribe to", HFILL}},
         {&hf_amqp_0_10_method_message_subscribe_exclusive, {
-            "Exclusive", "amqp.message.subscribe.exclusive",
+            "Exclusive", "amqp_message_subscribe_exclusive",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x10,
             "Request exclusive subscription", HFILL}},
         {&hf_amqp_0_10_method_message_subscribe_resume_ttl, {
-            "Resume-ttl", "amqp.message.subscribe.resume_ttl",
+            "Resume-ttl", "amqp_message_subscribe_resume_ttl",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "TTL to use when resuming", HFILL}},
         {&hf_amqp_0_10_method_message_subscribe_args, {
-            "Extended arguments", "amqp.message.subscribe.arguments",
+            "Extended arguments", "amqp_message_subscribe_arguments",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Implementation-specific arguments", HFILL}},
         {&hf_amqp_0_10_method_message_flow_mode, {
-            "Flow-mode", "amqp.message.flow-mode",
+            "Flow-mode", "amqp_message_flow-mode",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_message_flow_modes), 0x0,
             "Method for allocating message flow credit", HFILL}},
         {&hf_amqp_0_10_method_message_credit_unit, {
-            "Credit-unit", "amqp.message.flow.credit-unit",
+            "Credit-unit", "amqp_message_flow_credit-unit",
             FT_UINT8, BASE_DEC, VALS(amqp_0_10_message_credit_units), 0x0,
             "Unit of message flow value", HFILL}},
         {&hf_amqp_0_10_method_message_credit_value, {
-            "Value", "amqp.message.flow.value",
+            "Value", "amqp_message_flow_value",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Message flow value", HFILL}},
         {&hf_amqp_0_10_method_dtx_start_join, {
-            "Join", "amqp.dtx.start.join",
+            "Join", "amqp_dtx_start_join",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Join with existing xid", HFILL}},
         {&hf_amqp_0_10_method_dtx_start_resume, {
-            "Resume", "amqp.dtx.start.resume",
+            "Resume", "amqp_dtx_start_resume",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x04,
             "Resume suspended transaction", HFILL}},
         {&hf_amqp_0_10_method_dtx_end_fail, {
-            "Fail", "amqp.dtx.end.fail",
+            "Fail", "amqp_dtx_end_fail",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "This portion of work has failed", HFILL}},
         {&hf_amqp_0_10_method_dtx_end_suspend, {
-            "Suspend", "amqp.dtx.end.suspend",
+            "Suspend", "amqp_dtx_end_suspend",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x04,
             "Temporarily suspending transaction", HFILL}},
         {&hf_amqp_0_10_method_dtx_commit_one_phase, {
-            "One-phase", "amqp.dtx.commit.one-phase",
+            "One-phase", "amqp_dtx_commit_one-phase",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Use one-phase optimization", HFILL}},
         {&hf_amqp_0_10_method_dtx_set_timeout_timeout, {
-            "Timeout", "amqp.dtx.set-timeout.timeout",
+            "Timeout", "amqp_dtx_set-timeout_timeout",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Transaction timeout value in seconds", HFILL}},
         {&hf_amqp_0_10_method_exchange_declare_exchange, {
-            "Exchange", "amqp.exchange.declare.exchange",
+            "Exchange", "amqp_exchange_declare_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Exchange to declare", HFILL}},
         {&hf_amqp_0_10_method_exchange_declare_type, {
-            "Type", "amqp.exchange.declare.type",
+            "Type", "amqp_exchange_declare_type",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Type of exchange to declare", HFILL}},
         {&hf_amqp_0_10_method_exchange_declare_alt_exchange, {
-            "Alternate-exchange", "amqp.exchange.declare.alternate-exchange",
+            "Alternate-exchange", "amqp_exchange_declare_alternate-exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Alternate exchange for unroutable messages", HFILL}},
         {&hf_amqp_0_10_method_exchange_declare_passive, {
-            "Passive", "amqp.exchange.declare.passive",
+            "Passive", "amqp_exchange_declare_passive",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x08,
             "Do not create the exchange", HFILL}},
         {&hf_amqp_0_10_method_exchange_declare_durable, {
-            "Durable", "amqp.exchange.declare.durable",
+            "Durable", "amqp_exchange_declare_durable",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x10,
             "Create a durable exchange", HFILL}},
         {&hf_amqp_0_10_method_exchange_declare_auto_delete, {
-            "Auto-delete", "amqp.exchange.declare.auto-delete",
+            "Auto-delete", "amqp_exchange_declare_auto-delete",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x20,
             "Delete exchange when last binding removed", HFILL}},
         {&hf_amqp_0_10_method_exchange_declare_arguments, {
-            "Arguments", "amqp.exchange.declare.arguments",
+            "Arguments", "amqp_exchange_declare_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             "Declaration arguments", HFILL}},
         {&hf_amqp_0_10_method_exchange_delete_if_unused, {
-            "If-unused", "amqp.exchange.delete.if-unused",
+            "If-unused", "amqp_exchange_delete_if-unused",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Delete exchange only if it has no queue bindings", HFILL}},
         {&hf_amqp_0_10_method_exchange_bind_queue, {
-            "Queue", "amqp.exchange.bind.queue",
+            "Queue", "amqp_exchange_bind_queue",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Queue to bind to", HFILL}},
         {&hf_amqp_0_10_method_exchange_binding_key, {
-            "Binding-key", "amqp.exchange.bind.binding-key",
+            "Binding-key", "amqp_exchange_bind_binding-key",
             FT_STRING, BASE_NONE, NULL, 0,
             "Binding between exchange and queue", HFILL}},
         {&hf_amqp_0_10_method_queue_name, {
-            "Queue", "amqp.queue.declare.queue",
+            "Queue", "amqp_queue_declare_queue",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Queue name", HFILL}},
         {&hf_amqp_0_10_method_queue_alt_exchange, {
-            "Alternate-exchange", "amqp.queue.declare.alternate-exchange",
+            "Alternate-exchange", "amqp_queue_declare_alternate-exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_queue_declare_passive, {
-            "Passive", "amqp.queue.declare.passive",
+            "Passive", "amqp_queue_declare_passive",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x04,
             "Do not create the queue", HFILL}},
         {&hf_amqp_0_10_method_queue_declare_durable, {
-            "Durable", "amqp.queue.declare.durable",
+            "Durable", "amqp_queue_declare_durable",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x08,
             "Create a durable queue", HFILL}},
         {&hf_amqp_0_10_method_queue_declare_exclusive, {
-            "Exclusive", "amqp.queue.declare.exclusive",
+            "Exclusive", "amqp_queue_declare_exclusive",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x10,
             "Create a queue usable from only one session", HFILL}},
         {&hf_amqp_0_10_method_queue_declare_auto_delete, {
-            "Auto-delete", "amqp.queue.declare.auto-delete",
+            "Auto-delete", "amqp_queue_declare_auto-delete",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x20,
             "Delete queue when all uses completed", HFILL}},
         {&hf_amqp_0_10_method_queue_declare_arguments, {
-            "Arguments", "amqp.queue.declare.arguments",
+            "Arguments", "amqp_queue_declare_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             "Declaration arguments", HFILL}},
         {&hf_amqp_0_10_method_queue_delete_if_unused, {
-            "If-unused", "amqp.queue.delete.if-unused",
+            "If-unused", "amqp_queue_delete_if-unused",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x02,
             "Delete the queue only if there are no consumers", HFILL}},
         {&hf_amqp_0_10_method_queue_delete_if_empty, {
-            "If-empty", "amqp.queue.delete.if-empty",
+            "If-empty", "amqp_queue_delete_if-empty",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04,
             "Delete queue only if empty", HFILL}},
         {&hf_amqp_0_10_method_file_qos_prefetch_size, {
-            "Prefetch-size", "amqp.file.qos.prefetch-size",
+            "Prefetch-size", "amqp_file_qos_prefetch-size",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Pre-fetch window size in octets", HFILL}},
         {&hf_amqp_0_10_method_file_qos_prefetch_count, {
-            "Prefetch-count", "amqp.file.qos.prefetch-count",
+            "Prefetch-count", "amqp_file_qos_prefetch-count",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Pre-fetch window size in messages", HFILL}},
         {&hf_amqp_0_10_method_file_qos_global, {
-            "Global", "amqp.file.qos.global",
+            "Global", "amqp_file_qos_global",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04,
             "Apply QoS to entire connection", HFILL}},
         {&hf_amqp_0_10_method_file_consumer_tag, {
-            "Consumer-tag", "amqp.file.consumer-tag",
+            "Consumer-tag", "amqp_file_consumer-tag",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Consumer tag", HFILL}},
         {&hf_amqp_0_10_method_file_consume_no_local, {
-            "No-local", "amqp.file.consume.no-local",
+            "No-local", "amqp_file_consume_no-local",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04,
             "Don't send messages to connection that publishes them", HFILL}},
         {&hf_amqp_0_10_method_file_consume_no_ack, {
-            "No-ack", "amqp.file.consume.no-ack",
+            "No-ack", "amqp_file_consume_no-ack",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x08,
             "No acknowledgement needed", HFILL}},
         {&hf_amqp_0_10_method_file_consume_exclusive, {
-            "Exclusive", "amqp.file.consume.exclusive",
+            "Exclusive", "amqp_file_consume_exclusive",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x10,
             "Request exclusive access", HFILL}},
         {&hf_amqp_0_10_method_file_consume_nowait, {
-            "Nowait", "amqp.file.consume.nowait",
+            "Nowait", "amqp_file_consume_nowait",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x20,
             "Do not send a reply", HFILL}},
         {&hf_amqp_0_10_method_file_consume_arguments, {
-            "Arguments", "amqp.file.consume.arguments",
+            "Arguments", "amqp_file_consume_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             "Arguments for consuming", HFILL}},
         {&hf_amqp_0_10_method_file_identifier, {
-            "Identifier", "amqp.file.identifier",
+            "Identifier", "amqp_file_identifier",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Staging identifier", HFILL}},
         {&hf_amqp_0_10_method_file_open_content_size, {
-            "Content-size", "amqp.file.open.content-size",
+            "Content-size", "amqp_file_open_content-size",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Message content size in octets", HFILL}},
         {&hf_amqp_0_10_method_file_open_ok_staged_size, {
-            "Staged-size", "amqp.file.open_ok.staged-size",
+            "Staged-size", "amqp_file_open_ok_staged-size",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Amount of previously staged content in octets", HFILL}},
         {&hf_amqp_0_10_method_file_publish_exchange, {
-            "Exchange", "amqp.file.publish.exchange",
+            "Exchange", "amqp_file_publish_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Exchange to publish to", HFILL}},
         {&hf_amqp_0_10_method_file_publish_routing_key, {
-            "Routing-key", "amqp.file.publish.routing-key",
+            "Routing-key", "amqp_file_publish_routing-key",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Message routing key", HFILL}},
         {&hf_amqp_0_10_method_file_publish_mandatory, {
-            "Mandatory", "amqp.file.publish.mandatory",
+            "Mandatory", "amqp_file_publish_mandatory",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04,
             "Mandatory routing", HFILL}},
         {&hf_amqp_0_10_method_file_publish_immediate, {
-            "Immediate", "amqp.file.publish.immediate",
+            "Immediate", "amqp_file_publish_immediate",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x08,
             "Request immediate delivery", HFILL}},
         {&hf_amqp_0_10_method_file_return_reply_code, {
-            "Reply-code", "amqp.file.return.reply-code",
+            "Reply-code", "amqp_file_return_reply-code",
             FT_UINT16, BASE_DEC, VALS(amqp_0_10_file_return_codes), 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_file_return_reply_text, {
-            "Reply-text", "amqp.file.return.reply-text",
+            "Reply-text", "amqp_file_return_reply-text",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Localized reply text", HFILL}},
         {&hf_amqp_0_10_method_file_return_exchange, {
-            "Exchange", "amqp.file.return.exchange",
+            "Exchange", "amqp_file_return_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Exchange the original message was published to", HFILL}},
         {&hf_amqp_0_10_method_file_return_routing_key, {
-            "Routing-key", "amqp.file.return.routing-key",
+            "Routing-key", "amqp_file_return_routing-key",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Message routing key", HFILL}},
         {&hf_amqp_0_10_method_file_deliver_consumer_tag, {
-            "Consumer-tag", "amqp.file.deliver.consumer-tag",
+            "Consumer-tag", "amqp_file_deliver_consumer-tag",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_file_deliver_delivery_tag, {
-            "Delivery-tag", "amqp.file.deliver.delivery-tag",
+            "Delivery-tag", "amqp_file_deliver_delivery-tag",
             FT_UINT64, BASE_HEX, NULL, 0,
             "Server-assigned, session-specific delivery tag", HFILL}},
         {&hf_amqp_0_10_method_file_deliver_redelivered, {
-            "Redelivered", "amqp.file.deliver.redelivered",
+            "Redelivered", "amqp_file_deliver_redelivered",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x04,
             "Possible duplicate delivery", HFILL}},
         {&hf_amqp_0_10_method_file_deliver_exchange, {
-            "Exchange", "amqp.file.deliver.exchange",
+            "Exchange", "amqp_file_deliver_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Exchange the original message was published to", HFILL}},
         {&hf_amqp_0_10_method_file_deliver_routing_key, {
-            "Routing-key", "amqp.file.deliver.routing-key",
+            "Routing-key", "amqp_file_deliver_routing-key",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Message routing key", HFILL}},
         {&hf_amqp_0_10_method_file_ack_delivery_tag, {
-            "Delivery-tag", "amqp.file.ack.delivery-tag",
+            "Delivery-tag", "amqp_file_ack_delivery-tag",
             FT_UINT64, BASE_HEX, NULL, 0,
             "Identifier of message being acknowledged", HFILL}},
         {&hf_amqp_0_10_method_file_ack_multiple, {
-            "Multiple", "amqp.file.ack.multiple",
+            "Multiple", "amqp_file_ack_multiple",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x02,
             "Acknowledge multiple messages", HFILL}},
         {&hf_amqp_0_10_method_file_reject_delivery_tag, {
-            "Delivery-tag", "amqp.file.reject.delivery-tag",
+            "Delivery-tag", "amqp_file_reject_delivery-tag",
             FT_UINT64, BASE_HEX, NULL, 0,
             "Identifier of message to be rejected", HFILL}},
         {&hf_amqp_0_10_method_file_reject_requeue, {
-            "Requeue", "amqp.file.reject.requeue",
+            "Requeue", "amqp_file_reject_requeue",
             FT_BOOLEAN, 8, TFS(&tfs_yes_no), 0x02,
             "Requeue the message", HFILL}},
         {&hf_amqp_0_10_method_stream_qos_prefetch_size, {
-            "Prefetch-size", "amqp.stream.qos.prefetch-size",
+            "Prefetch-size", "amqp_stream_qos_prefetch-size",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Pre-fetch window size in octets", HFILL}},
         {&hf_amqp_0_10_method_stream_qos_prefetch_count, {
-            "Prefetch-count", "amqp.stream.qos.prefetch-count",
+            "Prefetch-count", "amqp_stream_qos_prefetch-count",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Pre-fetch window size in messages", HFILL}},
 #if 0
         {&hf_amqp_0_10_method_stream_qos_consume_rate, {
-            "Prefetch-size", "amqp.stream.qos.consume_rate",
+            "Prefetch-size", "amqp_stream_qos_consume_rate",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Desired transfer rate in octets/second", HFILL}},
 #endif
         {&hf_amqp_0_10_method_stream_qos_global, {
-            "Global", "amqp.stream.qos.global",
+            "Global", "amqp_stream_qos_global",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x08,
             "Apply QoS to entire connection", HFILL}},
         {&hf_amqp_0_10_method_stream_consumer_tag, {
-            "Consumer-tag", "amqp.stream.consumer-tag",
+            "Consumer-tag", "amqp_stream_consumer-tag",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_stream_consume_no_local, {
-            "No-local", "amqp.stream.consume.no-local",
+            "No-local", "amqp_stream_consume_no-local",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04,
             "Don't send messages to connection that publishes them", HFILL}},
         {&hf_amqp_0_10_method_stream_consume_exclusive, {
-            "Exclusive", "amqp.stream.consume.exclusive",
+            "Exclusive", "amqp_stream_consume_exclusive",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x08,
             "Request exclusive access", HFILL}},
         {&hf_amqp_0_10_method_stream_consume_nowait, {
-            "Nowait", "amqp.stream.consume.nowait",
+            "Nowait", "amqp_stream_consume_nowait",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x10,
             "Do not send a reply", HFILL}},
         {&hf_amqp_0_10_method_stream_consume_arguments, {
-            "Arguments", "amqp.stream.consume.arguments",
+            "Arguments", "amqp_stream_consume_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             "Arguments for consuming", HFILL}},
         {&hf_amqp_0_10_method_stream_publish_exchange, {
-            "Exchange", "amqp.stream.publish.exchange",
+            "Exchange", "amqp_stream_publish_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Exchange to publish to", HFILL}},
         {&hf_amqp_0_10_method_stream_publish_routing_key, {
-            "Routing-key", "amqp.stream.publish.routing-key",
+            "Routing-key", "amqp_stream_publish_routing-key",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Message routing key", HFILL}},
         {&hf_amqp_0_10_method_stream_publish_mandatory, {
-            "Mandatory", "amqp.stream.publish.mandatory",
+            "Mandatory", "amqp_stream_publish_mandatory",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04,
             "Mandatory routing", HFILL}},
         {&hf_amqp_0_10_method_stream_publish_immediate, {
-            "Immediate", "amqp.stream.publish.immediate",
+            "Immediate", "amqp_stream_publish_immediate",
             FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x08,
             "Request immediate delivery", HFILL}},
         {&hf_amqp_0_10_method_stream_return_reply_code, {
-            "Reply-code", "amqp.stream.return.reply-code",
+            "Reply-code", "amqp_stream_return_reply-code",
             FT_UINT16, BASE_DEC, VALS(amqp_0_10_stream_return_codes), 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_stream_return_reply_text, {
-            "Reply-text", "amqp.stream.return.reply-text",
+            "Reply-text", "amqp_stream_return_reply-text",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Localized reply text", HFILL}},
         {&hf_amqp_0_10_method_stream_return_exchange, {
-            "Exchange", "amqp.stream.return.exchange",
+            "Exchange", "amqp_stream_return_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Exchange the original message was published to", HFILL}},
         {&hf_amqp_0_10_method_stream_return_routing_key, {
-            "Routing-key", "amqp.stream.return.routing-key",
+            "Routing-key", "amqp_stream_return_routing-key",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Message routing key", HFILL}},
         {&hf_amqp_0_10_method_stream_deliver_consumer_tag, {
-            "Consumer-tag", "amqp.stream.deliver.consumer-tag",
+            "Consumer-tag", "amqp_stream_deliver_consumer-tag",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_stream_deliver_delivery_tag, {
-            "Delivery-tag", "amqp.stream.deliver.delivery-tag",
+            "Delivery-tag", "amqp_stream_deliver_delivery-tag",
             FT_UINT64, BASE_HEX, NULL, 0,
             "Server-assigned, session-specific delivery tag", HFILL}},
         {&hf_amqp_0_10_method_stream_deliver_exchange, {
-            "Exchange", "amqp.stream.deliver.exchange",
+            "Exchange", "amqp_stream_deliver_exchange",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Exchange the original message was published to", HFILL}},
         {&hf_amqp_0_10_method_stream_deliver_queue, {
-            "Queue", "amqp.stream.deliver.queue",
+            "Queue", "amqp_stream_deliver_queue",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             "Name of the queue the message came from", HFILL}},
         {&hf_amqp_channel, {
-            "Channel", "amqp.channel",
+            "Channel", "amqp_channel",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             "Channel ID", HFILL}},
         {&hf_amqp_reserved, {
-            "Reserved", "amqp.reserved",
+            "Reserved", "amqp_reserved",
             FT_UINT32, BASE_HEX, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_0_9_type, {
-            "Type", "amqp.type",
+            "Type", "amqp_type",
             FT_UINT8, BASE_DEC, VALS(amqp_0_9_frame_types), 0x0,
             "Frame type", HFILL}},
         {&hf_amqp_0_9_length, {
-            "Length", "amqp.length",
+            "Length", "amqp_length",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Length of the frame", HFILL}},
         {&hf_amqp_0_9_method_class_id, {
-            "Class", "amqp.method.class",
+            "Class", "amqp_method_class",
             FT_UINT16, BASE_DEC, VALS(amqp_0_9_method_classes), 0x0,
             "Class ID", HFILL}},
         {&hf_amqp_method_connection_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_connection_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_channel_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_channel_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_access_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_access_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_exchange_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_exchange_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_queue_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_queue_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_basic_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_basic_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_file_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_file_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_stream_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_stream_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_tx_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_tx_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_dtx_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_dtx_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_tunnel_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_tunnel_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_confirm_method_id, {
-            "Method", "amqp.method.method",
+            "Method", "amqp_method_method",
             FT_UINT16, BASE_DEC, VALS(amqp_method_confirm_methods), 0x0,
             "Method ID", HFILL}},
         {&hf_amqp_method_arguments, {
-            "Arguments", "amqp.method.arguments",
+            "Arguments", "amqp_method_arguments",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Method arguments", HFILL}},
         {&hf_amqp_method_connection_start_version_major, {
-            "Version-Major", "amqp.method.arguments.version_major",
+            "Version-Major", "amqp_method_arguments_version_major",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_start_version_minor, {
-            "Version-Minor", "amqp.method.arguments.version_minor",
+            "Version-Minor", "amqp_method_arguments_version_minor",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_start_server_properties, {
-            "Server-Properties", "amqp.method.arguments.server_properties",
+            "Server-Properties", "amqp_method_arguments_server_properties",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_9_method_connection_start_mechanisms, {
-            "Mechanisms", "amqp.method.arguments.mechanisms",
+            "Mechanisms", "amqp_method_arguments_mechanisms",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_start_mechanisms, {
-            "Mechanisms", "amqp.method.arguments.mechanisms",
+            "Mechanisms", "amqp_method_arguments_mechanisms",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Supported security mechanisms", HFILL}},
         {&hf_amqp_0_9_method_connection_start_locales, {
-            "Locales", "amqp.method.arguments.locales",
+            "Locales", "amqp_method_arguments_locales",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_start_locales, {
-            "Locales", "amqp.method.arguments.locales",
+            "Locales", "amqp_method_arguments_locales",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Supported message locales", HFILL}},
         {&hf_amqp_method_connection_start_ok_client_properties, {
-            "Client-Properties", "amqp.method.arguments.client_properties",
+            "Client-Properties", "amqp_method_arguments_client_properties",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_start_ok_mechanism, {
-            "Mechanism", "amqp.method.arguments.mechanism",
+            "Mechanism", "amqp_method_arguments_mechanism",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_start_ok_response, {
-            "Response", "amqp.method.arguments.response",
+            "Response", "amqp_method_arguments_response",
             FT_UINT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_start_ok_locale, {
-            "Locale", "amqp.method.arguments.locale",
+            "Locale", "amqp_method_arguments_locale",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_secure_challenge, {
-            "Challenge", "amqp.method.arguments.challenge",
+            "Challenge", "amqp_method_arguments_challenge",
             FT_UINT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_secure_ok_response, {
-            "Response", "amqp.method.arguments.response",
+            "Response", "amqp_method_arguments_response",
             FT_UINT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_tune_channel_max, {
-            "Channel-Max", "amqp.method.arguments.channel_max",
+            "Channel-Max", "amqp_method_arguments_channel_max",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_9_method_connection_tune_frame_max, {
-            "Frame-Max", "amqp.method.arguments.frame_max",
+            "Frame-Max", "amqp_method_arguments_frame_max",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_tune_frame_max, {
-            "Frame-Max", "amqp.method.arguments.frame_max",
+            "Frame-Max", "amqp_method_arguments_frame_max",
             FT_UINT16, BASE_DEC, NULL, 0,
             "Server-proposed maximum frame size", HFILL}},
         {&hf_amqp_0_9_method_connection_tune_heartbeat, {
-            "Heartbeat", "amqp.method.arguments.heartbeat",
+            "Heartbeat", "amqp_method_arguments_heartbeat",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_tune_heartbeat_min, {
-            "Heartbeat-Min", "amqp.method.arguments.heartbeat_min",
+            "Heartbeat-Min", "amqp_method_arguments_heartbeat_min",
              FT_UINT16, BASE_DEC, NULL, 0,
             "Minimum heartbeat delay (seconds)", HFILL}},
         {&hf_amqp_0_10_method_connection_tune_heartbeat_max, {
-            "Heartbeat-Max", "amqp.method.arguments.heartbeat_max",
+            "Heartbeat-Max", "amqp_method_arguments_heartbeat_max",
              FT_UINT16, BASE_DEC, NULL, 0,
             "Maximum heartbeat delay (seconds)", HFILL}},
         {&hf_amqp_method_connection_tune_ok_channel_max, {
-            "Channel-Max", "amqp.method.arguments.channel_max",
+            "Channel-Max", "amqp_method_arguments_channel_max",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_9_method_connection_tune_ok_frame_max, {
-            "Frame-Max", "amqp.method.arguments.frame_max",
+            "Frame-Max", "amqp_method_arguments_frame_max",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_tune_ok_frame_max, {
-            "Frame-Max", "amqp.method.arguments.frame_max",
+            "Frame-Max", "amqp_method_arguments_frame_max",
             FT_UINT16, BASE_DEC, NULL, 0,
             "Negotiated maximum frame size", HFILL}},
         {&hf_amqp_method_connection_tune_ok_heartbeat, {
-            "Heartbeat", "amqp.method.arguments.heartbeat",
+            "Heartbeat", "amqp_method_arguments_heartbeat",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_open_virtual_host, {
-            "Virtual-Host", "amqp.method.arguments.virtual_host",
+            "Virtual-Host", "amqp_method_arguments_virtual_host",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_9_method_connection_open_capabilities, {
-            "Capabilities", "amqp.method.arguments.capabilities",
+            "Capabilities", "amqp_method_arguments_capabilities",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_open_capabilities, {
-            "Capabilities", "amqp.method.arguments.capabilities",
+            "Capabilities", "amqp_method_arguments_capabilities",
             FT_STRING, BASE_NONE, NULL, 0,
             "Required capabilities", HFILL}},
         {&hf_amqp_0_9_method_connection_open_insist, {
-            "Insist", "amqp.method.arguments.insist",
+            "Insist", "amqp_method_arguments_insist",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_open_insist, {
-            "Insist", "amqp.method.arguments.insist",
+            "Insist", "amqp_method_arguments_insist",
             FT_BOOLEAN, 8, NULL, 0x04,
             "Client insists on this server", HFILL}},
         {&hf_amqp_0_9_method_connection_open_ok_known_hosts, {
-            "Known-Hosts", "amqp.method.arguments.known_hosts",
+            "Known-Hosts", "amqp_method_arguments_known_hosts",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_open_ok_known_hosts, {
-            "Known-Hosts", "amqp.method.arguments.known_hosts_bytes",
+            "Known-Hosts", "amqp_method_arguments_known_hosts_bytes",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Equivalent or alternate hosts for reconnection", HFILL}},
         {&hf_amqp_method_connection_redirect_host, {
-            "Host", "amqp.method.arguments.host",
+            "Host", "amqp_method_arguments_host",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_9_method_connection_redirect_known_hosts, {
-            "Known-Hosts", "amqp.method.arguments.known_hosts",
+            "Known-Hosts", "amqp_method_arguments_known_hosts",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_redirect_known_hosts, {
-            "Known-Hosts", "amqp.method.arguments.known_hosts_bytes",
+            "Known-Hosts", "amqp_method_arguments_known_hosts_bytes",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Equivalent or alternate hosts to redirect to", HFILL}},
         {&hf_amqp_0_9_method_connection_close_reply_code, {
-            "Reply-Code", "amqp.method.arguments.reply_code",
+            "Reply-Code", "amqp_method_arguments_reply_code",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_close_reply_code, {
-            "Reply-Code", "amqp.method.arguments.reply_code",
+            "Reply-Code", "amqp_method_arguments_reply_code",
              FT_UINT16, BASE_DEC,
             VALS(amqp_0_10_method_connection_close_reply_codes), 0,
             "Close reason", HFILL}},
         {&hf_amqp_method_connection_close_reply_text, {
-            "Reply-Text", "amqp.method.arguments.reply_text",
+            "Reply-Text", "amqp_method_arguments_reply_text",
             FT_UINT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_close_class_id, {
-            "Class-Id", "amqp.method.arguments.class_id",
+            "Class-Id", "amqp_method_arguments_class_id",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_close_method_id, {
-            "Method-Id", "amqp.method.arguments.method_id",
+            "Method-Id", "amqp_method_arguments_method_id",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_blocked_reason, {
-            "Reason", "amqp.method.arguments.reason",
+            "Reason", "amqp_method_arguments_reason",
              FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_channel_open_out_of_band, {
-            "Out-Of-Band", "amqp.method.arguments.out_of_band",
+            "Out-Of-Band", "amqp_method_arguments_out_of_band",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_channel_open_ok_channel_id, {
-            "Channel-Id", "amqp.method.arguments.channel_id",
+            "Channel-Id", "amqp_method_arguments_channel_id",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_channel_flow_active, {
-            "Active", "amqp.method.arguments.active",
+            "Active", "amqp_method_arguments_active",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_channel_flow_ok_active, {
-            "Active", "amqp.method.arguments.active",
+            "Active", "amqp_method_arguments_active",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_channel_close_reply_code, {
-            "Reply-Code", "amqp.method.arguments.reply_code",
+            "Reply-Code", "amqp_method_arguments_reply_code",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_channel_close_reply_text, {
-            "Reply-Text", "amqp.method.arguments.reply_text",
+            "Reply-Text", "amqp_method_arguments_reply_text",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_channel_close_class_id, {
-            "Class-Id", "amqp.method.arguments.class_id",
+            "Class-Id", "amqp_method_arguments_class_id",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_channel_close_method_id, {
-            "Method-Id", "amqp.method.arguments.method_id",
+            "Method-Id", "amqp_method_arguments_method_id",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_channel_resume_channel_id, {
-            "Channel-Id", "amqp.method.arguments.channel_id",
+            "Channel-Id", "amqp_method_arguments_channel_id",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_access_request_realm, {
-            "Realm", "amqp.method.arguments.realm",
+            "Realm", "amqp_method_arguments_realm",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_access_request_exclusive, {
-            "Exclusive", "amqp.method.arguments.exclusive",
+            "Exclusive", "amqp_method_arguments_exclusive",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_access_request_passive, {
-            "Passive", "amqp.method.arguments.passive",
+            "Passive", "amqp_method_arguments_passive",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_access_request_active, {
-            "Active", "amqp.method.arguments.active",
+            "Active", "amqp_method_arguments_active",
             FT_BOOLEAN, 8, NULL, 0x04,
             NULL, HFILL}},
         {&hf_amqp_method_access_request_write, {
-            "Write", "amqp.method.arguments.write",
+            "Write", "amqp_method_arguments_write",
             FT_BOOLEAN, 8, NULL, 0x08,
             NULL, HFILL}},
         {&hf_amqp_method_access_request_read, {
-            "Read", "amqp.method.arguments.read",
+            "Read", "amqp_method_arguments_read",
             FT_BOOLEAN, 8, NULL, 0x10,
             NULL, HFILL}},
         {&hf_amqp_method_access_request_ok_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_type, {
-            "Type", "amqp.method.arguments.type",
+            "Type", "amqp_method_arguments_type",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_passive, {
-            "Passive", "amqp.method.arguments.passive",
+            "Passive", "amqp_method_arguments_passive",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_durable, {
-            "Durable", "amqp.method.arguments.durable",
+            "Durable", "amqp_method_arguments_durable",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_auto_delete, {
-            "Auto-Delete", "amqp.method.arguments.auto_delete",
+            "Auto-Delete", "amqp_method_arguments_auto_delete",
             FT_BOOLEAN, 8, NULL, 0x04,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_internal, {
-            "Internal", "amqp.method.arguments.internal",
+            "Internal", "amqp_method_arguments_internal",
             FT_BOOLEAN, 8, NULL, 0x08,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x10,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_declare_arguments, {
-            "Arguments", "amqp.method.arguments.arguments",
+            "Arguments", "amqp_method_arguments_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_bind_destination, {
-            "Destination", "amqp.method.arguments.destination",
+            "Destination", "amqp_method_arguments_destination",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_bind_source, {
-            "Destination", "amqp.method.arguments.source",
+            "Destination", "amqp_method_arguments_source",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_bind_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_bind_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_bind_arguments, {
-            "Arguments", "amqp.method.arguments.arguments",
+            "Arguments", "amqp_method_arguments_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_delete_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_delete_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_delete_if_unused, {
-            "If-Unused", "amqp.method.arguments.if_unused",
+            "If-Unused", "amqp_method_arguments_if_unused",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_exchange_delete_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_passive, {
-            "Passive", "amqp.method.arguments.passive",
+            "Passive", "amqp_method_arguments_passive",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_durable, {
-            "Durable", "amqp.method.arguments.durable",
+            "Durable", "amqp_method_arguments_durable",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_exclusive, {
-            "Exclusive", "amqp.method.arguments.exclusive",
+            "Exclusive", "amqp_method_arguments_exclusive",
             FT_BOOLEAN, 8, NULL, 0x04,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_auto_delete, {
-            "Auto-Delete", "amqp.method.arguments.auto_delete",
+            "Auto-Delete", "amqp_method_arguments_auto_delete",
             FT_BOOLEAN, 8, NULL, 0x08,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x10,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_arguments, {
-            "Arguments", "amqp.method.arguments.arguments",
+            "Arguments", "amqp_method_arguments_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_ok_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_ok_message_count, {
-            "Message-Count", "amqp.method.arguments.message_count",
+            "Message-Count", "amqp_method_arguments_message_count",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_declare_ok_consumer_count, {
-            "Consumer-Count", "amqp.method.arguments.consumer_count",
+            "Consumer-Count", "amqp_method_arguments_consumer_count",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_bind_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_bind_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_bind_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_bind_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_bind_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_queue_bind_arguments, {
-            "Arguments", "amqp.method.arguments.arguments",
+            "Arguments", "amqp_method_arguments_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_unbind_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_unbind_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_unbind_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_unbind_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_unbind_arguments, {
-            "Arguments", "amqp.method.arguments.arguments",
+            "Arguments", "amqp_method_arguments_arguments",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_purge_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_purge_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_purge_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_queue_purge_ok_message_count, {
-            "Message-Count", "amqp.method.arguments.message_count",
+            "Message-Count", "amqp_method_arguments_message_count",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_delete_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_delete_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_queue_delete_if_unused, {
-            "If-Unused", "amqp.method.arguments.if_unused",
+            "If-Unused", "amqp_method_arguments_if_unused",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_queue_delete_if_empty, {
-            "If-Empty", "amqp.method.arguments.if_empty",
+            "If-Empty", "amqp_method_arguments_if_empty",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_queue_delete_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x04,
             NULL, HFILL}},
         {&hf_amqp_method_queue_delete_ok_message_count, {
-            "Message-Count", "amqp.method.arguments.message_count",
+            "Message-Count", "amqp_method_arguments_message_count",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_qos_prefetch_size, {
-            "Prefetch-Size", "amqp.method.arguments.prefetch_size",
+            "Prefetch-Size", "amqp_method_arguments_prefetch_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_qos_prefetch_count, {
-            "Prefetch-Count", "amqp.method.arguments.prefetch_count",
+            "Prefetch-Count", "amqp_method_arguments_prefetch_count",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_qos_global, {
-            "Global", "amqp.method.arguments.global",
+            "Global", "amqp_method_arguments_global",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_no_local, {
-            "No-Local", "amqp.method.arguments.no_local",
+            "No-Local", "amqp_method_arguments_no_local",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_no_ack, {
-            "No-Ack", "amqp.method.arguments.no_ack",
+            "No-Ack", "amqp_method_arguments_no_ack",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_exclusive, {
-            "Exclusive", "amqp.method.arguments.exclusive",
+            "Exclusive", "amqp_method_arguments_exclusive",
             FT_BOOLEAN, 8, NULL, 0x04,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x08,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_filter, {
-            "Filter", "amqp.method.arguments.filter",
+            "Filter", "amqp_method_arguments_filter",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_consume_ok_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_cancel_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_cancel_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_cancel_ok_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_publish_number, {
-            "Publish-Number", "amqp.method.arguments.publish_number",
+            "Publish-Number", "amqp_method_arguments_publish_number",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_publish_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_publish_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_publish_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_publish_mandatory, {
-            "Mandatory", "amqp.method.arguments.mandatory",
+            "Mandatory", "amqp_method_arguments_mandatory",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_publish_immediate, {
-            "Immediate", "amqp.method.arguments.immediate",
+            "Immediate", "amqp_method_arguments_immediate",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_basic_return_reply_code, {
-            "Reply-Code", "amqp.method.arguments.reply_code",
+            "Reply-Code", "amqp_method_arguments_reply_code",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_return_reply_text, {
-            "Reply-Text", "amqp.method.arguments.reply_text",
+            "Reply-Text", "amqp_method_arguments_reply_text",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_return_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_return_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_deliver_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_deliver_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_deliver_redelivered, {
-            "Redelivered", "amqp.method.arguments.redelivered",
+            "Redelivered", "amqp_method_arguments_redelivered",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_deliver_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_deliver_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_no_ack, {
-            "No-Ack", "amqp.method.arguments.no_ack",
+            "No-Ack", "amqp_method_arguments_no_ack",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_ok_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_ok_redelivered, {
-            "Redelivered", "amqp.method.arguments.redelivered",
+            "Redelivered", "amqp_method_arguments_redelivered",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_ok_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_ok_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_ok_message_count, {
-            "Message-Count", "amqp.method.arguments.message_count",
+            "Message-Count", "amqp_method_arguments_message_count",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_get_empty_cluster_id, {
-            "Cluster-Id", "amqp.method.arguments.cluster_id",
+            "Cluster-Id", "amqp_method_arguments_cluster_id",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_ack_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_ack_multiple, {
-            "Multiple", "amqp.method.arguments.multiple",
+            "Multiple", "amqp_method_arguments_multiple",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_reject_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_reject_requeue, {
-            "Requeue", "amqp.method.arguments.requeue",
+            "Requeue", "amqp_method_arguments_requeue",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_recover_requeue, {
-            "Requeue", "amqp.method.arguments.requeue",
+            "Requeue", "amqp_method_arguments_requeue",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_nack_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_basic_nack_multiple, {
-            "Multiple", "amqp.method.arguments.multiple",
+            "Multiple", "amqp_method_arguments_multiple",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_basic_nack_requeue, {
-            "Requeue", "amqp.method.arguments.requeue",
+            "Requeue", "amqp_method_arguments_requeue",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_file_qos_prefetch_size, {
-            "Prefetch-Size", "amqp.method.arguments.prefetch_size",
+            "Prefetch-Size", "amqp_method_arguments_prefetch_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_qos_prefetch_count, {
-            "Prefetch-Count", "amqp.method.arguments.prefetch_count",
+            "Prefetch-Count", "amqp_method_arguments_prefetch_count",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_qos_global, {
-            "Global", "amqp.method.arguments.global",
+            "Global", "amqp_method_arguments_global",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_no_local, {
-            "No-Local", "amqp.method.arguments.no_local",
+            "No-Local", "amqp_method_arguments_no_local",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_no_ack, {
-            "No-Ack", "amqp.method.arguments.no_ack",
+            "No-Ack", "amqp_method_arguments_no_ack",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_exclusive, {
-            "Exclusive", "amqp.method.arguments.exclusive",
+            "Exclusive", "amqp_method_arguments_exclusive",
             FT_BOOLEAN, 8, NULL, 0x04,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x08,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_filter, {
-            "Filter", "amqp.method.arguments.filter",
+            "Filter", "amqp_method_arguments_filter",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_consume_ok_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_cancel_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_cancel_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_file_cancel_ok_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_open_identifier, {
-            "Identifier", "amqp.method.arguments.identifier",
+            "Identifier", "amqp_method_arguments_identifier",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_open_content_size, {
-            "Content-Size", "amqp.method.arguments.content_size",
+            "Content-Size", "amqp_method_arguments_content_size",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_open_ok_staged_size, {
-            "Staged-Size", "amqp.method.arguments.staged_size",
+            "Staged-Size", "amqp_method_arguments_staged_size",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_publish_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_publish_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_publish_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_publish_mandatory, {
-            "Mandatory", "amqp.method.arguments.mandatory",
+            "Mandatory", "amqp_method_arguments_mandatory",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_file_publish_immediate, {
-            "Immediate", "amqp.method.arguments.immediate",
+            "Immediate", "amqp_method_arguments_immediate",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_file_publish_identifier, {
-            "Identifier", "amqp.method.arguments.identifier",
+            "Identifier", "amqp_method_arguments_identifier",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_return_reply_code, {
-            "Reply-Code", "amqp.method.arguments.reply_code",
+            "Reply-Code", "amqp_method_arguments_reply_code",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_return_reply_text, {
-            "Reply-Text", "amqp.method.arguments.reply_text",
+            "Reply-Text", "amqp_method_arguments_reply_text",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_return_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_return_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_deliver_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_deliver_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_deliver_redelivered, {
-            "Redelivered", "amqp.method.arguments.redelivered",
+            "Redelivered", "amqp_method_arguments_redelivered",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_file_deliver_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_deliver_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_deliver_identifier, {
-            "Identifier", "amqp.method.arguments.identifier",
+            "Identifier", "amqp_method_arguments_identifier",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_ack_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_ack_multiple, {
-            "Multiple", "amqp.method.arguments.multiple",
+            "Multiple", "amqp_method_arguments_multiple",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_file_reject_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_file_reject_requeue, {
-            "Requeue", "amqp.method.arguments.requeue",
+            "Requeue", "amqp_method_arguments_requeue",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_stream_qos_prefetch_size, {
-            "Prefetch-Size", "amqp.method.arguments.prefetch_size",
+            "Prefetch-Size", "amqp_method_arguments_prefetch_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_qos_prefetch_count, {
-            "Prefetch-Count", "amqp.method.arguments.prefetch_count",
+            "Prefetch-Count", "amqp_method_arguments_prefetch_count",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_qos_consume_rate, {
-            "Consume-Rate", "amqp.method.arguments.consume_rate",
+            "Consume-Rate", "amqp_method_arguments_consume_rate",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_qos_global, {
-            "Global", "amqp.method.arguments.global",
+            "Global", "amqp_method_arguments_global",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_stream_consume_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_consume_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_consume_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_consume_no_local, {
-            "No-Local", "amqp.method.arguments.no_local",
+            "No-Local", "amqp_method_arguments_no_local",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_stream_consume_exclusive, {
-            "Exclusive", "amqp.method.arguments.exclusive",
+            "Exclusive", "amqp_method_arguments_exclusive",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_stream_consume_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x04,
             NULL, HFILL}},
         {&hf_amqp_method_stream_consume_filter, {
-            "Filter", "amqp.method.arguments.filter",
+            "Filter", "amqp_method_arguments_filter",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_consume_ok_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_cancel_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_cancel_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_stream_cancel_ok_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_publish_ticket, {
-            "Ticket", "amqp.method.arguments.ticket",
+            "Ticket", "amqp_method_arguments_ticket",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_publish_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_publish_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_publish_mandatory, {
-            "Mandatory", "amqp.method.arguments.mandatory",
+            "Mandatory", "amqp_method_arguments_mandatory",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_method_stream_publish_immediate, {
-            "Immediate", "amqp.method.arguments.immediate",
+            "Immediate", "amqp_method_arguments_immediate",
             FT_BOOLEAN, 8, NULL, 0x02,
             NULL, HFILL}},
         {&hf_amqp_method_stream_return_reply_code, {
-            "Reply-Code", "amqp.method.arguments.reply_code",
+            "Reply-Code", "amqp_method_arguments_reply_code",
              FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_return_reply_text, {
-            "Reply-Text", "amqp.method.arguments.reply_text",
+            "Reply-Text", "amqp_method_arguments_reply_text",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_return_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_return_routing_key, {
-            "Routing-Key", "amqp.method.arguments.routing_key",
+            "Routing-Key", "amqp_method_arguments_routing_key",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_deliver_consumer_tag, {
-            "Consumer-Tag", "amqp.method.arguments.consumer_tag",
+            "Consumer-Tag", "amqp_method_arguments_consumer_tag",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_deliver_delivery_tag, {
-            "Delivery-Tag", "amqp.method.arguments.delivery_tag",
+            "Delivery-Tag", "amqp_method_arguments_delivery_tag",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_deliver_exchange, {
-            "Exchange", "amqp.method.arguments.exchange",
+            "Exchange", "amqp_method_arguments_exchange",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_stream_deliver_queue, {
-            "Queue", "amqp.method.arguments.queue",
+            "Queue", "amqp_method_arguments_queue",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_dtx_start_dtx_identifier, {
-            "Dtx-Identifier", "amqp.method.arguments.dtx_identifier",
+            "Dtx-Identifier", "amqp_method_arguments_dtx_identifier",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_tunnel_request_meta_data, {
-            "Meta-Data", "amqp.method.arguments.meta_data",
+            "Meta-Data", "amqp_method_arguments_meta_data",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_confirm_select_nowait, {
-            "Nowait", "amqp.method.arguments.nowait",
+            "Nowait", "amqp_method_arguments_nowait",
             FT_BOOLEAN, 8, NULL, 0x01,
             NULL, HFILL}},
         {&hf_amqp_field, {
-            "AMQP", "amqp.field",
+            "AMQP", "amqp_field",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_field_timestamp, {
-            "(timestamp)", "amqp.field.timestamp",
+            "(timestamp)", "amqp_field_timestamp",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_field_byte_array, {
-            "(byte array)", "amqp.field.byte_array",
+            "(byte array)", "amqp_field_byte_array",
             FT_BYTES, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_class_id, {
-            "Class ID", "amqp.header.class",
+            "Class ID", "amqp_header_class",
             FT_UINT16, BASE_DEC, VALS(amqp_0_9_method_classes), 0,
             NULL, HFILL}},
         {&hf_amqp_header_weight, {
-            "Weight", "amqp.header.weight",
+            "Weight", "amqp_header_weight",
             FT_UINT16, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_body_size, {
-            "Body size", "amqp.header.body-size",
+            "Body size", "amqp_header_body-size",
             FT_UINT64, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_property_flags, {
-            "Property flags", "amqp.header.property-flags",
+            "Property flags", "amqp_header_property-flags",
             FT_UINT16, BASE_HEX, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_properties, {
-            "Properties", "amqp.header.properties",
+            "Properties", "amqp_header_properties",
             FT_NONE, BASE_NONE, NULL, 0x0,
             "Message properties", HFILL}},
         {&hf_amqp_header_basic_content_type, {
-            "Content-Type", "amqp.method.properties.content_type",
+            "Content-Type", "amqp_method_properties_content_type",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_content_encoding, {
-            "Content-Encoding", "amqp.method.properties.content_encoding",
+            "Content-Encoding", "amqp_method_properties_content_encoding",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_headers, {
-            "Headers", "amqp.method.properties.headers",
+            "Headers", "amqp_method_properties_headers",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_delivery_mode, {
-            "Delivery-Mode", "amqp.method.properties.delivery_mode",
+            "Delivery-Mode", "amqp_method_properties_delivery_mode",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_priority, {
-            "Priority", "amqp.method.properties.priority",
+            "Priority", "amqp_method_properties_priority",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_correlation_id, {
-            "Correlation-Id", "amqp.method.properties.correlation_id",
+            "Correlation-Id", "amqp_method_properties_correlation_id",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_reply_to, {
-            "Reply-To", "amqp.method.properties.reply_to",
+            "Reply-To", "amqp_method_properties_reply_to",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_expiration, {
-            "Expiration", "amqp.method.properties.expiration",
+            "Expiration", "amqp_method_properties_expiration",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_message_id, {
-            "Message-Id", "amqp.method.properties.message_id",
+            "Message-Id", "amqp_method_properties_message_id",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_timestamp, {
-            "Timestamp", "amqp.method.properties.timestamp",
+            "Timestamp", "amqp_method_properties_timestamp",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_type, {
-            "Type", "amqp.method.properties.type",
+            "Type", "amqp_method_properties_type",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_user_id, {
-            "User-Id", "amqp.method.properties.user_id",
+            "User-Id", "amqp_method_properties_user_id",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_app_id, {
-            "App-Id", "amqp.method.properties.app_id",
+            "App-Id", "amqp_method_properties_app_id",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_basic_cluster_id, {
-            "Cluster-Id", "amqp.method.properties.cluster_id",
+            "Cluster-Id", "amqp_method_properties_cluster_id",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_file_content_type, {
-            "Content-Type", "amqp.method.properties.content_type",
+            "Content-Type", "amqp_method_properties_content_type",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_file_content_encoding, {
-            "Content-Encoding", "amqp.method.properties.content_encoding",
+            "Content-Encoding", "amqp_method_properties_content_encoding",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_file_headers, {
-            "Headers", "amqp.method.properties.headers",
+            "Headers", "amqp_method_properties_headers",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_file_priority, {
-            "Priority", "amqp.method.properties.priority",
+            "Priority", "amqp_method_properties_priority",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_file_reply_to, {
-            "Reply-To", "amqp.method.properties.reply_to",
+            "Reply-To", "amqp_method_properties_reply_to",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_file_message_id, {
-            "Message-Id", "amqp.method.properties.message_id",
+            "Message-Id", "amqp_method_properties_message_id",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_file_filename, {
-            "Filename", "amqp.method.properties.filename",
+            "Filename", "amqp_method_properties_filename",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_file_timestamp, {
-            "Timestamp", "amqp.method.properties.timestamp",
+            "Timestamp", "amqp_method_properties_timestamp",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_header_file_cluster_id, {
-            "Cluster-Id", "amqp.method.properties.cluster_id",
+            "Cluster-Id", "amqp_method_properties_cluster_id",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_stream_content_type, {
-            "Content-Type", "amqp.method.properties.content_type",
+            "Content-Type", "amqp_method_properties_content_type",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_stream_content_encoding, {
-            "Content-Encoding", "amqp.method.properties.content_encoding",
+            "Content-Encoding", "amqp_method_properties_content_encoding",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_stream_headers, {
-            "Headers", "amqp.method.properties.headers",
+            "Headers", "amqp_method_properties_headers",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_stream_priority, {
-            "Priority", "amqp.method.properties.priority",
+            "Priority", "amqp_method_properties_priority",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_stream_timestamp, {
-            "Timestamp", "amqp.method.properties.timestamp",
+            "Timestamp", "amqp_method_properties_timestamp",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
             NULL, HFILL}},
         {&hf_amqp_header_tunnel_headers, {
-            "Headers", "amqp.method.properties.headers",
+            "Headers", "amqp_method_properties_headers",
             FT_NONE, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_tunnel_proxy_name, {
-            "Proxy-Name", "amqp.method.properties.proxy_name",
+            "Proxy-Name", "amqp_method_properties_proxy_name",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_tunnel_data_name, {
-            "Data-Name", "amqp.method.properties.data_name",
+            "Data-Name", "amqp_method_properties_data_name",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_tunnel_durable, {
-            "Durable", "amqp.method.properties.durable",
+            "Durable", "amqp_method_properties_durable",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_header_tunnel_broadcast, {
-            "Broadcast", "amqp.method.properties.broadcast",
+            "Broadcast", "amqp_method_properties_broadcast",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_dtx_xa_status, {
-            "DTX  xa-status", "amqp.dtx.xa-status",
+            "DTX  xa-status", "amqp_dtx_xa-status",
             FT_UINT16, BASE_DEC, VALS(amqp_0_10_xa_status), 0,
             NULL, HFILL}},
         {&hf_amqp_payload, {
-            "Payload", "amqp.payload",
+            "Payload", "amqp_payload",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Message payload", HFILL}},
         {&hf_amqp_init_protocol, {
-            "Protocol", "amqp.init.protocol",
+            "Protocol", "amqp_init_protocol",
             FT_STRING, BASE_NONE, NULL, 0,
             "Protocol name", HFILL}},
         {&hf_amqp_init_id_major, {
-            "Protocol ID Major", "amqp.init.id_major",
+            "Protocol ID Major", "amqp_init_id_major",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_init_id_minor, {
-            "Protocol ID Minor", "amqp.init.id_minor",
+            "Protocol ID Minor", "amqp_init_id_minor",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_init_id, {
-            "Protocol-ID", "amqp.init.id",
+            "Protocol-ID", "amqp_init_id",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_init_version_major, {
-            "Version Major", "amqp.init.version_major",
+            "Version Major", "amqp_init_version_major",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Protocol version major", HFILL}},
         {&hf_amqp_init_version_minor, {
-            "Version Minor", "amqp.init.version_minor",
+            "Version Minor", "amqp_init_version_minor",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Protocol version minor", HFILL}},
         {&hf_amqp_init_version_revision, {
-            "Version-Revision", "amqp.init.version_revision",
+            "Version-Revision", "amqp_init_version_revision",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Protocol version revision", HFILL}},
         {&hf_amqp_message_in, {
-            "Message in frame", "amqp.message_in",
+            "Message in frame", "amqp_message_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_ack_in, {
-            "Ack in frame", "amqp.ack_in",
+            "Ack in frame", "amqp_ack_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_start_server_properties_size, {
-            "Size", "amqp.method.connection_start.server_properties.size",
+            "Size", "amqp_method_connection_start_server_properties_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_start_mechanisms_size, {
-            "Size", "amqp.method.connection_start.server_properties.size",
+            "Size", "amqp_method_connection_start_server_properties_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_start_locales_size, {
-            "Size", "amqp.method.connection_start.locales.size",
+            "Size", "amqp_method_connection_start_locales_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_method_connection_start_ok_client_properties_size, {
-            "Size", "amqp.method.connection_start.ok_client_properties.size",
+            "Size", "amqp_method_connection_start_ok_client_properties_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_open_capabilities_size, {
-            "Size", "amqp.method.connection_open.capabilities.size",
+            "Size", "amqp_method_connection_open_capabilities_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_open_ok_known_hosts_size, {
-            "Size", "amqp.method.connection_open.ok_known_hosts.size",
+            "Size", "amqp_method_connection_open_ok_known_hosts_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_connection_redirect_known_hosts_size, {
-            "Size", "amqp.method.connection_redirect.known_hosts.size",
+            "Size", "amqp_method_connection_redirect_known_hosts_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_execution_error_info_size, {
-            "Size", "amqp.method.execution.error_info.size",
+            "Size", "amqp_method_execution_error_info_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_exchange_declare_arguments_size, {
-            "Size", "amqp.method.exchange.declare_argument.size",
+            "Size", "amqp_method_exchange_declare_argument_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_queue_declare_arguments_size, {
-            "Size", "amqp.method.queue.declare_argument.size",
+            "Size", "amqp_method_queue_declare_argument_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_file_consume_arguments_size, {
-            "Size", "amqp.method.file.consume_arguments.size",
+            "Size", "amqp_method_file_consume_arguments_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_method_stream_consume_arguments_size, {
-            "Size", "amqp.method.stream.consume_arguments.size",
+            "Size", "amqp_method_stream_consume_arguments_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_message_properties_application_headers_size, {
-            "Size", "amqp.struct.message_properties.application_headers.size",
+            "Size", "amqp_struct_message_properties_application_headers_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_file_properties_headers_size, {
-            "Size", "amqp.struct.file.properties_headers.size",
+            "Size", "amqp_struct_file_properties_headers_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_stream_properties_headers_size, {
-            "Size", "amqp.struct.stream.properties_headers.size",
+            "Size", "amqp_struct_stream_properties_headers_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
         {&hf_amqp_0_10_struct_dtx_recover_result_size, {
-            "Size", "amqp.struct.dtx_recover.result.size",
+            "Size", "amqp_struct_dtx_recover_result_size",
             FT_UINT32, BASE_DEC, NULL, 0,
             NULL, HFILL}},
     };

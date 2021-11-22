@@ -1558,209 +1558,209 @@ void proto_register_ieee80211_radio(void)
 {
   static hf_register_info hf_wlan_radio[] = {
     {&hf_wlan_radio_phy,
-     {"PHY type", "wlan_radio.phy", FT_UINT32, BASE_DEC, VALS(phy_vals), 0,
+     {"PHY type", "wlan_radio_phy", FT_UINT32, BASE_DEC, VALS(phy_vals), 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11_fhss_hop_set,
-     {"Hop set", "wlan_radio.fhss.hop_set", FT_UINT8, BASE_HEX, NULL, 0,
+     {"Hop set", "wlan_radio_fhss_hop_set", FT_UINT8, BASE_HEX, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11_fhss_hop_pattern,
-     {"Hop pattern", "wlan_radio.fhss.hop_pattern", FT_UINT8, BASE_HEX, NULL, 0,
+     {"Hop pattern", "wlan_radio_fhss_hop_pattern", FT_UINT8, BASE_HEX, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11_fhss_hop_index,
-     {"Hop index", "wlan_radio.fhss.hop_index", FT_UINT8, BASE_HEX, NULL, 0,
+     {"Hop index", "wlan_radio_fhss_hop_index", FT_UINT8, BASE_HEX, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11a_channel_type,
-     {"Channel type", "wlan_radio.11a.channel_type", FT_UINT32, BASE_DEC, VALS(channel_type_11a_vals), 0,
+     {"Channel type", "wlan_radio_11a_channel_type", FT_UINT32, BASE_DEC, VALS(channel_type_11a_vals), 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11a_turbo_type,
-     {"Turbo type", "wlan_radio.11a.turbo_type", FT_UINT32, BASE_DEC, VALS(turbo_type_11a_vals), 0,
+     {"Turbo type", "wlan_radio_11a_turbo_type", FT_UINT32, BASE_DEC, VALS(turbo_type_11a_vals), 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11g_mode,
-     {"Proprietary mode", "wlan_radio.11g.mode", FT_UINT32, BASE_DEC, VALS(mode_11g_vals), 0,
+     {"Proprietary mode", "wlan_radio_11g_mode", FT_UINT32, BASE_DEC, VALS(mode_11g_vals), 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11n_mcs_index,
-     {"MCS index", "wlan_radio.11n.mcs_index", FT_UINT32, BASE_DEC, NULL, 0,
+     {"MCS index", "wlan_radio_11n_mcs_index", FT_UINT32, BASE_DEC, NULL, 0,
       "Modulation and Coding Scheme index", HFILL }},
 
     {&hf_wlan_radio_11n_bandwidth,
-     {"Bandwidth", "wlan_radio.11n.bandwidth", FT_UINT32, BASE_DEC, VALS(bandwidth_vals), 0,
+     {"Bandwidth", "wlan_radio_11n_bandwidth", FT_UINT32, BASE_DEC, VALS(bandwidth_vals), 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11n_short_gi,
-     {"Short GI", "wlan_radio.11n.short_gi", FT_BOOLEAN, 0, NULL, 0,
+     {"Short GI", "wlan_radio_11n_short_gi", FT_BOOLEAN, 0, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11n_greenfield,
-     {"Greenfield", "wlan_radio.11n.greenfield", FT_BOOLEAN, BASE_NONE, NULL, 0,
+     {"Greenfield", "wlan_radio_11n_greenfield", FT_BOOLEAN, BASE_NONE, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11n_fec,
-     {"FEC", "wlan_radio.11n.fec", FT_UINT32, BASE_DEC, VALS(fec_vals), 0,
+     {"FEC", "wlan_radio_11n_fec", FT_UINT32, BASE_DEC, VALS(fec_vals), 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11n_stbc_streams,
-     {"Number of STBC streams", "wlan_radio.11n.stbc_streams", FT_UINT32, BASE_DEC, NULL, 0,
+     {"Number of STBC streams", "wlan_radio_11n_stbc_streams", FT_UINT32, BASE_DEC, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11n_ness,
-     {"Number of extension spatial streams", "wlan_radio.11n.ness", FT_UINT32, BASE_DEC, NULL, 0,
+     {"Number of extension spatial streams", "wlan_radio_11n_ness", FT_UINT32, BASE_DEC, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11ac_stbc,
-     {"STBC", "wlan_radio.11ac.stbc", FT_BOOLEAN, 0, TFS(&tfs_on_off), 0x0,
+     {"STBC", "wlan_radio_11ac_stbc", FT_BOOLEAN, 0, TFS(&tfs_on_off), 0x0,
       "Space Time Block Coding flag", HFILL }},
 
     {&hf_wlan_radio_11ac_txop_ps_not_allowed,
-     {"TXOP_PS_NOT_ALLOWED", "wlan_radio_11ac.txop_ps_not_allowed", FT_BOOLEAN, 0, NULL, 0x0,
+     {"TXOP_PS_NOT_ALLOWED", "wlan_radio_11ac_txop_ps_not_allowed", FT_BOOLEAN, 0, NULL, 0x0,
       "Flag indicating whether STAs may doze during TXOP", HFILL }},
 
     {&hf_wlan_radio_11ac_short_gi,
-     {"Short GI", "wlan_radio.11ac.short_gi", FT_BOOLEAN, 0, NULL, 0,
+     {"Short GI", "wlan_radio_11ac_short_gi", FT_BOOLEAN, 0, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11ac_short_gi_nsym_disambig,
-     {"Short GI Nsym disambiguation", "wlan_radio.11ac.short_gi_nsym_disambig", FT_BOOLEAN, 0, NULL, 0x0,
+     {"Short GI Nsym disambiguation", "wlan_radio_11ac_short_gi_nsym_disambig", FT_BOOLEAN, 0, NULL, 0x0,
       "Short Guard Interval Nsym disambiguation", HFILL }},
 
     {&hf_wlan_radio_11ac_ldpc_extra_ofdm_symbol,
-     {"LDPC extra OFDM symbol", "wlan_radio.11ac.ldpc_extra_ofdm_symbol", FT_BOOLEAN, 0, NULL, 0x0,
+     {"LDPC extra OFDM symbol", "wlan_radio_11ac_ldpc_extra_ofdm_symbol", FT_BOOLEAN, 0, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11ac_beamformed,
-     {"Beamformed", "wlan_radio.11ac.beamformed", FT_BOOLEAN, 0, NULL, 0x0,
+     {"Beamformed", "wlan_radio_11ac_beamformed", FT_BOOLEAN, 0, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11ac_bandwidth,
-     {"Bandwidth", "wlan_radio.11ac.bandwidth", FT_UINT32, BASE_DEC, VALS(bandwidth_vals), 0,
+     {"Bandwidth", "wlan_radio_11ac_bandwidth", FT_UINT32, BASE_DEC, VALS(bandwidth_vals), 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11ac_user,
-     {"User", "wlan_radio.11ac.user", FT_NONE, BASE_NONE, NULL, 0x0,
+     {"User", "wlan_radio_11ac_user", FT_NONE, BASE_NONE, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11ac_nsts,
-     {"Space-time streams", "wlan_radio.11ac.nsts", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Space-time streams", "wlan_radio_11ac_nsts", FT_UINT32, BASE_DEC, NULL, 0x0,
       "Number of Space-time streams", HFILL }},
 
     {&hf_wlan_radio_11ac_mcs,
-     {"MCS index", "wlan_radio.11ac.mcs", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"MCS index", "wlan_radio_11ac_mcs", FT_UINT32, BASE_DEC, NULL, 0x0,
       "Modulation and Coding Scheme index", HFILL }},
 
     {&hf_wlan_radio_11ac_nss,
-     {"Spatial streams", "wlan_radio.11ac.nss", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Spatial streams", "wlan_radio_11ac_nss", FT_UINT32, BASE_DEC, NULL, 0x0,
       "Number of spatial streams", HFILL }},
 
     {&hf_wlan_radio_11ac_fec,
-     {"FEC", "wlan_radio.11ac.fec", FT_UINT32, BASE_DEC, VALS(fec_vals), 0x0,
+     {"FEC", "wlan_radio_11ac_fec", FT_UINT32, BASE_DEC, VALS(fec_vals), 0x0,
       "Type of FEC", HFILL }},
 
     {&hf_wlan_radio_11ac_gid,
-     {"Group Id", "wlan_radio.11ac.gid", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Group Id", "wlan_radio_11ac_gid", FT_UINT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_11ac_p_aid,
-     {"Partial AID", "wlan_radio.11ac.paid", FT_UINT16, BASE_DEC, NULL, 0x0,
+     {"Partial AID", "wlan_radio_11ac_paid", FT_UINT16, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_data_rate,
-     {"Data rate", "wlan_radio.data_rate", FT_FLOAT, BASE_NONE, NULL, 0,
+     {"Data rate", "wlan_radio_data_rate", FT_FLOAT, BASE_NONE, NULL, 0,
       "Speed at which this frame was sent/received", HFILL }},
 
     {&hf_wlan_radio_channel,
-     {"Channel", "wlan_radio.channel", FT_UINT32, BASE_DEC, NULL, 0,
+     {"Channel", "wlan_radio_channel", FT_UINT32, BASE_DEC, NULL, 0,
       "802.11 channel number that this frame was sent/received on", HFILL }},
 
     {&hf_wlan_radio_frequency,
-     {"Frequency", "wlan_radio.frequency", FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_mhz, 0,
+     {"Frequency", "wlan_radio_frequency", FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_mhz, 0,
       "Center frequency of the 802.11 channel that this frame was sent/received on", HFILL }},
 
     {&hf_wlan_radio_short_preamble,
-     {"Short preamble", "wlan_radio.short_preamble", FT_BOOLEAN, BASE_NONE, NULL, 0,
+     {"Short preamble", "wlan_radio_short_preamble", FT_BOOLEAN, BASE_NONE, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_signal_percent,
-     {"Signal strength (percentage)", "wlan_radio.signal_percentage", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_percent, 0,
+     {"Signal strength (percentage)", "wlan_radio_signal_percentage", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_percent, 0,
       "Signal strength, as percentage of maximum RSSI", HFILL }},
 
     {&hf_wlan_radio_signal_db,
-     {"Signal strength (dB)", "wlan_radio.signal_db", FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_decibels, 0,
+     {"Signal strength (dB)", "wlan_radio_signal_db", FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_decibels, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_signal_dbm,
-     {"Signal strength (dBm)", "wlan_radio.signal_dbm", FT_INT8, BASE_DEC|BASE_UNIT_STRING, &units_dbm, 0,
+     {"Signal strength (dBm)", "wlan_radio_signal_dbm", FT_INT8, BASE_DEC|BASE_UNIT_STRING, &units_dbm, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_noise_percent,
-     {"Noise level (percentage)", "wlan_radio.noise_percentage", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_percent, 0,
+     {"Noise level (percentage)", "wlan_radio_noise_percentage", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_percent, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_noise_db,
-     {"Noise level (dB)", "wlan_radio.noise_db", FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_decibels, 0,
+     {"Noise level (dB)", "wlan_radio_noise_db", FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_decibels, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_noise_dbm,
-     {"Noise level (dBm)", "wlan_radio.noise_dbm", FT_INT8, BASE_DEC|BASE_UNIT_STRING, &units_dbm, 0,
+     {"Noise level (dBm)", "wlan_radio_noise_dbm", FT_INT8, BASE_DEC|BASE_UNIT_STRING, &units_dbm, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_snr,
-     {"Signal/noise ratio (dB)", "wlan_radio.snr", FT_INT32, BASE_DEC|BASE_UNIT_STRING, &units_decibels, 0,
+     {"Signal/noise ratio (dB)", "wlan_radio_snr", FT_INT32, BASE_DEC|BASE_UNIT_STRING, &units_decibels, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_timestamp,
-     {"TSF timestamp", "wlan_radio.timestamp", FT_UINT64, BASE_DEC, NULL, 0,
+     {"TSF timestamp", "wlan_radio_timestamp", FT_UINT64, BASE_DEC, NULL, 0,
       "Timing Synchronization Function timestamp", HFILL }},
 
     {&hf_wlan_last_part_of_a_mpdu,
-     {"Last part of an A-MPDU", "wlan_radio.last_part_of_an_ampdu", FT_BOOLEAN, 32, NULL, PHDR_802_11_LAST_PART_OF_A_MPDU,
+     {"Last part of an A-MPDU", "wlan_radio_last_part_of_an_ampdu", FT_BOOLEAN, 32, NULL, PHDR_802_11_LAST_PART_OF_A_MPDU,
       "This is the last part of an A-MPDU", HFILL }},
 
     {&hf_wlan_a_mpdu_delim_crc_error,
-     {"A-MPDU delimiter CRC error", "wlan_radio.a_mpdu_delim_crc_error", FT_BOOLEAN, 32, NULL, PHDR_802_11_A_MPDU_DELIM_CRC_ERROR,
+     {"A-MPDU delimiter CRC error", "wlan_radio_a_mpdu_delim_crc_error", FT_BOOLEAN, 32, NULL, PHDR_802_11_A_MPDU_DELIM_CRC_ERROR,
       NULL, HFILL }},
 
     {&hf_wlan_a_mpdu_aggregate_id,
-     {"A-MPDU aggregate ID", "wlan_radio.a_mpdu_aggregate_id", FT_UINT32, BASE_DEC, NULL, 0,
+     {"A-MPDU aggregate ID", "wlan_radio_a_mpdu_aggregate_id", FT_UINT32, BASE_DEC, NULL, 0,
       NULL, HFILL }},
 
     {&hf_wlan_radio_duration,
-     {"Duration", "wlan_radio.duration", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
+     {"Duration", "wlan_radio_duration", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
       "Total duration of the frame in microseconds, including any preamble or plcp header. "
       "Calculated from the frame length, modulation and other phy data.", HFILL }},
 
     {&hf_wlan_radio_preamble,
-     {"Preamble", "wlan_radio.preamble", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
+     {"Preamble", "wlan_radio_preamble", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
       "Duration of the PLCP or preamble in microseconds, calculated from PHY data", HFILL }},
 
     {&hf_wlan_radio_aggregate,
-     {"A-MPDU", "wlan_radio.aggregate", FT_NONE, BASE_NONE, NULL, 0,
+     {"A-MPDU", "wlan_radio_aggregate", FT_NONE, BASE_NONE, NULL, 0,
       "MPDU is part of an A-MPDU", HFILL }},
 
     {&hf_wlan_radio_ifs,
-     {"IFS", "wlan_radio.ifs", FT_INT64, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
+     {"IFS", "wlan_radio_ifs", FT_INT64, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
       "Inter Frame Space before this frame in microseconds, calculated from PHY data", HFILL }},
 
     {&hf_wlan_radio_start_tsf,
-     {"Start", "wlan_radio.start_tsf", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
+     {"Start", "wlan_radio_start_tsf", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
       "Calculated start time of the frame", HFILL }},
 
     {&hf_wlan_radio_end_tsf,
-     {"End", "wlan_radio.end_tsf", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
+     {"End", "wlan_radio_end_tsf", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
       "Calculated end time of the frame", HFILL }},
 
     {&hf_wlan_radio_aggregate_duration,
-     {"Duration", "wlan_radio.aggregate.duration", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
+     {"Duration", "wlan_radio_aggregate_duration", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0,
       "Total duration of the aggregate in microseconds, including any preamble or plcp header. "
       "Calculated from the total subframe lengths, modulation and other phy data.", HFILL }},
 
     {&hf_wlan_zero_length_psdu_type,
-     {"Zero-length PSDU Type", "wlan_radio.zero_len_psdu.type", FT_UINT8, BASE_HEX, VALS(zero_length_psdu_vals), 0x0,
+     {"Zero-length PSDU Type", "wlan_radio_zero_len_psdu_type", FT_UINT8, BASE_HEX, VALS(zero_length_psdu_vals), 0x0,
        "Type of zero-length PSDU", HFILL}},
   };
 

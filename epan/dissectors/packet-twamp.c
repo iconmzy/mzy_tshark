@@ -614,47 +614,47 @@ void proto_register_twamp(void)
 {
     static hf_register_info hf_twamp_test[] = {
         {&hf_twamp_seq_number,
-         {"Sequence Number", "twamp.test.seq_number", FT_UINT32,
+         {"Sequence Number", "twamp_test_seq_number", FT_UINT32,
           BASE_DEC, NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_timestamp,
-         {"Timestamp", "twamp.test.timestamp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+         {"Timestamp", "twamp_test_timestamp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
           NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_error_estimate,
-         {"Error Estimate", "twamp.test.error_estimate", FT_UINT16,
+         {"Error Estimate", "twamp_test_error_estimate", FT_UINT16,
           BASE_DEC_HEX, NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_mbz1,
-         {"MBZ", "twamp.test.mbz1", FT_UINT8, BASE_DEC_HEX,
+         {"MBZ", "twamp_test_mbz1", FT_UINT8, BASE_DEC_HEX,
           NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_receive_timestamp,
-         {"Receive Timestamp", "twamp.test.receive_timestamp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL}},
+         {"Receive Timestamp", "twamp_test_receive_timestamp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_sender_seq_number,
-         {"Sender Sequence Number", "twamp.test.sender_seq_number",
+         {"Sender Sequence Number", "twamp_test_sender_seq_number",
           FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_sender_timestamp,
-         {"Sender Timestamp", "twamp.test.sender_timestamp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL}},
+         {"Sender Timestamp", "twamp_test_sender_timestamp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_sender_error_estimate,
-         {"Sender Error Estimate", "twamp.test.sender_error_estimate",
+         {"Sender Error Estimate", "twamp_test_sender_error_estimate",
           FT_UINT16, BASE_DEC_HEX, NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_mbz2,
-         {"MBZ", "twamp.test.mbz2", FT_UINT8, BASE_DEC_HEX,
+         {"MBZ", "twamp_test_mbz2", FT_UINT8, BASE_DEC_HEX,
           NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_sender_ttl,
-         {"Sender TTL", "twamp.test.sender_ttl", FT_UINT8, BASE_DEC,
+         {"Sender TTL", "twamp_test_sender_ttl", FT_UINT8, BASE_DEC,
           NULL, 0x0, NULL, HFILL}},
         {&hf_twamp_padding,
-         {"Packet Padding", "twamp.test.padding", FT_BYTES, BASE_NONE,
+         {"Packet Padding", "twamp_test_padding", FT_BYTES, BASE_NONE,
           NULL, 0x0, NULL, HFILL}},
         { &hf_twamp_error_estimate_multiplier,
-          { "Multiplier", "twamp.test.error_estimate.multiplier", FT_UINT16, BASE_DEC,
+          { "Multiplier", "twamp_test_error_estimate_multiplier", FT_UINT16, BASE_DEC,
           NULL, 0x00ff, NULL, HFILL } },
         { &hf_twamp_error_estimate_scale,
-          { "Scale", "twamp.test.error_estimate.scale", FT_UINT16, BASE_DEC,
+          { "Scale", "twamp_test_error_estimate_scale", FT_UINT16, BASE_DEC,
           NULL, 0x3f00, NULL, HFILL } },
         { &hf_twamp_error_estimate_b14,
-          { "Z", "twamp.test.error_estimate.z", FT_BOOLEAN, 16,
+          { "Z", "twamp_test_error_estimate_z", FT_BOOLEAN, 16,
           NULL, 0x4000, NULL, HFILL } },
         { &hf_twamp_error_estimate_b15,
-          { "S", "twamp.test.error_estimate.s", FT_BOOLEAN, 16,
+          { "S", "twamp_test_error_estimate_s", FT_BOOLEAN, 16,
           TFS(&tfs_twamp_sbit_tfs), 0x8000, NULL, HFILL } },
     };
 
@@ -665,90 +665,90 @@ void proto_register_twamp(void)
 
     static hf_register_info hf_twamp_control[] = {
         {&hf_twamp_control_unused,
-            {"Unused", "twamp.control.unused", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"Unused", "twamp_control_unused", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_command,
-            {"Control Command", "twamp.control.command", FT_UINT8, BASE_DEC,
+            {"Control Command", "twamp_control_command", FT_UINT8, BASE_DEC,
                     VALS(twamp_control_command_vals), 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_modes,
-            {"Supported Modes", "twamp.control.modes", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
+            {"Supported Modes", "twamp_control_modes", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_mode,
-            {"Mode", "twamp.control.mode", FT_UINT32, BASE_DEC_HEX, NULL, 0x0, NULL, HFILL}
+            {"Mode", "twamp_control_mode", FT_UINT32, BASE_DEC_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_keyid,
-            {"Key ID", "twamp.control.keyid", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"Key ID", "twamp_control_keyid", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_challenge,
-            {"Challenge", "twamp.control.challenge", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"Challenge", "twamp_control_challenge", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_salt,
-            {"Salt", "twamp.control.salt", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"Salt", "twamp_control_salt", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_count,
-            {"Count", "twamp.control.count", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
+            {"Count", "twamp_control_count", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_iv,
-            {"Control IV", "twamp.control.iv", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"Control IV", "twamp_control_iv", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_sessionid,
-            {"Session Id", "twamp.control.session_id", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"Session Id", "twamp_control_session_id", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_mbz1,
-            {"MBZ", "twamp.control.mbz1", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"MBZ", "twamp_control_mbz1", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_mbz2,
-            {"MBZ", "twamp.control.mbz2", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"MBZ", "twamp_control_mbz2", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_hmac,
-            {"HMAC", "twamp.control.hmac", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"HMAC", "twamp_control_hmac", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_padding_length,
-            {"Padding Length", "twamp.control.padding_length", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
+            {"Padding Length", "twamp_control_padding_length", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_start_time,
-            {"Start Time", "twamp.control.start_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL}
+            {"Start Time", "twamp_control_start_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_timeout,
-            {"Timeout", "twamp.control.timeout", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0, NULL, HFILL}
+            {"Timeout", "twamp_control_timeout", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_type_p,
-            {"Type-P Descriptor", "twamp.control.type-p", FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
+            {"Type-P Descriptor", "twamp_control_type-p", FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_num_sessions,
-            {"Number of Sessions", "twamp.control.numsessions", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
+            {"Number of Sessions", "twamp_control_numsessions", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_server_uptime,
-            {"Server Start Time", "twamp.control.server_uptime", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL}
+            {"Server Start Time", "twamp_control_server_uptime", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_accept,
-            {"Accept", "twamp.control.accept", FT_UINT8, BASE_DEC, VALS(twamp_control_accept_vals), 0x0,
+            {"Accept", "twamp_control_accept", FT_UINT8, BASE_DEC, VALS(twamp_control_accept_vals), 0x0,
                 "Message acceptance by the other side", HFILL}
         },
         {&hf_twamp_control_sender_port,
-            {"Sender Port", "twamp.control.sender_port", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
+            {"Sender Port", "twamp_control_sender_port", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_receiver_port,
-            {"Receiver Port", "twamp.control.receiver_port", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
+            {"Receiver Port", "twamp_control_receiver_port", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_ipvn,
-            {"IP Version", "twamp.control.ipvn", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL}
+            {"IP Version", "twamp_control_ipvn", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_twamp_control_sender_ipv4,
-            {"Sender Address", "twamp.control.sender_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+            {"Sender Address", "twamp_control_sender_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
                 "IPv4 sender address want to use in test packets", HFILL}
         },
         {&hf_twamp_control_sender_ipv6,
-            {"Sender Address", "twamp.control.sender_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+            {"Sender Address", "twamp_control_sender_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
                 "IPv6 sender address want to use in test packets", HFILL}
         },
         {&hf_twamp_control_receiver_ipv4,
-            {"Receiver Address", "twamp.control.receiver_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+            {"Receiver Address", "twamp_control_receiver_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
                 "IPv4 sender address want to use in test packets", HFILL}
         },
         {&hf_twamp_control_receiver_ipv6,
-            {"Receiver Address", "twamp.control.receiver_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+            {"Receiver Address", "twamp_control_receiver_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
                 "IPv6 receiver address want to use in test packets", HFILL}
         }
     };

@@ -310,7 +310,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_signature,
 			{
 				"Signature",
-				"applemidi.signature",
+				"applemidi_signature",
 				FT_UINT16,
 				BASE_HEX,
 				NULL,
@@ -322,7 +322,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_command,
 			{
 				"Command",
-				"applemidi.command",
+				"applemidi_command",
 				FT_UINT16,
 				BASE_HEX,
 				VALS( applemidi_commands ),
@@ -334,7 +334,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_protocol_version,
 			{
 				"Protocol Version",
-				"applemidi.protocol_version",
+				"applemidi_protocol_version",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,
@@ -346,7 +346,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_token,
 			{
 				"Initiator Token",
-				"applemidi.initiator_token",
+				"applemidi_initiator_token",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -358,7 +358,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_ssrc,
 			{
 				"Sender SSRC",
-				"applemidi.sender_ssrc",
+				"applemidi_sender_ssrc",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -370,7 +370,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_name,
 			{
 				"Name",
-				"applemidi.name",
+				"applemidi_name",
 				FT_STRING,
 				BASE_NONE,
 				NULL,
@@ -382,7 +382,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_count,
 			{
 				"Count",
-				"applemidi.count",
+				"applemidi_count",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -394,7 +394,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_padding,
 			{
 				"Padding",
-				"applemidi.padding",
+				"applemidi_padding",
 				FT_UINT24,
 				BASE_HEX,
 				NULL,
@@ -406,7 +406,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_timestamp1,
 			{
 				"Timestamp 1",
-				"applemidi.timestamp1",
+				"applemidi_timestamp1",
 				FT_UINT64,
 				BASE_HEX,
 				NULL,
@@ -418,7 +418,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_timestamp2,
 			{
 				"Timestamp 2",
-				"applemidi.timestamp2",
+				"applemidi_timestamp2",
 				FT_UINT64,
 				BASE_HEX,
 				NULL,
@@ -430,7 +430,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_timestamp3,
 			{
 				"Timestamp 3",
-				"applemidi.timestamp3",
+				"applemidi_timestamp3",
 				FT_UINT64,
 				BASE_HEX,
 				NULL,
@@ -442,7 +442,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_sequence_num,
 			{
 				"Sequence Number",
-				"applemidi.sequence_number",
+				"applemidi_sequence_number",
 				FT_UINT32,
 				BASE_HEX,
 				NULL,
@@ -454,7 +454,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_rtp_sequence_num,
 			{
 				"RTP Sequence Number",
-				"applemidi.rtp_sequence_number",
+				"applemidi_rtp_sequence_number",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,
@@ -466,7 +466,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_rtp_bitrate_limit,
 			{
 				"Bitrate limit",
-				"applemidi.bitrate_limit",
+				"applemidi_bitrate_limit",
 				FT_UINT32,
 				BASE_DEC,
 				NULL,
@@ -478,7 +478,7 @@ proto_register_applemidi( void )
 			&hf_applemidi_unknown_data,
 			{
 				"Unknown Data",
-				"applemidi.unknown_data",
+				"applemidi_unknown_data",
 				FT_BYTES,
 				BASE_NONE,
 				NULL,

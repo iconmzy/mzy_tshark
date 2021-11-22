@@ -899,7 +899,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_cookie,
             {
                 "Cookie",
-                "rtpproxy.cookie",
+                "rtpproxy_cookie",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -912,7 +912,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_version_request,
             {
                 "Version Request",
-                "rtpproxy.version",
+                "rtpproxy_version",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -925,7 +925,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_version_supported,
             {
                 "Version Supported",
-                "rtpproxy.version_supported",
+                "rtpproxy_version_supported",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -938,7 +938,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_error,
             {
                 "Error",
-                "rtpproxy.error",
+                "rtpproxy_error",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -951,7 +951,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_ok,
             {
                 "Ok",
-                "rtpproxy.ok",
+                "rtpproxy_ok",
                 FT_CHAR,
                 BASE_HEX,
                 VALS(oktypenames),
@@ -964,7 +964,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_status,
             {
                 "Status",
-                "rtpproxy.status",
+                "rtpproxy_status",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -977,7 +977,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_ipv4,
             {
                 "IPv4",
-                "rtpproxy.ipv4",
+                "rtpproxy_ipv4",
                 FT_IPv4,
                 BASE_NONE,
                 NULL,
@@ -990,7 +990,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_ipv6,
             {
                 "IPv6",
-                "rtpproxy.ipv6",
+                "rtpproxy_ipv6",
                 FT_IPv6,
                 BASE_NONE,
                 NULL,
@@ -1003,7 +1003,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_port,
             {
                 "Port",
-                "rtpproxy.port",
+                "rtpproxy_port",
                 FT_UINT16, /* 0 - 65535 */
                 BASE_DEC,
                 NULL,
@@ -1016,7 +1016,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_request,
             {
                 "Request",
-                "rtpproxy.request",
+                "rtpproxy_request",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1029,7 +1029,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command,
             {
                 "Command",
-                "rtpproxy.command",
+                "rtpproxy_command",
                 FT_CHAR,
                 BASE_HEX,
                 VALS(commandtypenames),
@@ -1042,7 +1042,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameters,
             {
                 "Command parameters",
-                "rtpproxy.command_parameters",
+                "rtpproxy_command_parameters",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -1055,7 +1055,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter,
             {
                 "Parameter",
-                "rtpproxy.command_parameter",
+                "rtpproxy_command_parameter",
                 FT_CHAR,
                 BASE_HEX,
                 VALS(paramtypenames),
@@ -1068,7 +1068,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter_codec,
             {
                 "Allowed codec",
-                "rtpproxy.command_parameter_codec",
+                "rtpproxy_command_parameter_codec",
                 FT_UINT8, /* 0 - 127 */
                 BASE_DEC,
                 NULL,
@@ -1081,7 +1081,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter_local_ipv4,
             {
                 "Local IPv4 address",
-                "rtpproxy.command_parameter_local_ipv4",
+                "rtpproxy_command_parameter_local_ipv4",
                 FT_IPv4, /* FIXME - is it ever possible to see IPv6 here? */
                 BASE_NONE,
                 NULL,
@@ -1094,7 +1094,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter_remote_ipv4,
             {
                 "Remote IPv4 address",
-                "rtpproxy.command_parameter_remote_ipv4",
+                "rtpproxy_command_parameter_remote_ipv4",
                 FT_IPv4, /* FIXME - is it ever possible to see IPv6 here? */
                 BASE_NONE,
                 NULL,
@@ -1107,7 +1107,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter_repacketize,
             {
                 "Repacketize (ms)",
-                "rtpproxy.command_parameter_repacketize",
+                "rtpproxy_command_parameter_repacketize",
                 FT_UINT16, /* 0 - 1000 milliseconds */
                 BASE_DEC,
                 NULL,
@@ -1120,7 +1120,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter_dtmf,
             {
                 "DTMF payload ID",
-                "rtpproxy.command_parameter_dtmf",
+                "rtpproxy_command_parameter_dtmf",
                 FT_UINT8, /* 0 - 127 */
                 BASE_DEC,
                 NULL,
@@ -1133,7 +1133,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter_proto,
             {
                 "RTP transmission protocol",
-                "rtpproxy.command_parameter_proto",
+                "rtpproxy_command_parameter_proto",
                 FT_CHAR,
                 BASE_HEX,
                 VALS(prototypenames),
@@ -1146,7 +1146,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter_transcode,
             {
                 "Transcode to",
-                "rtpproxy.command_parameter_transcode",
+                "rtpproxy_command_parameter_transcode",
                 FT_UINT8, /* 0 - 127 */
                 BASE_DEC,
                 NULL,
@@ -1159,7 +1159,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_command_parameter_acc,
             {
                 "Accounting",
-                "rtpproxy.command_parameter_acc",
+                "rtpproxy_command_parameter_acc",
                 FT_CHAR,
                 BASE_HEX,
                 VALS(acctypenames),
@@ -1172,7 +1172,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_copy_target,
             {
                 "Copy target",
-                "rtpproxy.copy_target",
+                "rtpproxy_copy_target",
                 FT_STRING, /* Filename or UDP address, e.g. /var/tmp/fileXXXX.yyy or IP:Port */
                 BASE_NONE,
                 NULL,
@@ -1185,7 +1185,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_playback_filename,
             {
                 "Playback filename",
-                "rtpproxy.playback_filename",
+                "rtpproxy_playback_filename",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -1198,7 +1198,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_playback_codec,
             {
                 "Playback codec",
-                "rtpproxy.playback_codec",
+                "rtpproxy_playback_codec",
                 FT_UINT8, /* 0 - 127 */
                 BASE_DEC,
                 NULL,
@@ -1211,7 +1211,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_callid,
             {
                 "Call-ID",
-                "rtpproxy.callid",
+                "rtpproxy_callid",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -1224,7 +1224,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_notify,
             {
                 "Notify",
-                "rtpproxy.notify",
+                "rtpproxy_notify",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -1237,7 +1237,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_tag,
             {
                 "Tag",
-                "rtpproxy.tag",
+                "rtpproxy_tag",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -1250,7 +1250,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_mediaid,
             {
                 "Media-ID",
-                "rtpproxy.mediaid",
+                "rtpproxy_mediaid",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -1263,7 +1263,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_notify_ipv4,
             {
                 "Notification IPv4",
-                "rtpproxy.notify_ipv4",
+                "rtpproxy_notify_ipv4",
                 FT_IPv4,
                 BASE_NONE,
                 NULL,
@@ -1276,7 +1276,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_notify_ipv6,
             {
                 "Notification IPv6",
-                "rtpproxy.notify_ipv6",
+                "rtpproxy_notify_ipv6",
                 FT_IPv6,
                 BASE_NONE,
                 NULL,
@@ -1289,7 +1289,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_notify_port,
             {
                 "Notification Port",
-                "rtpproxy.notify_port",
+                "rtpproxy_notify_port",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1302,7 +1302,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_notify_tag,
             {
                 "Notification Tag",
-                "rtpproxy.notify_tag",
+                "rtpproxy_notify_tag",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -1315,7 +1315,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_reply,
             {
                 "Reply",
-                "rtpproxy.reply",
+                "rtpproxy_reply",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1328,7 +1328,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_lf,
             {
                 "LF",
-                "rtpproxy.lf",
+                "rtpproxy_lf",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1341,7 +1341,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_request_in,
             {
                 "Request In",
-                "rtpproxy.request_in",
+                "rtpproxy_request_in",
                 FT_FRAMENUM,
                 BASE_NONE,
                 NULL,
@@ -1355,7 +1355,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_response_in,
             {
                 "Response In",
-                "rtpproxy.response_in",
+                "rtpproxy_response_in",
                 FT_FRAMENUM,
                 BASE_NONE,
                 NULL,
@@ -1368,7 +1368,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_response_time,
             {
                 "Response Time",
-                "rtpproxy.response_time",
+                "rtpproxy_response_time",
                 FT_RELATIVE_TIME,
                 BASE_NONE,
                 NULL,
@@ -1381,7 +1381,7 @@ proto_register_rtpproxy(void)
             &hf_rtpproxy_ng_bencode,
             {
                 "RTPproxy-ng bencode packet",
-                "rtpproxy.ng.bencode",
+                "rtpproxy_ng_bencode",
                 FT_STRING,
                 BASE_NONE,
                 NULL,

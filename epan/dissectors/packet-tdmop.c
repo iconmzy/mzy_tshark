@@ -192,105 +192,105 @@ void proto_register_tdmop(void)
     {
         {
             &hf_tdmop_TransferID,
-            {    "TDMoP Transfer ID", "tdmop.transferid",
+            {    "TDMoP Transfer ID", "tdmop_transferid",
                 FT_UINT32, BASE_HEX,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_DstCh,
-            {    "TDMoP Dst Ch", "tdmop.dstch",
+            {    "TDMoP Dst Ch", "tdmop_dstch",
                 FT_UINT8, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_SrcCh,
-            {    "TDMoP Src Ch", "tdmop.srcch",
+            {    "TDMoP Src Ch", "tdmop_srcch",
                 FT_UINT8, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_Flags,
-            {    "TDMoP Flags", "tdmop.flags",
+            {    "TDMoP Flags", "tdmop_flags",
                 FT_UINT8, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_Flags_lost_request,
-            {    "TDMoP Lost Request Flag", "tdmop.flags.lostrequest",
+            {    "TDMoP Lost Request Flag", "tdmop_flags_lostrequest",
                 FT_BOOLEAN, 8,
                 NULL, TDMOP_FLAG_LOST_REQUEST,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_Flags_no_data,
-            {    "TDMoP No data flag", "tdmop.flags.nodata",
+            {    "TDMoP No data flag", "tdmop_flags_nodata",
                 FT_BOOLEAN, 8,
                 NULL, TDMOP_FLAG_NO_DATA,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_Flags_remote_no_data,
-            {    "TDMoP No data received from remote side flag", "tdmop.flags.remotenodata",
+            {    "TDMoP No data received from remote side flag", "tdmop_flags_remotenodata",
                 FT_BOOLEAN, 8,
                 NULL, TDMOP_FLAG_REMOTE_NO_DATA,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_Flags_compressed,
-            {    "TDMoP compressed framed", "tdmop.flags.compressed",
+            {    "TDMoP compressed framed", "tdmop_flags_compressed",
                 FT_BOOLEAN, 8,
                 NULL, TDMOP_FLAG_COMPRESSED,
                 NULL, HFILL}
         },
         {
             &hd_tdmop_SrcDst,
-            {    "TDMoP Short SrcDst", "tdmop.srcdst",
+            {    "TDMoP Short SrcDst", "tdmop_srcdst",
                 FT_UINT8, BASE_HEX,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hd_tdmop_SeqNum,
-            {    "TDMoP Sequence number", "tdmop.seqnum",
+            {    "TDMoP Sequence number", "tdmop_seqnum",
                 FT_UINT16, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hd_tdmop_LastRecv,
-            {    "TDMoP Last Received number", "tdmop.recvnumber",
+            {    "TDMoP Last Received number", "tdmop_recvnumber",
                 FT_UINT16, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hd_tdmop_Delay,
-            {    "TDMoP Delay", "tdmop.delay",
+            {    "TDMoP Delay", "tdmop_delay",
                 FT_UINT16, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hd_tdmop_Reserved,
-            {    "TDMoP Reserved", "tdmop.reserved",
+            {    "TDMoP Reserved", "tdmop_reserved",
                 FT_UINT16, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_payload,
-            {    "TDMoP Payload", "tdmop.payload",
+            {    "TDMoP Payload", "tdmop_payload",
                 FT_BYTES, BASE_NONE,
                 NULL, 0x0,
                 NULL, HFILL}
         },
         {
             &hf_tdmop_Compression_mask,
-            {    "TDMoP Compression mask", "tdmop.cmask",
+            {    "TDMoP Compression mask", "tdmop_cmask",
                 FT_UINT32, BASE_HEX,
                 NULL, 0x0,
                 NULL, HFILL}

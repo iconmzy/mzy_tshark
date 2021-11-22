@@ -333,89 +333,89 @@ proto_register_skype(void)
 
 	/* Start of message fields */
 		{ &hf_skype_som_id,
-		{ "ID",	"skype.som.id", FT_UINT16, BASE_HEX, NULL,
+		{ "ID",	"skype_som_id", FT_UINT16, BASE_HEX, NULL,
 			0x0, "Message ID", HFILL }},
 
 		{ &hf_skype_som_unk,
-		{ "Unknown",	"skype.som.unk", FT_UINT8, BASE_HEX, NULL,
+		{ "Unknown",	"skype_som_unk", FT_UINT8, BASE_HEX, NULL,
 			SKYPE_SOM_UNK_MASK, NULL, HFILL }},
 
 		{ &hf_skype_som_type,
-		{ "Type",	"skype.som.type", FT_UINT8, BASE_HEX, VALS(skype_type_vals),
+		{ "Type",	"skype_som_type", FT_UINT8, BASE_HEX, VALS(skype_type_vals),
 			SKYPE_SOM_TYPE_MASK, "Message type", HFILL }},
 
 	/* Message body */
 
 	/* Unknown_0 */
 		{ &hf_skype_unknown_0_unk1,
-		{ "Unknown1",   "skype.unknown_0.unk1", FT_BYTES, BASE_NONE, NULL,
+		{ "Unknown1",   "skype_unknown_0_unk1", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Payload */
 		{ &hf_skype_payload_iv,
-		{ "IV",   "skype.payload.iv", FT_UINT32, BASE_HEX, NULL,
+		{ "IV",   "skype_payload_iv", FT_UINT32, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_skype_payload_crc,
-		{ "CRC",   "skype.payload.crc", FT_UINT32, BASE_HEX, NULL,
+		{ "CRC",   "skype_payload_crc", FT_UINT32, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_skype_payload_enc_data,
-		{ "Enc Data",   "skype.payload.encdata", FT_BYTES, BASE_NONE, NULL,
+		{ "Enc Data",   "skype_payload_encdata", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Resend */
 		{ &hf_skype_ffr_num,
-		{ "Num",   "skype.ffr.num", FT_UINT8, BASE_HEX, NULL,
+		{ "Num",   "skype_ffr_num", FT_UINT8, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_skype_ffr_unk1,
-		{ "Unk1",   "skype.ffr.unk1", FT_UINT32, BASE_HEX, NULL,
+		{ "Unk1",   "skype_ffr_unk1", FT_UINT32, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_skype_ffr_iv,
-		{ "IV",   "skype.ffr.iv", FT_UINT32, BASE_HEX, NULL,
+		{ "IV",   "skype_ffr_iv", FT_UINT32, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_skype_ffr_crc,
-		{ "CRC",   "skype.ffr.crc", FT_UINT32, BASE_HEX, NULL,
+		{ "CRC",   "skype_ffr_crc", FT_UINT32, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_skype_ffr_enc_data,
-		{ "Enc Data",   "skype.ffr.encdata", FT_BYTES, BASE_NONE, NULL,
+		{ "Enc Data",   "skype_ffr_encdata", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Nat info */
 		{ &hf_skype_natinfo_srcip,
-		{ "Src IP",   "skype.natinfo.srcip", FT_IPv4, BASE_NONE, NULL,
+		{ "Src IP",   "skype_natinfo_srcip", FT_IPv4, BASE_NONE, NULL,
 			0x0, "Global source IP", HFILL }},
 
 		{ &hf_skype_natinfo_dstip,
-		{ "Dst IP",   "skype.natinfo.dstip", FT_UINT32, BASE_HEX, NULL,
+		{ "Dst IP",   "skype_natinfo_dstip", FT_UINT32, BASE_HEX, NULL,
 			0x0, "Global destination IP", HFILL }},
 
 	/* Nat request */
 		{ &hf_skype_natrequest_srcip,
-		{ "Src IP",   "skype.natrequest.srcip", FT_IPv4, BASE_NONE, NULL,
+		{ "Src IP",   "skype_natrequest_srcip", FT_IPv4, BASE_NONE, NULL,
 			0x0, "Global source IP", HFILL }},
 
 		{ &hf_skype_natrequest_dstip,
-		{ "Dst IP",   "skype.natrequest.dstip", FT_UINT32, BASE_HEX, NULL,
+		{ "Dst IP",   "skype_natrequest_dstip", FT_UINT32, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Audio */
 		{ &hf_skype_audio_unk1,
-		{ "Unknown1",   "skype.audio.unk1", FT_BYTES, BASE_NONE, NULL,
+		{ "Unknown1",   "skype_audio_unk1", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Unknown_F */
 		{ &hf_skype_unknown_f_unk1,
-		{ "Unknown1",   "skype.unknown_f.unk1", FT_BYTES, BASE_NONE, NULL,
+		{ "Unknown1",   "skype_unknown_f_unk1", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Unknown packet */
 		{ &hf_skype_unknown_packet,
-		{ "Unknown Packet",   "skype.unknown_packet", FT_BYTES, BASE_NONE, NULL,
+		{ "Unknown Packet",   "skype_unknown_packet", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	};

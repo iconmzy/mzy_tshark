@@ -73,10 +73,10 @@ proto_register_wfleet_hdlc(void)
 {
   static hf_register_info hf[] = {
     { &hf_wfleet_hdlc_addr,
-      { "Address", "wfleet_hdlc.address", FT_UINT8, BASE_HEX,
+      { "Address", "wfleet_hdlc_address", FT_UINT8, BASE_HEX,
         NULL, 0x0, NULL, HFILL }},
     { &hf_wfleet_hdlc_cmd,
-      { "Command", "wfleet_hdlc.command", FT_UINT8, BASE_HEX,
+      { "Command", "wfleet_hdlc_command", FT_UINT8, BASE_HEX,
         VALS(wfleet_hdlc_cmd_vals), 0x0, NULL, HFILL }},
   };
   static gint *ett[] = {

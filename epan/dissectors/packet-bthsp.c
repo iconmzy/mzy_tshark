@@ -1006,87 +1006,87 @@ proto_register_bthsp(void)
 
     static hf_register_info hf[] = {
         { &hf_command,
-           { "Command",                          "bthsp.command",
+           { "Command",                          "bthsp_command",
            FT_NONE, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_parameters,
-           { "Parameters",                       "bthsp.parameters",
+           { "Parameters",                       "bthsp_parameters",
            FT_NONE, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_command_in,
-           { "Command frame number in",          "bthsp.command_in",
+           { "Command frame number in",          "bthsp_command_in",
            FT_FRAMENUM, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_unsolicited,
-           { "Unsolicited",                      "bthsp.unsolicited",
+           { "Unsolicited",                      "bthsp_unsolicited",
            FT_NONE, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_data,
-           { "AT Stream",                        "bthsp.data",
+           { "AT Stream",                        "bthsp_data",
            FT_STRING, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_fragment,
-           { "Fragment",                         "bthsp.fragment",
+           { "Fragment",                         "bthsp_fragment",
            FT_STRING, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_fragmented,
-           { "Fragmented",                       "bthsp.fragmented",
+           { "Fragmented",                       "bthsp_fragmented",
            FT_NONE, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_at_ignored,
-           { "Ignored",                          "bthsp.ignored",
+           { "Ignored",                          "bthsp_ignored",
            FT_BYTES, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_at_cmd,
-           { "Command",                          "bthsp.at_cmd",
+           { "Command",                          "bthsp_at_cmd",
            FT_STRING, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_at_cmd_type,
-           { "Type",                             "bthsp.at_cmd.type",
+           { "Type",                             "bthsp_at_cmd_type",
            FT_UINT16, BASE_HEX, VALS(at_cmd_type_vals), 0,
            NULL, HFILL}
         },
         { &hf_at_command_line_prefix,
-           { "Command Line Prefix",              "bthsp.command_line_prefix",
+           { "Command Line Prefix",              "bthsp_command_line_prefix",
            FT_STRING, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_parameter,
-           { "Parameter",                        "bthsp.parameter",
+           { "Parameter",                        "bthsp_parameter",
            FT_STRING, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_unknown_parameter,
-           { "Unknown Parameter",                "bthsp.unknown_parameter",
+           { "Unknown Parameter",                "bthsp_unknown_parameter",
            FT_STRING, BASE_NONE, NULL, 0,
            NULL, HFILL}
         },
         { &hf_role,
-           { "Role",                             "bthsp.role",
+           { "Role",                             "bthsp_role",
            FT_UINT8, BASE_DEC, VALS(role_vals), 0,
            NULL, HFILL}
         },
         { &hf_vgs,
-           { "Gain",                             "bthsp.vgs",
+           { "Gain",                             "bthsp_vgs",
            FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_slash15, 0,
            NULL, HFILL}
         },
         { &hf_vgm,
-           { "Gain",                             "bthsp.vgm",
+           { "Gain",                             "bthsp_vgm",
            FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_slash15, 0,
            NULL, HFILL}
         },
         { &hf_ckpd,
-           { "Key",                             "bthsp.ckpd",
+           { "Key",                             "bthsp_ckpd",
            FT_UINT8, BASE_DEC, NULL, 0,
            NULL, HFILL}
         }

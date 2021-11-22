@@ -894,111 +894,111 @@ proto_register_eth(void)
   static hf_register_info hf[] = {
 
     { &hf_eth_dst,
-      { "Destination", "eth.dst", FT_ETHER, BASE_NONE, NULL, 0x0,
+      { "Destination", "eth_dst", FT_ETHER, BASE_NONE, NULL, 0x0,
         "Destination Hardware Address", HFILL }},
 
     { &hf_eth_dst_resolved,
-      { "Destination (resolved)", "eth.dst_resolved", FT_STRING, BASE_NONE,
+      { "Destination (resolved)", "eth_dst_resolved", FT_STRING, BASE_NONE,
         NULL, 0x0, "Destination Hardware Address (resolved)", HFILL }},
 
     { &hf_eth_dst_oui,
-      { "Destination OUI", "eth.dst.oui", FT_UINT24, BASE_OUI,
+      { "Destination OUI", "eth_dst_oui", FT_UINT24, BASE_OUI,
         NULL, 0x0, "Destination Organizationally Unique Identifier", HFILL } },
 
     { &hf_eth_dst_oui_resolved,
-      { "Destination OUI (resolved)", "eth.dst.oui_resolved", FT_STRING, BASE_NONE,
+      { "Destination OUI (resolved)", "eth_dst_oui_resolved", FT_STRING, BASE_NONE,
          NULL, 0x0, "Destination Organizationally Unique Identifier (resolved)", HFILL } },
 
     { &hf_eth_src,
-      { "Source", "eth.src", FT_ETHER, BASE_NONE, NULL, 0x0,
+      { "Source", "eth_src", FT_ETHER, BASE_NONE, NULL, 0x0,
         "Source Hardware Address", HFILL }},
 
     { &hf_eth_src_resolved,
-      { "Source (resolved)", "eth.src_resolved", FT_STRING, BASE_NONE,
+      { "Source (resolved)", "eth_src_resolved", FT_STRING, BASE_NONE,
         NULL, 0x0, "Source Hardware Address (resolved)", HFILL }},
 
 
     { &hf_eth_src_oui,
-      { "Source OUI", "eth.src.oui", FT_UINT24, BASE_OUI,
+      { "Source OUI", "eth_src_oui", FT_UINT24, BASE_OUI,
         NULL, 0x0, "Source Organizationally Unique Identifier", HFILL } },
 
     { &hf_eth_src_oui_resolved,
-      { "Source OUI (resolved)", "eth.src.oui_resolved", FT_STRING, BASE_NONE,
+      { "Source OUI (resolved)", "eth_src_oui_resolved", FT_STRING, BASE_NONE,
         NULL, 0x0, "Source Organizationally Unique Identifier (resolved)", HFILL } },
 
     { &hf_eth_len,
-      { "Length", "eth.len", FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Length", "eth_len", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     /* registered here but handled in packet-ethertype.c */
     { &hf_eth_type,
-      { "Type", "eth.type", FT_UINT16, BASE_HEX, VALS(etype_vals), 0x0,
+      { "Type", "eth_type", FT_UINT16, BASE_HEX, VALS(etype_vals), 0x0,
         NULL, HFILL }},
 
     { &hf_eth_invalid_lentype,
-      { "Invalid length/type", "eth.invalid_lentype", FT_UINT16, BASE_HEX_DEC,
+      { "Invalid length/type", "eth_invalid_lentype", FT_UINT16, BASE_HEX_DEC,
         NULL, 0x0, NULL, HFILL }},
 
     { &hf_eth_addr,
-      { "Address", "eth.addr", FT_ETHER, BASE_NONE, NULL, 0x0,
+      { "Address", "eth_addr", FT_ETHER, BASE_NONE, NULL, 0x0,
         "Source or Destination Hardware Address", HFILL }},
 
     { &hf_eth_addr_resolved,
-      { "Address (resolved)", "eth.addr_resolved", FT_STRING, BASE_NONE,
+      { "Address (resolved)", "eth_addr_resolved", FT_STRING, BASE_NONE,
         NULL, 0x0, "Source or Destination Hardware Address (resolved)",
         HFILL }},
 
     { &hf_eth_addr_oui,
-      { "Address OUI", "eth.addr.oui", FT_UINT24, BASE_OUI,
+      { "Address OUI", "eth_addr_oui", FT_UINT24, BASE_OUI,
         NULL, 0x0, "Address Organizationally Unique Identifier", HFILL } },
 
     { &hf_eth_addr_oui_resolved,
-      { "Address OUI (resolved)", "eth.addr.oui_resolved", FT_STRING, BASE_NONE,
+      { "Address OUI (resolved)", "eth_addr_oui_resolved", FT_STRING, BASE_NONE,
         NULL, 0x0, "Address Organizationally Unique Identifier (resolved)", HFILL } },
 
     { &hf_eth_padding,
-      { "Padding", "eth.padding", FT_BYTES, BASE_NONE, NULL, 0x0,
+      { "Padding", "eth_padding", FT_BYTES, BASE_NONE, NULL, 0x0,
         "Ethernet Padding", HFILL }},
 
     { &hf_eth_trailer,
-      { "Trailer", "eth.trailer", FT_BYTES, BASE_NONE, NULL, 0x0,
+      { "Trailer", "eth_trailer", FT_BYTES, BASE_NONE, NULL, 0x0,
         "Ethernet Trailer or Checksum", HFILL }},
 
     { &hf_eth_fcs,
-      { "Frame check sequence", "eth.fcs", FT_UINT32, BASE_HEX, NULL, 0x0,
+      { "Frame check sequence", "eth_fcs", FT_UINT32, BASE_HEX, NULL, 0x0,
         "Ethernet checksum", HFILL }},
 
     { &hf_eth_fcs_status,
-      { "FCS Status", "eth.fcs.status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
+      { "FCS Status", "eth_fcs_status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
         NULL, HFILL }},
 
     { &hf_eth_dst_lg,
-      { "LG bit", "eth.dst.lg", FT_BOOLEAN, 24,
+      { "LG bit", "eth_dst_lg", FT_BOOLEAN, 24,
         TFS(&lg_tfs), 0x020000,
         "Specifies if this is a locally administered or globally unique (IEEE assigned) address", HFILL }},
 
     { &hf_eth_dst_ig,
-      { "IG bit", "eth.dst.ig", FT_BOOLEAN, 24,
+      { "IG bit", "eth_dst_ig", FT_BOOLEAN, 24,
         TFS(&ig_tfs), 0x010000,
         "Specifies if this is an individual (unicast) or group (broadcast/multicast) address", HFILL }},
 
     { &hf_eth_src_lg,
-      { "LG bit", "eth.src.lg", FT_BOOLEAN, 24,
+      { "LG bit", "eth_src_lg", FT_BOOLEAN, 24,
         TFS(&lg_tfs), 0x020000,
         "Specifies if this is a locally administered or globally unique (IEEE assigned) address", HFILL }},
 
     { &hf_eth_src_ig,
-      { "IG bit", "eth.src.ig", FT_BOOLEAN, 24,
+      { "IG bit", "eth_src_ig", FT_BOOLEAN, 24,
         TFS(&ig_tfs), 0x010000,
         "Specifies if this is an individual (unicast) or group (broadcast/multicast) address", HFILL }},
 
     { &hf_eth_lg,
-      { "LG bit", "eth.lg", FT_BOOLEAN, 24,
+      { "LG bit", "eth_lg", FT_BOOLEAN, 24,
         TFS(&lg_tfs), 0x020000,
         "Specifies if this is a locally administered or globally unique (IEEE assigned) address", HFILL }},
 
     { &hf_eth_ig,
-      { "IG bit", "eth.ig", FT_BOOLEAN, 24,
+      { "IG bit", "eth_ig", FT_BOOLEAN, 24,
         TFS(&ig_tfs), 0x010000,
         "Specifies if this is an individual (unicast) or group (broadcast/multicast) address", HFILL }}
   };

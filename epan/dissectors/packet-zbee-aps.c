@@ -1928,250 +1928,250 @@ void proto_register_zbee_aps(void)
 {
     static hf_register_info hf[] = {
             { &hf_zbee_aps_fcf_frame_type,
-            { "Frame Type",             "zbee_aps.type", FT_UINT8, BASE_HEX, VALS(zbee_aps_frame_types), ZBEE_APS_FCF_FRAME_TYPE,
+            { "Frame Type",             "zbee_aps_type", FT_UINT8, BASE_HEX, VALS(zbee_aps_frame_types), ZBEE_APS_FCF_FRAME_TYPE,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fcf_delivery,
-            { "Delivery Mode",          "zbee_aps.delivery", FT_UINT8, BASE_HEX, VALS(zbee_aps_delivery_modes), ZBEE_APS_FCF_DELIVERY_MODE,
+            { "Delivery Mode",          "zbee_aps_delivery", FT_UINT8, BASE_HEX, VALS(zbee_aps_delivery_modes), ZBEE_APS_FCF_DELIVERY_MODE,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fcf_indirect_mode,
-            { "Indirect Address Mode",  "zbee_aps.indirect_mode", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_INDIRECT_MODE,
+            { "Indirect Address Mode",  "zbee_aps_indirect_mode", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_INDIRECT_MODE,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fcf_ack_format,
-            { "Acknowledgement Format",  "zbee_aps.ack_format", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_ACK_FORMAT,
+            { "Acknowledgement Format",  "zbee_aps_ack_format", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_ACK_FORMAT,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fcf_security,
-            { "Security",               "zbee_aps.security", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_SECURITY,
+            { "Security",               "zbee_aps_security", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_SECURITY,
                 "Whether security operations are performed on the APS payload.", HFILL }},
 
             { &hf_zbee_aps_fcf_ack_req,
-            { "Acknowledgement Request","zbee_aps.ack_req", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_ACK_REQ,
+            { "Acknowledgement Request","zbee_aps_ack_req", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_ACK_REQ,
                 "Flag requesting an acknowledgement frame for this packet.", HFILL }},
 
             { &hf_zbee_aps_fcf_ext_header,
-            { "Extended Header",        "zbee_aps.ext_header", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_EXT_HEADER,
+            { "Extended Header",        "zbee_aps_ext_header", FT_BOOLEAN, 8, NULL, ZBEE_APS_FCF_EXT_HEADER,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_dst,
-            { "Destination Endpoint",   "zbee_aps.dst", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Destination Endpoint",   "zbee_aps_dst", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_group,
-            { "Group",                  "zbee_aps.group", FT_UINT16, BASE_HEX, NULL, 0x0,
+            { "Group",                  "zbee_aps_group", FT_UINT16, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_cluster,
-            { "Cluster",                "zbee_aps.cluster", FT_UINT16, BASE_HEX | BASE_RANGE_STRING,
+            { "Cluster",                "zbee_aps_cluster", FT_UINT16, BASE_HEX | BASE_RANGE_STRING,
                     RVALS(zbee_aps_cid_names), 0x0, NULL, HFILL }},
 
             { &hf_zbee_aps_profile,
-            { "Profile",                "zbee_aps.profile", FT_UINT16, BASE_HEX | BASE_RANGE_STRING,
+            { "Profile",                "zbee_aps_profile", FT_UINT16, BASE_HEX | BASE_RANGE_STRING,
                     RVALS(zbee_aps_apid_names), 0x0, NULL, HFILL }},
 
             { &hf_zbee_aps_src,
-            { "Source Endpoint",        "zbee_aps.src", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Source Endpoint",        "zbee_aps_src", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_counter,
-            { "Counter",                "zbee_aps.counter", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Counter",                "zbee_aps_counter", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fragmentation,
-            { "Fragmentation",          "zbee_aps.fragmentation", FT_UINT8, BASE_HEX, VALS(zbee_aps_fragmentation_modes), ZBEE_APS_EXT_FCF_FRAGMENT,
+            { "Fragmentation",          "zbee_aps_fragmentation", FT_UINT8, BASE_HEX, VALS(zbee_aps_fragmentation_modes), ZBEE_APS_EXT_FCF_FRAGMENT,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_block_number,
-            { "Block Number",           "zbee_aps.block", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Block Number",           "zbee_aps_block", FT_UINT8, BASE_DEC, NULL, 0x0,
                 "A block identifier within a fragmented transmission, or the number of expected blocks if the first block.", HFILL }},
 
             { &hf_zbee_aps_block_ack,
-            { "Block Acknowledgements", "zbee_aps.block_acks", FT_UINT8, BASE_HEX,
+            { "Block Acknowledgements", "zbee_aps_block_acks", FT_UINT8, BASE_HEX,
                 NULL, 0x0, NULL, HFILL }},
 
             { &hf_zbee_aps_block_ack1,
-            { "Block 1", "zbee_aps.block1_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
+            { "Block 1", "zbee_aps_block1_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
                 ZBEE_APS_FRAG_BLOCK1_ACK, NULL, HFILL }},
 
             { &hf_zbee_aps_block_ack2,
-            { "Block 2", "zbee_aps.block2_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
+            { "Block 2", "zbee_aps_block2_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
                 ZBEE_APS_FRAG_BLOCK2_ACK, NULL, HFILL }},
 
             { &hf_zbee_aps_block_ack3,
-            { "Block 3", "zbee_aps.block3_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
+            { "Block 3", "zbee_aps_block3_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
                 ZBEE_APS_FRAG_BLOCK3_ACK, NULL, HFILL }},
 
             { &hf_zbee_aps_block_ack4,
-            { "Block 4", "zbee_aps.block4_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
+            { "Block 4", "zbee_aps_block4_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
                 ZBEE_APS_FRAG_BLOCK4_ACK, NULL, HFILL }},
 
             { &hf_zbee_aps_block_ack5,
-            { "Block 5", "zbee_aps.block5_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
+            { "Block 5", "zbee_aps_block5_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
                 ZBEE_APS_FRAG_BLOCK5_ACK, NULL, HFILL }},
 
             { &hf_zbee_aps_block_ack6,
-            { "Block 6", "zbee_aps.block6_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
+            { "Block 6", "zbee_aps_block6_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
                 ZBEE_APS_FRAG_BLOCK6_ACK, NULL, HFILL }},
 
             { &hf_zbee_aps_block_ack7,
-            { "Block 7", "zbee_aps.block7_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
+            { "Block 7", "zbee_aps_block7_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
                 ZBEE_APS_FRAG_BLOCK7_ACK, NULL, HFILL }},
 
             { &hf_zbee_aps_block_ack8,
-            { "Block 8", "zbee_aps.block8_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
+            { "Block 8", "zbee_aps_block8_ack", FT_BOOLEAN, 8, TFS(&tfs_acknowledged_not_acknowledged),
                 ZBEE_APS_FRAG_BLOCK8_ACK, NULL, HFILL }},
 
             { &hf_zbee_aps_cmd_id,
-            { "Command Identifier",     "zbee_aps.cmd.id", FT_UINT8, BASE_HEX, VALS(zbee_aps_cmd_names), 0x0,
+            { "Command Identifier",     "zbee_aps_cmd_id", FT_UINT8, BASE_HEX, VALS(zbee_aps_cmd_names), 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_cmd_initiator,
-            { "Initiator Address",      "zbee_aps.cmd.initiator", FT_EUI64, BASE_NONE, NULL, 0x0,
+            { "Initiator Address",      "zbee_aps_cmd_initiator", FT_EUI64, BASE_NONE, NULL, 0x0,
                 "The extended address of the device to initiate the SKKE procedure", HFILL }},
 
             { &hf_zbee_aps_cmd_responder,
-            { "Responder Address",      "zbee_aps.cmd.responder", FT_EUI64, BASE_NONE, NULL, 0x0,
+            { "Responder Address",      "zbee_aps_cmd_responder", FT_EUI64, BASE_NONE, NULL, 0x0,
                 "The extended address of the device responding to the SKKE procedure", HFILL }},
 
             { &hf_zbee_aps_cmd_partner,
-            { "Partner Address",        "zbee_aps.cmd.partner", FT_EUI64, BASE_NONE, NULL, 0x0,
+            { "Partner Address",        "zbee_aps_cmd_partner", FT_EUI64, BASE_NONE, NULL, 0x0,
                 "The partner to use this key with for link-level security.", HFILL }},
 
             { &hf_zbee_aps_cmd_initiator_flag,
-            { "Initiator",              "zbee_aps.cmd.init_flag", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+            { "Initiator",              "zbee_aps_cmd_init_flag", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 "Indicates the destination of the transport-key command requested this key.", HFILL }},
 
             { &hf_zbee_aps_cmd_device,
-            { "Device Address",         "zbee_aps.cmd.device", FT_EUI64, BASE_NONE, NULL, 0x0,
+            { "Device Address",         "zbee_aps_cmd_device", FT_EUI64, BASE_NONE, NULL, 0x0,
                 "The device whose status is being updated.", HFILL }},
 
             { &hf_zbee_aps_cmd_challenge,
-            { "Challenge",              "zbee_aps.cmd.challenge", FT_BYTES, BASE_NONE, NULL, 0x0,
+            { "Challenge",              "zbee_aps_cmd_challenge", FT_BYTES, BASE_NONE, NULL, 0x0,
                 "Random challenge value used during SKKE and authentication.", HFILL }},
 
             { &hf_zbee_aps_cmd_mac,
-            { "Message Authentication Code",    "zbee_aps.cmd.mac", FT_BYTES, BASE_NONE, NULL, 0x0,
+            { "Message Authentication Code",    "zbee_aps_cmd_mac", FT_BYTES, BASE_NONE, NULL, 0x0,
                 "Message authentication values used during SKKE and authentication.", HFILL }},
 
             { &hf_zbee_aps_cmd_key,
-            { "Key",                    "zbee_aps.cmd.key", FT_BYTES, BASE_NONE, NULL, 0x0,
+            { "Key",                    "zbee_aps_cmd_key", FT_BYTES, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_cmd_key_hash,
-            { "Key Hash",                    "zbee_aps.cmd.key_hash", FT_BYTES, BASE_NONE, NULL, 0x0,
+            { "Key Hash",                    "zbee_aps_cmd_key_hash", FT_BYTES, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_cmd_key_type,
-            { "Key Type",               "zbee_aps.cmd.key_type", FT_UINT8, BASE_HEX,
+            { "Key Type",               "zbee_aps_cmd_key_type", FT_UINT8, BASE_HEX,
                     VALS(zbee_aps_key_names), 0x0, NULL, HFILL }},
 
             { &hf_zbee_aps_cmd_dst,
-            { "Extended Destination",    "zbee_aps.cmd.dst", FT_EUI64, BASE_NONE, NULL, 0x0,
+            { "Extended Destination",    "zbee_aps_cmd_dst", FT_EUI64, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_cmd_src,
-            { "Extended Source",         "zbee_aps.cmd.src", FT_EUI64, BASE_NONE, NULL, 0x0,
+            { "Extended Source",         "zbee_aps_cmd_src", FT_EUI64, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_cmd_seqno,
-            { "Sequence Number",        "zbee_aps.cmd.seqno", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Sequence Number",        "zbee_aps_cmd_seqno", FT_UINT8, BASE_DEC, NULL, 0x0,
                 "The key sequence number associated with the network key.", HFILL }},
 
             { &hf_zbee_aps_cmd_short_addr,
-            { "Device Address",         "zbee_aps.cmd.addr", FT_UINT16, BASE_HEX, NULL, 0x0,
+            { "Device Address",         "zbee_aps_cmd_addr", FT_UINT16, BASE_HEX, NULL, 0x0,
                 "The device whose status is being updated.", HFILL }},
 
             { &hf_zbee_aps_cmd_device_status,
-            { "Device Status",          "zbee_aps.cmd.update_status", FT_UINT8, BASE_HEX,
+            { "Device Status",          "zbee_aps_cmd_update_status", FT_UINT8, BASE_HEX,
                     VALS(zbee_aps_update_status_names), 0x0,
                 "Update device status.", HFILL }},
 
             { &hf_zbee_aps_cmd_status,
-            { "Status",          "zbee_aps.cmd.status", FT_UINT8, BASE_HEX,
+            { "Status",          "zbee_aps_cmd_status", FT_UINT8, BASE_HEX,
                     VALS(zbee_aps_status_names), 0x0,
                 "APS status.", HFILL }},
 
             { &hf_zbee_aps_cmd_ea_key_type,
-            { "Key Type",               "zbee_aps.cmd.ea.key_type", FT_UINT8, BASE_HEX,
+            { "Key Type",               "zbee_aps_cmd_ea_key_type", FT_UINT8, BASE_HEX,
                     VALS(zbee_aps_ea_key_names), 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_cmd_ea_data,
-            { "Data",                   "zbee_aps.cmd.ea.data", FT_BYTES, BASE_NONE, NULL, 0x0,
+            { "Data",                   "zbee_aps_cmd_ea_data", FT_BYTES, BASE_NONE, NULL, 0x0,
                 "Additional data used in entity authentication. Typically this will be the outgoing frame counter associated with the key used for entity authentication.", HFILL }},
 
             { &hf_zbee_aps_fragments,
-            { "Message fragments",      "zbee_aps.fragments", FT_NONE, BASE_NONE, NULL, 0x0,
+            { "Message fragments",      "zbee_aps_fragments", FT_NONE, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fragment,
-            { "Message fragment",       "zbee_aps.fragment", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+            { "Message fragment",       "zbee_aps_fragment", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fragment_overlap,
-            { "Message fragment overlap",       "zbee_aps.fragment.overlap", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+            { "Message fragment overlap",       "zbee_aps_fragment_overlap", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fragment_overlap_conflicts,
-            { "Message fragment overlapping with conflicting data", "zbee_aps.fragment.overlap.conflicts", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+            { "Message fragment overlapping with conflicting data", "zbee_aps_fragment_overlap_conflicts", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fragment_multiple_tails,
-            { "Message has multiple tail fragments", "zbee_aps.fragment.multiple_tails", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+            { "Message has multiple tail fragments", "zbee_aps_fragment_multiple_tails", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fragment_too_long_fragment,
-            { "Message fragment too long",      "zbee_aps.fragment.too_long_fragment", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+            { "Message fragment too long",      "zbee_aps_fragment_too_long_fragment", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fragment_error,
-            { "Message defragmentation error",  "zbee_aps.fragment.error", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+            { "Message defragmentation error",  "zbee_aps_fragment_error", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_fragment_count,
-            { "Message fragment count",         "zbee_aps.fragment.count", FT_UINT32, BASE_DEC, NULL, 0x0,
+            { "Message fragment count",         "zbee_aps_fragment_count", FT_UINT32, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_reassembled_in,
-            { "Reassembled in",         "zbee_aps.reassembled.in", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+            { "Reassembled in",         "zbee_aps_reassembled_in", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_reassembled_length,
-            { "Reassembled ZigBee APS length",         "zbee_aps.reassembled.length", FT_UINT32, BASE_DEC, NULL, 0x0,
+            { "Reassembled ZigBee APS length",         "zbee_aps_reassembled_length", FT_UINT32, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_aps_t2_cluster,
-                { "Cluster", "zbee_aps.t2.cluster", FT_UINT16, BASE_HEX, VALS(zbee_aps_t2_cid_names), 0x0, NULL,
+                { "Cluster", "zbee_aps_t2_cluster", FT_UINT16, BASE_HEX, VALS(zbee_aps_t2_cid_names), 0x0, NULL,
                     HFILL }},
 
             { &hf_zbee_aps_t2_btres_octet_sequence,
-                { "Octet Sequence", "zbee_aps.t2.btres.octet_sequence", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+                { "Octet Sequence", "zbee_aps_t2_btres_octet_sequence", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
             { &hf_zbee_aps_t2_btres_octet_sequence_length_requested,
-                { "Octet Sequence Length Requested", "zbee_aps.t2.btres.octet_sequence_length_requested", FT_UINT8,
+                { "Octet Sequence Length Requested", "zbee_aps_t2_btres_octet_sequence_length_requested", FT_UINT8,
                     BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
             { &hf_zbee_aps_t2_btres_status,
-                { "Status", "zbee_aps.t2.btres.status", FT_UINT8, BASE_HEX, VALS(zbee_aps_t2_btres_status_names), 0x0,
+                { "Status", "zbee_aps_t2_btres_status", FT_UINT8, BASE_HEX, VALS(zbee_aps_t2_btres_status_names), 0x0,
                     NULL, HFILL }},
 
             { &hf_zbee_aps_t2_btreq_octet_sequence_length,
-                { "Octet Sequence Length", "zbee_aps.t2.btreq.octet_sequence_length", FT_UINT8, BASE_DEC, NULL, 0x0,
+                { "Octet Sequence Length", "zbee_aps_t2_btreq_octet_sequence_length", FT_UINT8, BASE_DEC, NULL, 0x0,
                     NULL, HFILL }},
 
             { &hf_zbee_aps_zdp_cluster,
-                { "Cluster", "zbee_aps.zdp_cluster", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }}
+                { "Cluster", "zbee_aps_zdp_cluster", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }}
     };
 
     static hf_register_info hf_apf[] = {
             { &hf_zbee_apf_count,
-            { "Count",                  "zbee_apf.count", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Count",                  "zbee_apf_count", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
             { &hf_zbee_apf_type,
-            { "Type",                   "zbee_apf.type", FT_UINT8, BASE_HEX,
+            { "Type",                   "zbee_apf_type", FT_UINT8, BASE_HEX,
                     VALS(zbee_apf_type_names), 0x0, NULL, HFILL }}
     };
 

@@ -385,49 +385,49 @@ proto_register_iapp(void)
 
     static hf_register_info hf[] = {
         { &hf_iapp_version,
-            { "Version", "iapp.version", FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+            { "Version", "iapp_version", FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_type,
-            { "Type", "iapp.type", FT_UINT8, BASE_DEC, VALS(iapp_vals), 0x00, NULL, HFILL }
+            { "Type", "iapp_type", FT_UINT8, BASE_DEC, VALS(iapp_vals), 0x00, NULL, HFILL }
         },
         { &hf_iapp_cap_forwarding,
-            { "Forwarding", "iapp.cap.forwarding", FT_BOOLEAN, 8, TFS(&tfs_yes_no), IAPP_CAP_FORWARDING, NULL, HFILL }
+            { "Forwarding", "iapp_cap_forwarding", FT_BOOLEAN, 8, TFS(&tfs_yes_no), IAPP_CAP_FORWARDING, NULL, HFILL }
         },
         { &hf_iapp_cap_wep,
-            { "WEP", "iapp.cap.wep", FT_BOOLEAN, 8, TFS(&tfs_yes_no), IAPP_CAP_WEP, NULL, HFILL }
+            { "WEP", "iapp_cap_wep", FT_BOOLEAN, 8, TFS(&tfs_yes_no), IAPP_CAP_WEP, NULL, HFILL }
         },
         { &hf_iapp_auth_status,
-            { "Status", "iapp.auth.status", FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+            { "Status", "iapp_auth_status", FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_auth_uint,
-            { "Value", "iapp.auth.uint", FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+            { "Value", "iapp_auth_uint", FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_auth_string,
-            { "Value", "iapp.auth.string", FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
+            { "Value", "iapp_auth_string", FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_auth_ipaddr,
-            { "IP Address", "iapp.auth.ipaddr", FT_IPv4, BASE_NONE, NULL, 0x00, NULL, HFILL }
+            { "IP Address", "iapp_auth_ipaddr", FT_IPv4, BASE_NONE, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_auth_trailer,
-            { "Trailer", "iapp.auth.trailer", FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+            { "Trailer", "iapp_auth_trailer", FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_pdu_ssid,
-            { "SSID", "iapp.pdu.ssid", FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
+            { "SSID", "iapp_pdu_ssid", FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_pdu_bytes,
-            { "Value", "iapp.pdu.bytes", FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+            { "Value", "iapp_pdu_bytes", FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_pdu_uint,
-            { "Value", "iapp.pdu.uint", FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+            { "Value", "iapp_pdu_uint", FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
         },
         { &hf_iapp_pdu_phytype,
-            { "PHY Type", "iapp.pdu.phytype", FT_UINT8, BASE_DEC, VALS(iapp_phy_vals), 0x00, NULL, HFILL }
+            { "PHY Type", "iapp_pdu_phytype", FT_UINT8, BASE_DEC, VALS(iapp_phy_vals), 0x00, NULL, HFILL }
         },
         { &hf_iapp_pdu_regdomain,
-            { "Reg domain", "iapp.pdu.regdomain", FT_UINT8, BASE_DEC, VALS(iapp_dom_vals), 0x00, NULL, HFILL }
+            { "Reg domain", "iapp_pdu_regdomain", FT_UINT8, BASE_DEC, VALS(iapp_dom_vals), 0x00, NULL, HFILL }
         },
         { &hf_iapp_pdu_oui_ident,
-            { "OUI", "iapp.pdu.oui_ident", FT_UINT24, BASE_OUI, NULL, 0x00, NULL, HFILL }
+            { "OUI", "iapp_pdu_oui_ident", FT_UINT24, BASE_OUI, NULL, 0x00, NULL, HFILL }
         },
     };
 
