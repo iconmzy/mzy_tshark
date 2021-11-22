@@ -592,10 +592,12 @@ gboolean initial_All_para() {
  * @return
  */
 gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct totalParam *cookie __U__){
-    if(temp->finfo->length >= 1514 or temp->finfo->length <= 0) return false; //无意义的长值直接跳过
+    if(temp->finfo->length >= 1514 or temp->finfo->length <= 0)
+        return false; //无意义的长值直接跳过
 
     std::string key_str = temp->finfo->hfinfo->abbrev;
-    if(cursionkeyStrFilter(key_str.c_str())) return false; //无意义的字段过滤掉
+    if(cursionkeyStrFilter(key_str.c_str()))
+        return false; //无意义的字段过滤掉
 
     //获取value
     int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):1000;
@@ -753,7 +755,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     proto_node *stack_node_t = node;
 
     int stack_node_layer = 0;
-    while (stack_node_t != nullptr and ++stack_node_layer < 11) {
+    while (stack_node_t != nullptr and ++stack_node_layer < 15) {
         field_info *fi = stack_node_t->finfo;
         if (lastLayerProtocolFilter(fi->hfinfo->abbrev)) {
             stack_node_t = stack_node_t->next;
@@ -1098,12 +1100,12 @@ gboolean readConfigFilesStatus() {
                 insert_many_protocol_stream_flag = getInfo_ConfigFile("INSERT_MANY_PROTOCOL_STREAM_FLAG", info, lines);
                 if (insert_many_protocol_stream_flag != nullptr) {
                     INSERT_MANY_PROTOCOL_STREAM_FLAG = *insert_many_protocol_stream_flag - '0';
-                } else INSERT_MANY_PROTOCOL_STREAM_FLAG = 0;
+                } else INSERT_MANY_PROTOCOL_STREAM_FLAG = 1;
 
                 insert_many_protocol_stream_num = getInfo_ConfigFile("INSERT_MANY_PROTOCOL_STREAM_NUM", info, lines);
                 if (insert_many_protocol_stream_num != nullptr) {
                     INSERT_MANY_PROTOCOL_STREAM_NUM = std::stoi(insert_many_protocol_stream_num);
-                } else INSERT_MANY_PROTOCOL_STREAM_NUM = 1000;
+                } else INSERT_MANY_PROTOCOL_STREAM_NUM = 10000;
 
                 edit_files_sizes = getInfo_ConfigFile("EDIT_FILES_SIZES", info, lines);
                 if (edit_files_sizes != nullptr) {
@@ -1113,7 +1115,7 @@ gboolean readConfigFilesStatus() {
                 per_files_max_linex = getInfo_ConfigFile("PER_FILES_MAX_LINES", info, lines);
                 if (per_files_max_linex != nullptr) {
                     PER_FILES_MAX_LINES = std::stoi(per_files_max_linex);
-                } else PER_FILES_MAX_LINES = 10000;
+                } else PER_FILES_MAX_LINES = 100000;
 
                 packet_protocol_flag = getInfo_ConfigFile("EDIT_FILES_DISSECT_FLAG", info, lines);
                 if (packet_protocol_flag != nullptr) {
