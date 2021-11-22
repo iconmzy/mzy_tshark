@@ -1,1 +1,0 @@
-{"src_ip":"192.168.1.140","src_port":"57678","dst_ip":"174.143.213.184","dst_port":"80","recv_frames":"19","recv_bytes":"23307","send_frames":"21","send_bytes":"1528","total_frames":"40","total_bytes":"24835","start_abs_time":"2011-03-01 12:45:13","relative_start":"0.00000000","duration":"0.24682900","file_path":"/home/mzy/Documents/pcap/mzy3/HTTP.cap","line_no":"HTTP"}

@@ -1,6 +1,0 @@
-/home/mzy/Documents/pcap/mzy3/[TELNET-06]AB-1-88-E-T-U3#10F$22@11VC4.400_VCT(50)_20210918T120809.cap
-/home/mzy/Documents/pcap/mzy3/[ABC-06]AB-1-88-E-T-U3#10F$22@11VC4.400_VCT(50)_20210918T120909.cap
-/home/mzy/Documents/pcap/mzy3/http_gzip.pcap
-/home/mzy/Documents/pcap/mzy3/http.pcap
-/home/mzy/Documents/pcap/mzy3/HTTP.cap
-/home/mzy/Documents/pcap/mzy3/ftp.pcap

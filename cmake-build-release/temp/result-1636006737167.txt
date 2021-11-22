@@ -1,4 +1,0 @@
-/home/mzy/Documents/pcap/mzy3/http_gzip.pcap
-/home/mzy/Documents/pcap/mzy3/http.pcap
-/home/mzy/Documents/pcap/mzy3/HTTP.cap
-/home/mzy/Documents/pcap/mzy3/ftp.pcap
