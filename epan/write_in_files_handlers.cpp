@@ -607,7 +607,8 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     yy_proto_item_fill_label(temp->finfo,&value_t,&bufferlen);
 
     //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
-    while (key_str.find('.') != std::string::npos) {  /* 返回string::npos表示未查找到匹配项 */
+    /*返回string::npos表示未查找到匹配项*/
+    while (key_str.find('.') != std::string::npos) {
         key_str.replace(key_str.find('.'), 1, "_");
     }
 
@@ -648,10 +649,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
  * @return
  */
 
-int check_special_extract(const char* special_extract_protocol){
 
-    return 0;
-}
 
 /**
  * 非递归处理协议解析树内容，层序遍历，存入json中。
@@ -661,69 +659,7 @@ int check_special_extract(const char* special_extract_protocol){
  * @return
  */
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
- /*   //g_print("test断点\n");
-    //判断希望特殊提取子段的协议类型 目前有telnet ftp的账号密码提取 smtp协议的账号口令提取//
-    int special_extract = 0;
-    special_extract = check_special_extract(node->parent->finfo->hfinfo->abbrev);
-    switch(special_extract){
-        case 0:{
-            //case0表示不需要额外提取字段的协议,默认处理//
-            while(node != nullptr){
-                if(node->first_child == nullptr or node->last_child == nullptr){
-                    dissect_Per_Node_No_Cursion(json_t,node,cookie);
-                    node = node->next;
-                } else{
-                    que.push(node);
-                    node = node->next;
-                }
-            }
-            while (!que.empty()){
-                proto_node* temp = que.front();
-                que.pop();
-                if(temp->first_child == nullptr or temp->last_child == nullptr){
-                    dissect_Per_Node_No_Cursion(json_t,temp,cookie);
-                } else{
-                    temp = temp->first_child;
-                    while (temp != nullptr){
-                        que.push(temp);
-                        temp = temp->next;
-                    }
-                }
-            }
-            break;
-        }
-        case 1:{
-            //处理telnet协议过程中将账号密码提取：做成字段（key:value）//
-            while(node != nullptr){
-                if(node->first_child == nullptr or node->last_child == nullptr){
-                    dissect_Per_Node_No_Cursion(json_t,node,cookie);
-                    node = node->next;
-                } else{
-                    que.push(node);
-                    node = node->next;
-                }
-            }
-            while (!que.empty()){
-                proto_node* temp = que.front();
-                que.pop();
-                if(temp->first_child == nullptr or temp->last_child == nullptr){
-                    dissect_Per_Node_No_Cursion(json_t,temp,cookie);
-                } else{
-                    temp = temp->first_child;
-                    while (temp != nullptr){
-                        que.push(temp);
-                        temp = temp->next;
-                    }
-                }
-            }
-            break;
-        }
-        case 2:{
-            //处理ftp协议过程中将账号密码提取：做成字段（key:value）//
-            break;
-        }
 
-    }*/
     while(node != nullptr){
         if(node->first_child == nullptr or node->last_child == nullptr){
             dissect_Per_Node_No_Cursion(json_t,node,cookie);
@@ -792,7 +728,7 @@ void parse_offline_regex_dict(){
             regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
             temp = temp->next;
         }
-        auto iter = regex_dict_map.find("lineno");
+        auto iter = regex_dict_map.find("line_no");
         if (iter != regex_dict_map.end())
         {
             // 找到了本地文件匹配的线路号
