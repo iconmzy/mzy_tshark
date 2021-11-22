@@ -302,77 +302,77 @@ proto_register_bthid(void)
 
     static hf_register_info hf[] = {
         { &hf_bthid_transaction_type,
-            { "Transaction Type",                "bthid.transaction_type",
+            { "Transaction Type",                "bthid_transaction_type",
             FT_UINT8, BASE_HEX, VALS(transaction_type_vals), 0xF0,
             NULL, HFILL }
         },
         { &hf_bthid_parameter_reserved,
-            { "Parameter reserved",              "bthid.parameter.reserved",
+            { "Parameter reserved",              "bthid_parameter_reserved",
             FT_UINT8, BASE_HEX, NULL, 0x0F,
             NULL, HFILL }
         },
         { &hf_bthid_parameter_reserved_32,
-            { "Parameter reserved",              "bthid.parameter.reserved_32",
+            { "Parameter reserved",              "bthid_parameter_reserved_32",
             FT_UINT8, BASE_HEX, NULL, 0x0C,
             NULL, HFILL }
         },
         { &hf_bthid_parameter_reserved_31,
-            { "Parameter reserved",              "bthid.parameter.reserved_31",
+            { "Parameter reserved",              "bthid_parameter_reserved_31",
             FT_UINT8, BASE_HEX, NULL, 0x0E,
             NULL, HFILL }
         },
         { &hf_bthid_parameter_reserved_2,
-            { "Parameter reserved",              "bthid.parameter.reserved_2",
+            { "Parameter reserved",              "bthid_parameter_reserved_2",
             FT_UINT8, BASE_HEX, NULL, 0x04,
             NULL, HFILL }
         },
         { &hf_bthid_parameter_report_type,
-            { "Report Type",                     "bthid.parameter.report_type",
+            { "Report Type",                     "bthid_parameter_report_type",
             FT_UINT8, BASE_HEX, VALS(report_type_vals), 0x03,
             NULL, HFILL }
         },
         { &hf_bthid_parameter_size,
-            { "Size",                            "bthid.parameter.size",
+            { "Size",                            "bthid_parameter_size",
             FT_UINT8, BASE_HEX, VALS(size_vals), 0x08,
             NULL, HFILL }
         },
         { &hf_bthid_parameter_result_code,
-            { "Result Code",                     "bthid.result_code",
+            { "Result Code",                     "bthid_result_code",
             FT_UINT8, BASE_HEX, VALS(result_code_vals), 0x0F,
             NULL, HFILL }
         },
         { &hf_bthid_parameter_control_operation,
-            { "Control Operation",               "bthid.control_operation",
+            { "Control Operation",               "bthid_control_operation",
             FT_UINT8, BASE_HEX, VALS(control_operation_vals), 0x0F,
             NULL, HFILL }
         },
         { &hf_bthid_protocol,
-            { "Protocol",                        "bthid.protocol",
+            { "Protocol",                        "bthid_protocol",
             FT_UINT8, BASE_HEX, VALS(protocol_vals), 0x01,
             NULL, HFILL }
         },
         { &hf_bthid_idle_rate,
-            { "Idle Rate",                       "bthid.idle_rate",
+            { "Idle Rate",                       "bthid_idle_rate",
             FT_UINT8, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_bthid_report_id,
-            { "Report Id",                       "bthid.report_id",
+            { "Report Id",                       "bthid_report_id",
             FT_UINT8, BASE_HEX, VALS(protocol_code_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_bthid_buffer_size,
-            { "Buffer Size",                     "bthid.buffer_size",
+            { "Buffer Size",                     "bthid_buffer_size",
             FT_UINT16, BASE_HEX, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_bthid_protocol_code,
-            { "Protocol Code",                   "bthid.data.protocol_code",
+            { "Protocol Code",                   "bthid_data_protocol_code",
             FT_UINT8, BASE_HEX, VALS(protocol_code_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_bthid_data,
-            { "Data",                            "bthid.data",
+            { "Data",                            "bthid_data",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },

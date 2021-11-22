@@ -1026,7 +1026,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137s,
             {
                 "ED137 extensions",
-                "rtp.ext.ed137s",
+                "rtp_ext_ed137s",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1039,7 +1039,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137,
             {
                 "ED137 extension",
-                "rtp.ext.ed137",
+                "rtp_ext_ed137",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1051,7 +1051,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_add,
             {
                 "ED137 extension additional feature",
-                "rtp.ext.ed137.ft",
+                "rtp_ext_ed137_ft",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1063,7 +1063,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ptt_type,
             {
                 "PTT Type",
-                "rtp.ext.ed137.ptt_type",
+                "rtp_ext_ed137_ptt_type",
                 FT_UINT32,
                 BASE_DEC,
                 VALS(rtp_ext_ed137_ptt_type),
@@ -1075,7 +1075,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_squ,
             {
                 "SQU",
-                "rtp.ext.ed137.squ",
+                "rtp_ext_ed137_squ",
                 FT_UINT32,
                 BASE_DEC,
                 VALS(rtp_ext_ed137_squ),
@@ -1087,7 +1087,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ptt_id,
             {
                 "PTT-id",
-                "rtp.ext.ed137.ptt_id",
+                "rtp_ext_ed137_ptt_id",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -1099,7 +1099,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_sct,
             {
                 "Simultaneous Call Transmissions",
-                "rtp.ext.ed137.sct",
+                "rtp_ext_ed137_sct",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -1111,7 +1111,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_x,
             {
                 "X",
-                "rtp.ext.ed137.x",
+                "rtp_ext_ed137_x",
                 FT_UINT32,
                 BASE_DEC,
                 VALS(rtp_ext_ed137_x),
@@ -1123,7 +1123,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_x_nu,
             {
                 "Not used",
-                "rtp.ext.ed137.x-nu",
+                "rtp_ext_ed137_x-nu",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -1135,7 +1135,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ft_type,
             {
                 "Feature type",
-                "rtp.ext.ed137.ft.type",
+                "rtp_ext_ed137_ft_type",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 VALS(rtp_ext_ed137_ft_type),
@@ -1147,7 +1147,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ft_len,
             {
                 "Feature length",
-                "rtp.ext.ed137.ft.len",
+                "rtp_ext_ed137_ft_len",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -1159,7 +1159,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ft_value,
             {
                 "Feature value",
-                "rtp.ext.ed137.ft.value",
+                "rtp_ext_ed137_ft_value",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -1171,7 +1171,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_vf,
             {
                 "VF",
-                "rtp.ext.ed137.vf",
+                "rtp_ext_ed137_vf",
                 FT_UINT32,
                 BASE_DEC,
                 VALS(rtp_ext_ed137_vf),
@@ -1183,7 +1183,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ft_bss_qidx,
             {
                 "BSS Quality Index",
-                "rtp.ext.ed137.ft.bss.qidx",
+                "rtp_ext_ed137_ft_bss_qidx",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -1195,7 +1195,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ft_bss_rssi_qidx,
             {
                 "BSS Quality Index",
-                "rtp.ext.ed137.ft.bss.qidx",
+                "rtp_ext_ed137_ft_bss_qidx",
                 FT_UINT32,
                 BASE_DEC,
                 VALS(rtp_ext_ed137_ft_bss_rssi_qidx),
@@ -1207,7 +1207,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ft_bss_qidx_ml,
             {
                 "BSS Quality Index Method",
-                "rtp.ext.ed137.ft.bss.qidx-ml",
+                "rtp_ext_ed137_ft_bss_qidx-ml",
                 FT_UINT32,
                 BASE_DEC,
                 VALS(rtp_ext_ed137_ft_bss_qidx_ml),
@@ -1219,7 +1219,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137_ft_climax_delay_value,
             {
                 "CLIMAX-Time Delay",
-                "rtp.ext.ed137.ft.climax_delay.value",
+                "rtp_ext_ed137_ft_climax_delay_value",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -1232,7 +1232,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a,
             {
                 "ED137A extension",
-                "rtp.ext.ed137a",
+                "rtp_ext_ed137a",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1244,7 +1244,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_add,
             {
                 "ED137A extension additional feature",
-                "rtp.ext.ed137a.ft",
+                "rtp_ext_ed137a_ft",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1256,7 +1256,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ptt_type,
             {
                 "PTT Type",
-                "rtp.ext.ed137a.ptt_type",
+                "rtp_ext_ed137a_ptt_type",
                 FT_UINT16,
                 BASE_DEC,
                 VALS(rtp_ext_ed137a_ptt_type),
@@ -1268,7 +1268,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_squ,
             {
                 "SQU",
-                "rtp.ext.ed137a.squ",
+                "rtp_ext_ed137a_squ",
                 FT_UINT16,
                 BASE_DEC,
                 VALS(rtp_ext_ed137a_squ),
@@ -1280,7 +1280,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ptt_id,
             {
                 "PTT-id",
-                "rtp.ext.ed137a.ptt_id",
+                "rtp_ext_ed137a_ptt_id",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1292,7 +1292,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_pm,
             {
                 "PTT Mute",
-                "rtp.ext.ed137a.pm",
+                "rtp_ext_ed137a_pm",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1304,7 +1304,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ptts,
             {
                 "PTT Summation",
-                "rtp.ext.ed137a.ptts",
+                "rtp_ext_ed137a_ptts",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1316,7 +1316,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_sct,
             {
                 "Simultaneous Call Transmissions",
-                "rtp.ext.ed137a.sct",
+                "rtp_ext_ed137a_sct",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1328,7 +1328,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_reserved,
             {
                 "Reserved",
-                "rtp.ext.ed137a.reserved",
+                "rtp_ext_ed137a_reserved",
                 FT_UINT16,
                 BASE_HEX_DEC,
                 NULL,
@@ -1340,7 +1340,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_x,
             {
                 "X",
-                "rtp.ext.ed137a.x",
+                "rtp_ext_ed137a_x",
                 FT_UINT16,
                 BASE_DEC,
                 VALS(rtp_ext_ed137_x),
@@ -1352,7 +1352,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_x_nu,
             {
                 "Not used",
-                "rtp.ext.ed137a.x-nu",
+                "rtp_ext_ed137a_x-nu",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1364,7 +1364,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_type,
             {
                 "Feature type",
-                "rtp.ext.ed137a.ft.type",
+                "rtp_ext_ed137a_ft_type",
                 FT_UINT8,
                 BASE_HEX_DEC,
                 VALS(rtp_ext_ed137a_ft_type),
@@ -1376,7 +1376,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_len,
             {
                 "Feature length",
-                "rtp.ext.ed137a.ft.len",
+                "rtp_ext_ed137a_ft_len",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -1388,7 +1388,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_value,
             {
                 "Feature value",
-                "rtp.ext.ed137a.ft.value",
+                "rtp_ext_ed137a_ft_value",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -1400,7 +1400,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_padding,
             {
                 "Padding",
-                "rtp.ext.ed137a.ft.padding",
+                "rtp_ext_ed137a_ft_padding",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -1412,7 +1412,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_sqi_qidx,
             {
                 "SQI Quality Index",
-                "rtp.ext.ed137a.ft.sqi.qidx",
+                "rtp_ext_ed137a_ft_sqi_qidx",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -1424,7 +1424,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_sqi_rssi_qidx,
             {
                 "SQI Quality Index",
-                "rtp.ext.ed137a.ft.sqi.qidx",
+                "rtp_ext_ed137a_ft_sqi_qidx",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137a_ft_sqi_rssi_qidx),
@@ -1436,7 +1436,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_sqi_qidx_ml,
             {
                 "SQI Quality Index Method",
-                "rtp.ext.ed137a.ft.sqi.qidx-ml",
+                "rtp_ext_ed137a_ft_sqi_qidx-ml",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137a_ft_sqi_qidx_ml),
@@ -1448,7 +1448,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_climax_delay_mode,
             {
                 "CLIMAX-Time Delay Mode",
-                "rtp.ext.ed137a.ft.climax_delay.mode",
+                "rtp_ext_ed137a_ft_climax_delay_mode",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137a_ft_climax_delay_mode),
@@ -1460,7 +1460,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_climax_delay_relative_value,
             {
                 "CLIMAX-Time Delay Relative",
-                "rtp.ext.ed137a.ft.climax_delay.relative_value",
+                "rtp_ext_ed137a_ft_climax_delay_relative_value",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -1472,7 +1472,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137a_ft_climax_delay_absolute_value,
             {
                 "CLIMAX-Time Delay Absolute",
-                "rtp.ext.ed137a.ft.climax_delay.absolute_value",
+                "rtp_ext_ed137a_ft_climax_delay_absolute_value",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -1484,7 +1484,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single,
             {
                 "RRC for single frequency",
-                "rtp.ext.ed137b.ft.rrc.single",
+                "rtp_ext_ed137b_ft_rrc_single",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1496,7 +1496,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single_ms_tx_f1,
             {
                 "MSTxF1",
-                "rtp.ext.ed137b.ft.rrc.mstxf1",
+                "rtp_ext_ed137b_ft_rrc_mstxf1",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_single_ms_tx_f1),
@@ -1508,7 +1508,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single_ms_rx_f1,
             {
                 "MSRxF1",
-                "rtp.ext.ed137b.ft.rrc.msrxf1",
+                "rtp_ext_ed137b_ft_rrc_msrxf1",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_single_ms_rx_f1),
@@ -1520,7 +1520,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single_ms_tx_f2,
             {
                 "MSTxF2",
-                "rtp.ext.ed137b.ft.rrc.mstxf2",
+                "rtp_ext_ed137b_ft_rrc_mstxf2",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_single_ms_tx_f2),
@@ -1532,7 +1532,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single_ms_rx_f2,
             {
                 "MSRxF2",
-                "rtp.ext.ed137b.ft.rrc.msrxf2",
+                "rtp_ext_ed137b_ft_rrc_msrxf2",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_single_ms_rx_f2),
@@ -1544,7 +1544,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single_sel_tx_f1,
             {
                 "SelTxF1",
-                "rtp.ext.ed137b.ft.rrc.seltxf1",
+                "rtp_ext_ed137b_ft_rrc_seltxf1",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_single_sel_tx_f1),
@@ -1556,7 +1556,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single_sel_tx_f2,
             {
                 "SelTxF2",
-                "rtp.ext.ed137b.ft.rrc.seltxf2",
+                "rtp_ext_ed137b_ft_rrc_seltxf2",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_single_sel_tx_f2),
@@ -1568,7 +1568,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single_mu_rx_f1,
             {
                 "MuRxF1",
-                "rtp.ext.ed137b.ft.rrc.murxf1",
+                "rtp_ext_ed137b_ft_rrc_murxf1",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_single_mu_rx_f1),
@@ -1580,7 +1580,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_rrc_single_mu_rx_f2,
             {
                 "MuRxF2",
-                "rtp.ext.ed137b.ft.rrc.murxf2",
+                "rtp_ext_ed137b_ft_rrc_murxf2",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_single_mu_rx_f2),
@@ -1592,7 +1592,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_unknown,
             {
                 "CLIMAX Dynamic Delay Compensation Unknown Method",
-                "rtp.ext.ed137b.ft.climax_ddc.unknown",
+                "rtp_ext_ed137b_ft_climax_ddc_unknown",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -1604,7 +1604,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_rmm,
             {
                 "CLIMAX Dynamic Delay Compensation RMM Request",
-                "rtp.ext.ed137b.ft.climax_ddc.rmm",
+                "rtp_ext_ed137b_ft_climax_ddc_rmm",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1616,7 +1616,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_rmm_tqv,
             {
                 "Time Quality VCS",
-                "rtp.ext.ed137b.ft.climax_ddc.rmm_tqv",
+                "rtp_ext_ed137b_ft_climax_ddc_rmm_tqv",
                 FT_UINT24,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_climax_ddc_time_quality),
@@ -1628,7 +1628,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_rmm_t1,
             {
                 "T1",
-                "rtp.ext.ed137b.ft.climax_ddc.rmm_t1",
+                "rtp_ext_ed137b_ft_climax_ddc_rmm_t1",
                 FT_UINT24,
                 BASE_DEC,
                 NULL,
@@ -1640,7 +1640,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_mam,
             {
                 "CLIMAX Dynamic Delay Compensation MAM Response (ED-137B)",
-                "rtp.ext.ed137b.ft.climax_ddc.mam",
+                "rtp_ext_ed137b_ft_climax_ddc_mam",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1652,7 +1652,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_mam_tqg,
             {
                 "Time Quality GRS",
-                "rtp.ext.ed137b.ft.climax_ddc.mam_tqg",
+                "rtp_ext_ed137b_ft_climax_ddc_mam_tqg",
                 FT_UINT24,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_climax_ddc_time_quality),
@@ -1664,7 +1664,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_mam_t1,
             {
                 "T1",
-                "rtp.ext.ed137b.ft.climax_ddc.mam_t1",
+                "rtp_ext_ed137b_ft_climax_ddc_mam_t1",
                 FT_UINT24,
                 BASE_DEC,
                 NULL,
@@ -1676,7 +1676,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_mam_nmr,
             {
                 "New measurement requested",
-                "rtp.ext.ed137b.ft.climax_ddc.mam_nmr",
+                "rtp_ext_ed137b_ft_climax_ddc_mam_nmr",
                 FT_UINT24,
                 BASE_DEC,
                 VALS(rtp_ext_ed137b_ft_climax_ddc_mam_nmr),
@@ -1688,7 +1688,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_mam_t2,
             {
                 "T2",
-                "rtp.ext.ed137b.ft.climax_ddc.mam_t2",
+                "rtp_ext_ed137b_ft_climax_ddc_mam_t2",
                 FT_UINT24,
                 BASE_DEC,
                 NULL,
@@ -1700,7 +1700,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_mam_tsd,
             {
                 "Tsd",
-                "rtp.ext.ed137b.ft.climax_ddc.mam_tsd",
+                "rtp_ext_ed137b_ft_climax_ddc_mam_tsd",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1712,7 +1712,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_mam_tj1,
             {
                 "Tj1",
-                "rtp.ext.ed137b.ft.climax_ddc.mam_tj1",
+                "rtp_ext_ed137b_ft_climax_ddc_mam_tj1",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1724,7 +1724,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137b_ft_climax_ddc_mam_tid,
             {
                 "Tid",
-                "rtp.ext.ed137b.ft.climax_ddc.mam_tid",
+                "rtp_ext_ed137b_ft_climax_ddc_mam_tid",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1736,7 +1736,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam,
             {
                 "CLIMAX Dynamic Delay Compensation MAM Response (ED-137C)",
-                "rtp.ext.ed137c.ft.climax_ddc.mam",
+                "rtp_ext_ed137c_ft_climax_ddc_mam",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -1748,7 +1748,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam_tqg,
             {
                 "Time Quality GRS",
-                "rtp.ext.ed137c.ft.climax_ddc.mam_tqg",
+                "rtp_ext_ed137c_ft_climax_ddc_mam_tqg",
                 FT_UINT24,
                 BASE_DEC,
                 VALS(rtp_ext_ed137c_ft_climax_ddc_time_quality),
@@ -1760,7 +1760,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam_t1,
             {
                 "T1",
-                "rtp.ext.ed137c.ft.climax_ddc.mam_t1",
+                "rtp_ext_ed137c_ft_climax_ddc_mam_t1",
                 FT_UINT24,
                 BASE_DEC,
                 NULL,
@@ -1772,7 +1772,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam_nmr,
             {
                 "New measurement requested",
-                "rtp.ext.ed137c.ft.climax_ddc.mam_nmr",
+                "rtp_ext_ed137c_ft_climax_ddc_mam_nmr",
                 FT_UINT24,
                 BASE_DEC,
                 VALS(rtp_ext_ed137c_ft_climax_ddc_mam_nmr),
@@ -1784,7 +1784,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam_t2,
             {
                 "T2",
-                "rtp.ext.ed137c.ft.climax_ddc.mam_t2",
+                "rtp_ext_ed137c_ft_climax_ddc_mam_t2",
                 FT_UINT24,
                 BASE_DEC,
                 NULL,
@@ -1796,7 +1796,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam_tsd,
             {
                 "Tsd",
-                "rtp.ext.ed137c.ft.climax_ddc.mam_tsd",
+                "rtp_ext_ed137c_ft_climax_ddc_mam_tsd",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1808,7 +1808,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam_tj1,
             {
                 "Tj1",
-                "rtp.ext.ed137c.ft.climax_ddc.mam_tj1",
+                "rtp_ext_ed137c_ft_climax_ddc_mam_tj1",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1820,7 +1820,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam_tid,
             {
                 "Tid",
-                "rtp.ext.ed137c.ft.climax_ddc.mam_tid",
+                "rtp_ext_ed137c_ft_climax_ddc_mam_tid",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -1832,7 +1832,7 @@ proto_register_rtp_ed137(void)
             &hf_rtp_hdr_ed137c_ft_climax_ddc_mam_ts2,
             {
                 "Ts2",
-                "rtp.ext.ed137c.ft.climax_ddc.mam_ts2",
+                "rtp_ext_ed137c_ft_climax_ddc_mam_ts2",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,

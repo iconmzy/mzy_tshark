@@ -10778,7 +10778,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_magic, {
         "Magic",
-        "rtps.magic",
+        "rtps_magic",
         FT_STRING,
         BASE_NONE,
         NULL,
@@ -10789,7 +10789,7 @@ void proto_register_rtps(void) {
     /* Protocol Version (composed as major.minor) -------------------------- */
     { &hf_rtps_protocol_version, {
         "version",
-        "rtps.version",
+        "rtps_version",
         FT_UINT16,
         BASE_HEX,
         NULL,
@@ -10799,7 +10799,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_protocol_version_major, {
         "major",
-        "rtps.version.major",
+        "rtps_version_major",
         FT_INT8,
         BASE_DEC,
         NULL,
@@ -10809,7 +10809,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_protocol_version_minor, {
         "minor",
-        "rtps.version.minor",
+        "rtps_version_minor",
         FT_INT8,
         BASE_DEC,
         NULL,
@@ -10821,7 +10821,7 @@ void proto_register_rtps(void) {
     /* Domain Participant and Participant Index ---------------------------- */
     { &hf_rtps_domain_id, {
         "domain_id",
-        "rtps.domain_id",
+        "rtps_domain_id",
         FT_UINT32,
         BASE_DEC,
         NULL,
@@ -10832,7 +10832,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_domain_tag, {
         "domain_tag",
-        "rtps.domain_tag",
+        "rtps_domain_tag",
         FT_STRINGZ,
         BASE_NONE,
         NULL,
@@ -10843,7 +10843,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_participant_idx, {
         "participant_idx",
-        "rtps.participant_idx",
+        "rtps_participant_idx",
         FT_UINT32,
         BASE_DEC,
         NULL,
@@ -10853,7 +10853,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_nature_type, {
         "traffic_nature",
-        "rtps.traffic_nature",
+        "rtps_traffic_nature",
         FT_UINT32,
         BASE_DEC,
         VALS(nature_type_vals),
@@ -10865,7 +10865,7 @@ void proto_register_rtps(void) {
     /* Vendor ID ----------------------------------------------------------- */
     { &hf_rtps_vendor_id, {
         "vendorId",
-        "rtps.vendorId",
+        "rtps_vendorId",
         FT_UINT16,
         BASE_HEX,
         NULL,
@@ -10876,25 +10876,25 @@ void proto_register_rtps(void) {
 
     /* Guid Prefix for the Packet ------------------------------------------ */
     { &hf_rtps_guid_prefix_v1,
-      { "guidPrefix", "rtps.guidPrefix_v1",
+      { "guidPrefix", "rtps_guidPrefix_v1",
          FT_UINT64, BASE_HEX, NULL, 0,
          "GuidPrefix of the RTPS packet", HFILL }
     },
 
     { &hf_rtps_guid_prefix,
-      { "guidPrefix", "rtps.guidPrefix",
+      { "guidPrefix", "rtps_guidPrefix",
          FT_BYTES, BASE_NONE, NULL, 0,
          "a generic guidPrefix that is transmitted inside the submessage (this is NOT the guidPrefix described in the packet header)", HFILL }
     },
 
     { &hf_rtps_guid_prefix_src,
-      { "guidPrefix", "rtps.guidPrefix.src",
+      { "guidPrefix", "rtps_guidPrefix_src",
          FT_BYTES, BASE_NONE, NULL, 0,
          "the guidPrefix of the entity sending the sample", HFILL }
     },
 
     { &hf_rtps_guid_prefix_dst,
-      { "guidPrefix", "rtps.guidPrefix.dst",
+      { "guidPrefix", "rtps_guidPrefix_dst",
          FT_BYTES, BASE_NONE, NULL, 0,
          "the guidPrefix of the entity receiving the sample", HFILL }
     },
@@ -10902,7 +10902,7 @@ void proto_register_rtps(void) {
     /* Host ID ------------------------------------------------------------- */
     { &hf_rtps_host_id, {               /* HIDDEN */
         "hostId",
-        "rtps.hostId",
+        "rtps_hostId",
         FT_UINT32,
         BASE_HEX,
         NULL,
@@ -10914,7 +10914,7 @@ void proto_register_rtps(void) {
     /* AppID (composed as instanceId, appKind) ----------------------------- */
     { &hf_rtps_app_id, {
         "appId",
-        "rtps.appId",
+        "rtps_appId",
         FT_UINT32,
         BASE_HEX,
         NULL,
@@ -10924,7 +10924,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_app_id_instance_id, {
         "appId.instanceId",
-        "rtps.appId.instanceId",
+        "rtps_appId_instanceId",
         FT_UINT24,
         BASE_HEX,
         NULL,
@@ -10934,7 +10934,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_app_id_app_kind, {
         "appid.appKind",
-        "rtps.appId.appKind",
+        "rtps_appId_appKind",
         FT_UINT8,
         BASE_HEX,
         VALS(app_kind_vals),
@@ -10948,7 +10948,7 @@ void proto_register_rtps(void) {
     /* Submessage ID ------------------------------------------------------- */
     { &hf_rtps_sm_id, {
         "submessageId",
-        "rtps.sm.id",
+        "rtps_sm_id",
         FT_UINT8,
         BASE_HEX,
         VALS(submessage_id_vals),
@@ -10959,7 +10959,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_sm_idv2, {
         "submessageId",
-        "rtps.sm.id",
+        "rtps_sm_id",
         FT_UINT8,
         BASE_HEX,
         VALS(submessage_id_valsv2),
@@ -10971,7 +10971,7 @@ void proto_register_rtps(void) {
     /* Submessage flags ---------------------------------------------------- */
     { &hf_rtps_sm_flags, {
         "Flags",
-        "rtps.sm.flags",
+        "rtps_sm_flags",
         FT_UINT8,
         BASE_HEX,
         NULL,
@@ -10981,7 +10981,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_flags2, {
         "Flags",
-        "rtps.sm.flags",
+        "rtps_sm_flags",
         FT_UINT16,
         BASE_HEX,
         NULL,
@@ -10993,7 +10993,7 @@ void proto_register_rtps(void) {
     /* octets to next header ---------------------------------------------- */
     { &hf_rtps_sm_octets_to_next_header, {
         "octetsToNextHeader",
-        "rtps.sm.octetsToNextHeader",
+        "rtps_sm_octetsToNextHeader",
         FT_UINT16,
         BASE_DEC,
         NULL,
@@ -11005,7 +11005,7 @@ void proto_register_rtps(void) {
     /* GUID as {GuidPrefix, EntityId} ------------------------------------ */
     { &hf_rtps_sm_guid_prefix_v1, {
         "guidPrefix",
-        "rtps.sm.guidPrefix_v1",
+        "rtps_sm_guidPrefix_v1",
         FT_UINT64,
         BASE_HEX,
         NULL,
@@ -11016,7 +11016,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_sm_guid_prefix, {
         "guidPrefix",
-        "rtps.sm.guidPrefix",
+        "rtps_sm_guidPrefix",
         FT_BYTES,
         BASE_NONE,
         NULL,
@@ -11027,7 +11027,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_sm_host_id, {
         "host_id",
-        "rtps.sm.guidPrefix.hostId",
+        "rtps_sm_guidPrefix_hostId",
         FT_UINT32,
         BASE_HEX,
         NULL,
@@ -11038,7 +11038,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_sm_app_id, {
         "appId",
-        "rtps.sm.guidPrefix.appId",
+        "rtps_sm_guidPrefix_appId",
         FT_UINT32,
         BASE_HEX,
         NULL,
@@ -11048,7 +11048,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_instance_id_v1, {
         "instanceId",
-        "rtps.sm.guidPrefix.appId.instanceId",
+        "rtps_sm_guidPrefix_appId_instanceId",
         FT_UINT24,
         BASE_HEX,
         NULL,
@@ -11058,7 +11058,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_app_kind, {
         "appKind",
-        "rtps.sm.guidPrefix.appId.appKind",
+        "rtps_sm_guidPrefix_appId_appKind",
         FT_UINT8,
         BASE_HEX,
         NULL,
@@ -11068,7 +11068,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_instance_id, {
         "instanceId",
-        "rtps.sm.guidPrefix.instanceId",
+        "rtps_sm_guidPrefix_instanceId",
         FT_UINT32,
         BASE_HEX,
         NULL,
@@ -11080,7 +11080,7 @@ void proto_register_rtps(void) {
     /* Entity ID (composed as entityKey, entityKind) ----------------------- */
     { &hf_rtps_sm_entity_id, {
         "entityId",
-        "rtps.sm.entityId",
+        "rtps_sm_entityId",
         FT_UINT32,
         BASE_HEX,
         VALS(entity_id_vals),
@@ -11090,7 +11090,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_entity_id_key, {
         "entityKey",
-        "rtps.sm.entityId.entityKey",
+        "rtps_sm_entityId_entityKey",
         FT_UINT24,
         BASE_HEX,
         NULL,
@@ -11100,7 +11100,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_entity_id_kind, {
         "entityKind",
-        "rtps.sm.entityId.entityKind",
+        "rtps_sm_entityId_entityKind",
         FT_UINT8,
         BASE_HEX,
         VALS(entity_kind_vals),
@@ -11111,7 +11111,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_sm_rdentity_id, {
         "readerEntityId",
-        "rtps.sm.rdEntityId",
+        "rtps_sm_rdEntityId",
         FT_UINT32,
         BASE_HEX,
         VALS(entity_id_vals),
@@ -11121,7 +11121,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_rdentity_id_key, {
         "readerEntityKey",
-        "rtps.sm.rdEntityId.entityKey",
+        "rtps_sm_rdEntityId_entityKey",
         FT_UINT24,
         BASE_HEX,
         NULL,
@@ -11131,7 +11131,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_rdentity_id_kind, {
         "readerEntityKind",
-        "rtps.sm.rdEntityId.entityKind",
+        "rtps_sm_rdEntityId_entityKind",
         FT_UINT8,
         BASE_HEX,
         VALS(entity_kind_vals),
@@ -11142,7 +11142,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_sm_wrentity_id, {
         "writerEntityId",
-        "rtps.sm.wrEntityId",
+        "rtps_sm_wrEntityId",
         FT_UINT32,
         BASE_HEX,
         VALS(entity_id_vals),
@@ -11152,7 +11152,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_wrentity_id_key, {
         "writerEntityKey",
-        "rtps.sm.wrEntityId.entityKey",
+        "rtps_sm_wrEntityId_entityKey",
         FT_UINT24,
         BASE_HEX,
         NULL,
@@ -11162,7 +11162,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_sm_wrentity_id_kind, {
         "writerEntityKind",
-        "rtps.sm.wrEntityId.entityKind",
+        "rtps_sm_wrEntityId_entityKind",
         FT_UINT8,
         BASE_HEX,
         VALS(entity_kind_vals),
@@ -11176,7 +11176,7 @@ void proto_register_rtps(void) {
     /* Sequence number ----------------------------------------------------- */
     { &hf_rtps_sm_seq_number, {
         "writerSeqNumber",
-        "rtps.sm.seqNumber",
+        "rtps_sm_seqNumber",
         FT_INT64,
         BASE_DEC,
         NULL,
@@ -11187,7 +11187,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_info_src_ip, {
         "appIpAddress",
-        "rtps.info_src.ip",
+        "rtps_info_src_ip",
         FT_IPv4,
         BASE_NONE,
         NULL,
@@ -11198,7 +11198,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_info_src_unused, {
         "Unused",
-        "rtps.info_src.unused",
+        "rtps_info_src_unused",
         FT_UINT32,
         BASE_HEX,
         NULL,
@@ -11210,7 +11210,7 @@ void proto_register_rtps(void) {
     /* Parameter Id -------------------------------------------------------- */
     { &hf_rtps_parameter_id, {
         "parameterId",
-        "rtps.param.id",
+        "rtps_param_id",
         FT_UINT16,
         BASE_HEX,
         VALS(parameter_id_vals),
@@ -11221,7 +11221,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_parameter_id_v2, {
         "parameterId",
-        "rtps.param.id",
+        "rtps_param_id",
         FT_UINT16,
         BASE_HEX,
         VALS(parameter_id_v2_vals),
@@ -11231,13 +11231,13 @@ void proto_register_rtps(void) {
     },
 
     { &hf_rtps_parameter_id_inline_rti, {
-        "Parameter Id", "rtps.param.id", FT_UINT16,
+        "Parameter Id", "rtps_param_id", FT_UINT16,
         BASE_HEX, VALS(parameter_id_inline_qos_rti), 0, NULL, HFILL }
     },
 
     { &hf_rtps_parameter_id_toc, {
         "parameterId",
-        "rtps.param.id",
+        "rtps_param_id",
         FT_UINT16,
         BASE_HEX,
         VALS(parameter_id_toc_vals),
@@ -11248,7 +11248,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_parameter_id_rti, {
         "parameterId",
-        "rtps.param.id",
+        "rtps_param_id",
         FT_UINT16,
         BASE_HEX,
         VALS(parameter_id_rti_vals),
@@ -11259,7 +11259,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_parameter_id_adl, {
         "parameterId",
-        "rtps.param.id",
+        "rtps_param_id",
         FT_UINT16,
         BASE_HEX,
         VALS(parameter_id_adl_vals),
@@ -11271,7 +11271,7 @@ void proto_register_rtps(void) {
     /* Parameter Length ---------------------------------------------------- */
     { &hf_rtps_parameter_length, {
         "parameterLength",
-        "rtps.param.length",
+        "rtps_param_length",
         FT_UINT16,
         BASE_DEC,
         NULL,
@@ -11283,7 +11283,7 @@ void proto_register_rtps(void) {
     /* Parameter / Topic --------------------------------------------------- */
     { &hf_rtps_param_topic_name, {
         "topic",
-        "rtps.param.topicName",
+        "rtps_param_topicName",
         FT_STRINGZ,
         BASE_NONE,
         NULL,
@@ -11295,7 +11295,7 @@ void proto_register_rtps(void) {
     /* Parameter / Strength ------------------------------------------------ */
     { &hf_rtps_param_strength, {
         "strength",
-        "rtps.param.strength",
+        "rtps_param_strength",
         FT_INT32,
         BASE_DEC,
         NULL,
@@ -11307,7 +11307,7 @@ void proto_register_rtps(void) {
     /* Parameter / Type Name ----------------------------------------------- */
     { &hf_rtps_param_type_name, {
         "typeName",
-        "rtps.param.typeName",
+        "rtps_param_typeName",
         FT_STRINGZ,
         BASE_NONE,
         NULL,
@@ -11319,7 +11319,7 @@ void proto_register_rtps(void) {
     /* Parameter / User Data ----------------------------------------------- */
     { &hf_rtps_param_user_data, {
         "userData",
-        "rtps.param.userData",
+        "rtps_param_userData",
         FT_BYTES,
         BASE_NONE,
         NULL,
@@ -11331,7 +11331,7 @@ void proto_register_rtps(void) {
     /* Parameter / Group Data ---------------------------------------------- */
     { &hf_rtps_param_group_data, {
         "groupData",
-        "rtps.param.groupData",
+        "rtps_param_groupData",
         FT_BYTES,
         BASE_NONE,
         NULL,
@@ -11342,7 +11342,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_transportInfo_classId, {
       "classID",
-        "rtps.transportInfo.classID",
+        "rtps_transportInfo_classID",
         FT_INT32,
         BASE_DEC,
         NULL,
@@ -11353,7 +11353,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_transportInfo_messageSizeMax, {
       "messageSizeMax",
-        "rtps.transportInfo.messageSizeMax",
+        "rtps_transportInfo_messageSizeMax",
         FT_INT32,
         BASE_DEC,
         NULL,
@@ -11363,7 +11363,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_coherent_set_start, {
         "Coherent set start",
-        "rtps.coherent_set.start",
+        "rtps_coherent_set_start",
         FT_UINT64,
         BASE_DEC,
         NULL,
@@ -11374,7 +11374,7 @@ void proto_register_rtps(void) {
 
     { &hf_rtps_coherent_set_end, {
         "End of coherent set sequence:",
-        "rtps.coherent_set.end",
+        "rtps_coherent_set_end",
         FT_UINT64,
         BASE_DEC,
         NULL,
@@ -11386,7 +11386,7 @@ void proto_register_rtps(void) {
     /* Parameter / Topic Data ---------------------------------------------- */
     { &hf_rtps_param_topic_data, {
         "topicData",
-        "rtps.param.topicData",
+        "rtps_param_topicData",
         FT_BYTES,
         BASE_NONE,
         NULL,
@@ -11399,7 +11399,7 @@ void proto_register_rtps(void) {
     /* Parameter / Content Filter Name ------------------------------------- */
     { &hf_rtps_param_content_filter_topic_name, {
         "contentFilterTopicName",
-        "rtps.param.contentFilterTopicName",
+        "rtps_param_contentFilterTopicName",
         FT_STRINGZ,
         BASE_NONE,
         NULL,
@@ -11409,7 +11409,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_param_related_topic_name, {
         "relatedTopicName",
-        "rtps.param.relatedTopicName",
+        "rtps_param_relatedTopicName",
         FT_STRINGZ,
         BASE_NONE,
         NULL,
@@ -11419,7 +11419,7 @@ void proto_register_rtps(void) {
     },
     { &hf_rtps_param_filter_class_name, {
         "filterClassName",
-        "rtps.param.filterClassName",
+        "rtps_param_filterClassName",
         FT_STRINGZ,
         BASE_NONE,
         NULL,
@@ -11429,1804 +11429,1804 @@ void proto_register_rtps(void) {
     },
 
     { &hf_rtps_durability_service_cleanup_delay,
-      { "Service Cleanup Delay", "rtps.durability.service_cleanup_delay",
+      { "Service Cleanup Delay", "rtps_durability_service_cleanup_delay",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_liveliness_lease_duration,
-      { "Lease Duration", "rtps.liveliness.lease_duration",
+      { "Lease Duration", "rtps_liveliness_lease_duration",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_participant_lease_duration,
-      { "Duration", "rtps.participant_lease_duration",
+      { "Duration", "rtps_participant_lease_duration",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_time_based_filter_minimum_separation,
-      { "Minimum Separation", "rtps.time_based_filter.minimum_separation",
+      { "Minimum Separation", "rtps_time_based_filter_minimum_separation",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_reliability_max_blocking_time,
-      { "Max Blocking Time", "rtps.reliability.max_blocking_time",
+      { "Max Blocking Time", "rtps_reliability_max_blocking_time",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_deadline_period,
-      { "Period", "rtps.deadline_period",
+      { "Period", "rtps_deadline_period",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_latency_budget_duration,
-      { "Duration", "rtps.latency_budget.duration",
+      { "Duration", "rtps_latency_budget_duration",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_lifespan_duration,
-      { "Duration", "rtps.lifespan",
+      { "Duration", "rtps_lifespan",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_persistence,
-      { "Persistence", "rtps.persistence",
+      { "Persistence", "rtps_persistence",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_info_ts_timestamp,
-      { "Timestamp", "rtps.info_ts.timestamp",
+      { "Timestamp", "rtps_info_ts_timestamp",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_locator_kind,
-      { "Kind", "rtps.locator.kind",
+      { "Kind", "rtps_locator_kind",
         FT_UINT32, BASE_HEX, VALS(rtps_locator_kind_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_locator_port,
-      { "Port", "rtps.locator.port",
+      { "Port", "rtps_locator_port",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 #if 0
     { &hf_rtps_logical_port,
-      { "RTPS Logical Port", "rtps.locator.port",
+      { "RTPS Logical Port", "rtps_locator_port",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 #endif
     { &hf_rtps_locator_public_address_port,
-      { "Public Address Port", "rtps.locator.public_address_port",
+      { "Public Address Port", "rtps_locator_public_address_port",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_locator_ipv4,
-      { "Address", "rtps.locator.ipv4",
+      { "Address", "rtps_locator_ipv4",
         FT_IPv4, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_locator_ipv6,
-      { "Address", "rtps.locator.ipv6",
+      { "Address", "rtps_locator_ipv6",
         FT_IPv6, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_participant_builtin_endpoints,
-      { "BuiltIn Endpoint", "rtps.participant_builtin_endpoints",
+      { "BuiltIn Endpoint", "rtps_participant_builtin_endpoints",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_participant_manual_liveliness_count,
-      { "Manual Liveliness Count", "rtps.participant_manual_liveliness_count",
+      { "Manual Liveliness Count", "rtps_participant_manual_liveliness_count",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_history_depth,
-      { "Depth", "rtps.history_depth",
+      { "Depth", "rtps_history_depth",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_resource_limit_max_samples,
-      { "Max Samples", "rtps.resource_limit.max_samples",
+      { "Max Samples", "rtps_resource_limit_max_samples",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_resource_limit_max_instances,
-      { "Max Instances", "rtps.resource_limit.max_instances",
+      { "Max Instances", "rtps_resource_limit_max_instances",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_resource_limit_max_samples_per_instances,
-      { "Max Samples Per Instance", "rtps.resource_limit.max_samples_per_instance",
+      { "Max Samples Per Instance", "rtps_resource_limit_max_samples_per_instance",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_filter_bitmap,
-      { "Filter Bitmap", "rtps.filter_bitmap",
+      { "Filter Bitmap", "rtps_filter_bitmap",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_type_checksum,
-      { "Checksum", "rtps.type_checksum",
+      { "Checksum", "rtps_type_checksum",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_queue_size,
-      { "queueSize", "rtps.queue_size",
+      { "queueSize", "rtps_queue_size",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_acknack_count,
-      { "Count", "rtps.acknack.count",
+      { "Count", "rtps_acknack_count",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_ack_virtual_writer_count,
-      { "virtualWriterCount", "rtps.app_ack.virtual_writer_count",
+      { "virtualWriterCount", "rtps_app_ack_virtual_writer_count",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_ack_count,
-      { "count", "rtps.app_ack.virtual_writer_count",
+      { "count", "rtps_app_ack_virtual_writer_count",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_ack_conf_virtual_writer_count,
-      { "virtualWriterCount", "rtps.app_ack_conf.virtual_writer_count",
+      { "virtualWriterCount", "rtps_app_ack_conf_virtual_writer_count",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_ack_conf_count,
-      { "count", "rtps.app_ack_conf.count",
+      { "count", "rtps_app_ack_conf_count",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_ack_interval_payload_length,
-      { "intervalPayloadLength", "rtps.app_ack.interval_payload_length",
+      { "intervalPayloadLength", "rtps_app_ack_interval_payload_length",
         FT_INT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_ack_interval_flags,
-      { "intervalFlags", "rtps.app_ack.interval_flags",
+      { "intervalFlags", "rtps_app_ack_interval_flags",
         FT_INT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_ack_interval_count,
-      { "intervalCount", "rtps.app_ack.interval_count",
+      { "intervalCount", "rtps_app_ack_interval_count",
         FT_INT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_ack_octets_to_next_virtual_writer,
-      { "octetsToNextVirtualWriter", "rtps.app_ack.octets_to_next_virtual_writer",
+      { "octetsToNextVirtualWriter", "rtps_app_ack_octets_to_next_virtual_writer",
         FT_INT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_durability_service_history_kind,
-      { "History Kind", "rtps.durability_service.history_kind",
+      { "History Kind", "rtps_durability_service_history_kind",
         FT_UINT32, BASE_HEX, VALS(history_qos_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_durability_service_history_depth,
-      { "History Depth", "rtps.durability_service.history_depth",
+      { "History Depth", "rtps_durability_service_history_depth",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_durability_service_max_samples,
-      { "Max Samples", "rtps.durability_service.max_samples",
+      { "Max Samples", "rtps_durability_service_max_samples",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_durability_service_max_instances,
-      { "Max Instances", "rtps.durability_service.max_instances",
+      { "Max Instances", "rtps_durability_service_max_instances",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_durability_service_max_samples_per_instances,
-      { "Max Samples Per Instance", "rtps.durability_service.max_samples_per_instance",
+      { "Max Samples Per Instance", "rtps_durability_service_max_samples_per_instance",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_liveliness_kind,
-      { "Kind", "rtps.liveliness.kind",
+      { "Kind", "rtps_liveliness_kind",
         FT_UINT32, BASE_HEX, VALS(liveliness_qos_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_manager_key,
-      { "Key", "rtps.manager_key",
+      { "Key", "rtps_manager_key",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_locator_udp_v4,
-      { "Address", "rtps.locator_udp_v4.ip",
+      { "Address", "rtps_locator_udp_v4_ip",
         FT_IPv4, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_locator_udp_v4_port,
-      { "Port", "rtps.locator_udp_v4.port",
+      { "Port", "rtps_locator_udp_v4_port",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_param_ip_address,
-      { "Address", "rtps.param.ip_address",
+      { "Address", "rtps_param_ip_address",
         FT_IPv4, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_port,
-      { "Port", "rtps.param.port",
+      { "Port", "rtps_param_port",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_expects_inline_qos,
-      { "Inline QoS", "rtps.expects_inline_qos",
+      { "Inline QoS", "rtps_expects_inline_qos",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_presentation_coherent_access,
-      { "Coherent Access", "rtps.presentation.coherent_access",
+      { "Coherent Access", "rtps_presentation_coherent_access",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_presentation_ordered_access,
-      { "Ordered Access", "rtps.presentation.ordered_access",
+      { "Ordered Access", "rtps_presentation_ordered_access",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_direct_communication,
-      { "Direct Communication", "rtps.direct_communication",
+      { "Direct Communication", "rtps_direct_communication",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_expects_ack,
-      { "expectsAck", "rtps.expects_ack",
+      { "expectsAck", "rtps_expects_ack",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_expects_virtual_heartbeat,
-      { "expectsVirtualHB", "rtps.expects_virtual_heartbeat",
+      { "expectsVirtualHB", "rtps_expects_virtual_heartbeat",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_reliability_kind,
-      { "Kind", "rtps.reliability_kind",
+      { "Kind", "rtps_reliability_kind",
         FT_UINT32, BASE_HEX, VALS(reliability_qos_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_durability,
-      { "Durability", "rtps.durability",
+      { "Durability", "rtps_durability",
         FT_UINT32, BASE_HEX, VALS(durability_qos_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_ownership,
-      { "Kind", "rtps.ownership",
+      { "Kind", "rtps_ownership",
         FT_UINT32, BASE_HEX, VALS(ownership_qos_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_presentation_access_scope,
-      { "Access Scope", "rtps.presentation.access_scope",
+      { "Access Scope", "rtps_presentation_access_scope",
         FT_UINT32, BASE_HEX, VALS(presentation_qos_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_destination_order,
-      { "Kind", "rtps.destination_order",
+      { "Kind", "rtps_destination_order",
         FT_UINT32, BASE_HEX, VALS(destination_order_qos_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_history_kind,
-      { "Kind", "rtps.history.kind",
+      { "Kind", "rtps_history_kind",
         FT_UINT32, BASE_HEX, VALS(history_qos_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_status_info,
-      { "statusInfo", "rtps.data.status_info",
+      { "statusInfo", "rtps_data_status_info",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_serialize_encap_kind,
-      { "encapsulation kind", "rtps.param.serialize.encap_kind",
+      { "encapsulation kind", "rtps_param_serialize_encap_kind",
         FT_UINT16, BASE_HEX, VALS(encapsulation_id_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_serialize_encap_len,
-      { "encapsulation options", "rtps.param.serialize.encap_len",
+      { "encapsulation options", "rtps_param_serialize_encap_len",
         FT_UINT16, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     /* Parameter / NtpTime ------------------------------------------------- */
     { &hf_rtps_param_timestamp_sec, {
-      "seconds", "rtps.param.ntpTime.sec",
+      "seconds", "rtps_param_ntpTime_sec",
         FT_INT32, BASE_DEC, NULL, 0,
         "The 'second' component of an RTPS time_t",
         HFILL }
     },
 
     { &hf_rtps_param_timestamp_fraction, {
-      "fraction", "rtps.param.ntpTime.fraction",
+      "fraction", "rtps_param_ntpTime_fraction",
         FT_UINT32, BASE_DEC, NULL, 0,
         "The 'fraction' component of an RTPS time_t",
         HFILL }
     },
 
     { &hf_rtps_param_transport_priority,
-      { "Value", "rtps.param.transport_priority",
+      { "Value", "rtps_param_transport_priority",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_type_max_size_serialized,
-      { "Value", "rtps.param.type_max_size_serialized",
+      { "Value", "rtps_param_type_max_size_serialized",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_peer_host_epoch,
-      { "Peer Host Epoch", "rtps.param.peer_host_epoch",
+      { "Peer Host Epoch", "rtps_param_peer_host_epoch",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_endpoint_property_change_epoch,
-      { "Endpoint Property Change Epoch", "rtps.param.endpoint_property_change_epoch",
+      { "Endpoint Property Change Epoch", "rtps_param_endpoint_property_change_epoch",
         FT_INT64, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_entity_name,
-      { "entityName", "rtps.param.entityName",
+      { "entityName", "rtps_param_entityName",
         FT_STRINGZ, BASE_NONE, NULL, 0,
         "String representing the name of the entity addressed by the submessage",
         HFILL }
     },
 
     { &hf_rtps_param_role_name,
-      { "roleName", "rtps.param.roleName",
+      { "roleName", "rtps_param_roleName",
         FT_STRINGZ, BASE_NONE, NULL, 0,
         "String representing the role name of the entity addressed by the submessage",
         HFILL }
     },
 
     { &hf_rtps_disable_positive_ack,
-      { "disablePositiveAcks", "rtps.disable_positive_ack",
+      { "disablePositiveAcks", "rtps_disable_positive_ack",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_participant_guid_v1,
-      { "Participant GUID", "rtps.param.participant_guid_v1",
+      { "Participant GUID", "rtps_param_participant_guid_v1",
         FT_UINT64, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_participant_guid,
-      { "Participant GUID", "rtps.param.participant_guid",
+      { "Participant GUID", "rtps_param_participant_guid",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_group_guid,
-      { "Group GUID", "rtps.param.group_guid",
+      { "Group GUID", "rtps_param_group_guid",
         FT_UINT64, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_endpoint_guid,
-      { "Endpoint GUID", "rtps.param.endpoint_guid",
+      { "Endpoint GUID", "rtps_param_endpoint_guid",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_host_id,
-      { "hostId", "rtps.param.guid.hostId",
+      { "hostId", "rtps_param_guid_hostId",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_id,
-      { "appId", "rtps.param.guid.appId",
+      { "appId", "rtps_param_guid_appId",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_instance_id_v1,
-      { "instanceId", "rtps.param.guid.instanceId",
+      { "instanceId", "rtps_param_guid_instanceId",
         FT_UINT24, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_instance_id,
-      { "instanceId", "rtps.param.guid.instanceId",
+      { "instanceId", "rtps_param_guid_instanceId",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_app_kind,
-      { "instanceId", "rtps.param.guid.appKind",
+      { "instanceId", "rtps_param_guid_appKind",
         FT_UINT8, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_entity,
-      { "entityId", "rtps.param.guid.entityId",
+      { "entityId", "rtps_param_guid_entityId",
         FT_UINT32, BASE_HEX, VALS(entity_id_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_entity_key,
-      { "entityKey", "rtps.param.guid.entityKey",
+      { "entityKey", "rtps_param_guid_entityKey",
         FT_UINT24, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_hf_entity_kind,
-      { "entityKind", "rtps.param.guid.entityKind",
+      { "entityKind", "rtps_param_guid_entityKind",
         FT_UINT8, BASE_HEX, VALS(entity_kind_vals), 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_extended_pid_length,
-      { "Extended Length", "rtps.param.extended_pid_length",
+      { "Extended Length", "rtps_param_extended_pid_length",
         FT_UINT32, BASE_HEX, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_extended_parameter,
-      { "Extended Parameter", "rtps.param.extended_parameter",
+      { "Extended Parameter", "rtps_param_extended_parameter",
       FT_UINT32, BASE_HEX, NULL, 0,
       NULL, HFILL }
     },
 
     { &hf_rtps_data_frag_number,
-      { "fragmentStartingNum", "rtps.data_frag.number",
+      { "fragmentStartingNum", "rtps_data_frag_number",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_frag_sample_size,
-      { "sampleSize", "rtps.data_frag.sample_size",
+      { "sampleSize", "rtps_data_frag_sample_size",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_frag_num_fragments,
-      { "fragmentsInSubmessage", "rtps.data_frag.num_fragments",
+      { "fragmentsInSubmessage", "rtps_data_frag_num_fragments",
         FT_UINT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_frag_size,
-      { "fragmentSize", "rtps.data_frag.size",
+      { "fragmentSize", "rtps_data_frag_size",
         FT_UINT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_nokey_data_frag_number,
-      { "fragmentStartingNum", "rtps.nokey_data_frag.number",
+      { "fragmentStartingNum", "rtps_nokey_data_frag_number",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_nokey_data_frag_num_fragments,
-      { "fragmentsInSubmessage", "rtps.nokey_data_frag.num_fragments",
+      { "fragmentsInSubmessage", "rtps_nokey_data_frag_num_fragments",
         FT_UINT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_nokey_data_frag_size,
-      { "fragmentSize", "rtps.nokey_data_frag.size",
+      { "fragmentSize", "rtps_nokey_data_frag_size",
         FT_UINT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_nack_frag_count,
-      { "Count", "rtps.nack_frag.count",
+      { "Count", "rtps_nack_frag_count",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_heartbeat_frag_number,
-      { "lastFragmentNum", "rtps.heartbeat_frag.number",
+      { "lastFragmentNum", "rtps_heartbeat_frag_number",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_heartbeat_frag_count,
-      { "Count", "rtps.heartbeat_frag.count",
+      { "Count", "rtps_heartbeat_frag_count",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_heartbeat_batch_count,
-      { "Count", "rtps.heartbeat_batch.count",
+      { "Count", "rtps_heartbeat_batch_count",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_virtual_heartbeat_count,
-      { "Count", "rtps.virtual_heartbeat.count",
+      { "Count", "rtps_virtual_heartbeat_count",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_virtual_heartbeat_num_virtual_guids,
-      { "numVirtualGUIDs", "rtps.virtual_heartbeat.num_virtual_guids",
+      { "numVirtualGUIDs", "rtps_virtual_heartbeat_num_virtual_guids",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_virtual_heartbeat_num_writers,
-      { "numWriters", "rtps.virtual_heartbeat.num_writers",
+      { "numWriters", "rtps_virtual_heartbeat_num_writers",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_serialize_data, {
-        "serializedData", "rtps.data.serialize_data",
+        "serializedData", "rtps_data_serialize_data",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_parameter_data, {
-        "parameterData", "rtps.parameter_data",
+        "parameterData", "rtps_parameter_data",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_batch_timestamp,
-      { "Timestamp", "rtps.data_batch.timestamp",
+      { "Timestamp", "rtps_data_batch_timestamp",
         FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0,
         "Time using the RTPS time_t standard format", HFILL }
     },
 
     { &hf_rtps_data_batch_offset_to_last_sample_sn,
-      { "offsetToLastSampleSN", "rtps.data_batch.offset_to_last_sample_sn",
+      { "offsetToLastSampleSN", "rtps_data_batch_offset_to_last_sample_sn",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_batch_sample_count,
-      { "batchSampleCount", "rtps.data_batch.sample_count",
+      { "batchSampleCount", "rtps_data_batch_sample_count",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_batch_offset_sn,
-      { "offsetSN", "rtps.data_batch.offset_sn",
+      { "offsetSN", "rtps_data_batch_offset_sn",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_batch_octets_to_sl_encap_id,
-      { "octetsToSLEncapsulationId", "rtps.data_batch.octets_to_sl_encap_id",
+      { "octetsToSLEncapsulationId", "rtps_data_batch_octets_to_sl_encap_id",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_batch_serialized_data_length,
-      { "serializedDataLength", "rtps.data_batch.serialized_data_length",
+      { "serializedDataLength", "rtps_data_batch_serialized_data_length",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_data_batch_octets_to_inline_qos,
-      { "octetsToInlineQos", "rtps.data_batch.octets_to_inline_qos",
+      { "octetsToInlineQos", "rtps_data_batch_octets_to_inline_qos",
         FT_UINT16, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_fragment_number_base64,
-      { "bitmapBase", "rtps.fragment_number.base64",
+      { "bitmapBase", "rtps_fragment_number_base64",
         FT_UINT64, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_fragment_number_base,
-      { "bitmapBase", "rtps.fragment_number.base32",
+      { "bitmapBase", "rtps_fragment_number_base32",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_fragment_number_num_bits,
-      { "numBits", "rtps.fragment_number.num_bits",
+      { "numBits", "rtps_fragment_number_num_bits",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_bitmap_num_bits,
-      { "numBits", "rtps.bitmap.num_bits",
+      { "numBits", "rtps_bitmap_num_bits",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_acknack_analysis,
-      { "Acknack Analysis", "rtps.sm.acknack_analysis",
+      { "Acknack Analysis", "rtps_sm_acknack_analysis",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_partition_num,
-      { "Number of partition names", "rtps.param.partition_num",
+      { "Number of partition names", "rtps_param_partition_num",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_expression_parameters_num,
-      { "Number of expression params", "rtps.param.expression_parameters_num",
+      { "Number of expression params", "rtps_param_expression_parameters_num",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_partition,
-      { "name", "rtps.param.partition",
+      { "name", "rtps_param_partition",
         FT_STRING, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_filter_expression,
-      { "filterExpression", "rtps.param.filter_expression",
+      { "filterExpression", "rtps_param_filter_expression",
         FT_STRING, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_expression_parameters,
-      { "expressionParameters", "rtps.param.expression_parameters",
+      { "expressionParameters", "rtps_param_expression_parameters",
         FT_STRING, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_locator_filter_list_num_channels,
-      { "numberOfChannels", "rtps.param.locator_filter_list.num_channels",
+      { "numberOfChannels", "rtps_param_locator_filter_list_num_channels",
         FT_INT32, BASE_DEC, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_locator_filter_list_filter_name,
-      { "filterName", "rtps.param.locator_filter_list.filter_name",
+      { "filterName", "rtps_param_locator_filter_list_filter_name",
         FT_STRING, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_locator_filter_list_filter_exp,
-      { "filterExpression", "rtps.param.locator_filter_list.filter_exp",
+      { "filterExpression", "rtps_param_locator_filter_list_filter_exp",
         FT_STRING, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
 
     { &hf_rtps_extra_flags,
-      { "Extra flags", "rtps.extra_flags",
+      { "Extra flags", "rtps_extra_flags",
         FT_UINT16, BASE_HEX, NULL, 0xFFFF,
         NULL, HFILL }
     },
 
     { &hf_rtps_param_builtin_endpoint_set_flags,
-      { "Flags", "rtps.param.builtin_endpoint_set",
+      { "Flags", "rtps_param_builtin_endpoint_set",
         FT_UINT32, BASE_HEX, NULL, 0,
         "bitmask representing the flags in PID_BUILTIN_ENDPOINT_SET",
         HFILL }
     },
 
     { &hf_rtps_param_vendor_builtin_endpoint_set_flags,
-      { "Flags", "rtps.param.vendor_builtin_endpoint_set",
+      { "Flags", "rtps_param_vendor_builtin_endpoint_set",
         FT_UINT32, BASE_HEX, NULL, 0,
         "bitmask representing the flags in PID_VENDOR_BUILTIN_ENDPOINT_SET",
         HFILL }
     },
 
     { &hf_rtps_param_endpoint_security_attributes,
-      { "Flags", "rtps.param.endpoint_security_attributes",
+      { "Flags", "rtps_param_endpoint_security_attributes",
         FT_UINT32, BASE_HEX, NULL, 0,
         "bitmask representing the flags in PID_ENDPOINT_SECURITY_ATTRIBUTES",
         HFILL }
     },
 
     { &hf_rtps_param_plugin_promiscuity_kind, {
-        "promiscuityKind", "rtps.param.plugin_promiscuity_kind",
+        "promiscuityKind", "rtps_param_plugin_promiscuity_kind",
         FT_UINT32, BASE_HEX, VALS(plugin_promiscuity_kind_vals), 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_service_kind, {
-        "serviceKind", "rtps.param.service_kind",
+        "serviceKind", "rtps_param_service_kind",
         FT_UINT32, BASE_HEX, VALS(service_kind_vals), 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_data_representation,{
-        "Data Representation Kind", "rtps.param.data_representation",
+        "Data Representation Kind", "rtps_param_data_representation",
         FT_UINT16, BASE_DEC, VALS(data_representation_kind_vals), 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_type_consistency_kind, {
-        "Type Consistency Kind", "rtps.param.type_consistency_kind",
+        "Type Consistency Kind", "rtps_param_type_consistency_kind",
         FT_UINT16, BASE_HEX, VALS(type_consistency_kind_vals), 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_ignore_sequence_bounds, {
-        "Ignore Sequence Bounds", "rtps.param.ignore_sequence_bounds",
+        "Ignore Sequence Bounds", "rtps_param_ignore_sequence_bounds",
         FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_ignore_string_bounds, {
-        "Ignore String Bounds", "rtps.param.ignore_string_bounds",
+        "Ignore String Bounds", "rtps_param_ignore_string_bounds",
         FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_ignore_member_names, {
-        "Ignore Member Names", "rtps.param.ignore_member_names",
+        "Ignore Member Names", "rtps_param_ignore_member_names",
         FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_prevent_type_widening, {
-         "Prevent Type Widening", "rtps.param.prevent_type_widening",
+         "Prevent Type Widening", "rtps_param_prevent_type_widening",
         FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_force_type_validation, {
-         "Force Type Validation", "rtps.param.force_type_validation",
+         "Force Type Validation", "rtps_param_force_type_validation",
         FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_ignore_enum_literal_names, {
-        "Ignore Enum Literal Names", "rtps.param.ignore_enum_literal_names",
+        "Ignore Enum Literal Names", "rtps_param_ignore_enum_literal_names",
         FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_acknowledgment_kind, {
-        "Acknowledgment Kind", "rtps.param.acknowledgment_kind",
+        "Acknowledgment Kind", "rtps_param_acknowledgment_kind",
         FT_UINT32, BASE_HEX, VALS(acknowledgement_kind_vals), 0, NULL, HFILL }
     },
 
     /* Finally the raw issue data ------------------------------------------ */
     { &hf_rtps_issue_data, {
-        "serializedData", "rtps.issueData",
+        "serializedData", "rtps_issueData",
         FT_BYTES, BASE_NONE, NULL, 0, "The user data transferred in a ISSUE submessage", HFILL }
     },
 
     { &hf_rtps_param_product_version_major, {
-        "Major", "rtps.param.product_version.major",
+        "Major", "rtps_param_product_version_major",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_product_version_minor, {
-        "Minor", "rtps.param.product_version.minor",
+        "Minor", "rtps_param_product_version_minor",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_product_version_release, {
-        "Release", "rtps.param.product_version.release",
+        "Release", "rtps_param_product_version_release",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_product_version_release_as_char, {
-        "Release", "rtps.param.product_version.release_string",
+        "Release", "rtps_param_product_version_release_string",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_param_product_version_revision, {
-        "Revision", "rtps.param.product_version.revision",
+        "Revision", "rtps_param_product_version_revision",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_encapsulation_id, {
-        "encapsulation id", "rtps.encapsulation_id",
+        "encapsulation id", "rtps_encapsulation_id",
         FT_UINT16, BASE_HEX, VALS(encapsulation_id_vals), 0, NULL, HFILL }
     },
 
     { &hf_rtps_encapsulation_kind, {
-        "kind", "rtps.encapsulation_kind",
+        "kind", "rtps_encapsulation_kind",
         FT_UINT16, BASE_HEX, VALS(participant_message_data_kind), 0, NULL, HFILL }
     },
 
     { &hf_rtps_octets_to_inline_qos, {
-        "Octets to inline QoS", "rtps.octets_to_inline_qos",
+        "Octets to inline QoS", "rtps_octets_to_inline_qos",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_filter_signature, {
-        "filterSignature", "rtps.filter_signature",
+        "filterSignature", "rtps_filter_signature",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_bitmap, {
-        "bitmap", "rtps.bitmap",
+        "bitmap", "rtps_bitmap",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_property_name, {
-        "Property Name", "rtps.property_name",
+        "Property Name", "rtps_property_name",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_property_value, {
-        "Value", "rtps.property_value",
+        "Value", "rtps_property_value",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_union, {
-        "union", "rtps.union",
+        "union", "rtps_union",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_union_case, {
-        "case", "rtps.union_case",
+        "case", "rtps_union_case",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_struct, {
-        "struct", "rtps.struct",
+        "struct", "rtps_struct",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_member_name, {
-        "member_name", "rtps.member_name",
+        "member_name", "rtps_member_name",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_sequence, {
-        "sequence", "rtps.sequence",
+        "sequence", "rtps_sequence",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_array, {
-        "array", "rtps.array",
+        "array", "rtps_array",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_bitfield, {
-        "bitfield", "rtps.bitfield",
+        "bitfield", "rtps_bitfield",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_datatype, {
-        "datatype", "rtps.datatype",
+        "datatype", "rtps_datatype",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_sequence_size, {
-        "sequenceSize", "rtps.sequence_size",
+        "sequenceSize", "rtps_sequence_size",
         FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_octet_octets, 0, NULL, HFILL }
     },
 
     { &hf_rtps_guid, {
-        "guid", "rtps.guid",
+        "guid", "rtps_guid",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_heartbeat_count, {
-        "count", "rtps.heartbeat_count",
+        "count", "rtps_heartbeat_count",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_encapsulation_options, {
-        "Encapsulation options", "rtps.encapsulation_options",
+        "Encapsulation options", "rtps_encapsulation_options",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_serialized_key, {
-        "serializedKey", "rtps.serialized_key",
+        "serializedKey", "rtps_serialized_key",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_serialized_data, {
-        "serializedData", "rtps.serialized_data",
+        "serializedData", "rtps_serialized_data",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_sm_rti_crc_number, {
-        "RTPS Message Length", "rtps.sm.rti_crc.message_length",
+        "RTPS Message Length", "rtps_sm_rti_crc_message_length",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_sm_rti_crc_result, {
-        "CRC", "rtps.sm.rti_crc",
+        "CRC", "rtps_sm_rti_crc",
         FT_UINT32, BASE_HEX, NULL, 0, NULL, HFILL }
     },
 
     /* Flag bits */
     { &hf_rtps_flag_reserved80, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x80, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved40, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x40, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved20, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x20, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved10, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x10, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved08, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x08, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved04, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x04, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved02, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved8000, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x8000, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved4000, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x4000, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved2000, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x2000, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved1000, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x1000, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved0800, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0800, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved0400, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0400, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved0200, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0200, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved0100, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0100, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved0080, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0080, NULL, HFILL }
     },
     { &hf_rtps_flag_reserved0040, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0040, NULL, HFILL }
     },
     { &hf_rtps_flag_builtin_endpoint_set_reserved, {
-        "Reserved", "rtps.flag.reserved",
+        "Reserved", "rtps_flag_reserved",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x0000F000, NULL, HFILL }
     },
     { &hf_rtps_flag_unregister, {
-        "Unregister flag", "rtps.flag.unregister",
+        "Unregister flag", "rtps_flag_unregister",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x20, NULL, HFILL }
     },
     { &hf_rtps_flag_inline_qos_v1, {
-        "Inline QoS", "rtps.flag.inline_qos",
+        "Inline QoS", "rtps_flag_inline_qos",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x10, NULL, HFILL }
     },
     { &hf_rtps_flag_hash_key, {
-        "Hash key flag", "rtps.flag.hash_key",
+        "Hash key flag", "rtps_flag_hash_key",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x08, NULL, HFILL }
     },
     { &hf_rtps_flag_hash_key_rti, {
-        "Hash key flag", "rtps.flag.hash_key",
+        "Hash key flag", "rtps_flag_hash_key",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x04, NULL, HFILL }
     },
     { &hf_rtps_flag_alive, {
-        "Alive flag", "rtps.flag.alive",
+        "Alive flag", "rtps_flag_alive",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x04, NULL, HFILL }
     },
     { &hf_rtps_flag_data_present_v1, {
-        "Data present", "rtps.flag.data_present",
+        "Data present", "rtps_flag_data_present",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02, NULL, HFILL }
     },
     { &hf_rtps_flag_multisubmessage, {
-        "Multi-submessage", "rtps.flag.multisubmessage",
+        "Multi-submessage", "rtps_flag_multisubmessage",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02, NULL, HFILL }
     },
     { &hf_rtps_flag_endianness, {
-        "Endianness bit", "rtps.flag.endianness",
+        "Endianness bit", "rtps_flag_endianness",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x01, NULL, HFILL }
     },
     { &hf_rtps_flag_inline_qos_v2, {
-        "Inline QoS", "rtps.flag.inline_qos",
+        "Inline QoS", "rtps_flag_inline_qos",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02, NULL, HFILL }
     },
     { &hf_rtps_flag_data_present_v2, {
-        "Data present", "rtps.flag.data_present",
+        "Data present", "rtps_flag_data_present",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x04, NULL, HFILL }
     },
     { &hf_rtps_flag_status_info, {
-        "Status info flag", "rtps.flag.status_info",
+        "Status info flag", "rtps_flag_status_info",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x10, NULL, HFILL }
     },
     { &hf_rtps_flag_final, {
-        "Final flag", "rtps.flag.final",
+        "Final flag", "rtps_flag_final",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02, NULL, HFILL }
     },
     { &hf_rtps_flag_liveliness, {
-        "Liveliness flag", "rtps.flag.liveliness",
+        "Liveliness flag", "rtps_flag_liveliness",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x04, NULL, HFILL }
     },
     { &hf_rtps_flag_multicast, {
-        "Multicast flag", "rtps.flag.multicast",
+        "Multicast flag", "rtps_flag_multicast",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02, NULL, HFILL }
     },
     { &hf_rtps_flag_data_serialized_key, {
-        "Serialized Key", "rtps.flag.data.serialized_key",
+        "Serialized Key", "rtps_flag_data_serialized_key",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x08, NULL, HFILL }
     },
     { &hf_rtps_flag_data_frag_serialized_key, {
-        "Serialized Key", "rtps.flag.data_frag.serialized_key",
+        "Serialized Key", "rtps_flag_data_frag_serialized_key",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x04, NULL, HFILL }
     },
     { &hf_rtps_flag_timestamp, {
-        "Timestamp flag", "rtps.flag.timestamp",
+        "Timestamp flag", "rtps_flag_timestamp",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02, NULL, HFILL }
     },
     { &hf_rtps_flag_no_virtual_guids, {
-        "No virtual GUIDs flag", "rtps.flag.no_virtual_guids",
+        "No virtual GUIDs flag", "rtps_flag_no_virtual_guids",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x08, NULL, HFILL }
     },
     { &hf_rtps_flag_multiple_writers, {
-        "Multiple writers flag", "rtps.flag.multiple_writers",
+        "Multiple writers flag", "rtps_flag_multiple_writers",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x04, NULL, HFILL }
     },
     { &hf_rtps_flag_multiple_virtual_guids, {
-        "Multiple virtual GUIDs flag", "rtps.flag.multiple_virtual_guids",
+        "Multiple virtual GUIDs flag", "rtps_flag_multiple_virtual_guids",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x02, NULL, HFILL }
     },
     { &hf_rtps_flag_serialize_key16, {
-        "Serialized Key", "rtps.flag.serialize_key",
+        "Serialized Key", "rtps_flag_serialize_key",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0020, NULL, HFILL }
     },
     { &hf_rtps_flag_invalid_sample, {
-        "Invalid sample", "rtps.flag.invalid_sample",
+        "Invalid sample", "rtps_flag_invalid_sample",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0010, NULL, HFILL }
     },
     { &hf_rtps_flag_data_present16, {
-        "Data present", "rtps.flag.data_present",
+        "Data present", "rtps_flag_data_present",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0008, NULL, HFILL }
     },
     { &hf_rtps_flag_offsetsn_present, {
-        "OffsetSN present", "rtps.flag.offsetsn_present",
+        "OffsetSN present", "rtps_flag_offsetsn_present",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0004, NULL, HFILL }
     },
     { &hf_rtps_flag_inline_qos16_v2, {
-        "Inline QoS", "rtps.flag.inline_qos",
+        "Inline QoS", "rtps_flag_inline_qos",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0002, NULL, HFILL }
     },
     { &hf_rtps_flag_timestamp_present, {
-        "Timestamp present", "rtps.flag.offsetsn_present",
+        "Timestamp present", "rtps_flag_offsetsn_present",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0001, NULL, HFILL }
     },
     { &hf_rtps_param_status_info_flags,
-      { "Flags", "rtps.param.status_info",
+      { "Flags", "rtps_param_status_info",
         FT_UINT32, BASE_HEX, NULL, 0, "bitmask representing the flags in PID_STATUS_INFO", HFILL }
     },
     { &hf_rtps_flag_unregistered, {
-        "Unregistered", "rtps.flag.unregistered",
+        "Unregistered", "rtps_flag_unregistered",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x0002, NULL, HFILL }
     },
     { &hf_rtps_flag_disposed, {
-        "Disposed", "rtps.flag.undisposed",
+        "Disposed", "rtps_flag_undisposed",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x0001, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_announcer, {
-        "Participant Announcer", "rtps.flag.participant_announcer",
+        "Participant Announcer", "rtps_flag_participant_announcer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000001, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_detector, {
-        "Participant Detector", "rtps.flag.participant_detector",
+        "Participant Detector", "rtps_flag_participant_detector",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000002, NULL, HFILL }
     },
     { &hf_rtps_flag_publication_announcer, {
-        "Publication Announcer", "rtps.flag.publication_announcer",
+        "Publication Announcer", "rtps_flag_publication_announcer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000004, NULL, HFILL }
     },
     { &hf_rtps_flag_publication_detector, {
-        "Publication Detector", "rtps.flag.publication_detector",
+        "Publication Detector", "rtps_flag_publication_detector",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000008, NULL, HFILL }
     },
     { &hf_rtps_flag_subscription_announcer, {
-        "Subscription Announcer", "rtps.flag.subscription_announcer",
+        "Subscription Announcer", "rtps_flag_subscription_announcer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000010, NULL, HFILL }
     },
     { &hf_rtps_flag_subscription_detector, {
-        "Subscription Detector", "rtps.flag.subscription_detector",
+        "Subscription Detector", "rtps_flag_subscription_detector",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000020, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_proxy_announcer, {
-        "Participant Proxy Announcer", "rtps.flag.participant_proxy_announcer",
+        "Participant Proxy Announcer", "rtps_flag_participant_proxy_announcer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000040, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_proxy_detector, {
-        "Participant Proxy Detector", "rtps.flag.participant_proxy_detector",
+        "Participant Proxy Detector", "rtps_flag_participant_proxy_detector",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000080, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_state_announcer, {
-        "Participant State Announcer", "rtps.flag.participant_state_announcer",
+        "Participant State Announcer", "rtps_flag_participant_state_announcer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000100, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_state_detector, {
-        "Participant State Detector", "rtps.flag.participant_state_detector",
+        "Participant State Detector", "rtps_flag_participant_state_detector",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000200, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_message_datawriter, {
-        "Participant Message DataWriter", "rtps.flag.participant_message_datawriter",
+        "Participant Message DataWriter", "rtps_flag_participant_message_datawriter",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000400, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_message_datareader, {
-        "Participant Message DataReader", "rtps.flag.participant_message_datareader",
+        "Participant Message DataReader", "rtps_flag_participant_message_datareader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000800, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_publication_writer, {
-        "Secure Publication Writer", "rtps.flag.secure_publication_writer",
+        "Secure Publication Writer", "rtps_flag_secure_publication_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00010000, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_publication_reader, {
-        "Secure Publication Reader", "rtps.flag.secure_publication_reader",
+        "Secure Publication Reader", "rtps_flag_secure_publication_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00020000, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_subscription_writer, {
-        "Secure Subscription Writer", "rtps.flag.secure_subscription_writer",
+        "Secure Subscription Writer", "rtps_flag_secure_subscription_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00040000, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_subscription_reader, {
-        "Secure Subscription Reader", "rtps.flag.secure_subscription_reader",
+        "Secure Subscription Reader", "rtps_flag_secure_subscription_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00080000, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_participant_message_writer, {
-        "Secure Participant Message Writer", "rtps.flag.secure_participant_message_writer",
+        "Secure Participant Message Writer", "rtps_flag_secure_participant_message_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00100000, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_participant_message_reader, {
-        "Secure Participant Message Reader", "rtps.flag.secure_participant_message_reader",
+        "Secure Participant Message Reader", "rtps_flag_secure_participant_message_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00200000, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_stateless_message_writer, {
-        "Participant Stateless Message Writer", "rtps.flag.participant_stateless_message_writer",
+        "Participant Stateless Message Writer", "rtps_flag_participant_stateless_message_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00400000, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_stateless_message_reader, {
-        "Participant Stateless Message Reader", "rtps.flag.participant_stateless_message_reader",
+        "Participant Stateless Message Reader", "rtps_flag_participant_stateless_message_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00800000, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_participant_volatile_message_writer,{
-        "Secure Participant Volatile Message Writer", "rtps.flag.secure_participant_volatile_message_writer",
+        "Secure Participant Volatile Message Writer", "rtps_flag_secure_participant_volatile_message_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x01000000, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_participant_volatile_message_reader,{
-        "Secure Participant Volatile Message Reader", "rtps.flag.secure_participant_volatile_message_reader",
+        "Secure Participant Volatile Message Reader", "rtps_flag_secure_participant_volatile_message_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x02000000, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_secure_writer,{
-        "Participant Secure Writer", "rtps.flag.participant_secure_writer",
+        "Participant Secure Writer", "rtps_flag_participant_secure_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x04000000, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_secure_reader,{
-        "Participant Secure Reader", "rtps.flag.participant_secure_reader",
+        "Participant Secure Reader", "rtps_flag_participant_secure_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x08000000, NULL, HFILL }
     },
     { &hf_rtps_type_object_type_id_disc,
-          { "TypeId (_d)", "rtps.type_object.type_id.discr",
+          { "TypeId (_d)", "rtps_type_object_type_id_discr",
             FT_INT16, BASE_DEC, 0x0, 0,
             NULL, HFILL }
     },
     { &hf_rtps_type_object_primitive_type_id,
-      { "Type Id", "rtps.type_object.primitive_type_id",
+      { "Type Id", "rtps_type_object_primitive_type_id",
         FT_UINT16, BASE_HEX, VALS(type_object_kind), 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_base_primitive_type_id,
-      { "Base Id", "rtps.type_object.base_primitive_type_id",
+      { "Base Id", "rtps_type_object_base_primitive_type_id",
         FT_UINT16, BASE_HEX, VALS(type_object_kind), 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_type_id,
-      { "Type Id", "rtps.type_object.type_id",
+      { "Type Id", "rtps_type_object_type_id",
         FT_UINT64, BASE_HEX, 0x0, 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_base_type,
-      { "Base Type Id", "rtps.type_object.base_type_id",
+      { "Base Type Id", "rtps_type_object_base_type_id",
         FT_UINT64, BASE_HEX, 0x0, 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_element_raw, {
-        "Type Element Content", "rtps.type_object.element",
+        "Type Element Content", "rtps_type_object_element",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_type_property_name,
-      { "Name", "rtps.type_object.property.name",
+      { "Name", "rtps_type_object_property_name",
         FT_STRING, BASE_NONE, 0x0, 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_member_id,
-      { "Member Id", "rtps.type_object.annotation.member_id",
+      { "Member Id", "rtps_type_object_annotation_member_id",
         FT_UINT32, BASE_DEC, 0x0, 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_name,
-      { "Name", "rtps.type_object.member.name",
+      { "Name", "rtps_type_object_member_name",
         FT_STRING, BASE_NONE, 0x0, 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_annotation_value_d,
-      { "Annotation Member (_d)", "rtps.type_object.annotation.value_d",
+      { "Annotation Member (_d)", "rtps_type_object_annotation_value_d",
         FT_UINT16, BASE_DEC, 0x0, 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_annotation_value_16,
-      { "16 bits type", "rtps.type_object.annotation.value",
+      { "16 bits type", "rtps_type_object_annotation_value",
         FT_UINT16, BASE_DEC, 0x0, 0,
         NULL, HFILL }
     },
     { &hf_rtps_type_object_union_label,
-    { "Label", "rtps.type_object.union.label",
+    { "Label", "rtps_type_object_union_label",
           FT_UINT32, BASE_DEC, 0x0, 0,
           NULL, HFILL }
     },
     { &hf_rtps_type_object_bound,
-    { "Bound", "rtps.type_object.bound",
+    { "Bound", "rtps_type_object_bound",
           FT_UINT32, BASE_DEC, 0x0, 0,
           NULL, HFILL }
     },
     { &hf_rtps_type_object_enum_constant_name,
-      { "Enum name", "rtps.type_object.enum.name",
+      { "Enum name", "rtps_type_object_enum_name",
           FT_STRING, BASE_NONE, 0x0, 0,
           NULL, HFILL }
     },
     { &hf_rtps_type_object_enum_constant_value,
-      { "Enum value", "rtps.type_object.enum.value",
+      { "Enum value", "rtps_type_object_enum_value",
           FT_INT32, BASE_DEC, 0x0, 0,
           NULL, HFILL }
     },
     { &hf_rtps_type_object_element_shared,
-      { "Element shared", "rtps.type_object.shared",
+      { "Element shared", "rtps_type_object_shared",
           FT_BOOLEAN, 8, TFS(&tfs_true_false), 0,
           NULL, HFILL }
     },
     { &hf_rtps_flag_typeflag_final, {
-        "FINAL", "rtps.flag.typeflags.final",
+        "FINAL", "rtps_flag_typeflags_final",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0001, NULL, HFILL }
     },
     { &hf_rtps_flag_typeflag_mutable, {
-        "MUTABLE", "rtps.flag.typeflags.mutable",
+        "MUTABLE", "rtps_flag_typeflags_mutable",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0002, NULL, HFILL }
     },
     { &hf_rtps_flag_typeflag_nested, {
-        "NESTED", "rtps.flag.typeflags.nested",
+        "NESTED", "rtps_flag_typeflags_nested",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0004, NULL, HFILL }
     },
     { &hf_rtps_type_object_flags, {
-        "Flags", "rtps.flag.typeflags",
+        "Flags", "rtps_flag_typeflags",
         FT_UINT16, BASE_HEX, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_flag_memberflag_key, {
-        "Key", "rtps.flag.typeflags.key",
+        "Key", "rtps_flag_typeflags_key",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0001, NULL, HFILL }
     },
     { &hf_rtps_flag_memberflag_optional, {
-        "Optional", "rtps.flag.typeflags.optional",
+        "Optional", "rtps_flag_typeflags_optional",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0002, NULL, HFILL }
     },
     { &hf_rtps_flag_memberflag_shareable, {
-        "Shareable", "rtps.flag.typeflags.shareable",
+        "Shareable", "rtps_flag_typeflags_shareable",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0004, NULL, HFILL }
     },
     { &hf_rtps_flag_memberflag_union_default, {
-        "Union default", "rtps.flag.typeflags.union_default",
+        "Union default", "rtps_flag_typeflags_union_default",
         FT_BOOLEAN, 16, TFS(&tfs_set_notset), 0x0008, NULL, HFILL }
     },
     { &hf_rtps_type_object_element_module_name,
-      { "Module name", "rtps.type_object.module_name",
+      { "Module name", "rtps_type_object_module_name",
         FT_STRINGZ, BASE_NONE, NULL, 0,  NULL, HFILL }
     },
     { &hf_rtps_flag_service_request_writer, {
-        "Service Request Writer", "rtps.flag.service_request_writer",
+        "Service Request Writer", "rtps_flag_service_request_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000001, NULL, HFILL }
     },
     { &hf_rtps_flag_service_request_reader, {
-        "Service Request Reader", "rtps.flag.service_request_reader",
+        "Service Request Reader", "rtps_flag_service_request_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000002, NULL, HFILL }
     },
     { &hf_rtps_flag_locator_ping_writer, {
-        "Locator Ping Writer", "rtps.flag.locator_ping_writer",
+        "Locator Ping Writer", "rtps_flag_locator_ping_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000004, NULL, HFILL }
     },
     { &hf_rtps_flag_locator_ping_reader, {
-        "Locator Ping Reader", "rtps.flag.locator_ping_reader",
+        "Locator Ping Reader", "rtps_flag_locator_ping_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000008, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_service_request_writer, {
-        "Secure Service Request Writer", "rtps.flag.secure_service_request_writer",
+        "Secure Service Request Writer", "rtps_flag_secure_service_request_writer",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000010, NULL, HFILL }
     },
     { &hf_rtps_flag_secure_service_request_reader, {
-        "Secure Service Request Reader", "rtps.flag.secure_service_request_reader",
+        "Secure Service Request Reader", "rtps_flag_secure_service_request_reader",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000020, NULL, HFILL }
     },
     { &hf_rtps_flag_security_access_protected, {
-        "Access Protected" ,"rtps.flag.security.access_protected",
+        "Access Protected" ,"rtps_flag_security_access_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000001, NULL, HFILL }
     },
     { &hf_rtps_flag_security_discovery_protected, {
-        "Discovery Protected", "rtps.flag.security.discovery_protected",
+        "Discovery Protected", "rtps_flag_security_discovery_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000002, NULL, HFILL }
     },
     { &hf_rtps_flag_security_submessage_protected, {
-        "Submessage Protected", "rtps.flag.security.submessage_protected",
+        "Submessage Protected", "rtps_flag_security_submessage_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000004, NULL, HFILL }
     },
     { &hf_rtps_flag_security_payload_protected, {
-        "Payload Protected", "rtps.flag.security.payload_protected",
+        "Payload Protected", "rtps_flag_security_payload_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000008, NULL, HFILL }
     },
     { &hf_rtps_flag_endpoint_security_attribute_flag_is_read_protected,{
-        "Read Protected" ,"rtps.flag.security.info.read_protected",
+        "Read Protected" ,"rtps_flag_security_info_read_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000001, NULL, HFILL }
     },
     { &hf_rtps_flag_endpoint_security_attribute_flag_is_write_protected,{
-        "Write Protected" ,"rtps.flag.security.info.write_protected",
+        "Write Protected" ,"rtps_flag_security_info_write_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000002, NULL, HFILL }
     },
     { &hf_rtps_flag_endpoint_security_attribute_flag_is_discovery_protected,{
-        "Discovery Protected" ,"rtps.flag.security.info.discovery_protected",
+        "Discovery Protected" ,"rtps_flag_security_info_discovery_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000004, NULL, HFILL }
     },
     { &hf_rtps_flag_endpoint_security_attribute_flag_is_submessage_protected,{
-        "Submessage Protected" ,"rtps.flag.security.info.submessage_protected",
+        "Submessage Protected" ,"rtps_flag_security_info_submessage_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000008, NULL, HFILL }
     },
     { &hf_rtps_flag_endpoint_security_attribute_flag_is_payload_protected,{
-        "Payload Protected" ,"rtps.flag.security.info.payload_protected",
+        "Payload Protected" ,"rtps_flag_security_info_payload_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000010, NULL, HFILL }
     },
     { &hf_rtps_flag_endpoint_security_attribute_flag_is_key_protected,{
-        "Key Protected" ,"rtps.flag.security.info.key_protected",
+        "Key Protected" ,"rtps_flag_security_info_key_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000020, NULL, HFILL }
     },
     { &hf_rtps_flag_endpoint_security_attribute_flag_is_liveliness_protected,{
-        "Liveliness Protected" ,"rtps.flag.security.info.liveliness_protected",
+        "Liveliness Protected" ,"rtps_flag_security_info_liveliness_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000040, NULL, HFILL }
     },
     { &hf_rtps_flag_endpoint_security_attribute_flag_is_valid,{
-        "Mask Valid" ,"rtps.flag.security.info.valid",
+        "Mask Valid" ,"rtps_flag_security_info_valid",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x80000000, NULL, HFILL }
     },
     { &hf_rtps_param_endpoint_security_attributes_mask,{
-        "EndpointSecurityAttributesMask", "rtps.param.endpoint_security_attributes",
+        "EndpointSecurityAttributesMask", "rtps_param_endpoint_security_attributes",
         FT_UINT32, BASE_HEX, NULL, 0,
         "bitmask representing the EndpointSecurityAttributes flags in PID_ENDPOINT_SECURITY_INFO",
         HFILL }
     },
     { &hf_rtps_flag_plugin_endpoint_security_attribute_flag_is_payload_encrypted,{
-        "Submessage Encrypted" ,"rtps.flag.security.info.plugin_submessage_encrypted",
+        "Submessage Encrypted" ,"rtps_flag_security_info_plugin_submessage_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000001, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_endpoint_security_attribute_flag_is_key_encrypted,{
-        "Payload Encrypted" ,"rtps.flag.security.info.plugin_payload_encrypted",
+        "Payload Encrypted" ,"rtps_flag_security_info_plugin_payload_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000002, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_endpoint_security_attribute_flag_is_liveliness_encrypted,{
-        "Submessage Origin Encrypted" ,"rtps.flag.security.info.plugin_liveliness_encrypted",
+        "Submessage Origin Encrypted" ,"rtps_flag_security_info_plugin_liveliness_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000004, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_endpoint_security_attribute_flag_is_valid,{
-        "Mask Valid" ,"rtps.flag.security.info.plugin_valid",
+        "Mask Valid" ,"rtps_flag_security_info_plugin_valid",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x80000000, NULL, HFILL }
     },
     { &hf_rtps_param_plugin_endpoint_security_attributes_mask,{
         "PluginEndpointSecurityAttributesMask (valid dissection if using the Specification Builtin Plugins)",
-        "rtps.param.plugin_endpoint_security_attributes",
+        "rtps_param_plugin_endpoint_security_attributes",
         FT_UINT32, BASE_HEX, NULL, 0,
         "bitmask representing the PluginEndpointSecurityAttributes flags in PID_ENDPOINT_SECURITY_INFO",
         HFILL }
     },
     { &hf_rtps_flag_participant_security_attribute_flag_is_rtps_protected,{
-        "RTPS Protected" ,"rtps.flag.security.info.participant_rtps_protected",
+        "RTPS Protected" ,"rtps_flag_security_info_participant_rtps_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000001, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_security_attribute_flag_is_discovery_protected,{
-        "Discovery Protected" ,"rtps.flag.security.info.participant_discovery_protected",
+        "Discovery Protected" ,"rtps_flag_security_info_participant_discovery_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000002, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_security_attribute_flag_is_liveliness_protected,{
-        "Liveliness Protected" ,"rtps.flag.security.info.participant_liveliness_protected",
+        "Liveliness Protected" ,"rtps_flag_security_info_participant_liveliness_protected",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000004, NULL, HFILL }
     },
     { &hf_rtps_flag_participant_security_attribute_flag_is_valid,{
-        "Mask Valid" ,"rtps.flag.security.info.participant_mask_valid",
+        "Mask Valid" ,"rtps_flag_security_info_participant_mask_valid",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x80000000, NULL, HFILL }
     },
     { &hf_rtps_param_participant_security_attributes_mask,{
         "ParticipantSecurityAttributesMask",
-        "rtps.param.participant_security_attributes",
+        "rtps_param_participant_security_attributes",
         FT_UINT32, BASE_HEX, NULL, 0,
         "bitmask representing the ParticipantSecurityAttributes flags in PID_PARTICIPANT_SECURITY_INFO",
         HFILL }
     },
     { &hf_rtps_flag_plugin_participant_security_attribute_flag_is_rtps_encrypted,{
-        "RTPS Encrypted" ,"rtps.flag.security.info.plugin_participant_rtps_encrypted",
+        "RTPS Encrypted" ,"rtps_flag_security_info_plugin_participant_rtps_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000001, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_participant_security_attribute_flag_is_discovery_encrypted,{
-        "Discovery Encrypted" ,"rtps.flag.security.info.plugin_participant_discovery_encrypted",
+        "Discovery Encrypted" ,"rtps_flag_security_info_plugin_participant_discovery_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000002, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_participant_security_attribute_flag_is_liveliness_encrypted,{
-        "Liveliness Encrypted" ,"rtps.flag.security.info.plugin_participant_liveliness_encrypted",
+        "Liveliness Encrypted" ,"rtps_flag_security_info_plugin_participant_liveliness_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000004, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_participant_security_attribute_flag_is_rtps_origin_encrypted,{
-        "RTPS Origin Encrypted" ,"rtps.flag.security.info.plugin_participant_rtps_origin_encrypted",
+        "RTPS Origin Encrypted" ,"rtps_flag_security_info_plugin_participant_rtps_origin_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000008, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_participant_security_attribute_flag_is_discovery_origin_encrypted,{
-        "Discovery Origin Encrypted" ,"rtps.flag.security.info.plugin_participant_discovery_origin_encrypted",
+        "Discovery Origin Encrypted" ,"rtps_flag_security_info_plugin_participant_discovery_origin_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000010, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_participant_security_attribute_flag_is_liveliness_origin_encrypted,{
-        "Liveliness Origin Encrypted" ,"rtps.flag.security.info.plugin_participant_liveliness_origin_encrypted",
+        "Liveliness Origin Encrypted" ,"rtps_flag_security_info_plugin_participant_liveliness_origin_encrypted",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x00000020, NULL, HFILL }
     },
     { &hf_rtps_flag_plugin_participant_security_attribute_flag_is_valid,{
-        "Mask Valid" ,"rtps.flag.security.info.plugin_participant_mask_valid",
+        "Mask Valid" ,"rtps_flag_security_info_plugin_participant_mask_valid",
         FT_BOOLEAN, 32, TFS(&tfs_set_notset), 0x80000000, NULL, HFILL }
     },
     { &hf_rtps_param_plugin_participant_security_attributes_mask,{
         "PluginParticipantSecurityAttributesMask (valid dissection if using the Specification Builtin Plugins)",
-        "rtps.param.plugin_participant_security_attributes",
+        "rtps_param_plugin_participant_security_attributes",
         FT_UINT32, BASE_HEX, NULL, 0,
         "bitmask representing the PluginParticipantSecurityAttributes flags in PID_PARTICIPANT_SECURITY_INFO",
         HFILL }
     },
     { &hf_rtps_param_enable_authentication,
-      { "Authentication enabled", "rtps.secure.enable_authentication",
+      { "Authentication enabled", "rtps_secure_enable_authentication",
         FT_BOOLEAN, 32, TFS(&tfs_true_false), 0, NULL, HFILL }
     },
     { &hf_rtps_param_enable_encryption,
-      { "Encryption enabled", "rtps.secure.enable_encryption",
+      { "Encryption enabled", "rtps_secure_enable_encryption",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0, NULL, HFILL }
     },
     { &hf_rtps_param_sample_signature_epoch,
-      { "Epoch", "rtps.sample_signature.epoch",
+      { "Epoch", "rtps_sample_signature_epoch",
         FT_UINT64, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_param_sample_signature_nonce,
-      { "Nonce", "rtps.sample_signature.nonce",
+      { "Nonce", "rtps_sample_signature_nonce",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_param_sample_signature_length,
-      {"Signature Length", "rtps.sample_signature.signature_length",
+      {"Signature Length", "rtps_sample_signature_signature_length",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_param_sample_signature_signature,
-      { "Signature", "rtps.sample_signature.signature",
+      { "Signature", "rtps_sample_signature_signature",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_secure_dataheader_transformation_kind, {
-        "Transformation Kind", "rtps.secure.data_header.transformation_kind",
+        "Transformation Kind", "rtps_secure_data_header_transformation_kind",
         FT_INT32, BASE_DEC, VALS(secure_transformation_kind), 0,
         NULL, HFILL }
     },
     { &hf_rtps_secure_dataheader_transformation_key_id, {
-        "Transformation Key Id", "rtps.secure.data_header.transformation_key",
+        "Transformation Key Id", "rtps_secure_data_header_transformation_key",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
     { &hf_rtps_secure_dataheader_plugin_sec_header, {
-        "Plugin Secure Header", "rtps.secure.data_header.plugin_sec_header",
+        "Plugin Secure Header", "rtps_secure_data_header_plugin_sec_header",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
     { &hf_rtps_secure_datatag_plugin_sec_tag, {
-        "Plugin Secure Tag", "rtps.secure.data_tag.plugin_sec_tag",
+        "Plugin Secure Tag", "rtps_secure_data_tag_plugin_sec_tag",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }
     },
     { &hf_rtps_srm_service_id,
-      { "Service Id", "rtps.srm.service_id",
+      { "Service Id", "rtps_srm_service_id",
         FT_INT32, BASE_DEC, VALS(service_request_kind), 0, NULL, HFILL }
     },
     { &hf_rtps_srm_request_body, {
-        "Request Body", "rtps.srm.request_body",
+        "Request Body", "rtps_srm_request_body",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_srm_instance_id, {
-        "Instance Id", "rtps.srm.instance_id",
+        "Instance Id", "rtps_srm_instance_id",
          FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_topic_query_selection_filter_class_name,
-      { "Class Name", "rtps.srm.topic_query.class_name",
+      { "Class Name", "rtps_srm_topic_query_class_name",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_topic_query_selection_filter_expression,
-      { "Filter Expression", "rtps.srm.topic_query.filter_expression",
+      { "Filter Expression", "rtps_srm_topic_query_filter_expression",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_topic_query_selection_filter_parameter,
-      { "Filter Parameter", "rtps.srm.topic_query.filter_parameter",
+      { "Filter Parameter", "rtps_srm_topic_query_filter_parameter",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_topic_query_selection_num_parameters,
-      { "Number of Filter Parameters", "rtps.srm.topic_query.num_filter_parameters",
+      { "Number of Filter Parameters", "rtps_srm_topic_query_num_filter_parameters",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_topic_query_topic_name,
-      { "Topic Name", "rtps.srm.topic_query.topic_name",
+      { "Topic Name", "rtps_srm_topic_query_topic_name",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_topic_query_original_related_reader_guid,
-      { "Original Related Reader GUID", "rtps.srm.topic_query.original_related_reader_guid",
+      { "Original Related Reader GUID", "rtps_srm_topic_query_original_related_reader_guid",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_secure_secure_data_length,
-      { "Secure Data Length", "rtps.secure.secure_data_length",
+      { "Secure Data Length", "rtps_secure_secure_data_length",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_secure_secure_data,
-      { "Secure Data", "rtps.secure.secure_data",
+      { "Secure Data", "rtps_secure_secure_data",
         FT_BYTES, BASE_NONE, NULL, 0, "The user data transferred in a secure payload", HFILL }
     },
     { &hf_rtps_pgm, {
-       "Participant Generic Message", "rtps.pgm",
+       "Participant Generic Message", "rtps_pgm",
        FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x0, NULL, HFILL }
     },
     { &hf_rtps_srm, {
-       "Service Request Message", "rtps.srm",
+       "Service Request Message", "rtps_srm",
        FT_BOOLEAN, 8, TFS(&tfs_set_notset), 0x0, NULL, HFILL }
     },
     { &hf_rtps_pgm_dst_participant_guid,
-      { "Destination Participant GUID", "rtps.pgm.dst_participant_guid",
+      { "Destination Participant GUID", "rtps_pgm_dst_participant_guid",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_source_participant_guid,
-      { "Source Participant GUID", "rtps.pgm.source_participant_guid",
+      { "Source Participant GUID", "rtps_pgm_source_participant_guid",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pgm_dst_endpoint_guid,
-      { "Destination Endpoint GUID", "rtps.pgm.dst_endpoint_guid",
+      { "Destination Endpoint GUID", "rtps_pgm_dst_endpoint_guid",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pgm_src_endpoint_guid,
-      { "Source Endpoint GUID", "rtps.pgm.src_endpoint_guid",
+      { "Source Endpoint GUID", "rtps_pgm_src_endpoint_guid",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_message_identity_source_guid,
-      { "Source GUID", "rtps.pgm.message_identity.source_guid",
+      { "Source GUID", "rtps_pgm_message_identity_source_guid",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pgm_message_class_id,
-      { "Message class id", "rtps.pgm.data_holder.message_class_id",
+      { "Message class id", "rtps_pgm_data_holder_message_class_id",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pgm_data_holder_class_id,
-      { "Class Id", "rtps.pgm.data_holder.class_id",
+      { "Class Id", "rtps_pgm_data_holder_class_id",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 #if 0
     { &hf_rtps_pgm_data_holder_stringseq_size,
-      { "Size", "rtps.pgm.data_holder.string_seq_size",
+      { "Size", "rtps_pgm_data_holder_string_seq_size",
         FT_INT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pgm_data_holder_stringseq_name,
-      { "Name", "rtps.pgm.data_holder.string_seq_name",
+      { "Name", "rtps_pgm_data_holder_string_seq_name",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pgm_data_holder_long_long,
-      { "Long long", "rtps.pgm.data_holder.long_long",
+      { "Long long", "rtps_pgm_data_holder_long_long",
         FT_INT64, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 #endif
     { &hf_rtps_param_topic_query_publication_enable,
-      { "Enable", "rtps.param.topic_query_publication_enable",
+      { "Enable", "rtps_param_topic_query_publication_enable",
         FT_BOOLEAN, 8, TFS(&tfs_true_false), 0, NULL, HFILL }
     },
     { &hf_rtps_param_topic_query_publication_sessions,
-      { "Number of sessions", "rtps.param.topic_query_publication_sessions",
+      { "Number of sessions", "rtps_param_topic_query_publication_sessions",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pl_cdr_member,
-      { "Member value", "rtps.data.value",
+      { "Member value", "rtps_data_value",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pl_cdr_member_id,
-      { "Member ID", "rtps.data.member_id",
+      { "Member ID", "rtps_data_member_id",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pl_cdr_member_length,
-      { "Member length", "rtps.data.member_length",
+      { "Member length", "rtps_data_member_length",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pl_cdr_member_id_ext,
-      { "Member ID", "rtps.data.member_id",
+      { "Member ID", "rtps_data_member_id",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_pl_cdr_member_length_ext,
-      { "Member length", "rtps.data.member_length",
+      { "Member length", "rtps_data_member_length",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_dcps_publication_data_frame_number,{
-        "DCPSPublicationData In", "rtps.dcps_publication_data_frame_number",
+        "DCPSPublicationData In", "rtps_dcps_publication_data_frame_number",
         FT_FRAMENUM, BASE_NONE, NULL, 0x0,
         "This is a submessage sent by the DataWriter described in the DCPSPublicationData found in this frame", HFILL }
     },
     { &hf_rtps_data_tag_name,
-        { "Name", "rtps.param.data_tag.name",
+        { "Name", "rtps_param_data_tag_name",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_data_tag_value,
-        { "Value", "rtps.param.data_tag.value",
+        { "Value", "rtps_param_data_tag_value",
         FT_STRING, BASE_NONE, NULL, 0, NULL, HFILL }
     },
     { &hf_rtps_fragments,
-        { "Message fragments", "rtps.fragments",
+        { "Message fragments", "rtps_fragments",
         FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_fragment,
-        { "Message fragment", "rtps.fragment",
+        { "Message fragment", "rtps_fragment",
         FT_FRAMENUM, BASE_NONE, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_fragment_overlap,
-        { "Message fragment overlap", "rtps.fragment.overlap",
+        { "Message fragment overlap", "rtps_fragment_overlap",
         FT_BOOLEAN, 0, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_fragment_overlap_conflict,
-        { "Message fragment overlapping with conflicting data", "rtps.fragment.overlap.conflicts",
+        { "Message fragment overlapping with conflicting data", "rtps_fragment_overlap_conflicts",
         FT_BOOLEAN, 0, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_fragment_multiple_tails,
-        { "Message has multiple tail fragments", "rtps.fragment.multiple_tails",
+        { "Message has multiple tail fragments", "rtps_fragment_multiple_tails",
         FT_BOOLEAN, 0, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_fragment_too_long_fragment,
-        { "Message fragment too long", "rtps.fragment.too_long_fragment",
+        { "Message fragment too long", "rtps_fragment_too_long_fragment",
         FT_BOOLEAN, 0, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_fragment_error,
-        { "Message defragmentation error", "rtps.fragment.error",
+        { "Message defragmentation error", "rtps_fragment_error",
         FT_FRAMENUM, BASE_NONE, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_fragment_count,
-        { "Message fragment count", "rtps.fragment.count",
+        { "Message fragment count", "rtps_fragment_count",
         FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_reassembled_in,
-        { "Reassembled in", "rtps.reassembled.in",
+        { "Reassembled in", "rtps_reassembled_in",
         FT_FRAMENUM, BASE_NONE, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_reassembled_length,
-        { "Reassembled length", "rtps.reassembled.length",
+        { "Reassembled length", "rtps_reassembled_length",
         FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
     },
     { &hf_rtps_reassembled_data,
-        { "Reassembled RTPS data", "rtps.reassembled.data", FT_BYTES, BASE_NONE,
+        { "Reassembled RTPS data", "rtps_reassembled_data", FT_BYTES, BASE_NONE,
         NULL, 0x0, "The reassembled payload", HFILL }
     },
     { &hf_rtps_compression_plugin_class_id,
-        { "Compression class Id", "rtps.param.compression_class_id", FT_UINT32, BASE_DEC,
+        { "Compression class Id", "rtps_param_compression_class_id", FT_UINT32, BASE_DEC,
         VALS(class_id_enum_names), 0x0, NULL, HFILL }
     },
     { &hf_rtps_uncompressed_serialized_length,
-        { "Uncompressed serialized length", "rtps.param.uncompressed_serialized_length", FT_UINT32, BASE_DEC,
+        { "Uncompressed serialized length", "rtps_param_uncompressed_serialized_length", FT_UINT32, BASE_DEC,
         NULL, 0x0, "The reassembled payload", HFILL }
     },
     { &hf_rtps_compressed_serialized_type_object,
-        { "Compressed serialized type object", "rtps.param.compressed_serialized_typeobject", FT_BYTES, BASE_NONE,
+        { "Compressed serialized type object", "rtps_param_compressed_serialized_typeobject", FT_BYTES, BASE_NONE,
         NULL, 0x0, "The reassembled payload", HFILL }
     },
 
     { &hf_rtps_dissection_boolean,
-      {"BOOLEAN", "rtps.dissection.boolean",
+      {"BOOLEAN", "rtps_dissection_boolean",
         FT_BOOLEAN, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_byte,
-      {"BYTE", "rtps.dissection.byte",
+      {"BYTE", "rtps_dissection_byte",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_int16,
-      {"INT16", "rtps.dissection.int16",
+      {"INT16", "rtps_dissection_int16",
         FT_INT16, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_uint16,
-      {"UINT16", "rtps.dissection.uint16",
+      {"UINT16", "rtps_dissection_uint16",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_int32,
-      {"INT32", "rtps.dissection.int32",
+      {"INT32", "rtps_dissection_int32",
         FT_INT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_uint32,
-      {"UINT32", "rtps.dissection.uint32",
+      {"UINT32", "rtps_dissection_uint32",
         FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_int64,
-      {"INT64", "rtps.dissection.int64",
+      {"INT64", "rtps_dissection_int64",
         FT_INT64, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_uint64,
-      {"UINT64", "rtps.dissection.uint64",
+      {"UINT64", "rtps_dissection_uint64",
         FT_UINT64, BASE_DEC, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_float,
-      {"FLOAT", "rtps.dissection.float",
+      {"FLOAT", "rtps_dissection_float",
         FT_FLOAT, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_double,
-      {"DOUBLE", "rtps.dissection.double",
+      {"DOUBLE", "rtps_dissection_double",
         FT_DOUBLE, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_int128,
-      {"INT128", "rtps.dissection.int128",
+      {"INT128", "rtps_dissection_int128",
         FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }
     },
 
     { &hf_rtps_dissection_string,
-      {"STRING", "rtps.dissection.string",
+      {"STRING", "rtps_dissection_string",
         FT_STRINGZ, BASE_NONE, NULL, 0, NULL, HFILL }
     },
   };

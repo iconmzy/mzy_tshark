@@ -655,107 +655,107 @@ proto_register_kt(void)
 
     static hf_register_info hf[] = {
         {   &hf_kt_magic,
-            {   "magic", "kt.magic", FT_UINT8, BASE_HEX,
+            {   "magic", "kt_magic", FT_UINT8, BASE_HEX,
                 VALS(kt_magic_vals), 0x0, "identifier", HFILL
             }
         },
         {   &hf_kt_type,
-            {   "type", "kt.type", FT_UINT8, BASE_HEX,
+            {   "type", "kt_type", FT_UINT8, BASE_HEX,
                 VALS(kt_oper_vals), 0x0, "request/response", HFILL
             }
         },
         {   &hf_kt_flags,
-            {   "flags", "kt.flags", FT_UINT32, BASE_HEX,
+            {   "flags", "kt_flags", FT_UINT32, BASE_HEX,
                 NULL, 0x0, "flags of bitwise-or", HFILL
             }
         },
         {   &hf_kt_rnum,
-            {   "rnum", "kt.rnum", FT_UINT32, BASE_DEC, NULL, 0x0,
+            {   "rnum", "kt_rnum", FT_UINT32, BASE_DEC, NULL, 0x0,
                 "the number of records", HFILL
             }
         },
         {   &hf_kt_dbidx,
-            {   "dbidx", "kt.dbidx", FT_UINT16,
+            {   "dbidx", "kt_dbidx", FT_UINT16,
                 BASE_DEC, NULL, 0x0, "the index of the target database", HFILL
             }
         },
         {   &hf_kt_sid,
-            {   "sid", "kt.sid", FT_UINT16, BASE_DEC,
+            {   "sid", "kt_sid", FT_UINT16, BASE_DEC,
                 NULL, 0x0, "the server ID number", HFILL
             }
         },
         {   &hf_kt_ts,
-            {   "ts", "kt.ts", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+            {   "ts", "kt_ts", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
                 NULL, 0x0, "the timestamp of the log", HFILL
             }
         },
         {   &hf_kt_xt,
-            {   "xt", "kt.xt", FT_UINT64, BASE_DEC,
+            {   "xt", "kt_xt", FT_UINT64, BASE_DEC,
                 NULL, 0x0, "the expiration time in seconds", HFILL
             }
         },
         {   &hf_kt_xt_resp,
-            {   "xt", "kt.xt_resp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+            {   "xt", "kt_xt_resp", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
                 NULL, 0x0, "the expiration time", HFILL
             }
         },
         {   &hf_kt_ksiz,
-            {   "ksiz", "kt.ksiz", FT_UINT32, BASE_DEC,
+            {   "ksiz", "kt_ksiz", FT_UINT32, BASE_DEC,
                 NULL, 0x0, "the size of the key",HFILL
             }
         },
         {   &hf_kt_vsiz,
-            {   "vsiz", "kt.vsiz", FT_UINT32, BASE_DEC,
+            {   "vsiz", "kt_vsiz", FT_UINT32, BASE_DEC,
                 NULL, 0x0, "the size of the value", HFILL
             }
         },
         {   &hf_kt_key,
-            {   "key", "kt.key", FT_BYTES, BASE_NONE,
+            {   "key", "kt_key", FT_BYTES, BASE_NONE,
                 NULL, 0x0, "the key", HFILL
             }
         },
         {   &hf_kt_val,
-            {   "value", "kt.value", FT_BYTES, BASE_NONE,
+            {   "value", "kt_value", FT_BYTES, BASE_NONE,
                 NULL, 0x0, "the value", HFILL
             }
         },
         {   &hf_kt_key_str,
-            {   "key", "kt.key_str", FT_STRING, BASE_NONE,
+            {   "key", "kt_key_str", FT_STRING, BASE_NONE,
                 NULL, 0x0, "ASCII representation of the key", HFILL
             }
         },
         {   &hf_kt_val_str,
-            {   "value", "kt.value_str", FT_STRING, BASE_NONE,
+            {   "value", "kt_value_str", FT_STRING, BASE_NONE,
                 NULL, 0x0, "ASCII representation of the value", HFILL
             }
         },
         {   &hf_kt_hits,
-            {   "hits", "kt.hits", FT_UINT32, BASE_DEC,
+            {   "hits", "kt_hits", FT_UINT32, BASE_DEC,
                 NULL, 0x0, "the number of records", HFILL
             }
         },
         {   &hf_kt_size,
-            {   "size", "kt.size", FT_UINT32, BASE_DEC,
+            {   "size", "kt_size", FT_UINT32, BASE_DEC,
                 NULL, 0x0, "the size of the replication log", HFILL
             }
         },
         {   &hf_kt_log,
-            {   "log", "kt.log", FT_BYTES, BASE_NONE,
+            {   "log", "kt_log", FT_BYTES, BASE_NONE,
                 NULL, 0x0, "the replication log", HFILL
             }
         },
         {   &hf_kt_nsiz,
-            {   "nsiz", "kt.nsiz", FT_UINT32, BASE_DEC,
+            {   "nsiz", "kt_nsiz", FT_UINT32, BASE_DEC,
                 NULL, 0x0, "the size of the procedure name", HFILL
             }
         },
         {   &hf_kt_name,
-            {   "name", "kt.name", FT_STRING, BASE_NONE,
+            {   "name", "kt_name", FT_STRING, BASE_NONE,
                 NULL, 0x0, "the procedure name", HFILL
             }
         },
         {   &hf_kt_rec,
-            {   "record", "kt.record", FT_NONE, BASE_NONE,
+            {   "record", "kt_record", FT_NONE, BASE_NONE,
                 NULL, 0x0, "a record", HFILL
             }
         }

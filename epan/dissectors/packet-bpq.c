@@ -109,7 +109,7 @@ proto_register_bpq(void)
 	/* Setup list of header fields */
 	static hf_register_info hf[] = {
 		{ &hf_bpq_len,
-			{ "BPQ len",			"bpq.len",
+			{ "BPQ len",			"bpq_len",
 			FT_UINT16, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }
 		},

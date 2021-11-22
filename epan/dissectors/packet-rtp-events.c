@@ -393,7 +393,7 @@ proto_register_rtp_events(void)
 			&hf_rtp_events_event,
 			{
 				"Event ID",
-				"rtpevent.event_id",
+				"rtpevent_event_id",
 				FT_UINT8,
 				BASE_DEC | BASE_EXT_STRING,
 				&rtp_event_type_values_ext,
@@ -405,7 +405,7 @@ proto_register_rtp_events(void)
 			&hf_rtp_events_end,
 			{
 				"End of Event",
-				"rtpevent.end_of_event",
+				"rtpevent_end_of_event",
 				FT_BOOLEAN,
 				8,
 				NULL,
@@ -417,7 +417,7 @@ proto_register_rtp_events(void)
 			&hf_rtp_events_reserved,
 			{
 				"Reserved",
-				"rtpevent.reserved",
+				"rtpevent_reserved",
 				FT_BOOLEAN,
 				8,
 				NULL,
@@ -429,7 +429,7 @@ proto_register_rtp_events(void)
 			&hf_rtp_events_volume,
 			{
 				"Volume",
-				"rtpevent.volume",
+				"rtpevent_volume",
 				FT_UINT8,
 				BASE_DEC,
 				NULL,
@@ -442,7 +442,7 @@ proto_register_rtp_events(void)
 			&hf_rtp_events_duration,
 			{
 				"Event Duration",
-				"rtpevent.duration",
+				"rtpevent_duration",
 				FT_UINT16,
 				BASE_DEC,
 				NULL,

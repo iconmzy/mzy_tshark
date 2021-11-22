@@ -488,46 +488,46 @@ static void check_esp_sequence_info(guint32 spi, guint32 sequence_number, packet
 
 /* Check to see if there is a report stored for this frame.  If there is,
    add it to the tree and report using expert info */
-static void show_esp_sequence_info(guint32 spi, guint32 sequence_number,
-                                   tvbuff_t *tvb, proto_tree *tree, packet_info *pinfo) {
+//static void show_esp_sequence_info(guint32 spi, guint32 sequence_number,
+//                                   tvbuff_t *tvb, proto_tree *tree, packet_info *pinfo) {
     /* Look up this frame in the report table. */
-    spi_status *status = (spi_status *) wmem_map_lookup(esp_sequence_analysis_report_hash,
-                                                        GUINT_TO_POINTER(pinfo->num));
-    if (status != NULL) {
-        proto_item *sn_ti, *frame_ti;
+//    spi_status *status = (spi_status *) wmem_map_lookup(esp_sequence_analysis_report_hash,
+//                                                        GUINT_TO_POINTER(pinfo->num));
+//    if (status != NULL) {
+//        proto_item *sn_ti, *frame_ti;
 
         /* Expected sequence number */
-        sn_ti = proto_tree_add_uint(tree, hf_esp_sequence_analysis_expected_sn,
-                                    tvb, 0, 0, status->previousSequenceNumber + 1);
-        if (sequence_number > (status->previousSequenceNumber + 1)) {
-            proto_item_append_text(sn_ti, " (%u SNs missing)",
-                                   sequence_number - (status->previousSequenceNumber + 1));
-        }
-        proto_item_set_generated(sn_ti);
+//        sn_ti = proto_tree_add_uint(tree, hf_esp_sequence_analysis_expected_sn,
+//                                    tvb, 0, 0, status->previousSequenceNumber + 1);
+//        if (sequence_number > (status->previousSequenceNumber + 1)) {
+//            proto_item_append_text(sn_ti, " (%u SNs missing)",
+//                                   sequence_number - (status->previousSequenceNumber + 1));
+//        }
+//        proto_item_set_generated(sn_ti);
 
         /* Link back to previous frame for SPI */
-        frame_ti = proto_tree_add_uint(tree, hf_esp_sequence_analysis_previous_frame,
-                                       tvb, 0, 0, status->previousFrameNum);
-        proto_item_set_generated(frame_ti);
+//        frame_ti = proto_tree_add_uint(tree, hf_esp_sequence_analysis_previous_frame,
+//                                       tvb, 0, 0, status->previousFrameNum);
+//        proto_item_set_generated(frame_ti);
 
         /* Expert info */
-        if (sequence_number == status->previousSequenceNumber) {
-            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
-                                   "Wrong Sequence Number for SPI %08x - %u repeated",
-                                   spi, sequence_number);
-        } else if (sequence_number > status->previousSequenceNumber + 1) {
-            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
-                                   "Wrong Sequence Number for SPI %08x - %u missing",
-                                   spi,
-                                   sequence_number - (status->previousSequenceNumber + 1));
-        } else {
-            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
-                                   "Wrong Sequence Number for SPI %08x - %u less than expected",
-                                   spi,
-                                   (status->previousSequenceNumber + 1) - sequence_number);
-        }
-    }
-}
+//        if (sequence_number == status->previousSequenceNumber) {
+//            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
+//                                   "Wrong Sequence Number for SPI %08x - %u repeated",
+//                                   spi, sequence_number);
+//        } else if (sequence_number > status->previousSequenceNumber + 1) {
+//            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
+//                                   "Wrong Sequence Number for SPI %08x - %u missing",
+//                                   spi,
+//                                   sequence_number - (status->previousSequenceNumber + 1));
+//        } else {
+//            expert_add_info_format(pinfo, sn_ti, &ei_esp_sequence_analysis_wrong_sequence_number,
+//                                   "Wrong Sequence Number for SPI %08x - %u less than expected",
+//                                   spi,
+//                                   (status->previousSequenceNumber + 1) - sequence_number);
+//        }
+//    }
+//}
 
 /*
    Default ESP payload heuristic decode to off
@@ -1268,8 +1268,8 @@ dissect_esp(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data _U_)
         if (!pinfo->fd->visited) {
             check_esp_sequence_info(spi, sequence_number, pinfo);
         }
-        show_esp_sequence_info(spi, sequence_number,
-                               tvb, esp_tree, pinfo);
+//        show_esp_sequence_info(spi, sequence_number,
+//                               tvb, esp_tree, pinfo);
     }
 
     /* The SAD is not activated */
@@ -2098,71 +2098,71 @@ void
 proto_register_ipsec(void) {
     static hf_register_info hf_ah[] = {
             {&hf_ah_next_header,
-                    {"Next header", "ah.next_header", FT_UINT8,  BASE_DEC | BASE_EXT_STRING, &ipproto_val_ext, 0x0,
+                    {"Next header", "ah_next_header", FT_UINT8,  BASE_DEC | BASE_EXT_STRING, &ipproto_val_ext, 0x0,
                             NULL,                                                 HFILL}},
             {&hf_ah_length,
-                    {"Length",      "ah.length",      FT_UINT8,  BASE_DEC,  NULL,                              0x0,
+                    {"Length",      "ah_length",      FT_UINT8,  BASE_DEC,  NULL,                              0x0,
                             NULL,                                                 HFILL}},
             {&hf_ah_reserved,
-                    {"Reserved",    "ah.reserved",    FT_BYTES,  BASE_NONE, NULL,                              0x0,
+                    {"Reserved",    "ah_reserved",    FT_BYTES,  BASE_NONE, NULL,                              0x0,
                             NULL,                                                 HFILL}},
             {&hf_ah_spi,
-                    {"AH SPI",      "ah.spi",         FT_UINT32, BASE_HEX,  NULL,                              0x0,
+                    {"AH SPI",      "ah_spi",         FT_UINT32, BASE_HEX,  NULL,                              0x0,
                             "IP Authentication Header Security Parameters Index", HFILL}},
             {&hf_ah_iv,
-                    {"AH ICV",      "ah.icv",         FT_BYTES,  BASE_NONE, NULL,                              0x0,
+                    {"AH ICV",      "ah_icv",         FT_BYTES,  BASE_NONE, NULL,                              0x0,
                             "IP Authentication Header Integrity Check Value",     HFILL}},
             {&hf_ah_sequence,
-                    {"AH Sequence", "ah.sequence",    FT_UINT32, BASE_DEC,  NULL,                              0x0,
+                    {"AH Sequence", "ah_sequence",    FT_UINT32, BASE_DEC,  NULL,                              0x0,
                             "IP Authentication Header Sequence Number",           HFILL}}
     };
 
     static hf_register_info hf_esp[] = {
             {&hf_esp_spi,
-                    {"ESP SPI",             "esp.spi",                              FT_UINT32,   BASE_HEX_DEC, NULL, 0x0,
+                    {"ESP SPI",             "esp_spi",                              FT_UINT32,   BASE_HEX_DEC, NULL, 0x0,
                             "IP Encapsulating Security Payload Security Parameters Index",                   HFILL}},
             {&hf_esp_sequence,
-                    {"ESP Sequence",        "esp.sequence",                         FT_UINT32,   BASE_DEC,     NULL, 0x0,
+                    {"ESP Sequence",        "esp_sequence",                         FT_UINT32,   BASE_DEC,     NULL, 0x0,
                             "IP Encapsulating Security Payload Sequence Number",                             HFILL}},
             {&hf_esp_pad,
-                    {"Pad",                 "esp.pad",                              FT_BYTES,    BASE_NONE,    NULL, 0x0,
+                    {"Pad",                 "esp_pad",                              FT_BYTES,    BASE_NONE,    NULL, 0x0,
                             NULL,                                                                            HFILL}},
             {&hf_esp_pad_len,
-                    {"ESP Pad Length",      "esp.pad_len",                          FT_UINT8,    BASE_DEC,     NULL, 0x0,
+                    {"ESP Pad Length",      "esp_pad_len",                          FT_UINT8,    BASE_DEC,     NULL, 0x0,
                             "IP Encapsulating Security Payload Pad Length",                                  HFILL}},
             {&hf_esp_protocol,
-                    {"ESP Next Header",     "esp.protocol",                         FT_UINT8,    BASE_HEX,     NULL, 0x0,
+                    {"ESP Next Header",     "esp_protocol",                         FT_UINT8,    BASE_HEX,     NULL, 0x0,
                             "IP Encapsulating Security Payload Next Header",                                 HFILL}},
             {&hf_esp_authentication_data,
-                    {"Authentication Data", "esp.authentication_data",              FT_BYTES,    BASE_NONE,    NULL, 0x0,
+                    {"Authentication Data", "esp_authentication_data",              FT_BYTES,    BASE_NONE,    NULL, 0x0,
                             NULL,                                                                            HFILL}},
             {&hf_esp_iv,
-                    {"ESP IV",              "esp.iv",                               FT_BYTES,    BASE_NONE,    NULL, 0x0,
+                    {"ESP IV",              "esp_iv",                               FT_BYTES,    BASE_NONE,    NULL, 0x0,
                             "IP Encapsulating Security Payload",                                             HFILL}},
 
             {&hf_esp_icv_good,
-                    {"Good",                "esp.icv_good",                         FT_BOOLEAN,  BASE_NONE,    NULL, 0x0,
+                    {"Good",                "esp_icv_good",                         FT_BOOLEAN,  BASE_NONE,    NULL, 0x0,
                             "True: ICV matches packet content; False: doesn't match content or not checked", HFILL}},
             {&hf_esp_icv_bad,
-                    {"Bad",                 "esp.icv_bad",                          FT_BOOLEAN,  BASE_NONE,    NULL, 0x0,
+                    {"Bad",                 "esp_icv_bad",                          FT_BOOLEAN,  BASE_NONE,    NULL, 0x0,
                             "True: ICV doesn't match packet content; False: matches content or not checked", HFILL}},
             {&hf_esp_sequence_analysis_expected_sn,
-                    {"Expected SN",         "esp.sequence_analysis.expected_sn",    FT_UINT32,   BASE_DEC,     NULL, 0x0,
+                    {"Expected SN",         "esp_sequence_analysis_expected_sn",    FT_UINT32,   BASE_DEC,     NULL, 0x0,
                             NULL,                                                                            HFILL}},
             {&hf_esp_sequence_analysis_previous_frame,
-                    {"Previous Frame",      "esp.sequence_analysis.previous_frame", FT_FRAMENUM, BASE_NONE,    NULL, 0x0,
+                    {"Previous Frame",      "esp_sequence_analysis_previous_frame", FT_FRAMENUM, BASE_NONE,    NULL, 0x0,
                             NULL,                                                                            HFILL}},
     };
 
     static hf_register_info hf_ipcomp[] = {
             {&hf_ipcomp_next_header,
-                    {"Next Header",  "ipcomp.next_header", FT_UINT8,  BASE_HEX, NULL,          0x0,
+                    {"Next Header",  "ipcomp_next_header", FT_UINT8,  BASE_HEX, NULL,          0x0,
                             NULL,                                                          HFILL}},
             {&hf_ipcomp_flags,
-                    {"IPComp Flags", "ipcomp.flags",       FT_UINT8,  BASE_HEX, NULL,          0x0,
+                    {"IPComp Flags", "ipcomp_flags",       FT_UINT8,  BASE_HEX, NULL,          0x0,
                             "IP Payload Compression Protocol Flags",                       HFILL}},
             {&hf_ipcomp_cpi,
-                    {"IPComp CPI",   "ipcomp.cpi",         FT_UINT16, BASE_HEX, VALS(cpi2val), 0x0,
+                    {"IPComp CPI",   "ipcomp_cpi",         FT_UINT16, BASE_HEX, VALS(cpi2val), 0x0,
                             "IP Payload Compression Protocol Compression Parameter Index", HFILL}},
     };
 

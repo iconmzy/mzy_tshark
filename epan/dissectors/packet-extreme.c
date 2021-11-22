@@ -1060,352 +1060,352 @@ proto_register_edp(void)
 
 	/* EDP header */
 		{ &hf_edp_version,
-		{ "Version",	"edp.version", FT_UINT8, BASE_DEC, NULL,
+		{ "Version",	"edp_version", FT_UINT8, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_reserved,
-		{ "Reserved",	"edp.reserved", FT_UINT8, BASE_DEC, NULL,
+		{ "Reserved",	"edp_reserved", FT_UINT8, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_length,
-		{ "Data length",	"edp.length", FT_UINT16, BASE_DEC, NULL,
+		{ "Data length",	"edp_length", FT_UINT16, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_checksum,
-		{ "EDP checksum",	"edp.checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
+		{ "EDP checksum",	"edp_checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_edp_checksum_status,
-		{ "EDP checksum status",	"edp.checksum.status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
+		{ "EDP checksum status",	"edp_checksum_status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
 			NULL, HFILL }},
 
 		{ &hf_edp_seqno,
-		{ "Sequence number",	"edp.seqno", FT_UINT16, BASE_DEC, NULL,
+		{ "Sequence number",	"edp_seqno", FT_UINT16, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_midtype,
-		{ "Machine ID type",	"edp.midtype", FT_UINT16, BASE_DEC, VALS(edp_midtype_vals),
+		{ "Machine ID type",	"edp_midtype", FT_UINT16, BASE_DEC, VALS(edp_midtype_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_midmac,
-		{ "Machine MAC",	"edp.midmac", FT_ETHER, BASE_NONE, NULL,
+		{ "Machine MAC",	"edp_midmac", FT_ETHER, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* TLV header */
 		{ &hf_edp_tlv_marker,
-		{ "TLV Marker",	"edp.tlv.marker", FT_UINT8, BASE_HEX, NULL,
+		{ "TLV Marker",	"edp_tlv_marker", FT_UINT8, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_tlv_type,
-		{ "TLV type",	"edp.tlv.type", FT_UINT8, BASE_DEC, VALS(edp_type_vals),
+		{ "TLV type",	"edp_tlv_type", FT_UINT8, BASE_DEC, VALS(edp_type_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_tlv_length,
-		{ "TLV length",	"edp.tlv.length", FT_UINT16, BASE_DEC, NULL,
+		{ "TLV length",	"edp_tlv_length", FT_UINT16, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Display element */
 		{ &hf_edp_display,
-		{ "Display",	"edp.display", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "Display",	"edp_display", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Display element", HFILL }},
 
 		{ &hf_edp_display_string,
-		{ "Name",	"edp.display.string", FT_STRING, BASE_NONE, NULL,
+		{ "Name",	"edp_display_string", FT_STRING, BASE_NONE, NULL,
 			0x0, "MIB II display string", HFILL }},
 
 	/* Info element */
 		{ &hf_edp_info,
-		{ "Info",	"edp.info", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "Info",	"edp_info", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Info element", HFILL }},
 
 		{ &hf_edp_info_slot,
-		{ "Slot",	"edp.info.slot", FT_UINT16, BASE_DEC, NULL,
+		{ "Slot",	"edp_info_slot", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Originating slot #", HFILL }},
 
 		{ &hf_edp_info_port,
-		{ "Port",	"edp.info.port", FT_UINT16, BASE_DEC, NULL,
+		{ "Port",	"edp_info_port", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Originating port #", HFILL }},
 
 		{ &hf_edp_info_vchassid,
-		{ "Virt chassis",	"edp.info.vchassid", FT_UINT16, BASE_DEC, NULL,
+		{ "Virt chassis",	"edp_info_vchassid", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Virtual chassis ID", HFILL }},
 
 		{ &hf_edp_info_reserved,
-		{ "Reserved",	"edp.info.reserved", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved",	"edp_info_reserved", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_info_version,
-		{ "Version",	"edp.info.version", FT_UINT32, BASE_HEX, NULL,
+		{ "Version",	"edp_info_version", FT_UINT32, BASE_HEX, NULL,
 			0x0, "Software version", HFILL }},
 
 		{ &hf_edp_info_version_major1,
-		{ "Version (major1)",	"edp.info.version.major1", FT_UINT8, BASE_DEC, NULL,
+		{ "Version (major1)",	"edp_info_version_major1", FT_UINT8, BASE_DEC, NULL,
 			0x0, "Software version (major1)", HFILL }},
 
 		{ &hf_edp_info_version_major2,
-		{ "Version (major2)",	"edp.info.version.major2", FT_UINT8, BASE_DEC, NULL,
+		{ "Version (major2)",	"edp_info_version_major2", FT_UINT8, BASE_DEC, NULL,
 			0x0, "Software version (major2)", HFILL }},
 
 		{ &hf_edp_info_version_sustaining,
-		{ "Version (sustaining)",	"edp.info.version.sustaining", FT_UINT8, BASE_DEC, NULL,
+		{ "Version (sustaining)",	"edp_info_version_sustaining", FT_UINT8, BASE_DEC, NULL,
 			0x0, "Software version (sustaining)", HFILL }},
 
 		{ &hf_edp_info_version_internal,
-		{ "Version (internal)",	"edp.info.version.internal", FT_UINT8, BASE_DEC, NULL,
+		{ "Version (internal)",	"edp_info_version_internal", FT_UINT8, BASE_DEC, NULL,
 			0x0, "Software version (internal)", HFILL }},
 
 		{ &hf_edp_info_vchassconn,
-		{ "Connections",	"edp.info.vchassconn", FT_BYTES, BASE_NONE, NULL,
+		{ "Connections",	"edp_info_vchassconn", FT_BYTES, BASE_NONE, NULL,
 			0x0, "Virtual chassis connections", HFILL }},
 
 	/* VLAN element */
 		{ &hf_edp_vlan,
-		{ "Vlan",	"edp.vlan", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "Vlan",	"edp_vlan", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Vlan element", HFILL }},
 
 		{ &hf_edp_vlan_flags,
-		{ "Flags",	"edp.vlan.flags", FT_UINT8, BASE_HEX, NULL,
+		{ "Flags",	"edp_vlan_flags", FT_UINT8, BASE_HEX, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_vlan_flags_ip,
-		{ "Flags-IP",	"edp.vlan.flags.ip", FT_BOOLEAN, 8, TFS(&tfs_set_notset),
+		{ "Flags-IP",	"edp_vlan_flags_ip", FT_BOOLEAN, 8, TFS(&tfs_set_notset),
 			0x80, "Vlan has IP address configured", HFILL }},
 
 		{ &hf_edp_vlan_flags_reserved,
-		{ "Flags-reserved",	"edp.vlan.flags.reserved", FT_UINT8, BASE_HEX, NULL,
+		{ "Flags-reserved",	"edp_vlan_flags_reserved", FT_UINT8, BASE_HEX, NULL,
 			0x7e, NULL, HFILL }},
 
 		{ &hf_edp_vlan_flags_unknown,
-		{ "Flags-Unknown",	"edp.vlan.flags.unknown", FT_BOOLEAN, 8, TFS(&tfs_set_notset),
+		{ "Flags-Unknown",	"edp_vlan_flags_unknown", FT_BOOLEAN, 8, TFS(&tfs_set_notset),
 			0x01, NULL, HFILL }},
 
 		{ &hf_edp_vlan_reserved1,
-		{ "Reserved1",	"edp.vlan.reserved1", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved1",	"edp_vlan_reserved1", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_vlan_id,
-		{ "Vlan ID",	"edp.vlan.id", FT_UINT16, BASE_DEC, NULL,
+		{ "Vlan ID",	"edp_vlan_id", FT_UINT16, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_vlan_reserved2,
-		{ "Reserved2",	"edp.vlan.reserved2", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved2",	"edp_vlan_reserved2", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_vlan_ip,
-		{ "IP addr",	"edp.vlan.ip", FT_IPv4, BASE_NONE, NULL,
+		{ "IP addr",	"edp_vlan_ip", FT_IPv4, BASE_NONE, NULL,
 			0x0, "VLAN IP address", HFILL }},
 
 		{ &hf_edp_vlan_name,
-		{ "Name",	"edp.vlan.name", FT_STRING, BASE_NONE, NULL,
+		{ "Name",	"edp_vlan_name", FT_STRING, BASE_NONE, NULL,
 			0x0, "VLAN name", HFILL }},
 
 	/* ESRP element */
 		{ &hf_edp_esrp,
-		{ "ESRP",	"edp.esrp", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "ESRP",	"edp_esrp", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Extreme Standby Router Protocol element", HFILL }},
 
 		{ &hf_edp_esrp_proto,
-		{ "Protocol",	"edp.esrp.proto", FT_UINT8, BASE_DEC, VALS(esrp_proto_vals),
+		{ "Protocol",	"edp_esrp_proto", FT_UINT8, BASE_DEC, VALS(esrp_proto_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esrp_group,
-		{ "Group",	"edp.esrp.group", FT_UINT8, BASE_DEC, NULL,
+		{ "Group",	"edp_esrp_group", FT_UINT8, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esrp_prio,
-		{ "Prio",	"edp.esrp.prio", FT_UINT16, BASE_DEC, NULL,
+		{ "Prio",	"edp_esrp_prio", FT_UINT16, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esrp_state,
-		{ "State",	"edp.esrp.state", FT_UINT16, BASE_DEC, VALS(esrp_state_vals),
+		{ "State",	"edp_esrp_state", FT_UINT16, BASE_DEC, VALS(esrp_state_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esrp_ports,
-		{ "Ports",	"edp.esrp.ports", FT_UINT16, BASE_DEC, NULL,
+		{ "Ports",	"edp_esrp_ports", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Number of active ports", HFILL }},
 
 		{ &hf_edp_esrp_virtip,
-		{ "VirtIP",	"edp.esrp.virtip", FT_IPv4, BASE_NONE, NULL,
+		{ "VirtIP",	"edp_esrp_virtip", FT_IPv4, BASE_NONE, NULL,
 			0x0, "Virtual IP address", HFILL }},
 
 		{ &hf_edp_esrp_sysmac,
-		{ "Sys MAC",	"edp.esrp.sysmac", FT_ETHER, BASE_NONE, NULL,
+		{ "Sys MAC",	"edp_esrp_sysmac", FT_ETHER, BASE_NONE, NULL,
 			0x0, "System MAC address", HFILL }},
 
 		{ &hf_edp_esrp_hello,
-		{ "Hello",	"edp.esrp.hello", FT_UINT16, BASE_DEC, NULL,
+		{ "Hello",	"edp_esrp_hello", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Hello timer", HFILL }},
 
 		{ &hf_edp_esrp_reserved,
-		{ "Reserved",	"edp.esrp.reserved", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved",	"edp_esrp_reserved", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* EAPS element */
 		{ &hf_edp_eaps,
-		{ "EAPS",	"edp.eaps", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "EAPS",	"edp_eaps", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Ethernet Automatic Protection Switching element", HFILL }},
 
 		{ &hf_edp_eaps_ver,
-		{ "Version",	"edp.eaps.ver", FT_UINT8, BASE_DEC, NULL,
+		{ "Version",	"edp_eaps_ver", FT_UINT8, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_eaps_type,
-		{ "Type",	"edp.eaps.type", FT_UINT8, BASE_DEC, VALS(eaps_type_vals),
+		{ "Type",	"edp_eaps_type", FT_UINT8, BASE_DEC, VALS(eaps_type_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_eaps_ctrlvlanid,
-		{ "Vlan ID",	"edp.eaps.vlanid", FT_UINT16, BASE_DEC, NULL,
+		{ "Vlan ID",	"edp_eaps_vlanid", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Control Vlan ID", HFILL }},
 
 		{ &hf_edp_eaps_reserved0,
-		{ "Reserved0",	"edp.eaps.reserved0", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved0",	"edp_eaps_reserved0", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_eaps_sysmac,
-		{ "Sys MAC",	"edp.eaps.sysmac", FT_ETHER, BASE_NONE, NULL,
+		{ "Sys MAC",	"edp_eaps_sysmac", FT_ETHER, BASE_NONE, NULL,
 			0x0, "System MAC address", HFILL }},
 
 		{ &hf_edp_eaps_hello,
-		{ "Hello",	"edp.eaps.hello", FT_UINT16, BASE_DEC, NULL,
+		{ "Hello",	"edp_eaps_hello", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Hello timer", HFILL }},
 
 		{ &hf_edp_eaps_fail,
-		{ "Fail",	"edp.eaps.fail", FT_UINT16, BASE_DEC, NULL,
+		{ "Fail",	"edp_eaps_fail", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Fail timer", HFILL }},
 
 		{ &hf_edp_eaps_state,
-		{ "State",	"edp.eaps.state", FT_UINT8, BASE_DEC, VALS(eaps_state_vals),
+		{ "State",	"edp_eaps_state", FT_UINT8, BASE_DEC, VALS(eaps_state_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_eaps_reserved1,
-		{ "Reserved1",	"edp.eaps.reserved1", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved1",	"edp_eaps_reserved1", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_eaps_helloseq,
-		{ "Helloseq",	"edp.eaps.helloseq", FT_UINT16, BASE_DEC, NULL,
+		{ "Helloseq",	"edp_eaps_helloseq", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Hello sequence", HFILL }},
 
 		{ &hf_edp_eaps_reserved2,
-		{ "Reserved2",	"edp.eaps.reserved2", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved2",	"edp_eaps_reserved2", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* ESL element (EAPS shared link) */
 		{ &hf_edp_esl,
-		{ "ESL",	"edp.esl", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "ESL",	"edp_esl", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "EAPS shared link", HFILL }},
 
 		{ &hf_edp_esl_ver,
-		{ "Version",	"edp.esl.ver", FT_UINT8, BASE_DEC, NULL,
+		{ "Version",	"edp_esl_ver", FT_UINT8, BASE_DEC, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esl_type,
-		{ "Type",	"edp.esl.type", FT_UINT8, BASE_DEC, VALS(esl_type_vals),
+		{ "Type",	"edp_esl_type", FT_UINT8, BASE_DEC, VALS(esl_type_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esl_ctrlvlanid,
-		{ "Vlan ID",	"edp.esl.vlanid", FT_UINT16, BASE_DEC, NULL,
+		{ "Vlan ID",	"edp_esl_vlanid", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Control Vlan ID", HFILL }},
 
 		{ &hf_edp_esl_reserved0,
-		{ "Reserved0",	"edp.esl.reserved0", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved0",	"edp_esl_reserved0", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esl_sysmac,
-		{ "Sys MAC",	"edp.esl.sysmac", FT_ETHER, BASE_NONE, NULL,
+		{ "Sys MAC",	"edp_esl_sysmac", FT_ETHER, BASE_NONE, NULL,
 			0x0, "System MAC address", HFILL }},
 
 		{ &hf_edp_esl_reserved1,
-		{ "Reserved1",	"edp.esl.reserved1", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved1",	"edp_esl_reserved1", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esl_state,
-		{ "State",	"edp.esl.state", FT_UINT8, BASE_DEC, VALS(esl_state_vals),
+		{ "State",	"edp_esl_state", FT_UINT8, BASE_DEC, VALS(esl_state_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esl_linkrole,
-		{ "Role",	"edp.esl.role", FT_UINT8, BASE_DEC, VALS(esl_role_vals),
+		{ "Role",	"edp_esl_role", FT_UINT8, BASE_DEC, VALS(esl_role_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esl_linkid1,
-		{ "Link ID 1",	"edp.esl.linkid1", FT_UINT16, BASE_DEC, NULL,
+		{ "Link ID 1",	"edp_esl_linkid1", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Shared link ID 1", HFILL }},
 
 		{ &hf_edp_esl_failed1,
-		{ "Failed ID 1",	"edp.esl.failed1", FT_UINT16, BASE_DEC, NULL,
+		{ "Failed ID 1",	"edp_esl_failed1", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Failed link ID 1", HFILL }},
 
 		{ &hf_edp_esl_failed2,
-		{ "Failed ID 2",	"edp.esl.failed2", FT_UINT16, BASE_DEC, NULL,
+		{ "Failed ID 2",	"edp_esl_failed2", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Failed link ID 2", HFILL }},
 
 		{ &hf_edp_esl_reserved4,
-		{ "Reserved4",	"edp.esl.reserved4", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved4",	"edp_esl_reserved4", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esl_linkid2,
-		{ "Link ID 2",	"edp.esl.linkid2", FT_UINT16, BASE_DEC, NULL,
+		{ "Link ID 2",	"edp_esl_linkid2", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Shared link ID 2", HFILL }},
 
 		{ &hf_edp_esl_reserved5,
-		{ "Reserved5",	"edp.esl.reserved5", FT_BYTES, BASE_NONE, NULL,
+		{ "Reserved5",	"edp_esl_reserved5", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_esl_numlinks,
-		{ "Num Shared Links",	"edp.esl.numlinks", FT_UINT16, BASE_DEC, NULL,
+		{ "Num Shared Links",	"edp_esl_numlinks", FT_UINT16, BASE_DEC, NULL,
 			0x0, "Number of shared links in the network", HFILL }},
 
 		{ &hf_edp_esl_linklist,
-		{ "Link List",	"edp.esl.linklist", FT_UINT16, BASE_DEC, NULL,
+		{ "Link List",	"edp_esl_linklist", FT_UINT16, BASE_DEC, NULL,
 			0x0, "List of Shared Link IDs", HFILL }},
 
 		{ &hf_edp_esl_rest,
-		{ "Rest",	"edp.esl.rest", FT_BYTES, BASE_NONE, NULL,
+		{ "Rest",	"edp_esl_rest", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* ELSM element */
 		{ &hf_edp_elsm,
-		{ "ELSM",	"edp.elsm", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "ELSM",	"edp_elsm", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Extreme Link Status Monitoring element", HFILL }},
 
 		{ &hf_edp_elsm_type,
-		{ "Type",	"edp.elsm.type", FT_UINT8, BASE_DEC, VALS(elsm_type_vals),
+		{ "Type",	"edp_elsm_type", FT_UINT8, BASE_DEC, VALS(elsm_type_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_elsm_subtype,
-		{ "Subtype",	"edp.elsm.subtype", FT_UINT8, BASE_DEC, VALS(elsm_subtype_vals),
+		{ "Subtype",	"edp_elsm_subtype", FT_UINT8, BASE_DEC, VALS(elsm_subtype_vals),
 			0x0, NULL, HFILL }},
 
 		{ &hf_edp_elsm_magic,
-		{ "Magic",	"edp.elsm.unknown", FT_BYTES, BASE_NONE, NULL,
+		{ "Magic",	"edp_elsm_unknown", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* ELRP element */
 		{ &hf_edp_elrp,
-		{ "ELRP",	"edp.elrp", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "ELRP",	"edp_elrp", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Extreme Loop Recognition Protocol element", HFILL }},
 
 		{ &hf_edp_elrp_unknown,
-		{ "Unknown",	"edp.elrp.unknown", FT_BYTES, BASE_NONE, NULL,
+		{ "Unknown",	"edp_elrp_unknown", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Unknown element */
 		{ &hf_edp_unknown,
-		{ "Unknown",	"edp.unknown", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "Unknown",	"edp_unknown", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Element unknown to Wireshark", HFILL }},
 
 		{ &hf_edp_unknown_data,
-		{ "Unknown",	"edp.unknown.data", FT_BYTES, BASE_NONE, NULL,
+		{ "Unknown",	"edp_unknown_data", FT_BYTES, BASE_NONE, NULL,
 			0x0, NULL, HFILL }},
 
 	/* Null element */
 		{ &hf_edp_null,
-		{ "End",	"edp.null", FT_PROTOCOL, BASE_NONE, NULL,
+		{ "End",	"edp_null", FT_PROTOCOL, BASE_NONE, NULL,
 			0x0, "Last element", HFILL }},
 	};
 
 	static hf_register_info extreme_hf[] = {
 		{ &hf_llc_extreme_pid,
-		  { "PID",	"llc.extreme_pid",  FT_UINT16, BASE_HEX,
+		  { "PID",	"llc_extreme_pid",  FT_UINT16, BASE_HEX,
 		    VALS(extreme_pid_vals), 0x0, NULL, HFILL }
 		}
 	};

@@ -213,15 +213,15 @@ proto_register_mplstp_lock(void)
   static hf_register_info hf[] = {
 
     {&hf_mplstp_lock_version,
-     {"Version", "mplstp_lock.version", FT_UINT8,
+     {"Version", "mplstp_lock_version", FT_UINT8,
       BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
     {&hf_mplstp_lock_reserved,
-     {"Reserved", "mplstp_lock.reserved", FT_UINT24,
+     {"Reserved", "mplstp_lock_reserved", FT_UINT24,
       BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
     {&hf_mplstp_lock_refresh_timer,
-     {"Refresh-timer value", "mplstp_lock.refresh-timer", FT_UINT8,
+     {"Refresh-timer value", "mplstp_lock_refresh-timer", FT_UINT8,
       BASE_DEC, NULL, 0x0, NULL, HFILL }},
   };
 

@@ -329,27 +329,27 @@ proto_register_exec(void)
 {
 	static hf_register_info hf[] =
 	{
-	{ &hf_exec_stderr_port, { "Stderr port (optional)", "exec.stderr_port",
+	{ &hf_exec_stderr_port, { "Stderr port (optional)", "exec_stderr_port",
 		FT_STRINGZ, BASE_NONE, NULL, 0,
 		"Client port that is listening for stderr stream from server", HFILL } },
 
-	{ &hf_exec_username, { "Client username", "exec.username",
+	{ &hf_exec_username, { "Client username", "exec_username",
 		FT_STRINGZ, BASE_NONE, NULL, 0,
 		"Username client uses to log in to the server.", HFILL } },
 
-	{ &hf_exec_password, { "Client password", "exec.password",
+	{ &hf_exec_password, { "Client password", "exec_password",
 		FT_STRINGZ, BASE_NONE, NULL, 0,
 		"Password client uses to log in to the server.", HFILL } },
 
-	{ &hf_exec_command, { "Command to execute", "exec.command",
+	{ &hf_exec_command, { "Command to execute", "exec_command",
 		FT_STRINGZ, BASE_NONE, NULL, 0,
 		"Command client is requesting the server to run.", HFILL } },
 
-	{ &hf_exec_client_server_data, { "Client -> Server Data", "exec.client_server_data",
+	{ &hf_exec_client_server_data, { "Client -> Server Data", "exec_client_server_data",
 		FT_BYTES, BASE_NONE, NULL, 0,
 		NULL, HFILL } },
 
-	{ &hf_exec_server_client_data, { "Server -> Client Data", "exec.server_client_data",
+	{ &hf_exec_server_client_data, { "Server -> Client Data", "exec_server_client_data",
 		FT_BYTES, BASE_NONE, NULL, 0,
 		NULL, HFILL } },
 

@@ -925,205 +925,205 @@ proto_register_smb_logon( void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_command,
-			{ "Command", "smb_netlogon.command", FT_UINT8, BASE_HEX,
+			{ "Command", "smb_netlogon_command", FT_UINT8, BASE_HEX,
 			  VALS(commands), 0, "SMB NETLOGON Command", HFILL }},
 
 		{ &hf_computer_name,
-			{ "Computer Name", "smb_netlogon.computer_name", FT_STRING, BASE_NONE,
+			{ "Computer Name", "smb_netlogon_computer_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Computer Name", HFILL }},
 
 		{ &hf_unicode_computer_name,
-			{ "Unicode Computer Name", "smb_netlogon.unicode_computer_name", FT_STRING, BASE_NONE,
+			{ "Unicode Computer Name", "smb_netlogon_unicode_computer_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Unicode Computer Name", HFILL }},
 
 		{ &hf_server_name,
-			{ "Server Name", "smb_netlogon.server_name", FT_STRING, BASE_NONE,
+			{ "Server Name", "smb_netlogon_server_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Server Name", HFILL }},
 
 		{ &hf_server_dns_name,
-			{ "Server DNS Name", "smb_netlogon.server_dns_name", FT_STRING, BASE_NONE,
+			{ "Server DNS Name", "smb_netlogon_server_dns_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Server DNS Name", HFILL }},
 
 		{ &hf_user_name,
-			{ "User Name", "smb_netlogon.user_name", FT_STRING, BASE_NONE,
+			{ "User Name", "smb_netlogon_user_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON User Name", HFILL }},
 
 		{ &hf_domain_name,
-			{ "Domain Name", "smb_netlogon.domain_name", FT_STRING, BASE_NONE,
+			{ "Domain Name", "smb_netlogon_domain_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Domain Name", HFILL }},
 
 		{ &hf_domain_dns_name,
-			{ "Domain DNS Name", "smb_netlogon.domain_dns_name", FT_STRING, BASE_NONE,
+			{ "Domain DNS Name", "smb_netlogon_domain_dns_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Domain DNS Name", HFILL }},
 
 		{ &hf_forest_dns_name,
-			{ "Forest DNS Name", "smb_netlogon.forest_dns_name", FT_STRING, BASE_NONE,
+			{ "Forest DNS Name", "smb_netlogon_forest_dns_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Forest DNS Name", HFILL }},
 
 		{ &hf_mailslot_name,
-			{ "Mailslot Name", "smb_netlogon.mailslot_name", FT_STRING, BASE_NONE,
+			{ "Mailslot Name", "smb_netlogon_mailslot_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Mailslot Name", HFILL }},
 
 		{ &hf_pdc_name,
-			{ "PDC Name", "smb_netlogon.pdc_name", FT_STRING, BASE_NONE,
+			{ "PDC Name", "smb_netlogon_pdc_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON PDC Name", HFILL }},
 
 		{ &hf_unicode_pdc_name,
-			{ "Unicode PDC Name", "smb_netlogon.unicode_pdc_name", FT_STRING, BASE_NONE,
+			{ "Unicode PDC Name", "smb_netlogon_unicode_pdc_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Unicode PDC Name", HFILL }},
 
 		{ &hf_script_name,
-			{ "Script Name", "smb_netlogon.script_name", FT_STRING, BASE_NONE,
+			{ "Script Name", "smb_netlogon_script_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Script Name", HFILL }},
 
 		{ &hf_nt_version,
-			{ "NT Version", "smb_netlogon.nt_version", FT_UINT32, BASE_DEC,
+			{ "NT Version", "smb_netlogon_nt_version", FT_UINT32, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON NT Version", HFILL }},
 
 		/* An LMNT Token, if 0xffff, is "WindowsNT Networking";
 		   what is it otherwise? */
 		{ &hf_lmnt_token,
-			{ "LMNT Token", "smb_netlogon.lmnt_token", FT_UINT16, BASE_HEX,
+			{ "LMNT Token", "smb_netlogon_lmnt_token", FT_UINT16, BASE_HEX,
 			  NULL, 0, "SMB NETLOGON LMNT Token", HFILL }},
 
 		{ &hf_lm_token,
-			{ "LM Token", "smb_netlogon.lm_token", FT_UINT16, BASE_HEX,
+			{ "LM Token", "smb_netlogon_lm_token", FT_UINT16, BASE_HEX,
 			  NULL, 0, "SMB NETLOGON LM Token", HFILL }},
 
 		{ &hf_major_version,
-			{ "Workstation Major Version", "smb_netlogon.major_version", FT_UINT8, BASE_DEC,
+			{ "Workstation Major Version", "smb_netlogon_major_version", FT_UINT8, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Workstation Major Version", HFILL }},
 
 		{ &hf_minor_version,
-			{ "Workstation Minor Version", "smb_netlogon.minor_version", FT_UINT8, BASE_DEC,
+			{ "Workstation Minor Version", "smb_netlogon_minor_version", FT_UINT8, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Workstation Minor Version", HFILL }},
 
 		{ &hf_os_version,
-			{ "Workstation OS Version", "smb_netlogon.os_version", FT_UINT8, BASE_DEC,
+			{ "Workstation OS Version", "smb_netlogon_os_version", FT_UINT8, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Workstation OS Version", HFILL }},
 
 		{ &hf_signature,
-			{ "Signature", "smb_netlogon.signature", FT_UINT64, BASE_HEX,
+			{ "Signature", "smb_netlogon_signature", FT_UINT64, BASE_HEX,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_date_time,
-			{ "Date/Time", "smb_netlogon.date_time", FT_UINT32, BASE_DEC,
+			{ "Date/Time", "smb_netlogon_date_time", FT_UINT32, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Date/Time", HFILL }},
 
 		{ &hf_update_type,
-			{ "Update Type", "smb_netlogon.update", FT_UINT16, BASE_DEC,
+			{ "Update Type", "smb_netlogon_update", FT_UINT16, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Update Type", HFILL }},
 
 		{ &hf_request_count,
-			{ "Request Count", "smb_netlogon.request_count", FT_UINT16, BASE_DEC,
+			{ "Request Count", "smb_netlogon_request_count", FT_UINT16, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Request Count", HFILL }},
 
 		{ &hf_account_control,
-			{ "Account control", "smb_netlogon.flags", FT_UINT32, BASE_HEX,
+			{ "Account control", "smb_netlogon_flags", FT_UINT32, BASE_HEX,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_flags_autolock,
-			{ "Autolock", "smb_netlogon.flags.autolock", FT_BOOLEAN, 32,
+			{ "Autolock", "smb_netlogon_flags_autolock", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_autolock), ACC_FLAG_AUTO_LOCKED, "SMB NETLOGON Account Autolock", HFILL}},
 
 		{ &hf_flags_expire,
-			{ "Expire", "smb_netlogon.flags.expire", FT_BOOLEAN, 32,
+			{ "Expire", "smb_netlogon_flags_expire", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_expire), ACC_FLAG_EXPIRE, "SMB NETLOGON Will Account Expire", HFILL}},
 
 		{ &hf_flags_server_trust,
-			{ "Server Trust", "smb_netlogon.flags.server", FT_BOOLEAN, 32,
+			{ "Server Trust", "smb_netlogon_flags_server", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_server_trust), ACC_FLAG_SERVER_TRUST, "SMB NETLOGON Server Trust Account", HFILL}},
 
 		{ &hf_flags_workstation_trust,
-			{ "Workstation Trust", "smb_netlogon.flags.workstation", FT_BOOLEAN, 32,
+			{ "Workstation Trust", "smb_netlogon_flags_workstation", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_workstation_trust), ACC_FLAG_WORKSTATION_TRUST, "SMB NETLOGON Workstation Trust Account", HFILL}},
 
 		{ &hf_flags_interdomain_trust,
-			{ "Interdomain Trust", "smb_netlogon.flags.interdomain", FT_BOOLEAN, 32,
+			{ "Interdomain Trust", "smb_netlogon_flags_interdomain", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_interdomain_trust), ACC_FLAG_INTERDOMAIN_TRUST, "SMB NETLOGON Inter-domain Trust Account", HFILL}},
 
 		{ &hf_flags_mns_user,
-			{ "MNS User", "smb_netlogon.flags.mns", FT_BOOLEAN, 32,
+			{ "MNS User", "smb_netlogon_flags_mns", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_mns_user), ACC_FLAG_MNS_USER, "SMB NETLOGON MNS User Account", HFILL}},
 
 		{ &hf_flags_normal_user,
-			{ "Normal User", "smb_netlogon.flags.normal", FT_BOOLEAN, 32,
+			{ "Normal User", "smb_netlogon_flags_normal", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_normal_user), ACC_FLAG_NORMAL_USER, "SMB NETLOGON Normal User Account", HFILL}},
 
 		{ &hf_flags_temp_dup_user,
-			{ "Temp Duplicate User", "smb_netlogon.flags.temp_dup", FT_BOOLEAN, 32,
+			{ "Temp Duplicate User", "smb_netlogon_flags_temp_dup", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_temp_dup_user), ACC_FLAG_TEMP_DUP_USER, "SMB NETLOGON Temp Duplicate User Account", HFILL}},
 
 		{ &hf_flags_password_required,
-			{ "Password", "smb_netlogon.flags.password", FT_BOOLEAN, 32,
+			{ "Password", "smb_netlogon_flags_password", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_password_required), ACC_FLAG_PASSWORD_REQUIRED, "SMB NETLOGON Password Required", HFILL}},
 
 		{ &hf_flags_homedir_required,
-			{ "Homedir", "smb_netlogon.flags.homedir", FT_BOOLEAN, 32,
+			{ "Homedir", "smb_netlogon_flags_homedir", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_homedir_required), ACC_FLAG_HOMEDIR_REQUIRED, "SMB NETLOGON Homedir Required", HFILL}},
 
 		{ &hf_flags_enabled,
-			{ "Enabled", "smb_netlogon.flags.enabled", FT_BOOLEAN, 32,
+			{ "Enabled", "smb_netlogon_flags_enabled", FT_BOOLEAN, 32,
 			TFS(&tfs_flags_enabled), ACC_FLAG_ENABLED, "SMB NETLOGON Is This Account Enabled", HFILL}},
 
 		{ &hf_domain_sid_size,
-			{ "Domain SID Size", "smb_netlogon.domain_sid_size", FT_UINT32, BASE_DEC,
+			{ "Domain SID Size", "smb_netlogon_domain_sid_size", FT_UINT32, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Domain SID Size", HFILL }},
 
 		{ &hf_low_serial,
-			{ "Low Serial Number", "smb_netlogon.low_serial", FT_UINT32, BASE_DEC,
+			{ "Low Serial Number", "smb_netlogon_low_serial", FT_UINT32, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Low Serial Number", HFILL }},
 
 		{ &hf_pulse,
-			{ "Pulse", "smb_netlogon.pulse", FT_UINT32, BASE_DEC,
+			{ "Pulse", "smb_netlogon_pulse", FT_UINT32, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Pulse", HFILL }},
 
 		{ &hf_random,
-			{ "Random", "smb_netlogon.random", FT_UINT32, BASE_DEC,
+			{ "Random", "smb_netlogon_random", FT_UINT32, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Random", HFILL }},
 
 		{ &hf_db_count,
-			{ "DB Count", "smb_netlogon.db_count", FT_UINT32, BASE_DEC,
+			{ "DB Count", "smb_netlogon_db_count", FT_UINT32, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON DB Count", HFILL }},
 
 		{ &hf_db_index,
-			{ "Database Index", "smb_netlogon.db_index", FT_UINT32, BASE_DEC,
+			{ "Database Index", "smb_netlogon_db_index", FT_UINT32, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Database Index", HFILL }},
 
 		{ &hf_large_serial,
-			{ "Large Serial Number", "smb_netlogon.large_serial", FT_UINT64, BASE_DEC,
+			{ "Large Serial Number", "smb_netlogon_large_serial", FT_UINT64, BASE_DEC,
 			  NULL, 0, "SMB NETLOGON Large Serial Number", HFILL }},
 
 		{ &hf_nt_date_time,
-			{ "NT Date/Time", "smb_netlogon.nt_date_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
+			{ "NT Date/Time", "smb_netlogon_nt_date_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL,
 			  NULL, 0, "SMB NETLOGON NT Date/Time", HFILL }},
 
 		{ &hf_unknown8,
-			{ "Unknown", "smb_netlogon.unknown", FT_UINT8, BASE_HEX,
+			{ "Unknown", "smb_netlogon_unknown", FT_UINT8, BASE_HEX,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_unknown32,
-			{ "Unknown", "smb_netlogon.unknown", FT_UINT32, BASE_HEX,
+			{ "Unknown", "smb_netlogon_unknown", FT_UINT32, BASE_HEX,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_domain_guid,
-			{ "Domain GUID", "smb_netlogon.domain.guid", FT_BYTES, BASE_NONE,
+			{ "Domain GUID", "smb_netlogon_domain_guid", FT_BYTES, BASE_NONE,
 			   NULL, 0x0, NULL, HFILL }},
 
 		{ &hf_server_ip, {
-			"Server IP", "smb_netlogon.server_ip", FT_IPv4, BASE_NONE,
+			"Server IP", "smb_netlogon_server_ip", FT_IPv4, BASE_NONE,
 			NULL, 0x0, "Server IP Address", HFILL }},
 
 		{ &hf_server_site_name,
-			{ "Server Site Name", "smb_netlogon.server_site_name", FT_STRING, BASE_NONE,
+			{ "Server Site Name", "smb_netlogon_server_site_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Server Site Name", HFILL }},
 
 		{ &hf_client_site_name,
-			{ "Client Site Name", "smb_netlogon.client_site_name", FT_STRING, BASE_NONE,
+			{ "Client Site Name", "smb_netlogon_client_site_name", FT_STRING, BASE_NONE,
 			  NULL, 0, "SMB NETLOGON Client Site Name", HFILL }},
 
 		{ &hf_data,
-			{ "Data", "smb_netlogon.data", FT_BYTES, BASE_NONE,
+			{ "Data", "smb_netlogon_data", FT_BYTES, BASE_NONE,
 			  NULL, 0, NULL, HFILL }},
 	};
 

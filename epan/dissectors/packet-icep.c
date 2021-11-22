@@ -1049,7 +1049,7 @@ void proto_register_icep(void)
 
         { &hf_icep_protocol_major,
           {
-              "Protocol Major", "icep.protocol_major",
+              "Protocol Major", "icep_protocol_major",
               FT_INT8, BASE_DEC, NULL, 0x0,
               "The protocol major version number", HFILL
           }
@@ -1057,7 +1057,7 @@ void proto_register_icep(void)
 
         { &hf_icep_protocol_minor,
           {
-              "Protocol Minor", "icep.protocol_minor",
+              "Protocol Minor", "icep_protocol_minor",
               FT_INT8, BASE_DEC, NULL, 0x0,
               "The protocol minor version number", HFILL
           }
@@ -1065,7 +1065,7 @@ void proto_register_icep(void)
 
         { &hf_icep_encoding_major,
           {
-              "Encoding Major", "icep.encoding_major",
+              "Encoding Major", "icep_encoding_major",
               FT_INT8, BASE_DEC, NULL, 0x0,
               "The encoding major version number", HFILL
           }
@@ -1073,7 +1073,7 @@ void proto_register_icep(void)
 
         { &hf_icep_encoding_minor,
           {
-              "Encoding Minor", "icep.encoding_minor",
+              "Encoding Minor", "icep_encoding_minor",
               FT_INT8, BASE_DEC, NULL, 0x0,
               "The encoding minor version number", HFILL
           }
@@ -1081,7 +1081,7 @@ void proto_register_icep(void)
 
         { &hf_icep_message_type,
           {
-              "Message Type", "icep.message_type",
+              "Message Type", "icep_message_type",
               FT_INT8, BASE_DEC, VALS(icep_msgtype_vals), 0x0,
               "The message type", HFILL
           }
@@ -1089,7 +1089,7 @@ void proto_register_icep(void)
 
         { &hf_icep_magic_number,
           {
-              "Magic Number", "icep.magic_number",
+              "Magic Number", "icep_magic_number",
               FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }
@@ -1097,7 +1097,7 @@ void proto_register_icep(void)
 
         { &hf_icep_compression_status,
           {
-              "Compression Status", "icep.compression_status",
+              "Compression Status", "icep_compression_status",
               FT_INT8, BASE_DEC, VALS(icep_zipstatus_vals), 0x0,
               "The compression status of the message", HFILL
           }
@@ -1105,7 +1105,7 @@ void proto_register_icep(void)
 
         { &hf_icep_message_size,
           {
-              "Message Size", "icep.message_status",
+              "Message Size", "icep_message_status",
               FT_INT32, BASE_DEC, NULL, 0x0,
               "The size of the message in bytes, including the header",
               HFILL
@@ -1114,7 +1114,7 @@ void proto_register_icep(void)
 
         { &hf_icep_request_id,
           {
-              "Request Identifier", "icep.request_id",
+              "Request Identifier", "icep_request_id",
               FT_INT32, BASE_DEC, NULL, 0x0,
               "The request identifier",
               HFILL
@@ -1123,7 +1123,7 @@ void proto_register_icep(void)
 
         { &hf_icep_reply_status,
           {
-              "Reply Status", "icep.protocol_major",
+              "Reply Status", "icep_protocol_major",
               FT_INT8, BASE_DEC, VALS(icep_replystatus_vals), 0x0,
               "The reply status", HFILL
           }
@@ -1131,7 +1131,7 @@ void proto_register_icep(void)
 
         { &hf_icep_id_name,
           {
-              "Object Identity Name", "icep.id.name",
+              "Object Identity Name", "icep_id_name",
               FT_STRINGZ, BASE_NONE, NULL, 0x0,
               "The object identity name", HFILL
           }
@@ -1139,7 +1139,7 @@ void proto_register_icep(void)
 
         { &hf_icep_id_category,
           {
-              "Object Identity Content", "icep.id.content",
+              "Object Identity Content", "icep_id_content",
               FT_STRINGZ, BASE_NONE, NULL, 0x0,
               "The object identity content", HFILL
           }
@@ -1147,7 +1147,7 @@ void proto_register_icep(void)
 
         { &hf_icep_facet,
           {
-              "Facet Name", "icep.facet",
+              "Facet Name", "icep_facet",
               FT_STRINGZ, BASE_NONE, NULL, 0x0,
               "The facet name", HFILL
           }
@@ -1155,7 +1155,7 @@ void proto_register_icep(void)
 
         { &hf_icep_operation,
           {
-              "Operation Name", "icep.operation",
+              "Operation Name", "icep_operation",
               FT_STRINGZ, BASE_NONE, NULL, 0x0,
               "The operation name", HFILL
           }
@@ -1163,7 +1163,7 @@ void proto_register_icep(void)
 
         { &hf_icep_mode,
           {
-              "Ice::OperationMode", "icep.operation_mode",
+              "Ice::OperationMode", "icep_operation_mode",
               FT_INT8, BASE_DEC, VALS(icep_mode_vals), 0x0,
               "A byte representing Ice::OperationMode", HFILL
           }
@@ -1171,7 +1171,7 @@ void proto_register_icep(void)
 
         { &hf_icep_context,
           {
-              "Invocation Context", "icep.context",
+              "Invocation Context", "icep_context",
               FT_STRINGZ, BASE_NONE, NULL, 0x0,
               "The invocation context", HFILL
           }
@@ -1179,7 +1179,7 @@ void proto_register_icep(void)
 
         { &hf_icep_params_size,
           {
-              "Input Parameters Size", "icep.params.size",
+              "Input Parameters Size", "icep_params_size",
               FT_INT32, BASE_DEC, NULL, 0x0,
               "The encapsulated input parameters size",
               HFILL
@@ -1189,7 +1189,7 @@ void proto_register_icep(void)
         { &hf_icep_params_major,
           {
               "Input Parameters Encoding Major",
-              "icep.params.major",
+              "icep_params_major",
               FT_INT8, BASE_DEC, NULL, 0x0,
               "The major encoding version of encapsulated parameters",
               HFILL
@@ -1199,7 +1199,7 @@ void proto_register_icep(void)
         { &hf_icep_params_minor,
           {
               "Input Parameters Encoding Minor",
-              "icep.params.minor",
+              "icep_params_minor",
               FT_INT8, BASE_DEC, NULL, 0x0,
               "The minor encoding version of encapsulated parameters",
               HFILL
@@ -1209,7 +1209,7 @@ void proto_register_icep(void)
         { &hf_icep_params_encapsulated,
           {
               "Encapsulated parameters",
-              "icep.params.encapsulated",
+              "icep_params_encapsulated",
               FT_BYTES, BASE_NONE, NULL, 0x0,
               "Remaining encapsulated parameters",
               HFILL
@@ -1219,7 +1219,7 @@ void proto_register_icep(void)
         { &hf_icep_reply_data,
           {
               "Reported reply data",
-              "icep.params.reply_data",
+              "icep_params_reply_data",
               FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL
           }
         },
@@ -1227,7 +1227,7 @@ void proto_register_icep(void)
         { &hf_icep_invocation_key,
           {
               "Key",
-              "icep.invocation_key",
+              "icep_invocation_key",
               FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL
           }
         },
@@ -1235,7 +1235,7 @@ void proto_register_icep(void)
         { &hf_icep_invocation_value,
           {
               "Value",
-              "icep.invocation_value",
+              "icep_invocation_value",
               FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL
           }
         },

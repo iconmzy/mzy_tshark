@@ -85,27 +85,27 @@ proto_register_ans(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_ans_app_id,
-			{ "Application ID", "ans.app_id",
+			{ "Application ID", "ans_app_id",
 				FT_UINT16, BASE_HEX, NULL, 0,
 				"Intel ANS Application ID", HFILL }
 		},
 		{ &hf_ans_rev_id,
-			{ "Revision ID", "ans.rev_id",
+			{ "Revision ID", "ans_rev_id",
 				FT_UINT16, BASE_HEX, NULL, 0,
 				"Intel ANS Revision ID", HFILL }
 		},
 		{ &hf_ans_seq_num,
-			{ "Sequence Number", "ans.seq_num",
+			{ "Sequence Number", "ans_seq_num",
 				FT_UINT32, BASE_DEC, NULL, 0,
 				"Intel ANS Sequence Number", HFILL }
 		},
 		{ &hf_ans_sender_id,
-			{ "Sender ID", "ans.sender_id",
+			{ "Sender ID", "ans_sender_id",
 				FT_UINT16, BASE_DEC, NULL, 0,
 				"Intel ANS Sender ID", HFILL }
 		},
 		{ &hf_ans_team_id,
-			{ "Team ID", "ans.team_id",
+			{ "Team ID", "ans_team_id",
 				FT_ETHER, BASE_NONE, NULL, 0,
 				"Intel ANS Team ID", HFILL }
 		},

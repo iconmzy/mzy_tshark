@@ -92,12 +92,12 @@ proto_register_g723(void)
 
 	static hf_register_info hf[] = {
 		{ &hf_g723_frame_size_and_codec,
-			{ "Frame size and codec type", "g723.frame_size_and_codec",
+			{ "Frame size and codec type", "g723_frame_size_and_codec",
 			FT_UINT8, BASE_HEX, VALS(g723_frame_size_and_codec_type_value), 0x03,
 			"RATEFLAG_B0", HFILL }
 		},
 		{ &hf_g723_lpc_B5_B0,
-			{ "LPC_B5...LPC_B0",           "g723.lpc.b5b0",
+			{ "LPC_B5...LPC_B0",           "g723_lpc_b5b0",
 			FT_UINT8, BASE_HEX, NULL, 0xfc,
 			NULL, HFILL }
 		},

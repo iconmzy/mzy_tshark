@@ -197,107 +197,107 @@ proto_register_ipvs_syncd(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_conn_count,
-			{ "Connection Count", "ipvs.conncount", FT_UINT8, BASE_DEC,
+			{ "Connection Count", "ipvs_conncount", FT_UINT8, BASE_DEC,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_syncid,
-			{ "Synchronization ID", "ipvs.syncid", FT_UINT8, BASE_DEC,
+			{ "Synchronization ID", "ipvs_syncid", FT_UINT8, BASE_DEC,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_size,
-			{ "Size", "ipvs.size", FT_UINT16, BASE_DEC,
+			{ "Size", "ipvs_size", FT_UINT16, BASE_DEC,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_resv8,
-			{ "Reserved", "ipvs.resv8", FT_UINT8, BASE_HEX,
+			{ "Reserved", "ipvs_resv8", FT_UINT8, BASE_HEX,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_proto,
-			{ "Protocol", "ipvs.proto", FT_UINT8, BASE_HEX,
+			{ "Protocol", "ipvs_proto", FT_UINT8, BASE_HEX,
 			  VALS(proto_strings), 0, NULL, HFILL }},
 
 		{ &hf_cport,
-			{ "Client Port", "ipvs.cport", FT_UINT16, BASE_DEC,
+			{ "Client Port", "ipvs_cport", FT_UINT16, BASE_DEC,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_vport,
-			{ "Virtual Port", "ipvs.vport", FT_UINT16, BASE_DEC,
+			{ "Virtual Port", "ipvs_vport", FT_UINT16, BASE_DEC,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_dport,
-			{ "Destination Port", "ipvs.dport", FT_UINT16, BASE_DEC,
+			{ "Destination Port", "ipvs_dport", FT_UINT16, BASE_DEC,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_caddr,
-			{ "Client Address", "ipvs.caddr", FT_IPv4, BASE_NONE,
+			{ "Client Address", "ipvs_caddr", FT_IPv4, BASE_NONE,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_vaddr,
-			{ "Virtual Address", "ipvs.vaddr", FT_IPv4, BASE_NONE,
+			{ "Virtual Address", "ipvs_vaddr", FT_IPv4, BASE_NONE,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_daddr,
-			{ "Destination Address", "ipvs.daddr", FT_IPv4, BASE_NONE,
+			{ "Destination Address", "ipvs_daddr", FT_IPv4, BASE_NONE,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_flags,
-			{ "Flags", "ipvs.flags", FT_UINT16, BASE_HEX,
+			{ "Flags", "ipvs_flags", FT_UINT16, BASE_HEX,
 			  NULL, 0, NULL, HFILL }},
 
 		{ &hf_flags_conn_type,
-			{ "Connection Type", "ipvs.flags.conn_type", FT_UINT16, BASE_HEX,
+			{ "Connection Type", "ipvs_flags_conn_type", FT_UINT16, BASE_HEX,
 			  VALS(connection_type_strings), 0x0F, NULL, HFILL }},
 
 		{ &hf_flags_hashed_entry,
-			{ "Hashed Entry", "ipvs.flags.hashed_entry", FT_BOOLEAN, 16,
+			{ "Hashed Entry", "ipvs_flags_hashed_entry", FT_BOOLEAN, 16,
 			  TFS(&tfs_true_false), IP_VS_CONN_F_HASHED, NULL, HFILL }},
 
 		{ &hf_flags_no_output_packets,
-			{ "No Output Packets", "ipvs.flags.no_output_packets", FT_BOOLEAN, 16,
+			{ "No Output Packets", "ipvs_flags_no_output_packets", FT_BOOLEAN, 16,
 			  TFS(&tfs_true_false), IP_VS_CONN_F_NOOUTPUT, NULL, HFILL }},
 
 		{ &hf_flags_conn_not_established,
-			{ "Connection Not Established", "ipvs.flags.conn_not_established", FT_BOOLEAN, 16,
+			{ "Connection Not Established", "ipvs_flags_conn_not_established", FT_BOOLEAN, 16,
 			  TFS(&tfs_true_false), IP_VS_CONN_F_INACTIVE, NULL, HFILL }},
 
 		{ &hf_flags_adjust_output_seq,
-			{ "Adjust Output Sequence", "ipvs.flags.adjust_output_seq", FT_BOOLEAN, 16,
+			{ "Adjust Output Sequence", "ipvs_flags_adjust_output_seq", FT_BOOLEAN, 16,
 			  TFS(&tfs_true_false), IP_VS_CONN_F_OUT_SEQ, NULL, HFILL }},
 
 		{ &hf_flags_adjust_input_seq,
-			{ "Adjust Input Sequence", "ipvs.flags.adjust_input_seq", FT_BOOLEAN, 16,
+			{ "Adjust Input Sequence", "ipvs_flags_adjust_input_seq", FT_BOOLEAN, 16,
 			  TFS(&tfs_true_false), IP_VS_CONN_F_IN_SEQ, NULL, HFILL }},
 
 		{ &hf_flags_no_client_port_set,
-			{ "No Client Port Set", "ipvs.flags.no_client_port_set", FT_BOOLEAN, 16,
+			{ "No Client Port Set", "ipvs_flags_no_client_port_set", FT_BOOLEAN, 16,
 			  TFS(&tfs_true_false), IP_VS_CONN_F_NO_CPORT, NULL, HFILL }},
 
 		{ &hf_state,
-			{ "State", "ipvs.state", FT_UINT16, BASE_HEX,
+			{ "State", "ipvs_state", FT_UINT16, BASE_HEX,
 			  VALS(state_strings), 0, NULL, HFILL }},
 
 		{ &hf_in_seq_init,
-			{ "Input Sequence (Initial)", "ipvs.in_seq.initial", FT_UINT32,
+			{ "Input Sequence (Initial)", "ipvs_in_seq_initial", FT_UINT32,
 				BASE_HEX, NULL, 0, NULL, HFILL }},
 
 		{ &hf_in_seq_delta,
-			{ "Input Sequence (Delta)", "ipvs.in_seq.delta", FT_UINT32,
+			{ "Input Sequence (Delta)", "ipvs_in_seq_delta", FT_UINT32,
 				BASE_HEX, NULL, 0, NULL, HFILL }},
 
 		{ &hf_in_seq_pdelta,
-			{ "Input Sequence (Previous Delta)", "ipvs.in_seq.pdelta", FT_UINT32,
+			{ "Input Sequence (Previous Delta)", "ipvs_in_seq_pdelta", FT_UINT32,
 				BASE_HEX, NULL, 0, NULL, HFILL }},
 
 		{ &hf_out_seq_init,
-			{ "Output Sequence (Initial)", "ipvs.out_seq.initial", FT_UINT32,
+			{ "Output Sequence (Initial)", "ipvs_out_seq_initial", FT_UINT32,
 				BASE_HEX, NULL, 0, NULL, HFILL }},
 
 		{ &hf_out_seq_delta,
-			{ "Output Sequence (Delta)", "ipvs.out_seq.delta", FT_UINT32,
+			{ "Output Sequence (Delta)", "ipvs_out_seq_delta", FT_UINT32,
 				BASE_HEX, NULL, 0, NULL, HFILL }},
 
 		{ &hf_out_seq_pdelta,
-			{ "Output Sequence (Previous Delta)", "ipvs.out_seq.pdelta", FT_UINT32,
+			{ "Output Sequence (Previous Delta)", "ipvs_out_seq_pdelta", FT_UINT32,
 				BASE_HEX, NULL, 0, NULL, HFILL }},
 
 

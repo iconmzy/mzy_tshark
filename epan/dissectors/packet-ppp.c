@@ -6068,8 +6068,8 @@ proto_register_ppp_raw_hdlc(void)
 {
     static hf_register_info hf[] = {
       /* Generated from convert_proto_tree_add_text.pl */
-      { &hf_ppp_hdlc_fragment, { "PPP Fragment", "ppp_hdlc.fragment", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_ppp_hdlc_data, { "PPP Data", "ppp_hdlc.data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_ppp_hdlc_fragment, { "PPP Fragment", "ppp_hdlc_fragment", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_ppp_hdlc_data, { "PPP Data", "ppp_hdlc_data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
     };
 
     static gint *ett[] = {

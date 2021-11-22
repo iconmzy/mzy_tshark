@@ -158,34 +158,34 @@ proto_register_interlink(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_interlink_id, {
-			"Magic ID", "interlink.id", FT_STRING,
+			"Magic ID", "interlink_id", FT_STRING,
 			BASE_NONE, NULL, 0, NULL, HFILL }},
 		{ &hf_interlink_version, {
-			"Version", "interlink.version", FT_UINT16,
+			"Version", "interlink_version", FT_UINT16,
 			BASE_DEC, NULL, 0, NULL, HFILL }},
 		{ &hf_interlink_cmd, {
-			"Command", "interlink.cmd", FT_UINT16,
+			"Command", "interlink_cmd", FT_UINT16,
 			BASE_DEC, VALS(names_cmd), 0, NULL, HFILL }},
 		{ &hf_interlink_seq, {
-			"Sequence", "interlink.seq", FT_UINT16,
+			"Sequence", "interlink_seq", FT_UINT16,
 			BASE_DEC, NULL, 0, NULL, HFILL }},
 		{ &hf_interlink_flags, {
-			"Flags", "interlink.flags", FT_UINT16,
+			"Flags", "interlink_flags", FT_UINT16,
 			BASE_HEX, NULL, 0, NULL, HFILL }},
 		{ &hf_interlink_flags_req_ack, {
-			"REQ_ACK", "interlink.flags.req_ack", FT_BOOLEAN,
+			"REQ_ACK", "interlink_flags_req_ack", FT_BOOLEAN,
 			16, TFS(&tfs_set_notset), 0x01, NULL, HFILL }},
 		{ &hf_interlink_flags_inc_ack_port, {
-			"INC_ACK_PORT", "interlink.flags.inc_ack_port", FT_BOOLEAN,
+			"INC_ACK_PORT", "interlink_flags_inc_ack_port", FT_BOOLEAN,
 			16, TFS(&tfs_set_notset), 0x02, NULL, HFILL }},
 		{ &hf_interlink_block_type, {
-			"Type", "interlink.type", FT_UINT8,
+			"Type", "interlink_type", FT_UINT8,
 			BASE_DEC, NULL, 0, NULL, HFILL }},
 		{ &hf_interlink_block_version, {
-			"Version", "interlink.block_version", FT_UINT8,
+			"Version", "interlink_block_version", FT_UINT8,
 			BASE_DEC, NULL, 0, NULL, HFILL }},
 		{ &hf_interlink_block_length, {
-			"Length", "interlink.length", FT_UINT16,
+			"Length", "interlink_length", FT_UINT16,
 			BASE_DEC, NULL, 0, NULL, HFILL }},
 	};
 

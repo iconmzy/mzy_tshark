@@ -269,74 +269,74 @@ void proto_register_sap(void)
 
     static hf_register_info hf[] = {
     { &hf_sap_flags,
-        { "Flags",         "sap.flags",
+        { "Flags",         "sap_flags",
         FT_UINT8, BASE_HEX, NULL, 0x0,
         "Bits in the beginning of the SAP header", HFILL }},
 
     { &hf_sap_flags_v,
-        { "Version Number",         "sap.flags.v",
+        { "Version Number",         "sap_flags_v",
         FT_UINT8, BASE_DEC, VALS(mcast_sap_ver), MCAST_SAP_VERSION_MASK,
         "3 bit version field in the SAP header", HFILL }},
 
     { &hf_sap_flags_a,
-        { "Address Type",           "sap.flags.a",
+        { "Address Type",           "sap_flags_a",
         FT_BOOLEAN, 8, TFS(&mcast_sap_address_type), MCAST_SAP_BIT_A,
         "Originating source address type", HFILL }},
 
     { &hf_sap_flags_r,
-        { "Reserved",               "sap.flags.r",
+        { "Reserved",               "sap_flags_r",
         FT_BOOLEAN, 8, TFS(&tfs_set_notset), MCAST_SAP_BIT_R,
         NULL, HFILL }},
 
     { &hf_sap_flags_t,
-        { "Message Type",           "sap.flags.t",
+        { "Message Type",           "sap_flags_t",
         FT_BOOLEAN, 8, TFS(&mcast_sap_message_type), MCAST_SAP_BIT_T,
         "Announcement type", HFILL }},
 
     { &hf_sap_flags_e,
-        { "Encryption Bit",         "sap.flags.e",
+        { "Encryption Bit",         "sap_flags_e",
         FT_BOOLEAN, 8, TFS(&mcast_sap_crypt_type), MCAST_SAP_BIT_E,
         NULL, HFILL }},
 
     { &hf_sap_flags_c,
-        { "Compression Bit",         "sap.flags.c",
+        { "Compression Bit",         "sap_flags_c",
         FT_BOOLEAN, 8, TFS(&mcast_sap_comp_type), MCAST_SAP_BIT_C,
         NULL, HFILL }},
 
     { &hf_auth_data,
-        { "Authentication data",     "sap.auth",
+        { "Authentication data",     "sap_auth",
         FT_NONE, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_auth_flags,
-        { "Authentication data flags", "sap.auth.flags",
+        { "Authentication data flags", "sap_auth_flags",
         FT_UINT8, BASE_HEX, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_auth_flags_v,
-        { "Version Number",         "sap.auth.flags.v",
+        { "Version Number",         "sap_auth_flags_v",
         FT_UINT8, BASE_DEC, VALS(mcast_sap_auth_ver), MCAST_SAP_VERSION_MASK,
         NULL, HFILL }},
 
     { &hf_auth_flags_p,
-        { "Padding Bit",            "sap.auth.flags.p",
+        { "Padding Bit",            "sap_auth_flags_p",
         FT_BOOLEAN, 8, TFS(&mcast_sap_auth_pad), MCAST_SAP_AUTH_BIT_P,
         NULL, HFILL }},
 
     { &hf_auth_flags_t,
-        { "Authentication Type",         "sap.auth.flags.t",
+        { "Authentication Type",         "sap_auth_flags_t",
         FT_UINT8, BASE_DEC, VALS(mcast_sap_auth_type), MCAST_SAP_AUTH_TYPE_MASK,
         NULL, HFILL }},
 
         /* Generated from convert_proto_tree_add_text.pl */
-        { &hf_sap_auth_len, { "Authentication Length", "sap.auth.len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-        { &hf_sap_message_identifier_hash, { "Message Identifier Hash", "sap.message_identifier_hash", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
-        { &hf_sap_originating_source_ipv4, { "Originating Source", "sap.originating_source", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-        { &hf_sap_originating_source_ipv6, { "Originating Source", "sap.originating_source.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-        { &hf_sap_auth_subheader, { "Authentication subheader", "sap.auth.subheader", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-        { &hf_sap_auth_data_padding, { "Authentication data padding", "sap.auth.data_padding", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-        { &hf_sap_auth_data_padding_len, { "Authentication data pad count (bytes)", "sap.auth.data_padding.len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-        { &hf_sap_payload_type, { "Payload type", "sap.payload_type", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { &hf_sap_auth_len, { "Authentication Length", "sap_auth_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+        { &hf_sap_message_identifier_hash, { "Message Identifier Hash", "sap_message_identifier_hash", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+        { &hf_sap_originating_source_ipv4, { "Originating Source", "sap_originating_source", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { &hf_sap_originating_source_ipv6, { "Originating Source", "sap_originating_source_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { &hf_sap_auth_subheader, { "Authentication subheader", "sap_auth_subheader", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { &hf_sap_auth_data_padding, { "Authentication data padding", "sap_auth_data_padding", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { &hf_sap_auth_data_padding_len, { "Authentication data pad count (bytes)", "sap_auth_data_padding_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+        { &hf_sap_payload_type, { "Payload type", "sap_payload_type", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
     };
     static gint *ett[] = {

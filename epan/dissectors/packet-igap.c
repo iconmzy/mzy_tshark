@@ -232,89 +232,89 @@ proto_register_igap(void)
 {
     static hf_register_info hf[] = {
         { &hf_type,
-          { "Type", "igap.type",
+          { "Type", "igap_type",
             FT_UINT8, BASE_HEX, VALS(igap_types), 0,
             "IGAP Packet Type", HFILL }
         },
         { &hf_max_resp,
-          { "Max Response Time", "igap.max_resp",
+          { "Max Response Time", "igap_max_resp",
             FT_UINT8, BASE_DEC, NULL, 0,
             NULL, HFILL }
         },
         { &hf_checksum,
-          { "Checksum", "igap.checksum",
+          { "Checksum", "igap_checksum",
             FT_UINT16, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
         { &hf_checksum_status,
-          { "Checksum Status", "igap.checksum.status",
+          { "Checksum Status", "igap_checksum_status",
             FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_maddr,
-          { "Multicast group address", "igap.maddr",
+          { "Multicast group address", "igap_maddr",
             FT_IPv4, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
         { &hf_version,
-          { "Version", "igap.version",
+          { "Version", "igap_version",
             FT_UINT8, BASE_HEX, VALS(igap_version), 0,
             "IGAP protocol version", HFILL }
         },
         { &hf_subtype,
-          { "Subtype", "igap.subtype",
+          { "Subtype", "igap_subtype",
             FT_UINT8, BASE_HEX, VALS(igap_subtypes), 0,
             NULL, HFILL }
         },
         { &hf_challengeid,
-          { "Challenge ID", "igap.challengeid",
+          { "Challenge ID", "igap_challengeid",
             FT_UINT8, BASE_HEX, NULL, 0,
             NULL, HFILL }
         },
         { &hf_asize,
-          { "Account Size", "igap.asize",
+          { "Account Size", "igap_asize",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Length of the User Account field", HFILL }
         },
         { &hf_msize,
-          { "Message Size", "igap.msize",
+          { "Message Size", "igap_msize",
             FT_UINT8, BASE_DEC, NULL, 0,
             "Length of the Message field", HFILL }
         },
         { &hf_account,
-          { "User Account", "igap.account",
+          { "User Account", "igap_account",
             FT_STRING, BASE_NONE, NULL, 0,
             NULL, HFILL }
         },
 
         /* Generated from convert_proto_tree_add_text.pl */
         { &hf_igap_user_password,
-          { "User password", "igap.user_password",
+          { "User password", "igap_user_password",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_igap_result_of_md5_calculation,
-          { "Result of MD5 calculation", "igap.result_of_md5_calculation",
+          { "Result of MD5 calculation", "igap_result_of_md5_calculation",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_igap_challenge,
-          { "Challenge", "igap.challenge",
+          { "Challenge", "igap_challenge",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_igap_authentication_result,
-          { "Authentication result", "igap.authentication_result",
+          { "Authentication result", "igap_authentication_result",
             FT_UINT8, BASE_HEX, VALS(igap_auth_result), 0x0,
             NULL, HFILL }
         },
         { &hf_igap_accounting_status,
-          { "Accounting status", "igap.accounting_status",
+          { "Accounting status", "igap_accounting_status",
             FT_UINT8, BASE_HEX, VALS(igap_account_status), 0x0,
             NULL, HFILL }
         },
         { &hf_igap_unknown_message,
-          { "Unknown message", "igap.unknown_message",
+          { "Unknown message", "igap_unknown_message",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },

@@ -256,48 +256,48 @@ proto_register_iser(void)
     module_t *iser_module;
     static hf_register_info hf[] = {
         { &hf_iser_flags,
-            { "Flags", "iser.flags",
+            { "Flags", "iser_flags",
                FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_iser_opcode_f,
-            { "Opcode", "iser.flags.opcode",
+            { "Opcode", "iser_flags_opcode",
                FT_UINT8, BASE_HEX, VALS(iser_flags_opcode),
                ISER_OPCODE_MASK, NULL, HFILL}
         },
         { &hf_iser_RSV_f,
-            { "RSV", "iser.flags.rsv",
+            { "RSV", "iser_flags_rsv",
                FT_BOOLEAN, 8, NULL, ISER_RSV, "Read STag Valid", HFILL}
         },
         { &hf_iser_WSV_f,
-            { "WSV", "iser.flags.wsv",
+            { "WSV", "iser_flags_wsv",
                FT_BOOLEAN, 8, NULL, ISER_WSV, "Write STag Valid", HFILL}
         },
         { &hf_iser_REJ_f,
-            { "REJ", "iser.flags.rej",
+            { "REJ", "iser_flags_rej",
                FT_BOOLEAN, 8, NULL, ISER_REJ, "Target reject connection", HFILL}
         },
         { &hf_iser_write_stag,
-            { "Write STag", "iser.write_stag",
+            { "Write STag", "iser_write_stag",
                FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_iser_write_va,
-            { "Write Base Offset", "iser.write_base_offset",
+            { "Write Base Offset", "iser_write_base_offset",
                FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_iser_read_stag,
-            { "Read STag", "iser.read_stag",
+            { "Read STag", "iser_read_stag",
                FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_iser_read_va,
-            { "Read Base Offset", "iser.read_base_offset",
+            { "Read Base Offset", "iser_read_base_offset",
                FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_iser_ird,
-            { "iSER-IRD", "iser.ird",
+            { "iSER-IRD", "iser_ird",
                FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_iser_ord,
-            { "iSER-ORD", "iser.ord",
+            { "iSER-ORD", "iser_ord",
                FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         }
     };

@@ -397,125 +397,125 @@ proto_register_lapdm(void)
     static hf_register_info hf[] = {
 
         { &hf_lapdm_address,
-          { "Address Field", "lapdm.address_field", FT_UINT8, BASE_HEX, NULL, 0x0,
+          { "Address Field", "lapdm_address_field", FT_UINT8, BASE_HEX, NULL, 0x0,
             "Address", HFILL }},
 
         { &hf_lapdm_ea,
-          { "EA", "lapdm.ea", FT_UINT8, BASE_DEC, VALS(lapdm_ea_vals), LAPDM_EA,
+          { "EA", "lapdm_ea", FT_UINT8, BASE_DEC, VALS(lapdm_ea_vals), LAPDM_EA,
             "Address field extension bit", HFILL }},
 
         { &hf_lapdm_cr,
-          { "C/R", "lapdm.cr", FT_UINT8, BASE_DEC, NULL, LAPDM_CR,
+          { "C/R", "lapdm_cr", FT_UINT8, BASE_DEC, NULL, LAPDM_CR,
             "Command/response field bit", HFILL }},
 
         { &hf_lapdm_lpd,
-          { "LPD", "lapdm.lpd", FT_UINT8, BASE_DEC, VALS(lapdm_lpd_vals), LAPDM_LPD,
+          { "LPD", "lapdm_lpd", FT_UINT8, BASE_DEC, VALS(lapdm_lpd_vals), LAPDM_LPD,
             "Link Protocol Discriminator", HFILL }},
 
         { &hf_lapdm_sapi,
-          { "SAPI", "lapdm.sapi", FT_UINT8, BASE_DEC, VALS(lapdm_sapi_vals), LAPDM_SAPI,
+          { "SAPI", "lapdm_sapi", FT_UINT8, BASE_DEC, VALS(lapdm_sapi_vals), LAPDM_SAPI,
             "Service access point identifier", HFILL }},
 
         { &hf_lapdm_control,
-          { "Control Field", "lapdm.control_field", FT_UINT8, BASE_HEX, NULL, 0x0,
+          { "Control Field", "lapdm_control_field", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_lapdm_n_r,
-          { "N(R)", "lapdm.control.n_r", FT_UINT8, BASE_DEC,
+          { "N(R)", "lapdm_control_n_r", FT_UINT8, BASE_DEC,
             NULL, XDLC_N_R_MASK, NULL, HFILL }},
 
         { &hf_lapdm_n_s,
-          { "N(S)", "lapdm.control.n_s", FT_UINT8, BASE_DEC,
+          { "N(S)", "lapdm_control_n_s", FT_UINT8, BASE_DEC,
             NULL, XDLC_N_S_MASK, NULL, HFILL }},
 
         { &hf_lapdm_p,
-          { "Poll", "lapdm.control.p", FT_BOOLEAN, 8,
+          { "Poll", "lapdm_control_p", FT_BOOLEAN, 8,
             TFS(&tfs_true_false), XDLC_P_F, NULL, HFILL }},
 
         { &hf_lapdm_f,
-          { "Final", "lapdm.control.f", FT_BOOLEAN, 8,
+          { "Final", "lapdm_control_f", FT_BOOLEAN, 8,
             TFS(&tfs_true_false), XDLC_P_F, NULL, HFILL }},
 
         { &hf_lapdm_s_ftype,
-          { "Supervisory frame type", "lapdm.control.s_ftype", FT_UINT8, BASE_HEX,
+          { "Supervisory frame type", "lapdm_control_s_ftype", FT_UINT8, BASE_HEX,
             VALS(stype_vals), XDLC_S_FTYPE_MASK, NULL, HFILL }},
 
         { &hf_lapdm_u_modifier_cmd,
-          { "Command", "lapdm.control.u_modifier_cmd", FT_UINT8, BASE_HEX,
+          { "Command", "lapdm_control_u_modifier_cmd", FT_UINT8, BASE_HEX,
             VALS(modifier_vals_cmd), XDLC_U_MODIFIER_MASK, NULL, HFILL }},
 
         { &hf_lapdm_u_modifier_resp,
-          { "Response", "lapdm.control.u_modifier_resp", FT_UINT8, BASE_HEX,
+          { "Response", "lapdm_control_u_modifier_resp", FT_UINT8, BASE_HEX,
             VALS(modifier_vals_resp), XDLC_U_MODIFIER_MASK, NULL, HFILL }},
 
         { &hf_lapdm_ftype_i,
-          { "Frame type", "lapdm.control.ftype", FT_UINT8, BASE_HEX,
+          { "Frame type", "lapdm_control_ftype", FT_UINT8, BASE_HEX,
             VALS(ftype_vals), XDLC_I_MASK, NULL, HFILL }},
 
         { &hf_lapdm_ftype_s_u,
-          { "Frame type", "lapdm.control.ftype", FT_UINT8, BASE_HEX,
+          { "Frame type", "lapdm_control_ftype", FT_UINT8, BASE_HEX,
             VALS(ftype_vals), XDLC_S_U_MASK, NULL, HFILL }},
 
         { &hf_lapdm_length,
-          { "Length Field", "lapdm.length_field", FT_UINT8, BASE_HEX,
+          { "Length Field", "lapdm_length_field", FT_UINT8, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_lapdm_el,
-          { "EL", "lapdm.el", FT_UINT8, BASE_DEC,
+          { "EL", "lapdm_el", FT_UINT8, BASE_DEC,
             VALS(lapdm_el_vals), LAPDM_EL, "Length indicator field extension bit", HFILL }},
 
         { &hf_lapdm_m,
-          { "M", "lapdm.m", FT_UINT8, BASE_DEC,
+          { "M", "lapdm_m", FT_UINT8, BASE_DEC,
             VALS(lapdm_m_vals), LAPDM_M, "More data bit", HFILL }},
 
         { &hf_lapdm_len,
-          { "Length", "lapdm.length", FT_UINT8, BASE_DEC,
+          { "Length", "lapdm_length", FT_UINT8, BASE_DEC,
             NULL, LAPDM_LEN, "Length indicator", HFILL }},
 
         /* Fragment reassembly
          */
         { &hf_lapdm_fragment_data,
-          { "Fragment Data", "lapdm.fragment_data", FT_NONE, BASE_NONE,
+          { "Fragment Data", "lapdm_fragment_data", FT_NONE, BASE_NONE,
             NULL, 0x00, NULL, HFILL }},
 
         { &hf_lapdm_fragments,
-          { "Message fragments", "lapdm.fragments", FT_NONE, BASE_NONE,
+          { "Message fragments", "lapdm_fragments", FT_NONE, BASE_NONE,
             NULL, 0x00, "LAPDm Message fragments", HFILL }},
 
         { &hf_lapdm_fragment,
-          { "Message fragment", "lapdm.fragment", FT_FRAMENUM, BASE_NONE,
+          { "Message fragment", "lapdm_fragment", FT_FRAMENUM, BASE_NONE,
             NULL, 0x00, "LAPDm Message fragment", HFILL }},
 
         { &hf_lapdm_fragment_overlap,
-          { "Message fragment overlap", "lapdm.fragment.overlap", FT_BOOLEAN, BASE_NONE,
+          { "Message fragment overlap", "lapdm_fragment_overlap", FT_BOOLEAN, BASE_NONE,
             NULL, 0x0, "LAPDm Message fragment overlaps with other fragment(s)", HFILL }},
 
         { &hf_lapdm_fragment_overlap_conflicts,
-          { "Message fragment overlapping with conflicting data", "lapdm.fragment.overlap.conflicts", FT_BOOLEAN, BASE_NONE,
+          { "Message fragment overlapping with conflicting data", "lapdm_fragment_overlap_conflicts", FT_BOOLEAN, BASE_NONE,
             NULL, 0x0, "LAPDm Message fragment overlaps with conflicting data", HFILL }},
 
         { &hf_lapdm_fragment_multiple_tails,
-          { "Message has multiple tail fragments", "lapdm.fragment.multiple_tails", FT_BOOLEAN, BASE_NONE,
+          { "Message has multiple tail fragments", "lapdm_fragment_multiple_tails", FT_BOOLEAN, BASE_NONE,
             NULL, 0x0, "LAPDm Message fragment has multiple tail fragments", HFILL }},
 
         { &hf_lapdm_fragment_too_long_fragment,
-          { "Message fragment too long", "lapdm.fragment.too_long_fragment", FT_BOOLEAN, BASE_NONE,
+          { "Message fragment too long", "lapdm_fragment_too_long_fragment", FT_BOOLEAN, BASE_NONE,
             NULL, 0x0, "LAPDm Message fragment data goes beyond the packet end", HFILL }},
 
         { &hf_lapdm_fragment_error,
-          { "Message defragmentation error", "lapdm.fragment.error", FT_FRAMENUM, BASE_NONE,
+          { "Message defragmentation error", "lapdm_fragment_error", FT_FRAMENUM, BASE_NONE,
             NULL, 0x00, "LAPDm Message defragmentation error due to illegal fragments", HFILL }},
 
         { &hf_lapdm_fragment_count,
-          { "Message fragment count", "lapdm.fragment.count", FT_UINT32, BASE_DEC,
+          { "Message fragment count", "lapdm_fragment_count", FT_UINT32, BASE_DEC,
             NULL, 0x00, NULL, HFILL }},
 
         { &hf_lapdm_reassembled_in,
-          { "Reassembled in", "lapdm.reassembled.in", FT_FRAMENUM, BASE_NONE,
+          { "Reassembled in", "lapdm_reassembled_in", FT_FRAMENUM, BASE_NONE,
             NULL, 0x00, "LAPDm Message has been reassembled in this packet.", HFILL }},
 
         { &hf_lapdm_reassembled_length,
-          { "Reassembled LAPDm length", "lapdm.reassembled.length", FT_UINT32, BASE_DEC,
+          { "Reassembled LAPDm length", "lapdm_reassembled_length", FT_UINT32, BASE_DEC,
             NULL, 0x00, "The total length of the reassembled payload", HFILL }}
 
     };

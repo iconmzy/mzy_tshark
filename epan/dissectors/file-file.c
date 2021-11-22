@@ -306,57 +306,57 @@ proto_register_file(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_file_record_number,
-		  { "Record Number", "file.record_number",
+		  { "Record Number", "file_record_number",
 		    FT_UINT32, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_file_record_len,
-		  { "Record length", "file.record_len",
+		  { "Record length", "file_record_len",
 		    FT_UINT32, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 #if 0
 		{ &hf_frame_file_off,
-		  { "File Offset", "file.offset",
+		  { "File Offset", "file_offset",
 		    FT_INT64, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 #endif
 		{ &hf_file_marked,
-		  { "File record is marked", "file.marked",
+		  { "File record is marked", "file_marked",
 		    FT_BOOLEAN, BASE_NONE, NULL, 0x0,
 		    "File record is marked in the GUI", HFILL }},
 
 		{ &hf_file_ignored,
-		  { "File record is ignored", "file.ignored",
+		  { "File record is ignored", "file_ignored",
 		    FT_BOOLEAN, BASE_NONE, NULL, 0x0,
 		    "File record is ignored by the dissectors", HFILL }},
 
 		{ &hf_file_protocols,
-		  { "File record types in frame", "file.record_types",
+		  { "File record types in frame", "file_record_types",
 		    FT_STRING, BASE_NONE, NULL, 0x0,
 		    "File record types carried by this frame", HFILL }},
 
 		{ &hf_file_color_filter_name,
-		  { "Coloring Rule Name", "file.coloring_rule.name",
+		  { "Coloring Rule Name", "file_coloring_rule_name",
 		    FT_STRING, BASE_NONE, NULL, 0x0,
 		    "The file record matched the coloring rule with this name", HFILL }},
 
 		{ &hf_file_color_filter_text,
-		  { "Coloring Rule String", "file.coloring_rule.string",
+		  { "Coloring Rule String", "file_coloring_rule_string",
 		    FT_STRING, BASE_NONE, NULL, 0x0,
 		    "The file record matched this coloring rule string", HFILL }},
 
 		{ &hf_file_num_p_prot_data,
-		  { "Number of per-record-data", "file.p_record_data",
+		  { "Number of per-record-data", "file_p_record_data",
 		    FT_UINT32, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_file_proto_name_and_key,
-		  { "Protocol Name and Key", "file.proto_name_and_key",
+		  { "Protocol Name and Key", "file_proto_name_and_key",
 		    FT_STRING, BASE_NONE, NULL, 0x0,
 		    NULL, HFILL }},
 
 		{ &hf_file_ftap_encap,
-		  { "Encapsulation type", "file.encap_type",
+		  { "Encapsulation type", "file_encap_type",
 		    FT_INT16, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }},
 	};

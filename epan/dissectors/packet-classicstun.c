@@ -557,121 +557,121 @@ proto_register_classicstun(void)
 {
     static hf_register_info hf[] = {
         { &hf_classicstun_type,
-            { "Message Type",   "classicstun.type",     FT_UINT16,
+            { "Message Type",   "classicstun_type",     FT_UINT16,
             BASE_HEX,   VALS(messages), 0x0,    NULL,   HFILL }
         },
         { &hf_classicstun_length,
-            { "Message Length", "classicstun.length",   FT_UINT16,
+            { "Message Length", "classicstun_length",   FT_UINT16,
             BASE_HEX,   NULL,   0x0,    NULL,   HFILL }
         },
         { &hf_classicstun_id,
-            { "Message Transaction ID", "classicstun.id",   FT_BYTES,
+            { "Message Transaction ID", "classicstun_id",   FT_BYTES,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL }
         },
         { &hf_classicstun_att,
-            { "Attributes",     "classicstun.att",  FT_NONE,
+            { "Attributes",     "classicstun_att",  FT_NONE,
             BASE_NONE,      NULL,   0x0,    NULL,   HFILL }
         },
         { &hf_classicstun_response_in,
-            { "Response In", "classicstun.response_in",
+            { "Response In", "classicstun_response_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "The response to this CLASSICSTUN query is in this frame", HFILL }},
         { &hf_classicstun_response_to,
-            { "Request In", "classicstun.response_to",
+            { "Request In", "classicstun_response_to",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "This is a response to the CLASSICSTUN Request in this frame", HFILL }},
         { &hf_classicstun_time,
-            { "Time", "classicstun.time",
+            { "Time", "classicstun_time",
             FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
             "The time between the Request and the Response", HFILL }},
 
         /* ////////////////////////////////////// */
         { &classicstun_att_type,
-            { "Attribute Type", "classicstun.att.type", FT_UINT16,
+            { "Attribute Type", "classicstun_att_type", FT_UINT16,
             BASE_HEX,   VALS(attributes),   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_length,
-            { "Attribute Length",   "classicstun.att.length",   FT_UINT16,
+            { "Attribute Length",   "classicstun_att_length",   FT_UINT16,
             BASE_DEC,   NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_value,
-            { "Value",  "classicstun.att.value",    FT_BYTES,
+            { "Value",  "classicstun_att_value",    FT_BYTES,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_family,
-            { "Protocol Family",    "classicstun.att.family",   FT_UINT16,
+            { "Protocol Family",    "classicstun_att_family",   FT_UINT16,
             BASE_HEX,   VALS(attributes_family),    0x0,    NULL,   HFILL }
         },
         { &classicstun_att_ipv4,
-            { "IP",     "classicstun.att.ipv4", FT_IPv4,
+            { "IP",     "classicstun_att_ipv4", FT_IPv4,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_ipv6,
-            { "IP",     "classicstun.att.ipv6", FT_IPv6,
+            { "IP",     "classicstun_att_ipv6", FT_IPv6,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_port,
-            { "Port",   "classicstun.att.port", FT_UINT16,
+            { "Port",   "classicstun_att_port", FT_UINT16,
             BASE_DEC,   NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_change_ip,
-            { "Change IP","classicstun.att.change.ip",  FT_BOOLEAN,
+            { "Change IP","classicstun_att_change_ip",  FT_BOOLEAN,
             16,     TFS(&tfs_set_notset),   0x0004, NULL,   HFILL}
         },
         { &classicstun_att_change_port,
-            { "Change Port","classicstun.att.change.port",  FT_BOOLEAN,
+            { "Change Port","classicstun_att_change_port",  FT_BOOLEAN,
             16,     TFS(&tfs_set_notset),   0x0002, NULL,   HFILL}
         },
         { &classicstun_att_unknown,
-            { "Unknown Attribute","classicstun.att.unknown",    FT_UINT16,
+            { "Unknown Attribute","classicstun_att_unknown",    FT_UINT16,
             BASE_HEX,   NULL,   0x0,    NULL,   HFILL}
         },
         { &classicstun_att_error_class,
-            { "Error Class","classicstun.att.error.class",  FT_UINT8,
+            { "Error Class","classicstun_att_error_class",  FT_UINT8,
             BASE_DEC,   NULL,   0x07,   NULL,   HFILL}
         },
         { &classicstun_att_error_number,
-            { "Error Code","classicstun.att.error", FT_UINT8,
+            { "Error Code","classicstun_att_error", FT_UINT8,
             BASE_DEC,   NULL,   0x0,    NULL,   HFILL}
         },
         { &classicstun_att_error_reason,
-            { "Error Reason Phase","classicstun.att.error.reason",  FT_STRING,
+            { "Error Reason Phase","classicstun_att_error_reason",  FT_STRING,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL}
         },
         { &classicstun_att_xor_ipv4,
-            { "IP (XOR-d)",     "classicstun.att.ipv4-xord",    FT_IPv4,
+            { "IP (XOR-d)",     "classicstun_att_ipv4-xord",    FT_IPv4,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_xor_ipv6,
-            { "IP (XOR-d)",     "classicstun.att.ipv6-xord",    FT_IPv6,
+            { "IP (XOR-d)",     "classicstun_att_ipv6-xord",    FT_IPv6,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_xor_port,
-            { "Port (XOR-d)",   "classicstun.att.port-xord",    FT_UINT16,
+            { "Port (XOR-d)",   "classicstun_att_port-xord",    FT_UINT16,
             BASE_DEC,   NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_server_string,
-            { "Server version","classicstun.att.server",    FT_STRING,
+            { "Server version","classicstun_att_server",    FT_STRING,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL}
         },
         { &classicstun_att_lifetime,
-            { "Lifetime",   "classicstun.att.lifetime", FT_UINT32,
+            { "Lifetime",   "classicstun_att_lifetime", FT_UINT32,
             BASE_DEC,   NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_magic_cookie,
-            { "Magic Cookie",   "classicstun.att.magic.cookie", FT_UINT32,
+            { "Magic Cookie",   "classicstun_att_magic_cookie", FT_UINT32,
             BASE_HEX,   NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_bandwidth,
-            { "Bandwidth",  "classicstun.att.bandwidth",    FT_UINT32,
+            { "Bandwidth",  "classicstun_att_bandwidth",    FT_UINT32,
             BASE_DEC,   NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_data,
-            { "Data",   "classicstun.att.data", FT_BYTES,
+            { "Data",   "classicstun_att_data", FT_BYTES,
             BASE_NONE,  NULL,   0x0,    NULL,   HFILL }
         },
         { &classicstun_att_connection_request_binding,
-            { "Connection Request Binding", "classicstun.att.connection_request_binding", FT_STRING,
+            { "Connection Request Binding", "classicstun_att_connection_request_binding", FT_STRING,
             BASE_NONE,  NULL, 0x0,  NULL,   HFILL }
         },
     };

@@ -80,10 +80,10 @@ void
 proto_register_bctp (void)
 {
 	static hf_register_info hf[] = {
-		{&hf_bctp_bvei, {"BVEI", "bctp.bvei", FT_UINT16, BASE_HEX, VALS(bvei_vals), 0x4000, "BCTP Version Error Indicator", HFILL }},
-		{&hf_bctp_bvi, {"BVI", "bctp.bvi", FT_UINT16, BASE_HEX, NULL, 0x1F00, "BCTP Version Indicator", HFILL }},
-		{&hf_bctp_tpei, {"TPEI", "bctp.tpei", FT_UINT16, BASE_HEX, NULL, 0x0040, "Tunneled Protocol Error Indicator", HFILL }},
-		{&hf_bctp_tpi, {"TPI", "bctp.tpi", FT_UINT16, BASE_HEX, NULL, 0x003F, "Tunneled Protocol Indicator", HFILL }},
+		{&hf_bctp_bvei, {"BVEI", "bctp_bvei", FT_UINT16, BASE_HEX, VALS(bvei_vals), 0x4000, "BCTP Version Error Indicator", HFILL }},
+		{&hf_bctp_bvi, {"BVI", "bctp_bvi", FT_UINT16, BASE_HEX, NULL, 0x1F00, "BCTP Version Indicator", HFILL }},
+		{&hf_bctp_tpei, {"TPEI", "bctp_tpei", FT_UINT16, BASE_HEX, NULL, 0x0040, "Tunneled Protocol Error Indicator", HFILL }},
+		{&hf_bctp_tpi, {"TPI", "bctp_tpi", FT_UINT16, BASE_HEX, NULL, 0x003F, "Tunneled Protocol Indicator", HFILL }},
 	};
 	static gint *ett[] = {
 		&ett_bctp

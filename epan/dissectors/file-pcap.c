@@ -222,77 +222,77 @@ proto_register_file_pcap(void)
 
     static hf_register_info hf[] = {
         { &hf_pcap_header,
-            { "Header",                                    "pcap.header",
+            { "Header",                                    "pcap_header",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_header_magic_number,
-            { "Magic Number",                              "pcap.header.magic_number",
+            { "Magic Number",                              "pcap_header_magic_number",
             FT_BYTES, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_header_version_major,
-            { "Version Major",                             "pcap.header.version.major",
+            { "Version Major",                             "pcap_header_version_major",
             FT_UINT16, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_header_version_minor,
-            { "Version Minor",                             "pcap.header.version.minor",
+            { "Version Minor",                             "pcap_header_version_minor",
             FT_UINT16, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_header_this_zone,
-            { "This Zone",                                 "pcap.header.this_zone",
+            { "This Zone",                                 "pcap_header_this_zone",
             FT_INT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_header_sigfigs,
-            { "Sigfigs",                                   "pcap.header.sigfigs",
+            { "Sigfigs",                                   "pcap_header_sigfigs",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_header_snapshot_length,
-            { "Snapshot Length",                           "pcap.header.snapshot_length",
+            { "Snapshot Length",                           "pcap_header_snapshot_length",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_header_link_type,
-            { "Link Type",                                 "pcap.header.link_type",
+            { "Link Type",                                 "pcap_header_link_type",
             FT_UINT32, BASE_DEC_HEX, VALS(link_type_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_packet,
-            { "Packet",                                    "pcap.packet",
+            { "Packet",                                    "pcap_packet",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_packet_timestamp,
-            { "Timestamp",                             "pcap.packet.timestamp",
+            { "Timestamp",                             "pcap_packet_timestamp",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_packet_timestamp_sec,
-            { "Timestamp sec",                             "pcap.packet.timestamp.sec",
+            { "Timestamp sec",                             "pcap_packet_timestamp_sec",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_packet_timestamp_usec,
-            { "Timestamp usec",                            "pcap.packet.timestamp.usec",
+            { "Timestamp usec",                            "pcap_packet_timestamp_usec",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_packet_included_length,
-            { "Included Length",                           "pcap.packet.included_length",
+            { "Included Length",                           "pcap_packet_included_length",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_packet_origin_length,
-            { "Origin Length",                             "pcap.packet.origin_length",
+            { "Origin Length",                             "pcap_packet_origin_length",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_pcap_packet_data,
-            { "Data",                                      "pcap.packet.data",
+            { "Data",                                      "pcap_packet_data",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },

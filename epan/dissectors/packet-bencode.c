@@ -278,25 +278,25 @@ proto_register_bencode(void)
 {
    static hf_register_info hf[] = {
       { &hf_bencode_str_length,
-        { "String Length", "bencode.str.length", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }
+        { "String Length", "bencode_str_length", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }
       },
       { &hf_bencode_str,
-        { "String", "bencode.str", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }
+        { "String", "bencode_str", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }
       },
       { &hf_bencode_int,
-        { "Integer", "bencode.int", FT_INT32, BASE_DEC, NULL, 0x0, NULL, HFILL }
+        { "Integer", "bencode_int", FT_INT32, BASE_DEC, NULL, 0x0, NULL, HFILL }
       },
       { &hf_bencode_dict,
-        { "Dictionary", "bencode.dict", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
+        { "Dictionary", "bencode_dict", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
       },
       { &hf_bencode_dict_entry,
-        { "Entry", "bencode.dict.entry", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
+        { "Entry", "bencode_dict_entry", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
       },
       { &hf_bencode_list,
-        { "List", "bencode.list", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
+        { "List", "bencode_list", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }
       },
       { &hf_bencode_truncated_data,
-        { "Truncated Data", "bencode.truncated_data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }
+        { "Truncated Data", "bencode_truncated_data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }
       },
    };
 

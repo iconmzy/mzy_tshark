@@ -556,76 +556,76 @@ proto_register_mpls(void)
 
         /* MPLS header fields */
         {&hf_mpls_label,
-         {"MPLS Label", "mpls.label",
+         {"MPLS Label", "mpls_label",
           FT_UINT32, BASE_DEC, NULL, 0xFFFFF000,
           NULL, HFILL }
         },
 
         {&hf_mpls_label_special,
-         {"MPLS Label", "mpls.label",
+         {"MPLS Label", "mpls_label",
           FT_UINT32, BASE_DEC, VALS(special_labels), 0xFFFFF000,
           NULL, HFILL }
         },
 
         {&hf_mpls_exp,
-         {"MPLS Experimental Bits", "mpls.exp",
+         {"MPLS Experimental Bits", "mpls_exp",
           FT_UINT32, BASE_DEC, NULL, 0x00000E00,
           NULL, HFILL }
         },
 
         {&hf_mpls_bos,
-         {"MPLS Bottom Of Label Stack", "mpls.bottom",
+         {"MPLS Bottom Of Label Stack", "mpls_bottom",
           FT_UINT32, BASE_DEC, NULL, 0x00000100,
           NULL, HFILL }
         },
 
         {&hf_mpls_ttl,
-         {"MPLS TTL", "mpls.ttl",
+         {"MPLS TTL", "mpls_ttl",
           FT_UINT32, BASE_DEC, NULL, 0x0000000FF,
           NULL, HFILL }
         },
 
         /* PW Associated Channel Header fields */
         {&hf_mpls_pw_ach_ver,
-         {"Channel Version", "pwach.ver",
+         {"Channel Version", "pwach_ver",
           FT_UINT8, BASE_DEC, NULL, 0x0F,
           "PW Associated Channel Version", HFILL }
         },
 
         {&hf_mpls_pw_ach_res,
-         {"Reserved", "pwach.res",
+         {"Reserved", "pwach_res",
           FT_UINT8, BASE_HEX, NULL, 0x0,
           NULL, HFILL }
         },
 
         {&hf_mpls_pw_ach_channel_type,
-         {"Channel Type", "pwach.channel_type",
+         {"Channel Type", "pwach_channel_type",
           FT_UINT16, BASE_HEX|BASE_EXT_STRING, &mpls_pwac_types_ext, 0x0,
           "PW Associated Channel Type", HFILL }
         },
 
         /* Generic/Preferred PW MPLS MCC Control Word fields */
         {&hf_mpls_pw_ach_mcc_proto,
-         {"Protocol Id", "mcc.proto",
+         {"Protocol Id", "mcc_proto",
           FT_UINT16, BASE_HEX|BASE_EXT_STRING, &mpls_pwac_types_ext, 0x0,
           "MCC Protocol", HFILL }
         },
 
         /* Generic/Preferred PW MPLS Control Word fields */
         {&hf_mpls_pw_mcw_flags,
-         {"Flags", "pwmcw.flags",
+         {"Flags", "pwmcw_flags",
           FT_UINT8, BASE_HEX, NULL, 0x0FC0,
           "Generic/Preferred PW MPLS Control Word Flags", HFILL }
         },
 
         {&hf_mpls_pw_mcw_length,
-         {"Length", "pwmcw.length",
+         {"Length", "pwmcw_length",
           FT_UINT8, BASE_DEC, NULL, 0x3F,
           "Generic/Preferred PW MPLS Control Word Length", HFILL }
         },
 
         {&hf_mpls_pw_mcw_sequence_number,
-         {"Sequence Number", "pwmcw.sequence_number",
+         {"Sequence Number", "pwmcw_sequence_number",
           FT_UINT16, BASE_DEC, NULL, 0x0,
           "Generic/Preferred PW MPLS Control Word Sequence Number", HFILL }
         },

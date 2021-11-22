@@ -491,175 +491,175 @@ void proto_register_bfcp(void)
 	static hf_register_info hf[] = {
 		{
 			&hf_bfcp_version,
-			{ "Version(ver)", "bfcp.ver",
+			{ "Version(ver)", "bfcp_ver",
 			  FT_UINT8, BASE_DEC, NULL, 0xe0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_hdr_r_bit,
-			{ "Transaction Responder (R)", "bfcp.hdr_r_bit",
+			{ "Transaction Responder (R)", "bfcp_hdr_r_bit",
 			  FT_BOOLEAN, 8, NULL, 0x10,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_hdr_f_bit,
-			{ "Fragmentation (F)", "bfcp.hdr_f_bit",
+			{ "Fragmentation (F)", "bfcp_hdr_f_bit",
 			  FT_BOOLEAN, 8, NULL, 0x08,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_primitive,
-			{ "Primitive", "bfcp.primitive",
+			{ "Primitive", "bfcp_primitive",
 			  FT_UINT8, BASE_DEC, VALS(map_bfcp_primitive), 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_payload_length,
-			{ "Payload Length", "bfcp.payload_length",
+			{ "Payload Length", "bfcp_payload_length",
 			  FT_UINT16, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_conference_id,
-			{ "Conference ID", "bfcp.conference_id",
+			{ "Conference ID", "bfcp_conference_id",
 			  FT_UINT32, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_transaction_id,
-			{ "Transaction ID", "bfcp.transaction_id",
+			{ "Transaction ID", "bfcp_transaction_id",
 			  FT_UINT16, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_user_id,
-			{ "User ID", "bfcp.user_id",
+			{ "User ID", "bfcp_user_id",
 			  FT_UINT16, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_payload,
-			{ "Payload", "bfcp.payload",
+			{ "Payload", "bfcp_payload",
 			  FT_BYTES, BASE_NONE, NULL, 0x0, NULL,
 			  HFILL }
 		},
 		{
 			&hf_bfcp_attribute_types,
-			{ "Attribute Type", "bfcp.attribute_type",
+			{ "Attribute Type", "bfcp_attribute_type",
 			  FT_UINT8, BASE_DEC, VALS(map_bfcp_attribute_types), 0xFE,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_attribute_types_m_bit,
-			{ "Mandatory bit(M)", "bfcp.attribute_types_m_bit",
+			{ "Mandatory bit(M)", "bfcp_attribute_types_m_bit",
 			  FT_BOOLEAN, 8, NULL, 0x01,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_attribute_length,
-			{ "Attribute Length", "bfcp.attribute_length",
+			{ "Attribute Length", "bfcp_attribute_length",
 			  FT_UINT16, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_beneficiary_id,
-			{ "BENEFICIARY-ID", "bfcp.beneficiary_id",
+			{ "BENEFICIARY-ID", "bfcp_beneficiary_id",
 			  FT_UINT16, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_floor_id,
-			{ "FLOOR-ID", "bfcp.floor_id",
+			{ "FLOOR-ID", "bfcp_floor_id",
 			  FT_UINT16, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_floor_request_id,
-			{ "FLOOR-REQUEST-ID", "bfcp.floorrequest_id",
+			{ "FLOOR-REQUEST-ID", "bfcp_floorrequest_id",
 			  FT_UINT16, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_priority,
-			{ "FLOOR-REQUEST-ID", "bfcp.priority",
+			{ "FLOOR-REQUEST-ID", "bfcp_priority",
 			  FT_UINT16, BASE_DEC, NULL, 0xe000,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_request_status,
-			{ "Request Status", "bfcp.request_status",
+			{ "Request Status", "bfcp_request_status",
 			  FT_UINT8, BASE_DEC, VALS(map_bfcp_request_status), 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_queue_pos,
-			{ "Queue Position", "bfcp.queue_pos",
+			{ "Queue Position", "bfcp_queue_pos",
 			  FT_UINT8, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_error_code,
-			{ "Error Code", "bfcp.error_code",
+			{ "Error Code", "bfcp_error_code",
 			  FT_UINT8, BASE_DEC, VALS(bfcp_error_code_valuse), 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_error_info_text,
-			{ "Text", "bfcp.error_info_text",
+			{ "Text", "bfcp_error_info_text",
 			  FT_STRING, BASE_NONE, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_part_prov_info_text,
-			{ "Text", "bfcp.part_prov_info_text",
+			{ "Text", "bfcp_part_prov_info_text",
 			  FT_STRING, BASE_NONE, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_status_info_text,
-			{ "Text", "bfcp.status_info_text",
+			{ "Text", "bfcp_status_info_text",
 			  FT_STRING, BASE_NONE, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_supp_attr,
-			{ "Supported Attribute", "bfcp.supp_attr",
+			{ "Supported Attribute", "bfcp_supp_attr",
 			  FT_UINT8, BASE_DEC, VALS(map_bfcp_attribute_types), 0xFE,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_supp_prim,
-			{ "Supported Primitive", "bfcp.supp_primitive",
+			{ "Supported Primitive", "bfcp_supp_primitive",
 			  FT_UINT8, BASE_DEC, VALS(map_bfcp_primitive), 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_user_disp_name,
-			{ "Name", "bfcp.user_disp_name",
+			{ "Name", "bfcp_user_disp_name",
 			  FT_STRING, BASE_NONE, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_user_uri,
-			{ "URI", "bfcp.user_uri",
+			{ "URI", "bfcp_user_uri",
 			  FT_STRING, BASE_NONE, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_req_by_id,
-			{ "Requested-by ID", "bfcp.req_by_i",
+			{ "Requested-by ID", "bfcp_req_by_i",
 			  FT_UINT16, BASE_DEC, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_padding,
-			{ "Padding", "bfcp.padding",
+			{ "Padding", "bfcp_padding",
 			  FT_BYTES, BASE_NONE, NULL, 0x0,
 			  NULL, HFILL }
 		},
 		{
 			&hf_bfcp_error_specific_details,
-			{ "Error Specific Details", "bfcp.error_specific_details",
+			{ "Error Specific Details", "bfcp_error_specific_details",
 			  FT_BYTES, BASE_NONE, NULL, 0x0,
 			  NULL, HFILL }
 		},

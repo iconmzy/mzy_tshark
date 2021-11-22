@@ -197,29 +197,29 @@ proto_register_icp(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_icp_opcode,
-		  { "Opcode", "icp.opcode", FT_UINT8, BASE_HEX, VALS(opcode_vals),
+		  { "Opcode", "icp_opcode", FT_UINT8, BASE_HEX, VALS(opcode_vals),
 		    0x0, NULL, HFILL }},
 
 		{ &hf_icp_version,
-		  { "Version", "icp.version", FT_UINT8, BASE_DEC, NULL,
+		  { "Version", "icp_version", FT_UINT8, BASE_DEC, NULL,
 		    0x0, NULL, HFILL }},
 
 		{ &hf_icp_length,
-		  { "Length", "icp.length", FT_UINT16, BASE_DEC, NULL,
+		  { "Length", "icp_length", FT_UINT16, BASE_DEC, NULL,
 		    0x0, NULL, HFILL }},
 
 		{ &hf_icp_request_nr,
-		  { "Request Number", "icp.nr", FT_UINT32, BASE_DEC, NULL,
+		  { "Request Number", "icp_nr", FT_UINT32, BASE_DEC, NULL,
 		    0x0, NULL, HFILL }},
 
-      { &hf_icp_requester_host_address, { "Requester Host Address", "icp.requester_host_address", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_icp_url, { "URL", "icp.url", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_icp_object_length, { "Object length", "icp.object_length", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_icp_object_data, { "Object data", "icp.object_data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_icp_option_hit_obj, { "Option: ICP_FLAG_HIT_OBJ", "icp.option.hit_obj", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_icp_option_src_rtt, { "Option: ICP_FLAG_SRC_RTT", "icp.option.src_rtt", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
-      { &hf_icp_rtt, { "RTT", "icp.rtt", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
-      { &hf_icp_sender_host_ip_address, { "Sender Host IP address", "icp.sender_host_ip_address", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_icp_requester_host_address, { "Requester Host Address", "icp_requester_host_address", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_icp_url, { "URL", "icp_url", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_icp_object_length, { "Object length", "icp_object_length", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_icp_object_data, { "Object data", "icp_object_data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_icp_option_hit_obj, { "Option: ICP_FLAG_HIT_OBJ", "icp_option_hit_obj", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_icp_option_src_rtt, { "Option: ICP_FLAG_SRC_RTT", "icp_option_src_rtt", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+      { &hf_icp_rtt, { "RTT", "icp_rtt", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+      { &hf_icp_sender_host_ip_address, { "Sender Host IP address", "icp_sender_host_ip_address", FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 	};
 	static gint *ett[] = {
 		&ett_icp,

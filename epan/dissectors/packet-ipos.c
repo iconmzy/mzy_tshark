@@ -106,19 +106,19 @@ proto_register_ipos(void)
 {
     static hf_register_info hf[] = {
         { &hf_ipos_protocol,
-        { "Protocol", "ipos.proto", FT_UINT8, BASE_DEC, VALS(prototypenames), 0xF0,
+        { "Protocol", "ipos_proto", FT_UINT8, BASE_DEC, VALS(prototypenames), 0xF0,
         NULL, HFILL }},
 
         { &hf_ipos_priority,
-        { "Priority", "ipos.priority", FT_UINT8, BASE_DEC, NULL, 0x0F,
+        { "Priority", "ipos_priority", FT_UINT8, BASE_DEC, NULL, 0x0F,
         NULL, HFILL }},
 
         { &hf_ipos_ppe,
-        { "Packet Processing Engine", "ipos.ppe", FT_UINT8, BASE_HEX, VALS(ppetypenames), 0x0,
+        { "Packet Processing Engine", "ipos_ppe", FT_UINT8, BASE_HEX, VALS(ppetypenames), 0x0,
         NULL, HFILL }},
 
         { &hf_ipos_slot,
-        { "Destination (source) Slot", "ipos.slot", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Destination (source) Slot", "ipos_slot", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }}
     };
 

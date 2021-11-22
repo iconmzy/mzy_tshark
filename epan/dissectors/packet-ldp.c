@@ -3530,1018 +3530,1018 @@ proto_register_ldp(void)
 #if 0
         { &hf_ldp_req,
           /* Change the following to the type you need */
-          { "Request", "ldp.req", FT_BOOLEAN, BASE_NONE,
+          { "Request", "ldp_req", FT_BOOLEAN, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 #endif
 
 #if 0
         { &hf_ldp_rsp,
-          { "Response", "ldp.rsp", FT_BOOLEAN, BASE_NONE,
+          { "Response", "ldp_rsp", FT_BOOLEAN, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 #endif
 
         { &hf_ldp_version,
-          { "Version", "ldp.hdr.version", FT_UINT16, BASE_DEC,
+          { "Version", "ldp_hdr_version", FT_UINT16, BASE_DEC,
             NULL, 0x0, "LDP Version Number", HFILL }},
 
         { &hf_ldp_pdu_len,
-          { "PDU Length", "ldp.hdr.pdu_len", FT_UINT16, BASE_DEC,
+          { "PDU Length", "ldp_hdr_pdu_len", FT_UINT16, BASE_DEC,
             NULL, 0x0, "LDP PDU Length", HFILL }},
 
         { &hf_ldp_lsr,
-          { "LSR ID", "ldp.hdr.ldpid.lsr", FT_IPv4, BASE_NONE,
+          { "LSR ID", "ldp_hdr_ldpid_lsr", FT_IPv4, BASE_NONE,
             NULL, 0x0, "LDP Label Space Router ID", HFILL }},
 
         { &hf_ldp_ls_id,
-          { "Label Space ID", "ldp.hdr.ldpid.lsid", FT_UINT16, BASE_DEC,
+          { "Label Space ID", "ldp_hdr_ldpid_lsid", FT_UINT16, BASE_DEC,
             NULL, 0, "LDP Label Space ID", HFILL }},
 
         { &hf_ldp_msg_ubit,
-          { "U bit", "ldp.msg.ubit", FT_BOOLEAN, 8,
+          { "U bit", "ldp_msg_ubit", FT_BOOLEAN, 8,
             TFS(&ldp_message_ubit), 0x80, "Unknown Message Bit", HFILL }},
 
         { &hf_ldp_msg_type,
-          { "Message Type", "ldp.msg.type", FT_UINT16, BASE_HEX,
+          { "Message Type", "ldp_msg_type", FT_UINT16, BASE_HEX,
             VALS(ldp_message_types), 0x7FFF, "LDP message type", HFILL }},
 
         { &hf_ldp_msg_len,
-          { "Message Length", "ldp.msg.len", FT_UINT16, BASE_DEC,
+          { "Message Length", "ldp_msg_len", FT_UINT16, BASE_DEC,
             NULL, 0x0, "LDP Message Length (excluding message type and len)", HFILL }},
 
         { &hf_ldp_msg_id,
-          { "Message ID", "ldp.msg.id", FT_UINT32, BASE_HEX,
+          { "Message ID", "ldp_msg_id", FT_UINT32, BASE_HEX,
             NULL, 0x0, "LDP Message ID", HFILL }},
 
         { &hf_ldp_msg_vendor_id,
-          { "Vendor ID", "ldp.msg.vendor.id", FT_UINT32, BASE_HEX,
+          { "Vendor ID", "ldp_msg_vendor_id", FT_UINT32, BASE_HEX,
             NULL, 0x0, "LDP Vendor-private Message ID", HFILL }},
 
         { &hf_ldp_msg_experiment_id,
-          { "Experiment ID", "ldp.msg.experiment.id", FT_UINT32, BASE_HEX,
+          { "Experiment ID", "ldp_msg_experiment_id", FT_UINT32, BASE_HEX,
             NULL, 0x0, "LDP Experimental Message ID", HFILL }},
 
         { &hf_ldp_tlv_unknown,
-          { "TLV Unknown bits", "ldp.msg.tlv.unknown", FT_UINT8, BASE_HEX,
+          { "TLV Unknown bits", "ldp_msg_tlv_unknown", FT_UINT8, BASE_HEX,
             VALS(tlv_unknown_vals), 0xC0, "TLV Unknown bits Field", HFILL }},
 
         { &hf_ldp_tlv_type,
-          { "TLV Type", "ldp.msg.tlv.type", FT_UINT16, BASE_HEX,
+          { "TLV Type", "ldp_msg_tlv_type", FT_UINT16, BASE_HEX,
             VALS(tlv_type_names), 0x3FFF, "TLV Type Field", HFILL }},
 
         { &hf_ldp_tlv_len,
-          { "TLV Length", "ldp.msg.tlv.len", FT_UINT16, BASE_DEC,
+          { "TLV Length", "ldp_msg_tlv_len", FT_UINT16, BASE_DEC,
             NULL, 0x0, "TLV Length Field", HFILL }},
 
         { &hf_ldp_tlv_value,
-          { "TLV Value", "ldp.msg.tlv.value", FT_BYTES, BASE_NONE,
+          { "TLV Value", "ldp_msg_tlv_value", FT_BYTES, BASE_NONE,
             NULL, 0x0, "TLV Value Bytes", HFILL }},
 
         { &hf_ldp_tlv_val_hold,
-          { "Hold Time", "ldp.msg.tlv.hello.hold", FT_UINT16, BASE_DEC,
+          { "Hold Time", "ldp_msg_tlv_hello_hold", FT_UINT16, BASE_DEC,
             NULL, 0x0, "Hello Common Parameters Hold Time", HFILL }},
 
         { &hf_ldp_tlv_val_target,
-          { "Targeted Hello", "ldp.msg.tlv.hello.targeted", FT_BOOLEAN, 16,
+          { "Targeted Hello", "ldp_msg_tlv_hello_targeted", FT_BOOLEAN, 16,
             TFS(&hello_targeted_vals), 0x8000, "Hello Common Parameters Targeted Bit", HFILL }},
 
         { &hf_ldp_tlv_val_request,
-          { "Hello Requested", "ldp.msg.tlv.hello.requested", FT_BOOLEAN, 16,
+          { "Hello Requested", "ldp_msg_tlv_hello_requested", FT_BOOLEAN, 16,
             TFS(&hello_requested_vals), 0x4000, "Hello Common Parameters Hello Requested Bit", HFILL }},
 
         { &hf_ldp_tlv_val_gtsm_flag,
-          { "GTSM Flag", "ldp.msg.tlv.hello.gtsm", FT_BOOLEAN, 16,
+          { "GTSM Flag", "ldp_msg_tlv_hello_gtsm", FT_BOOLEAN, 16,
             TFS(&tfs_set_notset), 0x2000, "Hello Common Parameters GTSM bit", HFILL }},
 
         { &hf_ldp_tlv_val_res,
-          { "Reserved", "ldp.msg.tlv.hello.res", FT_UINT16, BASE_HEX,
+          { "Reserved", "ldp_msg_tlv_hello_res", FT_UINT16, BASE_HEX,
             NULL, 0x1FFF, "Hello Common Parameters Reserved Field", HFILL }},
 
         { &hf_ldp_tlv_ipv4_taddr,
-          { "IPv4 Transport Address", "ldp.msg.tlv.ipv4.taddr", FT_IPv4, BASE_NONE,
+          { "IPv4 Transport Address", "ldp_msg_tlv_ipv4_taddr", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_config_seqno,
-          { "Configuration Sequence Number", "ldp.msg.tlv.hello.cnf_seqno", FT_UINT32, BASE_DEC,
+          { "Configuration Sequence Number", "ldp_msg_tlv_hello_cnf_seqno", FT_UINT32, BASE_DEC,
             NULL, 0x0, "Hello Configuration Sequence Number", HFILL }},
 
         { &hf_ldp_tlv_ipv6_taddr,
-          { "IPv6 Transport Address", "ldp.msg.tlv.ipv6.taddr", FT_IPv6, BASE_NONE,
+          { "IPv6 Transport Address", "ldp_msg_tlv_ipv6_taddr", FT_IPv6, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_fec_wc,
-          { "FEC Element Type", "ldp.msg.tlv.fec.type", FT_UINT8, BASE_DEC,
+          { "FEC Element Type", "ldp_msg_tlv_fec_type", FT_UINT8, BASE_DEC,
             VALS(fec_types_vals), 0x0, "Forwarding Equivalence Class Element Types", HFILL }},
 
         { &hf_ldp_tlv_fec_af,
-          { "FEC Element Address Type", "ldp.msg.tlv.fec.af", FT_UINT16, BASE_DEC,
+          { "FEC Element Address Type", "ldp_msg_tlv_fec_af", FT_UINT16, BASE_DEC,
             VALS(afn_vals), 0x0, "Forwarding Equivalence Class Element Address Family", HFILL }},
 
         { &hf_ldp_tlv_fec_len,
-          { "FEC Element Length", "ldp.msg.tlv.fec.len", FT_UINT8, BASE_DEC,
+          { "FEC Element Length", "ldp_msg_tlv_fec_len", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Forwarding Equivalence Class Element Length", HFILL }},
 
         { &hf_ldp_tlv_fec_pfval,
-          { "FEC Element Prefix Value", "ldp.msg.tlv.fec.pfval", FT_STRING, BASE_NONE,
+          { "FEC Element Prefix Value", "ldp_msg_tlv_fec_pfval", FT_STRING, BASE_NONE,
             NULL, 0x0, "Forwarding Equivalence Class Element Prefix", HFILL }},
 
         { &hf_ldp_tlv_fec_hoval,
-          { "FEC Element Host Address Value", "ldp.msg.tlv.fec.hoval", FT_STRING, BASE_NONE,
+          { "FEC Element Host Address Value", "ldp_msg_tlv_fec_hoval", FT_STRING, BASE_NONE,
             NULL, 0x0, "Forwarding Equivalence Class Element Address", HFILL }},
 
         { &hf_ldp_tlv_addrl_addr_family,
-          { "Address Family", "ldp.msg.tlv.addrl.addr_family", FT_UINT16, BASE_DEC,
+          { "Address Family", "ldp_msg_tlv_addrl_addr_family", FT_UINT16, BASE_DEC,
             VALS(afn_vals), 0x0, "Address Family List", HFILL }},
 
         { &hf_ldp_tlv_addrl_addr,
-          { "Address", "ldp.msg.tlv.addrl.addr", FT_STRING, BASE_NONE,
+          { "Address", "ldp_msg_tlv_addrl_addr", FT_STRING, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_hc_value,
-          { "Hop Count Value", "ldp.msg.tlv.hc.value", FT_UINT8, BASE_DEC,
+          { "Hop Count Value", "ldp_msg_tlv_hc_value", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Hop Count", HFILL }},
 
         { &hf_ldp_tlv_pv_lsrid,
-          { "LSR Id", "ldp.msg.tlv.pv.lsrid", FT_IPv4, BASE_NONE,
+          { "LSR Id", "ldp_msg_tlv_pv_lsrid", FT_IPv4, BASE_NONE,
             NULL, 0x0, "Path Vector LSR Id", HFILL }},
 
         { &hf_ldp_tlv_sess_ver,
-          { "Session Protocol Version", "ldp.msg.tlv.sess.ver", FT_UINT16, BASE_DEC,
+          { "Session Protocol Version", "ldp_msg_tlv_sess_ver", FT_UINT16, BASE_DEC,
             NULL, 0x0, "Common Session Parameters Protocol Version", HFILL }},
 
         { &hf_ldp_tlv_sess_ka,
-          { "Session KeepAlive Time", "ldp.msg.tlv.sess.ka", FT_UINT16, BASE_DEC,
+          { "Session KeepAlive Time", "ldp_msg_tlv_sess_ka", FT_UINT16, BASE_DEC,
             NULL, 0x0, "Common Session Parameters KeepAlive Time", HFILL }},
 
         { &hf_ldp_tlv_sess_advbit,
-          { "Session Label Advertisement Discipline", "ldp.msg.tlv.sess.advbit", FT_BOOLEAN, 8,
+          { "Session Label Advertisement Discipline", "ldp_msg_tlv_sess_advbit", FT_BOOLEAN, 8,
             TFS(&tlv_sess_advbit_vals), 0x80, "Common Session Parameters Label Advertisement Discipline", HFILL }},
 
         { &hf_ldp_tlv_sess_ldetbit,
-          { "Session Loop Detection", "ldp.msg.tlv.sess.ldetbit", FT_BOOLEAN, 8,
+          { "Session Loop Detection", "ldp_msg_tlv_sess_ldetbit", FT_BOOLEAN, 8,
             TFS(&tlv_sess_ldetbit_vals), 0x40, "Common Session Parameters Loop Detection", HFILL }},
 
         { &hf_ldp_tlv_sess_pvlim,
-          { "Session Path Vector Limit", "ldp.msg.tlv.sess.pvlim", FT_UINT8, BASE_DEC,
+          { "Session Path Vector Limit", "ldp_msg_tlv_sess_pvlim", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Common Session Parameters Path Vector Limit", HFILL }},
 
         { &hf_ldp_tlv_sess_mxpdu,
-          { "Session Max PDU Length", "ldp.msg.tlv.sess.mxpdu", FT_UINT16, BASE_DEC,
+          { "Session Max PDU Length", "ldp_msg_tlv_sess_mxpdu", FT_UINT16, BASE_DEC,
             NULL, 0x0, "Common Session Parameters Max PDU Length", HFILL }},
 
         { &hf_ldp_tlv_sess_rxlsr,
-          { "Session Receiver LSR Identifier", "ldp.msg.tlv.sess.rxlsr", FT_IPv4, BASE_NONE,
+          { "Session Receiver LSR Identifier", "ldp_msg_tlv_sess_rxlsr", FT_IPv4, BASE_NONE,
             NULL, 0x0, "Common Session Parameters LSR Identifier", HFILL }},
 
         { &hf_ldp_tlv_sess_rxls,
-          { "Session Receiver Label Space Identifier", "ldp.msg.tlv.sess.rxls", FT_UINT16, BASE_DEC,
+          { "Session Receiver Label Space Identifier", "ldp_msg_tlv_sess_rxls", FT_UINT16, BASE_DEC,
             NULL, 0x0, "Common Session Parameters Receiver Label Space Identifier", HFILL }},
 
         { &hf_ldp_tlv_sess_atm_merge,
-          { "Session ATM Merge Parameter", "ldp.msg.tlv.sess.atm.merge", FT_UINT8, BASE_DEC,
+          { "Session ATM Merge Parameter", "ldp_msg_tlv_sess_atm_merge", FT_UINT8, BASE_DEC,
             VALS(tlv_atm_merge_vals), 0xC0, "Merge ATM Session Parameters", HFILL }},
 
         { &hf_ldp_tlv_sess_atm_lr,
-          { "Number of ATM Label Ranges", "ldp.msg.tlv.sess.atm.lr", FT_UINT8, BASE_DEC,
+          { "Number of ATM Label Ranges", "ldp_msg_tlv_sess_atm_lr", FT_UINT8, BASE_DEC,
             NULL, 0x3C, "Number of Label Ranges", HFILL }},
 
         { &hf_ldp_tlv_sess_atm_dir,
-          { "Directionality", "ldp.msg.tlv.sess.atm.dir", FT_BOOLEAN, 8,
+          { "Directionality", "ldp_msg_tlv_sess_atm_dir", FT_BOOLEAN, 8,
             TFS(&tlv_atm_dirbit), 0x02, "Label Directionality", HFILL }},
 
         { &hf_ldp_tlv_sess_atm_minvpi,
-          { "Minimum VPI", "ldp.msg.tlv.sess.atm.minvpi", FT_UINT16, BASE_DEC,
+          { "Minimum VPI", "ldp_msg_tlv_sess_atm_minvpi", FT_UINT16, BASE_DEC,
             NULL, 0x0FFF, NULL, HFILL }},
 
         { &hf_ldp_tlv_sess_atm_minvci,
-          { "Minimum VCI", "ldp.msg.tlv.sess.atm.minvci", FT_UINT16, BASE_DEC,
+          { "Minimum VCI", "ldp_msg_tlv_sess_atm_minvci", FT_UINT16, BASE_DEC,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_sess_atm_maxvpi,
-          { "Maximum VPI", "ldp.msg.tlv.sess.atm.maxvpi", FT_UINT16, BASE_DEC,
+          { "Maximum VPI", "ldp_msg_tlv_sess_atm_maxvpi", FT_UINT16, BASE_DEC,
             NULL, 0x0FFF, NULL, HFILL }},
 
         { &hf_ldp_tlv_sess_atm_maxvci,
-          { "Maximum VCI", "ldp.msg.tlv.sess.atm.maxvci", FT_UINT16, BASE_DEC,
+          { "Maximum VCI", "ldp_msg_tlv_sess_atm_maxvci", FT_UINT16, BASE_DEC,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_sess_fr_merge,
-          { "Session Frame Relay Merge Parameter", "ldp.msg.tlv.sess.fr.merge", FT_UINT8, BASE_DEC,
+          { "Session Frame Relay Merge Parameter", "ldp_msg_tlv_sess_fr_merge", FT_UINT8, BASE_DEC,
             VALS(tlv_fr_merge_vals), 0xC0, "Merge Frame Relay Session Parameters", HFILL }},
 
         { &hf_ldp_tlv_sess_fr_lr,
-          { "Number of Frame Relay Label Ranges", "ldp.msg.tlv.sess.fr.lr", FT_UINT8, BASE_DEC,
+          { "Number of Frame Relay Label Ranges", "ldp_msg_tlv_sess_fr_lr", FT_UINT8, BASE_DEC,
             NULL, 0x3C, "Number of Label Ranges", HFILL }},
 
         { &hf_ldp_tlv_sess_fr_dir,
-          { "Directionality", "ldp.msg.tlv.sess.fr.dir", FT_BOOLEAN, 8,
+          { "Directionality", "ldp_msg_tlv_sess_fr_dir", FT_BOOLEAN, 8,
             TFS(&tlv_atm_dirbit), 0x02, "Label Directionality", HFILL }},
 
         { &hf_ldp_tlv_sess_fr_len,
-          { "Number of DLCI bits", "ldp.msg.tlv.sess.fr.len", FT_UINT16, BASE_DEC,
+          { "Number of DLCI bits", "ldp_msg_tlv_sess_fr_len", FT_UINT16, BASE_DEC,
             VALS(tlv_fr_len_vals), 0x0180, "DLCI Number of bits", HFILL }},
 
         { &hf_ldp_tlv_sess_fr_mindlci,
-          { "Minimum DLCI", "ldp.msg.tlv.sess.fr.mindlci", FT_UINT24, BASE_DEC,
+          { "Minimum DLCI", "ldp_msg_tlv_sess_fr_mindlci", FT_UINT24, BASE_DEC,
             NULL, 0x7FFFFF, NULL, HFILL }},
 
         { &hf_ldp_tlv_sess_fr_maxdlci,
-          { "Maximum DLCI", "ldp.msg.tlv.sess.fr.maxdlci", FT_UINT24, BASE_DEC,
+          { "Maximum DLCI", "ldp_msg_tlv_sess_fr_maxdlci", FT_UINT24, BASE_DEC,
             NULL, 0x7FFFFF, NULL, HFILL }},
 
         { &hf_ldp_tlv_ft_sess_flags,
-          { "Flags", "ldp.msg.tlv.ft_sess.flags", FT_UINT16, BASE_HEX,
+          { "Flags", "ldp_msg_tlv_ft_sess_flags", FT_UINT16, BASE_HEX,
             NULL, 0x0, "FT Session Flags", HFILL }},
 
         { &hf_ldp_tlv_ft_sess_flag_r,
-          { "R bit", "ldp.msg.tlv.ft_sess.flag_r", FT_BOOLEAN, 16,
+          { "R bit", "ldp_msg_tlv_ft_sess_flag_r", FT_BOOLEAN, 16,
             TFS(&tlv_ft_r), 0x8000, "FT Reconnect Flag", HFILL }},
 
         { &hf_ldp_tlv_ft_sess_flag_res,
-          { "Reserved", "ldp.msg.tlv.ft_sess.flag_res", FT_UINT16, BASE_HEX,
+          { "Reserved", "ldp_msg_tlv_ft_sess_flag_res", FT_UINT16, BASE_HEX,
             NULL, 0x7FF0, "Reserved bits", HFILL }},
 
         { &hf_ldp_tlv_ft_sess_flag_s,
-          { "S bit", "ldp.msg.tlv.ft_sess.flag_s", FT_BOOLEAN, 16,
+          { "S bit", "ldp_msg_tlv_ft_sess_flag_s", FT_BOOLEAN, 16,
             TFS(&tlv_ft_s), 0x8, "Save State Flag", HFILL }},
 
         { &hf_ldp_tlv_ft_sess_flag_a,
-          { "A bit", "ldp.msg.tlv.ft_sess.flag_a", FT_BOOLEAN, 16,
+          { "A bit", "ldp_msg_tlv_ft_sess_flag_a", FT_BOOLEAN, 16,
             TFS(&tlv_ft_a), 0x4, "All-Label protection Required", HFILL }},
 
         { &hf_ldp_tlv_ft_sess_flag_c,
-          { "C bit", "ldp.msg.tlv.ft_sess.flag_c", FT_BOOLEAN, 16,
+          { "C bit", "ldp_msg_tlv_ft_sess_flag_c", FT_BOOLEAN, 16,
             TFS(&tlv_ft_c), 0x2, "Check-Pointint Flag", HFILL }},
 
         { &hf_ldp_tlv_ft_sess_flag_l,
-          { "L bit", "ldp.msg.tlv.ft_sess.flag_l", FT_BOOLEAN, 16,
+          { "L bit", "ldp_msg_tlv_ft_sess_flag_l", FT_BOOLEAN, 16,
             TFS(&tlv_ft_l), 0x1, "Learn From network Flag", HFILL }},
 
         { &hf_ldp_tlv_ft_sess_res,
-          { "Reserved", "ldp.msg.tlv.ft_sess.res", FT_UINT16, BASE_HEX,
+          { "Reserved", "ldp_msg_tlv_ft_sess_res", FT_UINT16, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ft_sess_reconn_to,
-          { "Reconnect Timeout", "ldp.msg.tlv.ft_sess.reconn_to", FT_UINT32, BASE_DEC,
+          { "Reconnect Timeout", "ldp_msg_tlv_ft_sess_reconn_to", FT_UINT32, BASE_DEC,
             NULL, 0x0, "FT Reconnect Timeout", HFILL }},
 
         { &hf_ldp_tlv_ft_sess_recovery_time,
-          { "Recovery Time", "ldp.msg.tlv.ft_sess.recovery_time", FT_UINT32, BASE_DEC,
+          { "Recovery Time", "ldp_msg_tlv_ft_sess_recovery_time", FT_UINT32, BASE_DEC,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ft_ack_sequence_num,
-          { "FT ACK Sequence Number", "ldp.msg.tlv.ft_ack.sequence_num", FT_UINT32, BASE_HEX,
+          { "FT ACK Sequence Number", "ldp_msg_tlv_ft_ack_sequence_num", FT_UINT32, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_lbl_req_msg_id,
-          { "Label Request Message ID", "ldp.msg.tlv.lbl_req_msg_id", FT_UINT32, BASE_HEX,
+          { "Label Request Message ID", "ldp_msg_tlv_lbl_req_msg_id", FT_UINT32, BASE_HEX,
             NULL, 0x0, "Label Request Message to be aborted", HFILL }},
 
         { &hf_ldp_tlv_vendor_id,
-          { "Vendor ID", "ldp.msg.tlv.vendor_id", FT_UINT32, BASE_HEX,
+          { "Vendor ID", "ldp_msg_tlv_vendor_id", FT_UINT32, BASE_HEX,
             NULL, 0, "IEEE 802 Assigned Vendor ID", HFILL }},
 
         { &hf_ldp_tlv_experiment_id,
-          { "Experiment ID", "ldp.msg.tlv.experiment_id", FT_UINT32, BASE_HEX,
+          { "Experiment ID", "ldp_msg_tlv_experiment_id", FT_UINT32, BASE_HEX,
             NULL, 0, NULL, HFILL }},
 
         { &hf_ldp_tlv_generic_label,
-          { "Generic Label", "ldp.msg.tlv.generic.label", FT_UINT32, BASE_HEX,
+          { "Generic Label", "ldp_msg_tlv_generic_label", FT_UINT32, BASE_HEX,
             NULL, 0x000FFFFF, NULL, HFILL }},
 
         { &hf_ldp_tlv_atm_label_vbits,
-          { "V-bits", "ldp.msg.tlv.atm.label.vbits", FT_UINT8, BASE_HEX,
+          { "V-bits", "ldp_msg_tlv_atm_label_vbits", FT_UINT8, BASE_HEX,
             VALS(tlv_atm_vbits_vals), 0x30, "ATM Label V Bits", HFILL }},
 
         { &hf_ldp_tlv_atm_label_vpi,
-          { "VPI", "ldp.msg.tlv.atm.label.vpi", FT_UINT16, BASE_DEC,
+          { "VPI", "ldp_msg_tlv_atm_label_vpi", FT_UINT16, BASE_DEC,
             NULL, 0x0FFF, "ATM Label VPI", HFILL }},
 
         { &hf_ldp_tlv_atm_label_vci,
-          { "VCI", "ldp.msg.tlv.atm.label.vci", FT_UINT16, BASE_DEC,
+          { "VCI", "ldp_msg_tlv_atm_label_vci", FT_UINT16, BASE_DEC,
             NULL, 0, "ATM Label VCI", HFILL }},
 
         { &hf_ldp_tlv_fr_label_len,
-          { "Number of DLCI bits", "ldp.msg.tlv.fr.label.len", FT_UINT16, BASE_DEC,
+          { "Number of DLCI bits", "ldp_msg_tlv_fr_label_len", FT_UINT16, BASE_DEC,
             VALS(tlv_fr_len_vals), 0x0180, "DLCI Number of bits", HFILL }},
 
         { &hf_ldp_tlv_fr_label_dlci,
-          { "DLCI", "ldp.msg.tlv.fr.label.dlci", FT_UINT24, BASE_DEC,
+          { "DLCI", "ldp_msg_tlv_fr_label_dlci", FT_UINT24, BASE_DEC,
             NULL, 0x7FFFFF, "FRAME RELAY Label DLCI", HFILL }},
 
         { &hf_ldp_tlv_ft_protect_sequence_num,
-          { "FT Sequence Number", "ldp.msg.tlv.ft_protect.sequence_num", FT_UINT32, BASE_HEX,
+          { "FT Sequence Number", "ldp_msg_tlv_ft_protect_sequence_num", FT_UINT32, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_status_ebit,
-          { "E Bit", "ldp.msg.tlv.status.ebit", FT_BOOLEAN, 8,
+          { "E Bit", "ldp_msg_tlv_status_ebit", FT_BOOLEAN, 8,
             TFS(&tlv_status_ebit), 0x80, "Fatal Error Bit", HFILL }},
 
         { &hf_ldp_tlv_status_fbit,
-          { "F Bit", "ldp.msg.tlv.status.fbit", FT_BOOLEAN, 8,
+          { "F Bit", "ldp_msg_tlv_status_fbit", FT_BOOLEAN, 8,
             TFS(&tlv_status_fbit), 0x40, "Forward Bit", HFILL }},
 
         { &hf_ldp_tlv_status_data,
-          { "Status Data", "ldp.msg.tlv.status.data", FT_UINT32, BASE_HEX,
+          { "Status Data", "ldp_msg_tlv_status_data", FT_UINT32, BASE_HEX,
             VALS(tlv_status_data), 0x3FFFFFFF, NULL, HFILL }},
 
         { &hf_ldp_tlv_status_msg_id,
-          { "Message ID", "ldp.msg.tlv.status.msg.id", FT_UINT32, BASE_HEX,
+          { "Message ID", "ldp_msg_tlv_status_msg_id", FT_UINT32, BASE_HEX,
             NULL, 0x0, "Identifies peer message to which Status TLV refers", HFILL }},
 
         { &hf_ldp_tlv_status_msg_type,
-          { "Message Type", "ldp.msg.tlv.status.msg.type", FT_UINT16, BASE_HEX,
+          { "Message Type", "ldp_msg_tlv_status_msg_type", FT_UINT16, BASE_HEX,
             VALS(ldp_message_types), 0x0, "Type of peer message to which Status TLV refers", HFILL }},
 
         { &hf_ldp_tlv_extstatus_data,
-          { "Extended Status Data", "ldp.msg.tlv.extstatus.data", FT_UINT32, BASE_HEX,
+          { "Extended Status Data", "ldp_msg_tlv_extstatus_data", FT_UINT32, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_returned_version,
-          { "Returned PDU Version", "ldp.msg.tlv.returned.version", FT_UINT16, BASE_DEC,
+          { "Returned PDU Version", "ldp_msg_tlv_returned_version", FT_UINT16, BASE_DEC,
             NULL, 0x0, "LDP Version Number", HFILL }},
 
         { &hf_ldp_tlv_returned_pdu_len,
-          { "Returned PDU Length", "ldp.msg.tlv.returned.pdu_len", FT_UINT16, BASE_DEC,
+          { "Returned PDU Length", "ldp_msg_tlv_returned_pdu_len", FT_UINT16, BASE_DEC,
             NULL, 0x0, "LDP PDU Length", HFILL }},
 
         { &hf_ldp_tlv_returned_lsr,
-          { "Returned PDU LSR ID", "ldp.msg.tlv.returned.ldpid.lsr", FT_IPv4, BASE_NONE,
+          { "Returned PDU LSR ID", "ldp_msg_tlv_returned_ldpid_lsr", FT_IPv4, BASE_NONE,
             NULL, 0x0, "LDP Label Space Router ID", HFILL }},
 
         { &hf_ldp_tlv_returned_ls_id,
-          { "Returned PDU Label Space ID", "ldp.msg.tlv.returned.ldpid.lsid", FT_UINT16, BASE_HEX,
+          { "Returned PDU Label Space ID", "ldp_msg_tlv_returned_ldpid_lsid", FT_UINT16, BASE_HEX,
             NULL, 0x0, "LDP Label Space ID", HFILL }},
 
         { &hf_ldp_tlv_returned_msg_ubit,
-          { "Returned Message Unknown bit", "ldp.msg.tlv.returned.msg.ubit", FT_BOOLEAN, 8,
+          { "Returned Message Unknown bit", "ldp_msg_tlv_returned_msg_ubit", FT_BOOLEAN, 8,
             TFS(&ldp_message_ubit), 0x80, "Message Unknown bit", HFILL }},
 
         { &hf_ldp_tlv_returned_msg_type,
-          { "Returned Message Type", "ldp.msg.tlv.returned.msg.type", FT_UINT16, BASE_HEX,
+          { "Returned Message Type", "ldp_msg_tlv_returned_msg_type", FT_UINT16, BASE_HEX,
             VALS(ldp_message_types), 0x7FFF, "LDP message type", HFILL }},
 
         { &hf_ldp_tlv_returned_msg_len,
-          { "Returned Message Length", "ldp.msg.tlv.returned.msg.len", FT_UINT16, BASE_DEC,
+          { "Returned Message Length", "ldp_msg_tlv_returned_msg_len", FT_UINT16, BASE_DEC,
             NULL, 0x0, "LDP Message Length (excluding message type and len)", HFILL }},
 
         { &hf_ldp_tlv_returned_msg_id,
-          { "Returned Message ID", "ldp.msg.tlv.returned.msg.id", FT_UINT32, BASE_HEX,
+          { "Returned Message ID", "ldp_msg_tlv_returned_msg_id", FT_UINT32, BASE_HEX,
             NULL, 0x0, "LDP Message ID", HFILL }},
 
         { &hf_ldp_tlv_mac,
-          { "MAC address", "ldp.msg.tlv.mac", FT_ETHER, BASE_NONE,
+          { "MAC address", "ldp_msg_tlv_mac", FT_ETHER, BASE_NONE,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_ldp_tlv_fec_vc_controlword,
-          { "C-bit", "ldp.msg.tlv.fec.vc.controlword", FT_BOOLEAN, 8,
+          { "C-bit", "ldp_msg_tlv_fec_vc_controlword", FT_BOOLEAN, 8,
             TFS(&fec_vc_cbit), 0x80, "Control Word Present", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_vctype,
-          { "VC Type", "ldp.msg.tlv.fec.vc.vctype", FT_UINT16, BASE_HEX,
+          { "VC Type", "ldp_msg_tlv_fec_vc_vctype", FT_UINT16, BASE_HEX,
             VALS(fec_vc_types_vals), 0x7FFF, "Virtual Circuit Type", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_infolength,
-          { "VC Info Length", "ldp.msg.tlv.fec.vc.infolength", FT_UINT8, BASE_DEC,
+          { "VC Info Length", "ldp_msg_tlv_fec_vc_infolength", FT_UINT8, BASE_DEC,
             NULL, 0x0, "VC FEC Info Length", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_groupid,
-          { "Group ID", "ldp.msg.tlv.fec.vc.groupid", FT_UINT32, BASE_DEC,
+          { "Group ID", "ldp_msg_tlv_fec_vc_groupid", FT_UINT32, BASE_DEC,
             NULL, 0x0, "VC FEC Group ID", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_vcid,
-          { "VC ID", "ldp.msg.tlv.fec.vc.vcid", FT_UINT32, BASE_DEC,
+          { "VC ID", "ldp_msg_tlv_fec_vc_vcid", FT_UINT32, BASE_DEC,
             NULL, 0x0, "VC FEC VCID", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_length,
-          { "Length", "ldp.msg.tlv.fec.vc.intparam.length", FT_UINT8, BASE_DEC,
+          { "Length", "ldp_msg_tlv_fec_vc_intparam_length", FT_UINT8, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter Length", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_mtu,
-          { "MTU", "ldp.msg.tlv.fec.vc.intparam.mtu", FT_UINT16, BASE_DEC,
+          { "MTU", "ldp_msg_tlv_fec_vc_intparam_mtu", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter MTU", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmbps,
-          { "BPS", "ldp.msg.tlv.fec.vc.intparam.tdmbps", FT_UINT32, BASE_DEC,
+          { "BPS", "ldp_msg_tlv_fec_vc_intparam_tdmbps", FT_UINT32, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter CEP/TDM bit-rate", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_id,
-          { "ID", "ldp.msg.tlv.fec.vc.intparam.id", FT_UINT8, BASE_HEX,
+          { "ID", "ldp_msg_tlv_fec_vc_intparam_id", FT_UINT8, BASE_HEX,
             VALS(fec_vc_interfaceparm), 0x0, "VC FEC Interface Parameter ID", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_maxcatmcells,
-          { "Number of Cells", "ldp.msg.tlv.fec.vc.intparam.maxatm", FT_UINT16, BASE_DEC,
+          { "Number of Cells", "ldp_msg_tlv_fec_vc_intparam_maxatm", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Param Max ATM Concat Cells", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_desc,
-          { "Description", "ldp.msg.tlv.fec.vc.intparam.desc", FT_STRING, BASE_NONE,
+          { "Description", "ldp_msg_tlv_fec_vc_intparam_desc", FT_STRING, BASE_NONE,
             NULL, 0, "VC FEC Interface Description", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepbytes,
-          { "Payload Bytes", "ldp.msg.tlv.fec.vc.intparam.cepbytes", FT_UINT16, BASE_DEC,
+          { "Payload Bytes", "ldp_msg_tlv_fec_vc_intparam_cepbytes", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Param CEP/TDM Payload Bytes", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_ais,
-          { "AIS", "ldp.msg.tlv.fec.vc.intparam.cepopt_ais", FT_BOOLEAN, 16,
+          { "AIS", "ldp_msg_tlv_fec_vc_intparam_cepopt_ais", FT_BOOLEAN, 16,
             NULL, 0x8000, "VC FEC Interface Param CEP Option AIS", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_une,
-          { "UNE", "ldp.msg.tlv.fec.vc.intparam.cepopt_une", FT_BOOLEAN, 16,
+          { "UNE", "ldp_msg_tlv_fec_vc_intparam_cepopt_une", FT_BOOLEAN, 16,
             NULL, 0x4000, "VC FEC Interface Param CEP Option Unequipped", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_rtp,
-          { "RTP", "ldp.msg.tlv.fec.vc.intparam.cepopt_rtp", FT_BOOLEAN, 16,
+          { "RTP", "ldp_msg_tlv_fec_vc_intparam_cepopt_rtp", FT_BOOLEAN, 16,
             NULL, 0x2000, "VC FEC Interface Param CEP Option RTP Header", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_ebm,
-          { "EBM", "ldp.msg.tlv.fec.vc.intparam.cepopt_ebm", FT_BOOLEAN, 16,
+          { "EBM", "ldp_msg_tlv_fec_vc_intparam_cepopt_ebm", FT_BOOLEAN, 16,
             NULL, 0x1000, "VC FEC Interface Param CEP Option EBM Header", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_mah,
-          { "MAH", "ldp.msg.tlv.fec.vc.intparam.cepopt_mah", FT_BOOLEAN, 16,
+          { "MAH", "ldp_msg_tlv_fec_vc_intparam_cepopt_mah", FT_BOOLEAN, 16,
             NULL, 0x0800, "VC FEC Interface Param CEP Option MPLS Adaptation header", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_res,
-          { "Reserved", "ldp.msg.tlv.fec.vc.intparam.cepopt_res", FT_UINT16, BASE_HEX,
+          { "Reserved", "ldp_msg_tlv_fec_vc_intparam_cepopt_res", FT_UINT16, BASE_HEX,
             NULL , 0x07E0, "VC FEC Interface Param CEP Option Reserved", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_ceptype,
-          { "CEP Type", "ldp.msg.tlv.fec.vc.intparam.cepopt_ceptype", FT_UINT16, BASE_HEX,
+          { "CEP Type", "ldp_msg_tlv_fec_vc_intparam_cepopt_ceptype", FT_UINT16, BASE_HEX,
             VALS(fec_vc_ceptype_vals), 0x001C, "VC FEC Interface Param CEP Option CEP Type", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_t3,
-          { "Async T3", "ldp.msg.tlv.fec.vc.intparam.cepopt_t3", FT_BOOLEAN, 16,
+          { "Async T3", "ldp_msg_tlv_fec_vc_intparam_cepopt_t3", FT_BOOLEAN, 16,
             NULL, 0x0002, "VC FEC Interface Param CEP Option Async T3", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_cepopt_e3,
-          { "Async E3", "ldp.msg.tlv.fec.vc.intparam.cepopt_e3", FT_BOOLEAN, 16,
+          { "Async E3", "ldp_msg_tlv_fec_vc_intparam_cepopt_e3", FT_BOOLEAN, 16,
             NULL, 0x0001, "VC FEC Interface Param CEP Option Async E3", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vlanid,
-          { "VLAN Id", "ldp.msg.tlv.fec.vc.intparam.vlanid", FT_UINT16, BASE_DEC,
+          { "VLAN Id", "ldp_msg_tlv_fec_vc_intparam_vlanid", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Param VLAN Id", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_dlcilen,
-          { "DLCI Length", "ldp.msg.tlv.fec.vc.intparam.dlcilen", FT_UINT16, BASE_DEC,
+          { "DLCI Length", "ldp_msg_tlv_fec_vc_intparam_dlcilen", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter Frame-Relay DLCI Length", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_fcslen,
-          { "FCS Length", "ldp.msg.tlv.fec.vc.intparam.fcslen", FT_UINT16, BASE_DEC,
+          { "FCS Length", "ldp_msg_tlv_fec_vc_intparam_fcslen", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter FCS Length", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmopt_r,
-          { "R Bit", "ldp.msg.tlv.fec.vc.intparam.tdmopt_r", FT_BOOLEAN, 16,
+          { "R Bit", "ldp_msg_tlv_fec_vc_intparam_tdmopt_r", FT_BOOLEAN, 16,
             TFS(&fec_vc_tdmopt_r), 0x8000, "VC FEC Interface Param TDM Options RTP Header", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmopt_d,
-          { "D Bit", "ldp.msg.tlv.fec.vc.intparam.tdmopt_d", FT_BOOLEAN, 16,
+          { "D Bit", "ldp_msg_tlv_fec_vc_intparam_tdmopt_d", FT_BOOLEAN, 16,
             TFS(&fec_vc_tdmopt_d), 0x4000, "VC FEC Interface Param TDM Options Dynamic Timestamp", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmopt_f,
-          { "F Bit", "ldp.msg.tlv.fec.vc.intparam.tdmopt_f", FT_BOOLEAN, 16,
+          { "F Bit", "ldp_msg_tlv_fec_vc_intparam_tdmopt_f", FT_BOOLEAN, 16,
             TFS(&fec_vc_tdmopt_f), 0x2000, "VC FEC Interface Param TDM Options Flavor bit", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmopt_res1,
-          { "RSVD-1", "ldp.msg.tlv.fec.vc.intparam.tdmopt_res1", FT_UINT16, BASE_HEX,
+          { "RSVD-1", "ldp_msg_tlv_fec_vc_intparam_tdmopt_res1", FT_UINT16, BASE_HEX,
             NULL, 0x1FFF, "VC FEC Interface Param TDM Options Reserved", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmopt_pt,
-          { "PT", "ldp.msg.tlv.fec.vc.intparam.tdmopt_pt", FT_UINT8, BASE_DEC,
+          { "PT", "ldp_msg_tlv_fec_vc_intparam_tdmopt_pt", FT_UINT8, BASE_DEC,
             NULL, 0x7F, "VC FEC Interface Param TDM Options Payload Type", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmopt_res2,
-          { "RSVD-2", "ldp.msg.tlv.fec.vc.intparam.tdmopt_res2", FT_UINT8, BASE_HEX,
+          { "RSVD-2", "ldp_msg_tlv_fec_vc_intparam_tdmopt_res2", FT_UINT8, BASE_HEX,
             NULL, 0x00, "VC FEC Interface Param TDM Options Reserved", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmopt_freq,
-          { "FREQ", "ldp.msg.tlv.fec.vc.intparam.tdmopt_freq", FT_UINT16, BASE_DEC,
+          { "FREQ", "ldp_msg_tlv_fec_vc_intparam_tdmopt_freq", FT_UINT16, BASE_DEC,
             NULL, 0x00, "VC FEC Interface Param TDM Options Frequency", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_tdmopt_ssrc,
-          { "SSRC", "ldp.msg.tlv.fec.vc.intparam.tdmopt_ssrc", FT_UINT32, BASE_HEX,
+          { "SSRC", "ldp_msg_tlv_fec_vc_intparam_tdmopt_ssrc", FT_UINT32, BASE_HEX,
             NULL, 0x00, "VC FEC Interface Param TDM Options SSRC", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cctype_cw,
-          { "PWE3 Control Word", "ldp.msg.tlv.fec.vc.intparam.vccv.cctype_cw", FT_BOOLEAN, 8,
+          { "PWE3 Control Word", "ldp_msg_tlv_fec_vc_intparam_vccv_cctype_cw", FT_BOOLEAN, 8,
             NULL, 0x01, "VC FEC Interface Param VCCV CC Type PWE3 CW", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cctype_mplsra,
-          { "MPLS Router Alert", "ldp.msg.tlv.fec.vc.intparam.vccv.cctype_mplsra", FT_BOOLEAN, 8,
+          { "MPLS Router Alert", "ldp_msg_tlv_fec_vc_intparam_vccv_cctype_mplsra", FT_BOOLEAN, 8,
             NULL, 0x02, "VC FEC Interface Param VCCV CC Type MPLS Router Alert", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cctype_ttl1,
-          { "MPLS Inner Label TTL = 1", "ldp.msg.tlv.fec.vc.intparam.vccv.cctype_ttl1", FT_BOOLEAN, 8,
+          { "MPLS Inner Label TTL = 1", "ldp_msg_tlv_fec_vc_intparam_vccv_cctype_ttl1", FT_BOOLEAN, 8,
             NULL, 0x04, "VC FEC Interface Param VCCV CC Type Inner Label TTL 1", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cvtype_icmpping,
-          { "ICMP Ping", "ldp.msg.tlv.fec.vc.intparam.vccv.cvtype_icmpping", FT_BOOLEAN, 8,
+          { "ICMP Ping", "ldp_msg_tlv_fec_vc_intparam_vccv_cvtype_icmpping", FT_BOOLEAN, 8,
             NULL, 0x01, "VC FEC Interface Param VCCV CV Type ICMP Ping", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cvtype_lspping,
-          { "LSP Ping", "ldp.msg.tlv.fec.vc.intparam.vccv.cvtype_lspping", FT_BOOLEAN, 8,
+          { "LSP Ping", "ldp_msg_tlv_fec_vc_intparam_vccv_cvtype_lspping", FT_BOOLEAN, 8,
             NULL, 0x02, "VC FEC Interface Param VCCV CV Type LSP Ping", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cvtype_bfd1,
-          { "BFD IP/UDP-encapsulated, for PW Fault Detection only", "ldp.msg.tlv.fec.vc.intparam.vccv.cvtype_bfd1", FT_BOOLEAN, 8,
+          { "BFD IP/UDP-encapsulated, for PW Fault Detection only", "ldp_msg_tlv_fec_vc_intparam_vccv_cvtype_bfd1", FT_BOOLEAN, 8,
             NULL, 0x04, "VC FEC Interface Param VCCV CV Type BFD IP/UDP-encapsulated, for PW Fault Detection only", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cvtype_bfd2,
-          { "BFD IP/UDP-encapsulated, for PW Fault Detection and AC/PW Fault Status Signaling", "ldp.msg.tlv.fec.vc.intparam.vccv.cvtype_bfd2", FT_BOOLEAN, 8,
+          { "BFD IP/UDP-encapsulated, for PW Fault Detection and AC/PW Fault Status Signaling", "ldp_msg_tlv_fec_vc_intparam_vccv_cvtype_bfd2", FT_BOOLEAN, 8,
             NULL, 0x08, "VC FEC Interface Param VCCV CV Type BFD IP/UDP-encapsulated, for PW Fault Detection and AC/PW Fault Status Signaling", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cvtype_bfd3,
-          { "BFD BFD PW-ACH-encapsulated, for PW Fault Detection only", "ldp.msg.tlv.fec.vc.intparam.vccv.cvtype_bfd3", FT_BOOLEAN, 8,
+          { "BFD BFD PW-ACH-encapsulated, for PW Fault Detection only", "ldp_msg_tlv_fec_vc_intparam_vccv_cvtype_bfd3", FT_BOOLEAN, 8,
             NULL, 0x10, "VC FEC Interface Param VCCV CV Type BFD PW-ACH-encapsulated, for PW Fault Detection only", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_vccv_cvtype_bfd4,
-          { "BFD BFD PW-ACH-encapsulated, for PW Fault Detection and AC/PW Fault Status Signaling", "ldp.msg.tlv.fec.vc.intparam.vccv.cvtype_bfd4", FT_BOOLEAN, 8,
+          { "BFD BFD PW-ACH-encapsulated, for PW Fault Detection and AC/PW Fault Status Signaling", "ldp_msg_tlv_fec_vc_intparam_vccv_cvtype_bfd4", FT_BOOLEAN, 8,
             NULL, 0x20, "VC FEC Interface Param VCCV CV Type BFD PW-ACH-encapsulated, for PW Fault Detection and AC/PW Fault Status Signaling", HFILL }},
 
         { &hf_ldp_tlv_fec_vc_intparam_flowlabel_t,
-          { "Flow Label Transmit bit", "ldp.msg.tlv.fec.vc.intparam.flowlabel.t", FT_UINT8, BASE_DEC, NULL, 0x80, NULL, HFILL}},
+          { "Flow Label Transmit bit", "ldp_msg_tlv_fec_vc_intparam_flowlabel_t", FT_UINT8, BASE_DEC, NULL, 0x80, NULL, HFILL}},
 
         { &hf_ldp_tlv_fec_vc_intparam_flowlabel_r,
-          { "Flow Label Receive bit", "ldp.msg.tlv.fec.vc.intparam.flowlabel.r", FT_UINT8, BASE_DEC, NULL, 0x40, NULL, HFILL}},
+          { "Flow Label Receive bit", "ldp_msg_tlv_fec_vc_intparam_flowlabel_r", FT_UINT8, BASE_DEC, NULL, 0x40, NULL, HFILL}},
 
         { &hf_ldp_tlv_fec_vc_intparam_flowlabel_res,
-          { "Flow Label Reserved", "ldp.msg.tlv.fec.vc.intparam.flowlabel.res", FT_UINT16, BASE_HEX, NULL, 0x3FFF, NULL, HFILL}},
+          { "Flow Label Reserved", "ldp_msg_tlv_fec_vc_intparam_flowlabel_res", FT_UINT16, BASE_HEX, NULL, 0x3FFF, NULL, HFILL}},
 
         { &hf_ldp_tlv_lspid_act_flg,
-          { "Action Indicator Flag", "ldp.msg.tlv.lspid.actflg", FT_UINT16, BASE_HEX,
+          { "Action Indicator Flag", "ldp_msg_tlv_lspid_actflg", FT_UINT16, BASE_HEX,
             VALS(ldp_act_flg_vals), 0x000F, NULL, HFILL}},
 
         { &hf_ldp_tlv_lspid_cr_lsp,
-          { "Local CR-LSP ID", "ldp.msg.tlv.lspid.locallspid", FT_UINT16, BASE_HEX,
+          { "Local CR-LSP ID", "ldp_msg_tlv_lspid_locallspid", FT_UINT16, BASE_HEX,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_ldp_tlv_lspid_ldpid,
-          { "Ingress LSR Router ID", "ldp.msg.tlv.lspid.lsrid", FT_IPv4, BASE_NONE,
+          { "Ingress LSR Router ID", "ldp_msg_tlv_lspid_lsrid", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_ldp_tlv_er_hop_loose,
-          { "Loose route bit", "ldp.msg.tlv.er_hop.loose", FT_UINT24, BASE_HEX,
+          { "Loose route bit", "ldp_msg_tlv_er_hop_loose", FT_UINT24, BASE_HEX,
             VALS(ldp_loose_vals), 0x800000, NULL, HFILL}},
 
         { &hf_ldp_tlv_er_hop_prelen,
-          { "Prefix length", "ldp.msg.tlv.er_hop.prefixlen", FT_UINT8, BASE_DEC,
+          { "Prefix length", "ldp_msg_tlv_er_hop_prefixlen", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Prefix len", HFILL}},
 
         { &hf_ldp_tlv_er_hop_prefix4,
-          { "IPv4 Address", "ldp.msg.tlv.er_hop.prefix4", FT_IPv4, BASE_NONE,
+          { "IPv4 Address", "ldp_msg_tlv_er_hop_prefix4", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_ldp_tlv_er_hop_prefix6,
-          { "IPv6 Address", "ldp.msg.tlv.er_hop.prefix6", FT_IPv6, BASE_NONE,
+          { "IPv6 Address", "ldp_msg_tlv_er_hop_prefix6", FT_IPv6, BASE_NONE,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_ldp_tlv_er_hop_as,
-          { "AS Number", "ldp.msg.tlv.er_hop.as", FT_UINT16, BASE_DEC,
+          { "AS Number", "ldp_msg_tlv_er_hop_as", FT_UINT16, BASE_DEC,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_ldp_tlv_er_hop_cr_lsp,
-          { "Local CR-LSP ID", "ldp.msg.tlv.er_hop.locallspid", FT_UINT16, BASE_DEC,
+          { "Local CR-LSP ID", "ldp_msg_tlv_er_hop_locallspid", FT_UINT16, BASE_DEC,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_ldp_tlv_er_hop_ldpid,
-          { "Local CR-LSP ID", "ldp.msg.tlv.er_hop.lsrid", FT_IPv4, BASE_NONE,
+          { "Local CR-LSP ID", "ldp_msg_tlv_er_hop_lsrid", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL}},
 
         { &hf_ldp_tlv_flags_reserv,
-          { "Reserved", "ldp.msg.tlv.flags_reserv", FT_UINT8, BASE_HEX,
+          { "Reserved", "ldp_msg_tlv_flags_reserv", FT_UINT8, BASE_HEX,
             NULL, 0xC0, NULL, HFILL}},
 
         { &hf_ldp_tlv_flags_pdr,
-          { "PDR", "ldp.msg.tlv.flags_pdr", FT_BOOLEAN, 8,
+          { "PDR", "ldp_msg_tlv_flags_pdr", FT_BOOLEAN, 8,
             TFS(&tlv_negotiable), 0x1, "PDR negotiability flag", HFILL}},
 
         { &hf_ldp_tlv_flags_pbs,
-          { "PBS", "ldp.msg.tlv.flags_pbs", FT_BOOLEAN, 8,
+          { "PBS", "ldp_msg_tlv_flags_pbs", FT_BOOLEAN, 8,
             TFS(&tlv_negotiable), 0x2, "PBS negotiability flag", HFILL}},
 
         { &hf_ldp_tlv_flags_cdr,
-          { "CDR", "ldp.msg.tlv.flags_cdr", FT_BOOLEAN, 8,
+          { "CDR", "ldp_msg_tlv_flags_cdr", FT_BOOLEAN, 8,
             TFS(&tlv_negotiable), 0x4, "CDR negotiability flag", HFILL}},
 
         { &hf_ldp_tlv_flags_cbs,
-          { "CBS", "ldp.msg.tlv.flags_cbs", FT_BOOLEAN, 8,
+          { "CBS", "ldp_msg_tlv_flags_cbs", FT_BOOLEAN, 8,
             TFS(&tlv_negotiable), 0x8, "CBS negotiability flag", HFILL}},
 
         { &hf_ldp_tlv_flags_ebs,
-          { "EBS", "ldp.msg.tlv.flags_ebs", FT_BOOLEAN, 8,
+          { "EBS", "ldp_msg_tlv_flags_ebs", FT_BOOLEAN, 8,
             TFS(&tlv_negotiable), 0x10, "EBS negotiability flag", HFILL}},
 
         { &hf_ldp_tlv_flags_weight,
-          { "Weight", "ldp.msg.tlv.flags_weight", FT_BOOLEAN, 8,
+          { "Weight", "ldp_msg_tlv_flags_weight", FT_BOOLEAN, 8,
             TFS(&tlv_negotiable), 0x20, "Weight negotiability flag", HFILL}},
 
         { &hf_ldp_tlv_frequency,
-          { "Frequency", "ldp.msg.tlv.frequency", FT_UINT8, BASE_DEC,
+          { "Frequency", "ldp_msg_tlv_frequency", FT_UINT8, BASE_DEC,
             VALS(freq_values), 0, NULL, HFILL}},
 
         { &hf_ldp_tlv_weight,
-          { "Weight", "ldp.msg.tlv.weight", FT_UINT8, BASE_DEC,
+          { "Weight", "ldp_msg_tlv_weight", FT_UINT8, BASE_DEC,
             NULL, 0, "Weight of the CR-LSP", HFILL}},
 
         { &hf_ldp_tlv_pdr,
-          { "PDR", "ldp.msg.tlv.pdr", FT_DOUBLE, BASE_NONE,
+          { "PDR", "ldp_msg_tlv_pdr", FT_DOUBLE, BASE_NONE,
             NULL, 0, "Peak Data Rate", HFILL}},
 
         { &hf_ldp_tlv_pbs,
-          { "PBS", "ldp.msg.tlv.pbs", FT_DOUBLE, BASE_NONE,
+          { "PBS", "ldp_msg_tlv_pbs", FT_DOUBLE, BASE_NONE,
             NULL, 0, "Peak Burst Size", HFILL}},
 
         { &hf_ldp_tlv_cdr,
-          { "CDR", "ldp.msg.tlv.cdr", FT_DOUBLE, BASE_NONE,
+          { "CDR", "ldp_msg_tlv_cdr", FT_DOUBLE, BASE_NONE,
             NULL, 0, "Committed Data Rate", HFILL}},
 
         { &hf_ldp_tlv_cbs,
-          { "CBS", "ldp.msg.tlv.cbs", FT_DOUBLE, BASE_NONE,
+          { "CBS", "ldp_msg_tlv_cbs", FT_DOUBLE, BASE_NONE,
             NULL, 0, "Committed Burst Size", HFILL}},
 
         { &hf_ldp_tlv_ebs,
-          { "EBS", "ldp.msg.tlv.ebs", FT_DOUBLE, BASE_NONE,
+          { "EBS", "ldp_msg_tlv_ebs", FT_DOUBLE, BASE_NONE,
             NULL, 0, "Excess Burst Size", HFILL}},
 
         { &hf_ldp_tlv_set_prio,
-          { "Set Prio", "ldp.msg.tlv.set_prio", FT_UINT8, BASE_DEC,
+          { "Set Prio", "ldp_msg_tlv_set_prio", FT_UINT8, BASE_DEC,
             NULL, 0, "LSP setup priority", HFILL}},
 
         { &hf_ldp_tlv_hold_prio,
-          { "Hold Prio", "ldp.msg.tlv.hold_prio", FT_UINT8, BASE_DEC,
+          { "Hold Prio", "ldp_msg_tlv_hold_prio", FT_UINT8, BASE_DEC,
             NULL, 0, "LSP hold priority", HFILL}},
 
         { &hf_ldp_tlv_route_pinning,
-          { "Route Pinning", "ldp.msg.tlv.route_pinning", FT_UINT32, BASE_DEC,
+          { "Route Pinning", "ldp_msg_tlv_route_pinning", FT_UINT32, BASE_DEC,
             VALS(route_pinning_vals), 0x80000000, NULL, HFILL}},
 
         { &hf_ldp_tlv_resource_class,
-          { "Resource Class", "ldp.msg.tlv.resource_class", FT_UINT32, BASE_HEX,
+          { "Resource Class", "ldp_msg_tlv_resource_class", FT_UINT32, BASE_HEX,
             NULL, 0, "Resource Class (Color)", HFILL}},
 
 #if 0
         { &hf_ldp_tlv_diffserv,
-          { "Diff-Serv TLV", "ldp.msg.tlv.diffserv", FT_NONE, BASE_NONE,
+          { "Diff-Serv TLV", "ldp_msg_tlv_diffserv", FT_NONE, BASE_NONE,
             NULL, 0, "Diffserv TLV", HFILL}},
 #endif
 
         { &hf_ldp_tlv_diffserv_type,
-          { "LSP Type", "ldp.msg.tlv.diffserv.type", FT_UINT8, BASE_DEC,
+          { "LSP Type", "ldp_msg_tlv_diffserv_type", FT_UINT8, BASE_DEC,
             VALS(diffserv_type_vals), 0x80, NULL, HFILL}},
 
         { &hf_ldp_tlv_diffserv_mapnb,
-          { "MAPnb", "ldp.msg.tlv.diffserv.mapnb", FT_UINT8, BASE_DEC,
+          { "MAPnb", "ldp_msg_tlv_diffserv_mapnb", FT_UINT8, BASE_DEC,
             NULL, 0, MAPNB_DESCRIPTION, HFILL}},
 
         { &hf_ldp_tlv_diffserv_map,
-          { "MAP", "ldp.msg.tlv.diffserv.map", FT_NONE, BASE_NONE,
+          { "MAP", "ldp_msg_tlv_diffserv_map", FT_NONE, BASE_NONE,
             NULL, 0, MAP_DESCRIPTION, HFILL}},
 
         { &hf_ldp_tlv_diffserv_map_exp,
-          { "EXP", "ldp.msg.tlv.diffserv.map.exp", FT_UINT8, BASE_DEC,
+          { "EXP", "ldp_msg_tlv_diffserv_map_exp", FT_UINT8, BASE_DEC,
             NULL, 0, EXP_DESCRIPTION, HFILL}},
 
         { &hf_ldp_tlv_diffserv_phbid,
-          { PHBID_DESCRIPTION, "ldp.msg.tlv.diffserv.phbid", FT_NONE, BASE_NONE,
+          { PHBID_DESCRIPTION, "ldp_msg_tlv_diffserv_phbid", FT_NONE, BASE_NONE,
             NULL, 0, NULL, HFILL}},
 
         { &hf_ldp_tlv_diffserv_phbid_dscp,
-          { PHBID_DSCP_DESCRIPTION, "ldp.msg.tlv.diffserv.phbid.dscp", FT_UINT16, BASE_DEC,
+          { PHBID_DSCP_DESCRIPTION, "ldp_msg_tlv_diffserv_phbid_dscp", FT_UINT16, BASE_DEC,
             NULL, PHBID_DSCP_MASK, NULL, HFILL}},
 
         { &hf_ldp_tlv_diffserv_phbid_code,
-          { PHBID_CODE_DESCRIPTION, "ldp.msg.tlv.diffserv.phbid.code", FT_UINT16, BASE_DEC,
+          { PHBID_CODE_DESCRIPTION, "ldp_msg_tlv_diffserv_phbid_code", FT_UINT16, BASE_DEC,
             NULL, PHBID_CODE_MASK, NULL, HFILL}},
 
         { &hf_ldp_tlv_diffserv_phbid_bit14,
-          { PHBID_BIT14_DESCRIPTION, "ldp.msg.tlv.diffserv.phbid.bit14", FT_UINT16, BASE_DEC,
+          { PHBID_BIT14_DESCRIPTION, "ldp_msg_tlv_diffserv_phbid_bit14", FT_UINT16, BASE_DEC,
             VALS(phbid_bit14_vals), PHBID_BIT14_MASK, NULL, HFILL}},
 
         { &hf_ldp_tlv_diffserv_phbid_bit15,
-          { PHBID_BIT15_DESCRIPTION, "ldp.msg.tlv.diffserv.phbid.bit15", FT_UINT16, BASE_DEC,
+          { PHBID_BIT15_DESCRIPTION, "ldp_msg_tlv_diffserv_phbid_bit15", FT_UINT16, BASE_DEC,
             VALS(phbid_bit15_vals), PHBID_BIT15_MASK, NULL, HFILL}},
 
         { &hf_ldp_tlv_fec_gen_agi_type,
-          { "AGI Type", "ldp.msg.tlv.fec.gen.agi.type", FT_UINT8, BASE_DEC,
+          { "AGI Type", "ldp_msg_tlv_fec_gen_agi_type", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Attachment Group Identifier Type", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_agi_length,
-          { "AGI Length", "ldp.msg.tlv.fec.gen.agi.length", FT_UINT8, BASE_DEC,
+          { "AGI Length", "ldp_msg_tlv_fec_gen_agi_length", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Attachment Group Identifier Length", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_agi_value,
-          { "AGI Value", "ldp.msg.tlv.fec.gen.agi.value", FT_BYTES, BASE_NONE,
+          { "AGI Value", "ldp_msg_tlv_fec_gen_agi_value", FT_BYTES, BASE_NONE,
             NULL, 0x0, "Attachment Group Identifier Value", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_saii_type,
-          { "SAII Type", "ldp.msg.tlv.fec.gen.saii.type", FT_UINT8, BASE_DEC,
+          { "SAII Type", "ldp_msg_tlv_fec_gen_saii_type", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Source Attachment Individual Identifier Type", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_saii_length,
-          { "SAII Length", "ldp.msg.tlv.fec.gen.saii.length", FT_UINT8, BASE_DEC,
+          { "SAII Length", "ldp_msg_tlv_fec_gen_saii_length", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Source Attachment Individual Identifier Length", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_saii_value,
-          { "SAII Value", "ldp.msg.tlv.fec.gen.saii.value", FT_BYTES, BASE_NONE,
+          { "SAII Value", "ldp_msg_tlv_fec_gen_saii_value", FT_BYTES, BASE_NONE,
             NULL, 0x0, "Source Attachment Individual Identifier Value", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_taii_type,
-          { "TAII Type", "ldp.msg.tlv.fec.gen.taii.type", FT_UINT8, BASE_DEC,
+          { "TAII Type", "ldp_msg_tlv_fec_gen_taii_type", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Target Attachment Individual Identifier Type", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_taii_length,
-          { "TAII length", "ldp.msg.tlv.fec.gen.taii.length", FT_UINT8, BASE_DEC,
+          { "TAII length", "ldp_msg_tlv_fec_gen_taii_length", FT_UINT8, BASE_DEC,
             NULL, 0x0, "Target Attachment Individual Identifier Length", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_taii_value,
-          { "TAII Value", "ldp.msg.tlv.fec.gen.taii.value", FT_BYTES, BASE_NONE,
+          { "TAII Value", "ldp_msg_tlv_fec_gen_taii_value", FT_BYTES, BASE_NONE,
             NULL, 0x0, "Target Attachment Individual Identifier Value", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_aai_globalid,
-          { "Global Id", "ldp.msg.tlv.fec.gen.aii.globalid", FT_UINT32, BASE_DEC,
+          { "Global Id", "ldp_msg_tlv_fec_gen_aii_globalid", FT_UINT32, BASE_DEC,
             NULL, 0x0, "Attachment Individual Identifier Global Id", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_aai_prefix,
-          { "Prefix", "ldp.msg.tlv.fec.gen.aii.prefix", FT_UINT32, BASE_DEC,
+          { "Prefix", "ldp_msg_tlv_fec_gen_aii_prefix", FT_UINT32, BASE_DEC,
             NULL, 0x0, "Attachment Individual Identifier Prefix", HFILL}},
 
         { &hf_ldp_tlv_fec_gen_aai_ac_id,
-          { "Prefix", "ldp.msg.tlv.fec.gen.aii.acid", FT_UINT32, BASE_DEC,
+          { "Prefix", "ldp_msg_tlv_fec_gen_aii_acid", FT_UINT32, BASE_DEC,
             NULL, 0x0, "Attachment Individual Identifier AC Id", HFILL}},
 
         { &hf_ldp_tlv_fec_pw_controlword,
-          { "C-bit", "ldp.msg.tlv.fec.pw.controlword", FT_BOOLEAN, 8,
+          { "C-bit", "ldp_msg_tlv_fec_pw_controlword", FT_BOOLEAN, 8,
             TFS(&fec_vc_cbit), 0x80, "Control Word Present", HFILL }},
 
         { &hf_ldp_tlv_fec_pw_pwtype,
-          { "PW Type", "ldp.msg.tlv.fec.pw.pwtype", FT_UINT16, BASE_HEX,
+          { "PW Type", "ldp_msg_tlv_fec_pw_pwtype", FT_UINT16, BASE_HEX,
             VALS(fec_vc_types_vals), 0x7FFF, "Virtual Circuit Type", HFILL }},
 
         { &hf_ldp_tlv_fec_pw_infolength,
-          { "PW Info Length", "ldp.msg.tlv.fec.pw.infolength", FT_UINT8, BASE_DEC,
+          { "PW Info Length", "ldp_msg_tlv_fec_pw_infolength", FT_UINT8, BASE_DEC,
             NULL, 0x0, "PW FEC Info Length", HFILL }},
 
         { &hf_ldp_tlv_fec_pw_groupid,
-          { "Group ID", "ldp.msg.tlv.fec.pw.groupid", FT_UINT32, BASE_DEC,
+          { "Group ID", "ldp_msg_tlv_fec_pw_groupid", FT_UINT32, BASE_DEC,
             NULL, 0x0, "PW FEC Group ID", HFILL }},
 
         { &hf_ldp_tlv_fec_pw_pwid,
-          { "PW ID", "ldp.msg.tlv.fec.pw.pwid", FT_UINT32, BASE_DEC,
+          { "PW ID", "ldp_msg_tlv_fec_pw_pwid", FT_UINT32, BASE_DEC,
             NULL, 0x0, "PW FEC PWID", HFILL }},
 
         { &hf_ldp_tlv_pw_status_data,
-          { "PW Status", "ldp.msg.tlv.pwstatus.code", FT_UINT32, BASE_HEX,
+          { "PW Status", "ldp_msg_tlv_pwstatus_code", FT_UINT32, BASE_HEX,
             NULL, 0, NULL, HFILL }},
 
         { &hf_ldp_tlv_pw_not_forwarding,
-          { "Pseudowire Not Forwarding", "ldp.msg.tlv.pwstatus.code.pwnotforward", FT_BOOLEAN, 32,
+          { "Pseudowire Not Forwarding", "ldp_msg_tlv_pwstatus_code_pwnotforward", FT_BOOLEAN, 32,
             TFS(&tfs_set_notset), PW_NOT_FORWARDING, NULL, HFILL }},
 
         { &hf_ldp_tlv_pw_lac_ingress_recv_fault,
-          { "Local Attachment Circuit (ingress) Receive Fault", "ldp.msg.tlv.pwstatus.code.pwlacingressrecvfault",
+          { "Local Attachment Circuit (ingress) Receive Fault", "ldp_msg_tlv_pwstatus_code_pwlacingressrecvfault",
             FT_BOOLEAN, 32, TFS(&tfs_set_notset), PW_LAC_INGRESS_RECV_FAULT, NULL, HFILL }},
 
         { &hf_ldp_tlv_pw_lac_egress_recv_fault,
-          { "Local Attachment Circuit (egress) Transmit Fault", "ldp.msg.tlv.pwstatus.code.pwlacegresstransfault",
+          { "Local Attachment Circuit (egress) Transmit Fault", "ldp_msg_tlv_pwstatus_code_pwlacegresstransfault",
             FT_BOOLEAN, 32, TFS(&tfs_set_notset), PW_LAC_EGRESS_TRANS_FAULT, NULL, HFILL }},
 
         { &hf_ldp_tlv_pw_psn_pw_ingress_recv_fault,
-          { "Local PSN-facing PW (ingress) Receive Fault", "ldp.msg.tlv.pwstatus.code.pwpsnpwingressrecvfault",
+          { "Local PSN-facing PW (ingress) Receive Fault", "ldp_msg_tlv_pwstatus_code_pwpsnpwingressrecvfault",
             FT_BOOLEAN, 32, TFS(&tfs_set_notset), PW_PSN_PW_INGRESS_RECV_FAULT, NULL, HFILL }},
 
         { &hf_ldp_tlv_pw_psn_pw_egress_recv_fault,
-          { "Local PSN-facing PW (egress) Transmit Fault", "ldp.msg.tlv.pwstatus.code.pwpsnpwegresstransfault",
+          { "Local PSN-facing PW (egress) Transmit Fault", "ldp_msg_tlv_pwstatus_code_pwpsnpwegresstransfault",
             FT_BOOLEAN, 32, TFS(&tfs_set_notset), PW_PSN_PW_EGRESS_TRANS_FAULT, NULL, HFILL }},
 
         { &hf_ldp_tlv_pw_grouping_value,
-          { "Value", "ldp.msg.tlv.pwgrouping.value",
+          { "Value", "ldp_msg_tlv_pwgrouping_value",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "PW Grouping Value", HFILL }},
 
         { &hf_ldp_tlv_intparam_length,
-          { "Length", "ldp.msg.tlv.intparam.length", FT_UINT8, BASE_DEC,
+          { "Length", "ldp_msg_tlv_intparam_length", FT_UINT8, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter Length", HFILL }},
 
         { &hf_ldp_tlv_intparam_mtu,
-          { "MTU", "ldp.msg.tlv.intparam.mtu", FT_UINT16, BASE_DEC,
+          { "MTU", "ldp_msg_tlv_intparam_mtu", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter MTU", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmbps,
-          { "BPS", "ldp.msg.tlv.intparam.tdmbps", FT_UINT32, BASE_DEC,
+          { "BPS", "ldp_msg_tlv_intparam_tdmbps", FT_UINT32, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter CEP/TDM bit-rate", HFILL }},
 
         { &hf_ldp_tlv_intparam_id,
-          { "ID", "ldp.msg.tlv.intparam.id", FT_UINT8, BASE_HEX,
+          { "ID", "ldp_msg_tlv_intparam_id", FT_UINT8, BASE_HEX,
             VALS(fec_vc_interfaceparm), 0x0, "VC FEC Interface Parameter ID", HFILL }},
 
         { &hf_ldp_tlv_intparam_maxcatmcells,
-          { "Number of Cells", "ldp.msg.tlv.intparam.maxatm", FT_UINT16, BASE_DEC,
+          { "Number of Cells", "ldp_msg_tlv_intparam_maxatm", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Param Max ATM Concat Cells", HFILL }},
 
         { &hf_ldp_tlv_intparam_desc,
-          { "Description", "ldp.msg.tlv.intparam.desc", FT_STRING, BASE_NONE,
+          { "Description", "ldp_msg_tlv_intparam_desc", FT_STRING, BASE_NONE,
             NULL, 0, "VC FEC Interface Description", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepbytes,
-          { "Payload Bytes", "ldp.msg.tlv.intparam.cepbytes", FT_UINT16, BASE_DEC,
+          { "Payload Bytes", "ldp_msg_tlv_intparam_cepbytes", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Param CEP/TDM Payload Bytes", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_ais,
-          { "AIS", "ldp.msg.tlv.intparam.cepopt_ais", FT_BOOLEAN, 16,
+          { "AIS", "ldp_msg_tlv_intparam_cepopt_ais", FT_BOOLEAN, 16,
             NULL, 0x8000, "VC FEC Interface Param CEP Option AIS", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_une,
-          { "UNE", "ldp.msg.tlv.intparam.cepopt_une", FT_BOOLEAN, 16,
+          { "UNE", "ldp_msg_tlv_intparam_cepopt_une", FT_BOOLEAN, 16,
             NULL, 0x4000, "VC FEC Interface Param CEP Option Unequipped", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_rtp,
-          { "RTP", "ldp.msg.tlv.intparam.cepopt_rtp", FT_BOOLEAN, 16,
+          { "RTP", "ldp_msg_tlv_intparam_cepopt_rtp", FT_BOOLEAN, 16,
             NULL, 0x2000, "VC FEC Interface Param CEP Option RTP Header", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_ebm,
-          { "EBM", "ldp.msg.tlv.intparam.cepopt_ebm", FT_BOOLEAN, 16,
+          { "EBM", "ldp_msg_tlv_intparam_cepopt_ebm", FT_BOOLEAN, 16,
             NULL, 0x1000, "VC FEC Interface Param CEP Option EBM Header", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_mah,
-          { "MAH", "ldp.msg.tlv.intparam.cepopt_mah", FT_BOOLEAN, 16,
+          { "MAH", "ldp_msg_tlv_intparam_cepopt_mah", FT_BOOLEAN, 16,
             NULL, 0x0800, "VC FEC Interface Param CEP Option MPLS Adaptation header", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_res,
-          { "Reserved", "ldp.msg.tlv.intparam.cepopt_res", FT_UINT16, BASE_HEX,
+          { "Reserved", "ldp_msg_tlv_intparam_cepopt_res", FT_UINT16, BASE_HEX,
             NULL , 0x07E0, "VC FEC Interface Param CEP Option Reserved", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_ceptype,
-          { "CEP Type", "ldp.msg.tlv.intparam.cepopt_ceptype", FT_UINT16, BASE_HEX,
+          { "CEP Type", "ldp_msg_tlv_intparam_cepopt_ceptype", FT_UINT16, BASE_HEX,
             VALS(fec_vc_ceptype_vals), 0x001C, "VC FEC Interface Param CEP Option CEP Type", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_t3,
-          { "Async T3", "ldp.msg.tlv.intparam.cepopt_t3", FT_BOOLEAN, 16,
+          { "Async T3", "ldp_msg_tlv_intparam_cepopt_t3", FT_BOOLEAN, 16,
             NULL, 0x0002, "VC FEC Interface Param CEP Option Async T3", HFILL }},
 
         { &hf_ldp_tlv_intparam_cepopt_e3,
-          { "Async E3", "ldp.msg.tlv.intparam.cepopt_e3", FT_BOOLEAN, 16,
+          { "Async E3", "ldp_msg_tlv_intparam_cepopt_e3", FT_BOOLEAN, 16,
             NULL, 0x0001, "VC FEC Interface Param CEP Option Async E3", HFILL }},
 
         { &hf_ldp_tlv_intparam_vlanid,
-          { "VLAN Id", "ldp.msg.tlv.intparam.vlanid", FT_UINT16, BASE_DEC,
+          { "VLAN Id", "ldp_msg_tlv_intparam_vlanid", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Param VLAN Id", HFILL }},
 
         { &hf_ldp_tlv_intparam_dlcilen,
-          { "DLCI Length", "ldp.msg.tlv.intparam.dlcilen", FT_UINT16, BASE_DEC,
+          { "DLCI Length", "ldp_msg_tlv_intparam_dlcilen", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter Frame-Relay DLCI Length", HFILL }},
 
         { &hf_ldp_tlv_intparam_fcslen,
-          { "FCS Length", "ldp.msg.tlv.intparam.fcslen", FT_UINT16, BASE_DEC,
+          { "FCS Length", "ldp_msg_tlv_intparam_fcslen", FT_UINT16, BASE_DEC,
             NULL, 0x0, "VC FEC Interface Parameter FCS Length", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmopt_r,
-          { "R Bit", "ldp.msg.tlv.intparam.tdmopt_r", FT_BOOLEAN, 16,
+          { "R Bit", "ldp_msg_tlv_intparam_tdmopt_r", FT_BOOLEAN, 16,
             TFS(&fec_vc_tdmopt_r), 0x8000, "VC FEC Interface Param TDM Options RTP Header", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmopt_d,
-          { "D Bit", "ldp.msg.tlv.intparam.tdmopt_d", FT_BOOLEAN, 16,
+          { "D Bit", "ldp_msg_tlv_intparam_tdmopt_d", FT_BOOLEAN, 16,
             TFS(&fec_vc_tdmopt_d), 0x4000, "VC FEC Interface Param TDM Options Dynamic Timestamp", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmopt_f,
-          { "F Bit", "ldp.msg.tlv.intparam.tdmopt_f", FT_BOOLEAN, 16,
+          { "F Bit", "ldp_msg_tlv_intparam_tdmopt_f", FT_BOOLEAN, 16,
             TFS(&fec_vc_tdmopt_f), 0x2000, "VC FEC Interface Param TDM Options Flavor bit", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmopt_res1,
-          { "RSVD-1", "ldp.msg.tlv.intparam.tdmopt_res1", FT_UINT16, BASE_HEX,
+          { "RSVD-1", "ldp_msg_tlv_intparam_tdmopt_res1", FT_UINT16, BASE_HEX,
             NULL, 0x1FFF, "VC FEC Interface Param TDM Options Reserved", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmopt_pt,
-          { "PT", "ldp.msg.tlv.intparam.tdmopt_pt", FT_UINT8, BASE_DEC,
+          { "PT", "ldp_msg_tlv_intparam_tdmopt_pt", FT_UINT8, BASE_DEC,
             NULL, 0x7F, "VC FEC Interface Param TDM Options Payload Type", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmopt_res2,
-          { "RSVD-2", "ldp.msg.tlv.intparam.tdmopt_res2", FT_UINT8, BASE_HEX,
+          { "RSVD-2", "ldp_msg_tlv_intparam_tdmopt_res2", FT_UINT8, BASE_HEX,
             NULL, 0x00, "VC FEC Interface Param TDM Options Reserved", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmopt_freq,
-          { "FREQ", "ldp.msg.tlv.intparam.tdmopt_freq", FT_UINT16, BASE_DEC,
+          { "FREQ", "ldp_msg_tlv_intparam_tdmopt_freq", FT_UINT16, BASE_DEC,
             NULL, 0x00, "VC FEC Interface Param TDM Options Frequency", HFILL }},
 
         { &hf_ldp_tlv_intparam_tdmopt_ssrc,
-          { "SSRC", "ldp.msg.tlv.intparam.tdmopt_ssrc", FT_UINT32, BASE_HEX,
+          { "SSRC", "ldp_msg_tlv_intparam_tdmopt_ssrc", FT_UINT32, BASE_HEX,
             NULL, 0x00, "VC FEC Interface Param TDM Options SSRC", HFILL }},
 
         { &hf_ldp_tlv_intparam_vccv_cctype_cw,
-          { "PWE3 Control Word", "ldp.msg.tlv.intparam.vccv.cctype_cw", FT_BOOLEAN, 8,
+          { "PWE3 Control Word", "ldp_msg_tlv_intparam_vccv_cctype_cw", FT_BOOLEAN, 8,
             NULL, 0x01, "VC FEC Interface Param VCCV CC Type PWE3 CW", HFILL }},
 
         { &hf_ldp_tlv_intparam_vccv_cctype_mplsra,
-          { "MPLS Router Alert", "ldp.msg.tlv.intparam.vccv.cctype_mplsra", FT_BOOLEAN, 8,
+          { "MPLS Router Alert", "ldp_msg_tlv_intparam_vccv_cctype_mplsra", FT_BOOLEAN, 8,
             NULL, 0x02, "VC FEC Interface Param VCCV CC Type MPLS Router Alert", HFILL }},
 
         { &hf_ldp_tlv_intparam_vccv_cctype_ttl1,
-          { "MPLS Inner Label TTL = 1", "ldp.msg.tlv.intparam.vccv.cctype_ttl1", FT_BOOLEAN, 8,
+          { "MPLS Inner Label TTL = 1", "ldp_msg_tlv_intparam_vccv_cctype_ttl1", FT_BOOLEAN, 8,
             NULL, 0x04, "VC FEC Interface Param VCCV CC Type Inner Label TTL 1", HFILL }},
 
         { &hf_ldp_tlv_intparam_vccv_cvtype_icmpping,
-          { "ICMP Ping", "ldp.msg.tlv.intparam.vccv.cvtype_icmpping", FT_BOOLEAN, 8,
+          { "ICMP Ping", "ldp_msg_tlv_intparam_vccv_cvtype_icmpping", FT_BOOLEAN, 8,
             NULL, 0x01, "VC FEC Interface Param VCCV CV Type ICMP Ping", HFILL }},
 
         { &hf_ldp_tlv_intparam_vccv_cvtype_lspping,
-          { "LSP Ping", "ldp.msg.tlv.intparam.vccv.cvtype_lspping", FT_BOOLEAN, 8,
+          { "LSP Ping", "ldp_msg_tlv_intparam_vccv_cvtype_lspping", FT_BOOLEAN, 8,
             NULL, 0x02, "VC FEC Interface Param VCCV CV Type LSP Ping", HFILL }},
 
         { &hf_ldp_tlv_intparam_vccv_cvtype_bfd,
-          { "BFD", "ldp.msg.tlv.intparam.vccv.cvtype_bfd", FT_BOOLEAN, 8,
+          { "BFD", "ldp_msg_tlv_intparam_vccv_cvtype_bfd", FT_BOOLEAN, 8,
             NULL, 0x04, "VC FEC Interface Param VCCV CV Type BFD", HFILL }},
 
         { &hf_ldp_tlv_upstr_sbit,
-          { "S-Bit", "ldp.msg.tlv.upstream.sbit", FT_BOOLEAN, 8,
+          { "S-Bit", "ldp_msg_tlv_upstream_sbit", FT_BOOLEAN, 8,
             TFS(&tlv_upstr_sbit_vals), 0x80, "Upstream Label Assignment Capability State Bit", HFILL }},
 
         { &hf_ldp_tlv_upstr_lbl_req_resvbit,
-          { "Reserved Bits", "ldp.msg.tlv.upstream_label_req.resvbit", FT_UINT32, BASE_HEX,
+          { "Reserved Bits", "ldp_msg_tlv_upstream_label_req_resvbit", FT_UINT32, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_upstr_ass_lbl,
-          { "Upstream-Assigned Label", "ldp.msg.tlv.upstream.label", FT_UINT32, BASE_HEX,
+          { "Upstream-Assigned Label", "ldp_msg_tlv_upstream_label", FT_UINT32, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_upstr_lbl_resvbit,
-          { "Reserved Bits", "ldp.msg.tlv.upstream.resvbit", FT_UINT32, BASE_HEX,
+          { "Reserved Bits", "ldp_msg_tlv_upstream_resvbit", FT_UINT32, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ipv4_intID_hop_addr,
-          { "IPv4 Next/Previous Hop Address", "ldp.msg.tlv.ipv4_interface_ID.hop_addr", FT_IPv4, BASE_NONE,
+          { "IPv4 Next/Previous Hop Address", "ldp_msg_tlv_ipv4_interface_ID_hop_addr", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_logical_intID,
-          { "Logical Interface ID", "ldp.msg.tlv.interface_ID.logical_intID", FT_UINT32, BASE_HEX,
+          { "Logical Interface ID", "ldp_msg_tlv_interface_ID_logical_intID", FT_UINT32, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ip_multicast_srcaddr,
-          { "Source Address", "ldp.msg.tlv.ip_multicast.ipv4_srcaddr", FT_IPv4, BASE_NONE,
+          { "Source Address", "ldp_msg_tlv_ip_multicast_ipv4_srcaddr", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ip_multicast_mltcstaddr,
-          { "Multicast Group Address", "ldp.msg.tlv.ip_multicast.ipv4_maddr", FT_IPv4, BASE_NONE,
+          { "Multicast Group Address", "ldp_msg_tlv_ip_multicast_ipv4_maddr", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ip_mpls_context_srcaddr,
-          { "Source Address", "ldp.msg.tlv.ip_mpls_context.ipv4_srcaddr", FT_IPv4, BASE_NONE,
+          { "Source Address", "ldp_msg_tlv_ip_mpls_context_ipv4_srcaddr", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ldp_p2mp_lsptype,
-          { "P2MP Type", "ldp.msg.tlv.ldp_p2mp.type", FT_UINT8, BASE_HEX,
+          { "P2MP Type", "ldp_msg_tlv_ldp_p2mp_type", FT_UINT8, BASE_HEX,
             NULL, 0x0, "TLV Type", HFILL }},
 
         { &hf_ldp_tlv_ldp_p2mp_addrfam,
-          { "Address Family", "ldp.msg.tlv.ldp_p2mp.addr_family", FT_UINT16, BASE_HEX,
+          { "Address Family", "ldp_msg_tlv_ldp_p2mp_addr_family", FT_UINT16, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ldp_p2mp_addrlen,
-          { "Address Length", "ldp.msg.tlv.ldp_p2mp.addr_len", FT_UINT8, BASE_HEX,
+          { "Address Length", "ldp_msg_tlv_ldp_p2mp_addr_len", FT_UINT8, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ldp_p2mp_rtnodeaddr,
-          { "Root Node Address", "ldp.msg.tlv.ldp_p2mp.ipv4_rtnodeaddr", FT_IPv4, BASE_NONE,
+          { "Root Node Address", "ldp_msg_tlv_ldp_p2mp_ipv4_rtnodeaddr", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ldp_p2mp_oplength,
-          { "Opaque Length", "ldp.msg.tlv.ldp_p2mp.oplength", FT_UINT16, BASE_DEC,
+          { "Opaque Length", "ldp_msg_tlv_ldp_p2mp_oplength", FT_UINT16, BASE_DEC,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ldp_p2mp_opvalue,
-          { "Opaque Value", "ldp.msg.tlv.ldp_p2mp.opvalue", FT_BYTES, BASE_NONE,
+          { "Opaque Value", "ldp_msg_tlv_ldp_p2mp_opvalue", FT_BYTES, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_rsvp_te_p2mp_id,
-          { "P2MP ID", "ldp.msg.tlv.rsvp_te_p2mp.id", FT_UINT32, BASE_HEX,
+          { "P2MP ID", "ldp_msg_tlv_rsvp_te_p2mp_id", FT_UINT32, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_must_be_zero,
-          { "MUST be zero", "ldp.msg.tlv.rsvp_te_p2mp.zero", FT_UINT16, BASE_HEX,
+          { "MUST be zero", "ldp_msg_tlv_rsvp_te_p2mp_zero", FT_UINT16, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_tunnel_id,
-          { "Tunnel ID", "ldp.msg.tlv.rsvp_te_p2mp.tunnel_id", FT_UINT16, BASE_HEX,
+          { "Tunnel ID", "ldp_msg_tlv_rsvp_te_p2mp_tunnel_id", FT_UINT16, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_ext_tunnel_id,
-          { "Extended Tunnel ID", "ldp.msg.tlv.rsvp_te_p2mp.ipv4_ext_tunnel_id", FT_IPv4, BASE_NONE,
+          { "Extended Tunnel ID", "ldp_msg_tlv_rsvp_te_p2mp_ipv4_ext_tunnel_id", FT_IPv4, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_tlv_inv_length,
-          { "Invalid length", "ldp.msg.tlv.invalid.length", FT_UINT16, BASE_HEX,
+          { "Invalid length", "ldp_msg_tlv_invalid_length", FT_UINT16, BASE_HEX,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_returned_pdu_data,
-          { "Returned PDU Data", "ldp.returned_pdu_data", FT_BYTES, BASE_NONE,
+          { "Returned PDU Data", "ldp_returned_pdu_data", FT_BYTES, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_returned_message_parameters,
-          { "Returned Message Parameters", "ldp.returned_message_parameters", FT_BYTES, BASE_NONE,
+          { "Returned Message Parameters", "ldp_returned_message_parameters", FT_BYTES, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_data,
-          { "Data", "ldp.data", FT_BYTES, BASE_NONE,
+          { "Data", "ldp_data", FT_BYTES, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
 
         { &hf_ldp_unknown_data,
-          { "Unknown Data", "ldp.unknown_data", FT_BYTES, BASE_NONE,
+          { "Unknown Data", "ldp_unknown_data", FT_BYTES, BASE_NONE,
             NULL, 0x0, NULL, HFILL }},
     };
 

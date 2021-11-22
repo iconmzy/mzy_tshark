@@ -329,42 +329,42 @@ proto_register_arcnet (void)
 /* Setup list of header fields  See Section 1.6.1 for details*/
   static hf_register_info hf[] = {
     {&hf_arcnet_src,
-     {"Source", "arcnet.src",
+     {"Source", "arcnet_src",
       FT_UINT8, BASE_HEX, NULL, 0,
       "Source ID", HFILL}
      },
     {&hf_arcnet_dst,
-     {"Dest", "arcnet.dst",
+     {"Dest", "arcnet_dst",
       FT_UINT8, BASE_HEX, NULL, 0,
       "Dest ID", HFILL}
      },
     {&hf_arcnet_offset,
-     {"Offset", "arcnet.offset",
+     {"Offset", "arcnet_offset",
       FT_BYTES, BASE_NONE, NULL, 0,
       NULL, HFILL}
      },
     {&hf_arcnet_protID,
-     {"Protocol ID", "arcnet.protID",
+     {"Protocol ID", "arcnet_protID",
       FT_UINT8, BASE_HEX, VALS(arcnet_prot_id_vals), 0,
       "Proto type", HFILL}
      },
     {&hf_arcnet_split_flag,
-     {"Split Flag", "arcnet.split_flag",
+     {"Split Flag", "arcnet_split_flag",
       FT_UINT8, BASE_DEC, NULL, 0,
       NULL, HFILL}
      },
     {&hf_arcnet_exception_flag,
-     {"Exception Flag", "arcnet.exception_flag",
+     {"Exception Flag", "arcnet_exception_flag",
       FT_UINT8, BASE_HEX, NULL, 0,
       NULL, HFILL}
      },
     {&hf_arcnet_sequence,
-     {"Sequence", "arcnet.sequence",
+     {"Sequence", "arcnet_sequence",
       FT_UINT16, BASE_DEC, NULL, 0,
       "Sequence number", HFILL}
      },
     {&hf_arcnet_padding,
-     {"Padding", "arcnet.padding",
+     {"Padding", "arcnet_padding",
       FT_UINT16, BASE_HEX, NULL, 0,
       NULL, HFILL}
      },

@@ -8158,1823 +8158,1823 @@ proto_register_skinny(void)
   static hf_register_info hf[] = {
     { &hf_skinny_data_length,
       {
-        "Data length", "skinny.data_length", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "Data length", "skinny_data_length", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Number of bytes in the data portion.", HFILL }},
     { &hf_skinny_hdr_version,
       {
-        "Header version", "skinny.hdr_version", FT_UINT32, BASE_HEX, VALS(header_version), 0x0,
+        "Header version", "skinny_hdr_version", FT_UINT32, BASE_HEX, VALS(header_version), 0x0,
         NULL, HFILL }},
     { &hf_skinny_messageId,
       {
-        "Message ID", "skinny.messageId", FT_UINT32, BASE_DEC|BASE_EXT_STRING, &message_id_ext, 0x0,
+        "Message ID", "skinny_messageId", FT_UINT32, BASE_DEC|BASE_EXT_STRING, &message_id_ext, 0x0,
         NULL, HFILL }},
     { &hf_skinny_xmlData,
       {
-        "XML data", "skinny.xmlData", FT_STRING, BASE_NONE, NULL, 0x0,
+        "XML data", "skinny_xmlData", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL,  HFILL }},
     { &hf_skinny_ipv4or6,
       {
-        "IPv4or6", "skinny.ipv4or6", FT_UINT32, BASE_DEC|BASE_EXT_STRING, &IpAddrType_ext, 0x0,
+        "IPv4or6", "skinny_ipv4or6", FT_UINT32, BASE_DEC|BASE_EXT_STRING, &IpAddrType_ext, 0x0,
         NULL, HFILL }},
     { &hf_skinny_response_in,
       {
-        "Response In", "skinny.response_in", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_RESPONSE), 0x0,
+        "Response In", "skinny_response_in", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_RESPONSE), 0x0,
         "The response to this SKINNY request is in this frame", HFILL }},
     { &hf_skinny_response_to,
       {
-        "Request In", "skinny.response_to", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_REQUEST), 0x0,
+        "Request In", "skinny_response_to", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_REQUEST), 0x0,
         "This is a response to the SKINNY request in this frame", HFILL }},
     { &hf_skinny_response_time,
       {
-        "Response Time", "skinny.response_time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+        "Response Time", "skinny_response_time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
         "The time between the Call and the Reply", HFILL }},
     { &hf_skinny_CallingPartyName,
       {
-        "CallingName", "skinny.CallingPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0008,
+        "CallingName", "skinny_CallingPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0008,
         NULL, HFILL }},
     { &hf_skinny_CallingPartyNumber,
       {
-        "CallingNum", "skinny.CallingPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0004,
+        "CallingNum", "skinny_CallingPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0004,
         NULL, HFILL }},
     { &hf_skinny_DSCPValue,
       {
-        "DSCPValue", "skinny.DSCPValue", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "DSCPValue", "skinny_DSCPValue", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_FutureUse1,
       {
-        "FutureUse1", "skinny.FutureUse1", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "FutureUse1", "skinny_FutureUse1", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_FutureUse2,
       {
-        "FutureUse2", "skinny.FutureUse2", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "FutureUse2", "skinny_FutureUse2", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_FutureUse3,
       {
-        "FutureUse3", "skinny.FutureUse3", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "FutureUse3", "skinny_FutureUse3", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit1,
       {
-        "Bit1", "skinny.Generic.Bitfield.Bit1", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0001,
+        "Bit1", "skinny_Generic_Bitfield_Bit1", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0001,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit10,
       {
-        "Bit10", "skinny.Generic.Bitfield.Bit10", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0200,
+        "Bit10", "skinny_Generic_Bitfield_Bit10", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0200,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit11,
       {
-        "Bit11", "skinny.Generic.Bitfield.Bit11", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0400,
+        "Bit11", "skinny_Generic_Bitfield_Bit11", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0400,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit12,
       {
-        "Bit12", "skinny.Generic.Bitfield.Bit12", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0800,
+        "Bit12", "skinny_Generic_Bitfield_Bit12", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0800,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit13,
       {
-        "Bit13", "skinny.Generic.Bitfield.Bit13", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x1000,
+        "Bit13", "skinny_Generic_Bitfield_Bit13", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x1000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit14,
       {
-        "Bit14", "skinny.Generic.Bitfield.Bit14", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x2000,
+        "Bit14", "skinny_Generic_Bitfield_Bit14", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x2000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit15,
       {
-        "Bit14", "skinny.Generic.Bitfield.Bit15", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x4000,
+        "Bit14", "skinny_Generic_Bitfield_Bit15", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x4000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit16,
       {
-        "Bit15", "skinny.Generic.Bitfield.Bit16", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x8000,
+        "Bit15", "skinny_Generic_Bitfield_Bit16", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x8000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit17,
       {
-        "Bit17", "skinny.Generic.Bitfield.Bit17", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x10000,
+        "Bit17", "skinny_Generic_Bitfield_Bit17", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x10000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit18,
       {
-        "Bit18", "skinny.Generic.Bitfield.Bit18", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x20000,
+        "Bit18", "skinny_Generic_Bitfield_Bit18", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x20000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit19,
       {
-        "Bit19", "skinny.Generic.Bitfield.Bit19", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x40000,
+        "Bit19", "skinny_Generic_Bitfield_Bit19", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x40000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit2,
       {
-        "Bit2", "skinny.Generic.Bitfield.Bit2", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0002,
+        "Bit2", "skinny_Generic_Bitfield_Bit2", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0002,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit20,
       {
-        "Bit20", "skinny.Generic.Bitfield.Bit20", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x80000,
+        "Bit20", "skinny_Generic_Bitfield_Bit20", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x80000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit21,
       {
-        "Bit21", "skinny.Generic.Bitfield.Bit21", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x100000,
+        "Bit21", "skinny_Generic_Bitfield_Bit21", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x100000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit22,
       {
-        "Bit22", "skinny.Generic.Bitfield.Bit22", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x200000,
+        "Bit22", "skinny_Generic_Bitfield_Bit22", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x200000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit23,
       {
-        "Bit23", "skinny.Generic.Bitfield.Bit23", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x400000,
+        "Bit23", "skinny_Generic_Bitfield_Bit23", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x400000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit24,
       {
-        "Bit24", "skinny.Generic.Bitfield.Bit24", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x800000,
+        "Bit24", "skinny_Generic_Bitfield_Bit24", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x800000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit25,
       {
-        "Bit25", "skinny.Generic.Bitfield.Bit25", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x1000000,
+        "Bit25", "skinny_Generic_Bitfield_Bit25", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x1000000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit26,
       {
-        "Bit26", "skinny.Generic.Bitfield.Bit26", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x2000000,
+        "Bit26", "skinny_Generic_Bitfield_Bit26", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x2000000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit27,
       {
-        "Bit27", "skinny.Generic.Bitfield.Bit27", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x4000000,
+        "Bit27", "skinny_Generic_Bitfield_Bit27", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x4000000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit28,
       {
-        "Bit28", "skinny.Generic.Bitfield.Bit28", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x8000000,
+        "Bit28", "skinny_Generic_Bitfield_Bit28", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x8000000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit29,
       {
-        "Bit29", "skinny.Generic.Bitfield.Bit29", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x10000000,
+        "Bit29", "skinny_Generic_Bitfield_Bit29", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x10000000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit3,
       {
-        "Bit3", "skinny.Generic.Bitfield.Bit3", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0004,
+        "Bit3", "skinny_Generic_Bitfield_Bit3", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0004,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit30,
       {
-        "Bit30", "skinny.Generic.Bitfield.Bit30", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x20000000,
+        "Bit30", "skinny_Generic_Bitfield_Bit30", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x20000000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit31,
       {
-        "Bit31", "skinny.Generic.Bitfield.Bit31", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x40000000,
+        "Bit31", "skinny_Generic_Bitfield_Bit31", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x40000000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit32,
       {
-        "Bit32", "skinny.Generic.Bitfield.Bit32", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x80000000,
+        "Bit32", "skinny_Generic_Bitfield_Bit32", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x80000000,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit4,
       {
-        "Bit4", "skinny.Generic.Bitfield.Bit4", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0008,
+        "Bit4", "skinny_Generic_Bitfield_Bit4", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0008,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit5,
       {
-        "Bit5", "skinny.Generic.Bitfield.Bit5", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0010,
+        "Bit5", "skinny_Generic_Bitfield_Bit5", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0010,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit6,
       {
-        "Bit6", "skinny.Generic.Bitfield.Bit6", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0020,
+        "Bit6", "skinny_Generic_Bitfield_Bit6", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0020,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit7,
       {
-        "Bit7", "skinny.Generic.Bitfield.Bit7", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0040,
+        "Bit7", "skinny_Generic_Bitfield_Bit7", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0040,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit8,
       {
-        "Bit8", "skinny.Generic.Bitfield.Bit8", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0080,
+        "Bit8", "skinny_Generic_Bitfield_Bit8", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0080,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_Generic_Bitfield_Bit9,
       {
-        "Bit9", "skinny.Generic.Bitfield.Bit9", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0100,
+        "Bit9", "skinny_Generic_Bitfield_Bit9", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0100,
         "H263 Capability BitField", HFILL }},
     { &hf_skinny_MPI,
       {
-        "MPI", "skinny.MPI", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "MPI", "skinny_MPI", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_OrigDialed,
       {
-        "Originally Dialed", "skinny.OrigDialed", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0001,
+        "Originally Dialed", "skinny_OrigDialed", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0001,
         NULL, HFILL }},
     { &hf_skinny_PhoneFeatures_Abbreviated_Dial,
       {
-        "AbbrevDial", "skinny.PhoneFeatures.Abbreviated.Dial", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x8000,
+        "AbbrevDial", "skinny_PhoneFeatures_Abbreviated_Dial", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x8000,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit1,
       {
-        "Bit1", "skinny.PhoneFeatures.Bit1", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0001,
+        "Bit1", "skinny_PhoneFeatures_Bit1", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0001,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit11,
       {
-        "Bit11", "skinny.PhoneFeatures.Bit11", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0400,
+        "Bit11", "skinny_PhoneFeatures_Bit11", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0400,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit12,
       {
-        "Bit12", "skinny.PhoneFeatures.Bit12", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0800,
+        "Bit12", "skinny_PhoneFeatures_Bit12", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0800,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit13,
       {
-        "Bit13", "skinny.PhoneFeatures.Bit13", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x1000,
+        "Bit13", "skinny_PhoneFeatures_Bit13", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x1000,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit14,
       {
-        "Bit14", "skinny.PhoneFeatures.Bit14", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x2000,
+        "Bit14", "skinny_PhoneFeatures_Bit14", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x2000,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit15,
       {
-        "Bit15", "skinny.PhoneFeatures.Bit15", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x4000,
+        "Bit15", "skinny_PhoneFeatures_Bit15", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x4000,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit2,
       {
-        "Bit2", "skinny.PhoneFeatures.Bit2", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0002,
+        "Bit2", "skinny_PhoneFeatures_Bit2", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0002,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit3,
       {
-        "Bit3", "skinny.PhoneFeatures.Bit3", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0004,
+        "Bit3", "skinny_PhoneFeatures_Bit3", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0004,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit4,
       {
-        "Bit4", "skinny.PhoneFeatures.Bit4", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0008,
+        "Bit4", "skinny_PhoneFeatures_Bit4", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0008,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit6,
       {
-        "Bit6", "skinny.PhoneFeatures.Bit6", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0020,
+        "Bit6", "skinny_PhoneFeatures_Bit6", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0020,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit7,
       {
-        "Bit7", "skinny.PhoneFeatures.Bit7", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0040,
+        "Bit7", "skinny_PhoneFeatures_Bit7", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0040,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_Bit9,
       {
-        "Bit9", "skinny.PhoneFeatures.Bit9", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0100,
+        "Bit9", "skinny_PhoneFeatures_Bit9", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0100,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_DynamicMessages,
       {
-        "DynamicMessages", "skinny.PhoneFeatures.DynamicMessages", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0080,
+        "DynamicMessages", "skinny_PhoneFeatures_DynamicMessages", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0080,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_RFC2833,
       {
-        "RFC2833", "skinny.PhoneFeatures.RFC2833", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0200,
+        "RFC2833", "skinny_PhoneFeatures_RFC2833", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0200,
         "Features this device supports", HFILL }},
     { &hf_skinny_PhoneFeatures_UTF8,
       {
-        "UTF8Bit5", "skinny.PhoneFeatures.UTF8", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0010,
+        "UTF8Bit5", "skinny_PhoneFeatures_UTF8", FT_BOOLEAN, 16, TFS(&tfs_yes_no), 0x0010,
         "Features this device supports", HFILL }},
     { &hf_skinny_RFC2833PayloadType,
       {
-        "RFC2833PayloadType", "skinny.RFC2833PayloadType", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "RFC2833PayloadType", "skinny_RFC2833PayloadType", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_RTCPPortNumber,
       {
-        "RTCPPortNumber", "skinny.RTCPPortNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "RTCPPortNumber", "skinny_RTCPPortNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_RedirDialed,
       {
-        "Redirected Dialed", "skinny.RedirDialed", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0002,
+        "Redirected Dialed", "skinny_RedirDialed", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0002,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_BitsReserved,
       {
-        "BitsReserved", "skinny.RestrictInformationType.BitsReserved", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0xffffff00,
+        "BitsReserved", "skinny_RestrictInformationType_BitsReserved", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0xffffff00,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_CalledParty,
       {
-        "CalledParty", "skinny.RestrictInformationType.CalledParty", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x000c,
+        "CalledParty", "skinny_RestrictInformationType_CalledParty", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x000c,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_CalledPartyName,
       {
-        "CalledPartyName", "skinny.RestrictInformationType.CalledPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0004,
+        "CalledPartyName", "skinny_RestrictInformationType_CalledPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0004,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_CalledPartyNumber,
       {
-        "CalledPartyNumber", "skinny.RestrictInformationType.CalledPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0008,
+        "CalledPartyNumber", "skinny_RestrictInformationType_CalledPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0008,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_CallingParty,
       {
-        "CallingParty", "skinny.RestrictInformationType.CallingParty", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0003,
+        "CallingParty", "skinny_RestrictInformationType_CallingParty", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0003,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_CallingPartyName,
       {
-        "CallingPartyName", "skinny.RestrictInformationType.CallingPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0001,
+        "CallingPartyName", "skinny_RestrictInformationType_CallingPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0001,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_CallingPartyNumber,
       {
-        "CallingPartyNumber", "skinny.RestrictInformationType.CallingPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0002,
+        "CallingPartyNumber", "skinny_RestrictInformationType_CallingPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0002,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_LastRedirectParty,
       {
-        "LastRedirectParty", "skinny.RestrictInformationType.LastRedirectParty", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x00c0,
+        "LastRedirectParty", "skinny_RestrictInformationType_LastRedirectParty", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x00c0,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_LastRedirectPartyName,
       {
-        "LastRedirectPartyName", "skinny.RestrictInformationType.LastRedirectPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0040,
+        "LastRedirectPartyName", "skinny_RestrictInformationType_LastRedirectPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0040,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_LastRedirectPartyNumber,
       {
-        "LastRedirectPartyNumber", "skinny.RestrictInformationType.LastRedirectPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0080,
+        "LastRedirectPartyNumber", "skinny_RestrictInformationType_LastRedirectPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0080,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_OriginalCalledParty,
       {
-        "OriginalCalledParty", "skinny.RestrictInformationType.OriginalCalledParty", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0030,
+        "OriginalCalledParty", "skinny_RestrictInformationType_OriginalCalledParty", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0030,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_OriginalCalledPartyName,
       {
-        "OriginalCalledPartyName", "skinny.RestrictInformationType.OriginalCalledPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0010,
+        "OriginalCalledPartyName", "skinny_RestrictInformationType_OriginalCalledPartyName", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0010,
         NULL, HFILL }},
     { &hf_skinny_RestrictInformationType_OriginalCalledPartyNumber,
       {
-        "OriginalCalledPartyNumber", "skinny.RestrictInformationType.OriginalCalledPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0020,
+        "OriginalCalledPartyNumber", "skinny_RestrictInformationType_OriginalCalledPartyNumber", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0020,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey1,
       {
-        "SoftKey1", "skinny.SoftKeyMask.SoftKey1", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0001,
+        "SoftKey1", "skinny_SoftKeyMask_SoftKey1", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0001,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey10,
       {
-        "SoftKey10", "skinny.SoftKeyMask.SoftKey10", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0200,
+        "SoftKey10", "skinny_SoftKeyMask_SoftKey10", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0200,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey11,
       {
-        "SoftKey11", "skinny.SoftKeyMask.SoftKey11", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0400,
+        "SoftKey11", "skinny_SoftKeyMask_SoftKey11", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0400,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey12,
       {
-        "SoftKey12", "skinny.SoftKeyMask.SoftKey12", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0800,
+        "SoftKey12", "skinny_SoftKeyMask_SoftKey12", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0800,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey13,
       {
-        "SoftKey13", "skinny.SoftKeyMask.SoftKey13", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x1000,
+        "SoftKey13", "skinny_SoftKeyMask_SoftKey13", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x1000,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey14,
       {
-        "SoftKey14", "skinny.SoftKeyMask.SoftKey14", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x2000,
+        "SoftKey14", "skinny_SoftKeyMask_SoftKey14", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x2000,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey15,
       {
-        "SoftKey15", "skinny.SoftKeyMask.SoftKey15", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x4000,
+        "SoftKey15", "skinny_SoftKeyMask_SoftKey15", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x4000,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey16,
       {
-        "SoftKey16", "skinny.SoftKeyMask.SoftKey16", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x8000,
+        "SoftKey16", "skinny_SoftKeyMask_SoftKey16", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x8000,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey2,
       {
-        "SoftKey2", "skinny.SoftKeyMask.SoftKey2", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0002,
+        "SoftKey2", "skinny_SoftKeyMask_SoftKey2", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0002,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey3,
       {
-        "SoftKey3", "skinny.SoftKeyMask.SoftKey3", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0004,
+        "SoftKey3", "skinny_SoftKeyMask_SoftKey3", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0004,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey4,
       {
-        "SoftKey4", "skinny.SoftKeyMask.SoftKey4", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0008,
+        "SoftKey4", "skinny_SoftKeyMask_SoftKey4", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0008,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey5,
       {
-        "SoftKey5", "skinny.SoftKeyMask.SoftKey5", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0010,
+        "SoftKey5", "skinny_SoftKeyMask_SoftKey5", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0010,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey6,
       {
-        "SoftKey6", "skinny.SoftKeyMask.SoftKey6", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0020,
+        "SoftKey6", "skinny_SoftKeyMask_SoftKey6", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0020,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey7,
       {
-        "SoftKey7", "skinny.SoftKeyMask.SoftKey7", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0040,
+        "SoftKey7", "skinny_SoftKeyMask_SoftKey7", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0040,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey8,
       {
-        "SoftKey8", "skinny.SoftKeyMask.SoftKey8", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0080,
+        "SoftKey8", "skinny_SoftKeyMask_SoftKey8", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0080,
         NULL, HFILL }},
     { &hf_skinny_SoftKeyMask_SoftKey9,
       {
-        "SoftKey9", "skinny.SoftKeyMask.SoftKey9", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0100,
+        "SoftKey9", "skinny_SoftKeyMask_SoftKey9", FT_BOOLEAN, 32, TFS(&tfs_yes_no), 0x0100,
         NULL, HFILL }},
     { &hf_skinny_active,
       {
-        "active", "skinny.active", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "active", "skinny_active", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_activeConferenceOnRegistration,
       {
-        "Active Conference", "skinny.activeConferenceOnRegistration", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "Active Conference", "skinny_activeConferenceOnRegistration", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Active conference at Registration", HFILL }},
     { &hf_skinny_activeConferences,
       {
-        "Active Conferences", "skinny.activeConferences", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "Active Conferences", "skinny_activeConferences", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Active Conferences at Registration", HFILL }},
     { &hf_skinny_activeForward,
       {
-        "activeForward", "skinny.activeForward", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "activeForward", "skinny_activeForward", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_activeStreams,
       {
-        "Active RTP Streams", "skinny.activeStreams", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "Active RTP Streams", "skinny_activeStreams", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Active RTP Streams at Registration", HFILL }},
     { &hf_skinny_activeStreamsOnRegistration,
       {
-        "activeStreamsOnRegistration", "skinny.activeStreamsOnRegistration", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "activeStreamsOnRegistration", "skinny_activeStreamsOnRegistration", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_alarmInfo,
       {
-        "alarmInfo", "skinny.alarmInfo", FT_STRING, BASE_NONE, NULL, 0x0,
+        "alarmInfo", "skinny_alarmInfo", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_alignmentPadding,
       {
-        "alignmentPadding", "skinny.alignmentPadding", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "alignmentPadding", "skinny_alignmentPadding", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_annexNandWFutureUse,
       {
-        "annexNandWFutureUse", "skinny.annexNandWFutureUse", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "annexNandWFutureUse", "skinny_annexNandWFutureUse", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_appInstanceID,
       {
-        "appInstanceID", "skinny.appInstanceID", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "appInstanceID", "skinny_appInstanceID", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_applicationId,
       {
-        "applicationId", "skinny.applicationId", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "applicationId", "skinny_applicationId", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_areMessagesWaiting,
       {
-        "areMessagesWaiting", "skinny.areMessagesWaiting", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "areMessagesWaiting", "skinny_areMessagesWaiting", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_associatedStreamId,
       {
-        "associatedStreamId", "skinny.associatedStreamId", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "associatedStreamId", "skinny_associatedStreamId", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_audioCapCount,
       {
-        "audioCapCount", "skinny.audioCapCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "audioCapCount", "skinny_audioCapCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_audioLevelAdjustment,
       {
-        "audioLevelAdjustment", "skinny.audioLevelAdjustment", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "audioLevelAdjustment", "skinny_audioLevelAdjustment", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_averageBitRate,
       {
-        "averageBitRate", "skinny.averageBitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "averageBitRate", "skinny_averageBitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_bandwidth,
       {
-        "bandwidth", "skinny.bandwidth", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "bandwidth", "skinny_bandwidth", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_bitRate,
       {
-        "bitRate", "skinny.bitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "bitRate", "skinny_bitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_burstSize,
       {
-        "burstSize", "skinny.burstSize", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "burstSize", "skinny_burstSize", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_busyTrigger,
       {
-        "busyTrigger", "skinny.busyTrigger", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "busyTrigger", "skinny_busyTrigger", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_buttonCount,
       {
-        "buttonCount", "skinny.buttonCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "buttonCount", "skinny_buttonCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_buttonOffset,
       {
-        "buttonOffset", "skinny.buttonOffset", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "buttonOffset", "skinny_buttonOffset", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_callInstance,
       {
-        "callInstance", "skinny.callInstance", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "callInstance", "skinny_callInstance", FT_UINT32, BASE_DEC, NULL, 0x0,
         "CallId", HFILL }},
     { &hf_skinny_callReference,
       {
-        "callReference", "skinny.callReference", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "callReference", "skinny_callReference", FT_UINT32, BASE_DEC, NULL, 0x0,
         "CallId", HFILL }},
     { &hf_skinny_callSelectStat,
       {
-        "callSelectStat", "skinny.callSelectStat", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "callSelectStat", "skinny_callSelectStat", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_capAndVer,
       {
-        "capAndVer", "skinny.capAndVer", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "capAndVer", "skinny_capAndVer", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_capCount,
       {
-        "capCount", "skinny.capCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "capCount", "skinny_capCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_chan0MaxPayload,
       {
-        "chan0MaxPayload", "skinny.chan0MaxPayload", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "chan0MaxPayload", "skinny_chan0MaxPayload", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_chan2MaxPayload,
       {
-        "chan2MaxPayload", "skinny.chan2MaxPayload", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "chan2MaxPayload", "skinny_chan2MaxPayload", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_chan2MaxWindow,
       {
-        "chan2MaxWindow", "skinny.chan2MaxWindow", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "chan2MaxWindow", "skinny_chan2MaxWindow", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_chan3MaxPayload,
       {
-        "chan3MaxPayload", "skinny.chan3MaxPayload", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "chan3MaxPayload", "skinny_chan3MaxPayload", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_clockConversionCode,
       {
-        "clockConversionCode", "skinny.clockConversionCode", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "clockConversionCode", "skinny_clockConversionCode", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_clockDivisor,
       {
-        "clockDivisor", "skinny.clockDivisor", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "clockDivisor", "skinny_clockDivisor", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_codecMode,
       {
-        "codecMode", "skinny.codecMode", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "codecMode", "skinny_codecMode", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_codecParam1,
       {
-        "codecParam1", "skinny.codecParam1", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "codecParam1", "skinny_codecParam1", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_codecParam2,
       {
-        "codecParam2", "skinny.codecParam2", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "codecParam2", "skinny_codecParam2", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_confServiceNum,
       {
-        "confServiceNum", "skinny.confServiceNum", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "confServiceNum", "skinny_confServiceNum", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_conferenceId,
       {
-        "conferenceId", "skinny.conferenceId", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "conferenceId", "skinny_conferenceId", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Conference ID", HFILL }},
     { &hf_skinny_confirmRequired,
       {
-        "confirmRequired", "skinny.confirmRequired", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "confirmRequired", "skinny_confirmRequired", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_country,
       {
-        "country", "skinny.country", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "country", "skinny_country", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_customMaxBRandCPB,
       {
-        "customMaxBRandCPB", "skinny.customMaxBRandCPB", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "customMaxBRandCPB", "skinny_customMaxBRandCPB", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_customMaxDPB,
       {
-        "customMaxDPB", "skinny.customMaxDPB", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "customMaxDPB", "skinny_customMaxDPB", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_customMaxFS,
       {
-        "customMaxFS", "skinny.customMaxFS", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "customMaxFS", "skinny_customMaxFS", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_customMaxMBPS,
       {
-        "customMaxMBPS", "skinny.customMaxMBPS", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "customMaxMBPS", "skinny_customMaxMBPS", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_customPictureFormatCount,
       {
-        "customPictureFormatCount", "skinny.customPictureFormatCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "customPictureFormatCount", "skinny_customPictureFormatCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_dataCapCount,
       {
-        "dataCapCount", "skinny.dataCapCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "dataCapCount", "skinny_dataCapCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_dataLength,
       {
-        "dataLength", "skinny.dataLength", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "dataLength", "skinny_dataLength", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_dataSize,
       {
-        "dataSize", "skinny.dataSize", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "dataSize", "skinny_dataSize", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Data Size", HFILL }},
     { &hf_skinny_defendingPriority,
       {
-        "defendingPriority", "skinny.defendingPriority", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "defendingPriority", "skinny_defendingPriority", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_displayPriority,
       {
-        "displayPriority", "skinny.displayPriority", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "displayPriority", "skinny_displayPriority", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_dtmfType,
       {
-        "dtmfType", "skinny.dtmfType", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "dtmfType", "skinny_dtmfType", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_dynamicPayload,
       {
-        "dynamicPayload", "skinny.dynamicPayload", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "dynamicPayload", "skinny_dynamicPayload", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_failureNodeIpAddr,
       {
-        "failureNodeIpAddr", "skinny.failureNodeIpAddr", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "failureNodeIpAddr", "skinny_failureNodeIpAddr", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_featureCapabilities,
       {
-        "featureCapabilities", "skinny.featureCapabilities", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "featureCapabilities", "skinny_featureCapabilities", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_featureIndex,
       {
-        "featureIndex", "skinny.featureIndex", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "featureIndex", "skinny_featureIndex", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_featureStatus,
       {
-        "featureStatus", "skinny.featureStatus", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "featureStatus", "skinny_featureStatus", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_features,
       {
-        "features", "skinny.features", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "features", "skinny_features", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_firstGOB,
       {
-        "firstGOB", "skinny.firstGOB", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "firstGOB", "skinny_firstGOB", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_firstMB,
       {
-        "firstMB", "skinny.firstMB", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "firstMB", "skinny_firstMB", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_format,
       {
-        "format", "skinny.format", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "format", "skinny_format", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_forwardAllActive,
       {
-        "forwardAllActive", "skinny.forwardAllActive", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "forwardAllActive", "skinny_forwardAllActive", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_forwardBusyActive,
       {
-        "forwardBusyActive", "skinny.forwardBusyActive", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "forwardBusyActive", "skinny_forwardBusyActive", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_forwardNoAnswerActive,
       {
-        "forwardNoAnswerActive", "skinny.forwardNoAnswerActive", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "forwardNoAnswerActive", "skinny_forwardNoAnswerActive", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_hearingConfPartyMask,
       {
-        "hearingConfPartyMask", "skinny.hearingConfPartyMask", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "hearingConfPartyMask", "skinny_hearingConfPartyMask", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_instance,
       {
-        "instance", "skinny.instance", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "instance", "skinny_instance", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Device Instance", HFILL }},
     { &hf_skinny_instanceNumber,
       {
-        "instanceNumber", "skinny.instanceNumber", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "instanceNumber", "skinny_instanceNumber", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_ipAddr_ipv4,
      {
-        "ipAddr IPv4 Address", "skinny.ipAddr.ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+        "ipAddr IPv4 Address", "skinny_ipAddr_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_ipAddr_ipv6,
      {
-        "ipAddr IPv6 Address", "skinny.ipAddr.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+        "ipAddr IPv6 Address", "skinny_ipAddr_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_ipV4AddressScope,
       {
-        "ipV4AddressScope", "skinny.ipV4AddressScope", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "ipV4AddressScope", "skinny_ipV4AddressScope", FT_UINT32, BASE_DEC, NULL, 0x0,
         "IPv4 Address Scope", HFILL }},
     { &hf_skinny_ipV6AddressScope,
       {
-        "ipV6AddressScope", "skinny.ipV6AddressScope", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "ipV6AddressScope", "skinny_ipV6AddressScope", FT_UINT32, BASE_DEC, NULL, 0x0,
         "IPv6 Address Scope", HFILL }},
     { &hf_skinny_isConferenceCreator,
       {
-        "isConferenceCreator", "skinny.isConferenceCreator", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "isConferenceCreator", "skinny_isConferenceCreator", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_isMKIPresent,
       {
-        "isMKIPresent", "skinny.isMKIPresent", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "isMKIPresent", "skinny_isMKIPresent", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_jitter,
       {
-        "jitter", "skinny.jitter", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "jitter", "skinny_jitter", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Amount of Jitter", HFILL }},
     { &hf_skinny_keepAliveInterval,
       {
-        "keepAliveInterval", "skinny.keepAliveInterval", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "keepAliveInterval", "skinny_keepAliveInterval", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_key,
       {
-        "key", "skinny.key", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "key", "skinny_key", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_keyDerivationRate,
       {
-        "keyDerivationRate", "skinny.keyDerivationRate", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "keyDerivationRate", "skinny_keyDerivationRate", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_keylen,
       {
-        "keylen", "skinny.keylen", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "keylen", "skinny_keylen", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_last,
       {
-        "last", "skinny.last", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "last", "skinny_last", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_lastRedirectingReason,
       {
-        "lastRedirectingReason", "skinny.lastRedirectingReason", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "lastRedirectingReason", "skinny_lastRedirectingReason", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Last Redirecting Reason", HFILL }},
     { &hf_skinny_latency,
       {
-        "latency", "skinny.latency", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "latency", "skinny_latency", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Amount of Latency", HFILL }},
     { &hf_skinny_layoutCount,
       {
-        "layoutCount", "skinny.layoutCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "layoutCount", "skinny_layoutCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_layoutID,
       {
-        "layoutID", "skinny.layoutID", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "layoutID", "skinny_layoutID", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_level,
       {
-        "level", "skinny.level", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "level", "skinny_level", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_levelPreferenceCount,
       {
-        "levelPreferenceCount", "skinny.levelPreferenceCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "levelPreferenceCount", "skinny_levelPreferenceCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_lineDataEntries,
       {
-        "lineDataEntries", "skinny.lineDataEntries", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "lineDataEntries", "skinny_lineDataEntries", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Number of Line Data Entries", HFILL }},
     { &hf_skinny_lineDisplayOptions,
       {
-        "lineDisplayOptions", "skinny.lineDisplayOptions", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "lineDisplayOptions", "skinny_lineDisplayOptions", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_lineInstance,
       {
-        "lineInstance", "skinny.lineInstance", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "lineInstance", "skinny_lineInstance", FT_UINT32, BASE_DEC, NULL, 0x0,
         "LineId", HFILL }},
     { &hf_skinny_lineNumber,
       {
-        "lineNumber", "skinny.lineNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "lineNumber", "skinny_lineNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_locale,
       {
-        "locale", "skinny.locale", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "locale", "skinny_locale", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_longTermPictureIndex,
       {
-        "longTermPictureIndex", "skinny.longTermPictureIndex", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "longTermPictureIndex", "skinny_longTermPictureIndex", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_macAddress,
       {
-        "Mac Address", "skinny.macAddress", FT_ETHER, BASE_NONE, NULL, 0x0,
+        "Mac Address", "skinny_macAddress", FT_ETHER, BASE_NONE, NULL, 0x0,
         "Ethernet/Mac Address", HFILL }},
     { &hf_skinny_matrixConfPartyID,
       {
-        "matrixConfPartyID", "skinny.matrixConfPartyID", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "matrixConfPartyID", "skinny_matrixConfPartyID", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maxBW,
       {
-        "maxBW", "skinny.maxBW", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "maxBW", "skinny_maxBW", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maxBitRate,
       {
-        "maxBitRate", "skinny.maxBitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "maxBitRate", "skinny_maxBitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maxConferences,
       {
-        "Maximum Number of Concurrent Conferences", "skinny.maxConferences", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "Maximum Number of Concurrent Conferences", "skinny_maxConferences", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Indicates the maximum number of simultaneous Conferences, which this client/appliance can handle", HFILL }},
     { &hf_skinny_maxFramesPerPacket,
       {
-        "maxFramesPerPacket", "skinny.maxFramesPerPacket", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "maxFramesPerPacket", "skinny_maxFramesPerPacket", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maxNumCalls,
       {
-        "maxNumCalls", "skinny.maxNumCalls", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "maxNumCalls", "skinny_maxNumCalls", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maxNumOfAvailLines,
       {
-        "maxNumOfAvailLines", "skinny.maxNumOfAvailLines", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "maxNumOfAvailLines", "skinny_maxNumOfAvailLines", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maxNumberOfLines,
       {
-        "maxNumberOfLines", "skinny.maxNumberOfLines", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "maxNumberOfLines", "skinny_maxNumberOfLines", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Maximum number of lines", HFILL }},
     { &hf_skinny_maxProtocolVer,
       {
-        "maxProtocolVer", "skinny.maxProtocolVer", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "maxProtocolVer", "skinny_maxProtocolVer", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maxRetryNumber,
       {
-        "maxRetryNumber", "skinny.maxRetryNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "maxRetryNumber", "skinny_maxRetryNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maxStreams,
       {
-        "Maximum Number of Concurrent RTP Streams", "skinny.maxStreams", FT_UINT32, BASE_DEC, NULL, 0x0,
-        "Indicates the maximum number of simultaneous RTP duplex streams, which this client/appliance can handle.", HFILL }},
+        "Maximum Number of Concurrent RTP Streams", "skinny_maxStreams", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "Indicates the maximum number of simultaneous RTP duplex streams, which this client/appliance can handle_", HFILL }},
     { &hf_skinny_maxStreamsPerConf,
       {
-        "maxStreamsPerConf", "skinny.maxStreamsPerConf", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "maxStreamsPerConf", "skinny_maxStreamsPerConf", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_maximumBitRate,
       {
-        "maximumBitRate", "skinny.maximumBitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "maximumBitRate", "skinny_maximumBitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_milliSecondPacketSize,
       {
-        "milliSecondPacketSize", "skinny.milliSecondPacketSize", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "milliSecondPacketSize", "skinny_milliSecondPacketSize", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_minBitRate,
       {
-        "minBitRate", "skinny.minBitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "minBitRate", "skinny_minBitRate", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_mixingMode,
       {
-        "mixingMode", "skinny.mixingMode", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "mixingMode", "skinny_mixingMode", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_modAnd2833,
       {
-        "modAnd2833", "skinny.modAnd2833", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "modAnd2833", "skinny_modAnd2833", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_modelNumber,
       {
-        "modelNumber", "skinny.modelNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "modelNumber", "skinny_modelNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_multicastIpAddr_ipv4,
      {
-        "multicastIpAddr IPv4 Address", "skinny.multicastIpAddr.ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+        "multicastIpAddr IPv4 Address", "skinny_multicastIpAddr_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
         "ipaddress in big endian", HFILL }},
     { &hf_skinny_multicastIpAddr_ipv6,
      {
-        "multicastIpAddr IPv6 Address", "skinny.multicastIpAddr.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+        "multicastIpAddr IPv6 Address", "skinny_multicastIpAddr_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
         "ipaddress in big endian", HFILL }},
     { &hf_skinny_multicastPortNumber,
       {
-        "multicastPortNumber", "skinny.multicastPortNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "multicastPortNumber", "skinny_multicastPortNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_noaudio,
       {
-        "noaudio", "skinny.noaudio", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "noaudio", "skinny_noaudio", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_none,
       {
-        "none", "skinny.none", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "none", "skinny_none", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_notificationStatus,
       {
-        "notificationStatus", "skinny.notificationStatus", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "notificationStatus", "skinny_notificationStatus", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_nse,
       {
-        "nse", "skinny.nse", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "nse", "skinny_nse", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numNewMsgs,
       {
-        "numNewMsgs", "skinny.numNewMsgs", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numNewMsgs", "skinny_numNewMsgs", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numOldMsgs,
       {
-        "numOldMsgs", "skinny.numOldMsgs", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numOldMsgs", "skinny_numOldMsgs", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOctetsReceived,
       {
-        "numberOctetsReceived", "skinny.numberOctetsReceived", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOctetsReceived", "skinny_numberOctetsReceived", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Number of Octets Received", HFILL }},
     { &hf_skinny_numberOctetsSent,
       {
-        "numberOctetsSent", "skinny.numberOctetsSent", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOctetsSent", "skinny_numberOctetsSent", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Number of Octets Sent", HFILL }},
     { &hf_skinny_numberOfActiveParticipants,
       {
-        "numberOfActiveParticipants", "skinny.numberOfActiveParticipants", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfActiveParticipants", "skinny_numberOfActiveParticipants", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOfEntries,
       {
-        "numberOfEntries", "skinny.numberOfEntries", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfEntries", "skinny_numberOfEntries", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOfGOBs,
       {
-        "numberOfGOBs", "skinny.numberOfGOBs", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfGOBs", "skinny_numberOfGOBs", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOfInServiceStreams,
       {
-        "numberOfInServiceStreams", "skinny.numberOfInServiceStreams", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfInServiceStreams", "skinny_numberOfInServiceStreams", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOfLines,
       {
-        "numberOfLines", "skinny.numberOfLines", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfLines", "skinny_numberOfLines", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOfMBs,
       {
-        "numberOfMBs", "skinny.numberOfMBs", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfMBs", "skinny_numberOfMBs", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOfOutOfServiceStreams,
       {
-        "numberOfOutOfServiceStreams", "skinny.numberOfOutOfServiceStreams", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfOutOfServiceStreams", "skinny_numberOfOutOfServiceStreams", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOfReservedParticipants,
       {
-        "numberOfReservedParticipants", "skinny.numberOfReservedParticipants", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfReservedParticipants", "skinny_numberOfReservedParticipants", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberOfSpeedDials,
       {
-        "numberOfSpeedDials", "skinny.numberOfSpeedDials", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberOfSpeedDials", "skinny_numberOfSpeedDials", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_numberPacketsLost,
       {
-        "numberPacketsLost", "skinny.numberPacketsLost", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberPacketsLost", "skinny_numberPacketsLost", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Number of Packets Lost", HFILL }},
     { &hf_skinny_numberPacketsReceived,
       {
-        "numberPacketsReceived", "skinny.numberPacketsReceived", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberPacketsReceived", "skinny_numberPacketsReceived", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Number of Packets Received", HFILL }},
     { &hf_skinny_numberPacketsSent,
       {
-        "numberPacketsSent", "skinny.numberPacketsSent", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "numberPacketsSent", "skinny_numberPacketsSent", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Number of Packets Sent", HFILL }},
     { &hf_skinny_originalCdpnRedirectReason,
       {
-        "originalCdpnRedirectReason", "skinny.originalCdpnRedirectReason", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "originalCdpnRedirectReason", "skinny_originalCdpnRedirectReason", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Original Called Party Redirect Reason", HFILL }},
     { &hf_skinny_padding,
       {
-        "padding", "skinny.padding", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "padding", "skinny_padding", FT_UINT16, BASE_DEC, NULL, 0x0,
         "Unused/Padding", HFILL }},
     { &hf_skinny_parm1,
       {
-        "parm1", "skinny.parm1", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "parm1", "skinny_parm1", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_parm2,
       {
-        "parm2", "skinny.parm2", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "parm2", "skinny_parm2", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_participantEntry,
       {
-        "participantEntry", "skinny.participantEntry", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "participantEntry", "skinny_participantEntry", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_partyDirection,
       {
-        "partyDirection", "skinny.partyDirection", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "partyDirection", "skinny_partyDirection", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_passThroughPartyId,
       {
-        "passThroughPartyId", "skinny.passThroughPartyId", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "passThroughPartyId", "skinny_passThroughPartyId", FT_UINT32, BASE_DEC, NULL, 0x0,
         "PassThrough PartyId", HFILL }},
     { &hf_skinny_passthruPartyID,
       {
-        "passthruPartyID", "skinny.passthruPartyID", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "passthruPartyID", "skinny_passthruPartyID", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_payloadDtmf,
       {
-        "payloadDtmf", "skinny.payloadDtmf", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "payloadDtmf", "skinny_payloadDtmf", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_payloadType,
       {
-        "payloadType", "skinny.payloadType", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "payloadType", "skinny_payloadType", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_payload_rfc_number,
       {
-        "payload_rfc_number", "skinny.payload.rfc.number", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "payload_rfc_number", "skinny_payload_rfc_number", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_peakRate,
       {
-        "peakRate", "skinny.peakRate", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "peakRate", "skinny_peakRate", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_pictureFormatCount,
       {
-        "pictureFormatCount", "skinny.pictureFormatCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "pictureFormatCount", "skinny_pictureFormatCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_pictureHeight,
       {
-        "pictureHeight", "skinny.pictureHeight", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "pictureHeight", "skinny_pictureHeight", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_pictureNumber,
       {
-        "pictureNumber", "skinny.pictureNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "pictureNumber", "skinny_pictureNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_pictureWidth,
       {
-        "pictureWidth", "skinny.pictureWidth", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "pictureWidth", "skinny_pictureWidth", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_pixelAspectRatio,
       {
-        "pixelAspectRatio", "skinny.pixelAspectRatio", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "pixelAspectRatio", "skinny_pixelAspectRatio", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_portNumber,
       {
-        "portNumber", "skinny.portNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "portNumber", "skinny_portNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_precedenceDomain,
       {
-        "precedenceDomain", "skinny.precedenceDomain", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "precedenceDomain", "skinny_precedenceDomain", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Precedence Domain", HFILL }},
     { &hf_skinny_precedenceLevel,
       {
-        "precedenceLevel", "skinny.precedenceLevel", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "precedenceLevel", "skinny_precedenceLevel", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Precedence Level, MLPP priorities", HFILL }},
     { &hf_skinny_precedenceValue,
       {
-        "precedenceValue", "skinny.precedenceValue", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "precedenceValue", "skinny_precedenceValue", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_preemptionPriority,
       {
-        "preemptionPriority", "skinny.preemptionPriority", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "preemptionPriority", "skinny_preemptionPriority", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_priority,
       {
-        "priority", "skinny.priority", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "priority", "skinny_priority", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_profile,
       {
-        "profile", "skinny.profile", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "profile", "skinny_profile", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_protocolDependentData,
       {
-        "protocolDependentData", "skinny.protocolDependentData", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "protocolDependentData", "skinny_protocolDependentData", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_protocolVer,
       {
-        "Protocol Version", "skinny.protocolVer", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "Protocol Version", "skinny_protocolVer", FT_UINT8, BASE_DEC, NULL, 0x0,
         "Maximum Supported Protocol Version", HFILL }},
     { &hf_skinny_recoveryReferencePictureCount,
       {
-        "recoveryReferencePictureCount", "skinny.recoveryReferencePictureCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "recoveryReferencePictureCount", "skinny_recoveryReferencePictureCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_remoteIpAddr_ipv4,
      {
-        "remoteIpAddr IPv4 Address", "skinny.remoteIpAddr.ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+        "remoteIpAddr IPv4 Address", "skinny_remoteIpAddr_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
         "ipaddress in big endian", HFILL }},
     { &hf_skinny_remoteIpAddr_ipv6,
      {
-        "remoteIpAddr IPv6 Address", "skinny.remoteIpAddr.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+        "remoteIpAddr IPv6 Address", "skinny_remoteIpAddr_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
         "ipaddress in big endian", HFILL }},
     { &hf_skinny_remotePortNumber,
       {
-        "remotePortNumber", "skinny.remotePortNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "remotePortNumber", "skinny_remotePortNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_reserved_for_future_use,
       {
-        "reserved_for_future_use", "skinny.reserved.for.future.use", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "reserved_for_future_use", "skinny_reserved_for_future_use", FT_UINT32, BASE_DEC, NULL, 0x0,
         "User Id", HFILL }},
     { &hf_skinny_retryTimer,
       {
-        "retryTimer", "skinny.retryTimer", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "retryTimer", "skinny_retryTimer", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_rfc2833,
       {
-        "rfc2833", "skinny.rfc2833", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "rfc2833", "skinny_rfc2833", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_routingID,
       {
-        "routingID", "skinny.routingID", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "routingID", "skinny_routingID", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_rsvpErrorFlag,
       {
-        "rsvpErrorFlag", "skinny.rsvpErrorFlag", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "rsvpErrorFlag", "skinny_rsvpErrorFlag", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_rsvpErrorSubCodeVal,
       {
-        "rsvpErrorSubCodeVal", "skinny.rsvpErrorSubCodeVal", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "rsvpErrorSubCodeVal", "skinny_rsvpErrorSubCodeVal", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_rtpMediaPort,
       {
-        "rtpMediaPort", "skinny.rtpMediaPort", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "rtpMediaPort", "skinny_rtpMediaPort", FT_UINT32, BASE_DEC, NULL, 0x0,
         "RTP Media Port", HFILL }},
     { &hf_skinny_rtpPayloadFormat,
       {
-        "rtpPayloadFormat", "skinny.rtpPayloadFormat", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "rtpPayloadFormat", "skinny_rtpPayloadFormat", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_salt,
       {
-        "salt", "skinny.salt", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "salt", "skinny_salt", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_saltlen,
       {
-        "saltlen", "skinny.saltlen", FT_UINT16, BASE_DEC, NULL, 0x0,
+        "saltlen", "skinny_saltlen", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_secondaryKeepAliveInterval,
       {
-        "secondaryKeepAliveInterval", "skinny.secondaryKeepAliveInterval", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "secondaryKeepAliveInterval", "skinny_secondaryKeepAliveInterval", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_serverTcpListenPort,
       {
-        "serverTcpListenPort", "skinny.serverTcpListenPort", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "serverTcpListenPort", "skinny_serverTcpListenPort", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_serviceNum,
       {
-        "serviceNum", "skinny.serviceNum", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "serviceNum", "skinny_serviceNum", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_serviceNumber,
       {
-        "serviceNumber", "skinny.serviceNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "serviceNumber", "skinny_serviceNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_serviceResourceCount,
       {
-        "serviceResourceCount", "skinny.serviceResourceCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "serviceResourceCount", "skinny_serviceResourceCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_serviceURLIndex,
       {
-        "serviceURLIndex", "skinny.serviceURLIndex", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "serviceURLIndex", "skinny_serviceURLIndex", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_softKeyCount,
       {
-        "softKeyCount", "skinny.softKeyCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "softKeyCount", "skinny_softKeyCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_softKeyOffset,
       {
-        "softKeyOffset", "skinny.softKeyOffset", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "softKeyOffset", "skinny_softKeyOffset", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_softKeySetCount,
       {
-        "softKeySetCount", "skinny.softKeySetCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "softKeySetCount", "skinny_softKeySetCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_softKeySetOffset,
       {
-        "softKeySetOffset", "skinny.softKeySetOffset", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "softKeySetOffset", "skinny_softKeySetOffset", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_sourceIpAddr_ipv4,
      {
-        "sourceIpAddr IPv4 Address", "skinny.sourceIpAddr.ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+        "sourceIpAddr IPv4 Address", "skinny_sourceIpAddr_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_sourceIpAddr_ipv6,
      {
-        "sourceIpAddr IPv6 Address", "skinny.sourceIpAddr.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+        "sourceIpAddr IPv6 Address", "skinny_sourceIpAddr_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_sourcePortNumber,
       {
-        "sourcePortNumber", "skinny.sourcePortNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "sourcePortNumber", "skinny_sourcePortNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_speedDialNumber,
       {
-        "speedDialNumber", "skinny.speedDialNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "speedDialNumber", "skinny_speedDialNumber", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_sse,
       {
-        "sse", "skinny.sse", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "sse", "skinny_sse", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_standard,
       {
-        "standard", "skinny.standard", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "standard", "skinny_standard", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_startingLineInstance,
       {
-        "startingLineInstance", "skinny.startingLineInstance", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "startingLineInstance", "skinny_startingLineInstance", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Starting Line Instance", HFILL }},
     { &hf_skinny_stationIpAddr,
       {
-        "stationIpAddr", "skinny.stationIpAddr", FT_IPv4, BASE_NONE, NULL, 0x0,
+        "stationIpAddr", "skinny_stationIpAddr", FT_IPv4, BASE_NONE, NULL, 0x0,
         "IPv4 Address", HFILL }},
     { &hf_skinny_stationIpAddr_ipv4,
      {
-        "stationIpAddr IPv4 Address", "skinny.stationIpAddr.ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+        "stationIpAddr IPv4 Address", "skinny_stationIpAddr_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
         "ipaddress in big endian", HFILL }},
     { &hf_skinny_stationIpAddr_ipv6,
      {
-        "stationIpAddr IPv6 Address", "skinny.stationIpAddr.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+        "stationIpAddr IPv6 Address", "skinny_stationIpAddr_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
         "ipaddress in big endian", HFILL }},
     { &hf_skinny_stationIpV6Addr,
       {
-        "stationIpV6Addr", "skinny.stationIpV6Addr", FT_IPv6, BASE_NONE, NULL, 0x0,
+        "stationIpV6Addr", "skinny_stationIpV6Addr", FT_IPv6, BASE_NONE, NULL, 0x0,
         "IPv6 Address", HFILL }},
     { &hf_skinny_stationIpV6Addr_ipv4,
      {
-        "stationIpV6Addr IPv4 Address", "skinny.stationIpV6Addr.ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+        "stationIpV6Addr IPv4 Address", "skinny_stationIpV6Addr_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_stationIpV6Addr_ipv6,
      {
-        "stationIpV6Addr IPv6 Address", "skinny.stationIpV6Addr.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+        "stationIpV6Addr IPv6 Address", "skinny_stationIpV6Addr_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_stillImageTransmission,
       {
-        "stillImageTransmission", "skinny.stillImageTransmission", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "stillImageTransmission", "skinny_stillImageTransmission", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Still Image Transmission", HFILL }},
     { &hf_skinny_stimulusInstance,
       {
-        "stimulusInstance", "skinny.stimulusInstance", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "stimulusInstance", "skinny_stimulusInstance", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_stimulusStatus,
       {
-        "stimulusStatus", "skinny.stimulusStatus", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "stimulusStatus", "skinny_stimulusStatus", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Stimulus Status", HFILL }},
     { &hf_skinny_streamPassThroughId,
       {
-        "streamPassThroughId", "skinny.streamPassThroughId", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "streamPassThroughId", "skinny_streamPassThroughId", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_systemTime,
       {
-        "systemTime", "skinny.systemTime", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "systemTime", "skinny_systemTime", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_temporalSpatialTradeOff,
       {
-        "temporalSpatialTradeOff", "skinny.temporalSpatialTradeOff", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "temporalSpatialTradeOff", "skinny_temporalSpatialTradeOff", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_temporalSpatialTradeOffCapability,
       {
-        "temporalSpatialTradeOffCapability", "skinny.temporalSpatialTradeOffCapability", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "temporalSpatialTradeOffCapability", "skinny_temporalSpatialTradeOffCapability", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Temporal spatial trade off capability", HFILL }},
     { &hf_skinny_timeOutValue,
       {
-        "timeOutValue", "skinny.timeOutValue", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "timeOutValue", "skinny_timeOutValue", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_timer,
       {
-        "timer", "skinny.timer", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "timer", "skinny_timer", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_totalButtonCount,
       {
-        "totalButtonCount", "skinny.totalButtonCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "totalButtonCount", "skinny_totalButtonCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_totalNumOfConfiguredLines,
       {
-        "totalNumOfConfiguredLines", "skinny.totalNumOfConfiguredLines", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "totalNumOfConfiguredLines", "skinny_totalNumOfConfiguredLines", FT_UINT32, BASE_DEC, NULL, 0x0,
         "Total Number of Configured Lines", HFILL }},
     { &hf_skinny_totalSoftKeyCount,
       {
-        "totalSoftKeyCount", "skinny.totalSoftKeyCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "totalSoftKeyCount", "skinny_totalSoftKeyCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_totalSoftKeySetCount,
       {
-        "totalSoftKeySetCount", "skinny.totalSoftKeySetCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "totalSoftKeySetCount", "skinny_totalSoftKeySetCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_transactionId,
       {
-        "transactionId", "skinny.transactionId", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "transactionId", "skinny_transactionId", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_transmitIpAddr_ipv4,
      {
-        "transmitIpAddr IPv4 Address", "skinny.transmitIpAddr.ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
+        "transmitIpAddr IPv4 Address", "skinny_transmitIpAddr_ipv4", FT_IPv4, BASE_NONE, NULL, 0x0,
         "ipaddress in big endian", HFILL }},
     { &hf_skinny_transmitIpAddr_ipv6,
      {
-        "transmitIpAddr IPv6 Address", "skinny.transmitIpAddr.ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
+        "transmitIpAddr IPv6 Address", "skinny_transmitIpAddr_ipv6", FT_IPv6, BASE_NONE, NULL, 0x0,
         "ipaddress in big endian", HFILL }},
     { &hf_skinny_transmitPreference,
       {
-        "transmitPreference", "skinny.transmitPreference", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "transmitPreference", "skinny_transmitPreference", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_unknown,
       {
-        "unknown", "skinny.unknown", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "unknown", "skinny_unknown", FT_UINT8, BASE_DEC, NULL, 0x0,
         "unknown (Part of ProtocolVer)", HFILL }},
     { &hf_skinny_unknown1_0159,
       {
-        "unknown1_0159", "skinny.unknown1.0159", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "unknown1_0159", "skinny_unknown1_0159", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_unknown2_0159,
       {
-        "unknown2_0159", "skinny.unknown2.0159", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "unknown2_0159", "skinny_unknown2_0159", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_unknown3_0159,
       {
-        "unknown3_0159", "skinny.unknown3.0159", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "unknown3_0159", "skinny_unknown3_0159", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_v150sprt,
       {
-        "v150sprt", "skinny.v150sprt", FT_UINT8, BASE_DEC, NULL, 0x0,
+        "v150sprt", "skinny_v150sprt", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_vendor,
       {
-        "vendor", "skinny.vendor", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "vendor", "skinny_vendor", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_videoCapCount,
       {
-        "videoCapCount", "skinny.videoCapCount", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "videoCapCount", "skinny_videoCapCount", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_wDay,
       {
-        "wDay", "skinny.wDay", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "wDay", "skinny_wDay", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_wDayOfWeek,
       {
-        "wDayOfWeek", "skinny.wDayOfWeek", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "wDayOfWeek", "skinny_wDayOfWeek", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_wHour,
       {
-        "wHour", "skinny.wHour", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "wHour", "skinny_wHour", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_wMilliseconds,
       {
-        "wMilliseconds", "skinny.wMilliseconds", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "wMilliseconds", "skinny_wMilliseconds", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_wMinute,
       {
-        "wMinute", "skinny.wMinute", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "wMinute", "skinny_wMinute", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_wMonth,
       {
-        "wMonth", "skinny.wMonth", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "wMonth", "skinny_wMonth", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_wSecond,
       {
-        "wSecond", "skinny.wSecond", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "wSecond", "skinny_wSecond", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_wYear,
       {
-        "wYear", "skinny.wYear", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "wYear", "skinny_wYear", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_waitTimeBeforeNextReq,
       {
-        "waitTimeBeforeNextReq", "skinny.waitTimeBeforeNextReq", FT_UINT32, BASE_DEC, NULL, 0x0,
+        "waitTimeBeforeNextReq", "skinny_waitTimeBeforeNextReq", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_skinny_xmldata,
       {
-        "xmldata", "skinny.xmldata", FT_STRING, BASE_NONE, NULL, 0x0,
+        "xmldata", "skinny_xmldata", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_AlternateCallingParty,
       {
-        "AlternateCallingParty", "skinny.AlternateCallingParty", FT_STRING, BASE_NONE, NULL, 0x0,
+        "AlternateCallingParty", "skinny_AlternateCallingParty", FT_STRING, BASE_NONE, NULL, 0x0,
         "Alternate Calling Party Number", HFILL }},
     {&hf_skinny_DeviceName,
       {
-        "DeviceName", "skinny.DeviceName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "DeviceName", "skinny_DeviceName", FT_STRING, BASE_NONE, NULL, 0x0,
         "Device Name", HFILL }},
     {&hf_skinny_HuntPilotName,
       {
-        "HuntPilotName", "skinny.HuntPilotName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "HuntPilotName", "skinny_HuntPilotName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_HuntPilotNumber,
       {
-        "HuntPilotNumber", "skinny.HuntPilotNumber", FT_STRING, BASE_NONE, NULL, 0x0,
+        "HuntPilotNumber", "skinny_HuntPilotNumber", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_ServerName,
       {
-        "ServerName", "skinny.ServerName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "ServerName", "skinny_ServerName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_add_participant_result,
       {
-        "add_participant_result", "skinny.add.participant.result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &AddParticipantResult_ext, 0x0,
+        "add_participant_result", "skinny_add_participant_result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &AddParticipantResult_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_alarmSeverity,
       {
-        "alarmSeverity", "skinny.alarmSeverity", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceAlarmSeverity_ext, 0x0,
+        "alarmSeverity", "skinny_alarmSeverity", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceAlarmSeverity_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_algorithmID,
       {
-        "algorithmID", "skinny.algorithmID", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaEncryptionAlgorithmType_ext, 0x0,
+        "algorithmID", "skinny_algorithmID", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaEncryptionAlgorithmType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_annAckReq,
       {
-        "annAckReq", "skinny.annAckReq", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &EndOfAnnAck_ext, 0x0,
+        "annAckReq", "skinny_annAckReq", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &EndOfAnnAck_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_annPlayMode,
       {
-        "annPlayMode", "skinny.annPlayMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &AnnPlayMode_ext, 0x0,
+        "annPlayMode", "skinny_annPlayMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &AnnPlayMode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_annStatus,
       {
-        "annStatus", "skinny.annStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &PlayAnnStatus_ext, 0x0,
+        "annStatus", "skinny_annStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &PlayAnnStatus_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_appConfID,
       {
-        "appConfID", "skinny.appConfID", FT_STRING, BASE_NONE, NULL, 0x0,
+        "appConfID", "skinny_appConfID", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_appData,
       {
-        "appData", "skinny.appData", FT_STRING, BASE_NONE, NULL, 0x0,
+        "appData", "skinny_appData", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_appName,
       {
-        "appName", "skinny.appName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "appName", "skinny_appName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_audit_participant_result,
       {
-        "audit_participant_result", "skinny.audit.participant.result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &AuditParticipantResult_ext, 0x0,
+        "audit_participant_result", "skinny_audit_participant_result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &AuditParticipantResult_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_bridgeParticipantId,
       {
-        "bridgeParticipantId", "skinny.bridgeParticipantId", FT_STRING, BASE_NONE, NULL, 0x0,
+        "bridgeParticipantId", "skinny_bridgeParticipantId", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_buttonDefinition,
       {
-        "buttonDefinition", "skinny.buttonDefinition", FT_UINT8, BASE_HEX | BASE_EXT_STRING, &ButtonType_ext, 0x0,
+        "buttonDefinition", "skinny_buttonDefinition", FT_UINT8, BASE_HEX | BASE_EXT_STRING, &ButtonType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_callHistoryDisposition,
       {
-        "callHistoryDisposition", "skinny.callHistoryDisposition", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CallHistoryDisposition_ext, 0x0,
+        "callHistoryDisposition", "skinny_callHistoryDisposition", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CallHistoryDisposition_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_callSecurityStatus,
       {
-        "callSecurityStatus", "skinny.callSecurityStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CallSecurityStatusType_ext, 0x0,
+        "callSecurityStatus", "skinny_callSecurityStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CallSecurityStatusType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_callState,
       {
-        "callState", "skinny.callState", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DCallState_ext, 0x0,
+        "callState", "skinny_callState", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DCallState_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_callType,
       {
-        "callType", "skinny.callType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CallType_ext, 0x0,
+        "callType", "skinny_callType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CallType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_calledParty,
       {
-        "calledParty", "skinny.calledParty", FT_STRING, BASE_NONE, NULL, 0x0,
+        "calledParty", "skinny_calledParty", FT_STRING, BASE_NONE, NULL, 0x0,
         "CalledPartyNumber", HFILL }},
     {&hf_skinny_calledPartyName,
       {
-        "calledPartyName", "skinny.calledPartyName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "calledPartyName", "skinny_calledPartyName", FT_STRING, BASE_NONE, NULL, 0x0,
         "Called Party Name", HFILL }},
     {&hf_skinny_callingParty,
       {
-        "callingParty", "skinny.callingParty", FT_STRING, BASE_NONE, NULL, 0x0,
+        "callingParty", "skinny_callingParty", FT_STRING, BASE_NONE, NULL, 0x0,
         "Calling Party Number", HFILL }},
     {&hf_skinny_callingPartyName,
       {
-        "callingPartyName", "skinny.callingPartyName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "callingPartyName", "skinny_callingPartyName", FT_STRING, BASE_NONE, NULL, 0x0,
         "Calling Party Name", HFILL }},
     {&hf_skinny_callingPartyNumber,
       {
-        "callingPartyNumber", "skinny.callingPartyNumber", FT_STRING, BASE_NONE, NULL, 0x0,
+        "callingPartyNumber", "skinny_callingPartyNumber", FT_STRING, BASE_NONE, NULL, 0x0,
         "Calling Party Number", HFILL }},
     {&hf_skinny_cause,
       {
-        "cause", "skinny.cause", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SubscribeCause_ext, 0x0,
+        "cause", "skinny_cause", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SubscribeCause_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_cdpnVoiceMailbox,
       {
-        "cdpnVoiceMailbox", "skinny.cdpnVoiceMailbox", FT_STRING, BASE_NONE, NULL, 0x0,
+        "cdpnVoiceMailbox", "skinny_cdpnVoiceMailbox", FT_STRING, BASE_NONE, NULL, 0x0,
         "Called Party Voicemail Box Number", HFILL }},
     {&hf_skinny_cgpnVoiceMailbox,
       {
-        "cgpnVoiceMailbox", "skinny.cgpnVoiceMailbox", FT_STRING, BASE_NONE, NULL, 0x0,
+        "cgpnVoiceMailbox", "skinny_cgpnVoiceMailbox", FT_STRING, BASE_NONE, NULL, 0x0,
         "Calling Party Voicemail Box Number", HFILL }},
     {&hf_skinny_command,
       {
-        "command", "skinny.command", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MiscCommandType_ext, 0x0,
+        "command", "skinny_command", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MiscCommandType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_compressionType,
       {
-        "compressionType", "skinny.compressionType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_PayloadType_ext, 0x0,
+        "compressionType", "skinny_compressionType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_PayloadType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_conferenceName,
       {
-        "conferenceName", "skinny.conferenceName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "conferenceName", "skinny_conferenceName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_configVersionStamp,
       {
-        "configVersionStamp", "skinny.configVersionStamp", FT_STRING, BASE_NONE, NULL, 0x0,
+        "configVersionStamp", "skinny_configVersionStamp", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_data,
       {
-        "Statistics", "skinny.data", FT_STRING, BASE_NONE, NULL, 0x0,
+        "Statistics", "skinny_data", FT_STRING, BASE_NONE, NULL, 0x0,
         "variable field size (max: 600]", HFILL }},
     {&hf_skinny_dataCapabilityDirection,
       {
-        "dataCapabilityDirection", "skinny.dataCapabilityDirection", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &TransmitOrReceive_ext, 0x0,
+        "dataCapabilityDirection", "skinny_dataCapabilityDirection", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &TransmitOrReceive_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_dateTemplate,
       {
-        "dateTemplate", "skinny.dateTemplate", FT_STRING, BASE_NONE, NULL, 0x0,
+        "dateTemplate", "skinny_dateTemplate", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_delete_conf_result,
       {
-        "delete_conf_result", "skinny.delete.conf.result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeleteConfResult_ext, 0x0,
+        "delete_conf_result", "skinny_delete_conf_result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeleteConfResult_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_deviceType,
       {
-        "Device Type", "skinny.deviceType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceType_ext, 0x0,
+        "Device Type", "skinny_deviceType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceType_ext, 0x0,
         "Device Type of this phone / appliance", HFILL }},
     {&hf_skinny_dialedNumber,
       {
-        "dialedNumber", "skinny.dialedNumber", FT_STRING, BASE_NONE, NULL, 0x0,
+        "dialedNumber", "skinny_dialedNumber", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_direction,
       {
-        "direction", "skinny.direction", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RSVPDirection_ext, 0x0,
+        "direction", "skinny_direction", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RSVPDirection_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_directoryNum,
       {
-        "directoryNum", "skinny.directoryNum", FT_STRING, BASE_NONE, NULL, 0x0,
+        "directoryNum", "skinny_directoryNum", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_ecValue,
       {
-        "ecValue", "skinny.ecValue", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_EchoCancellation_ext, 0x0,
+        "ecValue", "skinny_ecValue", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_EchoCancellation_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_encryptionCapability,
       {
-        "encryptionCapability", "skinny.encryptionCapability", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_Encryption_Capability_ext, 0x0,
+        "encryptionCapability", "skinny_encryptionCapability", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_Encryption_Capability_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_errorCode,
       {
-        "errorCode", "skinny.errorCode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &QoSErrorCode_ext, 0x0,
+        "errorCode", "skinny_errorCode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &QoSErrorCode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_featureID,
       {
-        "featureID", "skinny.featureID", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ButtonType_ext, 0x0,
+        "featureID", "skinny_featureID", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ButtonType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_featureTextLabel,
       {
-        "featureTextLabel", "skinny.featureTextLabel", FT_STRING, BASE_NONE, NULL, 0x0,
+        "featureTextLabel", "skinny_featureTextLabel", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_firmwareLoadName,
       {
-        "firmwareLoadName", "skinny.firmwareLoadName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "firmwareLoadName", "skinny_firmwareLoadName", FT_STRING, BASE_NONE, NULL, 0x0,
         "Firmware Load Name", HFILL }},
     {&hf_skinny_forwardAllDirnum,
       {
-        "forwardAllDirnum", "skinny.forwardAllDirnum", FT_STRING, BASE_NONE, NULL, 0x0,
+        "forwardAllDirnum", "skinny_forwardAllDirnum", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_forwardBusyDirnum,
       {
-        "forwardBusyDirnum", "skinny.forwardBusyDirnum", FT_STRING, BASE_NONE, NULL, 0x0,
+        "forwardBusyDirnum", "skinny_forwardBusyDirnum", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_forwardNoAnswerlDirnum,
       {
-        "forwardNoAnswerlDirnum", "skinny.forwardNoAnswerlDirnum", FT_STRING, BASE_NONE, NULL, 0x0,
+        "forwardNoAnswerlDirnum", "skinny_forwardNoAnswerlDirnum", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_g723BitRate,
       {
-        "g723BitRate", "skinny.g723BitRate", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_G723BitRate_ext, 0x0,
+        "g723BitRate", "skinny_g723BitRate", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_G723BitRate_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_headsetStatus,
       {
-        "headsetStatus", "skinny.headsetStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &HeadsetMode_ext, 0x0,
+        "headsetStatus", "skinny_headsetStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &HeadsetMode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_ipAddressType,
       {
-        "ipAddressType", "skinny.ipAddressType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &IpAddrType_ext, 0x0,
+        "ipAddressType", "skinny_ipAddressType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &IpAddrType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_ipAddressingMode,
       {
-        "ipAddressingMode", "skinny.ipAddressingMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &IpAddrMode_ext, 0x0,
+        "ipAddressingMode", "skinny_ipAddressingMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &IpAddrMode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_kpButton,
       {
-        "kpButton", "skinny.kpButton", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &KeyPadButton_ext, 0x0,
+        "kpButton", "skinny_kpButton", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &KeyPadButton_ext, 0x0,
         "KeyPad Button which was Pressed", HFILL }},
     {&hf_skinny_lampMode,
       {
-        "lampMode", "skinny.lampMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &LampMode_ext, 0x0,
+        "lampMode", "skinny_lampMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &LampMode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_lastRedirectingParty,
       {
-        "lastRedirectingParty", "skinny.lastRedirectingParty", FT_STRING, BASE_NONE, NULL, 0x0,
+        "lastRedirectingParty", "skinny_lastRedirectingParty", FT_STRING, BASE_NONE, NULL, 0x0,
         "Last Redirecting Party Number", HFILL }},
     {&hf_skinny_lastRedirectingPartyName,
       {
-        "lastRedirectingPartyName", "skinny.lastRedirectingPartyName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "lastRedirectingPartyName", "skinny_lastRedirectingPartyName", FT_STRING, BASE_NONE, NULL, 0x0,
         "Last Redirecting Party Name", HFILL }},
     {&hf_skinny_lastRedirectingVoiceMailbox,
       {
-        "lastRedirectingVoiceMailbox", "skinny.lastRedirectingVoiceMailbox", FT_STRING, BASE_NONE, NULL, 0x0,
+        "lastRedirectingVoiceMailbox", "skinny_lastRedirectingVoiceMailbox", FT_STRING, BASE_NONE, NULL, 0x0,
         "Last Redirecting Parties Voicemail Box Number", HFILL }},
     {&hf_skinny_layouts,
       {
-        "layouts", "skinny.layouts", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Layout_ext, 0x0,
+        "layouts", "skinny_layouts", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Layout_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_lineDirNumber,
       {
-        "lineDirNumber", "skinny.lineDirNumber", FT_STRING, BASE_NONE, NULL, 0x0,
+        "lineDirNumber", "skinny_lineDirNumber", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_lineFullyQualifiedDisplayName,
       {
-        "lineFullyQualifiedDisplayName", "skinny.lineFullyQualifiedDisplayName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "lineFullyQualifiedDisplayName", "skinny_lineFullyQualifiedDisplayName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_lineTextLabel,
       {
-        "lineTextLabel", "skinny.lineTextLabel", FT_STRING, BASE_NONE, NULL, 0x0,
+        "lineTextLabel", "skinny_lineTextLabel", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_locationInfo,
       {
-        "locationInfo", "skinny.locationInfo", FT_STRING, BASE_NONE, NULL, 0x0,
+        "locationInfo", "skinny_locationInfo", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mediaPathCapabilities,
       {
-        "mediaPathCapabilities", "skinny.mediaPathCapabilities", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaPathCapabilities_ext, 0x0,
+        "mediaPathCapabilities", "skinny_mediaPathCapabilities", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaPathCapabilities_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mediaPathEvent,
       {
-        "mediaPathEvent", "skinny.mediaPathEvent", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaPathEvent_ext, 0x0,
+        "mediaPathEvent", "skinny_mediaPathEvent", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaPathEvent_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mediaPathID,
       {
-        "mediaPathID", "skinny.mediaPathID", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaPathID_ext, 0x0,
+        "mediaPathID", "skinny_mediaPathID", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaPathID_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mediaReceptionStatus,
       {
-        "mediaReceptionStatus", "skinny.mediaReceptionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaStatus_ext, 0x0,
+        "mediaReceptionStatus", "skinny_mediaReceptionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaStatus_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mediaTransmissionStatus,
       {
-        "mediaTransmissionStatus", "skinny.mediaTransmissionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaStatus_ext, 0x0,
+        "mediaTransmissionStatus", "skinny_mediaTransmissionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaStatus_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mediaTransportType,
       {
-        "mediaTransportType", "skinny.mediaTransportType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaTransportType_ext, 0x0,
+        "mediaTransportType", "skinny_mediaTransportType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaTransportType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mediaType,
       {
-        "mediaType", "skinny.mediaType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaType_ext, 0x0,
+        "mediaType", "skinny_mediaType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_micMode,
       {
-        "micMode", "skinny.micMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MicrophoneMode_ext, 0x0,
+        "micMode", "skinny_micMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MicrophoneMode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_modify_conf_result,
       {
-        "modify_conf_result", "skinny.modify.conf.result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ModifyConfResult_ext, 0x0,
+        "modify_conf_result", "skinny_modify_conf_result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ModifyConfResult_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_multicastReceptionStatus,
       {
-        "multicastReceptionStatus", "skinny.multicastReceptionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MulticastMediaReceptionStatus_ext, 0x0,
+        "multicastReceptionStatus", "skinny_multicastReceptionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MulticastMediaReceptionStatus_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_multimediaReceptionStatus,
       {
-        "multimediaReceptionStatus", "skinny.multimediaReceptionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &OpenReceiveChanStatus_ext, 0x0,
+        "multimediaReceptionStatus", "skinny_multimediaReceptionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &OpenReceiveChanStatus_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_multimediaTransmissionStatus,
       {
-        "multimediaTransmissionStatus", "skinny.multimediaTransmissionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaStatus_ext, 0x0,
+        "multimediaTransmissionStatus", "skinny_multimediaTransmissionStatus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MediaStatus_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mwiControlNumber,
       {
-        "mwiControlNumber", "skinny.mwiControlNumber", FT_STRING, BASE_NONE, NULL, 0x0,
+        "mwiControlNumber", "skinny_mwiControlNumber", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mwiTargetNumber,
       {
-        "mwiTargetNumber", "skinny.mwiTargetNumber", FT_STRING, BASE_NONE, NULL, 0x0,
+        "mwiTargetNumber", "skinny_mwiTargetNumber", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_mwi_notification_result,
       {
-        "mwi_notification_result", "skinny.mwi.notification.result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MwiNotificationResult_ext, 0x0,
+        "mwi_notification_result", "skinny_mwi_notification_result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &MwiNotificationResult_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_notify,
       {
-        "notify", "skinny.notify", FT_STRING, BASE_NONE, NULL, 0x0,
+        "notify", "skinny_notify", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_originalCalledParty,
       {
-        "originalCalledParty", "skinny.originalCalledParty", FT_STRING, BASE_NONE, NULL, 0x0,
+        "originalCalledParty", "skinny_originalCalledParty", FT_STRING, BASE_NONE, NULL, 0x0,
         "Original Called Party Number", HFILL }},
     {&hf_skinny_originalCalledPartyName,
       {
-        "originalCalledPartyName", "skinny.originalCalledPartyName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "originalCalledPartyName", "skinny_originalCalledPartyName", FT_STRING, BASE_NONE, NULL, 0x0,
         "Original Called Party Name", HFILL }},
     {&hf_skinny_originalCdpnVoiceMailbox,
       {
-        "originalCdpnVoiceMailbox", "skinny.originalCdpnVoiceMailbox", FT_STRING, BASE_NONE, NULL, 0x0,
+        "originalCdpnVoiceMailbox", "skinny_originalCdpnVoiceMailbox", FT_STRING, BASE_NONE, NULL, 0x0,
         "Original Called Party Voicemail Box Number", HFILL }},
     {&hf_skinny_participantName,
       {
-        "participantName", "skinny.participantName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "participantName", "skinny_participantName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_participantNumber,
       {
-        "participantNumber", "skinny.participantNumber", FT_STRING, BASE_NONE, NULL, 0x0,
+        "participantNumber", "skinny_participantNumber", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_passThruData,
       {
-        "passThruData", "skinny.passThruData", FT_STRING, BASE_NONE, NULL, 0x0,
+        "passThruData", "skinny_passThruData", FT_STRING, BASE_NONE, NULL, 0x0,
         "variable field size (max: 2000]", HFILL }},
     {&hf_skinny_payloadCapability,
       {
-        "payloadCapability", "skinny.payloadCapability", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_PayloadType_ext, 0x0,
+        "payloadCapability", "skinny_payloadCapability", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_PayloadType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_portHandlingFlag,
       {
-        "portHandlingFlag", "skinny.portHandlingFlag", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &PortHandling_ext, 0x0,
+        "portHandlingFlag", "skinny_portHandlingFlag", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &PortHandling_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_privacy,
       {
-        "privacy", "skinny.privacy", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CallPrivacy_ext, 0x0,
+        "privacy", "skinny_privacy", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CallPrivacy_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_promptStatus,
       {
-        "promptStatus", "skinny.promptStatus", FT_STRING, BASE_NONE, NULL, 0x0,
+        "promptStatus", "skinny_promptStatus", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_recording_status,
       {
-        "recording_status", "skinny.recording.status", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RecordingStatus_ext, 0x0,
+        "recording_status", "skinny_recording_status", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RecordingStatus_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_requestedIpAddrType,
       {
-        "requestedIpAddrType", "skinny.requestedIpAddrType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &IpAddrType_ext, 0x0,
+        "requestedIpAddrType", "skinny_requestedIpAddrType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &IpAddrType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_resetType,
       {
-        "resetType", "skinny.resetType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceResetType_ext, 0x0,
+        "resetType", "skinny_resetType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceResetType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_resourceType,
       {
-        "resourceType", "skinny.resourceType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ResourceType_ext, 0x0,
+        "resourceType", "skinny_resourceType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ResourceType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_result,
       {
-        "result", "skinny.result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CreateConfResult_ext, 0x0,
+        "result", "skinny_result", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &CreateConfResult_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_resvStyle,
       {
-        "resvStyle", "skinny.resvStyle", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ResvStyle_ext, 0x0,
+        "resvStyle", "skinny_resvStyle", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ResvStyle_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_ringDuration,
       {
-        "ringDuration", "skinny.ringDuration", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RingDuration_ext, 0x0,
+        "ringDuration", "skinny_ringDuration", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RingDuration_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_ringMode,
       {
-        "ringMode", "skinny.ringMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RingMode_ext, 0x0,
+        "ringMode", "skinny_ringMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RingMode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_rsvpErrorCode,
       {
-        "rsvpErrorCode", "skinny.rsvpErrorCode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RSVPErrorCode_ext, 0x0,
+        "rsvpErrorCode", "skinny_rsvpErrorCode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &RSVPErrorCode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_sequenceFlag,
       {
-        "sequenceFlag", "skinny.sequenceFlag", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SequenceFlag_ext, 0x0,
+        "sequenceFlag", "skinny_sequenceFlag", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SequenceFlag_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_serverName,
       {
-        "serverName", "skinny.serverName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "serverName", "skinny_serverName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_serviceURL,
       {
-        "serviceURL", "skinny.serviceURL", FT_STRING, BASE_NONE, NULL, 0x0,
+        "serviceURL", "skinny_serviceURL", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_serviceURLDisplayName,
       {
-        "serviceURLDisplayName", "skinny.serviceURLDisplayName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "serviceURLDisplayName", "skinny_serviceURLDisplayName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_sessionType,
       {
-        "sessionType", "skinny.sessionType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SessionType_ext, 0x0,
+        "sessionType", "skinny_sessionType", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SessionType_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_softKeyEvent,
       {
-        "softKeyEvent", "skinny.softKeyEvent", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SoftKeyEvent_ext, 0x0,
+        "softKeyEvent", "skinny_softKeyEvent", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SoftKeyEvent_ext, 0x0,
         "SoftKey Event", HFILL }},
     {&hf_skinny_softKeyInfoIndex,
       {
-        "softKeyInfoIndex", "skinny.softKeyInfoIndex", FT_UINT16, BASE_HEX | BASE_EXT_STRING, &SoftKeyInfoIndex_ext, 0x0,
+        "softKeyInfoIndex", "skinny_softKeyInfoIndex", FT_UINT16, BASE_HEX | BASE_EXT_STRING, &SoftKeyInfoIndex_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_softKeyLabel,
       {
-        "softKeyLabel", "skinny.softKeyLabel", FT_STRING, BASE_NONE, NULL, 0x0,
+        "softKeyLabel", "skinny_softKeyLabel", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_softKeySetIndex,
       {
-        "softKeySetIndex", "skinny.softKeySetIndex", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SoftKeySet_ext, 0x0,
+        "softKeySetIndex", "skinny_softKeySetIndex", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SoftKeySet_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_softKeyTemplateIndex,
       {
-        "softKeyTemplateIndex", "skinny.softKeyTemplateIndex", FT_UINT8, BASE_HEX | BASE_EXT_STRING, &SoftKeyTemplateIndex_ext, 0x0,
+        "softKeyTemplateIndex", "skinny_softKeyTemplateIndex", FT_UINT8, BASE_HEX | BASE_EXT_STRING, &SoftKeyTemplateIndex_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_speakerMode,
       {
-        "speakerMode", "skinny.speakerMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SpeakerMode_ext, 0x0,
+        "speakerMode", "skinny_speakerMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SpeakerMode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_speedDialDirNumber,
       {
-        "speedDialDirNumber", "skinny.speedDialDirNumber", FT_STRING, BASE_NONE, NULL, 0x0,
+        "speedDialDirNumber", "skinny_speedDialDirNumber", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_speedDialDisplayName,
       {
-        "speedDialDisplayName", "skinny.speedDialDisplayName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "speedDialDisplayName", "skinny_speedDialDisplayName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_ssValue,
       {
-        "ssValue", "skinny.ssValue", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_SilenceSuppression_ext, 0x0,
+        "ssValue", "skinny_ssValue", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &Media_SilenceSuppression_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_statsProcessingMode,
       {
-        "Stats Processing Mode", "skinny.statsProcessingMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &StatsProcessingType_ext, 0x0,
+        "Stats Processing Mode", "skinny_statsProcessingMode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &StatsProcessingType_ext, 0x0,
         "What do do after you send the stats", HFILL }},
     {&hf_skinny_status,
       {
-        "status", "skinny.status", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceUnregisterStatus_ext, 0x0,
+        "status", "skinny_status", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceUnregisterStatus_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_stimulus,
       {
-        "stimulus", "skinny.stimulus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceStimulus_ext, 0x0,
+        "stimulus", "skinny_stimulus", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceStimulus_ext, 0x0,
         "Device Stimulus", HFILL }},
     {&hf_skinny_subAppID,
       {
-        "subAppID", "skinny.subAppID", FT_STRING, BASE_NONE, NULL, 0x0,
+        "subAppID", "skinny_subAppID", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_subscriptionFeatureID,
       {
-        "subscriptionFeatureID", "skinny.subscriptionFeatureID", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SubscriptionFeatureID_ext, 0x0,
+        "subscriptionFeatureID", "skinny_subscriptionFeatureID", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &SubscriptionFeatureID_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_subscriptionID,
       {
-        "subscriptionID", "skinny.subscriptionID", FT_STRING, BASE_NONE, NULL, 0x0,
+        "subscriptionID", "skinny_subscriptionID", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_text,
       {
-        "text", "skinny.text", FT_STRING, BASE_NONE, NULL, 0x0,
+        "text", "skinny_text", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_tone,
       {
-        "tone", "skinny.tone", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceTone_ext, 0x0,
+        "tone", "skinny_tone", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceTone_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_toneAnnouncement,
       {
-        "toneAnnouncement", "skinny.toneAnnouncement", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceTone_ext, 0x0,
+        "toneAnnouncement", "skinny_toneAnnouncement", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &DeviceTone_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_tone_output_direction,
       {
-        "tone_output_direction", "skinny.tone.output.direction", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ToneOutputDirection_ext, 0x0,
+        "tone_output_direction", "skinny_tone_output_direction", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &ToneOutputDirection_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_unRegReasonCode,
       {
-        "unRegReasonCode", "skinny.unRegReasonCode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &UnRegReasonCode_ext, 0x0,
+        "unRegReasonCode", "skinny_unRegReasonCode", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &UnRegReasonCode_ext, 0x0,
         NULL, HFILL }},
     {&hf_skinny_unknownString_0159,
       {
-        "unknownString_0159", "skinny.unknownString.0159", FT_STRING, BASE_NONE, NULL, 0x0,
+        "unknownString_0159", "skinny_unknownString_0159", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_userName,
       {
-        "userName", "skinny.userName", FT_STRING, BASE_NONE, NULL, 0x0,
+        "userName", "skinny_userName", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_vendorID,
       {
-        "vendorID", "skinny.vendorID", FT_STRING, BASE_NONE, NULL, 0x0,
+        "vendorID", "skinny_vendorID", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_version,
       {
-        "version", "skinny.version", FT_STRING, BASE_NONE, NULL, 0x0,
+        "version", "skinny_version", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_versionStr,
       {
-        "versionStr", "skinny.versionStr", FT_STRING, BASE_NONE, NULL, 0x0,
+        "versionStr", "skinny_versionStr", FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
     {&hf_skinny_videoCapabilityDirection,
       {
-        "videoCapabilityDirection", "skinny.videoCapabilityDirection", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &TransmitOrReceive_ext, 0x0,
+        "videoCapabilityDirection", "skinny_videoCapabilityDirection", FT_UINT32, BASE_HEX | BASE_EXT_STRING, &TransmitOrReceive_ext, 0x0,
         NULL, HFILL }},
   };
 

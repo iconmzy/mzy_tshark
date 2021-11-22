@@ -270,67 +270,67 @@ proto_register_aarp(void)
 {
   static hf_register_info hf[] = {
     { &hf_aarp_hard_type,
-      { "Hardware type",                "aarp.hard.type",
+      { "Hardware type",                "aarp_hard_type",
         FT_UINT16,      BASE_HEX,       VALS(hrd_vals), 0x0,
         NULL, HFILL }},
 
     { &hf_aarp_proto_type,
-      { "Protocol type",                "aarp.proto.type",
+      { "Protocol type",                "aarp_proto_type",
         FT_UINT16,      BASE_HEX,       VALS(etype_vals),       0x0,
         NULL, HFILL }},
 
     { &hf_aarp_hard_size,
-      { "Hardware size",                "aarp.hard.size",
+      { "Hardware size",                "aarp_hard_size",
         FT_UINT8,       BASE_DEC,       NULL,   0x0,
         NULL, HFILL }},
 
     { &hf_aarp_proto_size,
-      { "Protocol size",                "aarp.proto.size",
+      { "Protocol size",                "aarp_proto_size",
         FT_UINT8,       BASE_DEC,       NULL,   0x0,
         NULL, HFILL }},
 
     { &hf_aarp_opcode,
-      { "Opcode",                       "aarp.opcode",
+      { "Opcode",                       "aarp_opcode",
         FT_UINT16,      BASE_DEC,       VALS(op_vals),  0x0,
         NULL, HFILL }},
 
     { &hf_aarp_src_hw,
-      { "Sender hardware address",      "aarp.src.hw",
+      { "Sender hardware address",      "aarp_src_hw",
         FT_BYTES,       BASE_NONE,      NULL,   0x0,
         NULL, HFILL }},
 
     { &hf_aarp_src_hw_mac,
-      { "Sender MAC address",           "aarp.src.hw_mac",
+      { "Sender MAC address",           "aarp_src_hw_mac",
         FT_ETHER,       BASE_NONE,      NULL,   0x0,
         NULL, HFILL }},
 
     { &hf_aarp_src_proto,
-      { "Sender protocol address",      "aarp.src.proto",
+      { "Sender protocol address",      "aarp_src_proto",
         FT_BYTES,       BASE_NONE,      NULL,   0x0,
         NULL, HFILL }},
 
     { &hf_aarp_src_proto_id,
-      { "Sender ID",                    "aarp.src.proto_id",
+      { "Sender ID",                    "aarp_src_proto_id",
         FT_BYTES,       BASE_NONE,      NULL,   0x0,
         NULL, HFILL }},
 
     { &hf_aarp_dst_hw,
-      { "Target hardware address",      "aarp.dst.hw",
+      { "Target hardware address",      "aarp_dst_hw",
         FT_BYTES,       BASE_NONE,      NULL,   0x0,
         NULL, HFILL }},
 
     { &hf_aarp_dst_hw_mac,
-      { "Target MAC address",           "aarp.dst.hw_mac",
+      { "Target MAC address",           "aarp_dst_hw_mac",
         FT_ETHER,       BASE_NONE,      NULL,   0x0,
         NULL, HFILL }},
 
     { &hf_aarp_dst_proto,
-      { "Target protocol address",      "aarp.dst.proto",
+      { "Target protocol address",      "aarp_dst_proto",
         FT_BYTES,       BASE_NONE,      NULL,   0x0,
       NULL, HFILL }},
 
     { &hf_aarp_dst_proto_id,
-      { "Target ID",                    "aarp.dst.proto_id",
+      { "Target ID",                    "aarp_dst_proto_id",
         FT_BYTES,       BASE_NONE,      NULL,   0x0,
         NULL, HFILL }},
   };

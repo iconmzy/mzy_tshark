@@ -404,37 +404,37 @@ proto_register_btavctp(void)
 
     static hf_register_info hf[] = {
         { &hf_btavctp_transaction,
-            { "Transaction",          "btavctp.transaction",
+            { "Transaction",          "btavctp_transaction",
             FT_UINT8, BASE_HEX, NULL, 0xF0,
             NULL, HFILL }
         },
         { &hf_btavctp_packet_type,
-            { "Packet Type",          "btavctp.packet_type",
+            { "Packet Type",          "btavctp_packet_type",
             FT_UINT8, BASE_HEX, VALS(packet_type_vals), 0x0C,
             NULL, HFILL }
         },
         { &hf_btavctp_cr,
-            { "C/R",                  "btavctp.cr",
+            { "C/R",                  "btavctp_cr",
             FT_UINT8, BASE_HEX, VALS(cr_vals), 0x02,
             NULL, HFILL }
         },
         { &hf_btavctp_ipid,
-            { "IPID",                 "btavctp.ipid",
+            { "IPID",                 "btavctp_ipid",
             FT_UINT8, BASE_HEX, VALS(ipid_vals), 0x01,
             NULL, HFILL }
         },
         { &hf_btavctp_rfa,
-            { "RFA",                  "btavctp.rfa",
+            { "RFA",                  "btavctp_rfa",
             FT_UINT8, BASE_HEX, NULL, 0x01,
             NULL, HFILL }
         },
         { &hf_btavctp_pid,
-            { "Profile Identifier",   "btavctp.pid",
+            { "Profile Identifier",   "btavctp_pid",
             FT_UINT16, BASE_HEX|BASE_EXT_STRING, &bluetooth_uuid_vals_ext, 0x00,
             NULL, HFILL }
         },
         { &hf_btavctp_number_of_packets,
-            { "Number of packets",    "btavctp.nop",
+            { "Number of packets",    "btavctp_nop",
             FT_UINT8, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         }

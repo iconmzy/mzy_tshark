@@ -594,95 +594,95 @@ proto_register_babel(void)
 {
     static hf_register_info hf[] = {
         { &hf_babel_magic,
-          { "Magic", "babel.magic", FT_UINT8, BASE_DEC,
+          { "Magic", "babel_magic", FT_UINT8, BASE_DEC,
             NULL, 0, "Magic value 42", HFILL }
         },
         { &hf_babel_version,
-          { "Version", "babel.version", FT_UINT8, BASE_DEC,
+          { "Version", "babel_version", FT_UINT8, BASE_DEC,
             NULL, 0, "Version of the Babel protocol", HFILL }
         },
         { &hf_babel_bodylen,
-          { "Body Length", "babel.bodylen", FT_UINT16, BASE_DEC,
+          { "Body Length", "babel_bodylen", FT_UINT16, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message,
-          { "Message", "babel.message", FT_UINT8, BASE_DEC,
+          { "Message", "babel_message", FT_UINT8, BASE_DEC,
             NULL, 0, "Babel Message", HFILL }
         },
         { &hf_babel_message_type,
-          { "Message Type", "babel.message.type", FT_UINT8, BASE_DEC,
+          { "Message Type", "babel_message_type", FT_UINT8, BASE_DEC,
             VALS(messages), 0, NULL, HFILL }
         },
         { &hf_babel_message_length,
-          { "Message Length", "babel.message.length", FT_UINT8, BASE_DEC,
+          { "Message Length", "babel_message_length", FT_UINT8, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_nonce,
-          { "Nonce", "babel.message.nonce", FT_UINT16, BASE_HEX,
+          { "Nonce", "babel_message_nonce", FT_UINT16, BASE_HEX,
            NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_interval,
-          { "Interval", "babel.message.interval", FT_UINT16, BASE_DEC,
+          { "Interval", "babel_message_interval", FT_UINT16, BASE_DEC,
            NULL, 0, "Interval (in centiseconds)", HFILL }
         },
         { &hf_babel_message_seqno,
-          { "Seqno", "babel.message.seqno", FT_UINT16, BASE_HEX,
+          { "Seqno", "babel_message_seqno", FT_UINT16, BASE_HEX,
            NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_ae,
-          { "Address Encoding", "babel.message.ae", FT_UINT8, BASE_DEC,
+          { "Address Encoding", "babel_message_ae", FT_UINT8, BASE_DEC,
             VALS(aes), 0, NULL, HFILL }
         },
         { &hf_babel_message_prefix,
-          { "Raw Prefix", "babel.message.prefix", FT_BYTES, BASE_NONE,
+          { "Raw Prefix", "babel_message_prefix", FT_BYTES, BASE_NONE,
             NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_rxcost,
-          { "Rxcost", "babel.message.rxcost", FT_UINT16, BASE_HEX,
+          { "Rxcost", "babel_message_rxcost", FT_UINT16, BASE_HEX,
            NULL, 0, "Rxcost (from the point of vue of the sender)", HFILL }
         },
         { &hf_babel_message_routerid,
-          { "Router ID", "babel.message.routerid", FT_BYTES, BASE_NONE,
+          { "Router ID", "babel_message_routerid", FT_BYTES, BASE_NONE,
            NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_flags,
-          { "Flags", "babel.message.flags", FT_UINT8, BASE_HEX,
+          { "Flags", "babel_message_flags", FT_UINT8, BASE_HEX,
             NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_plen,
-          { "Prefix Length", "babel.message.plen", FT_UINT8, BASE_DEC,
+          { "Prefix Length", "babel_message_plen", FT_UINT8, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_omitted,
-          { "Omitted Bytes", "babel.message.omitted", FT_UINT8, BASE_DEC,
+          { "Omitted Bytes", "babel_message_omitted", FT_UINT8, BASE_DEC,
             NULL, 0, "Number of bytes omitted from the prefix", HFILL }
         },
         { &hf_babel_message_metric,
-          { "Metric", "babel.message.metric", FT_UINT16, BASE_DEC,
+          { "Metric", "babel_message_metric", FT_UINT16, BASE_DEC,
            NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_hopcount,
-          { "Hop Count", "babel.message.hopcount", FT_UINT8, BASE_DEC,
+          { "Hop Count", "babel_message_hopcount", FT_UINT8, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_babel_message_index,
-          { "Index", "babel.message.index", FT_UINT32, BASE_DEC,
+          { "Index", "babel_message_index", FT_UINT32, BASE_DEC,
           NULL, 0, NULL, HFILL }
         },
         { &hf_babel_subtlv,
-          { "Sub-TLV", "babel.subtlv", FT_UINT8, BASE_DEC,
+          { "Sub-TLV", "babel_subtlv", FT_UINT8, BASE_DEC,
           NULL, 0, "Babel Sub-TLV", HFILL }
         },
         { &hf_babel_subtlv_type,
-          { "Sub-TLV Type", "babel.subtlv.type", FT_UINT8, BASE_DEC,
+          { "Sub-TLV Type", "babel_subtlv_type", FT_UINT8, BASE_DEC,
           VALS(subtlvs), 0, NULL, HFILL }
         },
         { &hf_babel_subtlv_len,
-          { "Sub-TLV Length", "babel.subtlv.length", FT_UINT8, BASE_DEC,
+          { "Sub-TLV Length", "babel_subtlv_length", FT_UINT8, BASE_DEC,
           VALS(subtlvs), 0, NULL, HFILL }
         },
         { &hf_babel_subtlv_diversity,
-          { "Channel", "babel.subtlv.diversity.channel", FT_UINT8, BASE_DEC,
+          { "Channel", "babel_subtlv_diversity_channel", FT_UINT8, BASE_DEC,
           NULL, 0, NULL, HFILL  }
         }
     };

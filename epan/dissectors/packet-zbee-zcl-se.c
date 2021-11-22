@@ -185,19 +185,19 @@ proto_register_zbee_zcl_keep_alive(void)
     static hf_register_info hf[] = {
 
         { &hf_zbee_zcl_keep_alive_attr_id,
-            { "Attribute", "zbee_zcl_se.keep_alive.attr_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_keep_alive_attr_names),
+            { "Attribute", "zbee_zcl_se_keep_alive_attr_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_keep_alive_attr_names),
             0x0, NULL, HFILL } },
 
         { &hf_zbee_zcl_keep_alive_attr_reporting_status,                         /* common to all SE clusters */
-            { "Attribute Reporting Status", "zbee_zcl_se.keep_alive.attr.attr_reporting_status",
+            { "Attribute Reporting Status", "zbee_zcl_se_keep_alive_attr_attr_reporting_status",
             FT_UINT8, BASE_HEX, VALS(zbee_zcl_se_reporting_status_names), 0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_keep_alive_base,
-            { "Keep-Alive Base", "zbee_zcl_se.keep_alive.attr.base", FT_UINT8, BASE_DEC, NULL,
+            { "Keep-Alive Base", "zbee_zcl_se_keep_alive_attr_base", FT_UINT8, BASE_DEC, NULL,
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_keep_alive_jitter,
-            { "Keep-Alive Jitter", "zbee_zcl_se.keep_alive.attr.jitter", FT_UINT16, BASE_DEC, NULL,
+            { "Keep-Alive Jitter", "zbee_zcl_se_keep_alive_attr_jitter", FT_UINT16, BASE_DEC, NULL,
             0x00, NULL, HFILL } },
     };
 

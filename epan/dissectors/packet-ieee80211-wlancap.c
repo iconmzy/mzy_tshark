@@ -708,111 +708,111 @@ static const value_string preamble_type[] = {
 
 static hf_register_info hf_wlancap[] = {
     {&hf_wlancap_magic,
-     {"Header magic", "wlancap.magic", FT_UINT32, BASE_HEX, NULL, 0xFFFFFFF0,
+     {"Header magic", "wlancap_magic", FT_UINT32, BASE_HEX, NULL, 0xFFFFFFF0,
       NULL, HFILL }},
 
     {&hf_wlancap_version,
-     {"Header revision", "wlancap.version", FT_UINT32, BASE_DEC, NULL, 0xF,
+     {"Header revision", "wlancap_version", FT_UINT32, BASE_DEC, NULL, 0xF,
       NULL, HFILL }},
 
     {&hf_wlancap_length,
-     {"Header length", "wlancap.length", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Header length", "wlancap_length", FT_UINT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_mactime,
-     {"MAC timestamp", "wlancap.mactime", FT_UINT64, BASE_DEC, NULL, 0x0,
+     {"MAC timestamp", "wlancap_mactime", FT_UINT64, BASE_DEC, NULL, 0x0,
       "Value in microseconds of the MAC's Time Synchronization Function timer when the first bit of the MPDU arrived at the MAC", HFILL }},
 
     {&hf_wlancap_hosttime,
-     {"Host timestamp", "wlancap.hosttime", FT_UINT64, BASE_DEC, NULL, 0x0,
+     {"Host timestamp", "wlancap_hosttime", FT_UINT64, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_phytype,
-     {"PHY type", "wlancap.phytype", FT_UINT32, BASE_DEC, VALS(phy_type), 0x0,
+     {"PHY type", "wlancap_phytype", FT_UINT32, BASE_DEC, VALS(phy_type), 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_hop_set,
-     {"Hop set", "wlancap.fhss.hop_set", FT_UINT8, BASE_HEX, NULL, 0x0,
+     {"Hop set", "wlancap_fhss_hop_set", FT_UINT8, BASE_HEX, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_hop_pattern,
-     {"Hop pattern", "wlancap.fhss.hop_pattern", FT_UINT8, BASE_HEX, NULL, 0x0,
+     {"Hop pattern", "wlancap_fhss_hop_pattern", FT_UINT8, BASE_HEX, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_hop_index,
-     {"Hop index", "wlancap.fhss.hop_index", FT_UINT8, BASE_HEX, NULL, 0x0,
+     {"Hop index", "wlancap_fhss_hop_index", FT_UINT8, BASE_HEX, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_channel,
-     {"Channel", "wlancap.channel", FT_UINT8, BASE_DEC, NULL, 0x0,
+     {"Channel", "wlancap_channel", FT_UINT8, BASE_DEC, NULL, 0x0,
       "802.11 channel number that this frame was sent/received on", HFILL }},
 
     {&hf_wlancap_channel_frequency,
-     {"Channel frequency", "wlancap.channel_frequency", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Channel frequency", "wlancap_channel_frequency", FT_UINT32, BASE_DEC, NULL, 0x0,
       "Channel frequency in megahertz that this frame was sent/received on", HFILL }},
 
     {&hf_wlancap_data_rate,
-     {"Data Rate", "wlancap.data_rate", FT_UINT64, BASE_DEC, NULL, 0x0,
+     {"Data Rate", "wlancap_data_rate", FT_UINT64, BASE_DEC, NULL, 0x0,
       "Data rate (b/s)", HFILL }},
 
     {&hf_wlancap_antenna,
-     {"Antenna", "wlancap.antenna", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Antenna", "wlancap_antenna", FT_UINT32, BASE_DEC, NULL, 0x0,
       "Antenna number this frame was sent/received over (starting at 0)", HFILL } },
 
     {&hf_wlancap_priority,
-     {"Priority", "wlancap.priority", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Priority", "wlancap_priority", FT_UINT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_ssi_type,
-     {"SSI Type", "wlancap.ssi_type", FT_UINT32, BASE_DEC, VALS(ssi_type), 0x0,
+     {"SSI Type", "wlancap_ssi_type", FT_UINT32, BASE_DEC, VALS(ssi_type), 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_normrssi_antsignal,
-     {"Normalized RSSI Signal", "wlancap.normrssi_antsignal", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Normalized RSSI Signal", "wlancap_normrssi_antsignal", FT_UINT32, BASE_DEC, NULL, 0x0,
       "RF signal power at the antenna, normalized to the range 0-1000", HFILL }},
 
     {&hf_wlancap_dbm_antsignal,
-     {"SSI Signal (dBm)", "wlancap.dbm_antsignal", FT_INT32, BASE_DEC, NULL, 0x0,
+     {"SSI Signal (dBm)", "wlancap_dbm_antsignal", FT_INT32, BASE_DEC, NULL, 0x0,
       "RF signal power at the antenna from a fixed, arbitrary value in decibels from one milliwatt", HFILL }},
 
     {&hf_wlancap_rawrssi_antsignal,
-     {"Raw RSSI Signal", "wlancap.rawrssi_antsignal", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Raw RSSI Signal", "wlancap_rawrssi_antsignal", FT_UINT32, BASE_DEC, NULL, 0x0,
       "RF signal power at the antenna, reported as RSSI by the adapter", HFILL }},
 
     {&hf_wlancap_normrssi_antnoise,
-     {"Normalized RSSI Noise", "wlancap.normrssi_antnoise", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Normalized RSSI Noise", "wlancap_normrssi_antnoise", FT_UINT32, BASE_DEC, NULL, 0x0,
       "RF noise power at the antenna, normalized to the range 0-1000", HFILL }},
 
     {&hf_wlancap_dbm_antnoise,
-     {"SSI Noise (dBm)", "wlancap.dbm_antnoise", FT_INT32, BASE_DEC, NULL, 0x0,
+     {"SSI Noise (dBm)", "wlancap_dbm_antnoise", FT_INT32, BASE_DEC, NULL, 0x0,
       "RF noise power at the antenna from a fixed, arbitrary value in decibels per one milliwatt", HFILL }},
 
     {&hf_wlancap_rawrssi_antnoise,
-     {"Raw RSSI Noise", "wlancap.rawrssi_antnoise", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Raw RSSI Noise", "wlancap_rawrssi_antnoise", FT_UINT32, BASE_DEC, NULL, 0x0,
       "RF noise power at the antenna, reported as RSSI by the adapter", HFILL }},
 
     {&hf_wlancap_preamble,
-     {"Preamble", "wlancap.preamble", FT_UINT32, BASE_DEC, VALS(preamble_type), 0x0,
+     {"Preamble", "wlancap_preamble", FT_UINT32, BASE_DEC, VALS(preamble_type), 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_encoding,
-     {"Encoding Type", "wlancap.encoding", FT_UINT32, BASE_DEC, VALS(encoding_type), 0x0,
+     {"Encoding Type", "wlancap_encoding", FT_UINT32, BASE_DEC, VALS(encoding_type), 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_sequence,
-     {"Receive sequence", "wlancap.sequence", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Receive sequence", "wlancap_sequence", FT_UINT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_drops,
-     {"Known Dropped Frames", "wlancap.drops", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Known Dropped Frames", "wlancap_drops", FT_UINT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     {&hf_wlancap_receiver_addr,
-     {"Receiver Address", "wlancap.receiver_addr", FT_ETHER, BASE_NONE, NULL, 0x0,
+     {"Receiver Address", "wlancap_receiver_addr", FT_ETHER, BASE_NONE, NULL, 0x0,
       "Receiver Hardware Address", HFILL }},
 
     {&hf_wlancap_padding,
-     {"Padding", "wlancap.padding", FT_BYTES, BASE_NONE, NULL, 0x0,
+     {"Padding", "wlancap_padding", FT_BYTES, BASE_NONE, NULL, 0x0,
       NULL, HFILL }}
 };
 

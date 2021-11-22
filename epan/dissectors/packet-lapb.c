@@ -150,47 +150,47 @@ proto_register_lapb(void)
 {
     static hf_register_info hf[] = {
         { &hf_lapb_address,
-          { "Address", "lapb.address", FT_UINT8, BASE_HEX, NULL, 0x0,
+          { "Address", "lapb_address", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_lapb_control,
-          { "Control Field", "lapb.control", FT_UINT8, BASE_HEX, NULL, 0x0,
+          { "Control Field", "lapb_control", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_lapb_n_r,
-          { "N(R)", "lapb.control.n_r", FT_UINT8, BASE_DEC,
+          { "N(R)", "lapb_control_n_r", FT_UINT8, BASE_DEC,
             NULL, XDLC_N_R_MASK, NULL, HFILL }},
 
         { &hf_lapb_n_s,
-          { "N(S)", "lapb.control.n_s", FT_UINT8, BASE_DEC,
+          { "N(S)", "lapb_control_n_s", FT_UINT8, BASE_DEC,
             NULL, XDLC_N_S_MASK, NULL, HFILL }},
 
         { &hf_lapb_p,
-          { "Poll", "lapb.control.p", FT_BOOLEAN, 8,
+          { "Poll", "lapb_control_p", FT_BOOLEAN, 8,
             TFS(&tfs_set_notset), XDLC_P_F, NULL, HFILL }},
 
         { &hf_lapb_f,
-          { "Final", "lapb.control.f", FT_BOOLEAN, 8,
+          { "Final", "lapb_control_f", FT_BOOLEAN, 8,
             TFS(&tfs_set_notset), XDLC_P_F, NULL, HFILL }},
 
         { &hf_lapb_s_ftype,
-          { "Supervisory frame type", "lapb.control.s_ftype", FT_UINT8, BASE_HEX,
+          { "Supervisory frame type", "lapb_control_s_ftype", FT_UINT8, BASE_HEX,
             VALS(stype_vals), XDLC_S_FTYPE_MASK, NULL, HFILL }},
 
         { &hf_lapb_u_modifier_cmd,
-          { "Command", "lapb.control.u_modifier_cmd", FT_UINT8, BASE_HEX,
+          { "Command", "lapb_control_u_modifier_cmd", FT_UINT8, BASE_HEX,
             VALS(modifier_vals_cmd), XDLC_U_MODIFIER_MASK, NULL, HFILL }},
 
         { &hf_lapb_u_modifier_resp,
-          { "Response", "lapb.control.u_modifier_resp", FT_UINT8, BASE_HEX,
+          { "Response", "lapb_control_u_modifier_resp", FT_UINT8, BASE_HEX,
             VALS(modifier_vals_resp), XDLC_U_MODIFIER_MASK, NULL, HFILL }},
 
         { &hf_lapb_ftype_i,
-          { "Frame type", "lapb.control.ftype", FT_UINT8, BASE_HEX,
+          { "Frame type", "lapb_control_ftype", FT_UINT8, BASE_HEX,
             VALS(ftype_vals), XDLC_I_MASK, NULL, HFILL }},
 
         { &hf_lapb_ftype_s_u,
-          { "Frame type", "lapb.control.ftype", FT_UINT8, BASE_HEX,
+          { "Frame type", "lapb_control_ftype", FT_UINT8, BASE_HEX,
             VALS(ftype_vals), XDLC_S_U_MASK, NULL, HFILL }},
     };
     static gint *ett[] = {

@@ -147,49 +147,49 @@ void proto_register_pw_hdlc(void)
 		{
 			&hf_pw_hdlc_address_field,
 			{
-				"Address field", "pw_hdlc.address_field",
+				"Address field", "pw_hdlc_address_field",
 				FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL
 			}
 		},
 		{
 			&hf_pw_hdlc_address,
 			{
-				"Address", "pw_hdlc.address",
+				"Address", "pw_hdlc_address",
 				FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL
 			}
 		},
 		{
 			&hf_pw_hdlc_cr_bit,
 			{
-				"C/R bit", "pw_hdlc.cr_bit",
+				"C/R bit", "pw_hdlc_cr_bit",
 				FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
 			}
 		},
 		{
 			&hf_pw_hdlc_control_field,
 			{
-				"Control field", "pw_hdlc.control_field",
+				"Control field", "pw_hdlc_control_field",
 				FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL
 			}
 		},
 		{
 			&hf_pw_hdlc_pf_bit,
 			{
-				"Poll/Final bit", "pw_hdlc.pf_bit",
+				"Poll/Final bit", "pw_hdlc_pf_bit",
 				FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
 			}
 		},
 		{
 			&hf_pw_hdlc_modifier,
 			{
-				"Modifier", "pw_hdlc.modifier",
+				"Modifier", "pw_hdlc_modifier",
 				FT_UINT8, BASE_HEX, VALS(pw_hdlc_modifier_vals), 0x0, NULL, HFILL
 			}
 		},
 		{
 			&hf_pw_hdlc_frame,
 			{
-				"Frame type", "pw_hdlc.frame",
+				"Frame type", "pw_hdlc_frame",
 				FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
 			}
 		},

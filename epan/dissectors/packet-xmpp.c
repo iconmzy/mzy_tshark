@@ -549,769 +549,769 @@ proto_register_xmpp(void) {
     static hf_register_info hf[] = {
         { &hf_xmpp_iq,
           {
-              "IQ", "xmpp.iq", FT_NONE, BASE_NONE, NULL, 0x0,
+              "IQ", "xmpp_iq", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq packet", HFILL
           }},
         {&hf_xmpp_xmlns,
          {
-             "xmlns", "xmpp.xmlns", FT_STRING, BASE_NONE, NULL, 0x0,
+             "xmlns", "xmpp_xmlns", FT_STRING, BASE_NONE, NULL, 0x0,
              "element namespace", HFILL
          }},
         {&hf_xmpp_cdata,
          {
-             "CDATA", "xmpp.cdata", FT_STRING, BASE_NONE, NULL, 0x0,
+             "CDATA", "xmpp_cdata", FT_STRING, BASE_NONE, NULL, 0x0,
              NULL, HFILL
          }},
         {&hf_xmpp_attribute,
          {
-             "Attribute", "xmpp.attribute", FT_STRING, BASE_NONE, NULL, 0x0,
+             "Attribute", "xmpp_attribute", FT_STRING, BASE_NONE, NULL, 0x0,
              NULL, HFILL
          }},
         { &hf_xmpp_id,
           {
-              "id", "xmpp.id", FT_STRING, BASE_NONE, NULL, 0x0,
+              "id", "xmpp_id", FT_STRING, BASE_NONE, NULL, 0x0,
               "packet id", HFILL
           }},
         { &hf_xmpp_type,
           {
-              "type", "xmpp.type", FT_STRING, BASE_NONE, NULL, 0x0,
+              "type", "xmpp_type", FT_STRING, BASE_NONE, NULL, 0x0,
               "packet type", HFILL
           }},
         { &hf_xmpp_from,
           {
-              "from", "xmpp.from", FT_STRING, BASE_NONE, NULL, 0x0,
+              "from", "xmpp_from", FT_STRING, BASE_NONE, NULL, 0x0,
               "packet from", HFILL
           }},
         { &hf_xmpp_to,
           {
-              "to", "xmpp.to", FT_STRING, BASE_NONE, NULL, 0x0,
+              "to", "xmpp_to", FT_STRING, BASE_NONE, NULL, 0x0,
               "packet to", HFILL
           }},
         { &hf_xmpp_query,
           {
-              "QUERY", "xmpp.query", FT_NONE, BASE_NONE, NULL, 0x0,
+              "QUERY", "xmpp_query", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq query", HFILL
           }},
         { &hf_xmpp_query_node,
           {
-              "node", "xmpp.query.node", FT_STRING, BASE_NONE, NULL, 0x0,
+              "node", "xmpp_query_node", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query node", HFILL
           }},
         { &hf_xmpp_query_item,
           {
-              "ITEM", "xmpp.query.item", FT_NONE, BASE_NONE, NULL, 0x0,
+              "ITEM", "xmpp_query_item", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq query item", HFILL
 
           }},
         { &hf_xmpp_query_item_jid,
           {
-              "jid", "xmpp.query.item.jid", FT_STRING, BASE_NONE, NULL, 0x0,
+              "jid", "xmpp_query_item_jid", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query item jid", HFILL
 
           }},
         { &hf_xmpp_query_item_name,
           {
-              "name", "xmpp.query.item.name", FT_STRING, BASE_NONE, NULL, 0x0,
+              "name", "xmpp_query_item_name", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query item name", HFILL
           }},
         { &hf_xmpp_query_item_subscription,
           {
-              "subscription", "xmpp.query.item.subscription", FT_STRING, BASE_NONE, NULL, 0x0,
+              "subscription", "xmpp_query_item_subscription", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query item subscription", HFILL
           }},
         { &hf_xmpp_query_item_ask,
           {
-              "ask", "xmpp.query.item.ask", FT_STRING, BASE_NONE, NULL, 0x0,
+              "ask", "xmpp_query_item_ask", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query item ask", HFILL
           }},
         { &hf_xmpp_query_item_group,
           {
-              "GROUP", "xmpp.query.item.group", FT_STRING, BASE_NONE, NULL, 0x0,
+              "GROUP", "xmpp_query_item_group", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query item group", HFILL
 
           }},
         { &hf_xmpp_query_item_approved,
           {
-              "approved", "xmpp.query.item.approved", FT_STRING, BASE_NONE, NULL, 0x0,
+              "approved", "xmpp_query_item_approved", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query item approved", HFILL
 
           }},
         { &hf_xmpp_query_item_node,
           {
-              "node", "xmpp.query.item.node", FT_STRING, BASE_NONE, NULL, 0x0,
+              "node", "xmpp_query_item_node", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query item node", HFILL
 
           }},
         { &hf_xmpp_query_identity,
           {
-              "IDENTITY", "xmpp.query.identity", FT_NONE, BASE_NONE, NULL, 0x0,
+              "IDENTITY", "xmpp_query_identity", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq query identity", HFILL
 
           }},
         { &hf_xmpp_query_identity_category,
           {
-              "category", "xmpp.query.identity.category", FT_STRING, BASE_NONE, NULL, 0x0,
+              "category", "xmpp_query_identity_category", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query identity category", HFILL
 
           }},
         { &hf_xmpp_query_identity_type,
           {
-              "type", "xmpp.query.identity.type", FT_STRING, BASE_NONE, NULL, 0x0,
+              "type", "xmpp_query_identity_type", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query identity type", HFILL
 
           }},
         { &hf_xmpp_query_identity_name,
           {
-              "name", "xmpp.query.identity.name", FT_STRING, BASE_NONE, NULL, 0x0,
+              "name", "xmpp_query_identity_name", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query identity name", HFILL
 
           }},
         { &hf_xmpp_query_identity_lang,
           {
-              "lang", "xmpp.query.identity.lang", FT_STRING, BASE_NONE, NULL, 0x0,
+              "lang", "xmpp_query_identity_lang", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query identity lang", HFILL
 
           }},
         { &hf_xmpp_query_feature,
           {
-              "FEATURE", "xmpp.query.feature", FT_STRING, BASE_NONE, NULL, 0x0,
+              "FEATURE", "xmpp_query_feature", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query feature", HFILL
 
           }},
         { &hf_xmpp_query_streamhost,
           {
-              "STREAMHOST", "xmpp.query.streamhost", FT_NONE, BASE_NONE, NULL, 0x0,
+              "STREAMHOST", "xmpp_query_streamhost", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq query streamhost", HFILL
 
           }},
         { &hf_xmpp_query_streamhost_used,
           {
-              "STREAMHOST-USED", "xmpp.query.streamhost-used", FT_NONE, BASE_NONE, NULL, 0x0,
+              "STREAMHOST-USED", "xmpp_query_streamhost-used", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq query streamhost-used", HFILL
 
           }},
         { &hf_xmpp_query_activate,
           {
-              "ACTIVATE", "xmpp.query.activate", FT_STRING, BASE_NONE, NULL, 0x0,
+              "ACTIVATE", "xmpp_query_activate", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq query activate", HFILL
 
           }},
         { &hf_xmpp_query_udpsuccess,
           {
-              "UDPSUCCESS", "xmpp.query.udpsuccess", FT_NONE, BASE_NONE, NULL, 0x0,
+              "UDPSUCCESS", "xmpp_query_udpsuccess", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq query streamhost-used", HFILL
 
           }},
         { &hf_xmpp_error,
           {
-              "ERROR", "xmpp.error", FT_NONE, BASE_NONE, NULL, 0x0,
+              "ERROR", "xmpp_error", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq error", HFILL
           }},
         { &hf_xmpp_error_code,
           {
-              "code", "xmpp.error.code", FT_STRING, BASE_NONE, NULL, 0x0,
+              "code", "xmpp_error_code", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq stanza error code", HFILL
 
           }},
         { &hf_xmpp_error_type,
           {
-              "type", "xmpp.error.type", FT_STRING, BASE_NONE, NULL, 0x0,
+              "type", "xmpp_error_type", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq error type", HFILL
 
           }},
         { &hf_xmpp_error_condition,
           {
-              "CONDITION", "xmpp.error.condition", FT_STRING, BASE_NONE, NULL, 0x0,
+              "CONDITION", "xmpp_error_condition", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq error condition", HFILL
 
           }},
         { &hf_xmpp_error_text,
           {
-              "TEXT", "xmpp.error.text", FT_STRING, BASE_NONE, NULL, 0x0,
+              "TEXT", "xmpp_error_text", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq error text", HFILL
 
           }},
         { &hf_xmpp_iq_bind,
           {
-              "BIND", "xmpp.iq.bind", FT_NONE, BASE_NONE, NULL, 0x0,
+              "BIND", "xmpp_iq_bind", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq bind", HFILL
 
           }},
         { &hf_xmpp_iq_bind_jid,
           {
-              "jid", "xmpp.iq.bind.jid", FT_STRING, BASE_NONE, NULL, 0x0,
+              "jid", "xmpp_iq_bind_jid", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq bind jid", HFILL
 
           }},
         { &hf_xmpp_iq_bind_resource,
           {
-              "resource", "xmpp.iq.bind.resource", FT_STRING, BASE_NONE, NULL, 0x0,
+              "resource", "xmpp_iq_bind_resource", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq bind resource", HFILL
 
           }},
         { &hf_xmpp_services,
           {
-              "SERVICES", "xmpp.services", FT_NONE, BASE_NONE, NULL, 0x0,
+              "SERVICES", "xmpp_services", FT_NONE, BASE_NONE, NULL, 0x0,
               "http://jabber.org/protocol/jinglenodes services", HFILL
           }},
         { &hf_xmpp_channel,
           {
-              "CHANNEL", "xmpp.channel", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CHANNEL", "xmpp_channel", FT_NONE, BASE_NONE, NULL, 0x0,
               "http://jabber.org/protocol/jinglenodes#channel", HFILL
           }},
         { &hf_xmpp_iq_session,
           {
-              "SESSION", "xmpp.iq.session", FT_NONE, BASE_NONE, NULL, 0x0,
+              "SESSION", "xmpp_iq_session", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq session", HFILL
           }},
         { &hf_xmpp_vcard,
           {
-              "VCARD", "xmpp.vcard", FT_NONE, BASE_NONE, NULL, 0x0,
+              "VCARD", "xmpp_vcard", FT_NONE, BASE_NONE, NULL, 0x0,
               "vcard-temp", HFILL
           }},
         { &hf_xmpp_vcard_x_update,
           {
-              "X VCARD-UPDATE", "xmpp.vcard-update", FT_NONE, BASE_NONE, NULL, 0x0,
+              "X VCARD-UPDATE", "xmpp_vcard-update", FT_NONE, BASE_NONE, NULL, 0x0,
               "vcard-temp:x:update", HFILL
           }},
         { &hf_xmpp_jingle,
           {
-              "JINGLE", "xmpp.jingle", FT_NONE, BASE_NONE, NULL, 0x0,
+              "JINGLE", "xmpp_jingle", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle", HFILL
           }},
         { &hf_xmpp_jingle_action,
           {
-              "action", "xmpp.jingle.action", FT_STRING, BASE_NONE, NULL, 0x0,
+              "action", "xmpp_jingle_action", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle action", HFILL
           }},
         { &hf_xmpp_jingle_sid,
           {
-              "sid", "xmpp.jingle.sid", FT_STRING, BASE_NONE, NULL, 0x0,
+              "sid", "xmpp_jingle_sid", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle sid", HFILL
           }},
         { &hf_xmpp_jingle_initiator,
           {
-              "initiator", "xmpp.jingle.initiator", FT_STRING, BASE_NONE, NULL, 0x0,
+              "initiator", "xmpp_jingle_initiator", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle initiator", HFILL
           }},
         { &hf_xmpp_jingle_responder,
           {
-              "responder", "xmpp.jingle.responder", FT_STRING, BASE_NONE, NULL, 0x0,
+              "responder", "xmpp_jingle_responder", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle responder", HFILL
           }},
         { &hf_xmpp_jingle_content,
           {
-              "CONTENT", "xmpp.jingle.content", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CONTENT", "xmpp_jingle_content", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content", HFILL
           }},
         { &hf_xmpp_jingle_content_creator,
           {
-              "creator", "xmpp.jingle.content.creator", FT_STRING, BASE_NONE, NULL, 0x0,
+              "creator", "xmpp_jingle_content_creator", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content creator", HFILL
           }},
         { &hf_xmpp_jingle_content_name,
           {
-              "name", "xmpp.jingle.content.name", FT_STRING, BASE_NONE, NULL, 0x0,
+              "name", "xmpp_jingle_content_name", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content name", HFILL
           }},
         { &hf_xmpp_jingle_content_disposition,
           {
-              "disposition", "xmpp.jingle.content.disposition", FT_STRING, BASE_NONE, NULL, 0x0,
+              "disposition", "xmpp_jingle_content_disposition", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content disposition", HFILL
           }},
         { &hf_xmpp_jingle_content_senders,
           {
-              "senders", "xmpp.jingle.content.senders", FT_STRING, BASE_NONE, NULL, 0x0,
+              "senders", "xmpp_jingle_content_senders", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content senders", HFILL
           }},
         { &hf_xmpp_jingle_content_description,
           {
-              "DESCRIPTION", "xmpp.jingle.content.description", FT_NONE, BASE_NONE, NULL, 0x0,
+              "DESCRIPTION", "xmpp_jingle_content_description", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content description", HFILL
           }},
         { &hf_xmpp_jingle_content_description_media,
           {
-              "media", "xmpp.jingle.content.description.media", FT_STRING, BASE_NONE, NULL, 0x0,
+              "media", "xmpp_jingle_content_description_media", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description", HFILL
           }},
         { &hf_xmpp_jingle_content_description_ssrc,
           {
-              "ssrc", "xmpp.jingle.content.description.ssrc", FT_STRING, BASE_NONE, NULL, 0x0,
+              "ssrc", "xmpp_jingle_content_description_ssrc", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description ssrc", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload,
           {
-              "PAYLOAD-TYPE", "xmpp.jingle.content.description.payload-type", FT_NONE, BASE_NONE, NULL, 0x0,
+              "PAYLOAD-TYPE", "xmpp_jingle_content_description_payload-type", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_id,
           {
-              "id", "xmpp.jingle.content.description.payload-type.id", FT_STRING, BASE_NONE, NULL, 0x0,
+              "id", "xmpp_jingle_content_description_payload-type_id", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type id", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_channels,
           {
-              "channels", "xmpp.jingle.content.description.payload-type.channels", FT_STRING, BASE_NONE, NULL, 0x0,
+              "channels", "xmpp_jingle_content_description_payload-type_channels", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type channels", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_clockrate,
           {
-              "clockrate", "xmpp.jingle.content.description.payload-type.clockrate", FT_STRING, BASE_NONE, NULL, 0x0,
+              "clockrate", "xmpp_jingle_content_description_payload-type_clockrate", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type clockrate", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_maxptime,
           {
-              "maxptime", "xmpp.jingle.content.description.payload-type.maxptime", FT_STRING, BASE_NONE, NULL, 0x0,
+              "maxptime", "xmpp_jingle_content_description_payload-type_maxptime", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type maxptime", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_name,
           {
-              "name", "xmpp.jingle.content.description.payload-type.name", FT_STRING, BASE_NONE, NULL, 0x0,
+              "name", "xmpp_jingle_content_description_payload-type_name", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type name", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_ptime,
           {
-              "ptime", "xmpp.jingle.content.description.payload-type.ptime", FT_STRING, BASE_NONE, NULL, 0x0,
+              "ptime", "xmpp_jingle_content_description_payload-type_ptime", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type ptime", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_param,
           {
-              "PARAMETER", "xmpp.jingle.content.description.payload-type.parameter", FT_NONE, BASE_NONE, NULL, 0x0,
+              "PARAMETER", "xmpp_jingle_content_description_payload-type_parameter", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type parameter", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_param_name,
           {
-              "name", "xmpp.jingle.content.description.payload-type.parameter.name", FT_STRING, BASE_NONE, NULL, 0x0,
+              "name", "xmpp_jingle_content_description_payload-type_parameter_name", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type parameter name", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_payload_param_value,
           {
-              "value", "xmpp.jingle.content.description.payload-type.parameter.value", FT_STRING, BASE_NONE, NULL, 0x0,
+              "value", "xmpp_jingle_content_description_payload-type_parameter_value", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content description payload-type parameter value", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans,
           {
-              "TRANSPORT", "xmpp.jingle.content.transport", FT_NONE, BASE_NONE, NULL, 0x0,
+              "TRANSPORT", "xmpp_jingle_content_transport", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content transport", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans_ufrag,
           {
-              "ufrag", "xmpp.jingle.content.transport.ufrag", FT_STRING, BASE_NONE, NULL, 0x0,
+              "ufrag", "xmpp_jingle_content_transport_ufrag", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content transport ufrag", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans_pwd,
           {
-              "pwd", "xmpp.jingle.content.transport.pwd", FT_STRING, BASE_NONE, NULL, 0x0,
+              "pwd", "xmpp_jingle_content_transport_pwd", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle content transport pwd", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans_cand,
           {
-              "CANDIDATE", "xmpp.jingle.content.transport.candidate", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CANDIDATE", "xmpp_jingle_content_transport_candidate", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content transport candidate", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans_rem_cand,
           {
-              "REMOTE-CANDIDATE", "xmpp.jingle.content.transport.remote-candidate", FT_NONE, BASE_NONE, NULL, 0x0,
+              "REMOTE-CANDIDATE", "xmpp_jingle_content_transport_remote-candidate", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content transport remote-candidate", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans_activated,
           {
-              "ACTIVATED", "xmpp.jingle.content.transport.activated", FT_NONE, BASE_NONE, NULL, 0x0,
+              "ACTIVATED", "xmpp_jingle_content_transport_activated", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:transports:s5b:1 activated", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans_candidate_used,
           {
-              "CANDIDATE-USED", "xmpp.jingle.content.transport.candidate-used", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CANDIDATE-USED", "xmpp_jingle_content_transport_candidate-used", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:transports:s5b:1 candidate-used", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans_candidate_error,
           {
-              "CANDIDATE-ERROR", "xmpp.jingle.content.transport.candidate-error", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CANDIDATE-ERROR", "xmpp_jingle_content_transport_candidate-error", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:transports:s5b:1 candidate-error", HFILL
           }},
         { &hf_xmpp_jingle_cont_trans_proxy_error,
           {
-              "PROXY-ERROR", "xmpp.jingle.content.transport.proxy-error", FT_NONE, BASE_NONE, NULL, 0x0,
+              "PROXY-ERROR", "xmpp_jingle_content_transport_proxy-error", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:transports:s5b:1 proxy-error", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_enc,
           {
-              "ENCRYPTION", "xmpp.jingle.content.description.encryption", FT_NONE, BASE_NONE, NULL, 0x0,
+              "ENCRYPTION", "xmpp_jingle_content_description_encryption", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content description encryption", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_enc_zrtp_hash,
           {
-              "ZRTP-HASH", "xmpp.jingle.content.description.encryption.zrtp-hash", FT_NONE, BASE_NONE, NULL, 0x0,
+              "ZRTP-HASH", "xmpp_jingle_content_description_encryption_zrtp-hash", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content description encryption zrtp-hash", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_enc_crypto,
           {
-              "CRYPTO", "xmpp.jingle.content.description.encryption.crypto", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CRYPTO", "xmpp_jingle_content_description_encryption_crypto", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content description encryption crypto", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_bandwidth,
           {
-              "BANDWIDTH", "xmpp.jingle.content.description.bandwidth", FT_NONE, BASE_NONE, NULL, 0x0,
+              "BANDWIDTH", "xmpp_jingle_content_description_bandwidth", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content description bandwidth", HFILL
           }},
         { &hf_xmpp_jingle_cont_desc_rtp_hdr,
           {
-              "RTP-HDREXT", "xmpp.jingle.content.description.rtp-hdrext", FT_NONE, BASE_NONE, NULL, 0x0,
+              "RTP-HDREXT", "xmpp_jingle_content_description_rtp-hdrext", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle content description rtp-hdrext", HFILL
           }},
         { &hf_xmpp_jingle_reason,
           {
-              "REASON", "xmpp.jingle.reason", FT_NONE, BASE_NONE, NULL, 0x0,
+              "REASON", "xmpp_jingle_reason", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq jingle reason", HFILL
           }},
         { &hf_xmpp_jingle_reason_condition,
           {
-              "CONDITION", "xmpp.jingle.reason.condition", FT_STRING, BASE_NONE, NULL, 0x0,
+              "CONDITION", "xmpp_jingle_reason_condition", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle reason condition", HFILL
           }},
         { &hf_xmpp_jingle_reason_text,
           {
-              "TEXT", "xmpp.jingle.reason.text", FT_STRING, BASE_NONE, NULL, 0x0,
+              "TEXT", "xmpp_jingle_reason_text", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle reason text", HFILL
           }},
         { &hf_xmpp_jingle_rtp_info,
           {
-              "RTP-INFO", "xmpp.jingle.rtp_info", FT_STRING, BASE_NONE, NULL, 0x0,
+              "RTP-INFO", "xmpp_jingle_rtp_info", FT_STRING, BASE_NONE, NULL, 0x0,
               "iq jingle rtp-info(ringing, active, hold, mute, ...)", HFILL
           }},
         { &hf_xmpp_jingle_file_transfer_offer,
           {
-              "OFFER", "xmpp.jingle.content.description.offer", FT_NONE, BASE_NONE, NULL, 0x0,
+              "OFFER", "xmpp_jingle_content_description_offer", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:apps:file-transfer:3 offer", HFILL
           }},
         { &hf_xmpp_jingle_file_transfer_request,
           {
-              "REQUEST", "xmpp.jingle.content.description.request", FT_NONE, BASE_NONE, NULL, 0x0,
+              "REQUEST", "xmpp_jingle_content_description_request", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:apps:file-transfer:3 request", HFILL
           }},
         { &hf_xmpp_jingle_file_transfer_received,
           {
-              "RECEIVED", "xmpp.jingle.content.received", FT_NONE, BASE_NONE, NULL, 0x0,
+              "RECEIVED", "xmpp_jingle_content_received", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:apps:file-transfer:3 received", HFILL
           }},
         { &hf_xmpp_jingle_file_transfer_abort,
           {
-              "ABORT", "xmpp.jingle.content.abort", FT_NONE, BASE_NONE, NULL, 0x0,
+              "ABORT", "xmpp_jingle_content_abort", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:apps:file-transfer:3 abort", HFILL
           }},
         { &hf_xmpp_jingle_file_transfer_checksum,
           {
-              "CHECKSUM", "xmpp.jingle.content.checksum", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CHECKSUM", "xmpp_jingle_content_checksum", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:jingle:apps:file-transfer:3 checksum", HFILL
           }},
         { &hf_xmpp_si,
           {
-              "SI", "xmpp.si", FT_NONE, BASE_NONE, NULL, 0x0,
+              "SI", "xmpp_si", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq si", HFILL
           }},
         { &hf_xmpp_si_file,
           {
-              "FILE", "xmpp.si.file", FT_NONE, BASE_NONE, NULL, 0x0,
+              "FILE", "xmpp_si_file", FT_NONE, BASE_NONE, NULL, 0x0,
               "iq si file", HFILL
           }},
         { &hf_xmpp_iq_feature_neg,
           {
-              "FEATURE", "xmpp.feature-neg", FT_NONE, BASE_NONE, NULL, 0x0,
+              "FEATURE", "xmpp_feature-neg", FT_NONE, BASE_NONE, NULL, 0x0,
               "http://jabber.org/protocol/feature-neg", HFILL
           }},
         { &hf_xmpp_x_data,
           {
-              "X-DATA", "xmpp.x-data", FT_NONE, BASE_NONE, NULL, 0x0,
+              "X-DATA", "xmpp_x-data", FT_NONE, BASE_NONE, NULL, 0x0,
               "jabber:x:data", HFILL
           }},
         { &hf_xmpp_x_data_field,
           {
-              "FIELD", "xmpp.x-data.field", FT_NONE, BASE_NONE, NULL, 0x0,
+              "FIELD", "xmpp_x-data_field", FT_NONE, BASE_NONE, NULL, 0x0,
               "jabber:x:data field", HFILL
           }},
         { &hf_xmpp_x_data_field_value,
           {
-              "VALUE", "xmpp.x-data.field.value", FT_NONE, BASE_NONE, NULL, 0x0,
+              "VALUE", "xmpp_x-data_field_value", FT_NONE, BASE_NONE, NULL, 0x0,
               "jabber:x:data field value", HFILL
           }},
         { &hf_xmpp_x_data_instructions,
           {
-              "INSTRUCTIONS", "xmpp.x-data.instructions", FT_STRING, BASE_NONE, NULL, 0x0,
+              "INSTRUCTIONS", "xmpp_x-data_instructions", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }},
         { &hf_xmpp_muc_user_status,
           {
-              "STATUS", "xmpp.muc_user_status", FT_STRING, BASE_NONE, NULL, 0x0,
+              "STATUS", "xmpp_muc_user_status", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }},
         { &hf_xmpp_delay,
           {
-              "DELAY", "xmpp.delay", FT_NONE, BASE_NONE, NULL, 0x0,
+              "DELAY", "xmpp_delay", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:delay", HFILL
           }},
         { &hf_xmpp_x_event,
           {
-              "X EVENT", "xmpp.x-event", FT_NONE, BASE_NONE, NULL, 0x0,
+              "X EVENT", "xmpp_x-event", FT_NONE, BASE_NONE, NULL, 0x0,
               "jabber:x:event", HFILL
           }},
         { &hf_xmpp_x_event_condition,
           {
-              "CONDITION", "xmpp.x-event.condition", FT_STRING, BASE_NONE, NULL, 0x0,
+              "CONDITION", "xmpp_x-event_condition", FT_STRING, BASE_NONE, NULL, 0x0,
               "jabber:x:event condition", HFILL
           }},
         { &hf_xmpp_presence,
           {
-              "PRESENCE", "xmpp.presence", FT_NONE, BASE_NONE, NULL, 0x0,
+              "PRESENCE", "xmpp_presence", FT_NONE, BASE_NONE, NULL, 0x0,
               "presence packet", HFILL
           }},
         { &hf_xmpp_presence_show,
           {
-              "SHOW", "xmpp.presence.show", FT_STRING, BASE_NONE, NULL, 0x0,
+              "SHOW", "xmpp_presence_show", FT_STRING, BASE_NONE, NULL, 0x0,
               "presence show", HFILL
           }},
         { &hf_xmpp_presence_status,
           {
-              "STATUS", "xmpp.presence.status", FT_NONE, BASE_NONE, NULL, 0x0,
+              "STATUS", "xmpp_presence_status", FT_NONE, BASE_NONE, NULL, 0x0,
               "presence status", HFILL
           }},
         { &hf_xmpp_presence_caps,
           {
-              "CAPS", "xmpp.presence.caps", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CAPS", "xmpp_presence_caps", FT_NONE, BASE_NONE, NULL, 0x0,
               "presence caps", HFILL
           }},
         { &hf_xmpp_message,
           {
-              "MESSAGE", "xmpp.message", FT_NONE, BASE_NONE, NULL, 0x0,
+              "MESSAGE", "xmpp_message", FT_NONE, BASE_NONE, NULL, 0x0,
               "message packet", HFILL
           }},
         { &hf_xmpp_message_chatstate,
           {
-              "CHATSTATE", "xmpp.message.chatstate", FT_STRING, BASE_NONE, NULL, 0x0,
+              "CHATSTATE", "xmpp_message_chatstate", FT_STRING, BASE_NONE, NULL, 0x0,
               "message chatstate", HFILL
           }},
         { &hf_xmpp_message_thread,
           {
-              "THREAD", "xmpp.message.thread", FT_NONE, BASE_NONE, NULL, 0x0,
+              "THREAD", "xmpp_message_thread", FT_NONE, BASE_NONE, NULL, 0x0,
               "message thread", HFILL
           }},
         { &hf_xmpp_message_body,
           {
-              "BODY", "xmpp.message.body", FT_NONE, BASE_NONE, NULL, 0x0,
+              "BODY", "xmpp_message_body", FT_NONE, BASE_NONE, NULL, 0x0,
               "message body", HFILL
           }},
         { &hf_xmpp_message_subject,
           {
-              "SUBJECT", "xmpp.message.subject", FT_NONE, BASE_NONE, NULL, 0x0,
+              "SUBJECT", "xmpp_message_subject", FT_NONE, BASE_NONE, NULL, 0x0,
               "message subject", HFILL
           }},
         { &hf_xmpp_message_thread_parent,
           {
-              "parent", "xmpp.message.thread.parent", FT_STRING, BASE_NONE, NULL, 0x0,
+              "parent", "xmpp_message_thread_parent", FT_STRING, BASE_NONE, NULL, 0x0,
               "message thread parent", HFILL
           }},
         { &hf_xmpp_auth,
           {
-              "AUTH", "xmpp.auth", FT_NONE, BASE_NONE, NULL, 0x0,
+              "AUTH", "xmpp_auth", FT_NONE, BASE_NONE, NULL, 0x0,
               "auth packet", HFILL
           }},
         { &hf_xmpp_stream,
           {
-              "STREAM", "xmpp.stream", FT_NONE, BASE_NONE, NULL, 0x0,
+              "STREAM", "xmpp_stream", FT_NONE, BASE_NONE, NULL, 0x0,
               "XMPP stream", HFILL
           }},
         { &hf_xmpp_failure,
           {
-              "FAILURE", "xmpp.failure", FT_NONE, BASE_NONE, NULL, 0x0,
+              "FAILURE", "xmpp_failure", FT_NONE, BASE_NONE, NULL, 0x0,
               "failure packet", HFILL
           }},
         { &hf_xmpp_failure_text,
           {
-              "FAILURE TEXT", "xmpp.failure_text", FT_STRING, BASE_NONE, NULL, 0x0,
+              "FAILURE TEXT", "xmpp_failure_text", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }},
         { &hf_xmpp_xml_header_version,
           {
-              "XML HEADER VER", "xmpp.xml_header_version", FT_STRING, BASE_NONE, NULL, 0x0,
+              "XML HEADER VER", "xmpp_xml_header_version", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }},
         { &hf_xmpp_stream_end,
           {
-              "STREAM END", "xmpp.stream_end", FT_NONE, BASE_NONE, NULL, 0x0,
+              "STREAM END", "xmpp_stream_end", FT_NONE, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }},
         { &hf_xmpp_features,
           {
-              "FEATURES", "xmpp.features", FT_NONE, BASE_NONE, NULL, 0x0,
+              "FEATURES", "xmpp_features", FT_NONE, BASE_NONE, NULL, 0x0,
               "stream features", HFILL
           }},
         { &hf_xmpp_starttls,
           {
-              "STARTTLS", "xmpp.starttls", FT_NONE, BASE_NONE, NULL, 0x0,
+              "STARTTLS", "xmpp_starttls", FT_NONE, BASE_NONE, NULL, 0x0,
               "starttls packet", HFILL
           }},
         { &hf_xmpp_proceed,
           {
-              "PROCEED", "xmpp.proceed", FT_NONE, BASE_NONE, NULL, 0x0,
+              "PROCEED", "xmpp_proceed", FT_NONE, BASE_NONE, NULL, 0x0,
               "proceed packet", HFILL
           }},
         { &hf_xmpp_unknown,
           {
-              "UNKNOWN", "xmpp.unknown", FT_STRING, BASE_NONE, NULL, 0x0,
+              "UNKNOWN", "xmpp_unknown", FT_STRING, BASE_NONE, NULL, 0x0,
               "unknown element", HFILL
           }},
         { &hf_xmpp_unknown_attr,
           {
-              "UNKNOWN ATTR", "xmpp.unknown_attr", FT_STRING, BASE_NONE, NULL, 0x0,
+              "UNKNOWN ATTR", "xmpp_unknown_attr", FT_STRING, BASE_NONE, NULL, 0x0,
               "unknown attribute", HFILL
           }},
         { &hf_xmpp_ibb_open,
           {
-              "IBB-OPEN", "xmpp.ibb.open", FT_NONE, BASE_NONE, NULL, 0x0,
+              "IBB-OPEN", "xmpp_ibb_open", FT_NONE, BASE_NONE, NULL, 0x0,
               "xmpp ibb open", HFILL
           }},
         { &hf_xmpp_ibb_close,
           {
-              "IBB-CLOSE", "xmpp.ibb.close", FT_NONE, BASE_NONE, NULL, 0x0,
+              "IBB-CLOSE", "xmpp_ibb_close", FT_NONE, BASE_NONE, NULL, 0x0,
               "xmpp ibb close", HFILL
           }},
         { &hf_xmpp_ibb_data,
           {
-              "IBB-DATA", "xmpp.ibb.data", FT_NONE, BASE_NONE, NULL, 0x0,
+              "IBB-DATA", "xmpp_ibb_data", FT_NONE, BASE_NONE, NULL, 0x0,
               "xmpp ibb data", HFILL
           }},
         { &hf_xmpp_muc_x,
           {
-              "X MUC", "xmpp.muc-x", FT_NONE, BASE_NONE, NULL, 0x0,
+              "X MUC", "xmpp_muc-x", FT_NONE, BASE_NONE, NULL, 0x0,
               "http://jabber.org/protocol/muc", HFILL
           }},
         { &hf_xmpp_muc_user_x,
           {
-              "X MUC-USER", "xmpp.muc-user-x", FT_NONE, BASE_NONE, NULL, 0x0,
+              "X MUC-USER", "xmpp_muc-user-x", FT_NONE, BASE_NONE, NULL, 0x0,
               "http://jabber.org/protocol/muc#user", HFILL
           }},
         { &hf_xmpp_muc_user_item,
           {
-              "ITEM", "xmpp.muc-user-x.item", FT_NONE, BASE_NONE, NULL, 0x0,
+              "ITEM", "xmpp_muc-user-x_item", FT_NONE, BASE_NONE, NULL, 0x0,
               "muc#user item", HFILL
           }},
         { &hf_xmpp_muc_user_invite,
           {
-              "INVITE", "xmpp.muc-user-x.invite", FT_NONE, BASE_NONE, NULL, 0x0,
+              "INVITE", "xmpp_muc-user-x_invite", FT_NONE, BASE_NONE, NULL, 0x0,
               "muc#user invite", HFILL
           }},
         { &hf_xmpp_gtalk_session,
           {
-              "GTALK-SESSION", "xmpp.gtalk.session", FT_NONE, BASE_NONE, NULL, 0x0,
+              "GTALK-SESSION", "xmpp_gtalk_session", FT_NONE, BASE_NONE, NULL, 0x0,
               "GTalk session", HFILL
           }},
         { &hf_xmpp_gtalk_session_type,
           {
-              "type", "xmpp.gtalk.session.type", FT_STRING, BASE_NONE, NULL, 0x0,
+              "type", "xmpp_gtalk_session_type", FT_STRING, BASE_NONE, NULL, 0x0,
               "GTalk session type", HFILL
           }},
         { &hf_xmpp_gtalk,
           {
-              "GTALK SESSION", "xmpp.gtalk", FT_STRING, BASE_NONE, NULL, 0x0,
+              "GTALK SESSION", "xmpp_gtalk", FT_STRING, BASE_NONE, NULL, 0x0,
               "GTalk SID", HFILL
           }},
         { &hf_xmpp_gtalk_setting,
           {
-              "USERSETTING", "xmpp.gtalk.setting", FT_NONE, BASE_NONE, NULL, 0x0,
+              "USERSETTING", "xmpp_gtalk_setting", FT_NONE, BASE_NONE, NULL, 0x0,
               "google:setting usersetting", HFILL
           }},
         { &hf_xmpp_gtalk_setting_element,
           {
-              "USERSETTING ELEMENT", "xmpp.gtalk.setting_element", FT_STRING, BASE_NONE, NULL, 0x0,
+              "USERSETTING ELEMENT", "xmpp_gtalk_setting_element", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }},
         { &hf_xmpp_gtalk_nosave_x,
           {
-              "X-NOSAVE", "xmpp.gtalk.nosave.x", FT_NONE, BASE_NONE, NULL, 0x0,
+              "X-NOSAVE", "xmpp_gtalk_nosave_x", FT_NONE, BASE_NONE, NULL, 0x0,
               "google:nosave x", HFILL
           }},
         { &hf_xmpp_gtalk_mail_mailbox,
           {
-              "MAILBOX", "xmpp.gtalk.mailbox", FT_NONE, BASE_NONE, NULL, 0x0,
+              "MAILBOX", "xmpp_gtalk_mailbox", FT_NONE, BASE_NONE, NULL, 0x0,
               "google:mail:notify mailbox", HFILL
           }},
         { &hf_xmpp_gtalk_mail_new_mail,
           {
-              "NEW MAIL", "xmpp.gtalk.new-mail", FT_NONE, BASE_NONE, NULL, 0x0,
+              "NEW MAIL", "xmpp_gtalk_new-mail", FT_NONE, BASE_NONE, NULL, 0x0,
               "google:mail:notify new-mail", HFILL
           }},
         { &hf_xmpp_gtalk_transport_p2p,
           {
-              "TRANSPORT", "xmpp.gtalk.transport-p2p", FT_NONE, BASE_NONE, NULL, 0x0,
+              "TRANSPORT", "xmpp_gtalk_transport-p2p", FT_NONE, BASE_NONE, NULL, 0x0,
               "google/transport/p2p", HFILL
           }},
         { &hf_xmpp_gtalk_mail_snippet,
           {
-              "SNIPPET", "xmpp.gtalk.mail_snippet", FT_STRING, BASE_NONE, NULL, 0x0,
+              "SNIPPET", "xmpp_gtalk_mail_snippet", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }},
         { &hf_xmpp_gtalk_status_status_list,
           {
-              "STATUS", "xmpp.gtalk.status_status_list", FT_STRING, BASE_NONE, NULL, 0x0,
+              "STATUS", "xmpp_gtalk_status_status_list", FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL
           }},
         { &hf_xmpp_conf_info,
           {
-              "CONFERENCE INFO", "xmpp.conf-info", FT_NONE, BASE_NONE, NULL, 0x0,
+              "CONFERENCE INFO", "xmpp_conf-info", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:ietf:params:xml:ns:conference-info", HFILL
           }},
         { &hf_xmpp_conf_info_sid,
           {
-              "sid", "xmpp.conf-info.sid", FT_STRING, BASE_NONE, NULL, 0x0,
+              "sid", "xmpp_conf-info_sid", FT_STRING, BASE_NONE, NULL, 0x0,
               "urn:ietf:params:xml:ns:conference-info sid", HFILL
           }},
         { &hf_xmpp_response_in,
-          { "Response In", "xmpp.response_in",
+          { "Response In", "xmpp_response_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "The response to this request is in this frame", HFILL }
         },
         { &hf_xmpp_response_to,
-          { "Request In", "xmpp.response_to",
+          { "Request In", "xmpp_response_to",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "This is a response to the request in this frame", HFILL }
         },
         { &hf_xmpp_out,
           {
-              "Out", "xmpp.out", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+              "Out", "xmpp_out", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
               "Outgoing packet", HFILL
           }},
         { &hf_xmpp_in,
           {
-              "In", "xmpp.in", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+              "In", "xmpp_in", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
               "Ingoing packet", HFILL
           }},
         { &hf_xmpp_ibb,
           {
-              "IBB SESSION", "xmpp.ibb", FT_STRING, BASE_NONE, NULL, 0x0,
+              "IBB SESSION", "xmpp_ibb", FT_STRING, BASE_NONE, NULL, 0x0,
               "In-Band Bytestreams session", HFILL
           }},
         { &hf_xmpp_jingle_session,
           {
-              "JINGLE SESSION", "xmpp.jingle_session", FT_STRING, BASE_NONE, NULL, 0x0,
+              "JINGLE SESSION", "xmpp_jingle_session", FT_STRING, BASE_NONE, NULL, 0x0,
               "Jingle SID", HFILL
           }},
         { &hf_xmpp_ping,
           {
-              "PING", "xmpp.ping", FT_NONE, BASE_NONE, NULL, 0x0,
+              "PING", "xmpp_ping", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:ping", HFILL
           }},
         { &hf_xmpp_hashes,
           {
-              "HASHES", "xmpp.hashes", FT_NONE, BASE_NONE, NULL, 0x0,
+              "HASHES", "xmpp_hashes", FT_NONE, BASE_NONE, NULL, 0x0,
               "urn:xmpp:hashes:0", HFILL
           }},
         { &hf_xmpp_jitsi_inputevt,
           {
-              "INPUTEVT", "xmpp.inputevt", FT_NONE, BASE_NONE, NULL, 0x0,
+              "INPUTEVT", "xmpp_inputevt", FT_NONE, BASE_NONE, NULL, 0x0,
               "http://jitsi.org/protocol/inputevt", HFILL
           }},
         { &hf_xmpp_jitsi_inputevt_rmt_ctrl,
           {
-              "REMOTE-CONTROL", "xmpp.inputevt.remote-control", FT_NONE, BASE_NONE, NULL, 0x0,
+              "REMOTE-CONTROL", "xmpp_inputevt_remote-control", FT_NONE, BASE_NONE, NULL, 0x0,
               "http://jitsi.org/protocol/inputevt remote-control", HFILL
           }},
     };

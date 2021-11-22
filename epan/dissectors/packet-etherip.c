@@ -82,10 +82,10 @@ proto_register_etherip(void)
 {
   static hf_register_info hf_etherip[] = {
     { &hf_etherip_ver,
-      { "Version", "etherip.ver", FT_UINT16, BASE_DEC, NULL, ETHERIP_VERS_MASK,
+      { "Version", "etherip_ver", FT_UINT16, BASE_DEC, NULL, ETHERIP_VERS_MASK,
         NULL, HFILL }},
     { &hf_etherip_reserved,
-      { "Reserved", "etherip.reserved", FT_UINT16, BASE_HEX, NULL, ETHERIP_RESERVE_MASK,
+      { "Reserved", "etherip_reserved", FT_UINT16, BASE_HEX, NULL, ETHERIP_RESERVE_MASK,
         "Reserved (must be 0)", HFILL }},
   };
 

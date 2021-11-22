@@ -3882,32 +3882,32 @@ proto_register_bluetooth(void)
 {
     static hf_register_info hf[] = {
         { &hf_bluetooth_src,
-            { "Source",                              "bluetooth.src",
+            { "Source",                              "bluetooth_src",
             FT_ETHER, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bluetooth_dst,
-            { "Destination",                         "bluetooth.dst",
+            { "Destination",                         "bluetooth_dst",
             FT_ETHER, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bluetooth_addr,
-            { "Source or Destination",               "bluetooth.addr",
+            { "Source or Destination",               "bluetooth_addr",
             FT_ETHER, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bluetooth_src_str,
-            { "Source",                              "bluetooth.src_str",
+            { "Source",                              "bluetooth_src_str",
             FT_STRING, STR_ASCII, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bluetooth_dst_str,
-            { "Destination",                         "bluetooth.dst_str",
+            { "Destination",                         "bluetooth_dst_str",
             FT_STRING, STR_ASCII, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bluetooth_addr_str,
-            { "Source or Destination",               "bluetooth.addr_str",
+            { "Source or Destination",               "bluetooth_addr_str",
             FT_STRING, STR_ASCII, NULL, 0x0,
             NULL, HFILL }
         },
@@ -3915,7 +3915,7 @@ proto_register_bluetooth(void)
 
     static hf_register_info oui_hf[] = {
         { &hf_llc_bluetooth_pid,
-            { "PID",    "llc.bluetooth_pid",
+            { "PID",    "llc_bluetooth_pid",
             FT_UINT16, BASE_HEX, VALS(bluetooth_pid_vals), 0x0,
             "Protocol ID", HFILL }
         }

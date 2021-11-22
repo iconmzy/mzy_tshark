@@ -1969,311 +1969,311 @@ proto_register_zbee_nwk_gp(void)
 
     static hf_register_info hf[] = {
         { &hf_zbee_nwk_gp_auto_commissioning,
-            { "Auto Commissioning", "zbee_nwk_gp.auto_commissioning", FT_BOOLEAN, 8, NULL,
+            { "Auto Commissioning", "zbee_nwk_gp_auto_commissioning", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_FCF_AUTO_COMMISSIONING, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_fc_ext,
-            { "NWK Frame Extension", "zbee_nwk_gp.fc_extension", FT_BOOLEAN, 8, NULL, ZBEE_NWK_GP_FCF_CONTROL_EXTENSION,
+            { "NWK Frame Extension", "zbee_nwk_gp_fc_extension", FT_BOOLEAN, 8, NULL, ZBEE_NWK_GP_FCF_CONTROL_EXTENSION,
                 NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_fcf,
-            { "Frame Control Field", "zbee_nwk_gp.fcf", FT_UINT8, BASE_HEX, NULL,
+            { "Frame Control Field", "zbee_nwk_gp_fcf", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_frame_type,
-            { "Frame Type", "zbee_nwk_gp.frame_type", FT_UINT8, BASE_HEX, VALS(zbee_nwk_gp_frame_types),
+            { "Frame Type", "zbee_nwk_gp_frame_type", FT_UINT8, BASE_HEX, VALS(zbee_nwk_gp_frame_types),
                 ZBEE_NWK_GP_FCF_FRAME_TYPE, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_proto_version,
-            { "Protocol Version", "zbee_nwk_gp.proto_version", FT_UINT8, BASE_DEC, NULL, ZBEE_NWK_GP_FCF_VERSION, NULL,
+            { "Protocol Version", "zbee_nwk_gp_proto_version", FT_UINT8, BASE_DEC, NULL, ZBEE_NWK_GP_FCF_VERSION, NULL,
                 HFILL }},
 
         { &hf_zbee_nwk_gp_fc_ext_field,
-            { "Extended NWK Frame Control Field", "zbee_nwk_gp.fc_ext", FT_UINT8, BASE_HEX, NULL,
+            { "Extended NWK Frame Control Field", "zbee_nwk_gp_fc_ext", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_fc_ext_app_id,
-            { "Application ID", "zbee_nwk_gp.fc_ext_app_id", FT_UINT8, BASE_HEX, VALS(zbee_nwk_gp_app_id_names),
+            { "Application ID", "zbee_nwk_gp_fc_ext_app_id", FT_UINT8, BASE_HEX, VALS(zbee_nwk_gp_app_id_names),
                 ZBEE_NWK_GP_FCF_EXT_APP_ID, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_fc_ext_direction,
-            { "Direction", "zbee_nwk_gp.fc_ext_direction", FT_UINT8, BASE_HEX, VALS(zbee_nwk_gp_directions),
+            { "Direction", "zbee_nwk_gp_fc_ext_direction", FT_UINT8, BASE_HEX, VALS(zbee_nwk_gp_directions),
                 ZBEE_NWK_GP_FCF_EXT_DIRECTION, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_fc_ext_rx_after_tx,
-            { "Rx After Tx", "zbee_nwk_gp.fc_ext_rxaftertx", FT_BOOLEAN, 8, NULL, ZBEE_NWK_GP_FCF_EXT_RX_AFTER_TX, NULL,
+            { "Rx After Tx", "zbee_nwk_gp_fc_ext_rxaftertx", FT_BOOLEAN, 8, NULL, ZBEE_NWK_GP_FCF_EXT_RX_AFTER_TX, NULL,
                 HFILL }},
 
         { &hf_zbee_nwk_gp_fc_ext_sec_key,
-            { "Security Key", "zbee_nwk_gp.fc_ext_security_key", FT_BOOLEAN, 8, NULL, ZBEE_NWK_GP_FCF_EXT_SECURITY_KEY,
+            { "Security Key", "zbee_nwk_gp_fc_ext_security_key", FT_BOOLEAN, 8, NULL, ZBEE_NWK_GP_FCF_EXT_SECURITY_KEY,
                 NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_fc_ext_sec_level,
-            { "Security Level", "zbee_nwk_gp.fc_ext_security_level", FT_UINT8, BASE_HEX,
+            { "Security Level", "zbee_nwk_gp_fc_ext_security_level", FT_UINT8, BASE_HEX,
                 VALS(zbee_nwk_gp_src_sec_levels_names), ZBEE_NWK_GP_FCF_EXT_SECURITY_LEVEL, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_zgpd_src_id,
-            { "Src ID", "zbee_nwk_gp.source_id", FT_UINT32, BASE_HEX, VALS(zbee_nwk_gp_src_id_names), 0x0, NULL,
+            { "Src ID", "zbee_nwk_gp_source_id", FT_UINT32, BASE_HEX, VALS(zbee_nwk_gp_src_id_names), 0x0, NULL,
                 HFILL }},
 
         { &hf_zbee_nwk_gp_zgpd_endpoint,
-            { "Endpoint", "zbee_nwk_gp.endpoint", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "Endpoint", "zbee_nwk_gp_endpoint", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_security_frame_counter,
-            { "Security Frame Counter", "zbee_nwk_gp.security_frame_counter", FT_UINT32, BASE_DEC, NULL, 0x0, NULL,
+            { "Security Frame Counter", "zbee_nwk_gp_security_frame_counter", FT_UINT32, BASE_DEC, NULL, 0x0, NULL,
                 HFILL }},
 
         { &hf_zbee_nwk_gp_security_mic_2b,
-            { "Security MIC", "zbee_nwk_gp.security_mic2", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+            { "Security MIC", "zbee_nwk_gp_security_mic2", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_security_mic_4b,
-            { "Security MIC", "zbee_nwk_gp.security_mic4", FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+            { "Security MIC", "zbee_nwk_gp_security_mic4", FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_command_id,
-            { "ZGPD Command ID", "zbee_nwk_gp.command_id", FT_UINT8, BASE_HEX | BASE_EXT_STRING, &zbee_nwk_gp_cmd_names_ext, 0x0, NULL,
+            { "ZGPD Command ID", "zbee_nwk_gp_command_id", FT_UINT8, BASE_HEX | BASE_EXT_STRING, &zbee_nwk_gp_cmd_names_ext, 0x0, NULL,
                 HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_device_id,
-            { "ZGPD Device ID", "zbee_nwk_gp.cmd.comm.dev_id", FT_UINT8, BASE_HEX | BASE_EXT_STRING, &zbee_nwk_gp_device_ids_names_ext,
+            { "ZGPD Device ID", "zbee_nwk_gp_cmd_comm_dev_id", FT_UINT8, BASE_HEX | BASE_EXT_STRING, &zbee_nwk_gp_device_ids_names_ext,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_ext_opt_gpd_key_encr,
-            { "GPD Key Encryption", "zbee_nwk_gp.cmd.comm.ext_opt.gpd_key_encr", FT_BOOLEAN, 8, NULL,
+            { "GPD Key Encryption", "zbee_nwk_gp_cmd_comm_ext_opt_gpd_key_encr", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_EXT_OPT_GPD_KEY_ENCR, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_ext_opt_gpd_key_present,
-            { "GPD Key Present", "zbee_nwk_gp.cmd.comm.ext_opt.gpd_key_present", FT_BOOLEAN, 8, NULL,
+            { "GPD Key Present", "zbee_nwk_gp_cmd_comm_ext_opt_gpd_key_present", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_EXT_OPT_GPD_KEY_PRESENT, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_ext_opt_key_type,
-            { "Key Type", "zbee_nwk_gp.cmd.comm.ext_opt.key_type", FT_UINT8, BASE_HEX,
+            { "Key Type", "zbee_nwk_gp_cmd_comm_ext_opt_key_type", FT_UINT8, BASE_HEX,
                 VALS(zbee_nwk_gp_src_sec_keys_type_names), ZBEE_NWK_GP_CMD_COMMISSIONING_EXT_OPT_KEY_TYPE, NULL,
                 HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_outgoing_counter,
-            { "GPD Outgoing Counter", "zbee_nwk_gp.cmd.comm.out_counter", FT_UINT32, BASE_HEX, NULL, 0x0, NULL,
+            { "GPD Outgoing Counter", "zbee_nwk_gp_cmd_comm_out_counter", FT_UINT32, BASE_HEX, NULL, 0x0, NULL,
                 HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_ext_opt_sec_level_cap,
-            { "Security Level Capabilities", "zbee_nwk_gp.cmd.comm.ext_opt.seclevel_cap", FT_UINT8, BASE_HEX, NULL,
+            { "Security Level Capabilities", "zbee_nwk_gp_cmd_comm_ext_opt_seclevel_cap", FT_UINT8, BASE_HEX, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_EXT_OPT_SEC_LEVEL_CAP, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_security_key,
-            { "Security Key", "zbee_nwk_gp.cmd.comm.security_key", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+            { "Security Key", "zbee_nwk_gp_cmd_comm_security_key", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_gpd_sec_key_mic,
-            { "GPD Key MIC", "zbee_nwk_gp.cmd.comm.gpd_key_mic", FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+            { "GPD Key MIC", "zbee_nwk_gp_cmd_comm_gpd_key_mic", FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_opt_ext_opt,
-            { "Extended Option Field", "zbee_nwk_gp.cmd.comm.opt.ext_opt_field", FT_BOOLEAN, 8, NULL,
+            { "Extended Option Field", "zbee_nwk_gp_cmd_comm_opt_ext_opt_field", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_OPT_EXT_OPTIONS, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_opt,
-            { "Options Field", "zbee_nwk_gp.cmd.comm.opt", FT_UINT8, BASE_HEX, NULL,
+            { "Options Field", "zbee_nwk_gp_cmd_comm_opt", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_opt_fixed_location,
-            { "Fixed Location", "zbee_nwk_gp.cmd.comm.opt.fixed_location", FT_BOOLEAN, 8, NULL,
+            { "Fixed Location", "zbee_nwk_gp_cmd_comm_opt_fixed_location", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_OPT_FIXED_LOCATION, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_opt_mac_sec_num_cap,
-            { "MAC Sequence number capability", "zbee_nwk_gp.cmd.comm.opt.mac_seq_num_cap", FT_BOOLEAN, 8, NULL,
+            { "MAC Sequence number capability", "zbee_nwk_gp_cmd_comm_opt_mac_seq_num_cap", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_OPT_MAC_SEQ, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_opt_appli_info_present,
-            { "Application information present", "zbee_nwk_gp.cmd.comm.opt.appli_info_present", FT_BOOLEAN, 8, NULL,
+            { "Application information present", "zbee_nwk_gp_cmd_comm_opt_appli_info_present", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_OPT_APPLICATION_INFO, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_opt_panid_req,
-            { "PANId request", "zbee_nwk_gp.cmd.comm.opt.panid_req", FT_BOOLEAN, 8, NULL,
+            { "PANId request", "zbee_nwk_gp_cmd_comm_opt_panid_req", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_OPT_PAN_ID_REQ, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_opt_rx_on_cap,
-            { "RxOnCapability", "zbee_nwk_gp.cmd.comm.opt.rxon_cap", FT_BOOLEAN, 8, NULL,
+            { "RxOnCapability", "zbee_nwk_gp_cmd_comm_opt_rxon_cap", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_OPT_RX_ON_CAP, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_opt_sec_key_req,
-            { "GP Security Key Request", "zbee_nwk_gp.cmd.comm.opt.seq_key_req", FT_BOOLEAN, 8, NULL,
+            { "GP Security Key Request", "zbee_nwk_gp_cmd_comm_opt_seq_key_req", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_OPT_GP_SEC_KEY_REQ, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_ext_opt,
-            { "Extended Options Field", "zbee_nwk_gp.cmd.comm.ext_opt", FT_UINT8, BASE_HEX, NULL,
+            { "Extended Options Field", "zbee_nwk_gp_cmd_comm_ext_opt", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_ext_opt_outgoing_counter,
-            { "GPD Outgoing present", "zbee_nwk_gp.cmd.comm.ext_opt.outgoing_counter", FT_BOOLEAN, 8, NULL,
+            { "GPD Outgoing present", "zbee_nwk_gp_cmd_comm_ext_opt_outgoing_counter", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_EXT_OPT_OUT_COUNTER, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_manufacturer_greenpeak_dev_id,
-            { "Manufacturer Model ID", "zbee_nwk_gp.cmd.comm.manufacturer_model_id", FT_UINT16, BASE_HEX,
+            { "Manufacturer Model ID", "zbee_nwk_gp_cmd_comm_manufacturer_model_id", FT_UINT16, BASE_HEX,
                 VALS(zbee_nwk_gp_manufacturer_greenpeak_dev_names), 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_manufacturer_dev_id,
-            { "Manufacturer Model ID", "zbee_nwk_gp.cmd.comm.manufacturer_model_id", FT_UINT16, BASE_HEX,
+            { "Manufacturer Model ID", "zbee_nwk_gp_cmd_comm_manufacturer_model_id", FT_UINT16, BASE_HEX,
                 NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_manufacturer_id,
-            { "Manufacturer ID", "zbee_nwk_gp.cmd.comm.manufacturer_id", FT_UINT16, BASE_HEX,
+            { "Manufacturer ID", "zbee_nwk_gp_cmd_comm_manufacturer_id", FT_UINT16, BASE_HEX,
                 VALS(zbee_mfr_code_names), 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_appli_info_crp,
-            { "Cluster reports present", "zbee_nwk_gp.cmd.comm.appli_info.crp", FT_BOOLEAN, 8, NULL,
+            { "Cluster reports present", "zbee_nwk_gp_cmd_comm_appli_info_crp", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_APPLI_INFO_CRP , NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_appli_info_gclp,
-            { "GP commands list present", "zbee_nwk_gp.cmd.comm.appli_info.gclp", FT_BOOLEAN, 8, NULL,
+            { "GP commands list present", "zbee_nwk_gp_cmd_comm_appli_info_gclp", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_APPLI_INFO_GCLP , NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_appli_info,
-            { "Application information Field", "zbee_nwk_gp.cmd.comm.appli_info", FT_UINT8, BASE_HEX, NULL,
+            { "Application information Field", "zbee_nwk_gp_cmd_comm_appli_info", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_appli_info_mip,
-            { "Manufacturer ID present", "zbee_nwk_gp.cmd.comm.appli_info.mip", FT_BOOLEAN, 8, NULL,
+            { "Manufacturer ID present", "zbee_nwk_gp_cmd_comm_appli_info_mip", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_APPLI_INFO_MIP , NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_appli_info_mmip,
-            { "Manufacturer Model ID present", "zbee_nwk_gp.cmd.comm.appli_info.mmip", FT_BOOLEAN, 8, NULL,
+            { "Manufacturer Model ID present", "zbee_nwk_gp_cmd_comm_appli_info_mmip", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_APPLI_INFO_MMIP , NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_gpd_cmd_num,
-            { "Number of GPD commands", "zbee_nwk_gp.cmd.comm.gpd_cmd_num", FT_UINT8, BASE_DEC, NULL,
+            { "Number of GPD commands", "zbee_nwk_gp_cmd_comm_gpd_cmd_num", FT_UINT8, BASE_DEC, NULL,
                 0x0 , NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_gpd_cmd_id_list,
-            { "GPD CommandID list", "zbee_nwk_gp.cmd.comm.gpd_cmd_id_list", FT_NONE, BASE_NONE, NULL,
+            { "GPD CommandID list", "zbee_nwk_gp_cmd_comm_gpd_cmd_id_list", FT_NONE, BASE_NONE, NULL,
                 0x0 , NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_length_of_clid_list,
-            { "Length of ClusterID list", "zbee_nwk_gp.cmd.comm.length_of_clid_list", FT_UINT8, BASE_HEX, NULL,
+            { "Length of ClusterID list", "zbee_nwk_gp_cmd_comm_length_of_clid_list", FT_UINT8, BASE_HEX, NULL,
                 0x0 , NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_length_of_clid_list_server,
-            { "Number of server ClusterIDs", "zbee_nwk_gp.cmd.comm.length_of_clid_list_srv", FT_UINT8, BASE_DEC, NULL,
+            { "Number of server ClusterIDs", "zbee_nwk_gp_cmd_comm_length_of_clid_list_srv", FT_UINT8, BASE_DEC, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_CLID_LIST_LEN_SRV, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_length_of_clid_list_client,
-            { "Number of client ClusterIDs", "zbee_nwk_gp.cmd.comm.length_of_clid_list_cli", FT_UINT8, BASE_DEC, NULL,
+            { "Number of client ClusterIDs", "zbee_nwk_gp_cmd_comm_length_of_clid_list_cli", FT_UINT8, BASE_DEC, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_CLID_LIST_LEN_CLI, NULL, HFILL }},
 
         { &hf_zbee_nwk_cmd_comm_clid_list_server,
-            { "Cluster ID List Server", "zbee_nwk_gp.cmd.comm.clid_list_server", FT_NONE, BASE_NONE, NULL,
+            { "Cluster ID List Server", "zbee_nwk_gp_cmd_comm_clid_list_server", FT_NONE, BASE_NONE, NULL,
                 0x0 , NULL, HFILL }},
 
         { &hf_zbee_nwk_cmd_comm_clid_list_client,
-            { "ClusterID List Client", "zbee_nwk_gp.cmd.comm.clid_list_client", FT_NONE, BASE_NONE, NULL,
+            { "ClusterID List Client", "zbee_nwk_gp_cmd_comm_clid_list_client", FT_NONE, BASE_NONE, NULL,
                 0x0 , NULL, HFILL }},
 
         { &hf_zbee_nwk_cmd_comm_cluster_id,
-            { "Cluster ID", "zbee_nwk_gp.cmd.comm.cluster_id", FT_UINT16, BASE_HEX, NULL,
+            { "Cluster ID", "zbee_nwk_gp_cmd_comm_cluster_id", FT_UINT16, BASE_HEX, NULL,
                 0x0 , NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_rep_opt_key_encr,
-            { "GPD Key Encryption", "zbee_nwk_gp.cmd.comm_reply.opt.sec_key_encr", FT_BOOLEAN, 8, NULL,
+            { "GPD Key Encryption", "zbee_nwk_gp_cmd_comm_reply_opt_sec_key_encr", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_REP_OPT_KEY_ENCR, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_rep_opt,
-            { "Options Field", "zbee_nwk_gp.cmd.comm_reply.opt", FT_UINT8, BASE_HEX, NULL,
+            { "Options Field", "zbee_nwk_gp_cmd_comm_reply_opt", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_rep_opt_panid_present,
-            { "PANID Present", "zbee_nwk_gp.cmd.comm_reply.opt.pan_id_present", FT_BOOLEAN, 8, NULL,
+            { "PANID Present", "zbee_nwk_gp_cmd_comm_reply_opt_pan_id_present", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_REP_OPT_PAN_ID_PRESENT, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_rep_opt_sec_key_present,
-            { "GPD Security Key Present", "zbee_nwk_gp.cmd.comm_reply.opt.sec_key_present", FT_BOOLEAN, 8, NULL,
+            { "GPD Security Key Present", "zbee_nwk_gp_cmd_comm_reply_opt_sec_key_present", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_REP_OPT_SEC_KEY_PRESENT, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_rep_opt_sec_level,
-            { "Security Level", "zbee_nwk_gp.cmd.comm_reply.opt.sec_level", FT_UINT8, BASE_HEX, NULL,
+            { "Security Level", "zbee_nwk_gp_cmd_comm_reply_opt_sec_level", FT_UINT8, BASE_HEX, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_REP_OPT_SEC_LEVEL, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_rep_opt_sec_type,
-            { "Key Type", "zbee_nwk_gp.cmd.comm_reply.opt.key_type", FT_UINT8, BASE_HEX, NULL,
+            { "Key Type", "zbee_nwk_gp_cmd_comm_reply_opt_key_type", FT_UINT8, BASE_HEX, NULL,
                 ZBEE_NWK_GP_CMD_COMMISSIONING_REP_OPT_KEY_TYPE, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_rep_pan_id,
-            { "PAN ID", "zbee_nwk_gp.cmd.comm_reply.pan_id", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+            { "PAN ID", "zbee_nwk_gp_cmd_comm_reply_pan_id", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_comm_rep_frame_counter,
-            { "Frame Counter", "zbee_nwk_gp.cmd.comm_reply.frame_counter", FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+            { "Frame Counter", "zbee_nwk_gp_cmd_comm_reply_frame_counter", FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_read_att_opt_multi_rec,
-            { "Multi-record", "zbee_nwk_gp.cmd.read_att.opt.multi_record", FT_BOOLEAN, 8, NULL,
+            { "Multi-record", "zbee_nwk_gp_cmd_read_att_opt_multi_record", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_READ_ATTRIBUTE_OPT_MULTI_RECORD, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_read_att_opt_man_field_present,
-            { "Manufacturer field present", "zbee_nwk_gp.cmd.read_att.opt.man_field_present", FT_BOOLEAN, 8, NULL,
+            { "Manufacturer field present", "zbee_nwk_gp_cmd_read_att_opt_man_field_present", FT_BOOLEAN, 8, NULL,
                 ZBEE_NWK_GP_CMD_READ_ATTRIBUTE_OPT_MAN_FIELD_PRESENT, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_read_att_opt,
-            { "Option field", "zbee_nwk_gp.cmd.read_att.opt", FT_UINT8, BASE_HEX, NULL,
+            { "Option field", "zbee_nwk_gp_cmd_read_att_opt", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_gp_cmd_ms_manufacturer_code,
-            { "Manufacturer Code", "zbee_nwk_gp.cmd.manufacturer_code", FT_UINT16, BASE_HEX, VALS(zbee_mfr_code_names),
+            { "Manufacturer Code", "zbee_nwk_gp_cmd_manufacturer_code", FT_UINT16, BASE_HEX, VALS(zbee_mfr_code_names),
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_read_att_record_len,
-            { "Length of Record List",  "zbee_nwk_gp.cmd.read_att.record_len", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Length of Record List",  "zbee_nwk_gp_cmd_read_att_record_len", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_zcl_attr_status,
-            { "Status", "zbee_nwk_gp.zcl.attr.status", FT_UINT8, BASE_HEX, VALS(zbee_zcl_status_names),
+            { "Status", "zbee_nwk_gp_zcl_attr_status", FT_UINT8, BASE_HEX, VALS(zbee_zcl_status_names),
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_zcl_attr_data_type,
-            { "Data Type", "zbee_nwk_gp.zcl.attr.datatype", FT_UINT8, BASE_HEX, VALS(zbee_zcl_short_data_type_names),
+            { "Data Type", "zbee_nwk_gp_zcl_attr_datatype", FT_UINT8, BASE_HEX, VALS(zbee_zcl_short_data_type_names),
                 0x0, NULL, HFILL } },
 
         { &hf_zbee_nwk_gp_zcl_attr_cluster_id,
-            { "ZigBee Cluster ID", "zbee_nwk_gp.zcl.attr.cluster_id", FT_UINT16, BASE_HEX | BASE_RANGE_STRING, RVALS(zbee_aps_cid_names),
+            { "ZigBee Cluster ID", "zbee_nwk_gp_zcl_attr_cluster_id", FT_UINT16, BASE_HEX | BASE_RANGE_STRING, RVALS(zbee_aps_cid_names),
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_channel_request_toggling_behaviour,
-            { "Channel Toggling Behaviour", "zbee_nwk_gp.cmd.ch_req", FT_UINT8, BASE_HEX, NULL,
+            { "Channel Toggling Behaviour", "zbee_nwk_gp_cmd_ch_req", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_channel_request_toggling_behaviour_1st,
-            { "Rx channel in the next attempt", "zbee_nwk_gp.cmd.ch_req.1st", FT_UINT8, BASE_HEX, NULL,
+            { "Rx channel in the next attempt", "zbee_nwk_gp_cmd_ch_req_1st", FT_UINT8, BASE_HEX, NULL,
                 ZBEE_NWK_GP_CMD_CHANNEL_REQUEST_1ST, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_channel_request_toggling_behaviour_2nd,
-            { "Rx channel in the second next attempt", "zbee_nwk_gp.ch_req.2nd", FT_UINT8, BASE_HEX, NULL,
+            { "Rx channel in the second next attempt", "zbee_nwk_gp_ch_req_2nd", FT_UINT8, BASE_HEX, NULL,
                 ZBEE_NWK_GP_CMD_CHANNEL_REQUEST_2ND, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_operational_channel,
-            { "Operational Channel", "zbee_nwk_gp.cmd.configuration_ch", FT_UINT8, BASE_HEX, NULL,
+            { "Operational Channel", "zbee_nwk_gp_cmd_configuration_ch", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_channel_configuration,
-            { "Operation channel", "zbee_nwk_gp.cmd.configuration_ch.operation_ch", FT_UINT8, BASE_HEX, NULL,
+            { "Operation channel", "zbee_nwk_gp_cmd_configuration_ch_operation_ch", FT_UINT8, BASE_HEX, NULL,
                 ZBEE_NWK_GP_CMD_CHANNEL_CONFIGURATION_OPERATION_CH, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_move_color_ratex,
-            { "RateX", "zbee_nwk_gp.cmd.move_color.ratex", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "RateX", "zbee_nwk_gp_cmd_move_color_ratex", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_move_color_ratey,
-            { "RateY", "zbee_nwk_gp.cmd.move_color.ratey", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "RateY", "zbee_nwk_gp_cmd_move_color_ratey", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_move_up_down_rate,
-            { "Rate", "zbee_nwk_gp.cmd.move_up_down.rate", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "Rate", "zbee_nwk_gp_cmd_move_up_down_rate", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_step_color_stepx,
-            { "StepX", "zbee_nwk_gp.cmd.step_color.stepx", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "StepX", "zbee_nwk_gp_cmd_step_color_stepx", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_step_color_stepy,
-            { "StepY", "zbee_nwk_gp.cmd.step_color.stepy", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "StepY", "zbee_nwk_gp_cmd_step_color_stepy", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_step_color_transition_time,
-            { "Transition Time", "zbee_nwk_gp.cmd.step_color.transition_time", FT_UINT16, BASE_DEC, NULL, 0x0, NULL,
+            { "Transition Time", "zbee_nwk_gp_cmd_step_color_transition_time", FT_UINT16, BASE_DEC, NULL, 0x0, NULL,
                 HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_step_up_down_step_size,
-            { "Step Size", "zbee_nwk_gp.cmd.step_up_down.step_size", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "Step Size", "zbee_nwk_gp_cmd_step_up_down_step_size", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_nwk_gp_cmd_step_up_down_transition_time,
-            { "Transition Time", "zbee_nwk_gp.cmd.step_up_down.transition_time", FT_UINT16, BASE_DEC, NULL, 0x0, NULL,
+            { "Transition Time", "zbee_nwk_gp_cmd_step_up_down_transition_time", FT_UINT16, BASE_DEC, NULL, 0x0, NULL,
                 HFILL }}
     };
 

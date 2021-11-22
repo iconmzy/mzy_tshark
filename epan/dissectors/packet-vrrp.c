@@ -220,82 +220,82 @@ void proto_register_vrrp(void)
 {
     static hf_register_info hf[] = {
         { &hf_vrrp_ver_type,
-            {"VRRP message version and type", "vrrp.typever",
+            {"VRRP message version and type", "vrrp_typever",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "VRRP version and type", HFILL }},
 
         { &hf_vrrp_version,
-            {"VRRP protocol version", "vrrp.version",
+            {"VRRP protocol version", "vrrp_version",
                 FT_UINT8, BASE_DEC, NULL, VRRP_VERSION_MASK,
                 "VRRP version", HFILL }},
 
         { &hf_vrrp_type,
-            {"VRRP packet type", "vrrp.type",
+            {"VRRP packet type", "vrrp_type",
                 FT_UINT8, BASE_DEC, VALS(vrrp_type_vals), VRRP_TYPE_MASK,
                 "VRRP type", HFILL }},
 
         { &hf_vrrp_virt_rtr_id,
-            {"Virtual Rtr ID", "vrrp.virt_rtr_id",
+            {"Virtual Rtr ID", "vrrp_virt_rtr_id",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "Virtual router this packet is reporting status for", HFILL }},
 
         { &hf_vrrp_prio,
-            {"Priority", "vrrp.prio",
+            {"Priority", "vrrp_prio",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "Sending VRRP router's priority for the virtual router", HFILL }},
 
         { &hf_vrrp_addr_count,
-            {"Addr Count", "vrrp.addr_count",
+            {"Addr Count", "vrrp_addr_count",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "The number of addresses contained in this VRRP advertisement", HFILL }},
 
         { &hf_vrrp_checksum,
-            { "Checksum", "vrrp.checksum",
+            { "Checksum", "vrrp_checksum",
                 FT_UINT16, BASE_HEX, NULL, 0x0,
                 "Used to detect data corruption in the VRRP message", HFILL }},
 
         { &hf_vrrp_checksum_status,
-          { "Checksum Status", "vrrp.checksum.status",
+          { "Checksum Status", "vrrp_checksum_status",
                 FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
                 NULL, HFILL }},
 
         { &hf_vrrp_auth_type,
-            {"Auth Type", "vrrp.auth_type",
+            {"Auth Type", "vrrp_auth_type",
                 FT_UINT8, BASE_DEC, VALS(vrrp_auth_vals), 0x0,
                 "The authentication method being utilized", HFILL }},
 
         { &hf_vrrp_adver_int,
-            {"Adver Int", "vrrp.adver_int",
+            {"Adver Int", "vrrp_adver_int",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "Time interval (in seconds) between ADVERTISEMENTS", HFILL }},
 
         { &hf_vrrp_reserved_mbz,
-            {"Reserved", "vrrp.reserved_mbz",
+            {"Reserved", "vrrp_reserved_mbz",
                 FT_UINT8, BASE_DEC, NULL, 0xF0,
                 "Must be zero", HFILL }},
 
         { &hf_vrrp_short_adver_int,
-            {"Adver Int", "vrrp.short_adver_int",
+            {"Adver Int", "vrrp_short_adver_int",
                 FT_UINT16, BASE_DEC, NULL, 0x0FFF,
                 "Time interval (in centiseconds) between ADVERTISEMENTS", HFILL }},
 
         { &hf_vrrp_ip,
-            {"IP Address", "vrrp.ip_addr",
+            {"IP Address", "vrrp_ip_addr",
                 FT_IPv4, BASE_NONE, NULL, 0x0,
                 "IP address associated with the virtual router", HFILL }},
 
         { &hf_vrrp_ip6,
-            {"IPv6 Address", "vrrp.ipv6_addr",
+            {"IPv6 Address", "vrrp_ipv6_addr",
                 FT_IPv6, BASE_NONE, NULL, 0x0,
                 "IPv6 address associated with the virtual router", HFILL }},
 
         { &hf_vrrp_auth_string,
-            {"Authentication String", "vrrp.auth_string",
+            {"Authentication String", "vrrp_auth_string",
                 FT_STRING, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_vrrp_md5_auth_data,
-            {"MD5 Authentication Data", "vrrp.md5_auth_data",
+            {"MD5 Authentication Data", "vrrp_md5_auth_data",
                 FT_BYTES, BASE_NONE, NULL, 0x0,
                 "MD5 digest string is contained.", HFILL }},
     };

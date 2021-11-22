@@ -97,12 +97,12 @@ proto_register_nntp(void)
 {
 	static hf_register_info hf[] = {
 	    { &hf_nntp_response,
-	      { "Response",           "nntp.response",
+	      { "Response",           "nntp_response",
 		FT_BOOLEAN, BASE_NONE, NULL, 0x0,
 	      	"TRUE if NNTP response", HFILL }},
 
 	    { &hf_nntp_request,
-	      { "Request",            "nntp.request",
+	      { "Request",            "nntp_request",
 		FT_BOOLEAN, BASE_NONE, NULL, 0x0,
 	      	"TRUE if NNTP request", HFILL }}
 	};

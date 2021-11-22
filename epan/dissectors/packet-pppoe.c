@@ -718,277 +718,277 @@ void proto_register_pppoed(void)
 	{
 		/* Discovery tag fields */
 		{ &hf_pppoed_tags,
-			{ "PPPoE Tags", "pppoed.tags", FT_NONE, BASE_NONE,
+			{ "PPPoE Tags", "pppoed_tags", FT_NONE, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag,
-			{ "Tag", "pppoed.tag", FT_UINT16, BASE_HEX,
+			{ "Tag", "pppoed_tag", FT_UINT16, BASE_HEX,
 				 VALS(tag_vals), 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_length,
-			{ "Tag Length", "pppoed.tag_length", FT_UINT16, BASE_DEC,
+			{ "Tag Length", "pppoed_tag_length", FT_UINT16, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_length_8,
-			{ "Tag Length", "pppoed.tag_length_8", FT_UINT8, BASE_DEC,
+			{ "Tag Length", "pppoed_tag_length_8", FT_UINT8, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_unknown_data,
-			{ "Unknown Data", "pppoed.tag.unknown_data", FT_BYTES, BASE_NONE,
+			{ "Unknown Data", "pppoed_tag_unknown_data", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_service_name,
-			{ "Service-Name", "pppoed.tags.service_name", FT_STRING, STR_ASCII,
+			{ "Service-Name", "pppoed_tags_service_name", FT_STRING, STR_ASCII,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_ac_name,
-			{ "AC-Name", "pppoed.tags.ac_name", FT_STRING, STR_ASCII,
+			{ "AC-Name", "pppoed_tags_ac_name", FT_STRING, STR_ASCII,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_host_uniq,
-			{ "Host-Uniq", "pppoed.tags.host_uniq", FT_BYTES, BASE_NONE,
+			{ "Host-Uniq", "pppoed_tags_host_uniq", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_ac_cookie,
-			{ "AC-Cookie", "pppoed.tags.ac_cookie", FT_BYTES, BASE_NONE,
+			{ "AC-Cookie", "pppoed_tags_ac_cookie", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_vendor_id,
-			{ "Vendor id", "pppoed.tags.vendor_id", FT_UINT32, BASE_DEC,
+			{ "Vendor id", "pppoed_tags_vendor_id", FT_UINT32, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_vendor_unspecified,
-			{ "Vendor unspecified", "pppoed.tags.vendor_unspecified", FT_BYTES, BASE_NONE,
+			{ "Vendor unspecified", "pppoed_tags_vendor_unspecified", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_vspec_tags,
-			{ "Vendor Specific PPPoE Tags", "pppoed.tags.vendorspecific.tags", FT_NONE, BASE_NONE,
+			{ "Vendor Specific PPPoE Tags", "pppoed_tags_vendorspecific_tags", FT_NONE, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_vspec_tag,
-			{ "Tag", "pppoed.tags.vendorspecific.tag", FT_UINT8, BASE_HEX,
+			{ "Tag", "pppoed_tags_vendorspecific_tag", FT_UINT8, BASE_HEX,
 				 VALS(vspec_tag_vals), 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_vspec_circuit_id,
-		        { "Circuit ID", "pppoed.tags.circuit_id", FT_STRING, STR_ASCII,
+		        { "Circuit ID", "pppoed_tags_circuit_id", FT_STRING, STR_ASCII,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_remote_id,
-		        { "Remote ID", "pppoed.tags.remote_id", FT_STRING, STR_ASCII,
+		        { "Remote ID", "pppoed_tags_remote_id", FT_STRING, STR_ASCII,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_act_data_rate_up,
-		        { "Actual Data Rate Upstream", "pppoed.tags.act_data_rate_up", FT_UINT32, BASE_DEC,
+		        { "Actual Data Rate Upstream", "pppoed_tags_act_data_rate_up", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_act_data_rate_down,
-		        { "Actual Data Rate Downstream", "pppoed.tags.act_data_rate_down", FT_UINT32, BASE_DEC,
+		        { "Actual Data Rate Downstream", "pppoed_tags_act_data_rate_down", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_min_data_rate_up,
-		        { "Minimum Data Rate Upstream", "pppoed.tags.min_data_rate_up", FT_UINT32, BASE_DEC,
+		        { "Minimum Data Rate Upstream", "pppoed_tags_min_data_rate_up", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_min_data_rate_down,
-		        { "Minimum Data Rate Downstream", "pppoed.tags.min_data_rate_down", FT_UINT32, BASE_DEC,
+		        { "Minimum Data Rate Downstream", "pppoed_tags_min_data_rate_down", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_attainable_data_rate_up,
-		        { "Attainable DataRate Upstream", "pppoed.tags.attainable_data_rate_up", FT_UINT32, BASE_DEC,
+		        { "Attainable DataRate Upstream", "pppoed_tags_attainable_data_rate_up", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_attainable_data_rate_down,
-		        { "Attainable DataRate Downstream", "pppoed.tags.attainable_data_rate_down", FT_UINT32, BASE_DEC,
+		        { "Attainable DataRate Downstream", "pppoed_tags_attainable_data_rate_down", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_max_data_rate_up,
-		        { "Maximum Data Rate Upstream", "pppoed.tags.max_data_rate_up", FT_UINT32, BASE_DEC,
+		        { "Maximum Data Rate Upstream", "pppoed_tags_max_data_rate_up", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_max_data_rate_down,
-		        { "Maximum Data Rate Downstream", "pppoed.tags.max_data_rate_down", FT_UINT32, BASE_DEC,
+		        { "Maximum Data Rate Downstream", "pppoed_tags_max_data_rate_down", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_min_data_rate_up_lp,
-		        { "Min DataRate Upstream in low power state", "pppoed.tags.min_data_rate_up_lp", FT_UINT32, BASE_DEC,
+		        { "Min DataRate Upstream in low power state", "pppoed_tags_min_data_rate_up_lp", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_min_data_rate_down_lp,
-		        { "Minimum Data Rate Downstream in low power state", "pppoed.tags.min_data_rate_down_lp", FT_UINT32, BASE_DEC,
+		        { "Minimum Data Rate Downstream in low power state", "pppoed_tags_min_data_rate_down_lp", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_max_int_delay_up,
-		        { "Max Interleaving Delay Upstream", "pppoed.tags.max_int_delay_up", FT_UINT32, BASE_DEC,
+		        { "Max Interleaving Delay Upstream", "pppoed_tags_max_int_delay_up", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_act_int_delay_up,
-		        { "Actual Interleaving Delay Upstream", "pppoed.tags.act_int_delay_up", FT_UINT32, BASE_DEC,
+		        { "Actual Interleaving Delay Upstream", "pppoed_tags_act_int_delay_up", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_max_int_delay_down,
-		        { "Maximum Interleaving Delay Downstream", "pppoed.tags.max_int_delay_down", FT_UINT32, BASE_DEC,
+		        { "Maximum Interleaving Delay Downstream", "pppoed_tags_max_int_delay_down", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_act_int_delay_down,
-		        { "Actual Interleaving Delay Downstream", "pppoed.tags.act_int_delay_down", FT_UINT32, BASE_DEC,
+		        { "Actual Interleaving Delay Downstream", "pppoed_tags_act_int_delay_down", FT_UINT32, BASE_DEC,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_access_loop_encapsulation,
-		        { "Access-Loop-Encapsulation", "pppoed.tags.access_loop_encap", FT_NONE, BASE_NONE,
+		        { "Access-Loop-Encapsulation", "pppoed_tags_access_loop_encap", FT_NONE, BASE_NONE,
 		                 NULL, 0x0, NULL, HFILL
 		        }
 		},
 		{ &hf_pppoed_tag_vspec_access_loop_encap_data_link,
-			{ "Data link", "pppoed.tags.access_loop_encap.data_link", FT_UINT8, BASE_HEX,
+			{ "Data link", "pppoed_tags_access_loop_encap_data_link", FT_UINT8, BASE_HEX,
 				 VALS(vspec_tag_dslf_access_loop_encap_data_link_vals), 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_vspec_access_loop_encap_encap_1,
-			{ "Encaps 1", "pppoed.tags.access_loop_encap.encap_1", FT_UINT8, BASE_HEX,
+			{ "Encaps 1", "pppoed_tags_access_loop_encap_encap_1", FT_UINT8, BASE_HEX,
 				 VALS(vspec_tag_dslf_access_loop_encap_encap_1_vals), 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_vspec_access_loop_encap_encap_2,
-			{ "Encaps 1", "pppoed.tags.access_loop_encap.encap_2", FT_UINT8, BASE_HEX,
+			{ "Encaps 1", "pppoed_tags_access_loop_encap_encap_2", FT_UINT8, BASE_HEX,
 				 VALS(vspec_tag_dslf_access_loop_encap_encap_2_vals), 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_credits,
-			{ "Credits", "pppoed.tags.credits", FT_BYTES, BASE_NONE,
+			{ "Credits", "pppoed_tags_credits", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_credits_fcn,
-			{ "FCN", "pppoed.tags.credits.fcn", FT_UINT16, BASE_DEC,
+			{ "FCN", "pppoed_tags_credits_fcn", FT_UINT16, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_credits_bcn,
-			{ "BCN", "pppoed.tags.credits.bcn", FT_UINT16, BASE_DEC,
+			{ "BCN", "pppoed_tags_credits_bcn", FT_UINT16, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_metrics,
-			{ "Metrics", "pppoed.tags.metrics", FT_BYTES, BASE_NONE,
+			{ "Metrics", "pppoed_tags_metrics", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_metrics_r,
-			{ "Receive Only", "pppoed.tags.metrics.r", FT_BOOLEAN, 16,
+			{ "Receive Only", "pppoed_tags_metrics_r", FT_BOOLEAN, 16,
 				 NULL, PPPOE_RCV_ONLY_MASK, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_mdr_units,
-			{ "MDR Units", "pppoed.tags.metrics.mdr_units", FT_UINT16, BASE_HEX,
+			{ "MDR Units", "pppoed_tags_metrics_mdr_units", FT_UINT16, BASE_HEX,
 				 VALS(datarate_scale_vals), PPPOE_MDR_MASK, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_cdr_units,
-			{ "CDR Units", "pppoed.tags.metrics.cdr_units", FT_UINT16, BASE_HEX,
+			{ "CDR Units", "pppoed_tags_metrics_cdr_units", FT_UINT16, BASE_HEX,
 				 VALS(datarate_scale_vals), PPPOE_CDR_MASK, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_metrics_rlq,
-			{ "Relative Link Quality", "pppoed.tags.metrics.rlq", FT_UINT8, BASE_DEC,
+			{ "Relative Link Quality", "pppoed_tags_metrics_rlq", FT_UINT8, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_metrics_resource,
-			{ "Resource", "pppoed.tags.metrics.resource", FT_UINT8, BASE_DEC,
+			{ "Resource", "pppoed_tags_metrics_resource", FT_UINT8, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_metrics_latency,
-			{ "Latency", "pppoed.tags.metrics.latency", FT_UINT16, BASE_DEC,
+			{ "Latency", "pppoed_tags_metrics_latency", FT_UINT16, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_metrics_curr_drate,
-			{ "Curr. datarate", "pppoed.tags.metrics.curr_drate", FT_UINT16, BASE_DEC,
+			{ "Curr. datarate", "pppoed_tags_metrics_curr_drate", FT_UINT16, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_metrics_max_drate,
-			{ "Max. datarate", "pppoed.tags.metrics.max_drate", FT_UINT16, BASE_DEC,
+			{ "Max. datarate", "pppoed_tags_metrics_max_drate", FT_UINT16, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_seq_num,
-			{ "Sequence Number", "pppoed.tags.seq_num", FT_UINT16, BASE_HEX,
+			{ "Sequence Number", "pppoed_tags_seq_num", FT_UINT16, BASE_HEX,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_cred_scale,
-			{ "Credit Scale Factor", "pppoed.tags.credit_scale", FT_UINT16, BASE_DEC,
+			{ "Credit Scale Factor", "pppoed_tags_credit_scale", FT_UINT16, BASE_DEC,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_relay_session_id,
-			{ "Relay-Session-Id", "pppoed.tags.relay_session_id", FT_BYTES, BASE_NONE,
+			{ "Relay-Session-Id", "pppoed_tags_relay_session_id", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_hurl,
-			{ "HURL", "pppoed.tags.hurl", FT_BYTES, BASE_NONE,
+			{ "HURL", "pppoed_tags_hurl", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_motm,
-			{ "MOTM", "pppoed.tags.motm", FT_BYTES, BASE_NONE,
+			{ "MOTM", "pppoed_tags_motm", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_max_payload,
-			{ "PPP-Max-Payload", "pppoed.tags.max_payload", FT_BYTES, BASE_NONE,
+			{ "PPP-Max-Payload", "pppoed_tags_max_payload", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_ip_route_add,
-			{ "IP Route Add", "pppoed.tags.ip_route_add", FT_BYTES, BASE_NONE,
+			{ "IP Route Add", "pppoed_tags_ip_route_add", FT_BYTES, BASE_NONE,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_service_name_error,
-			{ "Service-Name-Error", "pppoed.tags.service_name_error", FT_STRING, STR_ASCII,
+			{ "Service-Name-Error", "pppoed_tags_service_name_error", FT_STRING, STR_ASCII,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_ac_system_error,
-			{ "AC-System-Error", "pppoed.tags.ac_system_error", FT_STRING, STR_ASCII,
+			{ "AC-System-Error", "pppoed_tags_ac_system_error", FT_STRING, STR_ASCII,
 				 NULL, 0x0, NULL, HFILL
 			}
 		},
 		{ &hf_pppoed_tag_generic_error,
-			{ "Generic-Error", "pppoed.tags.generic_error", FT_STRING, STR_ASCII,
+			{ "Generic-Error", "pppoed_tags_generic_error", FT_STRING, STR_ASCII,
 				 NULL, 0x0, NULL, HFILL
 			}
 		}

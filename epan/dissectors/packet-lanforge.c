@@ -132,7 +132,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_crc,
           {
-              "CRC", "lanforge.CRC",
+              "CRC", "lanforge_CRC",
               FT_UINT32, BASE_HEX, NULL, 0x0,
               "The LANforge CRC number", HFILL
           }
@@ -140,7 +140,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_magic,
           {
-              "Magic number", "lanforge.magic",
+              "Magic number", "lanforge_magic",
               FT_UINT32, BASE_HEX, NULL, 0x0,
               "The LANforge magic number", HFILL
           }
@@ -148,7 +148,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_src_session,
           {
-              "Source session ID", "lanforge.source-session-id",
+              "Source session ID", "lanforge_source-session-id",
               FT_UINT16, BASE_DEC, NULL, 0x0,
               "The LANforge source session ID", HFILL
           }
@@ -156,7 +156,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_dst_session,
           {
-              "Dest session ID", "lanforge.dest-session-id",
+              "Dest session ID", "lanforge_dest-session-id",
               FT_UINT16, BASE_DEC, NULL, 0x0,
               "The LANforge dest session ID", HFILL
           }
@@ -164,7 +164,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_pld_len_l,
           {
-              "Payload Length(L)", "lanforge.pld-len-L",
+              "Payload Length(L)", "lanforge_pld-len-L",
               FT_UINT16, BASE_DEC, NULL, 0x0,
               "The LANforge payload length (low bytes)", HFILL
           }
@@ -172,7 +172,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_pld_len_h,
           {
-              "Payload Length(H)", "lanforge.pld-len-H",
+              "Payload Length(H)", "lanforge_pld-len-H",
               FT_UINT8, BASE_DEC, NULL, 0x0,
               "The LANforge payload length (high byte)", HFILL
           }
@@ -180,7 +180,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_pld_len,
           {
-              "Payload Length", "lanforge.pld-length",
+              "Payload Length", "lanforge_pld-length",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               "The LANforge payload length", HFILL
           }
@@ -188,7 +188,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_pld_pattern,
           {
-              "Payload Pattern", "lanforge.pld-pattern",
+              "Payload Pattern", "lanforge_pld-pattern",
               FT_UINT16, BASE_DEC, NULL, 0x0,
               "The LANforge payload pattern", HFILL
           }
@@ -196,7 +196,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_seq,
           {
-              "Sequence Number", "lanforge.seqno",
+              "Sequence Number", "lanforge_seqno",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               "The LANforge Sequence Number", HFILL
           }
@@ -204,7 +204,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_tx_time_s,
           {
-              "Timestamp Secs", "lanforge.ts-secs",
+              "Timestamp Secs", "lanforge_ts-secs",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               NULL, HFILL
           }
@@ -212,7 +212,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_tx_time_ns,
           {
-              "Timestamp nsecs", "lanforge.ts-nsecs",
+              "Timestamp nsecs", "lanforge_ts-nsecs",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               NULL, HFILL
           }
@@ -220,7 +220,7 @@ void proto_register_lanforge(void)
 
         { &hf_lanforge_timestamp,
           {
-              "Timestamp", "lanforge.timestamp",
+              "Timestamp", "lanforge_timestamp",
               FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0,
               NULL, HFILL
           }

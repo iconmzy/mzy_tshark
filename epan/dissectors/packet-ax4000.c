@@ -74,37 +74,37 @@ proto_register_ax4000(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_ax4000_port,
-		  { "Port Number", "ax4000.port",
+		  { "Port Number", "ax4000_port",
 		    FT_UINT8, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }
 		},
 		{ &hf_ax4000_chassis,
-		  { "Chassis Number", "ax4000.chassis",
+		  { "Chassis Number", "ax4000_chassis",
 		    FT_UINT8, BASE_DEC, NULL, 0x0,
 		    NULL, HFILL }
 		},
 		{ &hf_ax4000_fill,
-		  { "Fill Type", "ax4000.fill",
+		  { "Fill Type", "ax4000_fill",
 		    FT_UINT8, BASE_DEC, NULL, 0xc0,
 		    NULL, HFILL }
 		},
 		{ &hf_ax4000_index,
-		  { "Index", "ax4000.index",
+		  { "Index", "ax4000_index",
 		    FT_UINT16, BASE_DEC, NULL, 0x0FFF,
 		    NULL, HFILL }
 		},
 		{ &hf_ax4000_timestamp,
-		  { "Timestamp", "ax4000.timestamp",
+		  { "Timestamp", "ax4000_timestamp",
 		    FT_UINT32, BASE_HEX, NULL, 0x0,
 		    NULL, HFILL }
 		},
 		{ &hf_ax4000_seq,
-		  { "Sequence Number", "ax4000.seq",
+		  { "Sequence Number", "ax4000_seq",
 		    FT_UINT32, BASE_HEX, NULL, 0x0,
 		    NULL, HFILL }
 		},
 		{ &hf_ax4000_crc,
-		  { "CRC (unchecked)", "ax4000.crc",
+		  { "CRC (unchecked)", "ax4000_crc",
 		    FT_UINT16, BASE_HEX, NULL, 0x0,
 		    NULL, HFILL }
 		}

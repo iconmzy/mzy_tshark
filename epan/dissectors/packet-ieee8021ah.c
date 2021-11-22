@@ -330,57 +330,57 @@ proto_register_ieee8021ah(void)
 {
     static hf_register_info hf[] = {
         { &hf_ieee8021ah_priority, {
-                "Priority", "ieee8021ah.priority", FT_UINT32, BASE_DEC,
+                "Priority", "ieee8021ah_priority", FT_UINT32, BASE_DEC,
                 0, 0xE0000000, NULL, HFILL }},
         { &hf_ieee8021ah_drop, {
-                "DROP", "ieee8021ah.drop", FT_UINT32, BASE_DEC,
+                "DROP", "ieee8021ah_drop", FT_UINT32, BASE_DEC,
                 0, 0x10000000, NULL, HFILL }},
         { &hf_ieee8021ah_nca, {
-                "NCA", "ieee8021ah.nca", FT_UINT32, BASE_DEC,
+                "NCA", "ieee8021ah_nca", FT_UINT32, BASE_DEC,
                 0, 0x08000000, "No Customer Addresses", HFILL }},
         { &hf_ieee8021ah_res1, {
-                "RES1", "ieee8021ah.res1", FT_UINT32, BASE_DEC,
+                "RES1", "ieee8021ah_res1", FT_UINT32, BASE_DEC,
                 0, 0x04000000, "Reserved1", HFILL }},
         { &hf_ieee8021ah_res2, {
-                "RES2", "ieee8021ah.res2", FT_UINT32, BASE_DEC,
+                "RES2", "ieee8021ah_res2", FT_UINT32, BASE_DEC,
                 0, 0x03000000, "Reserved2", HFILL }},
         { &hf_ieee8021ah_isid, {
-                "I-SID", "ieee8021ah.isid", FT_UINT32, BASE_DEC,
+                "I-SID", "ieee8021ah_isid", FT_UINT32, BASE_DEC,
                 0, 0x00FFFFFF, NULL, HFILL }},
         { &hf_ieee8021ah_c_daddr, {
-                "C-Destination", "ieee8021ah.cdst", FT_ETHER, BASE_NONE,
+                "C-Destination", "ieee8021ah_cdst", FT_ETHER, BASE_NONE,
                 NULL, 0x0, "Customer Destination Address", HFILL }},
         { &hf_ieee8021ah_c_saddr, {
-                "C-Source", "ieee8021ah.csrc", FT_ETHER, BASE_NONE,
+                "C-Source", "ieee8021ah_csrc", FT_ETHER, BASE_NONE,
                 NULL, 0x0, "Customer Source Address", HFILL }},
         { &hf_ieee8021ah_etype, {
-                "Type", "ieee8021ah.etype", FT_UINT16, BASE_HEX,
+                "Type", "ieee8021ah_etype", FT_UINT16, BASE_HEX,
                 VALS(etype_vals), 0x0, NULL, HFILL }},
 #if 0
         { &hf_ieee8021ah_len, {
-                "Length", "ieee8021ah.len", FT_UINT16, BASE_DEC,
+                "Length", "ieee8021ah_len", FT_UINT16, BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
 #endif
         { &hf_ieee8021ah_trailer, {
-                "Trailer", "ieee8021ah.trailer", FT_BYTES, BASE_NONE,
+                "Trailer", "ieee8021ah_trailer", FT_BYTES, BASE_NONE,
                 NULL, 0x0, "802.1ah Trailer", HFILL }}
     };
 
     static hf_register_info hf_1ad[] = {
         { &hf_ieee8021ad_priority, {
-                "Priority", "ieee8021ad.priority", FT_UINT16, BASE_DEC,
+                "Priority", "ieee8021ad_priority", FT_UINT16, BASE_DEC,
                 0, 0xE000, NULL, HFILL }},
         { &hf_ieee8021ad_cfi, {
-                "DEI", "ieee8021ad.dei", FT_UINT16, BASE_DEC,
+                "DEI", "ieee8021ad_dei", FT_UINT16, BASE_DEC,
                 0, 0x1000, "Drop Eligibility", HFILL }},
         { &hf_ieee8021ad_id, {
-                "ID", "ieee8021ad.id", FT_UINT16, BASE_DEC,
+                "ID", "ieee8021ad_id", FT_UINT16, BASE_DEC,
                 0, 0x0FFF, "Vlan ID", HFILL }},
         { &hf_ieee8021ad_svid, {
-                "ID", "ieee8021ad.svid", FT_UINT16, BASE_DEC,
+                "ID", "ieee8021ad_svid", FT_UINT16, BASE_DEC,
                 0, 0x0FFF, "S-Vlan ID", HFILL }},
         { &hf_ieee8021ad_cvid, {
-                "ID", "ieee8021ad.cvid", FT_UINT16, BASE_DEC,
+                "ID", "ieee8021ad_cvid", FT_UINT16, BASE_DEC,
                 0, 0x0FFF, "C-Vlan ID", HFILL }},
     };
 

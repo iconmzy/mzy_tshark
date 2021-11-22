@@ -647,94 +647,94 @@ proto_register_imap(void)
   static hf_register_info hf[] = {
 
     { &hf_imap_isrequest,
-      { "Request", "imap.isrequest",
+      { "Request", "imap_isrequest",
          FT_BOOLEAN, BASE_NONE, NULL, 0x0,
          "TRUE if IMAP request, FALSE otherwise", HFILL }
     },
     { &hf_imap_line,
-      { "Line", "imap.line",
+      { "Line", "imap_line",
         FT_STRINGZ, BASE_NONE, NULL, 0x0,
         "A line of an IMAP message", HFILL }
     },
     { &hf_imap_request,
-      { "Request", "imap.request",
+      { "Request", "imap_request",
         FT_STRINGZ, BASE_NONE, NULL, 0x0,
         "Remainder of request line", HFILL }
     },
     { &hf_imap_request_tag,
-      { "Request Tag", "imap.request_tag",
+      { "Request Tag", "imap_request_tag",
         FT_STRINGZ, BASE_NONE, NULL, 0x0,
         "First token of request line", HFILL }
     },
     { &hf_imap_response,
-      { "Response", "imap.response",
+      { "Response", "imap_response",
         FT_STRINGZ, BASE_NONE, NULL, 0x0,
         "Remainder of response line", HFILL }
     },
     { &hf_imap_response_tag,
-      { "Response Tag", "imap.response_tag",
+      { "Response Tag", "imap_response_tag",
       FT_STRINGZ, BASE_NONE, NULL, 0x0,
       "First token of response line", HFILL }
     },
     { &hf_imap_request_command,
-      { "Request Command", "imap.request.command",
+      { "Request Command", "imap_request_command",
       FT_STRINGZ, BASE_NONE, NULL, 0x0,
       "Request command name", HFILL }
     },
     { &hf_imap_response_command,
-      { "Response Command", "imap.response.command",
+      { "Response Command", "imap_response_command",
       FT_STRINGZ, BASE_NONE, NULL, 0x0,
       "Response command name", HFILL }
     },
     { &hf_imap_response_status,
-      { "Response Status", "imap.response.status",
+      { "Response Status", "imap_response_status",
       FT_STRINGZ, BASE_NONE, NULL, 0x0,
       "Response status code", HFILL }
     },
     { &hf_imap_tag,
-      { "Tag", "imap.tag",
+      { "Tag", "imap_tag",
       FT_STRINGZ, BASE_NONE, NULL, 0x0,
       "First token of line", HFILL }
     },
     { &hf_imap_command,
-      { "Command", "imap.command",
+      { "Command", "imap_command",
       FT_STRINGZ, BASE_NONE, NULL, 0x0,
       "Request or Response command name", HFILL }
     },
     { &hf_imap_request_folder,
-      { "Request Folder", "imap.request.folder",
+      { "Request Folder", "imap_request_folder",
         FT_STRINGZ, BASE_NONE, NULL, 0x0,
         "Request command folder", HFILL }
     },
     { &hf_imap_request_uid,
-      { "Request isUID", "imap.request.command.uid",
+      { "Request isUID", "imap_request_command_uid",
       FT_BOOLEAN, BASE_NONE, NULL, 0x0,
       "Request command uid", HFILL }
     },
     { &hf_imap_request_username,
-      { "Request Username", "imap.request.username",
+      { "Request Username", "imap_request_username",
       FT_STRINGZ, BASE_NONE, NULL, 0x0,
       "Request command username", HFILL }
     },
     { &hf_imap_request_password,
-      { "Request Password", "imap.request.password",
+      { "Request Password", "imap_request_password",
       FT_STRINGZ, BASE_NONE, NULL, 0x0,
       "Request command password", HFILL }
     },
 
     /* Request/Response Matching */
     { &hf_imap_response_in,
-      { "Response In", "imap.response_in",
+      { "Response In", "imap_response_in",
       FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_RESPONSE), 0x0,
       "The response to this IMAP request is in this frame", HFILL }
     },
     { &hf_imap_response_to,
-      { "Request In", "imap.response_to",
+      { "Request In", "imap_response_to",
       FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_REQUEST), 0x0,
       "This is a response to the IMAP request in this frame", HFILL }
     },
     { &hf_imap_time,
-      { "Response Time", "imap.time",
+      { "Response Time", "imap_time",
       FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
       "The time between the request and response", HFILL }
     },

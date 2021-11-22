@@ -886,91 +886,91 @@ static hf_register_info hf_prism[] = {
     /* Prism-specific header fields
        XXX - make as many of these generic as possible. */
     { &hf_ieee80211_prism_msgcode,
-     {"Message Code", "prism.msgcode", FT_UINT32, BASE_HEX, NULL, 0x0,
+     {"Message Code", "prism_msgcode", FT_UINT32, BASE_HEX, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_msglen,
-     {"Message Length", "prism.msglen", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Message Length", "prism_msglen", FT_UINT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_devname,
-     {"Device Name", "prism.devname", FT_STRING, BASE_NONE, NULL, 0x0,
+     {"Device Name", "prism_devname", FT_STRING, BASE_NONE, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did,
-     {"DID", "prism.did", FT_NONE, BASE_NONE, NULL, 0x0,
+     {"DID", "prism_did", FT_NONE, BASE_NONE, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did_type,
-     {"DID", "prism.did.type", FT_UINT32, BASE_HEX, VALS(prism_did_vals), 0x0,
+     {"DID", "prism_did_type", FT_UINT32, BASE_HEX, VALS(prism_did_vals), 0x0,
       "Different ID for each parameter", HFILL }},
 
     { &hf_ieee80211_prism_did_status,
-     {"Status", "prism.did.status", FT_UINT16, BASE_DEC, VALS(prism_status_vals), 0x0,
+     {"Status", "prism_did_status", FT_UINT16, BASE_DEC, VALS(prism_status_vals), 0x0,
       "Supplied by the driver or not", HFILL }},
 
     { &hf_ieee80211_prism_did_length,
-     {"Length", "prism.did.length", FT_UINT16, BASE_DEC, NULL, 0x0,
+     {"Length", "prism_did_length", FT_UINT16, BASE_DEC, NULL, 0x0,
       "Length of data", HFILL }},
 
     { &hf_ieee80211_prism_did_hosttime,
-     {"Host Time", "prism.did.hosttime", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Host Time", "prism_did_hosttime", FT_UINT32, BASE_DEC, NULL, 0x0,
       "In jiffies - for our system this is in 10ms units", HFILL }},
 
     { &hf_ieee80211_prism_did_mactime,
-     {"MAC timestamp (lower 32 bits)", "prism.did.mactime", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"MAC timestamp (lower 32 bits)", "prism_did_mactime", FT_UINT32, BASE_DEC, NULL, 0x0,
       "Lower 32 bits of value in microseconds of the MAC's Time Synchronization Function timer when the first bit of the MPDU arrived at the MAC.", HFILL }},
 
     { &hf_ieee80211_prism_did_channel,
-     {"Channel", "prism.did.channel", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Channel", "prism_did_channel", FT_UINT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did_rssi,
-     {"RSSI", "prism.did.rssi", FT_INT32, BASE_DEC, NULL, 0x0,
+     {"RSSI", "prism_did_rssi", FT_INT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did_sq,
-     {"Signal Quality", "prism.did.sq", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Signal Quality", "prism_did_sq", FT_UINT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did_signal,
-     {"Signal", "prism.did.signal", FT_INT32, BASE_DEC, NULL, 0x0,
+     {"Signal", "prism_did_signal", FT_INT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did_noise,
-     {"Noise", "prism.did.noise", FT_INT32, BASE_DEC, NULL, 0x0,
+     {"Noise", "prism_did_noise", FT_INT32, BASE_DEC, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did_rate,
-     {"Data rate (Mb/s)", "prism.did.rate", FT_UINT32, BASE_CUSTOM, CF_FUNC(prism_rate_base_custom), 0x0,
+     {"Data rate (Mb/s)", "prism_did_rate", FT_UINT32, BASE_CUSTOM, CF_FUNC(prism_rate_base_custom), 0x0,
       "Speed this frame was sent/received at", HFILL }},
 
     { &hf_ieee80211_prism_did_sig_a1,
-     {"SIG_A1", "prism.did.siga1", FT_UINT32, BASE_HEX, NULL, 0x0,
+     {"SIG_A1", "prism_did_siga1", FT_UINT32, BASE_HEX, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did_sig_a2,
-     {"SIG_A2", "prism.did.siga2", FT_UINT32, BASE_HEX, NULL, 0x0,
+     {"SIG_A2", "prism_did_siga2", FT_UINT32, BASE_HEX, NULL, 0x0,
       NULL, HFILL }},
 
     { &hf_ieee80211_prism_did_sig_b,
-     {"SIG", "prism.did.sigb", FT_UINT32, BASE_HEX, NULL, 0x0,
+     {"SIG", "prism_did_sigb", FT_UINT32, BASE_HEX, NULL, 0x0,
      NULL, HFILL}},
 
     { &hf_ieee80211_prism_did_sig_rate_field,
-     {"SIG Field", "prism.did.sigab", FT_NONE, BASE_NONE, 0, 0x0,
+     {"SIG Field", "prism_did_sigab", FT_NONE, BASE_NONE, 0, 0x0,
       NULL, HFILL}},
 
     { &hf_ieee80211_prism_did_istx,
-     {"IsTX", "prism.did.istx", FT_UINT32, BASE_HEX, VALS(prism_istx_vals), 0x0,
+     {"IsTX", "prism_did_istx", FT_UINT32, BASE_HEX, VALS(prism_istx_vals), 0x0,
       "Type of packet (RX or TX?)", HFILL }},
 
     { &hf_ieee80211_prism_did_frmlen,
-     {"Frame Length", "prism.did.frmlen", FT_UINT32, BASE_DEC, NULL, 0x0,
+     {"Frame Length", "prism_did_frmlen", FT_UINT32, BASE_DEC, NULL, 0x0,
       "Length of the following frame in bytes", HFILL }},
 
     { &hf_ieee80211_prism_did_unknown,
-     {"Unknown DID Field", "prism.did.unknown", FT_UINT32, BASE_HEX_DEC, NULL, 0x0,
+     {"Unknown DID Field", "prism_did_unknown", FT_UINT32, BASE_HEX_DEC, NULL, 0x0,
       NULL, HFILL }}
 };
 

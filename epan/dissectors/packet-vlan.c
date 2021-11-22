@@ -77,7 +77,7 @@ static const value_string pri_vals_old[] = {
 };
 
 static header_field_info hfi_vlan_priority_old VLAN_HFI_INIT = {
-        "Priority", "vlan.priority", FT_UINT16, BASE_DEC,
+        "Priority", "vlan_priority", FT_UINT16, BASE_DEC,
         VALS(pri_vals_old), 0xE000, "Descriptions are recommendations from IEEE standard 802.1D-2004", HFILL };
 
 /* From Table G-2 of IEEE standard 802.1Q-2005 (and I-2 of 2011 and 2014 revisions) */
@@ -130,7 +130,7 @@ static const value_string pri_vals_6[] = {
 };
 
 static header_field_info hfi_vlan_priority_6 VLAN_HFI_INIT = {
-        "Priority", "vlan.priority", FT_UINT16, BASE_DEC,
+        "Priority", "vlan_priority", FT_UINT16, BASE_DEC,
         VALS(pri_vals_6), 0xE000, "Descriptions are recommendations from IEEE standard 802.1Q-2014", HFILL };
 
 /* From Tables G-2,3 of IEEE standard 802.1Q-2005 (and I-2,3,7 of 2011 and 2015 revisions) */
@@ -147,40 +147,40 @@ static const value_string pri_vals_5[] = {
 };
 
 static header_field_info hfi_vlan_priority_5 VLAN_HFI_INIT = {
-        "Priority", "vlan.priority", FT_UINT16, BASE_DEC,
+        "Priority", "vlan_priority", FT_UINT16, BASE_DEC,
         VALS(pri_vals_5), 0xE000, "Descriptions are recommendations from IEEE standard 802.1Q-2014", HFILL };
 
 /* True is non-canonical (i.e., bit-reversed MACs like Token Ring) since usually 0 and canonical. */
 static const true_false_string tfs_noncanonical_canonical = { "Non-canonical", "Canonical" };
 
 static header_field_info hfi_vlan_cfi VLAN_HFI_INIT = {
-        "CFI", "vlan.cfi", FT_BOOLEAN, 16,
+        "CFI", "vlan_cfi", FT_BOOLEAN, 16,
         TFS(&tfs_noncanonical_canonical), 0x1000, "Canonical Format Identifier", HFILL };
 
 static const true_false_string tfs_eligible_ineligible = { "Eligible", "Ineligible" };
 
 static header_field_info hfi_vlan_dei VLAN_HFI_INIT = {
-        "DEI", "vlan.dei", FT_BOOLEAN, 16,
+        "DEI", "vlan_dei", FT_BOOLEAN, 16,
         TFS(&tfs_eligible_ineligible), 0x1000, "Drop Eligible Indicator", HFILL };
 
 static header_field_info hfi_vlan_id VLAN_HFI_INIT = {
-        "ID", "vlan.id", FT_UINT16, BASE_DEC,
+        "ID", "vlan_id", FT_UINT16, BASE_DEC,
         NULL, 0x0FFF, "VLAN ID", HFILL };
 
 static header_field_info hfi_vlan_id_name VLAN_HFI_INIT = {
-        "Name", "vlan.id_name", FT_STRING, STR_UNICODE,
+        "Name", "vlan_id_name", FT_STRING, STR_UNICODE,
         NULL, 0x0, "VLAN ID Name", HFILL };
 
 static header_field_info hfi_vlan_etype VLAN_HFI_INIT = {
-        "Type", "vlan.etype", FT_UINT16, BASE_HEX,
+        "Type", "vlan_etype", FT_UINT16, BASE_HEX,
         VALS(etype_vals), 0x0, "Ethertype", HFILL };
 
 static header_field_info hfi_vlan_len VLAN_HFI_INIT = {
-        "Length", "vlan.len", FT_UINT16, BASE_DEC,
+        "Length", "vlan_len", FT_UINT16, BASE_DEC,
         NULL, 0x0, NULL, HFILL };
 
 static header_field_info hfi_vlan_trailer VLAN_HFI_INIT = {
-        "Trailer", "vlan.trailer", FT_BYTES, BASE_NONE,
+        "Trailer", "vlan_trailer", FT_BYTES, BASE_NONE,
         NULL, 0x0, "VLAN Trailer", HFILL };
 
 

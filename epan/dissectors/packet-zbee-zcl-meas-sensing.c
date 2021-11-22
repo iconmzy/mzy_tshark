@@ -257,27 +257,27 @@ proto_register_zbee_zcl_illum_meas(void)
     static hf_register_info hf[] = {
 
         { &hf_zbee_zcl_illum_meas_attr_id,
-            { "Attribute", "zbee_zcl_meas_sensing.illummeas.attr_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_illum_meas_attr_names),
+            { "Attribute", "zbee_zcl_meas_sensing_illummeas_attr_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_illum_meas_attr_names),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_illum_meas_measured_value,
-            { "Measured Value", "zbee_zcl_meas_sensing.illummeas.attr.value", FT_UINT16, BASE_CUSTOM, CF_FUNC(decode_illum_meas_value),
+            { "Measured Value", "zbee_zcl_meas_sensing_illummeas_attr_value", FT_UINT16, BASE_CUSTOM, CF_FUNC(decode_illum_meas_value),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_illum_meas_min_measured_value,
-            { "Min Measured Value", "zbee_zcl_meas_sensing.illummeas.attr.value.min", FT_UINT16, BASE_CUSTOM, CF_FUNC(decode_illum_meas_min_value),
+            { "Min Measured Value", "zbee_zcl_meas_sensing_illummeas_attr_value_min", FT_UINT16, BASE_CUSTOM, CF_FUNC(decode_illum_meas_min_value),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_illum_meas_max_measured_value,
-            { "Max Measured Value", "zbee_zcl_meas_sensing.illummeas.attr.value.max", FT_UINT16, BASE_CUSTOM, CF_FUNC(decode_illum_meas_max_value),
+            { "Max Measured Value", "zbee_zcl_meas_sensing_illummeas_attr_value_max", FT_UINT16, BASE_CUSTOM, CF_FUNC(decode_illum_meas_max_value),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_illum_meas_tolerance,
-            { "Tolerance", "zbee_zcl_meas_sensing.illummeas.attr.tolerance", FT_UINT16, BASE_CUSTOM, CF_FUNC(decode_illum_meas_tolerance),
+            { "Tolerance", "zbee_zcl_meas_sensing_illummeas_attr_tolerance", FT_UINT16, BASE_CUSTOM, CF_FUNC(decode_illum_meas_tolerance),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_illum_meas_sensor_type,
-            { "Sensor Type", "zbee_zcl_meas_sensing.illummeas.attr.sensor_type", FT_UINT8, BASE_HEX, VALS(zbee_zcl_illum_meas_sensor_type_names),
+            { "Sensor Type", "zbee_zcl_meas_sensing_illummeas_attr_sensor_type", FT_UINT8, BASE_HEX, VALS(zbee_zcl_illum_meas_sensor_type_names),
             0x00, NULL, HFILL } }
     };
 

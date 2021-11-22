@@ -1497,70 +1497,70 @@ void proto_register_awdl(void)
   static hf_register_info hf[] = {
     /* Default for unknown fields */
     { &hf_awdl_unknown,
-      { "Unknown", "awdl.unknown",
+      { "Unknown", "awdl_unknown",
         FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
 
     /* LLC */
     { &hf_awdl_data_seq,
-      { "Sequence number", "awdl_data.seq",
+      { "Sequence number", "awdl_data_seq",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_data_header,
-      { "Header data", "awdl_data.header",
+      { "Header data", "awdl_data_header",
         FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_data_ethertype,
-      { "EtherType", "awdl_data.ethertype",
+      { "EtherType", "awdl_data_ethertype",
         FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL
       }
     },
 
     /* Action Frame */
     { &hf_awdl_fixed_parameters,
-      { "Fixed parameters", "awdl.fixed.all",
+      { "Fixed parameters", "awdl_fixed_all",
         FT_NONE, BASE_NONE, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_tagged_parameters,
-      { "Tagged parameters", "awdl.tagged.all",
+      { "Tagged parameters", "awdl_tagged_all",
         FT_NONE, BASE_NONE, NULL, 0, NULL, HFILL
       }
     },
 
     /* Fixed parameters */
     { &hf_awdl_type,
-      { "Type", "awdl.type",
+      { "Type", "awdl_type",
         FT_UINT8, BASE_DEC, VALS(awdl_type), 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_subtype,
-      { "Subtype", "awdl.subtype",
+      { "Subtype", "awdl_subtype",
         FT_UINT8, BASE_DEC, VALS(awdl_subtype), 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_rsvd,
-      { "Reserved", "awdl.reserved",
+      { "Reserved", "awdl_reserved",
         FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_phytime,
-      { "PHY Tx Time", "awdl.phytime",
+      { "PHY Tx Time", "awdl_phytime",
         FT_UINT32, BASE_DEC | BASE_UNIT_STRING, &units_microseconds, 0x0,
         "Time shortly before the frame was sent out by the radio", HFILL
       }
     },
     { &hf_awdl_targettime,
-      { "Target Tx Time", "awdl.targettime",
+      { "Target Tx Time", "awdl_targettime",
         FT_UINT32, BASE_DEC | BASE_UNIT_STRING, &units_microseconds, 0x0,
-        "Time when the frame was created.", HFILL
+        "Time when the frame was created_", HFILL
       }
     },
     { &hf_awdl_txdelay,
-      { "Tx Delay", "awdl.txdelay",
+      { "Tx Delay", "awdl_txdelay",
         FT_UINT32, BASE_DEC | BASE_UNIT_STRING, &units_microseconds, 0x0,
         "Difference between the PHY and target time stamps", HFILL
       }
@@ -1568,28 +1568,28 @@ void proto_register_awdl(void)
 
     /* TLV */
     { &hf_awdl_tag,
-      { "Tag", "awdl.tag",
+      { "Tag", "awdl_tag",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_tag_number,
-      { "Tag Number", "awdl.tag.number",
+      { "Tag Number", "awdl_tag_number",
         FT_UINT8, BASE_DEC | BASE_EXT_STRING, &tag_num_vals_ext, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_tag_length,
-      { "Tag Length", "awdl.tag.length",
+      { "Tag Length", "awdl_tag_length",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_tag_data,
-      { "Tag Data", "awdl.tag.data",
+      { "Tag Data", "awdl_tag_data",
         FT_BYTES, BASE_NONE, NULL, 0,
         "Data Interpretation of tag", HFILL
       }
     },
     { &hf_awdl_tag_padding,
-      { "Padding (?)", "awdl.tag.padding",
+      { "Padding (?)", "awdl_tag_padding",
         FT_BYTES, BASE_NONE, NULL, 0,
         "Unused (?) bytes at the end of the tag", HFILL
       }
@@ -1597,29 +1597,29 @@ void proto_register_awdl(void)
 
     /* Version */
     { &hf_awdl_version,
-      { "AWDL Version", "awdl.version",
+      { "AWDL Version", "awdl_version",
         FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_version_major,
-      { "AWDL Version Major", "awdl.version.major",
+      { "AWDL Version Major", "awdl_version_major",
         FT_UINT8, BASE_DEC, NULL, 0xf0, NULL, HFILL
       }
     },
     { &hf_awdl_version_minor,
-      { "AWDL Version Minor", "awdl.version.minor",
+      { "AWDL Version Minor", "awdl_version_minor",
         FT_UINT8, BASE_DEC, NULL, 0x0f, NULL, HFILL
       }
     },
     { &hf_awdl_version_devclass,
-      { "Device Class", "awdl.version.device_class",
+      { "Device Class", "awdl_version_device_class",
         FT_UINT8, BASE_DEC, VALS(awdl_version_devclass), 0, NULL, HFILL
       }
     },
 
     /* Synchronization Tree */
     { &hf_awdl_synctree_addr,
-      { "Address", "awdl.synctree.addr",
+      { "Address", "awdl_synctree_addr",
         FT_ETHER, BASE_NONE, NULL, 0x0,
         "From tree root to leaf", HFILL
       }
@@ -1627,196 +1627,196 @@ void proto_register_awdl(void)
 
     /* Data Path State */
     { &hf_awdl_datastate_flags,
-      { "Flags", "awdl.datastate.flags",
+      { "Flags", "awdl_datastate_flags",
         FT_UINT16, BASE_HEX, NULL, 0,
         "Subsequent fields do not follow the order in which they appear in this bitmask", HFILL
       }
     },
     { &hf_awdl_datastate_flags_0,
-      { "Infrastructure BSSID and Channel", "awdl.datastate.flags.0",
+      { "Infrastructure BSSID and Channel", "awdl_datastate_flags_0",
         FT_BOOLEAN, 16, NULL, 0x1, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_1,
-      { "Infrastructure Address", "awdl.datastate.flags.1",
+      { "Infrastructure Address", "awdl_datastate_flags_1",
         FT_BOOLEAN, 16, NULL, 0x2, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_2,
-      { "AWDL Address", "awdl.datastate.flags.2",
+      { "AWDL Address", "awdl_datastate_flags_2",
         FT_BOOLEAN, 16, NULL, 0x4, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_3,
-      { "Bit 3", "awdl.datastate.flags.3",
+      { "Bit 3", "awdl_datastate_flags_3",
         FT_BOOLEAN, 16, NULL, 0x8, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_4,
-      { "UMI", "awdl.datastate.flags.4",
+      { "UMI", "awdl_datastate_flags_4",
         FT_BOOLEAN, 16, NULL, 0x10, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_5,
-      { "Bit 5", "awdl.datastate.flags.5",
+      { "Bit 5", "awdl_datastate_flags_5",
         FT_BOOLEAN, 16, NULL, 0x20, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_6,
-      { "Is AirPlay (?)", "awdl.datastate.flags.6",
+      { "Is AirPlay (?)", "awdl_datastate_flags_6",
         FT_BOOLEAN, 16, NULL, 0x40, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_7,
-      { "Bit 6", "awdl.datastate.flags.7",
+      { "Bit 6", "awdl_datastate_flags_7",
         FT_BOOLEAN, 16, NULL, 0x80, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_8,
-      { "Country Code", "awdl.datastate.flags.8",
+      { "Country Code", "awdl_datastate_flags_8",
         FT_BOOLEAN, 16, NULL, 0x100, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_9,
-      { "Social Channels", "awdl.datastate.flags.9",
+      { "Social Channels", "awdl_datastate_flags_9",
         FT_BOOLEAN, 16, NULL, 0x200, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_10,
-      { "Bit 10", "awdl.datastate.flags.10",
+      { "Bit 10", "awdl_datastate_flags_10",
         FT_BOOLEAN, 16, NULL, 0x400, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_11,
-      { "Bit 11", "awdl.datastate.flags.11",
+      { "Bit 11", "awdl_datastate_flags_11",
         FT_BOOLEAN, 16, NULL, 0x800, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_12,
-      { "Unicast Options", "awdl.datastate.flags.12",
+      { "Unicast Options", "awdl_datastate_flags_12",
         FT_BOOLEAN, 16, NULL, 0x1000, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_13,
-      { "Bit 13", "awdl.datastate.flags.13",
+      { "Bit 13", "awdl_datastate_flags_13",
         FT_BOOLEAN, 16, NULL, 0x2000, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_14,
-      { "Is Rangeable", "awdl.datastate.flags.14",
+      { "Is Rangeable", "awdl_datastate_flags_14",
         FT_BOOLEAN, 16, NULL, 0x4000, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_flags_15,
-      { "Extension Flags", "awdl.datastate.flags.15",
+      { "Extension Flags", "awdl_datastate_flags_15",
         FT_BOOLEAN, 16, NULL, 0x8000, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_countrycode,
-      { "Country Code", "awdl.datastate.countrycode",
+      { "Country Code", "awdl_datastate_countrycode",
         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_social_channel,
-      { "Social Channel", "awdl.datastate.social_channel",
+      { "Social Channel", "awdl_datastate_social_channel",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_social_channel_map,
-      { "Social Channel Map", "awdl.datastate.social_channel_map",
+      { "Social Channel Map", "awdl_datastate_social_channel_map",
         FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_social_channel_map_6,
-      { "Channel 6", "awdl.datastate.social_channel_map.ch6",
+      { "Channel 6", "awdl_datastate_social_channel_map_ch6",
         FT_BOOLEAN, 16, NULL, 0x1, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_social_channel_map_44,
-      { "Channel 44", "awdl.datastate.social_channel_map.ch44",
+      { "Channel 44", "awdl_datastate_social_channel_map_ch44",
         FT_BOOLEAN, 16, NULL, 0x2, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_social_channel_map_149,
-      { "Channel 149", "awdl.datastate.social_channel_map.ch149",
+      { "Channel 149", "awdl_datastate_social_channel_map_ch149",
         FT_BOOLEAN, 16, NULL, 0x4, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_social_channel_map_unused,
-      { "Unused", "awdl.datastate.social_channel_map.unused",
+      { "Unused", "awdl_datastate_social_channel_map_unused",
         FT_UINT16, BASE_HEX, NULL, 0xfff8, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_infra_bssid,
-      { "Infrastructure BSSID", "awdl.datastate.infra_bssid",
+      { "Infrastructure BSSID", "awdl_datastate_infra_bssid",
         FT_ETHER, BASE_NONE, NULL, 0x0,
         "Address of the AP currently connected to", HFILL
       }
     },
     { &hf_awdl_datastate_infra_channel,
-      { "Infrastructure Channel", "awdl.datastate.infra_channel",
+      { "Infrastructure Channel", "awdl_datastate_infra_channel",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_infra_address,
-      { "Infrastructure Address", "awdl.datastate.infra_addr",
+      { "Infrastructure Address", "awdl_datastate_infra_addr",
         FT_ETHER, BASE_NONE, NULL, 0x0,
         "MAC address of this device", HFILL
       }
     },
     { &hf_awdl_datastate_awdl_address,
-      { "AWDL Address", "awdl.datastate.own_awdladdr",
+      { "AWDL Address", "awdl_datastate_own_awdladdr",
         FT_ETHER, BASE_NONE, NULL, 0x0,
         "Randomized Address used for AWDL", HFILL
       }
     },
     { &hf_awdl_datastate_umi,
-      { "UMI (Airplay?)", "awdl.datastate.umi",
+      { "UMI (Airplay?)", "awdl_datastate_umi",
         FT_UINT16, BASE_HEX_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_umioptions,
-      { "Unicast Options", "awdl.datastate.unicast_options",
+      { "Unicast Options", "awdl_datastate_unicast_options",
         FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_umioptions_length,
-      { "Unicast Options Length", "awdl.datastate.unicast_options_length",
+      { "Unicast Options Length", "awdl_datastate_unicast_options_length",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_extflags,
-      { "Extended Flags", "awdl.datastate.extflags",
+      { "Extended Flags", "awdl_datastate_extflags",
         FT_UINT16, BASE_HEX, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_extflags_0,
-      { "Undecoded (?)", "awdl.datastate.extflags.0",
+      { "Undecoded (?)", "awdl_datastate_extflags_0",
         FT_BOOLEAN, 16, NULL, 0x1, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_extflags_1,
-      { "Ranging Discovery", "awdl.datastate.extflags.1",
+      { "Ranging Discovery", "awdl_datastate_extflags_1",
         FT_BOOLEAN, 16, NULL, 0x2, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_extflags_2,
-      { "Logtrigger ID", "awdl.datastate.extflags.2",
+      { "Logtrigger ID", "awdl_datastate_extflags_2",
         FT_BOOLEAN, 16, NULL, 0x4, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_extflags_3to15,
-      { "Unknown", "awdl.datastate.extflags.3to15",
+      { "Unknown", "awdl_datastate_extflags_3to15",
         FT_UINT16, BASE_HEX_DEC, NULL, 0xfff8, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_logtrigger,
-      { "Logtrigger ID", "awdl.datastate.logtrigger",
+      { "Logtrigger ID", "awdl_datastate_logtrigger",
         FT_UINT32, BASE_HEX, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_datastate_undecoded,
-      { "Undecoded", "awdl.datastate.undecoded",
+      { "Undecoded", "awdl_datastate_undecoded",
         FT_BYTES, BASE_NONE, NULL, 0,
         "Possibly contains 'RLFC', a timestamp in ms, a AW sequence number, and 'payUpdateCounter'", HFILL
       }
@@ -1824,404 +1824,404 @@ void proto_register_awdl(void)
 
     /* Arpa */
     { &hf_awdl_arpa,
-      { "Arpa", "awdl.arpa",
+      { "Arpa", "awdl_arpa",
         FT_NONE, BASE_NONE, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_arpa_name,
-      { "Host", "awdl.arpa.host",
+      { "Host", "awdl_arpa_host",
         FT_UINT_STRING, BASE_NONE, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_arpa_flags,
-      { "Flags", "awdl.arpa.flags",
+      { "Flags", "awdl_arpa_flags",
         FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_arpa_short,
-      { "Domain (compressed)", "awdl.arpa.domain",
+      { "Domain (compressed)", "awdl_arpa_domain",
         FT_UINT16, BASE_HEX, VALS(awdl_dns_compression), 0, NULL, HFILL
       }
     },
 
     /* Synchronization Paramters */
     { &hf_awdl_syncparams_awcounter,
-      { "AW Sequence Number", "awdl.syncparams.awseqcounter",
+      { "AW Sequence Number", "awdl_syncparams_awseqcounter",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_apbeaconalignment,
-      { "AP Beacon alignment delta", "awdl.syncparams.apbeaconalignment",
+      { "AP Beacon alignment delta", "awdl_syncparams_apbeaconalignment",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_master,
-      { "Master Address", "awdl.syncparams.master",
+      { "Master Address", "awdl_syncparams_master",
         FT_ETHER, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_tx_chan,
-      { "Next AW Channel", "awdl.syncparams.txchannel",
+      { "Next AW Channel", "awdl_syncparams_txchannel",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_tx_counter,
-      { "Tx Counter", "awdl.syncparams.txcounter",
+      { "Tx Counter", "awdl_syncparams_txcounter",
         FT_UINT16, BASE_DEC | BASE_UNIT_STRING, &units_ieee80211_tu, 0x0,
         "Time until next AW starts", HFILL
       }
     },
     { &hf_awdl_syncparams_master_chan,
-      { "Master Channel", "awdl.syncparams.masterchan",
+      { "Master Channel", "awdl_syncparams_masterchan",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_guard_time,
-      { "Guard Time", "awdl.syncparams.guardtime",
+      { "Guard Time", "awdl_syncparams_guardtime",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_aw_period,
-      { "Availability Window Period", "awdl.syncparams.awperiod",
+      { "Availability Window Period", "awdl_syncparams_awperiod",
         FT_UINT16, BASE_DEC | BASE_UNIT_STRING, &units_ieee80211_tu, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_action_frame_period,
-      { "Action Frame Period", "awdl.syncparams.afperiod",
+      { "Action Frame Period", "awdl_syncparams_afperiod",
         FT_UINT16, BASE_DEC | BASE_UNIT_STRING, &units_ieee80211_tu, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_awdl_flags,
-      { "AWDL Flags", "awdl.syncparams.awdlflags",
+      { "AWDL Flags", "awdl_syncparams_awdlflags",
         FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_aw_ext_length,
-      { "Availability Window Extension Length", "awdl.syncparams.aw.ext_len",
+      { "Availability Window Extension Length", "awdl_syncparams_aw_ext_len",
         FT_UINT16, BASE_DEC | BASE_UNIT_STRING, &units_ieee80211_tu, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_aw_cmn_length,
-      { "Availability Window Common Length", "awdl.syncparams.aw.common_len",
+      { "Availability Window Common Length", "awdl_syncparams_aw_common_len",
         FT_UINT16, BASE_DEC | BASE_UNIT_STRING, &units_ieee80211_tu, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_aw_remaining,
-      { "Remaining Availability Window Length", "awdl.syncparams.aw.remaining",
+      { "Remaining Availability Window Length", "awdl_syncparams_aw_remaining",
         FT_INT16, BASE_DEC | BASE_UNIT_STRING, &units_ieee80211_tu, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_ext_min,
-      { "Minimum Extension Count", "awdl.syncparams.ext.min",
+      { "Minimum Extension Count", "awdl_syncparams_ext_min",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_ext_max_multi,
-      { "Maximum Extension Count for Multicast", "awdl.syncparams.ext.max_multicast",
+      { "Maximum Extension Count for Multicast", "awdl_syncparams_ext_max_multicast",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_ext_max_uni,
-      { "Maximum Extension Count for Unicast", "awdl.syncparams.ext.max_unicast",
+      { "Maximum Extension Count for Unicast", "awdl_syncparams_ext_max_unicast",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_ext_max_af,
-      { "Maximum Extension Count for Action Frame", "awdl.syncparams.ext.max_af",
+      { "Maximum Extension Count for Action Frame", "awdl_syncparams_ext_max_af",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_syncparams_presence_mode,
-      { "Presence Mode", "awdl.syncparams.presencemode",
+      { "Presence Mode", "awdl_syncparams_presencemode",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
 
     /* Channel Sequence */
     { &hf_awdl_channelseq_channel_count,
-      { "Number of Channels (+1)", "awdl.channelseq.channels",
+      { "Number of Channels (+1)", "awdl_channelseq_channels",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_enc,
-      { "Encoding", "awdl.channelseq.encoding",
+      { "Encoding", "awdl_channelseq_encoding",
         FT_UINT8, BASE_DEC, VALS(awdl_chanseq_enc), 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_duplicate,
-      { "Duplicate", "awdl.channelseq.duplicate",
+      { "Duplicate", "awdl_channelseq_duplicate",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_step_count,
-      { "Step Count (+1)", "awdl.channelseq.step_count",
+      { "Step Count (+1)", "awdl_channelseq_step_count",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_fill_chan,
-      { "Fill Channel", "awdl.channelseq.fill_channel",
+      { "Fill Channel", "awdl_channelseq_fill_channel",
         FT_UINT16, BASE_HEX, VALS(awdl_chanseq_fill_chan), 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_channel_list,
-      { "Channel List", "awdl.channelseq.channel_list",
+      { "Channel List", "awdl_channelseq_channel_list",
         FT_NONE, BASE_NONE, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_channel,
-      { "Channel", "awdl.channelseq.channel",
+      { "Channel", "awdl_channelseq_channel",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_channel_number,
-      { "Channel Number", "awdl.channelseq.channel.number",
+      { "Channel Number", "awdl_channelseq_channel_number",
         FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_channel_operating_class,
-      { "Operating Class", "awdl.channelseq.channel.operating_class",
+      { "Operating Class", "awdl_channelseq_channel_operating_class",
         FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_channel_flags,
-      { "Channel Flags", "awdl.channelseq.channel.flags",
+      { "Channel Flags", "awdl_channelseq_channel_flags",
         FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_legacy_unused,
-      { "Unused", "awdl.channelseq.channel.unused",
+      { "Unused", "awdl_channelseq_channel_unused",
         FT_UINT8, BASE_DEC, NULL, 0xc0, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_legacy_band,
-      { "Band", "awdl.channelseq.channel.band",
+      { "Band", "awdl_channelseq_channel_band",
         FT_UINT8, BASE_DEC, VALS(awdl_chanseq_band), 0x30, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_legacy_bandwidth,
-      { "Bandwidth", "awdl.channelseq.channel.bandwidth",
+      { "Bandwidth", "awdl_channelseq_channel_bandwidth",
         FT_UINT8, BASE_DEC, VALS(awdl_chanseq_bandwidth), 0x0c, NULL, HFILL
       }
     },
     { &hf_awdl_channelseq_legacy_control_channel,
-      { "Control Channel", "awdl.channelseq.channel.control_channel",
+      { "Control Channel", "awdl_channelseq_channel_control_channel",
         FT_UINT8, BASE_DEC, VALS(awdl_chanseq_control_channel), 0x03, NULL, HFILL
       }
     },
 
     /* Election Parameters */
     { &hf_awdl_electionparams_private_master,
-      { "Private Master Address", "awdl.electionparams.private.master",
+      { "Private Master Address", "awdl_electionparams_private_master",
         FT_ETHER, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_master,
-      { "Master Address", "awdl.electionparams.master",
+      { "Master Address", "awdl_electionparams_master",
         FT_ETHER, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_flags,
-      { "Flags", "awdl.electionparams.flags",
+      { "Flags", "awdl_electionparams_flags",
         FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_id,
-      { "ID", "awdl.electionparams.id",
+      { "ID", "awdl_electionparams_id",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_distance,
-      { "Distance to Master", "awdl.electionparams.distance",
+      { "Distance to Master", "awdl_electionparams_distance",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_mastermetric,
-      { "Master Metric", "awdl.electionparams.mastermetric",
+      { "Master Metric", "awdl_electionparams_mastermetric",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_selfmetric,
-      { "Self Metric", "awdl.electionparams.selfmetric",
+      { "Self Metric", "awdl_electionparams_selfmetric",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_unknown,
-      { "Unknown", "awdl.electionparams.unknown",
+      { "Unknown", "awdl_electionparams_unknown",
         FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_private_mastermetric,
-      { "Private Master Metric", "awdl.electionparams.private.mastermetric",
+      { "Private Master Metric", "awdl_electionparams_private_mastermetric",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_private_id,
-      { "Private ID", "awdl.electionparams.private.id",
+      { "Private ID", "awdl_electionparams_private_id",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams_private_phc,
-      { "PHC", "awdl.electionparams.private.phc",
+      { "PHC", "awdl_electionparams_private_phc",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
 
     /* Election Parameter v2 */
     { &hf_awdl_electionparams2_master,
-      { "Master Address", "awdl.electionparams2.master",
+      { "Master Address", "awdl_electionparams2_master",
         FT_ETHER, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams2_other,
-      { "Other Address", "awdl.electionparams2.other",
+      { "Other Address", "awdl_electionparams2_other",
         FT_ETHER, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams2_mastermetric,
-      { "Master Metric", "awdl.electionparams2.mastermetric",
+      { "Master Metric", "awdl_electionparams2_mastermetric",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams2_selfmetric,
-      { "Self Metric", "awdl.electionparams2.selfmetric",
+      { "Self Metric", "awdl_electionparams2_selfmetric",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams2_mastercounter,
-      { "Master Counter", "awdl.electionparams2.mastercounter",
+      { "Master Counter", "awdl_electionparams2_mastercounter",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams2_selfcounter,
-      { "Self Counter", "awdl.electionparams2.selfcounter",
+      { "Self Counter", "awdl_electionparams2_selfcounter",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams2_distance,
-      { "Distance to Master", "awdl.electionparams2.disstance",
+      { "Distance to Master", "awdl_electionparams2_disstance",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams2_reserved,
-      { "Reserved", "awdl.electionparams2.reserved",
+      { "Reserved", "awdl_electionparams2_reserved",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_electionparams2_unknown,
-      { "Unknown", "awdl.electionparams2.unknown",
+      { "Unknown", "awdl_electionparams2_unknown",
         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
 
     /* Service Reponse */
     { &hf_awdl_dns_name_len,
-      { "Name Length", "awdl.dns.name.len",
+      { "Name Length", "awdl_dns_name_len",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "Includes length of type field", HFILL
       }
     },
     { &hf_awdl_dns_name,
-      { "Name", "awdl.dns.name",
+      { "Name", "awdl_dns_name",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_name_label,
-      { "Label", "awdl.dns.name.label",
+      { "Label", "awdl_dns_name_label",
         FT_UINT_STRING, BASE_NONE, NULL, 0x0,
         "Part of a name", HFILL
       }
     },
     { &hf_awdl_dns_name_short,
-      { "Label (compressed)", "awdl.dns.name.compressed",
+      { "Label (compressed)", "awdl_dns_name_compressed",
         FT_UINT16, BASE_HEX, VALS(awdl_dns_compression), 0x0,
         "Part of a name", HFILL
       }
     },
     { &hf_awdl_dns_type,
-      { "Type", "awdl.dns.type",
+      { "Type", "awdl_dns_type",
         FT_UINT8, BASE_DEC, VALS(dns_types_vals), 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_data_len,
-      { "Data Length", "awdl.dns.data_len",
+      { "Data Length", "awdl_dns_data_len",
         FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_txt,
-      { "TXT", "awdl.dns.txt",
+      { "TXT", "awdl_dns_txt",
         FT_UINT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_ptr,
-      { "Domain Name", "awdl.dns.ptr",
+      { "Domain Name", "awdl_dns_ptr",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_ptr_label,
-      { "Label", "awdl.dns.ptr.label",
+      { "Label", "awdl_dns_ptr_label",
         FT_UINT_STRING, BASE_NONE, NULL, 0x0,
         "Part of a domain name", HFILL
       }
     },
     { &hf_awdl_dns_ptr_short,
-      { "Label (compressed)", "awdl.dns.ptr.short",
+      { "Label (compressed)", "awdl_dns_ptr_short",
         FT_UINT16, BASE_HEX, VALS(awdl_dns_compression), 0x0,
         "Part of a domain name", HFILL
       }
     },
     { &hf_awdl_dns_target,
-      { "Target", "awdl.dns.target",
+      { "Target", "awdl_dns_target",
         FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_target_label,
-      { "Label", "awdl.dns.target.label",
+      { "Label", "awdl_dns_target_label",
         FT_UINT_STRING, BASE_NONE, NULL, 0x0,
         "Part of a target", HFILL
       }
     },
     { &hf_awdl_dns_target_short,
-      { "Label (compressed)", "awdl.dns.target.compressed",
+      { "Label (compressed)", "awdl_dns_target_compressed",
         FT_UINT16, BASE_HEX, VALS(awdl_dns_compression), 0x0,
         "Part of a target", HFILL
       }
     },
     { &hf_awdl_dns_unknown,
-      { "Unknown", "awdl.dns.unknown",
+      { "Unknown", "awdl_dns_unknown",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_priority,
-      { "Priority", "awdl.dns.priority",
+      { "Priority", "awdl_dns_priority",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_weight,
-      { "Weight", "awdl.dns.weight",
+      { "Weight", "awdl_dns_weight",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_dns_port,
-      { "Port", "awdl.dns.port",
+      { "Port", "awdl_dns_port",
         FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL
       }
     },
 
     /* Service Parameters */
     { &hf_awdl_serviceparams_sui,
-      { "SUI", "awdl.serviceparams.sui",
+      { "SUI", "awdl_serviceparams_sui",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "Incremented by 1 for every service announcement change (should cause cache flush at receivers)", HFILL
       }
     },
     { &hf_awdl_serviceparams_enc_values,
-      { "Encoded Values", "awdl.serviceparams.valuess",
+      { "Encoded Values", "awdl_serviceparams_valuess",
         FT_NONE, BASE_NONE, NULL, 0,
         "Encodes up to 256 unique 1-byte values. Calculation adds offsets to values.", HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask,
-      { "Offsets", "awdl.serviceparams.bitmask",
+      { "Offsets", "awdl_serviceparams_bitmask",
         FT_UINT32, BASE_HEX, NULL, 0x0,
         "Offset is 8*i if i-th bit is set", HFILL
       }
@@ -2236,341 +2236,341 @@ void proto_register_awdl(void)
      *   print('}},'.format())
      */
     { &hf_awdl_serviceparams_bitmask_0,
-      { "0", "awdl.serviceparams.bitmask.0",
+      { "0", "awdl_serviceparams_bitmask_0",
         FT_BOOLEAN, 32, NULL, 0x1, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_1,
-      { "1", "awdl.serviceparams.bitmask.1",
+      { "1", "awdl_serviceparams_bitmask_1",
         FT_BOOLEAN, 32, NULL, 0x2, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_2,
-      { "2", "awdl.serviceparams.bitmask.2",
+      { "2", "awdl_serviceparams_bitmask_2",
         FT_BOOLEAN, 32, NULL, 0x4, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_3,
-      { "3", "awdl.serviceparams.bitmask.3",
+      { "3", "awdl_serviceparams_bitmask_3",
         FT_BOOLEAN, 32, NULL, 0x8, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_4,
-      { "4", "awdl.serviceparams.bitmask.4",
+      { "4", "awdl_serviceparams_bitmask_4",
         FT_BOOLEAN, 32, NULL, 0x10, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_5,
-      { "5", "awdl.serviceparams.bitmask.5",
+      { "5", "awdl_serviceparams_bitmask_5",
         FT_BOOLEAN, 32, NULL, 0x20, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_6,
-      { "6", "awdl.serviceparams.bitmask.6",
+      { "6", "awdl_serviceparams_bitmask_6",
         FT_BOOLEAN, 32, NULL, 0x40, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_7,
-      { "7", "awdl.serviceparams.bitmask.7",
+      { "7", "awdl_serviceparams_bitmask_7",
         FT_BOOLEAN, 32, NULL, 0x80, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_8,
-      { "8", "awdl.serviceparams.bitmask.8",
+      { "8", "awdl_serviceparams_bitmask_8",
         FT_BOOLEAN, 32, NULL, 0x100, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_9,
-      { "9", "awdl.serviceparams.bitmask.9",
+      { "9", "awdl_serviceparams_bitmask_9",
         FT_BOOLEAN, 32, NULL, 0x200, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_10,
-      { "10", "awdl.serviceparams.bitmask.10",
+      { "10", "awdl_serviceparams_bitmask_10",
         FT_BOOLEAN, 32, NULL, 0x400, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_11,
-      { "11", "awdl.serviceparams.bitmask.11",
+      { "11", "awdl_serviceparams_bitmask_11",
         FT_BOOLEAN, 32, NULL, 0x800, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_12,
-      { "12", "awdl.serviceparams.bitmask.12",
+      { "12", "awdl_serviceparams_bitmask_12",
         FT_BOOLEAN, 32, NULL, 0x1000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_13,
-      { "13", "awdl.serviceparams.bitmask.13",
+      { "13", "awdl_serviceparams_bitmask_13",
         FT_BOOLEAN, 32, NULL, 0x2000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_14,
-      { "14", "awdl.serviceparams.bitmask.14",
+      { "14", "awdl_serviceparams_bitmask_14",
         FT_BOOLEAN, 32, NULL, 0x4000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_15,
-      { "15", "awdl.serviceparams.bitmask.15",
+      { "15", "awdl_serviceparams_bitmask_15",
         FT_BOOLEAN, 32, NULL, 0x8000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_16,
-      { "16", "awdl.serviceparams.bitmask.16",
+      { "16", "awdl_serviceparams_bitmask_16",
         FT_BOOLEAN, 32, NULL, 0x10000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_17,
-      { "17", "awdl.serviceparams.bitmask.17",
+      { "17", "awdl_serviceparams_bitmask_17",
         FT_BOOLEAN, 32, NULL, 0x20000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_18,
-      { "18", "awdl.serviceparams.bitmask.18",
+      { "18", "awdl_serviceparams_bitmask_18",
         FT_BOOLEAN, 32, NULL, 0x40000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_19,
-      { "19", "awdl.serviceparams.bitmask.19",
+      { "19", "awdl_serviceparams_bitmask_19",
         FT_BOOLEAN, 32, NULL, 0x80000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_20,
-      { "20", "awdl.serviceparams.bitmask.20",
+      { "20", "awdl_serviceparams_bitmask_20",
         FT_BOOLEAN, 32, NULL, 0x100000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_21,
-      { "21", "awdl.serviceparams.bitmask.21",
+      { "21", "awdl_serviceparams_bitmask_21",
         FT_BOOLEAN, 32, NULL, 0x200000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_22,
-      { "22", "awdl.serviceparams.bitmask.22",
+      { "22", "awdl_serviceparams_bitmask_22",
         FT_BOOLEAN, 32, NULL, 0x400000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_23,
-      { "23", "awdl.serviceparams.bitmask.23",
+      { "23", "awdl_serviceparams_bitmask_23",
         FT_BOOLEAN, 32, NULL, 0x800000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_24,
-      { "24", "awdl.serviceparams.bitmask.24",
+      { "24", "awdl_serviceparams_bitmask_24",
         FT_BOOLEAN, 32, NULL, 0x1000000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_25,
-      { "25", "awdl.serviceparams.bitmask.25",
+      { "25", "awdl_serviceparams_bitmask_25",
         FT_BOOLEAN, 32, NULL, 0x2000000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_26,
-      { "26", "awdl.serviceparams.bitmask.26",
+      { "26", "awdl_serviceparams_bitmask_26",
         FT_BOOLEAN, 32, NULL, 0x4000000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_27,
-      { "27", "awdl.serviceparams.bitmask.27",
+      { "27", "awdl_serviceparams_bitmask_27",
         FT_BOOLEAN, 32, NULL, 0x8000000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_28,
-      { "28", "awdl.serviceparams.bitmask.28",
+      { "28", "awdl_serviceparams_bitmask_28",
         FT_BOOLEAN, 32, NULL, 0x10000000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_29,
-      { "29", "awdl.serviceparams.bitmask.29",
+      { "29", "awdl_serviceparams_bitmask_29",
         FT_BOOLEAN, 32, NULL, 0x20000000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_30,
-      { "30", "awdl.serviceparams.bitmask.30",
+      { "30", "awdl_serviceparams_bitmask_30",
         FT_BOOLEAN, 32, NULL, 0x40000000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_bitmask_31,
-      { "31", "awdl.serviceparams.bitmask.31",
+      { "31", "awdl_serviceparams_bitmask_31",
         FT_BOOLEAN, 32, NULL, 0x80000000, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_values,
-      { "Values", "awdl.serviceparams.values",
+      { "Values", "awdl_serviceparams_values",
         FT_UINT8, BASE_HEX, NULL, 0,
         "Value is i if i-th bit is set", HFILL
       }
     },
     { &hf_awdl_serviceparams_values_0,
-      { "0", "awdl.serviceparams.values.0",
+      { "0", "awdl_serviceparams_values_0",
         FT_BOOLEAN, 8, NULL, 0x1, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_values_1,
-      { "1", "awdl.serviceparams.values.1",
+      { "1", "awdl_serviceparams_values_1",
         FT_BOOLEAN, 8, NULL, 0x2, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_values_2,
-      { "2", "awdl.serviceparams.values.2",
+      { "2", "awdl_serviceparams_values_2",
         FT_BOOLEAN, 8, NULL, 0x4, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_values_3,
-      { "3", "awdl.serviceparams.values.3",
+      { "3", "awdl_serviceparams_values_3",
         FT_BOOLEAN, 8, NULL, 0x8, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_values_4,
-      { "4", "awdl.serviceparams.values.4",
+      { "4", "awdl_serviceparams_values_4",
         FT_BOOLEAN, 8, NULL, 0x10, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_values_5,
-      { "5", "awdl.serviceparams.values.5",
+      { "5", "awdl_serviceparams_values_5",
         FT_BOOLEAN, 8, NULL, 0x20, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_values_6,
-      { "6", "awdl.serviceparams.values.6",
+      { "6", "awdl_serviceparams_values_6",
         FT_BOOLEAN, 8, NULL, 0x40, NULL, HFILL
       }
     },
     { &hf_awdl_serviceparams_values_7,
-      { "7", "awdl.serviceparams.values.7",
+      { "7", "awdl_serviceparams_values_7",
         FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL
       }
     },
 
     /* HT Capabilities */
     { &hf_awdl_ht_unknown,
-      { "Unknown", "awdl.ht.unknown",
+      { "Unknown", "awdl_ht_unknown",
         FT_UINT16, BASE_HEX, NULL, 0, NULL, HFILL
       }
     },
     /* hf_ieee80211_* from packet-ieee80211.c */
     { &hf_awdl_ht_cap,
-      { "HT Capabilities Info", "awdl.ht.capabilities",
+      { "HT Capabilities Info", "awdl_ht_capabilities",
         FT_UINT16, BASE_HEX, NULL, 0, "HT Capabilities information", HFILL
       }
     },
     { &hf_awdl_ht_ldpc_coding,
-      { "HT LDPC coding capability", "awdl.ht.capabilities.ldpccoding",
+      { "HT LDPC coding capability", "awdl_ht_capabilities_ldpccoding",
         FT_BOOLEAN, 16, TFS(&ht_ldpc_coding_flag), 0x0001, NULL, HFILL
       }
     },
     { &hf_awdl_ht_chan_width,
-      { "HT Support channel width", "awdl.ht.capabilities.width",
+      { "HT Support channel width", "awdl_ht_capabilities_width",
         FT_BOOLEAN, 16, TFS(&ht_chan_width_flag), 0x0002, NULL, HFILL
       }
     },
     { &hf_awdl_ht_sm_pwsave,
-      { "HT SM Power Save", "awdl.ht.capabilities.sm",
+      { "HT SM Power Save", "awdl_ht_capabilities_sm",
         FT_UINT16, BASE_HEX, VALS(ht_sm_pwsave_flag), 0x000c, NULL, HFILL
       }
     },
     { &hf_awdl_ht_green,
-      { "HT Green Field", "awdl.ht.capabilities.green",
+      { "HT Green Field", "awdl_ht_capabilities_green",
         FT_BOOLEAN, 16, TFS(&ht_green_flag), 0x0010, NULL, HFILL
       }
     },
     { &hf_awdl_ht_short20,
-      { "HT Short GI for 20MHz", "awdl.ht.capabilities.short20",
+      { "HT Short GI for 20MHz", "awdl_ht_capabilities_short20",
         FT_BOOLEAN, 16, TFS(&tfs_supported_not_supported), 0x0020, NULL, HFILL
       }
     },
     { &hf_awdl_ht_short40,
-      { "HT Short GI for 40MHz", "awdl.ht.capabilities.short40",
+      { "HT Short GI for 40MHz", "awdl_ht_capabilities_short40",
         FT_BOOLEAN, 16, TFS(&tfs_supported_not_supported), 0x0040, NULL, HFILL
       }
     },
     { &hf_awdl_ht_tx_stbc,
-      { "HT Tx STBC", "awdl.ht.capabilities.txstbc",
+      { "HT Tx STBC", "awdl_ht_capabilities_txstbc",
         FT_BOOLEAN, 16, TFS(&tfs_supported_not_supported), 0x0080, NULL, HFILL
       }
     },
     { &hf_awdl_ht_rx_stbc,
-      { "HT Rx STBC", "awdl.ht.capabilities.rxstbc",
+      { "HT Rx STBC", "awdl_ht_capabilities_rxstbc",
         FT_UINT16, BASE_HEX, VALS(ht_rx_stbc_flag), 0x0300, "HT Tx STBC", HFILL
       }
     },
     { &hf_awdl_ht_delayed_block_ack,
-      { "HT Delayed Block ACK", "awdl.ht.capabilities.delayedblockack",
+      { "HT Delayed Block ACK", "awdl_ht_capabilities_delayedblockack",
         FT_BOOLEAN, 16, TFS(&ht_delayed_block_ack_flag), 0x0400, NULL, HFILL
       }
     },
     { &hf_awdl_ht_max_amsdu,
-      { "HT Max A-MSDU length", "awdl.ht.capabilities.amsdu",
+      { "HT Max A-MSDU length", "awdl_ht_capabilities_amsdu",
         FT_BOOLEAN, 16, TFS(&ht_max_amsdu_flag), 0x0800, NULL, HFILL
       }
     },
     { &hf_awdl_ht_dss_cck_40,
-      { "HT DSSS/CCK mode in 40MHz", "awdl.ht.capabilities.dsscck",
+      { "HT DSSS/CCK mode in 40MHz", "awdl_ht_capabilities_dsscck",
         FT_BOOLEAN, 16, TFS(&ht_dss_cck_40_flag), 0x1000, "HT DSS/CCK mode in 40MHz", HFILL
       }
     },
     { &hf_awdl_ht_psmp,
-      { "HT PSMP Support", "awdl.ht.capabilities.psmp",
+      { "HT PSMP Support", "awdl_ht_capabilities_psmp",
         FT_BOOLEAN, 16, TFS(&ht_psmp_flag), 0x2000, NULL, HFILL
       }
     },
     { &hf_awdl_ht_40_mhz_intolerant,
-      { "HT Forty MHz Intolerant", "awdl.ht.capabilities.40mhzintolerant",
+      { "HT Forty MHz Intolerant", "awdl_ht_capabilities_40mhzintolerant",
         FT_BOOLEAN, 16, TFS(&ht_40_mhz_intolerant_flag), 0x4000, NULL, HFILL
       }
     },
     { &hf_awdl_ht_l_sig,
-      { "HT L-SIG TXOP Protection support", "awdl.ht.capabilities.lsig",
+      { "HT L-SIG TXOP Protection support", "awdl_ht_capabilities_lsig",
         FT_BOOLEAN, 16, TFS(&tfs_supported_not_supported), 0x8000, NULL, HFILL
       }
     },
     { &hf_awdl_ampduparam,
-      { "A-MPDU Parameters", "awdl.ht.ampduparam",
+      { "A-MPDU Parameters", "awdl_ht_ampduparam",
         FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_ampduparam_mpdu,
-      { "Maximum Rx A-MPDU Length", "awdl.ht.ampduparam.maxlength",
+      { "Maximum Rx A-MPDU Length", "awdl_ht_ampduparam_maxlength",
         FT_UINT8, BASE_HEX, 0, 0x03, NULL, HFILL
       }
     },
     { &hf_awdl_ampduparam_mpdu_start_spacing,
-      { "MPDU Density", "awdl.ht.ampduparam.mpdudensity",
+      { "MPDU Density", "awdl_ht_ampduparam_mpdudensity",
         FT_UINT8, BASE_HEX, VALS(ampduparam_mpdu_start_spacing_flags), 0x1c, NULL, HFILL
       }
     },
     { &hf_awdl_ampduparam_reserved,
-      { "Reserved", "awdl.ht.ampduparam.reserved",
+      { "Reserved", "awdl_ht_ampduparam_reserved",
         FT_UINT8, BASE_HEX, NULL, 0xE0, NULL, HFILL
       }
     },
     { &hf_awdl_mcsset,
-      { "Rx Supported Modulation and Coding Scheme Set", "awdl.ht.mcsset",
+      { "Rx Supported Modulation and Coding Scheme Set", "awdl_ht_mcsset",
         FT_NONE, BASE_NONE, NULL, 0, NULL, HFILL
       }
     },
     { &hf_awdl_mcsset_rx_bitmask,
-      { "Rx Modulation and Coding Scheme (One bit per modulation)", "awdl.ht.mcsset.rxbitmask",
+      { "Rx Modulation and Coding Scheme (One bit per modulation)", "awdl_ht_mcsset_rxbitmask",
         FT_NONE, BASE_NONE, NULL, 0, "One bit per modulation", HFILL
       }
     },
     { &hf_awdl_mcsset_rx_bitmask_0to7,
-      { "Rx Bitmask Bits 0-7", "awdl.ht.mcsset.rxbitmask.0to7",
+      { "Rx Bitmask Bits 0-7", "awdl_ht_mcsset_rxbitmask_0to7",
         FT_UINT32, BASE_HEX, 0, 0x000000ff, NULL, HFILL
       }
     },
     { &hf_awdl_mcsset_rx_bitmask_8to15,
-      { "Rx Bitmask Bits 8-15", "awdl.ht.mcsset.rxbitmask.8to15",
+      { "Rx Bitmask Bits 8-15", "awdl_ht_mcsset_rxbitmask_8to15",
         FT_UINT32, BASE_HEX, 0, 0x0000ff00, NULL, HFILL
       }
     },
     { &hf_awdl_mcsset_rx_bitmask_16to23,
-      { "Rx Bitmask Bits 16-23", "awdl.ht.mcsset.rxbitmask.16to23",
+      { "Rx Bitmask Bits 16-23", "awdl_ht_mcsset_rxbitmask_16to23",
         FT_UINT32, BASE_HEX, 0, 0x00ff0000, NULL, HFILL
       }
     },
     { &hf_awdl_mcsset_rx_bitmask_24to31,
-      { "Rx Bitmask Bits 24-31", "awdl.ht.mcsset.rxbitmask.24to31",
+      { "Rx Bitmask Bits 24-31", "awdl_ht_mcsset_rxbitmask_24to31",
         FT_UINT32, BASE_HEX, 0, 0xff000000, NULL, HFILL
       }
     },
@@ -2578,7 +2578,7 @@ void proto_register_awdl(void)
 
   static hf_register_info hf_apple_awdl_pid[] = {
     { &hf_llc_apple_awdl_pid,
-      { "PID", "llc.apple_awdl_pid",
+      { "PID", "llc_apple_awdl_pid",
         FT_UINT16, BASE_HEX, VALS(apple_awdl_pid_vals), 0x0, "Protocol ID", HFILL }
     }
   };

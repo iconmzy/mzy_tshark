@@ -200,52 +200,52 @@ static int * const ipmi_trace_ett[] = {
 /* HPM.2 Trace Collection header fields. */
 static hf_register_info ipmi_trace_hf[] = {
 	{	&hf_trace_block_type, {
-			"Trace Data Block Type", "ipmi.trace.block.type",
+			"Trace Data Block Type", "ipmi_trace_block_type",
 			FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL } },
 	{	&hf_trace_channel_num, {
-			"IPMI Channel Number being traced", "ipmi.trace.chn.num",
+			"IPMI Channel Number being traced", "ipmi_trace_chn_num",
 			FT_UINT8, BASE_DEC_HEX, NULL, 0x0F, NULL, HFILL } },
 	{	&hf_trace_packet_type, {
-			"Packet Type", "ipmi.trace.packet.type",
+			"Packet Type", "ipmi_trace_packet_type",
 			FT_UINT8, BASE_DEC, VALS(str_packet_types), 0x30, NULL, HFILL } },
 	{	&hf_trace_timestamp, {
-			"Timestamp", "ipmi.trace.stamp",
+			"Timestamp", "ipmi_trace_stamp",
 			FT_RELATIVE_TIME, BASE_NONE, NULL, 0, NULL, HFILL } },
 	{	&hf_trace_timestamp_sec, {
-			"Seconds part", "ipmi.trace.stamp.sec",
+			"Seconds part", "ipmi_trace_stamp_sec",
 			FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL } },
 	{	&hf_trace_timestamp_msec, {
-			"Milliseconds part", "ipmi.trace.stamp.msec",
+			"Milliseconds part", "ipmi_trace_stamp_msec",
 			FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL } },
 	{	&hf_trace_data_type, {
-			"Trace Data Type", "ipmi.trace.data.type",
+			"Trace Data Type", "ipmi_trace_data_type",
 			FT_UINT8, BASE_HEX, VALS(str_protocol_types), 0, NULL, HFILL } },
 	{	&hf_trace_protocol_data, {
-			"Additional protocol specific data", "ipmi.trace.proto.data",
+			"Additional protocol specific data", "ipmi_trace_proto_data",
 			FT_UINT16, BASE_HEX, NULL, 0, NULL, HFILL } },
 	{	&hf_trace_ipmb_link_num, {
-			"Radial IPMB Link Number", "ipmi.trace.ipmb.link.num",
+			"Radial IPMB Link Number", "ipmi_trace_ipmb_link_num",
 			FT_UINT16, BASE_DEC_HEX, NULL, 0x003F, NULL, HFILL } },
 	{	&hf_trace_ipmb_red_chn, {
-			"Redundant Channel Indicator", "ipmi.trace.ipmb.red.chn",
+			"Redundant Channel Indicator", "ipmi_trace_ipmb_red_chn",
 			FT_UINT16, BASE_DEC, VALS(str_redund_chns), 0x0040, NULL, HFILL } },
 	{	&hf_trace_dir, {
-			"Direction", "ipmi.trace.dir",
+			"Direction", "ipmi_trace_dir",
 			FT_UINT16, BASE_DEC, VALS(str_trace_dirs), 0x0080, NULL, HFILL } },
 	{	&hf_trace_data_len, {
-			"Data length", "ipmi.trace.data.len",
+			"Data length", "ipmi_trace_data_len",
 			FT_UINT8, BASE_DEC_HEX, NULL, 0, NULL, HFILL } },
 	{	&hf_trace_notify_format, {
-			"Data format", "ipmi.trace.data.format",
+			"Data format", "ipmi_trace_data_format",
 			FT_UINT8, BASE_HEX, VALS(str_ipmb_notify_formats), 0, NULL, HFILL } },
 	{	&hf_trace_ipmb_state, {
-			"State Change Information", "ipmi.trace.ipmb.state",
+			"State Change Information", "ipmi_trace_ipmb_state",
 			FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL } },
 	{	&hf_trace_ipmb_ovr_state, {
-			"IPMB Override status", "ipmi.trace.ipmb.state.ovr",
+			"IPMB Override status", "ipmi_trace_ipmb_state_ovr",
 			FT_UINT8, BASE_DEC, VALS(str_ipmb_ovr_statuses), 0x8, NULL, HFILL } },
 	{	&hf_trace_ipmb_loc_state, {
-			"IPMB Local status", "ipmi.trace.ipmb.state.loc",
+			"IPMB Local status", "ipmi_trace_ipmb_state_loc",
 			FT_UINT8, BASE_DEC, VALS(str_ipmb_loc_statuses), 0x7, NULL, HFILL } },
 };
 

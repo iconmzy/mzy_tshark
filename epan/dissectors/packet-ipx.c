@@ -1267,264 +1267,264 @@ proto_register_ipx(void)
 {
 	static hf_register_info hf_ipx[] = {
 		{ &hf_ipx_checksum,
-		{ "Checksum",		"ipx.checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
+		{ "Checksum",		"ipx_checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_src,
-		{ "Source Address",	"ipx.src", FT_STRING, BASE_NONE, NULL, 0x0,
+		{ "Source Address",	"ipx_src", FT_STRING, BASE_NONE, NULL, 0x0,
 		  "Source IPX Address  \"network.node\"", HFILL }},
 
 		{ &hf_ipx_dst,
-		{ "Destination Address",	"ipx.dst", FT_STRING, BASE_NONE, NULL, 0x0,
+		{ "Destination Address",	"ipx_dst", FT_STRING, BASE_NONE, NULL, 0x0,
 		  "Destination IPX Address  \"network.node\"", HFILL }},
 		{ &hf_ipx_addr,
-		{ "Src/Dst Address",	"ipx.addr", FT_STRING, BASE_NONE, NULL, 0x0,
+		{ "Src/Dst Address",	"ipx_addr", FT_STRING, BASE_NONE, NULL, 0x0,
 		  "Source or Destination IPX Address  \"network.node\"", HFILL }},
 
 		{ &hf_ipx_len,
-		{ "Length",		"ipx.len", FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_byte_bytes, 0x0,
+		{ "Length",		"ipx_len", FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_byte_bytes, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_hops,
-		{ "Transport Control (Hops)", "ipx.hops", FT_UINT8, BASE_DEC, NULL, 0x0,
+		{ "Transport Control (Hops)", "ipx_hops", FT_UINT8, BASE_DEC, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_packet_type,
-		{ "Packet Type",	"ipx.packet_type", FT_UINT8, BASE_HEX, VALS(ipx_packet_type_vals),
+		{ "Packet Type",	"ipx_packet_type", FT_UINT8, BASE_HEX, VALS(ipx_packet_type_vals),
 			0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_dnet,
-		{ "Destination Network","ipx.dst.net", FT_IPXNET, BASE_NONE, NULL, 0x0,
+		{ "Destination Network","ipx_dst_net", FT_IPXNET, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_dnode,
-		{ "Destination Node",	"ipx.dst.node", FT_ETHER, BASE_NONE, NULL, 0x0,
+		{ "Destination Node",	"ipx_dst_node", FT_ETHER, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_dsocket,
-		{ "Destination Socket",	"ipx.dst.socket", FT_UINT16, BASE_HEX|BASE_EXT_STRING,
+		{ "Destination Socket",	"ipx_dst_socket", FT_UINT16, BASE_HEX|BASE_EXT_STRING,
 			&ipx_socket_vals_ext, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_snet,
-		{ "Source Network","ipx.src.net", FT_IPXNET, BASE_NONE, NULL, 0x0,
+		{ "Source Network","ipx_src_net", FT_IPXNET, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_snode,
-		{ "Source Node",	"ipx.src.node", FT_ETHER, BASE_NONE, NULL, 0x0,
+		{ "Source Node",	"ipx_src_node", FT_ETHER, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_ssocket,
-		{ "Source Socket",	"ipx.src.socket", FT_UINT16, BASE_HEX|BASE_EXT_STRING,
+		{ "Source Socket",	"ipx_src_socket", FT_UINT16, BASE_HEX|BASE_EXT_STRING,
 			&ipx_socket_vals_ext, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_net,
-		{ "Source or Destination Network","ipx.net", FT_IPXNET, BASE_NONE, NULL, 0x0,
+		{ "Source or Destination Network","ipx_net", FT_IPXNET, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_node,
-		{ "Source or Destination Node", "ipx.node", FT_ETHER, BASE_NONE, NULL, 0x0,
+		{ "Source or Destination Node", "ipx_node", FT_ETHER, BASE_NONE, NULL, 0x0,
 			NULL, HFILL }},
 
 		{ &hf_ipx_socket,
-		{ "Source or Destination Socket", "ipx.socket", FT_UINT16, BASE_HEX|BASE_EXT_STRING,
+		{ "Source or Destination Socket", "ipx_socket", FT_UINT16, BASE_HEX|BASE_EXT_STRING,
 			&ipx_socket_vals_ext, 0x0,
 			NULL, HFILL }},
 	};
 
 	static hf_register_info hf_spx[] = {
 		{ &hf_spx_connection_control,
-		{ "Connection Control",	"spx.ctl",
+		{ "Connection Control",	"spx_ctl",
 		  FT_UINT8,	BASE_HEX,	VALS(conn_vals),	0xF0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_connection_control_sys,
-		{ "System Packet",	"spx.ctl.sys",
+		{ "System Packet",	"spx_ctl_sys",
 		  FT_BOOLEAN,	8,	NULL,	SPX_SYS_PACKET,
 		  NULL, HFILL }},
 
 		{ &hf_spx_connection_control_send_ack,
-		{ "Send Ack",		"spx.ctl.send_ack",
+		{ "Send Ack",		"spx_ctl_send_ack",
 		  FT_BOOLEAN,	8,	NULL,	SPX_SEND_ACK,
 		  NULL, HFILL }},
 
 		{ &hf_spx_connection_control_attn,
-		{ "Attention",		"spx.ctl.attn",
+		{ "Attention",		"spx_ctl_attn",
 		  FT_BOOLEAN,	8,	NULL,	SPX_ATTN,
 		  NULL, HFILL }},
 
 		{ &hf_spx_connection_control_eom,
-		{ "End of Message",	"spx.ctl.eom",
+		{ "End of Message",	"spx_ctl_eom",
 		  FT_BOOLEAN,	8,	NULL,	SPX_EOM,
 		  NULL, HFILL }},
 
 		{ &hf_spx_connection_control_v2,
-		{ "SPXII Packet",	"spx.ctl.v2",
+		{ "SPXII Packet",	"spx_ctl_v2",
 		  FT_BOOLEAN,	8,	NULL,	SPX_VII_PACKET,
 		  NULL, HFILL }},
 
 		{ &hf_spx_connection_control_neg_size,
-		{ "Negotiate Size",	"spx.ctl.neg_size",
+		{ "Negotiate Size",	"spx_ctl_neg_size",
 		  FT_BOOLEAN,	8,	NULL,	SPX_NEG_SIZE,
 		  NULL, HFILL }},
 
 		{ &hf_spx_connection_control_reserved,
-		{ "Reserved",		"spx.ctl.reserved",
+		{ "Reserved",		"spx_ctl_reserved",
 		  FT_BOOLEAN,	8,	NULL,	SPX_RESERVED,
 		  NULL, HFILL }},
 
 		{ &hf_spx_connection_control_ext_header,
-		{ "Extended Header",	"spx.ctl.ext_header",
+		{ "Extended Header",	"spx_ctl_ext_header",
 		  FT_BOOLEAN,	8,	NULL,	SPX_EXT_HEADER,
 		  NULL, HFILL }},
 
 		{ &hf_spx_datastream_type,
-		{ "Datastream Type",	       	"spx.type",
+		{ "Datastream Type",	       	"spx_type",
 		  FT_UINT8,	BASE_HEX,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_src_id,
-		{ "Source Connection ID",	"spx.src",
+		{ "Source Connection ID",	"spx_src",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_dst_id,
-		{ "Destination Connection ID",	"spx.dst",
+		{ "Destination Connection ID",	"spx_dst",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_seq_nr,
-		{ "Sequence Number",		"spx.seq",
+		{ "Sequence Number",		"spx_seq",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_ack_nr,
-		{ "Acknowledgment Number",	"spx.ack",
+		{ "Acknowledgment Number",	"spx_ack",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_all_nr,
-		{ "Allocation Number",		"spx.alloc",
+		{ "Allocation Number",		"spx_alloc",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_neg_size,
-		{ "Negotiation Size",		"spx.neg_size",
+		{ "Negotiation Size",		"spx_neg_size",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_rexmt_frame,
-		{ "Retransmitted Frame Number",	"spx.rexmt_frame",
+		{ "Retransmitted Frame Number",	"spx_rexmt_frame",
 		  FT_FRAMENUM,	BASE_NONE,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_spx_rexmt_data,
-		{ "Retransmitted data",	"spx.rexmt_data",
+		{ "Retransmitted data",	"spx_rexmt_data",
 		  FT_BYTES,	BASE_NONE,	NULL,	0x0,
 		  NULL, HFILL }},
 	};
 
 	static hf_register_info hf_ipxrip[] = {
 		{ &hf_ipxrip_request,
-		{ "Request",			"ipxrip.request",
+		{ "Request",			"ipxrip_request",
 		  FT_BOOLEAN,	BASE_NONE,	NULL,	0x0,
 		  "TRUE if IPX RIP request", HFILL }},
 
 		{ &hf_ipxrip_response,
-		{ "Response",			"ipxrip.response",
+		{ "Response",			"ipxrip_response",
 		  FT_BOOLEAN,	BASE_NONE,	NULL,	0x0,
 		  "TRUE if IPX RIP response", HFILL }},
 
 		{ &hf_ipxrip_packet_type,
-		{ "RIP packet type",			"ipxrip.packet_type",
+		{ "RIP packet type",			"ipxrip_packet_type",
 		  FT_UINT16,	BASE_DEC,	VALS(ipxrip_packet_vals),	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_ipxrip_route_vector,
-		{ "Route Vector",			"ipxrip.route_vector",
+		{ "Route Vector",			"ipxrip_route_vector",
 		  FT_IPXNET,	BASE_NONE,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_ipxrip_hops,
-		{ "Hops",			"ipxrip.hops",
+		{ "Hops",			"ipxrip_hops",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_ipxrip_ticks,
-		{ "Ticks",			"ipxrip.ticks",
+		{ "Ticks",			"ipxrip_ticks",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 	};
 
 	static hf_register_info hf_sap[] = {
 		{ &hf_sap_request,
-		{ "Request",			"ipxsap.request",
+		{ "Request",			"ipxsap_request",
 		  FT_BOOLEAN,	BASE_NONE,	NULL,	0x0,
 		  "TRUE if SAP request", HFILL }},
 
 		{ &hf_sap_response,
-		{ "Response",			"ipxsap.response",
+		{ "Response",			"ipxsap_response",
 		  FT_BOOLEAN,	BASE_NONE,	NULL,	0x0,
 		  "TRUE if SAP response", HFILL }},
 
 		{ &hf_sap_packet_type,
-		{ "SAP packet type",		"ipxsap.packet_type",
+		{ "SAP packet type",		"ipxsap_packet_type",
 		  FT_UINT16,	BASE_DEC,	VALS(ipxsap_packet_vals), 0x0,
 		  NULL, HFILL }},
 
 		{ &hf_sap_server,
-		{ "Server",			"ipxsap.server",
+		{ "Server",			"ipxsap_server",
 		  FT_NONE,	BASE_NONE,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_sap_server_type,
-		{ "Server Type",		"ipxsap.server.type",
+		{ "Server Type",		"ipxsap_server_type",
 		  FT_UINT16,	BASE_HEX|BASE_EXT_STRING, &novell_server_vals_ext, 0x0,
 		  NULL, HFILL }},
 
 		{ &hf_sap_server_name,
-		{ "Server Name",		"ipxsap.server.name",
+		{ "Server Name",		"ipxsap_server_name",
 		  FT_STRINGZTRUNC,	BASE_NONE,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_sap_server_network,
-		{ "Network",			"ipxsap.server.network",
+		{ "Network",			"ipxsap_server_network",
 		  FT_IPXNET,	BASE_NONE,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_sap_server_node,
-		{ "Node",			"ipxsap.server.node",
+		{ "Node",			"ipxsap_server_node",
 		  FT_ETHER,	BASE_NONE,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_sap_server_socket,
-		{ "Socket",			"ipxsap.server.socket",
+		{ "Socket",			"ipxsap_server_socket",
 		  FT_UINT16,	BASE_HEX|BASE_EXT_STRING, &ipx_socket_vals_ext, 0x0,
 		  NULL, HFILL }},
 
 		{ &hf_sap_server_intermediate_networks,
-		{ "Intermediate Networks",	"ipxsap.server.intermediate_networks",
+		{ "Intermediate Networks",	"ipxsap_server_intermediate_networks",
 		  FT_UINT16,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 	};
 
 	static hf_register_info hf_ipxmsg[] = {
 		{ &hf_msg_conn,
-		{ "Connection Number",			"ipxmsg.conn",
+		{ "Connection Number",			"ipxmsg_conn",
 		  FT_UINT8,	BASE_DEC,	NULL,	0x0,
 		  NULL, HFILL }},
 
 		{ &hf_msg_sigchar,
-		{ "Signature Character",		"ipxmsg.sigchar",
+		{ "Signature Character",		"ipxmsg_sigchar",
 		  FT_CHAR,	BASE_HEX,	VALS(ipxmsg_sigchar_vals),	0x0,
 		  NULL, HFILL }}
 	};
 
 	static hf_register_info hf_serial[] = {
 		{ &hf_serial_number,
-		{ "Serial number",			"nw_serial.serial_number",
+		{ "Serial number",			"nw_serial_serial_number",
 		  FT_BYTES,	BASE_NONE,	NULL,	0x0,
 		  NULL, HFILL }},
 	};

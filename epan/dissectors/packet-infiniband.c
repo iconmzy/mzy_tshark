@@ -6238,1466 +6238,1466 @@ void proto_register_infiniband(void)
     static hf_register_info hf[] = {
         /* Local Route Header (LRH) */
         { &hf_infiniband_LRH, {
-                "Local Route Header", "infiniband.lrh",
+                "Local Route Header", "infiniband_lrh",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_virtual_lane, {
-                "Virtual Lane", "infiniband.lrh.vl",
+                "Virtual Lane", "infiniband_lrh_vl",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_link_version, {
-                "Link Version", "infiniband.lrh.lver",
+                "Link Version", "infiniband_lrh_lver",
                 FT_UINT8, BASE_DEC, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_service_level, {
-                "Service Level", "infiniband.lrh.sl",
+                "Service Level", "infiniband_lrh_sl",
                 FT_UINT8, BASE_DEC, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_reserved2, {
-                "Reserved (2 bits)", "infiniband.lrh.reserved2",
+                "Reserved (2 bits)", "infiniband_lrh_reserved2",
                 FT_UINT8, BASE_DEC, NULL, 0x0C, NULL, HFILL}
         },
         { &hf_infiniband_link_next_header, {
-                "Link Next Header", "infiniband.lrh.lnh",
+                "Link Next Header", "infiniband_lrh_lnh",
                 FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL}
         },
         { &hf_infiniband_destination_local_id, {
-                "Destination Local ID", "infiniband.lrh.dlid",
+                "Destination Local ID", "infiniband_lrh_dlid",
                 FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_reserved5, {
-                "Reserved (5 bits)", "infiniband.lrh.reserved5",
+                "Reserved (5 bits)", "infiniband_lrh_reserved5",
                 FT_UINT16, BASE_DEC, NULL, 0xF800, NULL, HFILL}
         },
         { &hf_infiniband_packet_length, {
-                "Packet Length", "infiniband.lrh.pktlen",
+                "Packet Length", "infiniband_lrh_pktlen",
                 FT_UINT16, BASE_DEC, NULL, 0x07FF, NULL, HFILL}
         },
         { &hf_infiniband_source_local_id, {
-                "Source Local ID", "infiniband.lrh.slid",
+                "Source Local ID", "infiniband_lrh_slid",
                 FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
 
         /* Global Route Header (GRH) */
         { &hf_infiniband_GRH, {
-                "Global Route Header", "infiniband.grh",
+                "Global Route Header", "infiniband_grh",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ip_version, {
-                "IP Version", "infiniband.grh.ipver",
+                "IP Version", "infiniband_grh_ipver",
                 FT_UINT8, BASE_DEC, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_traffic_class, {
-                "Traffic Class", "infiniband.grh.tclass",
+                "Traffic Class", "infiniband_grh_tclass",
                 FT_UINT16, BASE_DEC, NULL, 0x0FF0, NULL, HFILL}
         },
         { &hf_infiniband_flow_label, {
-                "Flow Label", "infiniband.grh.flowlabel",
+                "Flow Label", "infiniband_grh_flowlabel",
                 FT_UINT32, BASE_DEC, NULL, 0x000FFFFF, NULL, HFILL}
         },
         { &hf_infiniband_payload_length, {
-                "Payload Length", "infiniband.grh.paylen",
+                "Payload Length", "infiniband_grh_paylen",
                 FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_next_header, {
-                "Next Header", "infiniband.grh.nxthdr",
+                "Next Header", "infiniband_grh_nxthdr",
                 FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_hop_limit, {
-                "Hop Limit", "infiniband.grh.hoplmt",
+                "Hop Limit", "infiniband_grh_hoplmt",
                 FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_source_gid, {
-                "Source GID", "infiniband.grh.sgid",
+                "Source GID", "infiniband_grh_sgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_destination_gid, {
-                "Destination GID", "infiniband.grh.dgid",
+                "Destination GID", "infiniband_grh_dgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* Base Transport Header (BTH) */
         { &hf_infiniband_BTH, {
-                "Base Transport Header", "infiniband.bth",
+                "Base Transport Header", "infiniband_bth",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_opcode, {
-                "Opcode", "infiniband.bth.opcode",
+                "Opcode", "infiniband_bth_opcode",
                 FT_UINT8, BASE_DEC, VALS(bth_opcode_tbl), 0x0, NULL, HFILL}
         },
         { &hf_infiniband_solicited_event, {
-                "Solicited Event", "infiniband.bth.se",
+                "Solicited Event", "infiniband_bth_se",
                 FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_migreq, {
-                "MigReq", "infiniband.bth.m",
+                "MigReq", "infiniband_bth_m",
                 FT_BOOLEAN, 8, NULL, 0x40, NULL, HFILL}
         },
         { &hf_infiniband_pad_count, {
-                "Pad Count", "infiniband.bth.padcnt",
+                "Pad Count", "infiniband_bth_padcnt",
                 FT_UINT8, BASE_DEC, NULL, 0x30, NULL, HFILL}
         },
         { &hf_infiniband_transport_header_version, {
-                "Header Version", "infiniband.bth.tver",
+                "Header Version", "infiniband_bth_tver",
                 FT_UINT8, BASE_DEC, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_partition_key, {
-                "Partition Key", "infiniband.bth.p_key",
+                "Partition Key", "infiniband_bth_p_key",
                 FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_destination_qp, {
-                "Destination Queue Pair", "infiniband.bth.destqp",
+                "Destination Queue Pair", "infiniband_bth_destqp",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_acknowledge_request, {
-                "Acknowledge Request", "infiniband.bth.a",
+                "Acknowledge Request", "infiniband_bth_a",
                 FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_reserved7, {
-                "Reserved (7 bits)", "infiniband.bth.reserved7",
+                "Reserved (7 bits)", "infiniband_bth_reserved7",
                 FT_UINT8, BASE_DEC, NULL, 0x7F, NULL, HFILL}
         },
         { &hf_infiniband_packet_sequence_number, {
-                "Packet Sequence Number", "infiniband.bth.psn",
+                "Packet Sequence Number", "infiniband_bth_psn",
                 FT_UINT24, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
 
         /* Raw Header (RWH) */
         { &hf_infiniband_RWH, {
-                "Raw Header", "infiniband.rwh",
+                "Raw Header", "infiniband_rwh",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_etype, {
-                "Ethertype", "infiniband.rwh.etype",
+                "Ethertype", "infiniband_rwh_etype",
                 FT_UINT16, BASE_HEX, VALS(etype_vals), 0x0, "Type", HFILL }
         },
 
         /* Reliable Datagram Extended Transport Header (RDETH) */
         { &hf_infiniband_RDETH, {
-                "Reliable Datagram Extended Transport Header", "infiniband.rdeth",
+                "Reliable Datagram Extended Transport Header", "infiniband_rdeth",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ee_context, {
-                "E2E Context", "infiniband.rdeth.eecnxt",
+                "E2E Context", "infiniband_rdeth_eecnxt",
                 FT_UINT24, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
 
         /* Datagram Extended Transport Header (DETH) */
         { &hf_infiniband_DETH, {
-                "Datagram Extended Transport Header", "infiniband.deth",
+                "Datagram Extended Transport Header", "infiniband_deth",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_queue_key, {
-                "Queue Key", "infiniband.deth.q_key",
+                "Queue Key", "infiniband_deth_q_key",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_source_qp, {
-                "Source Queue Pair", "infiniband.deth.srcqp",
+                "Source Queue Pair", "infiniband_deth_srcqp",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* RDMA Extended Transport Header (RETH) */
         { &hf_infiniband_RETH, {
-                "RDMA Extended Transport Header", "infiniband.reth",
+                "RDMA Extended Transport Header", "infiniband_reth",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_virtual_address, {
-                "Virtual Address", "infiniband.reth.va",
+                "Virtual Address", "infiniband_reth_va",
                 FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_remote_key, {
-                "Remote Key", "infiniband.reth.r_key",
+                "Remote Key", "infiniband_reth_r_key",
                 FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_dma_length, {
-                "DMA Length", "infiniband.reth.dmalen",
+                "DMA Length", "infiniband_reth_dmalen",
                 FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
 
         /* Atomic Extended Transport Header (AtomicETH) */
         { &hf_infiniband_AtomicETH, {
-                "Atomic Extended Transport Header", "infiniband.atomiceth",
+                "Atomic Extended Transport Header", "infiniband_atomiceth",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #if 0
         { &hf_infiniband_virtual_address_AtomicETH, {
-                "Virtual Address", "infiniband.atomiceth.va",
+                "Virtual Address", "infiniband_atomiceth_va",
                 FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_remote_key_AtomicETH, {
-                "Remote Key", "infiniband.atomiceth.r_key",
+                "Remote Key", "infiniband_atomiceth_r_key",
                 FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
 #endif
         { &hf_infiniband_swap_or_add_data, {
-                "Swap (Or Add) Data", "infiniband.atomiceth.swapdt",
+                "Swap (Or Add) Data", "infiniband_atomiceth_swapdt",
                 FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_compare_data, {
-                "Compare Data", "infiniband.atomiceth.cmpdt",
+                "Compare Data", "infiniband_atomiceth_cmpdt",
                 FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
 
         /* ACK Extended Transport Header (AETH) */
         { &hf_infiniband_AETH, {
-                "ACK Extended Transport Header", "infiniband.aeth",
+                "ACK Extended Transport Header", "infiniband_aeth",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_syndrome, {
-                "Syndrome", "infiniband.aeth.syndrome",
+                "Syndrome", "infiniband_aeth_syndrome",
                 FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_syndrome_reserved, {
-                "Reserved", "infiniband.aeth.syndrome.reserved",
+                "Reserved", "infiniband_aeth_syndrome_reserved",
                 FT_UINT8, BASE_DEC, NULL, AETH_SYNDROME_RES, NULL, HFILL}
         },
         { &hf_infiniband_syndrome_opcode, {
-                "OpCode", "infiniband.aeth.syndrome.opcode",
+                "OpCode", "infiniband_aeth_syndrome_opcode",
                 FT_UINT8, BASE_DEC, VALS(aeth_syndrome_opcode_vals), AETH_SYNDROME_OPCODE, NULL, HFILL}
         },
         { &hf_infiniband_syndrome_credit_count, {
-                "Credit Count", "infiniband.aeth.syndrome.credit_count",
+                "Credit Count", "infiniband_aeth_syndrome_credit_count",
                 FT_UINT8, BASE_DEC, NULL, AETH_SYNDROME_VALUE, NULL, HFILL}
         },
         { &hf_infiniband_syndrome_timer, {
-                "Timer", "infiniband.aeth.syndrome.timer",
+                "Timer", "infiniband_aeth_syndrome_timer",
                 FT_UINT8, BASE_DEC, VALS(aeth_syndrome_timer_code_vals), AETH_SYNDROME_VALUE, NULL, HFILL}
         },
         { &hf_infiniband_syndrome_reserved_value, {
-                "Reserved", "infiniband.aeth.syndrome.reserved_value",
+                "Reserved", "infiniband_aeth_syndrome_reserved_value",
                 FT_UINT8, BASE_DEC, NULL, AETH_SYNDROME_VALUE, NULL, HFILL}
         },
         { &hf_infiniband_syndrome_error_code, {
-                "Error Code", "infiniband.aeth.syndrome.error_code",
+                "Error Code", "infiniband_aeth_syndrome_error_code",
                 FT_UINT8, BASE_DEC, VALS(aeth_syndrome_nak_error_code_vals), AETH_SYNDROME_VALUE, NULL, HFILL}
         },
         { &hf_infiniband_message_sequence_number, {
-                "Message Sequence Number", "infiniband.aeth.msn",
+                "Message Sequence Number", "infiniband_aeth_msn",
                 FT_UINT24, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
 
         /* Atomic ACK Extended Transport Header (AtomicAckETH) */
         { &hf_infiniband_AtomicAckETH, {
-                "Atomic ACK Extended Transport Header", "infiniband.atomicacketh",
+                "Atomic ACK Extended Transport Header", "infiniband_atomicacketh",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_original_remote_data, {
-                "Original Remote Data", "infiniband.atomicacketh.origremdt",
+                "Original Remote Data", "infiniband_atomicacketh_origremdt",
                 FT_UINT64, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
 
         /* Immediate Extended Transport Header (ImmDT) */
         { &hf_infiniband_IMMDT, {
-                "Immediate Data", "infiniband.immdt",
+                "Immediate Data", "infiniband_immdt",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* Invalidate Extended Transport Header (IETH) */
         { &hf_infiniband_IETH, {
-                "RKey", "infiniband.ieth",
+                "RKey", "infiniband_ieth",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* Payload */
         { &hf_infiniband_payload, {
-                "Payload", "infiniband.payload",
+                "Payload", "infiniband_payload",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_invariant_crc, {
-                "Invariant CRC", "infiniband.invariant.crc",
+                "Invariant CRC", "infiniband_invariant_crc",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_variant_crc, {
-                "Variant CRC", "infiniband.variant.crc",
+                "Variant CRC", "infiniband_variant_crc",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_raw_data, {
-                "Raw Data", "infiniband.rawdata",
+                "Raw Data", "infiniband_rawdata",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* Unknown or Vendor Specific */
         { &hf_infiniband_vendor, {
-                "Unknown/Vendor Specific Data", "infiniband.vendor",
+                "Unknown/Vendor Specific Data", "infiniband_vendor",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* Common Reserved fields */
         { &hf_infiniband_reserved, {
-                "Reserved", "infiniband.reserved",
+                "Reserved", "infiniband_reserved",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* CM REQ Header */
         {&hf_cm_req_local_comm_id, {
-                "Local Communication ID", "infiniband.cm.req",
+                "Local Communication ID", "infiniband_cm_req",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_service_id, {
-                "ServiceID", "infiniband.cm.req.serviceid",
+                "ServiceID", "infiniband_cm_req_serviceid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_service_id_prefix, {
-                "Prefix", "infiniband.cm.req.serviceid.prefix",
+                "Prefix", "infiniband_cm_req_serviceid_prefix",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_service_id_protocol, {
-                "Protocol", "infiniband.cm.req.serviceid.protocol",
+                "Protocol", "infiniband_cm_req_serviceid_protocol",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_service_id_dport, {
-                "Destination Port", "infiniband.cm.req.serviceid.dport",
+                "Destination Port", "infiniband_cm_req_serviceid_dport",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_local_ca_guid, {
-                "Local CA GUID", "infiniband.cm.req.localcaguid",
+                "Local CA GUID", "infiniband_cm_req_localcaguid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_local_qkey, {
-                "Local Q_Key", "infiniband.cm.req.localqkey",
+                "Local Q_Key", "infiniband_cm_req_localqkey",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_local_qpn, {
-                "Local QPN", "infiniband.cm.req.localqpn",
+                "Local QPN", "infiniband_cm_req_localqpn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_respo_res, {
-                "Responder Resources", "infiniband.cm.req.responderres",
+                "Responder Resources", "infiniband_cm_req_responderres",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_local_eecn, {
-                "Local EECN", "infiniband.cm.req.localeecn",
+                "Local EECN", "infiniband_cm_req_localeecn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_init_depth, {
-                "Initiator Depth", "infiniband.cm.req.initdepth",
+                "Initiator Depth", "infiniband_cm_req_initdepth",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_remote_eecn, {
-                "Remote EECN", "infiniband.cm.req.remoteeecn",
+                "Remote EECN", "infiniband_cm_req_remoteeecn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_remote_cm_resp_to, {
-                "Remote CM Response Timeout", "infiniband.cm.req.remoteresptout",
+                "Remote CM Response Timeout", "infiniband_cm_req_remoteresptout",
                 FT_UINT8, BASE_HEX, NULL, 0xF8, NULL, HFILL}
         },
         {&hf_cm_req_transp_serv_type, {
-                "Transport Service Type", "infiniband.cm.req.transpsvctype",
+                "Transport Service Type", "infiniband_cm_req_transpsvctype",
                 FT_UINT8, BASE_HEX, NULL, 0x06, NULL, HFILL}
         },
         {&hf_cm_req_e2e_flow_ctrl, {
-                "End-to-End Flow Control", "infiniband.cm.req.e2eflowctrl",
+                "End-to-End Flow Control", "infiniband_cm_req_e2eflowctrl",
                 FT_UINT8, BASE_HEX, NULL, 0x1, NULL, HFILL}
         },
         {&hf_cm_req_start_psn, {
-                "Starting PSN", "infiniband.cm.req.startpsn",
+                "Starting PSN", "infiniband_cm_req_startpsn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_local_cm_resp_to, {
-                "Local CM Response Timeout", "infiniband.cm.req.localresptout",
+                "Local CM Response Timeout", "infiniband_cm_req_localresptout",
                 FT_UINT8, BASE_HEX, NULL, 0xf8, NULL, HFILL}
         },
         {&hf_cm_req_retry_count, {
-                "Retry Count", "infiniband.cm.req.retrcount",
+                "Retry Count", "infiniband_cm_req_retrcount",
                 FT_UINT8, BASE_HEX, NULL, 0x7, NULL, HFILL}
         },
         {&hf_cm_req_pkey, {
-                "Partition Key", "infiniband.cm.req.pkey",
+                "Partition Key", "infiniband_cm_req_pkey",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_path_pp_mtu, {
-                "Path Packet Payload MTU", "infiniband.cm.req.pppmtu",
+                "Path Packet Payload MTU", "infiniband_cm_req_pppmtu",
                 FT_UINT8, BASE_HEX, NULL, 0xf0, NULL, HFILL}
         },
         {&hf_cm_req_rdc_exists, {
-                "RDC Exists", "infiniband.cm.req.rdcexist",
+                "RDC Exists", "infiniband_cm_req_rdcexist",
                 FT_UINT8, BASE_HEX, NULL, 0x8, NULL, HFILL}
         },
         {&hf_cm_req_rnr_retry_count, {
-                "RNR Retry Count", "infiniband.cm.req.rnrretrcount",
+                "RNR Retry Count", "infiniband_cm_req_rnrretrcount",
                 FT_UINT8, BASE_HEX, NULL, 0x7, NULL, HFILL}
         },
         {&hf_cm_req_max_cm_retries, {
-                "Max CM Retries", "infiniband.cm.req.maxcmretr",
+                "Max CM Retries", "infiniband_cm_req_maxcmretr",
                 FT_UINT8, BASE_HEX, NULL, 0xf0, NULL, HFILL}
         },
         {&hf_cm_req_srq, {
-                "SRQ", "infiniband.cm.req.srq",
+                "SRQ", "infiniband_cm_req_srq",
                 FT_UINT8, BASE_HEX, NULL, 0x8, NULL, HFILL}
         },
         {&hf_cm_req_extended_transport, {
-                "Extended Transport", "infiniband.cm.req.ext_transport",
+                "Extended Transport", "infiniband_cm_req_ext_transport",
                 FT_UINT8, BASE_HEX, NULL, 0x7, NULL, HFILL}
         },
         {&hf_cm_req_primary_local_lid, {
-                "Primary Local Port LID", "infiniband.cm.req.prim_locallid",
+                "Primary Local Port LID", "infiniband_cm_req_prim_locallid",
                 FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_primary_remote_lid, {
-                "Primary Remote Port LID", "infiniband.cm.req.prim_remotelid",
+                "Primary Remote Port LID", "infiniband_cm_req_prim_remotelid",
                 FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_primary_local_gid, {
-                "Primary Local Port GID", "infiniband.cm.req.prim_localgid",
+                "Primary Local Port GID", "infiniband_cm_req_prim_localgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_primary_remote_gid, {
-                "Primary Remote Port GID", "infiniband.cm.req.prim_remotegid",
+                "Primary Remote Port GID", "infiniband_cm_req_prim_remotegid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_primary_local_gid_ipv4, {
-                "Primary Local Port GID", "infiniband.cm.req.prim_localgid_ipv4",
+                "Primary Local Port GID", "infiniband_cm_req_prim_localgid_ipv4",
                 FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_primary_remote_gid_ipv4, {
-                "Primary Remote Port GID", "infiniband.cm.req.prim_remotegid_ipv4",
+                "Primary Remote Port GID", "infiniband_cm_req_prim_remotegid_ipv4",
                 FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_primary_flow_label, {
-                "Primary Flow Label", "infiniband.cm.req.prim_flowlabel",
+                "Primary Flow Label", "infiniband_cm_req_prim_flowlabel",
                 FT_UINT32, BASE_HEX, NULL, 0xfffff000, NULL, HFILL}
         },
         {&hf_cm_req_primary_reserved0, {
-                "Reserved", "infiniband.cm.req.prim_reserved0",
+                "Reserved", "infiniband_cm_req_prim_reserved0",
                 FT_UINT32, BASE_HEX, NULL, 0x0fc0, NULL, HFILL}
         },
         {&hf_cm_req_primary_packet_rate, {
-                "Primary Packet Rate", "infiniband.cm.req.prim_pktrate",
+                "Primary Packet Rate", "infiniband_cm_req_prim_pktrate",
                 FT_UINT32, BASE_HEX, NULL, 0x3f, NULL, HFILL}
         },
         {&hf_cm_req_primary_traffic_class, {
-                "Primary Traffic Class", "infiniband.cm.req.prim_tfcclass",
+                "Primary Traffic Class", "infiniband_cm_req_prim_tfcclass",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_primary_hop_limit, {
-                "Primary Hop Limit", "infiniband.cm.req.prim_hoplim",
+                "Primary Hop Limit", "infiniband_cm_req_prim_hoplim",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_primary_sl, {
-                "Primary SL", "infiniband.cm.req.prim_sl",
+                "Primary SL", "infiniband_cm_req_prim_sl",
                 FT_UINT8, BASE_HEX, NULL, 0xf0, NULL, HFILL}
         },
         {&hf_cm_req_primary_subnet_local, {
-                "Primary Subnet Local", "infiniband.cm.req.prim_subnetlocal",
+                "Primary Subnet Local", "infiniband_cm_req_prim_subnetlocal",
                 FT_UINT8, BASE_HEX, NULL, 0x8, NULL, HFILL}
         },
         {&hf_cm_req_primary_reserved1, {
-                "Reserved", "infiniband.cm.req.prim_reserved1",
+                "Reserved", "infiniband_cm_req_prim_reserved1",
                 FT_UINT8, BASE_HEX, NULL, 0x7, NULL, HFILL}
         },
         {&hf_cm_req_primary_local_ack_to, {
-                "Primary Local ACK Timeout", "infiniband.cm.req.prim_localacktout",
+                "Primary Local ACK Timeout", "infiniband_cm_req_prim_localacktout",
                 FT_UINT8, BASE_HEX, NULL, 0xf8, NULL, HFILL}
         },
         {&hf_cm_req_primary_reserved2, {
-                "Reserved", "infiniband.cm.req.prim_reserved2",
+                "Reserved", "infiniband_cm_req_prim_reserved2",
                 FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL}
         },
         {&hf_cm_req_alt_local_lid, {
-                "Alternate Local Port LID", "infiniband.cm.req.alt_locallid",
+                "Alternate Local Port LID", "infiniband_cm_req_alt_locallid",
                 FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_alt_remote_lid, {
-                "Alternate Remote Port LID", "infiniband.cm.req.alt_remotelid",
+                "Alternate Remote Port LID", "infiniband_cm_req_alt_remotelid",
                 FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_alt_local_gid, {
-                "Alternate Local Port GID", "infiniband.cm.req.alt_localgid",
+                "Alternate Local Port GID", "infiniband_cm_req_alt_localgid",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_alt_remote_gid, {
-                "Alternate Remote Port GID", "infiniband.cm.req.alt_remotegid",
+                "Alternate Remote Port GID", "infiniband_cm_req_alt_remotegid",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_flow_label, {
-                "Alternate Flow Label", "infiniband.cm.req.alt_flowlabel",
+                "Alternate Flow Label", "infiniband_cm_req_alt_flowlabel",
                 FT_UINT32, BASE_HEX, NULL, 0xfffff000, NULL, HFILL}
         },
         {&hf_cm_req_alt_reserved0, {
-                "Reserved", "infiniband.cm.req.alt_reserved0",
+                "Reserved", "infiniband_cm_req_alt_reserved0",
                 FT_UINT32, BASE_HEX, NULL, 0x0fc0, NULL, HFILL}
         },
         {&hf_cm_req_packet_rate, {
-                "Alternate Packet Rate", "infiniband.cm.req.alt_pktrate",
+                "Alternate Packet Rate", "infiniband_cm_req_alt_pktrate",
                 FT_UINT32, BASE_HEX, NULL, 0x3f, NULL, HFILL}
         },
         {&hf_cm_req_alt_traffic_class, {
-                "Alternate Traffic Class", "infiniband.cm.req.alt_tfcclass",
+                "Alternate Traffic Class", "infiniband_cm_req_alt_tfcclass",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_alt_hop_limit, {
-                "Alternate Hop Limit", "infiniband.cm.req.alt_hoplim",
+                "Alternate Hop Limit", "infiniband_cm_req_alt_hoplim",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_SL, {
-                "Alternate SL", "infiniband.cm.req.alt_sl",
+                "Alternate SL", "infiniband_cm_req_alt_sl",
                 FT_UINT8, BASE_HEX, NULL, 0xf0, NULL, HFILL}
         },
         {&hf_cm_req_subnet_local, {
-                "Alternate Subnet Local", "infiniband.cm.req.alt_subnetlocal",
+                "Alternate Subnet Local", "infiniband_cm_req_alt_subnetlocal",
                 FT_UINT8, BASE_HEX, NULL, 0x8, NULL, HFILL}
         },
         {&hf_cm_req_alt_reserved1, {
-                "Reserved", "infiniband.cm.req.alt_reserved1",
+                "Reserved", "infiniband_cm_req_alt_reserved1",
                 FT_UINT8, BASE_HEX, NULL, 0x7, NULL, HFILL}
         },
         {&hf_cm_req_local_ACK_timeout, {
-                "Alternate Local ACK Timeout", "infiniband.cm.req.alt_localacktout",
+                "Alternate Local ACK Timeout", "infiniband_cm_req_alt_localacktout",
                 FT_UINT8, BASE_HEX, NULL, 0xf8, NULL, HFILL}
         },
         {&hf_cm_req_alt_reserved2, {
-                "Reserved", "infiniband.cm.req.alt_reserved1",
+                "Reserved", "infiniband_cm_req_alt_reserved1",
                 FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL}
         },
         {&hf_cm_req_private_data, {
-                "PrivateData", "infiniband.cm.req.private",
+                "PrivateData", "infiniband_cm_req_private",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_req_msg, {
-                "IP CM Request Msg", "infiniband.cm.req.ip_cm",
+                "IP CM Request Msg", "infiniband_cm_req_ip_cm",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_majv, {
-                "IP CM Major Version", "infiniband.cm.req.ip_cm.majv",
+                "IP CM Major Version", "infiniband_cm_req_ip_cm_majv",
                 FT_UINT8, BASE_HEX, NULL, 0xf0, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_minv, {
-                "IP CM Minor Version", "infiniband.cm.req.ip_cm.minv",
+                "IP CM Minor Version", "infiniband_cm_req_ip_cm_minv",
                 FT_UINT8, BASE_HEX, NULL, 0x0f, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_ipv, {
-                "IP CM IP Version", "infiniband.cm.req.ip_cm.ipv",
+                "IP CM IP Version", "infiniband_cm_req_ip_cm_ipv",
                 FT_UINT8, BASE_HEX, NULL, 0xf0, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_res, {
-                "IP CM Reserved", "infiniband.cm.req.ip_cm.reserved",
+                "IP CM Reserved", "infiniband_cm_req_ip_cm_reserved",
                 FT_UINT8, BASE_HEX, NULL, 0x0f, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_sport, {
-                "IP CM Source Port", "infiniband.cm.req.ip_cm.sport",
+                "IP CM Source Port", "infiniband_cm_req_ip_cm_sport",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_sip6, {
-                "IP CM Source IP", "infiniband.cm.req.ip_cm.sip6",
+                "IP CM Source IP", "infiniband_cm_req_ip_cm_sip6",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_dip6, {
-                "IP CM Destination IP", "infiniband.cm.req.ip_cm.dip6",
+                "IP CM Destination IP", "infiniband_cm_req_ip_cm_dip6",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_sip4, {
-                "IP CM Source IP", "infiniband.cm.req.ip_cm.sip4",
+                "IP CM Source IP", "infiniband_cm_req_ip_cm_sip4",
                 FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_req_ip_cm_dip4, {
-                "IP CM Destination IP", "infiniband.cm.req.ip_cm.dip4",
+                "IP CM Destination IP", "infiniband_cm_req_ip_cm_dip4",
                 FT_IPv4, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_ip_cm_req_consumer_private_data, {
-                "IP CM Consumer PrivateData", "infiniband.cm.req.ip_cm.private",
+                "IP CM Consumer PrivateData", "infiniband_cm_req_ip_cm_private",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* CM REP Header */
         {&hf_cm_rep_localcommid, {
-                "Local Communication ID", "infiniband.cm.rep",
+                "Local Communication ID", "infiniband_cm_rep",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_remotecommid, {
-                "Remote Communication ID", "infiniband.cm.rep.remotecommid",
+                "Remote Communication ID", "infiniband_cm_rep_remotecommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_localqkey, {
-                "Local Q_Key", "infiniband.cm.rep.localqkey",
+                "Local Q_Key", "infiniband_cm_rep_localqkey",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_localqpn, {
-                "Local QPN", "infiniband.cm.rep.localqpn",
+                "Local QPN", "infiniband_cm_rep_localqpn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_localeecontnum, {
-                "Local EE Context Number", "infiniband.cm.rep.localeecn",
+                "Local EE Context Number", "infiniband_cm_rep_localeecn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_startingpsn, {
-                "Starting PSN", "infiniband.cm.rep.startpsn",
+                "Starting PSN", "infiniband_cm_rep_startpsn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_responderres, {
-                "Responder Resources", "infiniband.cm.rep.respres",
+                "Responder Resources", "infiniband_cm_rep_respres",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_initiatordepth, {
-                "Initiator Depth", "infiniband.cm.rep.initdepth",
+                "Initiator Depth", "infiniband_cm_rep_initdepth",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_tgtackdelay, {
-                "Target ACK Delay", "infiniband.cm.rep.tgtackdelay",
+                "Target ACK Delay", "infiniband_cm_rep_tgtackdelay",
                 FT_UINT8, BASE_HEX, NULL, 0xf8, NULL, HFILL}
         },
         {&hf_cm_rep_failoveracc, {
-                "Failover Accepted", "infiniband.cm.rep.failoveracc",
+                "Failover Accepted", "infiniband_cm_rep_failoveracc",
                 FT_UINT8, BASE_HEX, NULL, 0x6, NULL, HFILL}
         },
         {&hf_cm_rep_e2eflowctl, {
-                "End-To-End Flow Control", "infiniband.cm.rep.e2eflowctrl",
+                "End-To-End Flow Control", "infiniband_cm_rep_e2eflowctrl",
                 FT_UINT8, BASE_HEX, NULL, 0x1, NULL, HFILL}
         },
         {&hf_cm_rep_rnrretrycount, {
-                "RNR Retry Count", "infiniband.cm.rep.rnrretrcount",
+                "RNR Retry Count", "infiniband_cm_rep_rnrretrcount",
                 FT_UINT8, BASE_HEX, NULL, 0xe0, NULL, HFILL}
         },
         {&hf_cm_rep_srq, {
-                "SRQ", "infiniband.cm.rep.srq",
+                "SRQ", "infiniband_cm_rep_srq",
                 FT_UINT8, BASE_HEX, NULL, 0x10, NULL, HFILL}
         },
         {&hf_cm_rep_reserved, {
-                "Reserved", "infiniband.cm.rep.reserved",
+                "Reserved", "infiniband_cm_rep_reserved",
                 FT_UINT8, BASE_HEX, NULL, 0x0f, NULL, HFILL}
         },
         {&hf_cm_rep_localcaguid, {
-                "Local CA GUID", "infiniband.cm.rep.localcaguid",
+                "Local CA GUID", "infiniband_cm_rep_localcaguid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rep_privatedata, {
-                "PrivateData", "infiniband.cm.rep.private",
+                "PrivateData", "infiniband_cm_rep_private",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* IB CM RTU Header */
         {&hf_cm_rtu_localcommid, {
-                "Local Communication ID", "infiniband.cm.rtu.localcommid",
+                "Local Communication ID", "infiniband_cm_rtu_localcommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rtu_remotecommid, {
-                "Remote Communication ID", "infiniband.cm.rtu.remotecommid",
+                "Remote Communication ID", "infiniband_cm_rtu_remotecommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rtu_privatedata, {
-                "PrivateData", "infiniband.cm.rtu.private",
+                "PrivateData", "infiniband_cm_rtu_private",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* CM REJ Header */
         {&hf_cm_rej_local_commid, {
-                "Local Communication ID", "infiniband.cm.rej.localcommid",
+                "Local Communication ID", "infiniband_cm_rej_localcommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rej_remote_commid, {
-                "Remote Communication ID", "infiniband.cm.rej.remotecommid",
+                "Remote Communication ID", "infiniband_cm_rej_remotecommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rej_msg_rej, {
-                "Message REJected", "infiniband.cm.rej.msgrej",
+                "Message REJected", "infiniband_cm_rej_msgrej",
                 FT_UINT8, BASE_HEX, NULL, 0xc0, NULL, HFILL}
         },
         {&hf_cm_rej_msg_reserved0, {
-                "Reserved", "infiniband.cm.rej.reserved0",
+                "Reserved", "infiniband_cm_rej_reserved0",
                 FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL}
         },
         {&hf_cm_rej_rej_info_len, {
-                "Reject Info Length", "infiniband.cm.rej.rejinfolen",
+                "Reject Info Length", "infiniband_cm_rej_rejinfolen",
                 FT_UINT8, BASE_HEX, NULL, 0xfe, NULL, HFILL}
         },
         {&hf_cm_rej_msg_reserved1, {
-                "Reserved", "infiniband.cm.rej.reserved1",
+                "Reserved", "infiniband_cm_rej_reserved1",
                 FT_UINT8, BASE_HEX, NULL, 0x01, NULL, HFILL}
         },
         {&hf_cm_rej_reason, {
-                "Reason", "infiniband.cm.rej.reason",
+                "Reason", "infiniband_cm_rej_reason",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rej_add_rej_info, {
-                "Additional Reject Information (ARI)", "infiniband.cm.rej.ari",
+                "Additional Reject Information (ARI)", "infiniband_cm_rej_ari",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_rej_private_data, {
-                "PrivateData", "infiniband.cm.rej.private",
+                "PrivateData", "infiniband_cm_rej_private",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* IB CM DREQ Header */
         {&hf_cm_dreq_localcommid, {
-                "Local Communication ID", "infiniband.cm.dreq.localcommid",
+                "Local Communication ID", "infiniband_cm_dreq_localcommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_dreq_remotecommid, {
-                "Remote Communication ID", "infiniband.cm.dreq.remotecommid",
+                "Remote Communication ID", "infiniband_cm_dreq_remotecommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_dreq_remote_qpn, {
-                "Remote QPN/EECN", "infiniband.cm.req.remoteqpneecn",
+                "Remote QPN/EECN", "infiniband_cm_req_remoteqpneecn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_dreq_privatedata, {
-                "PrivateData", "infiniband.cm.dreq.private",
+                "PrivateData", "infiniband_cm_dreq_private",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* IB CM DRSP Header */
         {&hf_cm_drsp_localcommid, {
-                "Local Communication ID", "infiniband.cm.drsp.localcommid",
+                "Local Communication ID", "infiniband_cm_drsp_localcommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_drsp_remotecommid, {
-                "Remote Communication ID", "infiniband.cm.drsp.remotecommid",
+                "Remote Communication ID", "infiniband_cm_drsp_remotecommid",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         {&hf_cm_drsp_privatedata, {
-                "PrivateData", "infiniband.cm.drsp.private",
+                "PrivateData", "infiniband_cm_drsp_private",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* MAD Base Header */
         { &hf_infiniband_MAD, {
-                "MAD (Management Datagram) Common Header", "infiniband.mad",
+                "MAD (Management Datagram) Common Header", "infiniband_mad",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_base_version, {
-                "Base Version", "infiniband.mad.baseversion",
+                "Base Version", "infiniband_mad_baseversion",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_mgmt_class, {
-                "Management Class", "infiniband.mad.mgmtclass",
+                "Management Class", "infiniband_mad_mgmtclass",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_class_version, {
-                "Class Version", "infiniband.mad.classversion",
+                "Class Version", "infiniband_mad_classversion",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_method, {
-                "Method", "infiniband.mad.method",
+                "Method", "infiniband_mad_method",
                 FT_UINT8, BASE_HEX, VALS(mad_method_str), 0x0, NULL, HFILL}
         },
         { &hf_infiniband_status, {
-                "Status", "infiniband.mad.status",
+                "Status", "infiniband_mad_status",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_class_specific, {
-                "Class Specific", "infiniband.mad.classspecific",
+                "Class Specific", "infiniband_mad_classspecific",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_transaction_id, {
-                "Transaction ID", "infiniband.mad.transactionid",
+                "Transaction ID", "infiniband_mad_transactionid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_attribute_id, {
-                "Attribute ID", "infiniband.mad.attributeid",
+                "Attribute ID", "infiniband_mad_attributeid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_attribute_modifier, {
-                "Attribute Modifier", "infiniband.mad.attributemodifier",
+                "Attribute Modifier", "infiniband_mad_attributemodifier",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_data, {
-                "MAD Data Payload", "infiniband.mad.data",
+                "MAD Data Payload", "infiniband_mad_data",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* RMPP Header */
         { &hf_infiniband_RMPP, {
-                "RMPP (Reliable Multi-Packet Transaction Protocol)", "infiniband.rmpp",
+                "RMPP (Reliable Multi-Packet Transaction Protocol)", "infiniband_rmpp",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_rmpp_version, {
-                "RMPP Type", "infiniband.rmpp.rmppversion",
+                "RMPP Type", "infiniband_rmpp_rmppversion",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_rmpp_type, {
-                "RMPP Type", "infiniband.rmpp.rmpptype",
+                "RMPP Type", "infiniband_rmpp_rmpptype",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_r_resp_time, {
-                "R Resp Time", "infiniband.rmpp.rresptime",
+                "R Resp Time", "infiniband_rmpp_rresptime",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_rmpp_flags, {
-                "RMPP Flags", "infiniband.rmpp.rmppflags",
+                "RMPP Flags", "infiniband_rmpp_rmppflags",
                 FT_UINT8, BASE_HEX, VALS(RMPP_Flags), 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_rmpp_status, {
-                "RMPP Status", "infiniband.rmpp.rmppstatus",
+                "RMPP Status", "infiniband_rmpp_rmppstatus",
                 FT_UINT8, BASE_HEX, VALS(RMPP_Status), 0x0, NULL, HFILL}
         },
         { &hf_infiniband_rmpp_data1, {
-                "RMPP Data 1", "infiniband.rmpp.data1",
+                "RMPP Data 1", "infiniband_rmpp_data1",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_rmpp_data2, {
-                "RMPP Data 2", "infiniband.rmpp.data2",
+                "RMPP Data 2", "infiniband_rmpp_data2",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
     /* RMPP Data */
 #if 0
         { &hf_infiniband_RMPP_DATA, {
-                "RMPP Data (Reliable Multi-Packet Transaction Protocol)", "infiniband.rmpp.data",
+                "RMPP Data (Reliable Multi-Packet Transaction Protocol)", "infiniband_rmpp_data",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #endif
         { &hf_infiniband_segment_number, {
-                "Segment Number", "infiniband.rmpp.segmentnumber",
+                "Segment Number", "infiniband_rmpp_segmentnumber",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_payload_length32, {
-                "Payload Length", "infiniband.rmpp.payloadlength",
+                "Payload Length", "infiniband_rmpp_payloadlength",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_transferred_data, {
-                "Transferred Data", "infiniband.rmpp.transferreddata",
+                "Transferred Data", "infiniband_rmpp_transferreddata",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* RMPP ACK */
         { &hf_infiniband_new_window_last, {
-                "New Window Last", "infiniband.rmpp.newwindowlast",
+                "New Window Last", "infiniband_rmpp_newwindowlast",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* RMPP ABORT/STOP */
         { &hf_infiniband_optional_extended_error_data, {
-                "Optional Extended Error Data", "infiniband.rmpp.extendederrordata",
+                "Optional Extended Error Data", "infiniband_rmpp_extendederrordata",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* SMP Data (LID Routed) */
         { &hf_infiniband_SMP_LID, {
-                "Subnet Management Packet (LID Routed)", "infiniband.smplid",
+                "Subnet Management Packet (LID Routed)", "infiniband_smplid",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_m_key, {
-                "M_Key", "infiniband.smplid.mkey",
+                "M_Key", "infiniband_smplid_mkey",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_smp_data, {
-                "SMP Data", "infiniband.smplid.smpdata",
+                "SMP Data", "infiniband_smplid_smpdata",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
     /* XX: All following verified/corrected against Infiniband 1.2.1 Specification */
         /* SMP Data Directed Route */
         { &hf_infiniband_SMP_DIRECTED, {
-                "Subnet Management Packet (Directed Route)", "infiniband.smpdirected",
+                "Subnet Management Packet (Directed Route)", "infiniband_smpdirected",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_smp_status, {
-                "Status", "infiniband.smpdirected.smpstatus",
+                "Status", "infiniband_smpdirected_smpstatus",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_hop_pointer, {
-                "Hop Pointer", "infiniband.smpdirected.hoppointer",
+                "Hop Pointer", "infiniband_smpdirected_hoppointer",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_hop_count, {
-                "Hop Count", "infiniband.smpdirected.hopcount",
+                "Hop Count", "infiniband_smpdirected_hopcount",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_dr_slid, {
-                "DrSLID", "infiniband.smpdirected.drslid",
+                "DrSLID", "infiniband_smpdirected_drslid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_dr_dlid, {
-                "DrDLID", "infiniband.smpdirected.drdlid",
+                "DrDLID", "infiniband_smpdirected_drdlid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_d, {
-                "D (Direction Bit)", "infiniband.smpdirected.d",
+                "D (Direction Bit)", "infiniband_smpdirected_d",
                 FT_UINT64, BASE_HEX, NULL, 0x8000, NULL, HFILL}
         },
         { &hf_infiniband_initial_path, {
-                "Initial Path", "infiniband.smpdirected.initialpath",
+                "Initial Path", "infiniband_smpdirected_initialpath",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_return_path, {
-                "Return Path", "infiniband.smpdirected.returnpath",
+                "Return Path", "infiniband_smpdirected_returnpath",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* SA MAD Header */
         { &hf_infiniband_SA, {
-                "SA Packet (Subnet Administration)", "infiniband.sa.drdlid",
+                "SA Packet (Subnet Administration)", "infiniband_sa_drdlid",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_sm_key, {
-                "SM_Key (Verification Key)", "infiniband.sa.smkey",
+                "SM_Key (Verification Key)", "infiniband_sa_smkey",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_attribute_offset, {
-                "Attribute Offset", "infiniband.sa.attributeoffset",
+                "Attribute Offset", "infiniband_sa_attributeoffset",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_component_mask, {
-                "Component Mask", "infiniband.sa.componentmask",
+                "Component Mask", "infiniband_sa_componentmask",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_subnet_admin_data, {
-                "Subnet Admin Data", "infiniband.sa.subnetadmindata",
+                "Subnet Admin Data", "infiniband_sa_subnetadmindata",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* NodeDescription */
         { &hf_infiniband_NodeDescription_NodeString, {
-                "NodeString", "infiniband.nodedescription.nodestring",
+                "NodeString", "infiniband_nodedescription_nodestring",
                 FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* NodeInfo */
         { &hf_infiniband_NodeInfo_BaseVersion, {
-                "BaseVersion", "infiniband.nodeinfo.baseversion",
+                "BaseVersion", "infiniband_nodeinfo_baseversion",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_ClassVersion, {
-                "ClassVersion", "infiniband.nodeinfo.classversion",
+                "ClassVersion", "infiniband_nodeinfo_classversion",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_NodeType, {
-                "NodeType", "infiniband.nodeinfo.nodetype",
+                "NodeType", "infiniband_nodeinfo_nodetype",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_NumPorts, {
-                "NumPorts", "infiniband.nodeinfo.numports",
+                "NumPorts", "infiniband_nodeinfo_numports",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_SystemImageGUID, {
-                "SystemImageGUID", "infiniband.nodeinfo.systemimageguid",
+                "SystemImageGUID", "infiniband_nodeinfo_systemimageguid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_NodeGUID, {
-                "NodeGUID", "infiniband.nodeinfo.nodeguid",
+                "NodeGUID", "infiniband_nodeinfo_nodeguid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_PortGUID, {
-                "PortGUID", "infiniband.nodeinfo.portguid",
+                "PortGUID", "infiniband_nodeinfo_portguid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_PartitionCap, {
-                "PartitionCap", "infiniband.nodeinfo.partitioncap",
+                "PartitionCap", "infiniband_nodeinfo_partitioncap",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_DeviceID, {
-                "DeviceID", "infiniband.nodeinfo.deviceid",
+                "DeviceID", "infiniband_nodeinfo_deviceid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_Revision, {
-                "Revision", "infiniband.nodeinfo.revision",
+                "Revision", "infiniband_nodeinfo_revision",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_LocalPortNum, {
-                "LocalPortNum", "infiniband.nodeinfo.localportnum",
+                "LocalPortNum", "infiniband_nodeinfo_localportnum",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_NodeInfo_VendorID, {
-                "VendorID", "infiniband.nodeinfo.vendorid",
+                "VendorID", "infiniband_nodeinfo_vendorid",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* SwitchInfo */
         { &hf_infiniband_SwitchInfo_LinearFDBCap, {
-                "LinearFDBCap", "infiniband.switchinfo.linearfdbcap",
+                "LinearFDBCap", "infiniband_switchinfo_linearfdbcap",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_RandomFDBCap, {
-                "RandomFDBCap", "infiniband.switchinfo.randomfdbcap",
+                "RandomFDBCap", "infiniband_switchinfo_randomfdbcap",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_MulticastFDBCap, {
-                "MulticastFDBCap", "infiniband.switchinfo.multicastfdbcap",
+                "MulticastFDBCap", "infiniband_switchinfo_multicastfdbcap",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_LinearFDBTop, {
-                "LinearFDBTop", "infiniband.switchinfo.linearfdbtop",
+                "LinearFDBTop", "infiniband_switchinfo_linearfdbtop",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_DefaultPort, {
-                "DefaultPort", "infiniband.switchinfo.defaultport",
+                "DefaultPort", "infiniband_switchinfo_defaultport",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_DefaultMulticastPrimaryPort, {
-                "DefaultMulticastPrimaryPort", "infiniband.switchinfo.defaultmulticastprimaryport",
+                "DefaultMulticastPrimaryPort", "infiniband_switchinfo_defaultmulticastprimaryport",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_DefaultMulticastNotPrimaryPort, {
-                "DefaultMulticastNotPrimaryPort", "infiniband.switchinfo.defaultmulticastnotprimaryport",
+                "DefaultMulticastNotPrimaryPort", "infiniband_switchinfo_defaultmulticastnotprimaryport",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_LifeTimeValue, {
-                "LifeTimeValue", "infiniband.switchinfo.lifetimevalue",
+                "LifeTimeValue", "infiniband_switchinfo_lifetimevalue",
                 FT_UINT8, BASE_HEX, NULL, 0xF8, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_PortStateChange, {
-                "PortStateChange", "infiniband.switchinfo.portstatechange",
+                "PortStateChange", "infiniband_switchinfo_portstatechange",
                 FT_UINT8, BASE_HEX, NULL, 0x04, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_OptimizedSLtoVLMappingProgramming, {
-                "OptimizedSLtoVLMappingProgramming", "infiniband.switchinfo.optimizedsltovlmappingprogramming",
+                "OptimizedSLtoVLMappingProgramming", "infiniband_switchinfo_optimizedsltovlmappingprogramming",
                 FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_LIDsPerPort, {
-                "LIDsPerPort", "infiniband.switchinfo.lidsperport",
+                "LIDsPerPort", "infiniband_switchinfo_lidsperport",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_PartitionEnforcementCap, {
-                "PartitionEnforcementCap", "infiniband.switchinfo.partitionenforcementcap",
+                "PartitionEnforcementCap", "infiniband_switchinfo_partitionenforcementcap",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_InboundEnforcementCap, {
-                "InboundEnforcementCap", "infiniband.switchinfo.inboundenforcementcap",
+                "InboundEnforcementCap", "infiniband_switchinfo_inboundenforcementcap",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_OutboundEnforcementCap, {
-                "OutboundEnforcementCap", "infiniband.switchinfo.outboundenforcementcap",
+                "OutboundEnforcementCap", "infiniband_switchinfo_outboundenforcementcap",
                 FT_UINT8, BASE_HEX, NULL, 0x40, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_FilterRawInboundCap, {
-                "FilterRawInboundCap", "infiniband.switchinfo.filterrawinboundcap",
+                "FilterRawInboundCap", "infiniband_switchinfo_filterrawinboundcap",
                 FT_UINT8, BASE_HEX, NULL, 0x20, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_FilterRawOutboundCap, {
-                "FilterRawOutboundCap", "infiniband.switchinfo.filterrawoutboundcap",
+                "FilterRawOutboundCap", "infiniband_switchinfo_filterrawoutboundcap",
                 FT_UINT8, BASE_HEX, NULL, 0x10, NULL, HFILL}
         },
         { &hf_infiniband_SwitchInfo_EnhancedPortZero, {
-                "EnhancedPortZero", "infiniband.switchinfo.enhancedportzero",
+                "EnhancedPortZero", "infiniband_switchinfo_enhancedportzero",
                 FT_UINT8, BASE_HEX, NULL, 0x08, NULL, HFILL}
         },
 
         /* GUIDInfo */
 #if 0
         { &hf_infiniband_GUIDInfo_GUIDBlock, {
-                "GUIDBlock", "infiniband.switchinfo.guidblock",
+                "GUIDBlock", "infiniband_switchinfo_guidblock",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #endif
         { &hf_infiniband_GUIDInfo_GUID, {
-                "GUID", "infiniband.switchinfo.guid",
+                "GUID", "infiniband_switchinfo_guid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* PortInfo */
         { &hf_infiniband_PortInfo_M_Key, {
-                "M_Key", "infiniband.portinfo.m_key",
+                "M_Key", "infiniband_portinfo_m_key",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_GidPrefix, {
-                "GidPrefix", "infiniband.portinfo.guid",
+                "GidPrefix", "infiniband_portinfo_guid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LID, {
-                "LID", "infiniband.portinfo.lid",
+                "LID", "infiniband_portinfo_lid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_MasterSMLID, {
-                "MasterSMLID", "infiniband.portinfo.mastersmlid",
+                "MasterSMLID", "infiniband_portinfo_mastersmlid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask, {
-                "CapabilityMask", "infiniband.portinfo.capabilitymask",
+                "CapabilityMask", "infiniband_portinfo_capabilitymask",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* Capability Mask Flags */
         { &hf_infiniband_PortInfo_CapabilityMask_SM, {
-                "SM", "infiniband.portinfo.capabilitymask.issm",
+                "SM", "infiniband_portinfo_capabilitymask_issm",
                 FT_UINT32, BASE_HEX, NULL, 0x00000002, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_NoticeSupported, {
-                "NoticeSupported", "infiniband.portinfo.capabilitymask.noticesupported",
+                "NoticeSupported", "infiniband_portinfo_capabilitymask_noticesupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00000004, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_TrapSupported, {
-                "TrapSupported", "infiniband.portinfo.capabilitymask.trapsupported",
+                "TrapSupported", "infiniband_portinfo_capabilitymask_trapsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00000008, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_OptionalIPDSupported, {
-                "OptionalIPDSupported", "infiniband.portinfo.capabilitymask.optionalipdsupported",
+                "OptionalIPDSupported", "infiniband_portinfo_capabilitymask_optionalipdsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00000010, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_AutomaticMigrationSupported, {
-                "AutomaticMigrationSupported", "infiniband.portinfo.capabilitymask.automaticmigrationsupported",
+                "AutomaticMigrationSupported", "infiniband_portinfo_capabilitymask_automaticmigrationsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00000020, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_SLMappingSupported, {
-                "SLMappingSupported", "infiniband.portinfo.capabilitymask.slmappingsupported",
+                "SLMappingSupported", "infiniband_portinfo_capabilitymask_slmappingsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00000040, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_MKeyNVRAM, {
-                "MKeyNVRAM", "infiniband.portinfo.capabilitymask.mkeynvram",
+                "MKeyNVRAM", "infiniband_portinfo_capabilitymask_mkeynvram",
                 FT_UINT32, BASE_HEX, NULL, 0x00000080, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_PKeyNVRAM, {
-                "PKeyNVRAM", "infiniband.portinfo.capabilitymask.pkeynvram",
+                "PKeyNVRAM", "infiniband_portinfo_capabilitymask_pkeynvram",
                 FT_UINT32, BASE_HEX, NULL, 0x00000100, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_LEDInfoSupported, {
-                "LEDInfoSupported", "infiniband.portinfo.capabilitymask.ledinfosupported",
+                "LEDInfoSupported", "infiniband_portinfo_capabilitymask_ledinfosupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00000200, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_SMdisabled, {
-                "SMdisabled", "infiniband.portinfo.capabilitymask.smdisabled",
+                "SMdisabled", "infiniband_portinfo_capabilitymask_smdisabled",
                 FT_UINT32, BASE_HEX, NULL, 0x00000400, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_SystemImageGUIDSupported, {
-                "SystemImageGUIDSupported", "infiniband.portinfo.capabilitymask.systemimageguidsupported",
+                "SystemImageGUIDSupported", "infiniband_portinfo_capabilitymask_systemimageguidsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00000800, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_PKeySwitchExternalPortTrapSupported, {
-                "PKeySwitchExternalPortTrapSupported", "infiniband.portinfo.capabilitymask.pkeyswitchexternalporttrapsupported",
+                "PKeySwitchExternalPortTrapSupported", "infiniband_portinfo_capabilitymask_pkeyswitchexternalporttrapsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00001000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_CommunicationManagementSupported, {
-                "CommunicationManagementSupported", "infiniband.portinfo.capabilitymask.communicationmanagementsupported",
+                "CommunicationManagementSupported", "infiniband_portinfo_capabilitymask_communicationmanagementsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00010000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_SNMPTunnelingSupported, {
-                "SNMPTunnelingSupported", "infiniband.portinfo.capabilitymask.snmptunnelingsupported",
+                "SNMPTunnelingSupported", "infiniband_portinfo_capabilitymask_snmptunnelingsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00020000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_ReinitSupported, {
-                "ReinitSupported", "infiniband.portinfo.capabilitymask.reinitsupported",
+                "ReinitSupported", "infiniband_portinfo_capabilitymask_reinitsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00040000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_DeviceManagementSupported, {
-                "DeviceManagementSupported", "infiniband.portinfo.capabilitymask.devicemanagementsupported",
+                "DeviceManagementSupported", "infiniband_portinfo_capabilitymask_devicemanagementsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00080000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_VendorClassSupported, {
-                "VendorClassSupported", "infiniband.portinfo.capabilitymask.vendorclasssupported",
+                "VendorClassSupported", "infiniband_portinfo_capabilitymask_vendorclasssupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00100000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_DRNoticeSupported, {
-                "DRNoticeSupported", "infiniband.portinfo.capabilitymask.drnoticesupported",
+                "DRNoticeSupported", "infiniband_portinfo_capabilitymask_drnoticesupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00200000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_CapabilityMaskNoticeSupported, {
-                "CapabilityMaskNoticeSupported", "infiniband.portinfo.capabilitymask.capabilitymasknoticesupported",
+                "CapabilityMaskNoticeSupported", "infiniband_portinfo_capabilitymask_capabilitymasknoticesupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00400000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_BootManagementSupported, {
-                "BootManagementSupported", "infiniband.portinfo.capabilitymask.bootmanagementsupported",
+                "BootManagementSupported", "infiniband_portinfo_capabilitymask_bootmanagementsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x00800000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_LinkRoundTripLatencySupported, {
-                "LinkRoundTripLatencySupported", "infiniband.portinfo.capabilitymask.linkroundtriplatencysupported",
+                "LinkRoundTripLatencySupported", "infiniband_portinfo_capabilitymask_linkroundtriplatencysupported",
                 FT_UINT32, BASE_HEX, NULL, 0x01000000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_ClientRegistrationSupported, {
-                "ClientRegistrationSupported", "infiniband.portinfo.capabilitymask.clientregistrationsupported",
+                "ClientRegistrationSupported", "infiniband_portinfo_capabilitymask_clientregistrationsupported",
                 FT_UINT32, BASE_HEX, NULL, 0x02000000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_OtherLocalChangesNoticeSupported, {
-                "OtherLocalChangesNoticeSupported", "infiniband.portinfo.capabilitymask.otherlocalchangesnoticesupported",
+                "OtherLocalChangesNoticeSupported", "infiniband_portinfo_capabilitymask_otherlocalchangesnoticesupported",
                 FT_UINT32, BASE_HEX, NULL, 0x04000000, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_CapabilityMask_LinkSpeedWIdthPairsTableSupported, {
-                "LinkSpeedWIdthPairsTableSupported", "infiniband.portinfo.capabilitymask.linkspeedwidthpairstablesupported",
+                "LinkSpeedWIdthPairsTableSupported", "infiniband_portinfo_capabilitymask_linkspeedwidthpairstablesupported",
                 FT_UINT32, BASE_HEX, NULL, 0x08000000, NULL, HFILL}
         },
         /* End Capability Mask Flags */
 
         /* PortInfo */
         { &hf_infiniband_PortInfo_DiagCode, {
-                "DiagCode", "infiniband.portinfo.diagcode",
+                "DiagCode", "infiniband_portinfo_diagcode",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_M_KeyLeasePeriod, {
-                "M_KeyLeasePeriod", "infiniband.portinfo.m_keyleaseperiod",
+                "M_KeyLeasePeriod", "infiniband_portinfo_m_keyleaseperiod",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LocalPortNum, {
-                "LocalPortNum", "infiniband.portinfo.localportnum",
+                "LocalPortNum", "infiniband_portinfo_localportnum",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LinkWidthEnabled, {
-                "LinkWidthEnabled", "infiniband.portinfo.linkwidthenabled",
+                "LinkWidthEnabled", "infiniband_portinfo_linkwidthenabled",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LinkWidthSupported, {
-                "LinkWidthSupported", "infiniband.portinfo.linkwidthsupported",
+                "LinkWidthSupported", "infiniband_portinfo_linkwidthsupported",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LinkWidthActive, {
-                "LinkWidthActive", "infiniband.portinfo.linkwidthactive",
+                "LinkWidthActive", "infiniband_portinfo_linkwidthactive",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LinkSpeedSupported, {
-                "LinkSpeedSupported", "infiniband.portinfo.linkspeedsupported",
+                "LinkSpeedSupported", "infiniband_portinfo_linkspeedsupported",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_PortState, {
-                "PortState", "infiniband.portinfo.portstate",
+                "PortState", "infiniband_portinfo_portstate",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_PortPhysicalState, {
-                "PortPhysicalState", "infiniband.portinfo.portphysicalstate",
+                "PortPhysicalState", "infiniband_portinfo_portphysicalstate",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LinkDownDefaultState, {
-                "LinkDownDefaultState", "infiniband.portinfo.linkdowndefaultstate",
+                "LinkDownDefaultState", "infiniband_portinfo_linkdowndefaultstate",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_M_KeyProtectBits, {
-                "M_KeyProtectBits", "infiniband.portinfo.m_keyprotectbits",
+                "M_KeyProtectBits", "infiniband_portinfo_m_keyprotectbits",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LMC, {
-                "LMC", "infiniband.portinfo.lmc",
+                "LMC", "infiniband_portinfo_lmc",
                 FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LinkSpeedActive, {
-                "LinkSpeedActive", "infiniband.portinfo.linkspeedactive",
+                "LinkSpeedActive", "infiniband_portinfo_linkspeedactive",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LinkSpeedEnabled, {
-                "LinkSpeedEnabled", "infiniband.portinfo.linkspeedenabled",
+                "LinkSpeedEnabled", "infiniband_portinfo_linkspeedenabled",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_NeighborMTU, {
-                "NeighborMTU", "infiniband.portinfo.neighbormtu",
+                "NeighborMTU", "infiniband_portinfo_neighbormtu",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_MasterSMSL, {
-                "MasterSMSL", "infiniband.portinfo.mastersmsl",
+                "MasterSMSL", "infiniband_portinfo_mastersmsl",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_VLCap, {
-                "VLCap", "infiniband.portinfo.vlcap",
+                "VLCap", "infiniband_portinfo_vlcap",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_InitType, {
-                "InitType", "infiniband.portinfo.inittype",
+                "InitType", "infiniband_portinfo_inittype",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_VLHighLimit, {
-                "VLHighLimit", "infiniband.portinfo.vlhighlimit",
+                "VLHighLimit", "infiniband_portinfo_vlhighlimit",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_VLArbitrationHighCap, {
-                "VLArbitrationHighCap", "infiniband.portinfo.vlarbitrationhighcap",
+                "VLArbitrationHighCap", "infiniband_portinfo_vlarbitrationhighcap",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_VLArbitrationLowCap, {
-                "VLArbitrationLowCap", "infiniband.portinfo.vlarbitrationlowcap",
+                "VLArbitrationLowCap", "infiniband_portinfo_vlarbitrationlowcap",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_InitTypeReply, {
-                "InitTypeReply", "infiniband.portinfo.inittypereply",
+                "InitTypeReply", "infiniband_portinfo_inittypereply",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_MTUCap, {
-                "MTUCap", "infiniband.portinfo.mtucap",
+                "MTUCap", "infiniband_portinfo_mtucap",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_VLStallCount, {
-                "VLStallCount", "infiniband.portinfo.vlstallcount",
+                "VLStallCount", "infiniband_portinfo_vlstallcount",
                 FT_UINT8, BASE_HEX, NULL, 0xE0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_HOQLife, {
-                "HOQLife", "infiniband.portinfo.hoqlife",
+                "HOQLife", "infiniband_portinfo_hoqlife",
                 FT_UINT8, BASE_HEX, NULL, 0x1F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_OperationalVLs, {
-                "OperationalVLs", "infiniband.portinfo.operationalvls",
+                "OperationalVLs", "infiniband_portinfo_operationalvls",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_PartitionEnforcementInbound, {
-                "PartitionEnforcementInbound", "infiniband.portinfo.partitionenforcementinbound",
+                "PartitionEnforcementInbound", "infiniband_portinfo_partitionenforcementinbound",
                 FT_UINT8, BASE_HEX, NULL, 0x08, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_PartitionEnforcementOutbound, {
-                "PartitionEnforcementOutbound", "infiniband.portinfo.partitionenforcementoutbound",
+                "PartitionEnforcementOutbound", "infiniband_portinfo_partitionenforcementoutbound",
                 FT_UINT8, BASE_HEX, NULL, 0x04, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_FilterRawInbound, {
-                "FilterRawInbound", "infiniband.portinfo.filterrawinbound",
+                "FilterRawInbound", "infiniband_portinfo_filterrawinbound",
                 FT_UINT8, BASE_HEX, NULL, 0x02, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_FilterRawOutbound, {
-                "FilterRawOutbound", "infiniband.portinfo.filterrawoutbound",
+                "FilterRawOutbound", "infiniband_portinfo_filterrawoutbound",
                 FT_UINT8, BASE_HEX, NULL, 0x01, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_M_KeyViolations, {
-                "M_KeyViolations", "infiniband.portinfo.m_keyviolations",
+                "M_KeyViolations", "infiniband_portinfo_m_keyviolations",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_P_KeyViolations, {
-                "P_KeyViolations", "infiniband.portinfo.p_keyviolations",
+                "P_KeyViolations", "infiniband_portinfo_p_keyviolations",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_Q_KeyViolations, {
-                "Q_KeyViolations", "infiniband.portinfo.q_keyviolations",
+                "Q_KeyViolations", "infiniband_portinfo_q_keyviolations",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_GUIDCap, {
-                "GUIDCap", "infiniband.portinfo.guidcap",
+                "GUIDCap", "infiniband_portinfo_guidcap",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_ClientReregister, {
-                "ClientReregister", "infiniband.portinfo.clientreregister",
+                "ClientReregister", "infiniband_portinfo_clientreregister",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_SubnetTimeOut, {
-                "SubnetTimeOut", "infiniband.portinfo.subnettimeout",
+                "SubnetTimeOut", "infiniband_portinfo_subnettimeout",
                 FT_UINT8, BASE_HEX, NULL, 0x1F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_RespTimeValue, {
-                "RespTimeValue", "infiniband.portinfo.resptimevalue",
+                "RespTimeValue", "infiniband_portinfo_resptimevalue",
                 FT_UINT8, BASE_HEX, NULL, 0x1F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LocalPhyErrors, {
-                "LocalPhyErrors", "infiniband.portinfo.localphyerrors",
+                "LocalPhyErrors", "infiniband_portinfo_localphyerrors",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_OverrunErrors, {
-                "OverrunErrors", "infiniband.portinfo.overrunerrors",
+                "OverrunErrors", "infiniband_portinfo_overrunerrors",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_MaxCreditHint, {
-                "MaxCreditHint", "infiniband.portinfo.maxcredithint",
+                "MaxCreditHint", "infiniband_portinfo_maxcredithint",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PortInfo_LinkRoundTripLatency, {
-                "LinkRoundTripLatency", "infiniband.portinfo.linkroundtriplatency",
+                "LinkRoundTripLatency", "infiniband_portinfo_linkroundtriplatency",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* P_KeyTable */
         { &hf_infiniband_P_KeyTable_P_KeyTableBlock, {
-                "P_KeyTableBlock", "infiniband.p_keytable.p_keytableblock",
+                "P_KeyTableBlock", "infiniband_p_keytable_p_keytableblock",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_P_KeyTable_MembershipType, {
-                "MembershipType", "infiniband.p_keytable.membershiptype",
+                "MembershipType", "infiniband_p_keytable_membershiptype",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_P_KeyTable_P_KeyBase, {
-                "P_KeyBase", "infiniband.p_keytable.p_keybase",
+                "P_KeyBase", "infiniband_p_keytable_p_keybase",
                 FT_UINT16, BASE_HEX, NULL, 0x7FFF, NULL, HFILL}
         },
 
         /* SLtoVLMappingTable */
         { &hf_infiniband_SLtoVLMappingTable_SLtoVL_HighBits, {
-                "SL(x)toVL", "infiniband.sltovlmappingtable.sltovlhighbits",
+                "SL(x)toVL", "infiniband_sltovlmappingtable_sltovlhighbits",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_SLtoVLMappingTable_SLtoVL_LowBits, {
-                "SL(x)toVL", "infiniband.sltovlmappingtable.sltovllowbits",
+                "SL(x)toVL", "infiniband_sltovlmappingtable_sltovllowbits",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
 
         /* VLArbitrationTable */
 #if 0
         { &hf_infiniband_VLArbitrationTable_VLWeightPairs, {
-                "VLWeightPairs", "infiniband.vlarbitrationtable.vlweightpairs",
+                "VLWeightPairs", "infiniband_vlarbitrationtable_vlweightpairs",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #endif
         { &hf_infiniband_VLArbitrationTable_VL, {
-                "VL", "infiniband.vlarbitrationtable.vl",
+                "VL", "infiniband_vlarbitrationtable_vl",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_VLArbitrationTable_Weight, {
-                "Weight", "infiniband.vlarbitrationtable.weight",
+                "Weight", "infiniband_vlarbitrationtable_weight",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* LinearForwardingTable */
 #if 0
         { &hf_infiniband_LinearForwardingTable_LinearForwardingTableBlock, {
-                "LinearForwardingTableBlock", "infiniband.linearforwardingtable.linearforwardingtableblock",
+                "LinearForwardingTableBlock", "infiniband_linearforwardingtable_linearforwardingtableblock",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #endif
         { &hf_infiniband_LinearForwardingTable_Port, {
-                "Port", "infiniband.linearforwardingtable.port",
+                "Port", "infiniband_linearforwardingtable_port",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* RandomForwardingTable */
 #if 0
         { &hf_infiniband_RandomForwardingTable_RandomForwardingTableBlock, {
-                "RandomForwardingTableBlock", "infiniband.randomforwardingtable.randomforwardingtableblock",
+                "RandomForwardingTableBlock", "infiniband_randomforwardingtable_randomforwardingtableblock",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #endif
         { &hf_infiniband_RandomForwardingTable_LID, {
-                "LID", "infiniband.randomforwardingtable.lid",
+                "LID", "infiniband_randomforwardingtable_lid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_RandomForwardingTable_Valid, {
-                "Valid", "infiniband.randomforwardingtable.valid",
+                "Valid", "infiniband_randomforwardingtable_valid",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_RandomForwardingTable_LMC, {
-                "LMC", "infiniband.randomforwardingtable.lmc",
+                "LMC", "infiniband_randomforwardingtable_lmc",
                 FT_UINT8, BASE_HEX, NULL, 0x70, NULL, HFILL}
         },
         { &hf_infiniband_RandomForwardingTable_Port, {
-                "Port", "infiniband.randomforwardingtable.port",
+                "Port", "infiniband_randomforwardingtable_port",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* MulticastForwardingTable */
 #if 0
         { &hf_infiniband_MulticastForwardingTable_MulticastForwardingTableBlock , {
-                "MulticastForwardingTableBlock", "infiniband.multicastforwardingtable.multicastforwardingtableblock",
+                "MulticastForwardingTableBlock", "infiniband_multicastforwardingtable_multicastforwardingtableblock",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #endif
         { &hf_infiniband_MulticastForwardingTable_PortMask, {
-                "PortMask", "infiniband.multicastforwardingtable.portmask",
+                "PortMask", "infiniband_multicastforwardingtable_portmask",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* SMInfo */
         { &hf_infiniband_SMInfo_GUID, {
-                "GUID", "infiniband.sminfo.guid",
+                "GUID", "infiniband_sminfo_guid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SMInfo_SM_Key, {
-                "SM_Key", "infiniband.sminfo.sm_key",
+                "SM_Key", "infiniband_sminfo_sm_key",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SMInfo_ActCount, {
-                "ActCount", "infiniband.sminfo.actcount",
+                "ActCount", "infiniband_sminfo_actcount",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SMInfo_Priority, {
-                "Priority", "infiniband.sminfo.priority",
+                "Priority", "infiniband_sminfo_priority",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_SMInfo_SMState, {
-                "SMState", "infiniband.sminfo.smstate",
+                "SMState", "infiniband_sminfo_smstate",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
 
         /* VendorDiag */
         { &hf_infiniband_VendorDiag_NextIndex, {
-                "NextIndex", "infiniband.vendordiag.nextindex",
+                "NextIndex", "infiniband_vendordiag_nextindex",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_VendorDiag_DiagData, {
-                "DiagData", "infiniband.vendordiag.diagdata",
+                "DiagData", "infiniband_vendordiag_diagdata",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* LedInfo */
         { &hf_infiniband_LedInfo_LedMask, {
-                "LedMask", "infiniband.ledinfo.ledmask",
+                "LedMask", "infiniband_ledinfo_ledmask",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
 
         /* LinkSpeedWidthPairsTable */
         { &hf_infiniband_LinkSpeedWidthPairsTable_NumTables, {
-                "NumTables", "infiniband.linkspeedwidthpairstable.numtables",
+                "NumTables", "infiniband_linkspeedwidthpairstable_numtables",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_LinkSpeedWidthPairsTable_PortMask, {
-                "PortMask", "infiniband.linkspeedwidthpairstable.portmask",
+                "PortMask", "infiniband_linkspeedwidthpairstable_portmask",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_LinkSpeedWidthPairsTable_SpeedTwoFive, {
-                "Speed 2.5 Gbps", "infiniband.linkspeedwidthpairstable.speedtwofive",
+                "Speed 2.5 Gbps", "infiniband_linkspeedwidthpairstable_speedtwofive",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_LinkSpeedWidthPairsTable_SpeedFive, {
-                "Speed 5 Gbps", "infiniband.linkspeedwidthpairstable.speedfive",
+                "Speed 5 Gbps", "infiniband_linkspeedwidthpairstable_speedfive",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_LinkSpeedWidthPairsTable_SpeedTen, {
-                "Speed 10 Gbps", "infiniband.linkspeedwidthpairstable.speedten",
+                "Speed 10 Gbps", "infiniband_linkspeedwidthpairstable_speedten",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
 
@@ -7710,864 +7710,864 @@ void proto_register_infiniband(void)
         /* MulticastForwardingTableRecord */
         /* VLArbitrationTableRecord */
         { &hf_infiniband_SA_LID, {
-                "LID", "infiniband.sa.lid",
+                "LID", "infiniband_sa_lid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SA_EndportLID, {
-                "EndportLID", "infiniband.sa.endportlid",
+                "EndportLID", "infiniband_sa_endportlid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SA_PortNum, {
-                "PortNum", "infiniband.sa.portnum",
+                "PortNum", "infiniband_sa_portnum",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SA_InputPortNum , {
-                "InputPortNum", "infiniband.sa.inputportnum",
+                "InputPortNum", "infiniband_sa_inputportnum",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SA_OutputPortNum, {
-                "OutputPortNum", "infiniband.sa.outputportnum",
+                "OutputPortNum", "infiniband_sa_outputportnum",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SA_BlockNum_EightBit, {
-                "BlockNum_EightBit", "infiniband.sa.blocknum_eightbit",
+                "BlockNum_EightBit", "infiniband_sa_blocknum_eightbit",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SA_BlockNum_NineBit, {
-                "BlockNum_NineBit", "infiniband.sa.blocknum_ninebit",
+                "BlockNum_NineBit", "infiniband_sa_blocknum_ninebit",
                 FT_UINT16, BASE_HEX, NULL, 0x01FF, NULL, HFILL}
         },
         { &hf_infiniband_SA_BlockNum_SixteenBit, {
-                "BlockNum_SixteenBit", "infiniband.sa.blocknum_sixteenbit",
+                "BlockNum_SixteenBit", "infiniband_sa_blocknum_sixteenbit",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_SA_Position, {
-                "Position", "infiniband.sa.position",
+                "Position", "infiniband_sa_position",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
 #if 0
         { &hf_infiniband_SA_Index, {
-                "Index", "infiniband.sa.index",
+                "Index", "infiniband_sa_index",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 #endif
 
         /* InformInfoRecord */
         { &hf_infiniband_InformInfoRecord_SubscriberGID, {
-                "SubscriberGID", "infiniband.informinforecord.subscribergid",
+                "SubscriberGID", "infiniband_informinforecord_subscribergid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfoRecord_Enum, {
-                "Enum", "infiniband.informinforecord.enum",
+                "Enum", "infiniband_informinforecord_enum",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* InformInfo */
         { &hf_infiniband_InformInfo_GID, {
-                "GID", "infiniband.informinfo.gid",
+                "GID", "infiniband_informinfo_gid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_LIDRangeBegin, {
-                "LIDRangeBegin", "infiniband.informinfo.lidrangebegin",
+                "LIDRangeBegin", "infiniband_informinfo_lidrangebegin",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_LIDRangeEnd, {
-                "LIDRangeEnd", "infiniband.informinfo.lidrangeend",
+                "LIDRangeEnd", "infiniband_informinfo_lidrangeend",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_IsGeneric, {
-                "IsGeneric", "infiniband.informinfo.isgeneric",
+                "IsGeneric", "infiniband_informinfo_isgeneric",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_Subscribe, {
-                "Subscribe", "infiniband.informinfo.subscribe",
+                "Subscribe", "infiniband_informinfo_subscribe",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_Type, {
-                "Type", "infiniband.informinfo.type",
+                "Type", "infiniband_informinfo_type",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_TrapNumberDeviceID, {
-                "TrapNumberDeviceID", "infiniband.informinfo.trapnumberdeviceid",
+                "TrapNumberDeviceID", "infiniband_informinfo_trapnumberdeviceid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_QPN, {
-                "QPN", "infiniband.informinfo.qpn",
+                "QPN", "infiniband_informinfo_qpn",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_RespTimeValue, {
-                "RespTimeValue", "infiniband.informinfo.resptimevalue",
+                "RespTimeValue", "infiniband_informinfo_resptimevalue",
                 FT_UINT8, BASE_HEX, NULL, 0x1F, NULL, HFILL}
         },
         { &hf_infiniband_InformInfo_ProducerTypeVendorID, {
-                "ProducerTypeVendorID", "infiniband.informinfo.producertypevendorid",
+                "ProducerTypeVendorID", "infiniband_informinfo_producertypevendorid",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* LinkRecord */
         { &hf_infiniband_LinkRecord_FromLID, {
-                "FromLID", "infiniband.linkrecord.fromlid",
+                "FromLID", "infiniband_linkrecord_fromlid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_LinkRecord_FromPort, {
-                "FromPort", "infiniband.linkrecord.fromport",
+                "FromPort", "infiniband_linkrecord_fromport",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_LinkRecord_ToPort, {
-                "ToPort", "infiniband.linkrecord.toport",
+                "ToPort", "infiniband_linkrecord_toport",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_LinkRecord_ToLID, {
-                "ToLID", "infiniband.linkrecord.tolid",
+                "ToLID", "infiniband_linkrecord_tolid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* ServiceRecord */
         { &hf_infiniband_ServiceRecord_ServiceID, {
-                "ServiceID", "infiniband.linkrecord.serviceid",
+                "ServiceID", "infiniband_linkrecord_serviceid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ServiceRecord_ServiceGID, {
-                "ServiceGID", "infiniband.linkrecord.servicegid",
+                "ServiceGID", "infiniband_linkrecord_servicegid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ServiceRecord_ServiceP_Key, {
-                "ServiceP_Key", "infiniband.linkrecord.servicep_key",
+                "ServiceP_Key", "infiniband_linkrecord_servicep_key",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ServiceRecord_ServiceLease, {
-                "ServiceLease", "infiniband.linkrecord.servicelease",
+                "ServiceLease", "infiniband_linkrecord_servicelease",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ServiceRecord_ServiceKey, {
-                "ServiceKey", "infiniband.linkrecord.servicekey",
+                "ServiceKey", "infiniband_linkrecord_servicekey",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ServiceRecord_ServiceName, {
-                "ServiceName", "infiniband.linkrecord.servicename",
+                "ServiceName", "infiniband_linkrecord_servicename",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ServiceRecord_ServiceData, {
-                "ServiceData", "infiniband.linkrecord.servicedata",
+                "ServiceData", "infiniband_linkrecord_servicedata",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* ServiceAssociationRecord */
         { &hf_infiniband_ServiceAssociationRecord_ServiceKey, {
-                "ServiceKey", "infiniband.serviceassociationrecord.servicekey",
+                "ServiceKey", "infiniband_serviceassociationrecord_servicekey",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ServiceAssociationRecord_ServiceName, {
-                "ServiceName", "infiniband.serviceassociationrecord.servicename",
+                "ServiceName", "infiniband_serviceassociationrecord_servicename",
                 FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* PathRecord */
         { &hf_infiniband_PathRecord_DGID, {
-                "DGID", "infiniband.pathrecord.dgid",
+                "DGID", "infiniband_pathrecord_dgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_SGID, {
-                "SGID", "infiniband.pathrecord.sgid",
+                "SGID", "infiniband_pathrecord_sgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_DLID, {
-                "DLID", "infiniband.pathrecord.dlid",
+                "DLID", "infiniband_pathrecord_dlid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_SLID, {
-                "SLID", "infiniband.pathrecord.slid",
+                "SLID", "infiniband_pathrecord_slid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_RawTraffic, {
-                "RawTraffic", "infiniband.pathrecord.rawtraffic",
+                "RawTraffic", "infiniband_pathrecord_rawtraffic",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_FlowLabel, {
-                "FlowLabel", "infiniband.pathrecord.flowlabel",
+                "FlowLabel", "infiniband_pathrecord_flowlabel",
                 FT_UINT24, BASE_HEX, NULL, 0x0FFFFF, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_HopLimit, {
-                "HopLimit", "infiniband.pathrecord.hoplimit",
+                "HopLimit", "infiniband_pathrecord_hoplimit",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_TClass, {
-                "TClass", "infiniband.pathrecord.tclass",
+                "TClass", "infiniband_pathrecord_tclass",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_Reversible, {
-                "Reversible", "infiniband.pathrecord.reversible",
+                "Reversible", "infiniband_pathrecord_reversible",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_NumbPath, {
-                "NumbPath", "infiniband.pathrecord.numbpath",
+                "NumbPath", "infiniband_pathrecord_numbpath",
                 FT_UINT8, BASE_HEX, NULL, 0x7F, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_P_Key, {
-                "P_Key", "infiniband.pathrecord.p_key",
+                "P_Key", "infiniband_pathrecord_p_key",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_SL, {
-                "SL", "infiniband.pathrecord.sl",
+                "SL", "infiniband_pathrecord_sl",
                 FT_UINT16, BASE_HEX, NULL, 0x000F, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_MTUSelector, {
-                "MTUSelector", "infiniband.pathrecord.mtuselector",
+                "MTUSelector", "infiniband_pathrecord_mtuselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_MTU, {
-                "MTU", "infiniband.pathrecord.mtu",
+                "MTU", "infiniband_pathrecord_mtu",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_RateSelector, {
-                "RateSelector", "infiniband.pathrecord.rateselector",
+                "RateSelector", "infiniband_pathrecord_rateselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_Rate, {
-                "Rate", "infiniband.pathrecord.rate",
+                "Rate", "infiniband_pathrecord_rate",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_PacketLifeTimeSelector, {
-                "PacketLifeTimeSelector", "infiniband.pathrecord.packetlifetimeselector",
+                "PacketLifeTimeSelector", "infiniband_pathrecord_packetlifetimeselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_PacketLifeTime, {
-                "PacketLifeTime", "infiniband.pathrecord.packetlifetime",
+                "PacketLifeTime", "infiniband_pathrecord_packetlifetime",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_PathRecord_Preference, {
-                "Preference", "infiniband.pathrecord.preference",
+                "Preference", "infiniband_pathrecord_preference",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* MCMemberRecord */
         { &hf_infiniband_MCMemberRecord_MGID, {
-                "MGID", "infiniband.mcmemberrecord.mgid",
+                "MGID", "infiniband_mcmemberrecord_mgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_PortGID, {
-                "PortGID", "infiniband.mcmemberrecord.portgid",
+                "PortGID", "infiniband_mcmemberrecord_portgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_Q_Key, {
-                "Q_Key", "infiniband.mcmemberrecord.q_key",
+                "Q_Key", "infiniband_mcmemberrecord_q_key",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_MLID, {
-                "MLID", "infiniband.mcmemberrecord.mlid",
+                "MLID", "infiniband_mcmemberrecord_mlid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_MTUSelector, {
-                "MTUSelector", "infiniband.mcmemberrecord.mtuselector",
+                "MTUSelector", "infiniband_mcmemberrecord_mtuselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_MTU, {
-                "MTU", "infiniband.mcmemberrecord.mtu",
+                "MTU", "infiniband_mcmemberrecord_mtu",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_TClass, {
-                "TClass", "infiniband.mcmemberrecord.tclass",
+                "TClass", "infiniband_mcmemberrecord_tclass",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_P_Key, {
-                "P_Key", "infiniband.mcmemberrecord.p_key",
+                "P_Key", "infiniband_mcmemberrecord_p_key",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_RateSelector, {
-                "RateSelector", "infiniband.mcmemberrecord.rateselector",
+                "RateSelector", "infiniband_mcmemberrecord_rateselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_Rate, {
-                "Rate", "infiniband.mcmemberrecord.rate",
+                "Rate", "infiniband_mcmemberrecord_rate",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_PacketLifeTimeSelector, {
-                "PacketLifeTimeSelector", "infiniband.mcmemberrecord.packetlifetimeselector",
+                "PacketLifeTimeSelector", "infiniband_mcmemberrecord_packetlifetimeselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_PacketLifeTime, {
-                "PacketLifeTime", "infiniband.mcmemberrecord.packetlifetime",
+                "PacketLifeTime", "infiniband_mcmemberrecord_packetlifetime",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_SL, {
-                "SL", "infiniband.mcmemberrecord.sl",
+                "SL", "infiniband_mcmemberrecord_sl",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_FlowLabel, {
-                "FlowLabel", "infiniband.mcmemberrecord.flowlabel",
+                "FlowLabel", "infiniband_mcmemberrecord_flowlabel",
                 FT_UINT24, BASE_HEX, NULL, 0x0FFFFF, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_HopLimit, {
-                "HopLimit", "infiniband.mcmemberrecord.hoplimit",
+                "HopLimit", "infiniband_mcmemberrecord_hoplimit",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_Scope, {
-                "Scope", "infiniband.mcmemberrecord.scope",
+                "Scope", "infiniband_mcmemberrecord_scope",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_JoinState, {
-                "JoinState", "infiniband.mcmemberrecord.joinstate",
+                "JoinState", "infiniband_mcmemberrecord_joinstate",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_MCMemberRecord_ProxyJoin, {
-                "ProxyJoin", "infiniband.mcmemberrecord.proxyjoin",
+                "ProxyJoin", "infiniband_mcmemberrecord_proxyjoin",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
 
         /* TraceRecord */
         { &hf_infiniband_TraceRecord_GIDPrefix, {
-                "GidPrefix", "infiniband.tracerecord.gidprefix",
+                "GidPrefix", "infiniband_tracerecord_gidprefix",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_TraceRecord_IDGeneration, {
-                "IDGeneration", "infiniband.tracerecord.idgeneration",
+                "IDGeneration", "infiniband_tracerecord_idgeneration",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_TraceRecord_NodeType, {
-                "NodeType", "infiniband.tracerecord.nodetype",
+                "NodeType", "infiniband_tracerecord_nodetype",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_TraceRecord_NodeID, {
-                "NodeID", "infiniband.tracerecord.nodeid",
+                "NodeID", "infiniband_tracerecord_nodeid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_TraceRecord_ChassisID, {
-                "ChassisID", "infiniband.tracerecord.chassisid",
+                "ChassisID", "infiniband_tracerecord_chassisid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_TraceRecord_EntryPortID, {
-                "EntryPortID", "infiniband.tracerecord.entryportid",
+                "EntryPortID", "infiniband_tracerecord_entryportid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_TraceRecord_ExitPortID, {
-                "ExitPortID", "infiniband.tracerecord.exitportid",
+                "ExitPortID", "infiniband_tracerecord_exitportid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_TraceRecord_EntryPort, {
-                "EntryPort", "infiniband.tracerecord.entryport",
+                "EntryPort", "infiniband_tracerecord_entryport",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_TraceRecord_ExitPort, {
-                "ExitPort", "infiniband.tracerecord.exitport",
+                "ExitPort", "infiniband_tracerecord_exitport",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* MultiPathRecord */
         { &hf_infiniband_MultiPathRecord_RawTraffic, {
-                "RawTraffic", "infiniband.multipathrecord.rawtraffic",
+                "RawTraffic", "infiniband_multipathrecord_rawtraffic",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_FlowLabel, {
-                "FlowLabel", "infiniband.multipathrecord.flowlabel",
+                "FlowLabel", "infiniband_multipathrecord_flowlabel",
                 FT_UINT24, BASE_HEX, NULL, 0x0FFFFF, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_HopLimit, {
-                "HopLimit", "infiniband.multipathrecord.hoplimit",
+                "HopLimit", "infiniband_multipathrecord_hoplimit",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_TClass, {
-                "TClass", "infiniband.multipathrecord.tclass",
+                "TClass", "infiniband_multipathrecord_tclass",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_Reversible, {
-                "Reversible", "infiniband.multipathrecord.reversible",
+                "Reversible", "infiniband_multipathrecord_reversible",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_NumbPath, {
-                "NumbPath", "infiniband.multipathrecord.numbpath",
+                "NumbPath", "infiniband_multipathrecord_numbpath",
                 FT_UINT8, BASE_HEX, NULL, 0x7F, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_P_Key, {
-                "P_Key", "infiniband.multipathrecord.p_key",
+                "P_Key", "infiniband_multipathrecord_p_key",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_SL, {
-                "SL", "infiniband.multipathrecord.sl",
+                "SL", "infiniband_multipathrecord_sl",
                 FT_UINT8, BASE_HEX, NULL, 0x0F, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_MTUSelector, {
-                "MTUSelector", "infiniband.multipathrecord.mtuselector",
+                "MTUSelector", "infiniband_multipathrecord_mtuselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_MTU, {
-                "MTU", "infiniband.multipathrecord.mtu",
+                "MTU", "infiniband_multipathrecord_mtu",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_RateSelector, {
-                "RateSelector", "infiniband.multipathrecord.rateselector",
+                "RateSelector", "infiniband_multipathrecord_rateselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_Rate, {
-                "Rate", "infiniband.multipathrecord.rate",
+                "Rate", "infiniband_multipathrecord_rate",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_PacketLifeTimeSelector, {
-                "PacketLifeTimeSelector", "infiniband.multipathrecord.packetlifetimeselector",
+                "PacketLifeTimeSelector", "infiniband_multipathrecord_packetlifetimeselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_PacketLifeTime, {
-                "PacketLifeTime", "infiniband.multipathrecord.packetlifetime",
+                "PacketLifeTime", "infiniband_multipathrecord_packetlifetime",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_IndependenceSelector, {
-                "IndependenceSelector", "infiniband.multipathrecord.independenceselector",
+                "IndependenceSelector", "infiniband_multipathrecord_independenceselector",
                 FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_GIDScope, {
-                "GIDScope", "infiniband.multipathrecord.gidscope",
+                "GIDScope", "infiniband_multipathrecord_gidscope",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_SGIDCount, {
-                "SGIDCount", "infiniband.multipathrecord.sgidcount",
+                "SGIDCount", "infiniband_multipathrecord_sgidcount",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_DGIDCount, {
-                "DGIDCount", "infiniband.multipathrecord.dgidcount",
+                "DGIDCount", "infiniband_multipathrecord_dgidcount",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_MultiPathRecord_SDGID, {
-                "SDGID", "infiniband.multipathrecord.sdgid",
+                "SDGID", "infiniband_multipathrecord_sdgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* ClassPortInfo */
         { &hf_infiniband_ClassPortInfo_BaseVersion, {
-                "BaseVersion", "infiniband.classportinfo.baseversion",
+                "BaseVersion", "infiniband_classportinfo_baseversion",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_ClassVersion, {
-                "ClassVersion", "infiniband.classportinfo.classversion",
+                "ClassVersion", "infiniband_classportinfo_classversion",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_CapabilityMask, {
-                "CapabilityMask", "infiniband.classportinfo.capabilitymask",
+                "CapabilityMask", "infiniband_classportinfo_capabilitymask",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_CapabilityMask2, {
-                "CapabilityMask2", "infiniband.classportinfo.capabilitymask2",
+                "CapabilityMask2", "infiniband_classportinfo_capabilitymask2",
                 FT_UINT32, BASE_HEX, NULL, 0xFFFFFFE0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RespTimeValue, {
-                "RespTimeValue", "infiniband.classportinfo.resptimevalue",
+                "RespTimeValue", "infiniband_classportinfo_resptimevalue",
                 FT_UINT8, BASE_HEX, NULL, 0x1F, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RedirectGID, {
-                "RedirectGID", "infiniband.classportinfo.redirectgid",
+                "RedirectGID", "infiniband_classportinfo_redirectgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RedirectTC, {
-                "RedirectTC", "infiniband.classportinfo.redirecttc",
+                "RedirectTC", "infiniband_classportinfo_redirecttc",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RedirectSL, {
-                "RedirectSL", "infiniband.classportinfo.redirectsl",
+                "RedirectSL", "infiniband_classportinfo_redirectsl",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RedirectFL, {
-                "RedirectFL", "infiniband.classportinfo.redirectfl",
+                "RedirectFL", "infiniband_classportinfo_redirectfl",
                 FT_UINT24, BASE_HEX, NULL, 0xFFFFF, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RedirectLID, {
-                "RedirectLID", "infiniband.classportinfo.redirectlid",
+                "RedirectLID", "infiniband_classportinfo_redirectlid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RedirectP_Key, {
-                "RedirectP_Key", "infiniband.classportinfo.redirectpkey",
+                "RedirectP_Key", "infiniband_classportinfo_redirectpkey",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_Reserved, {
-                "Reserved", "infiniband.classportinfo.reserved",
+                "Reserved", "infiniband_classportinfo_reserved",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RedirectQP, {
-                "RedirectQP", "infiniband.classportinfo.redirectqp",
+                "RedirectQP", "infiniband_classportinfo_redirectqp",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_RedirectQ_Key, {
-                "RedirectQ_Key", "infiniband.classportinfo.redirectqkey",
+                "RedirectQ_Key", "infiniband_classportinfo_redirectqkey",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_TrapGID, {
-                "TrapGID", "infiniband.classportinfo.trapgid",
+                "TrapGID", "infiniband_classportinfo_trapgid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_TrapTC, {
-                "TrapTC", "infiniband.classportinfo.traptc",
+                "TrapTC", "infiniband_classportinfo_traptc",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_TrapSL, {
-                "TrapSL", "infiniband.classportinfo.trapsl",
+                "TrapSL", "infiniband_classportinfo_trapsl",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_TrapFL, {
-                "TrapFL", "infiniband.classportinfo.trapfl",
+                "TrapFL", "infiniband_classportinfo_trapfl",
                 FT_UINT24, BASE_HEX, NULL, 0xFFFFF, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_TrapLID, {
-                "TrapLID", "infiniband.classportinfo.traplid",
+                "TrapLID", "infiniband_classportinfo_traplid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_TrapP_Key, {
-                "TrapP_Key", "infiniband.classportinfo.trappkey",
+                "TrapP_Key", "infiniband_classportinfo_trappkey",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_TrapQP, {
-                "TrapQP", "infiniband.classportinfo.trapqp",
+                "TrapQP", "infiniband_classportinfo_trapqp",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_ClassPortInfo_TrapQ_Key, {
-                "TrapQ_Key", "infiniband.classportinfo.trapqkey",
+                "TrapQ_Key", "infiniband_classportinfo_trapqkey",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* Notice */
         { &hf_infiniband_Notice_IsGeneric, {
-                "IsGeneric", "infiniband.notice.isgeneric",
+                "IsGeneric", "infiniband_notice_isgeneric",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_Notice_Type, {
-                "Type", "infiniband.notice.type",
+                "Type", "infiniband_notice_type",
                 FT_UINT8, BASE_HEX, NULL, 0x7F, NULL, HFILL}
         },
         { &hf_infiniband_Notice_ProducerTypeVendorID, {
-                "ProducerTypeVendorID", "infiniband.notice.producertypevendorid",
+                "ProducerTypeVendorID", "infiniband_notice_producertypevendorid",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Notice_TrapNumberDeviceID, {
-                "TrapNumberDeviceID", "infiniband.notice.trapnumberdeviceid",
+                "TrapNumberDeviceID", "infiniband_notice_trapnumberdeviceid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Notice_IssuerLID, {
-                "IssuerLID", "infiniband.notice.issuerlid",
+                "IssuerLID", "infiniband_notice_issuerlid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Notice_NoticeToggle, {
-                "NoticeToggle", "infiniband.notice.noticetoggle",
+                "NoticeToggle", "infiniband_notice_noticetoggle",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_Notice_NoticeCount, {
-                "NoticeCount", "infiniband.notice.noticecount",
+                "NoticeCount", "infiniband_notice_noticecount",
                 FT_UINT16, BASE_HEX, NULL, 0x7FFF, NULL, HFILL}
         },
         { &hf_infiniband_Notice_DataDetails, {
-                "DataDetails", "infiniband.notice.datadetails",
+                "DataDetails", "infiniband_notice_datadetails",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #if 0
         { &hf_infiniband_Notice_IssuerGID, {
-                "IssuerGID", "infiniband.notice.issuergid",
+                "IssuerGID", "infiniband_notice_issuergid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Notice_ClassTrapSpecificData, {
-                "ClassTrapSpecificData", "infiniband.notice.classtrapspecificdata",
+                "ClassTrapSpecificData", "infiniband_notice_classtrapspecificdata",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #endif
 
         /* Traps 64,65,66,67 */
         { &hf_infiniband_Trap_GIDADDR, {
-                "GIDADDR", "infiniband.trap.gidaddr",
+                "GIDADDR", "infiniband_trap_gidaddr",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* Traps 68,69 */
         { &hf_infiniband_Trap_COMP_MASK, {
-                "COMP_MASK", "infiniband.trap.comp_mask",
+                "COMP_MASK", "infiniband_trap_comp_mask",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_WAIT_FOR_REPATH, {
-                "WAIT_FOR_REPATH", "infiniband.trap.wait_for_repath",
+                "WAIT_FOR_REPATH", "infiniband_trap_wait_for_repath",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
 #if 0
         { &hf_infiniband_Trap_PATH_REC, {
-                "PATH_REC", "infiniband.trap.path_rec",
+                "PATH_REC", "infiniband_trap_path_rec",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #endif
 
         /* Trap 128 */
         { &hf_infiniband_Trap_LIDADDR, {
-                "LIDADDR", "infiniband.trap.lidaddr",
+                "LIDADDR", "infiniband_trap_lidaddr",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* Trap 129, 130, 131 */
         { &hf_infiniband_Trap_PORTNO, {
-                "PORTNO", "infiniband.trap.portno",
+                "PORTNO", "infiniband_trap_portno",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* Trap 144 */
         { &hf_infiniband_Trap_OtherLocalChanges, {
-                "OtherLocalChanges", "infiniband.trap.otherlocalchanges",
+                "OtherLocalChanges", "infiniband_trap_otherlocalchanges",
                 FT_UINT8, BASE_HEX, NULL, 0x01, NULL, HFILL}
         },
         { &hf_infiniband_Trap_CAPABILITYMASK, {
-                "CAPABILITYMASK", "infiniband.trap.capabilitymask",
+                "CAPABILITYMASK", "infiniband_trap_capabilitymask",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_LinkSpeecEnabledChange, {
-                "LinkSpeecEnabledChange", "infiniband.trap.linkspeecenabledchange",
+                "LinkSpeecEnabledChange", "infiniband_trap_linkspeecenabledchange",
                 FT_UINT8, BASE_HEX, NULL, 0x04, NULL, HFILL}
         },
         { &hf_infiniband_Trap_LinkWidthEnabledChange, {
-                "LinkWidthEnabledChange", "infiniband.trap.linkwidthenabledchange",
+                "LinkWidthEnabledChange", "infiniband_trap_linkwidthenabledchange",
                 FT_UINT8, BASE_HEX, NULL, 0x02, NULL, HFILL}
         },
         { &hf_infiniband_Trap_NodeDescriptionChange, {
-                "NodeDescriptionChange", "infiniband.trap.nodedescriptionchange",
+                "NodeDescriptionChange", "infiniband_trap_nodedescriptionchange",
                 FT_UINT8, BASE_HEX, NULL, 0x01, NULL, HFILL}
         },
 
         /* Trap 145 */
         { &hf_infiniband_Trap_SYSTEMIMAGEGUID, {
-                "SYSTEMIMAGEGUID", "infiniband.trap.systemimageguid",
+                "SYSTEMIMAGEGUID", "infiniband_trap_systemimageguid",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
 
         /* Trap 256 */
         { &hf_infiniband_Trap_DRSLID, {
-                "DRSLID", "infiniband.trap.drslid",
+                "DRSLID", "infiniband_trap_drslid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_METHOD, {
-                "METHOD", "infiniband.trap.method",
+                "METHOD", "infiniband_trap_method",
                 FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_ATTRIBUTEID, {
-                "ATTRIBUTEID", "infiniband.trap.attributeid",
+                "ATTRIBUTEID", "infiniband_trap_attributeid",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_ATTRIBUTEMODIFIER, {
-                "ATTRIBUTEMODIFIER", "infiniband.trap.attributemodifier",
+                "ATTRIBUTEMODIFIER", "infiniband_trap_attributemodifier",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_MKEY, {
-                "MKEY", "infiniband.trap.mkey",
+                "MKEY", "infiniband_trap_mkey",
                 FT_UINT64, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_DRNotice, {
-                "DRNotice", "infiniband.trap.drnotice",
+                "DRNotice", "infiniband_trap_drnotice",
                 FT_UINT8, BASE_HEX, NULL, 0x80, NULL, HFILL}
         },
         { &hf_infiniband_Trap_DRPathTruncated, {
-                "DRPathTruncated", "infiniband.trap.drpathtruncated",
+                "DRPathTruncated", "infiniband_trap_drpathtruncated",
                 FT_UINT8, BASE_HEX, NULL, 0x40, NULL, HFILL}
         },
         { &hf_infiniband_Trap_DRHopCount, {
-                "DRHopCount", "infiniband.trap.drhopcount",
+                "DRHopCount", "infiniband_trap_drhopcount",
                 FT_UINT8, BASE_HEX, NULL, 0x3F, NULL, HFILL}
         },
         { &hf_infiniband_Trap_DRNoticeReturnPath, {
-                "DRNoticeReturnPath", "infiniband.trap.drnoticereturnpath",
+                "DRNoticeReturnPath", "infiniband_trap_drnoticereturnpath",
                 FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* Trap 257, 258 */
         { &hf_infiniband_Trap_LIDADDR1, {
-                "LIDADDR1", "infiniband.trap.lidaddr1",
+                "LIDADDR1", "infiniband_trap_lidaddr1",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_LIDADDR2, {
-                "LIDADDR2", "infiniband.trap.lidaddr2",
+                "LIDADDR2", "infiniband_trap_lidaddr2",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_KEY, {
-                "KEY", "infiniband.trap.key",
+                "KEY", "infiniband_trap_key",
                 FT_UINT32, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_SL, {
-                "SL", "infiniband.trap.sl",
+                "SL", "infiniband_trap_sl",
                 FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_QP1, {
-                "QP1", "infiniband.trap.qp1",
+                "QP1", "infiniband_trap_qp1",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_QP2, {
-                "QP2", "infiniband.trap.qp2",
+                "QP2", "infiniband_trap_qp2",
                 FT_UINT24, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_GIDADDR1, {
-                "GIDADDR1", "infiniband.trap.gidaddr1",
+                "GIDADDR1", "infiniband_trap_gidaddr1",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_GIDADDR2, {
-                "GIDADDR2", "infiniband.trap.gidaddr2",
+                "GIDADDR2", "infiniband_trap_gidaddr2",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 
         /* Trap 259 */
         { &hf_infiniband_Trap_DataValid, {
-                "DataValid", "infiniband.trap.datavalid",
+                "DataValid", "infiniband_trap_datavalid",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_PKEY, {
-                "PKEY", "infiniband.trap.pkey",
+                "PKEY", "infiniband_trap_pkey",
                 FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}
         },
         { &hf_infiniband_Trap_SWLIDADDR, {
-                "SWLIDADDR", "infiniband.trap.swlidaddr",
+                "SWLIDADDR", "infiniband_trap_swlidaddr",
                 FT_IPv6, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         /* ClassPortInfo in Performance class */
         { &hf_infiniband_PerfMgt_ClassPortInfo, {
-                "ClassPortInfo (Performance Management MAD)", "infiniband.classportinfo",
+                "ClassPortInfo (Performance Management MAD)", "infiniband_classportinfo",
                FT_NONE, BASE_NONE, NULL, 0x0,
                 "Performance class ClassPortInfo packet", HFILL}
         },
         /* PortCounters in Performance class */
         { &hf_infiniband_PortCounters, {
-                "Port Counters (Performance Management MAD)", "infiniband.portcounters",
+                "Port Counters (Performance Management MAD)", "infiniband_portcounters",
                 FT_NONE, BASE_NONE, NULL, 0x0,
                 "Performance class PortCounters packet", HFILL}
         },
         { &hf_infiniband_PortCounters_PortSelect, {
-                "PortSelect", "infiniband.portcounters.portselect",
+                "PortSelect", "infiniband_portcounters_portselect",
                 FT_UINT8, BASE_HEX, NULL, 0x0,
                 "Selects the port that will be accessed", HFILL}
         },
         { &hf_infiniband_PortCounters_CounterSelect, {
-                "CounterSelect", "infiniband.portcounters.counterselect",
+                "CounterSelect", "infiniband_portcounters_counterselect",
                 FT_UINT16, BASE_HEX, NULL, 0x0,
                 "When writing, selects which counters are affected by the operation", HFILL}
         },
         { &hf_infiniband_PortCounters_SymbolErrorCounter, {
-                "SymbolErrorCounter", "infiniband.portcounters.symbolerrorcounter",
+                "SymbolErrorCounter", "infiniband_portcounters_symbolerrorcounter",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 "Total number of minor link errors", HFILL}
         },
         { &hf_infiniband_PortCounters_LinkErrorRecoveryCounter, {
-                "LinkErrorRecoveryCounter", "infiniband.portcounters.linkerrorrecoverycounter",
+                "LinkErrorRecoveryCounter", "infiniband_portcounters_linkerrorrecoverycounter",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "Total number of times successfully completed link error recovery process", HFILL}
         },
         { &hf_infiniband_PortCounters_LinkDownedCounter, {
-                "LinkDownedCounter", "infiniband.portcounters.linkdownedcounter",
+                "LinkDownedCounter", "infiniband_portcounters_linkdownedcounter",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "Total number of times failed link error recovery process", HFILL}
         },
         { &hf_infiniband_PortCounters_PortRcvErrors, {
-                "PortRcvErrors", "infiniband.portcounters.portrcverrors",
+                "PortRcvErrors", "infiniband_portcounters_portrcverrors",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 "Total number of packets containing an error received", HFILL}
         },
         { &hf_infiniband_PortCounters_PortRcvRemotePhysicalErrors, {
-                "PortRcvRemotePhysicalErrors", "infiniband.portcounters.portrcvremotephysicalerrors",
+                "PortRcvRemotePhysicalErrors", "infiniband_portcounters_portrcvremotephysicalerrors",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 "Total number of packets marked with EBP delimiter received", HFILL}
         },
         { &hf_infiniband_PortCounters_PortRcvSwitchRelayErrors, {
-                "PortRcvSwitchRelayErrors", "infiniband.portcounters.portrcvswitchrelayerrors",
+                "PortRcvSwitchRelayErrors", "infiniband_portcounters_portrcvswitchrelayerrors",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 "Total number of packets discarded because they could not be forwarded by switch relay",
                 HFILL}
         },
         { &hf_infiniband_PortCounters_PortXmitDiscards, {
-                "PortXmitDiscards", "infiniband.portcounters.portxmitdiscards",
+                "PortXmitDiscards", "infiniband_portcounters_portxmitdiscards",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 "Total number of outbound packets discarded", HFILL}
         },
         { &hf_infiniband_PortCounters_PortXmitConstraintErrors, {
-                "PortXmitConstraintErrors", "infiniband.portcounters.portxmitconstrainterrors",
+                "PortXmitConstraintErrors", "infiniband_portcounters_portxmitconstrainterrors",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "Total number of packets not transmitted from the switch physical port", HFILL}
         },
         { &hf_infiniband_PortCounters_PortRcvConstraintErrors, {
-                "PortRcvConstraintErrors", "infiniband.portcounters.portrcvconstrainterrors",
+                "PortRcvConstraintErrors", "infiniband_portcounters_portrcvconstrainterrors",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "Total number of packets received on the switch physical port that are discarded", HFILL}
         },
         { &hf_infiniband_PortCounters_LocalLinkIntegrityErrors, {
-                "LocalLinkIntegrityErrors", "infiniband.portcounters.locallinkintegrityerrors",
+                "LocalLinkIntegrityErrors", "infiniband_portcounters_locallinkintegrityerrors",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "The number of times the count of local physical errors exceeded the threshold specified by LocalPhyErrors",
                 HFILL}
         },
         { &hf_infiniband_PortCounters_ExcessiveBufferOverrunErrors, {
-                "ExcessiveBufferOverrunErrors", "infiniband.portcounters.excessivebufferoverrunerrors",
+                "ExcessiveBufferOverrunErrors", "infiniband_portcounters_excessivebufferoverrunerrors",
                 FT_UINT8, BASE_DEC, NULL, 0x0,
                 "The number of times that OverrunErrors consecutive flow control update periods occurred",
                 HFILL}
         },
         { &hf_infiniband_PortCounters_VL15Dropped, {
-                "VL15Dropped", "infiniband.portcounters.vl15dropped",
+                "VL15Dropped", "infiniband_portcounters_vl15dropped",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 "Number of incoming VL15 packets dropped", HFILL}
         },
         { &hf_infiniband_PortCounters_PortXmitData, {
-                "PortXmitData", "infiniband.portcounters.portxmitdata",
+                "PortXmitData", "infiniband_portcounters_portxmitdata",
                 FT_UINT32, BASE_DEC, NULL, 0x0,
                 "Total number of data octets, divided by 4, transmitted on all VLs from the port", HFILL}
         },
         { &hf_infiniband_PortCounters_PortRcvData, {
-                "PortRcvData", "infiniband.portcounters.portrcvdata",
+                "PortRcvData", "infiniband_portcounters_portrcvdata",
                 FT_UINT32, BASE_DEC, NULL, 0x0,
                 "Total number of data octets, divided by 4, received on all VLs at the port", HFILL}
         },
         { &hf_infiniband_PortCounters_PortXmitPkts, {
-                "PortXmitPkts", "infiniband.portcounters.portxmitpkts",
+                "PortXmitPkts", "infiniband_portcounters_portxmitpkts",
                 FT_UINT32, BASE_DEC, NULL, 0x0,
                 "Total number of packets transmitted on all VLs from the port", HFILL}
         },
         { &hf_infiniband_PortCounters_PortRcvPkts, {
-                "PortRcvPkts", "infiniband.portcounters.portrcvpkts",
+                "PortRcvPkts", "infiniband_portcounters_portrcvpkts",
                 FT_UINT32, BASE_DEC, NULL, 0x0,
                 "Total number of packets received from all VLs on the port", HFILL}
         },
         /* PortCountersExtended in Performance class */
         { &hf_infiniband_PortCountersExt, {
-                "Port Counters Extended (Performance Management MAD)", "infiniband.portcounters_ext",
+                "Port Counters Extended (Performance Management MAD)", "infiniband_portcounters_ext",
                 FT_NONE, BASE_NONE, NULL, 0x0,
                 "Performance class PortCountersExtended packet", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortSelect, {
-                "PortSelect", "infiniband.portcounters_ext.portselect",
+                "PortSelect", "infiniband_portcounters_ext_portselect",
                 FT_UINT8, BASE_HEX, NULL, 0x0,
                 "Selects the port that will be accessed", HFILL}
         },
         { &hf_infiniband_PortCountersExt_CounterSelect, {
-                "CounterSelect", "infiniband.portcounters_ext.counterselect",
+                "CounterSelect", "infiniband_portcounters_ext_counterselect",
                 FT_UINT16, BASE_HEX, NULL, 0x0,
                 "When writing, selects which counters are affected by the operation", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortXmitData, {
-                "PortXmitData", "infiniband.portcounters_ext.portxmitdata",
+                "PortXmitData", "infiniband_portcounters_ext_portxmitdata",
                 FT_UINT64, BASE_DEC, NULL, 0x0,
                 "Total number of data octets, divided by 4, transmitted on all VLs from the port", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortRcvData, {
-                "PortRcvData", "infiniband.portcounters_ext.portrcvdata",
+                "PortRcvData", "infiniband_portcounters_ext_portrcvdata",
                 FT_UINT64, BASE_DEC, NULL, 0x0,
                 "Total number of data octets, divided by 4, received on all VLs at the port", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortXmitPkts, {
-                "PortXmitPkts", "infiniband.portcounters_ext.portxmitpkts",
+                "PortXmitPkts", "infiniband_portcounters_ext_portxmitpkts",
                 FT_UINT64, BASE_DEC, NULL, 0x0,
                 "Total number of packets transmitted on all VLs from the port", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortRcvPkts, {
-                "PortRcvPkts", "infiniband.portcounters_ext.portrcvpkts",
+                "PortRcvPkts", "infiniband_portcounters_ext_portrcvpkts",
                 FT_UINT64, BASE_DEC, NULL, 0x0,
                 "Total number of packets received from all VLs on the port", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortUnicastXmitPkts, {
-                "PortUnicastXmitPkts", "infiniband.portcounters_ext.portunicastxmitpkts",
+                "PortUnicastXmitPkts", "infiniband_portcounters_ext_portunicastxmitpkts",
                 FT_UINT64, BASE_DEC, NULL, 0x0,
                 "Total number of unicast packets transmitted on all VLs from the port", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortUnicastRcvPkts, {
-                "PortUnicastRcvPkts", "infiniband.portcounters_ext.portunicastrcvpkts",
+                "PortUnicastRcvPkts", "infiniband_portcounters_ext_portunicastrcvpkts",
                 FT_UINT64, BASE_DEC, NULL, 0x0,
                 "Total number of unicast packets received from all VLs on the port", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortMulticastXmitPkts, {
-                "PortMulticastXmitPkts", "infiniband.portcounters_ext.portmulticastxmitpkts",
+                "PortMulticastXmitPkts", "infiniband_portcounters_ext_portmulticastxmitpkts",
                 FT_UINT64, BASE_DEC, NULL, 0x0,
                 "Total number of multicast packets transmitted on all VLs from the port", HFILL}
         },
         { &hf_infiniband_PortCountersExt_PortMulticastRcvPkts, {
-                "PortMulticastRcvPkts", "infiniband.portcounters_ext.portmulticastrcvpkts",
+                "PortMulticastRcvPkts", "infiniband_portcounters_ext_portmulticastrcvpkts",
                 FT_UINT64, BASE_DEC, NULL, 0x0,
                 "Total number of multicast packets received from all VLs on the port", HFILL}
         }

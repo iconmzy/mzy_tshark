@@ -223,72 +223,72 @@ proto_register_eapol(void)
 {
   static hf_register_info hf[] = {
     { &hf_eapol_version, {
-        "Version", "eapol.version",
+        "Version", "eapol_version",
         FT_UINT8, BASE_DEC, VALS(eapol_version_vals), 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_type, {
-        "Type", "eapol.type",
+        "Type", "eapol_type",
         FT_UINT8, BASE_DEC, VALS(eapol_type_vals), 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_len, {
-        "Length", "eapol.len",
+        "Length", "eapol_len",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_type, {
-        "Key Descriptor Type", "eapol.keydes.type",
+        "Key Descriptor Type", "eapol_keydes_type",
         FT_UINT8, BASE_DEC, VALS(eapol_keydes_type_vals), 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_body, {
-        "Key Descriptor Body", "eapol.keydes.body",
+        "Key Descriptor Body", "eapol_keydes_body",
         FT_BYTES, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_key_len, {
-        "Key Length", "eapol.keydes.key_len",
+        "Key Length", "eapol_keydes_key_len",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_replay_counter, {
-        "Replay Counter", "eapol.keydes.replay_counter",
+        "Replay Counter", "eapol_keydes_replay_counter",
         FT_UINT64, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_key_iv, {
-        "Key IV", "eapol.keydes.key_iv",
+        "Key IV", "eapol_keydes_key_iv",
         FT_BYTES, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_key_index, {
-        "Key Index", "eapol.keydes.key_index",
+        "Key Index", "eapol_keydes_key_index",
         FT_UINT8, BASE_HEX, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_key_index_type, {
-        "Type", "eapol.keydes.key_index.type",
+        "Type", "eapol_keydes_key_index_type",
         FT_BOOLEAN, 8, TFS(&keytype_tfs), KEYDES_KEY_INDEX_TYPE_MASK ,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_key_index_number, {
-        "Number", "eapol.keydes.key_index.number",
+        "Number", "eapol_keydes_key_index_number",
         FT_UINT8, BASE_DEC, NULL, KEYDES_KEY_INDEX_NUMBER_MASK,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_key_signature, {
-        "Key Signature", "eapol.keydes.key_signature",
+        "Key Signature", "eapol_keydes_key_signature",
         FT_BYTES, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_key, {
-        "Key", "eapol.keydes.key",
+        "Key", "eapol_keydes_key",
         FT_BYTES, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_eapol_keydes_key_generated_locally, {
-        "Key Generated Locally", "eapol.keydes.key.generated_locally",
+        "Key Generated Locally", "eapol_keydes_key_generated_locally",
         FT_BOOLEAN, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
   };

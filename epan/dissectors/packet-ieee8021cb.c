@@ -114,13 +114,13 @@ proto_register_ieee8021cb(void)
 {
     static hf_register_info hf_1cb[] = {
         { &hf_ieee8021cb_res, {
-                "Reserved", "ieee8021cb.reserved", FT_UINT16, BASE_HEX,
+                "Reserved", "ieee8021cb_reserved", FT_UINT16, BASE_HEX,
                 NULL, 0x0000, NULL, HFILL }},
         { &hf_ieee8021cb_seq, {
-                "SEQ", "ieee8021cb.seq", FT_UINT16, BASE_HEX_DEC,
+                "SEQ", "ieee8021cb_seq", FT_UINT16, BASE_HEX_DEC,
                 NULL, 0x0, NULL, HFILL }},
         { &hf_ieee8021cb_etype, {
-                "Type", "ieee8021cb.etype", FT_UINT16, BASE_HEX,
+                "Type", "ieee8021cb_etype", FT_UINT16, BASE_HEX,
                 VALS(etype_vals), 0x0, "Ethertype", HFILL }}
     };
 

@@ -30,22 +30,22 @@ int proto_data = -1;
 #define DATA_HFI_INIT HFI_INIT(proto_data)
 
 static header_field_info hfi_data_data DATA_HFI_INIT =
-	  { "Data", "data.data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL };
+	  { "Data", "data_data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL };
 
 static header_field_info hfi_data_text DATA_HFI_INIT =
-	  { "Text", "data.text", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL };
+	  { "Text", "data_text", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL };
 
 static header_field_info hfi_data_uncompressed_data DATA_HFI_INIT =
-	  { "Uncompressed Data", "data.uncompressed.data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL };
+	  { "Uncompressed Data", "data_uncompressed_data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL };
 
 static header_field_info hfi_data_uncompressed_len DATA_HFI_INIT =
-	  { "Uncompressed Length", "data.uncompressed.len", FT_INT32, BASE_DEC, NULL, 0x0, NULL, HFILL };
+	  { "Uncompressed Length", "data_uncompressed_len", FT_INT32, BASE_DEC, NULL, 0x0, NULL, HFILL };
 
 static header_field_info hfi_data_len DATA_HFI_INIT =
-	  { "Length", "data.len", FT_INT32, BASE_DEC, NULL, 0x0, NULL, HFILL };
+	  { "Length", "data_len", FT_INT32, BASE_DEC, NULL, 0x0, NULL, HFILL };
 
 static header_field_info hfi_data_md5_hash DATA_HFI_INIT =
-	  { "Payload MD5 hash", "data.md5_hash", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL };
+	  { "Payload MD5 hash", "data_md5_hash", FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL };
 
 static gboolean new_pane = FALSE;
 static gboolean uncompress_data = FALSE;

@@ -542,120 +542,120 @@ void proto_register_smb_direct(void)
 
 	static hf_register_info hf[] = {
 	{ &hf_smb_direct_negotiate_request,
-		{ "NegotiateRequest", "smb_direct.negotiate_request",
+		{ "NegotiateRequest", "smb_direct_negotiate_request",
 		FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	{ &hf_smb_direct_negotiate_response,
-		{ "NegotiateResponse", "smb_direct.negotiate_response",
+		{ "NegotiateResponse", "smb_direct_negotiate_response",
 		FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	{ &hf_smb_direct_data_message,
-		{ "DataMessage", "smb_direct.data_message",
+		{ "DataMessage", "smb_direct_data_message",
 		FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	{ &hf_smb_direct_min_version,
-		{ "MinVersion", "smb_direct.version.min",
+		{ "MinVersion", "smb_direct_version_min",
 		FT_UINT16, BASE_HEX, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_max_version,
-		{ "MaxVersion", "smb_direct.version.max",
+		{ "MaxVersion", "smb_direct_version_max",
 		FT_UINT16, BASE_HEX, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_negotiated_version,
-		{ "NegotiatedVersion", "smb_direct.version.negotiated",
+		{ "NegotiatedVersion", "smb_direct_version_negotiated",
 		FT_UINT16, BASE_HEX, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_credits_requested,
-		{ "CreditsRequested", "smb_direct.credits.requested",
+		{ "CreditsRequested", "smb_direct_credits_requested",
 		FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_credits_granted,
-		{ "CreditsGranted", "smb_direct.credits.granted",
+		{ "CreditsGranted", "smb_direct_credits_granted",
 		FT_UINT16, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_status,
-		{ "Status", "smb_direct.status",
+		{ "Status", "smb_direct_status",
 		FT_UINT32, BASE_HEX, VALS(NT_errors), 0,
 		"NT Status code", HFILL }},
 
 	{ &hf_smb_direct_max_read_write_size,
-		{ "MaxReadWriteSize", "smb_direct.max_read_write_size",
+		{ "MaxReadWriteSize", "smb_direct_max_read_write_size",
 		FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_preferred_send_size,
-		{ "PreferredSendSize", "smb_direct.preferred_send_size",
+		{ "PreferredSendSize", "smb_direct_preferred_send_size",
 		FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_max_receive_size,
-		{ "MaxReceiveSize", "smb_direct.max_receive_size",
+		{ "MaxReceiveSize", "smb_direct_max_receive_size",
 		FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_max_fragmented_size,
-		{ "MaxFragmentedSize", "smb_direct.max_fragmented_size",
+		{ "MaxFragmentedSize", "smb_direct_max_fragmented_size",
 		FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_flags,
-		{ "Flags", "smb_direct.flags",
+		{ "Flags", "smb_direct_flags",
 		FT_UINT16, BASE_HEX, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_flags_response_requested,
-		{ "ResponseRequested", "smb_direct.flags.response_requested",
+		{ "ResponseRequested", "smb_direct_flags_response_requested",
 		FT_BOOLEAN, 16, NULL, SMB_DIRECT_RESPONSE_REQUESTED,
 		NULL, HFILL }},
 
 	{ &hf_smb_direct_remaining_length,
-		{ "RemainingLength", "smb_direct.remaining_length",
+		{ "RemainingLength", "smb_direct_remaining_length",
 		FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_data_offset,
-		{ "DataOffset", "smb_direct.data_offset",
+		{ "DataOffset", "smb_direct_data_offset",
 		FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_data_length,
-		{ "DataLength", "smb_direct.data_length",
+		{ "DataLength", "smb_direct_data_length",
 		FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_fragments,
-		{ "Reassembled SMB Direct Fragments", "smb_direct.fragments",
+		{ "Reassembled SMB Direct Fragments", "smb_direct_fragments",
 		FT_NONE, BASE_NONE, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_fragment,
-		{ "SMB Direct Fragment", "smb_direct.fragment",
+		{ "SMB Direct Fragment", "smb_direct_fragment",
 		FT_FRAMENUM, BASE_NONE, NULL, 0, NULL, HFILL }},
 	{ &hf_smb_direct_fragment_overlap,
-		{ "Fragment overlap", "smb_direct.fragment.overlap",
+		{ "Fragment overlap", "smb_direct_fragment_overlap",
 		FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_fragment_overlap_conflict,
-		{ "Conflicting data in fragment overlap", "smb_direct.fragment.overlap.conflict",
+		{ "Conflicting data in fragment overlap", "smb_direct_fragment_overlap_conflict",
 		FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_fragment_multiple_tails,
-		{ "Multiple tail fragments found", "smb_direct.fragment.multipletails",
+		{ "Multiple tail fragments found", "smb_direct_fragment_multipletails",
 		FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_fragment_too_long_fragment,
-		{ "Fragment too long", "smb_direct.fragment.toolongfragment",
+		{ "Fragment too long", "smb_direct_fragment_toolongfragment",
 		FT_BOOLEAN, BASE_NONE, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_fragment_error,
-		{ "Defragmentation error", "smb_direct.fragment.error",
+		{ "Defragmentation error", "smb_direct_fragment_error",
 		FT_FRAMENUM, BASE_NONE, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_fragment_count,
-		{ "Fragment count", "smb_direct.fragment.count",
+		{ "Fragment count", "smb_direct_fragment_count",
 		FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
 	{ &hf_smb_direct_reassembled_in,
-		{ "Reassembled PDU in frame", "smb_direct.reassembled_in",
+		{ "Reassembled PDU in frame", "smb_direct_reassembled_in",
 		FT_FRAMENUM, BASE_NONE, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_reassembled_length,
-		{ "Reassembled SMB Direct length", "smb_direct.reassembled.length",
+		{ "Reassembled SMB Direct length", "smb_direct_reassembled_length",
 		FT_UINT32, BASE_DEC, NULL, 0, NULL, HFILL }},
 
 	{ &hf_smb_direct_reassembled_data,
-		{ "Reassembled SMB Direct data", "smb_direct.reassembled.data",
+		{ "Reassembled SMB Direct data", "smb_direct_reassembled_data",
 		FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }},
 
 	};

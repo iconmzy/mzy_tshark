@@ -282,31 +282,31 @@ proto_register_zbee_zcl_appl_idt(void)
     static hf_register_info hf[] = {
 
         { &hf_zbee_zcl_appl_idt_attr_id,
-            { "Attribute", "zbee_zcl_ha.applident.attr_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_attr_names),
+            { "Attribute", "zbee_zcl_ha_applident_attr_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_attr_names),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_appl_idt_company_id,
-            { "Company ID", "zbee_zcl_ha.applident.attr.company.id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_company_names),
+            { "Company ID", "zbee_zcl_ha_applident_attr_company_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_company_names),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_appl_idt_brand_id,
-            { "Brand ID", "zbee_zcl_ha.applident.attr.brand.id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_brand_names),
+            { "Brand ID", "zbee_zcl_ha_applident_attr_brand_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_brand_names),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_appl_idt_string_len,
-            { "Length", "zbee_zcl_ha.applident.string.len", FT_UINT8, BASE_HEX, NULL,
+            { "Length", "zbee_zcl_ha_applident_string_len", FT_UINT8, BASE_HEX, NULL,
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_appl_idt_prod_type_name,
-            { "Product Type Name", "zbee_zcl_ha.applident.attr.prod_type.name", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_prod_type_name_names),
+            { "Product Type Name", "zbee_zcl_ha_applident_attr_prod_type_name", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_prod_type_name_names),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_appl_idt_prod_type_id,
-            { "Product Type ID", "zbee_zcl_ha.applident.attr.prod_type.id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_prod_type_names),
+            { "Product Type ID", "zbee_zcl_ha_applident_attr_prod_type_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_appl_idt_prod_type_names),
             0x00, NULL, HFILL } },
 
         { &hf_zbee_zcl_appl_idt_ceced_spec_ver,
-            { "CECED Spec. Version", "zbee_zcl_ha.applident.attr.ceced_spec_ver", FT_UINT8, BASE_HEX, VALS(zbee_zcl_appl_idt_ceced_spec_ver_names),
+            { "CECED Spec. Version", "zbee_zcl_ha_applident_attr_ceced_spec_ver", FT_UINT8, BASE_HEX, VALS(zbee_zcl_appl_idt_ceced_spec_ver_names),
             0x00, NULL, HFILL } }
 
     };

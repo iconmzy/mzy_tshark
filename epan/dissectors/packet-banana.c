@@ -247,42 +247,42 @@ proto_register_banana(void)
 {
     static hf_register_info hf[] = {
         { &hf_banana_list,
-            { "List Length", "banana.list",
+            { "List Length", "banana_list",
                 FT_UINT32, BASE_DEC, NULL, 0,
                 "Banana list", HFILL }
         },
         { &hf_banana_int,
-            { "Integer", "banana.int",
+            { "Integer", "banana_int",
                 FT_UINT32, BASE_DEC, NULL, 0,
                 "Banana integer", HFILL }
         },
         { &hf_banana_string,
-            { "String", "banana.string",
+            { "String", "banana_string",
                 FT_STRING, BASE_NONE, NULL, 0,
                 "Banana string", HFILL }
         },
         { &hf_banana_neg_int,
-            { "Negative Integer", "banana.neg_int",
+            { "Negative Integer", "banana_neg_int",
                 FT_INT32, BASE_DEC, NULL, 0,
                 "Banana negative integer", HFILL }
         },
         { &hf_banana_float,
-            { "Float", "banana.float",
+            { "Float", "banana_float",
                 FT_DOUBLE, BASE_NONE, NULL, 0,
                 "Banana float", HFILL }
         },
         { &hf_banana_lg_int,
-            { "Float", "banana.lg_int",
+            { "Float", "banana_lg_int",
                 FT_BYTES, BASE_NONE, NULL, 0,
                 "Banana large integer", HFILL }
         },
         { &hf_banana_lg_neg_int,
-            { "Float", "banana.lg_neg_int",
+            { "Float", "banana_lg_neg_int",
                 FT_BYTES, BASE_NONE, NULL, 0,
                 "Banana large negative integer", HFILL }
         },
         { &hf_banana_pb,
-            { "pb Profile Value", "banana.pb",
+            { "pb Profile Value", "banana_pb",
                 FT_UINT8, BASE_HEX, VALS(pb_vals), 0,
                 "Banana Perspective Broker Profile Value", HFILL }
         }

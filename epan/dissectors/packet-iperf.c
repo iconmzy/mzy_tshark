@@ -115,39 +115,39 @@ proto_register_iperf2(void)
     /* Setup list of header fields */
     static hf_register_info hf[] = {
         { &hf_iperf2_sequence,
-            { "iPerf2 sequence", "iperf2.udp.sequence", FT_INT32, BASE_DEC,
+            { "iPerf2 sequence", "iperf2_udp_sequence", FT_INT32, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_iperf2_sec,
-            { "iPerf2 sec", "iperf2.udp.sec", FT_UINT32, BASE_DEC,
+            { "iPerf2 sec", "iperf2_udp_sec", FT_UINT32, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_iperf2_usec,
-            { "iPerf2 usec", "iperf2.udp.usec", FT_UINT32, BASE_DEC,
+            { "iPerf2 usec", "iperf2_udp_usec", FT_UINT32, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_iperf2_flags,
-            { "Flags", "iperf2.client.flags", FT_UINT32, BASE_DEC,
+            { "Flags", "iperf2_client_flags", FT_UINT32, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_iperf2_num_threads,
-            { "Number of Threads", "iperf2.client.numthreads", FT_UINT32, BASE_DEC,
+            { "Number of Threads", "iperf2_client_numthreads", FT_UINT32, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_iperf2_mport,
-            { "Server Port", "iperf2.client.port", FT_UINT32, BASE_DEC,
+            { "Server Port", "iperf2_client_port", FT_UINT32, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_iperf2_bufferlen,
-            { "Buffer Len", "iperf2.client.bufferlen", FT_UINT32, BASE_DEC,
+            { "Buffer Len", "iperf2_client_bufferlen", FT_UINT32, BASE_DEC,
             NULL, 0, NULL, HFILL }
         },
         { &hf_iperf2_mwinband,
-            { "Bandwidth", "iperf2.client.bandwidth", FT_UINT32, BASE_HEX,
+            { "Bandwidth", "iperf2_client_bandwidth", FT_UINT32, BASE_HEX,
             NULL, 0, NULL, HFILL }
         },
         { &hf_iperf2_mamount,
-            { "Number of Bytes", "iperf2.client.num_bytes", FT_UINT32, BASE_HEX,
+            { "Number of Bytes", "iperf2_client_num_bytes", FT_UINT32, BASE_HEX,
             NULL, 0, NULL, HFILL }
         },
     };

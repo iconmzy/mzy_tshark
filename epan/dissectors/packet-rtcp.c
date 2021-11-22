@@ -4594,7 +4594,7 @@ proto_register_rtcp(void)
             &hf_rtcp_version,
             {
                 "Version",
-                "rtcp.version",
+                "rtcp_version",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_version_vals),
@@ -4606,7 +4606,7 @@ proto_register_rtcp(void)
             &hf_rtcp_padding,
             {
                 "Padding",
-                "rtcp.padding",
+                "rtcp_padding",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -4618,7 +4618,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rc,
             {
                 "Reception report count",
-                "rtcp.rc",
+                "rtcp_rc",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -4630,7 +4630,7 @@ proto_register_rtcp(void)
             &hf_rtcp_sc,
             {
                 "Source count",
-                "rtcp.sc",
+                "rtcp_sc",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -4642,7 +4642,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pt,
             {
                 "Packet type",
-                "rtcp.pt",
+                "rtcp_pt",
                 FT_UINT8,
                 BASE_DEC,
                 VALS( rtcp_packet_type_vals ),
@@ -4654,7 +4654,7 @@ proto_register_rtcp(void)
             &hf_rtcp_length,
             {
                 "Length",
-                "rtcp.length",
+                "rtcp_length",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -4666,7 +4666,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_sender,
             {
                 "Sender SSRC",
-                "rtcp.senderssrc",
+                "rtcp_senderssrc",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -4678,7 +4678,7 @@ proto_register_rtcp(void)
       &hf_rtcp_ssrc_media_source,
             {
                 "Media source SSRC",
-                "rtcp.mediassrc",
+                "rtcp_mediassrc",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -4690,7 +4690,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ntp_msw,
             {
                 "Timestamp, MSW",
-                "rtcp.timestamp.ntp.msw",
+                "rtcp_timestamp_ntp_msw",
                 FT_UINT32,
                 BASE_DEC_HEX,
                 NULL,
@@ -4702,7 +4702,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ntp_lsw,
             {
                 "Timestamp, LSW",
-                "rtcp.timestamp.ntp.lsw",
+                "rtcp_timestamp_ntp_lsw",
                 FT_UINT32,
                 BASE_DEC_HEX,
                 NULL,
@@ -4714,7 +4714,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ntp,
             {
                 "MSW and LSW as NTP timestamp",
-                "rtcp.timestamp.ntp",
+                "rtcp_timestamp_ntp",
                 FT_ABSOLUTE_TIME,
                 ABSOLUTE_TIME_UTC,
                 NULL,
@@ -4726,7 +4726,7 @@ proto_register_rtcp(void)
             &hf_rtcp_timebase_indicator,
             {
                 "Timebase Indicator",
-                "rtcp.timebase_indicator",
+                "rtcp_timebase_indicator",
                 FT_UINT16,
                 BASE_DEC_HEX,
                 NULL,
@@ -4738,7 +4738,7 @@ proto_register_rtcp(void)
             &hf_rtcp_identity,
             {
                 "Identity",
-                "rtcp.identity",
+                "rtcp_identity",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -4750,7 +4750,7 @@ proto_register_rtcp(void)
             &hf_rtcp_stream_id,
             {
                 "Stream id",
-                "rtcp.stream_id",
+                "rtcp_stream_id",
                 FT_UINT64,
                 BASE_HEX,
                 NULL,
@@ -4762,7 +4762,7 @@ proto_register_rtcp(void)
             &hf_rtcp_as_timestamp,
             {
                 "AS timestamp",
-                "rtcp.timestamp.as",
+                "rtcp_timestamp_as",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -4774,7 +4774,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtp_timestamp,
             {
                 "RTP timestamp",
-                "rtcp.timestamp.rtp",
+                "rtcp_timestamp_rtp",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -4786,7 +4786,7 @@ proto_register_rtcp(void)
             &hf_rtcp_sender_pkt_cnt,
             {
                 "Sender's packet count",
-                "rtcp.sender.packetcount",
+                "rtcp_sender_packetcount",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -4798,7 +4798,7 @@ proto_register_rtcp(void)
             &hf_rtcp_sender_oct_cnt,
             {
                 "Sender's octet count",
-                "rtcp.sender.octetcount",
+                "rtcp_sender_octetcount",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -4810,7 +4810,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_source,
             {
                 "Identifier",
-                "rtcp.ssrc.identifier",
+                "rtcp_ssrc_identifier",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -4822,7 +4822,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_fraction,
             {
                 "Fraction lost",
-                "rtcp.ssrc.fraction",
+                "rtcp_ssrc_fraction",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -4834,7 +4834,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_cum_nr,
             {
                 "Cumulative number of packets lost",
-                "rtcp.ssrc.cum_nr",
+                "rtcp_ssrc_cum_nr",
                 FT_INT24,
                 BASE_DEC,
                 NULL,
@@ -4846,7 +4846,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_ext_high_seq,
             {
                 "Extended highest sequence number received",
-                "rtcp.ssrc.ext_high",
+                "rtcp_ssrc_ext_high",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -4858,7 +4858,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_high_seq,
             {
                 "Highest sequence number received",
-                "rtcp.ssrc.high_seq",
+                "rtcp_ssrc_high_seq",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -4870,7 +4870,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_high_cycles,
             {
                 "Sequence number cycles count",
-                "rtcp.ssrc.high_cycles",
+                "rtcp_ssrc_high_cycles",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -4882,7 +4882,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_jitter,
             {
                 "Interarrival jitter",
-                "rtcp.ssrc.jitter",
+                "rtcp_ssrc_jitter",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -4894,7 +4894,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_lsr,
             {
                 "Last SR timestamp",
-                "rtcp.ssrc.lsr",
+                "rtcp_ssrc_lsr",
                 FT_UINT32,
                 BASE_DEC_HEX,
                 NULL,
@@ -4906,7 +4906,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_dlsr,
             {
                 "Delay since last SR timestamp",
-                "rtcp.ssrc.dlsr",
+                "rtcp_ssrc_dlsr",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -4919,7 +4919,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_csrc,
             {
                 "SSRC / CSRC identifier",
-                "rtcp.sdes.ssrc_csrc",
+                "rtcp_sdes_ssrc_csrc",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -4932,7 +4932,7 @@ proto_register_rtcp(void)
             &hf_rtcp_sdes_type,
             {
                 "Type",
-                "rtcp.sdes.type",
+                "rtcp_sdes_type",
                 FT_UINT8,
                 BASE_DEC,
                 VALS( rtcp_sdes_type_vals ),
@@ -4944,7 +4944,7 @@ proto_register_rtcp(void)
             &hf_rtcp_sdes_length,
             {
                 "Length",
-                "rtcp.sdes.length",
+                "rtcp_sdes_length",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -4956,7 +4956,7 @@ proto_register_rtcp(void)
             &hf_rtcp_sdes_text,
             {
                 "Text",
-                "rtcp.sdes.text",
+                "rtcp_sdes_text",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -4968,7 +4968,7 @@ proto_register_rtcp(void)
             &hf_rtcp_sdes_prefix_len,
             {
                 "Prefix length",
-                "rtcp.sdes.prefix.length",
+                "rtcp_sdes_prefix_length",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -4980,7 +4980,7 @@ proto_register_rtcp(void)
             &hf_rtcp_sdes_prefix_string,
             {
                 "Prefix string",
-                "rtcp.sdes.prefix.string",
+                "rtcp_sdes_prefix_string",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -4992,7 +4992,7 @@ proto_register_rtcp(void)
             &hf_rtcp_subtype,
             {
                 "Subtype",
-                "rtcp.app.subtype",
+                "rtcp_app_subtype",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5004,7 +5004,7 @@ proto_register_rtcp(void)
             &hf_rtcp_name_ascii,
             {
                 "Name (ASCII)",
-                "rtcp.app.name",
+                "rtcp_app_name",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5016,7 +5016,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_data,
             {
                 "Application specific data",
-                "rtcp.app.data",
+                "rtcp_app_data",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -5028,7 +5028,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_data_str,
             {
                 "Application specific data",
-                "rtcp.app.data_str",
+                "rtcp_app_data_str",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5040,7 +5040,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1,
             {
                 "PoC1 Application specific data",
-                "rtcp.app.poc1",
+                "rtcp_app_poc1",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -5052,7 +5052,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_sip_uri,
             {
                 "SIP URI",
-                "rtcp.app.poc1.sip.uri",
+                "rtcp_app_poc1_sip_uri",
                 FT_UINT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5064,7 +5064,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_disp_name,
             {
                 "Display Name",
-                "rtcp.app.poc1.disp.name",
+                "rtcp_app_poc1_disp_name",
                 FT_UINT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5076,7 +5076,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_priority,
             {
                 "Priority",
-                "rtcp.app.poc1.priority",
+                "rtcp_app_poc1_priority",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_app_poc1_qsresp_priority_vals),
@@ -5088,7 +5088,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_request_ts,
             {
                 "Talk Burst Request Timestamp",
-                "rtcp.app.poc1.request.ts",
+                "rtcp_app_poc1_request_ts",
                 FT_ABSOLUTE_TIME,
                 ABSOLUTE_TIME_NTP_UTC,
                 NULL,
@@ -5100,7 +5100,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_stt,
             {
                 "Stop talking timer",
-                "rtcp.app.poc1.stt",
+                "rtcp_app_poc1_stt",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5112,7 +5112,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_partic,
             {
                 "Number of participants",
-                "rtcp.app.poc1.participants",
+                "rtcp_app_poc1_participants",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5124,7 +5124,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_ssrc_granted,
             {
                 "SSRC of client granted permission to talk",
-                "rtcp.app.poc1.ssrc.granted",
+                "rtcp_app_poc1_ssrc_granted",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -5136,7 +5136,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_last_pkt_seq_no,
             {
                 "Sequence number of last RTP packet",
-                "rtcp.app.poc1.last.pkt.seq.no",
+                "rtcp_app_poc1_last_pkt_seq_no",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5148,7 +5148,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_ignore_seq_no,
             {
                 "Ignore sequence number field",
-                "rtcp.app.poc1.ignore.seq.no",
+                "rtcp_app_poc1_ignore_seq_no",
                 FT_UINT16,
                 BASE_HEX,
                 NULL,
@@ -5160,7 +5160,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_reason_code1,
             {
                 "Reason code",
-                "rtcp.app.poc1.reason.code",
+                "rtcp_app_poc1_reason_code",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_app_poc1_reason_code1_vals),
@@ -5172,7 +5172,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_reason1_phrase,
             {
                 "Reason Phrase",
-                "rtcp.app.poc1.reason.phrase",
+                "rtcp_app_poc1_reason_phrase",
                 FT_UINT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5184,7 +5184,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_reason_code2,
             {
                 "Reason code",
-                "rtcp.app.poc1.reason.code",
+                "rtcp_app_poc1_reason_code",
                 FT_UINT16,
                 BASE_DEC,
                 VALS(rtcp_app_poc1_reason_code2_vals),
@@ -5196,7 +5196,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_new_time_request,
             {
                 "New time client can request (seconds)",
-                "rtcp.app.poc1.new.time.request",
+                "rtcp_app_poc1_new_time_request",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5208,7 +5208,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_ack_subtype,
             {
                 "Subtype",
-                "rtcp.app.poc1.ack.subtype",
+                "rtcp_app_poc1_ack_subtype",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_app_poc1_floor_cnt_type_vals),
@@ -5220,7 +5220,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_ack_reason_code,
             {
                 "Reason code",
-                "rtcp.app.poc1.ack.reason.code",
+                "rtcp_app_poc1_ack_reason_code",
                 FT_UINT16,
                 BASE_DEC,
                 VALS(rtcp_app_poc1_reason_code_ack_vals),
@@ -5232,7 +5232,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_qsresp_priority,
             {
                 "Priority",
-                "rtcp.app.poc1.qsresp.priority",
+                "rtcp_app_poc1_qsresp_priority",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_app_poc1_qsresp_priority_vals),
@@ -5244,7 +5244,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_qsresp_position,
             {
                 "Position (number of clients ahead)",
-                "rtcp.app.poc1.qsresp.position",
+                "rtcp_app_poc1_qsresp_position",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5256,7 +5256,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_content[0],
             {
                 "Identity of inviting client",
-                "rtcp.app.poc1.conn.content.a.id",
+                "rtcp_app_poc1_conn_content_a_id",
                 FT_BOOLEAN,
                 16,
                 NULL,
@@ -5268,7 +5268,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_content[1],
             {
                 "Nick name of inviting client",
-                "rtcp.app.poc1.conn.content.a.dn",
+                "rtcp_app_poc1_conn_content_a_dn",
                 FT_BOOLEAN,
                 16,
                 NULL,
@@ -5280,7 +5280,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_content[2],
             {
                 "Session identity",
-                "rtcp.app.poc1.conn.content.sess.id",
+                "rtcp_app_poc1_conn_content_sess_id",
                 FT_BOOLEAN,
                 16,
                 NULL,
@@ -5292,7 +5292,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_content[3],
             {
                 "Group name",
-                "rtcp.app.poc1.conn.content.grp.dn",
+                "rtcp_app_poc1_conn_content_grp_dn",
                 FT_BOOLEAN,
                 16,
                 NULL,
@@ -5304,7 +5304,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_content[4],
             {
                 "Group identity",
-                "rtcp.app.poc1.conn.content.grp.id",
+                "rtcp_app_poc1_conn_content_grp_id",
                 FT_BOOLEAN,
                 16,
                 NULL,
@@ -5316,7 +5316,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_session_type,
             {
                 "Session type",
-                "rtcp.app.poc1.conn.session.type",
+                "rtcp_app_poc1_conn_session_type",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_app_poc1_conn_sess_type_vals),
@@ -5328,7 +5328,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_add_ind_mao,
             {
                 "Manual answer override",
-                "rtcp.app.poc1.conn.add.ind.mao",
+                "rtcp_app_poc1_conn_add_ind_mao",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -5340,7 +5340,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_sdes_items[0],
             {
                 "Identity of inviting client",
-                "rtcp.app.poc1.conn.sdes.a.id",
+                "rtcp_app_poc1_conn_sdes_a_id",
                 FT_UINT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5352,7 +5352,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_sdes_items[1],
             {
                 "Nick name of inviting client",
-                "rtcp.app.poc1.conn.sdes.a.dn",
+                "rtcp_app_poc1_conn_sdes_a_dn",
                 FT_UINT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5364,7 +5364,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_sdes_items[2],
             {
                 "Session identity",
-                "rtcp.app.poc1.conn.sdes.sess.id",
+                "rtcp_app_poc1_conn_sdes_sess_id",
                 FT_UINT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5376,7 +5376,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_sdes_items[3],
             {
                 "Group Name",
-                "rtcp.app.poc1.conn.sdes.grp.dn",
+                "rtcp_app_poc1_conn_sdes_grp_dn",
                 FT_UINT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5388,7 +5388,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_poc1_conn_sdes_items[4],
             {
                 "Group identity",
-                "rtcp.app.poc1.conn.sdes.grp.id",
+                "rtcp_app_poc1_conn_sdes_grp_id",
                 FT_UINT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5400,7 +5400,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_mux,
             {
                 "RtpMux Application specific data",
-                "rtcp.app.mux",
+                "rtcp_app_mux",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -5412,7 +5412,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_mux_mux,
             {
                 "Multiplexing supported",
-                "rtcp.app.mux.mux",
+                "rtcp_app_mux_mux",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -5424,7 +5424,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_mux_cp,
             {
                 "Header compression supported",
-                "rtcp.app.mux.cp",
+                "rtcp_app_mux_cp",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -5436,7 +5436,7 @@ proto_register_rtcp(void)
             &hf_rtcp_app_mux_selection,
             {
                 "Multiplexing selection",
-                "rtcp.app.mux.selection",
+                "rtcp_app_mux_selection",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_app_mux_selection_vals),
@@ -5448,7 +5448,7 @@ proto_register_rtcp(void)
                     &hf_rtcp_app_mux_localmuxport,
             {
                 "Local Mux Port",
-                "rtcp.app.mux.muxport",
+                "rtcp_app_mux_muxport",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5460,7 +5460,7 @@ proto_register_rtcp(void)
             &hf_rtcp_fsn,
             {
                 "First sequence number",
-                "rtcp.nack.fsn",
+                "rtcp_nack_fsn",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5472,7 +5472,7 @@ proto_register_rtcp(void)
             &hf_rtcp_blp,
             {
                 "Bitmask of following lost packets",
-                "rtcp.nack.blp",
+                "rtcp_nack_blp",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5484,7 +5484,7 @@ proto_register_rtcp(void)
             &hf_rtcp_padding_count,
             {
                 "Padding count",
-                "rtcp.padding.count",
+                "rtcp_padding_count",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5496,7 +5496,7 @@ proto_register_rtcp(void)
             &hf_rtcp_padding_data,
             {
                 "Padding data",
-                "rtcp.padding.data",
+                "rtcp_padding_data",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -5508,7 +5508,7 @@ proto_register_rtcp(void)
             &hf_rtcp_profile_specific_extension_type,
             {
                 "Extension Type",
-                "rtcp.profile-specific-extension.type",
+                "rtcp_profile-specific-extension_type",
                 FT_UINT16,
                 BASE_DEC,
                 VALS( rtcp_ms_profile_extension_vals ),
@@ -5520,7 +5520,7 @@ proto_register_rtcp(void)
             &hf_rtcp_profile_specific_extension_length,
             {
                 "Extension Length",
-                "rtcp.profile-specific-extension.length",
+                "rtcp_profile-specific-extension_length",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5532,7 +5532,7 @@ proto_register_rtcp(void)
             &hf_rtcp_profile_specific_extension,
             {
                 "Profile-specific extension",
-                "rtcp.profile-specific-extension",
+                "rtcp_profile-specific-extension",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -5544,7 +5544,7 @@ proto_register_rtcp(void)
             &hf_rtcp_setup,
             {
                 "Stream setup",
-                "rtcp.setup",
+                "rtcp_setup",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5556,7 +5556,7 @@ proto_register_rtcp(void)
             &hf_rtcp_setup_frame,
             {
                 "Setup frame",
-                "rtcp.setup-frame",
+                "rtcp_setup-frame",
                 FT_FRAMENUM,
                 BASE_NONE,
                 NULL,
@@ -5568,7 +5568,7 @@ proto_register_rtcp(void)
             &hf_rtcp_setup_method,
             {
                 "Setup Method",
-                "rtcp.setup-method",
+                "rtcp_setup-method",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -5580,7 +5580,7 @@ proto_register_rtcp(void)
             &hf_rtcp_last_sr_timestamp_frame,
             {
                 "Frame matching Last SR timestamp",
-                "rtcp.lsr-frame",
+                "rtcp_lsr-frame",
                 FT_FRAMENUM,
                 BASE_NONE,
                 NULL,
@@ -5592,7 +5592,7 @@ proto_register_rtcp(void)
             &hf_rtcp_time_since_last_sr,
             {
                 "Time since Last SR captured",
-                "rtcp.lsr-frame-captured",
+                "rtcp_lsr-frame-captured",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -5604,7 +5604,7 @@ proto_register_rtcp(void)
             &hf_rtcp_roundtrip_delay,
             {
                 "Roundtrip Delay(ms)",
-                "rtcp.roundtrip-delay",
+                "rtcp_roundtrip-delay",
                 FT_INT32,
                 BASE_DEC,
                 NULL,
@@ -5616,7 +5616,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_block_type,
             {
                 "Type",
-                "rtcp.xr.bt",
+                "rtcp_xr_bt",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_xr_type_vals),
@@ -5628,7 +5628,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_block_specific,
             {
                 "Type Specific",
-                "rtcp.xr.bs",
+                "rtcp_xr_bs",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5640,7 +5640,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_block_length,
             {
                 "Length",
-                "rtcp.xr.bl",
+                "rtcp_xr_bl",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5652,7 +5652,7 @@ proto_register_rtcp(void)
             &hf_rtcp_ssrc_discarded,
             {
                 "Fraction discarded",
-                "rtcp.ssrc.discarded",
+                "rtcp_ssrc_discarded",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5664,7 +5664,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_burst_density,
             {
                 "Burst Density",
-                "rtcp.xr.voipmetrics.burstdensity",
+                "rtcp_xr_voipmetrics_burstdensity",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5676,7 +5676,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_gap_density,
             {
                 "Gap Density",
-                "rtcp.xr.voipmetrics.gapdensity",
+                "rtcp_xr_voipmetrics_gapdensity",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5688,7 +5688,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_burst_duration,
             {
                 "Burst Duration(ms)",
-                "rtcp.xr.voipmetrics.burstduration",
+                "rtcp_xr_voipmetrics_burstduration",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5700,7 +5700,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_gap_duration,
             {
                 "Gap Duration(ms)",
-                "rtcp.xr.voipmetrics.gapduration",
+                "rtcp_xr_voipmetrics_gapduration",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5712,7 +5712,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_rtdelay,
             {
                 "Round Trip Delay(ms)",
-                "rtcp.xr.voipmetrics.rtdelay",
+                "rtcp_xr_voipmetrics_rtdelay",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5724,7 +5724,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_esdelay,
             {
                 "End System Delay(ms)",
-                "rtcp.xr.voipmetrics.esdelay",
+                "rtcp_xr_voipmetrics_esdelay",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5736,7 +5736,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_siglevel,
             {
                 "Signal Level",
-                "rtcp.xr.voipmetrics.signallevel",
+                "rtcp_xr_voipmetrics_signallevel",
                 FT_INT8,
                 BASE_DEC,
                 NULL,
@@ -5748,7 +5748,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_noiselevel,
             {
                 "Noise Level",
-                "rtcp.xr.voipmetrics.noiselevel",
+                "rtcp_xr_voipmetrics_noiselevel",
                 FT_INT8,
                 BASE_DEC,
                 NULL,
@@ -5760,7 +5760,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_rerl,
             {
                 "Residual Echo Return Loss",
-                "rtcp.xr.voipmetrics.rerl",
+                "rtcp_xr_voipmetrics_rerl",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5772,7 +5772,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_gmin,
             {
                 "Gmin",
-                "rtcp.xr.voipmetrics.gmin",
+                "rtcp_xr_voipmetrics_gmin",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5784,7 +5784,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_rfactor,
             {
                 "R Factor",
-                "rtcp.xr.voipmetrics.rfactor",
+                "rtcp_xr_voipmetrics_rfactor",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5796,7 +5796,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_extrfactor,
             {
                 "External R Factor",
-                "rtcp.xr.voipmetrics.extrfactor",
+                "rtcp_xr_voipmetrics_extrfactor",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5808,7 +5808,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_moslq,
             {
                 "MOS - Listening Quality",
-                "rtcp.xr.voipmetrics.moslq",
+                "rtcp_xr_voipmetrics_moslq",
                 FT_FLOAT,
                 BASE_NONE,
                 NULL,
@@ -5820,7 +5820,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_moscq,
             {
                 "MOS - Conversational Quality",
-                "rtcp.xr.voipmetrics.moscq",
+                "rtcp_xr_voipmetrics_moscq",
                 FT_FLOAT,
                 BASE_NONE,
                 NULL,
@@ -5832,7 +5832,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_plc,
             {
                 "Packet Loss Concealment Algorithm",
-                "rtcp.xr.voipmetrics.plc",
+                "rtcp_xr_voipmetrics_plc",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_xr_plc_algo_vals),
@@ -5844,7 +5844,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_jbadaptive,
             {
                 "Adaptive Jitter Buffer Algorithm",
-                "rtcp.xr.voipmetrics.jba",
+                "rtcp_xr_voipmetrics_jba",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_xr_jb_adaptive_vals),
@@ -5856,7 +5856,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_jbrate,
             {
                 "Jitter Buffer Rate",
-                "rtcp.xr.voipmetrics.jbrate",
+                "rtcp_xr_voipmetrics_jbrate",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -5868,7 +5868,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_jbnominal,
             {
                 "Nominal Jitter Buffer Size",
-                "rtcp.xr.voipmetrics.jbnominal",
+                "rtcp_xr_voipmetrics_jbnominal",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5880,7 +5880,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_jbmax,
             {
                 "Maximum Jitter Buffer Size",
-                "rtcp.xr.voipmetrics.jbmax",
+                "rtcp_xr_voipmetrics_jbmax",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5892,7 +5892,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_voip_metrics_jbabsmax,
             {
                 "Absolute Maximum Jitter Buffer Size",
-                "rtcp.xr.voipmetrics.jbabsmax",
+                "rtcp_xr_voipmetrics_jbabsmax",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5904,7 +5904,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_thinning,
             {
                 "Thinning factor",
-                "rtcp.xr.tf",
+                "rtcp_xr_tf",
                 FT_UINT8,
                 BASE_DEC,
                                 NULL,
@@ -5916,7 +5916,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_loss_flag,
             {
                 "Loss Report Flag",
-                "rtcp.xr.stats.lrflag",
+                "rtcp_xr_stats_lrflag",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -5928,7 +5928,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_dup_flag,
             {
                 "Duplicates Report Flag",
-                "rtcp.xr.stats.dupflag",
+                "rtcp_xr_stats_dupflag",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -5940,7 +5940,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_jitter_flag,
             {
                 "Jitter Report Flag",
-                "rtcp.xr.stats.jitterflag",
+                "rtcp_xr_stats_jitterflag",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -5952,7 +5952,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_ttl,
             {
                 "TTL or Hop Limit Flag",
-                "rtcp.xr.stats.ttl",
+                "rtcp_xr_stats_ttl",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_xr_ip_ttl_vals),
@@ -5964,7 +5964,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_endseq,
             {
                 "End Sequence Number",
-                "rtcp.xr.endseq",
+                "rtcp_xr_endseq",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -5976,7 +5976,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_chunk_null_terminator,
             {
                 "Null Terminator",
-                "rtcp.xr.chunk.null_terminator",
+                "rtcp_xr_chunk_null_terminator",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -5988,7 +5988,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_chunk_length,
             {
                 "Check length",
-                "rtcp.xr.chunk.length",
+                "rtcp_xr_chunk_length",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6000,7 +6000,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_chunk_bit_vector,
             {
                 "Bit Vector",
-                "rtcp.xr.chunk.bit_vector",
+                "rtcp_xr_chunk_bit_vector",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6013,7 +6013,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_beginseq,
             {
                 "Begin Sequence Number",
-                "rtcp.xr.beginseq",
+                "rtcp_xr_beginseq",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6025,7 +6025,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_receipt_time_seq,
             {
                 "Receipt Time",
-                "rtcp.xr.receipt_time_seq",
+                "rtcp_xr_receipt_time_seq",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6037,7 +6037,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_lost,
             {
                 "Lost Packets",
-                "rtcp.xr.stats.lost",
+                "rtcp_xr_stats_lost",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6049,7 +6049,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_dups,
             {
                 "Duplicate Packets",
-                "rtcp.xr.stats.dups",
+                "rtcp_xr_stats_dups",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6061,7 +6061,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_minjitter,
             {
                 "Minimum Jitter",
-                "rtcp.xr.stats.minjitter",
+                "rtcp_xr_stats_minjitter",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6073,7 +6073,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_maxjitter,
             {
                 "Maximum Jitter",
-                "rtcp.xr.stats.maxjitter",
+                "rtcp_xr_stats_maxjitter",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6085,7 +6085,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_meanjitter,
             {
                 "Mean Jitter",
-                "rtcp.xr.stats.meanjitter",
+                "rtcp_xr_stats_meanjitter",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6097,7 +6097,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_devjitter,
             {
                 "Standard Deviation of Jitter",
-                "rtcp.xr.stats.devjitter",
+                "rtcp_xr_stats_devjitter",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6109,7 +6109,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_minttl,
             {
                 "Minimum TTL or Hop Limit",
-                "rtcp.xr.stats.minttl",
+                "rtcp_xr_stats_minttl",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6121,7 +6121,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_maxttl,
             {
                 "Maximum TTL or Hop Limit",
-                "rtcp.xr.stats.maxttl",
+                "rtcp_xr_stats_maxttl",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6133,7 +6133,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_meanttl,
             {
                 "Mean TTL or Hop Limit",
-                "rtcp.xr.stats.meanttl",
+                "rtcp_xr_stats_meanttl",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6145,7 +6145,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_stats_devttl,
             {
                 "Standard Deviation of TTL",
-                "rtcp.xr.stats.devttl",
+                "rtcp_xr_stats_devttl",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6157,7 +6157,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_timestamp,
             {
                 "Timestamp",
-                "rtcp.xr.timestamp",
+                "rtcp_xr_timestamp",
                 FT_ABSOLUTE_TIME,
                 ABSOLUTE_TIME_UTC,
                 NULL,
@@ -6169,7 +6169,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_lrr,
             {
                 "Last RR timestamp",
-                "rtcp.xr.lrr",
+                "rtcp_xr_lrr",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6181,7 +6181,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_dlrr,
             {
                 "Delay since last RR timestamp",
-                "rtcp.xr.dlrr",
+                "rtcp_xr_dlrr",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6193,7 +6193,7 @@ proto_register_rtcp(void)
             &hf_rtcp_length_check,
             {
                 "RTCP frame length check",
-                "rtcp.length_check",
+                "rtcp_length_check",
                 FT_BOOLEAN,
                 BASE_NONE,
                 NULL,
@@ -6205,7 +6205,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_fmt,
             {
                 "RTCP Feedback message type (FMT)",
-                "rtcp.rtpfb.fmt",
+                "rtcp_rtpfb_fmt",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_rtpfb_fmt_vals),
@@ -6217,7 +6217,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_fmt,
             {
                 "RTCP Feedback message type (FMT)",
-                "rtcp.psfb.fmt",
+                "rtcp_psfb_fmt",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_psfb_fmt_vals),
@@ -6229,7 +6229,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_nack_pid,
             {
                 "RTCP Transport Feedback NACK PID",
-                "rtcp.rtpfb.nack_pid",
+                "rtcp_rtpfb_nack_pid",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6241,7 +6241,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_nack_blp,
             {
                 "RTCP Transport Feedback NACK BLP",
-                "rtcp.rtpfb.nack_blp",
+                "rtcp_rtpfb_nack_blp",
                 FT_UINT16,
                 BASE_HEX,
                 NULL,
@@ -6253,7 +6253,7 @@ proto_register_rtcp(void)
             &hf_rtcp_fci,
             {
                 "Feedback Control Information (FCI)",
-                "rtcp.fci",
+                "rtcp_fci",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -6265,7 +6265,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_idms_spst,
             {
                 "Synchronization Packet Sender Type",
-                "rtcp.xr.idms.spst",
+                "rtcp_xr_idms_spst",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtcp_xr_idms_spst),
@@ -6277,7 +6277,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_idms_pt,
             {
                 "Payload Type",
-                "rtcp.xr.idms.pt",
+                "rtcp_xr_idms_pt",
                 FT_UINT8,
                 BASE_DEC,
                                 NULL,
@@ -6289,7 +6289,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_idms_msci,
             {
                 "Media Stream Correlation Identifier",
-                "rtcp.xr.idms.msci",
+                "rtcp_xr_idms_msci",
                 FT_UINT32,
                 BASE_DEC,
                                 NULL,
@@ -6301,7 +6301,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_idms_source_ssrc,
             {
                 "Source SSRC",
-                "rtcp.xr.idms.source_ssrc",
+                "rtcp_xr_idms_source_ssrc",
                 FT_UINT32,
                 BASE_DEC,
                                 NULL,
@@ -6313,7 +6313,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_idms_ntp_rcv_ts,
             {
                 "NTP Timestamp of packet reception",
-                "rtcp.xr.idms.ntp_rcv_ts",
+                "rtcp_xr_idms_ntp_rcv_ts",
                 FT_ABSOLUTE_TIME,
                 ABSOLUTE_TIME_UTC,
                 NULL,
@@ -6325,7 +6325,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_idms_rtp_ts,
             {
                 "RTP Timestamp of packet",
-                "rtcp.xr.idms.rtp_ts",
+                "rtcp_xr_idms_rtp_ts",
                 FT_UINT32,
                 BASE_DEC,
                                 NULL,
@@ -6337,7 +6337,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_idms_ntp_pres_ts,
             {
                 "NTP Timestamp of presentation",
-                "rtcp.xr.idms.ntp_pres_ts",
+                "rtcp_xr_idms_ntp_pres_ts",
                 FT_UINT32,
                 BASE_DEC,
                                 NULL,
@@ -6349,7 +6349,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_fir_fci_ssrc,
             {
                 "SSRC",
-                "rtcp.psfb.fir.fci.ssrc",
+                "rtcp_psfb_fir_fci_ssrc",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -6361,7 +6361,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_fir_fci_csn,
             {
                 "Command Sequence Number",
-                "rtcp.psfb.fir.fci.csn",
+                "rtcp_psfb_fir_fci_csn",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6373,7 +6373,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_fir_fci_reserved,
             {
                 "Reserved",
-                "rtcp.psfb.fir.fci.reserved",
+                "rtcp_psfb_fir_fci_reserved",
                 FT_UINT24,
                 BASE_DEC,
                 NULL,
@@ -6385,7 +6385,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_sli_first,
             {
                 "First MB",
-                "rtcp.psfb.fir.sli.first",
+                "rtcp_psfb_fir_sli_first",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6397,7 +6397,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_sli_number,
             {
                 "Number of MBs",
-                "rtcp.psfb.fir.sli.number",
+                "rtcp_psfb_fir_sli_number",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6409,7 +6409,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_sli_picture_id,
             {
                 "Picture ID",
-                "rtcp.psfb.fir.sli.picture_id",
+                "rtcp_psfb_fir_sli_picture_id",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6421,7 +6421,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_remb_fci_identifier,
             {
                 "Unique Identifier",
-                "rtcp.psfb.remb.identifier",
+                "rtcp_psfb_remb_identifier",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -6433,7 +6433,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_remb_fci_ssrc,
             {
                 "SSRC",
-                "rtcp.psfb.remb.fci.ssrc",
+                "rtcp_psfb_remb_fci_ssrc",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -6445,7 +6445,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_remb_fci_number_ssrcs,
             {
                 "Number of Ssrcs",
-                "rtcp.psfb.remb.fci.number_ssrcs",
+                "rtcp_psfb_remb_fci_number_ssrcs",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6457,7 +6457,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_remb_fci_exp,
             {
                 "BR Exp",
-                "rtcp.psfb.remb.fci.br_exp",
+                "rtcp_psfb_remb_fci_br_exp",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6469,7 +6469,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_remb_fci_mantissa,
             {
                 "Br Mantissa",
-                "rtcp.psfb.remb.fci.br_mantissa",
+                "rtcp_psfb_remb_fci_br_mantissa",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6481,7 +6481,7 @@ proto_register_rtcp(void)
       &hf_rtcp_psfb_remb_fci_bitrate,
             {
                 "Maximum bit rate",
-                "rtcp.psfb.remb.fci.bitrate",
+                "rtcp_psfb_remb_fci_bitrate",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -6493,7 +6493,7 @@ proto_register_rtcp(void)
       &hf_rtcp_rtpfb_tmbbr_fci_ssrc,
             {
                 "SSRC",
-                "rtcp.rtpfb.tmmbr.fci.ssrc",
+                "rtcp_rtpfb_tmmbr_fci_ssrc",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -6505,7 +6505,7 @@ proto_register_rtcp(void)
       &hf_rtcp_rtpfb_tmbbr_fci_exp,
             {
                 "MxTBR Exp",
-                "rtcp.rtpfb.tmmbr.fci.exp",
+                "rtcp_rtpfb_tmmbr_fci_exp",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6517,7 +6517,7 @@ proto_register_rtcp(void)
       &hf_rtcp_rtpfb_tmbbr_fci_mantissa,
             {
                 "MxTBR Mantissa",
-                "rtcp.rtpfb.tmmbr.fci.mantissa",
+                "rtcp_rtpfb_tmmbr_fci_mantissa",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6529,7 +6529,7 @@ proto_register_rtcp(void)
       &hf_rtcp_rtpfb_tmbbr_fci_bitrate,
             {
                 "Maximum total media bit rate",
-                "rtcp.rtpfb.tmmbr.fci.bitrate",
+                "rtcp_rtpfb_tmmbr_fci_bitrate",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -6541,7 +6541,7 @@ proto_register_rtcp(void)
       &hf_rtcp_rtpfb_tmbbr_fci_measuredoverhead,
             {
                 "Measured Overhead",
-                "rtcp.rtpfb.tmmbr.fci.measuredoverhead",
+                "rtcp_rtpfb_tmmbr_fci_measuredoverhead",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6553,7 +6553,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_transport_cc_fci_base_seq,
             {
                 "Base Sequence Number",
-                "rtcp.rtpfb.transportcc.baseseq",
+                "rtcp_rtpfb_transportcc_baseseq",
                 FT_UINT16,
                 BASE_DEC_HEX,
                 NULL,
@@ -6565,7 +6565,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_transport_cc_fci_pkt_stats_cnt,
             {
                 "Packet Status Count",
-                "rtcp.rtpfb.transportcc.statuscount",
+                "rtcp_rtpfb_transportcc_statuscount",
                 FT_UINT16,
                 BASE_DEC_HEX,
                 NULL,
@@ -6577,7 +6577,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_transport_cc_fci_ref_time,
             {
                 "Reference Time",
-                "rtcp.rtpfb.transportcc.reftime",
+                "rtcp_rtpfb_transportcc_reftime",
                 FT_INT24,
                 BASE_DEC,
                 NULL,
@@ -6589,7 +6589,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_transport_cc_fci_fb_pkt_cnt,
             {
                 "Feedback Packets Count",
-                "rtcp.rtpfb.transportcc.pktcount",
+                "rtcp_rtpfb_transportcc_pktcount",
                 FT_UINT8,
                 BASE_DEC_HEX,
                 NULL,
@@ -6601,7 +6601,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_transport_cc_fci_pkt_chunk,
             {
                 "Packet Chunk",
-                "rtcp.rtpfb.transportcc.pktchunk",
+                "rtcp_rtpfb_transportcc_pktchunk",
                 FT_UINT16,
                 BASE_DEC_HEX,
                 NULL,
@@ -6613,7 +6613,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_transport_cc_fci_recv_delta_1_byte,
             {
                 "Recv Delta",
-                "rtcp.rtpfb.transportcc.recv_delta",
+                "rtcp_rtpfb_transportcc_recv_delta",
                 FT_UINT8,
                 BASE_HEX,
                 NULL,
@@ -6625,7 +6625,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_transport_cc_fci_recv_delta_2_bytes,
             {
                 "Recv Delta",
-                "rtcp.rtpfb.transportcc.recv_delta",
+                "rtcp_rtpfb_transportcc_recv_delta",
                 FT_UINT16,
                 BASE_HEX,
                 NULL,
@@ -6637,7 +6637,7 @@ proto_register_rtcp(void)
             &hf_rtcp_rtpfb_transport_cc_fci_recv_delta_padding,
             {
                 "Recv Delta Padding",
-                "rtcp.rtpfb.transportcc.recv_delta.padding",
+                "rtcp_rtpfb_transportcc_recv_delta_padding",
                 FT_UINT16,
                 BASE_HEX,
                 NULL,
@@ -6651,7 +6651,7 @@ proto_register_rtcp(void)
             &hf_srtcp_e,
             {
                 "SRTCP E flag",
-                "srtcp.e",
+                "srtcp_e",
                 FT_BOOLEAN,
                 32,
                 NULL,
@@ -6663,7 +6663,7 @@ proto_register_rtcp(void)
             &hf_srtcp_index,
             {
                 "SRTCP Index",
-                "srtcp.index",
+                "srtcp_index",
                 FT_UINT32,
                 BASE_DEC_HEX,
                 NULL,
@@ -6675,7 +6675,7 @@ proto_register_rtcp(void)
             &hf_srtcp_mki,
             {
                 "SRTCP MKI",
-                "srtcp.mki",
+                "srtcp_mki",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -6687,7 +6687,7 @@ proto_register_rtcp(void)
             &hf_srtcp_auth_tag,
             {
                 "SRTCP Auth Tag",
-                "srtcp.auth_tag",
+                "srtcp_auth_tag",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -6700,7 +6700,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_begseq,
             {
                 "Starting sequence number",
-                "rtcp.xr.btxnq.begseq",
+                "rtcp_xr_btxnq_begseq",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6712,7 +6712,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_endseq,
             {
                 "Last sequence number",
-                "rtcp.xr.btxnq.endseq",
+                "rtcp_xr_btxnq_endseq",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6724,7 +6724,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_vmaxdiff,
             {
                 "Maximum IPDV difference in 1 cycle",
-                "rtcp.xr.btxnq.vmaxdiff",
+                "rtcp_xr_btxnq_vmaxdiff",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6736,7 +6736,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_vrange,
             {
                 "Maximum IPDV difference seen to date",
-                "rtcp.xr.btxnq.vrange",
+                "rtcp_xr_btxnq_vrange",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6748,7 +6748,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_vsum,
             {
                 "Sum of peak IPDV differences to date",
-                "rtcp.xr.btxnq.vsum",
+                "rtcp_xr_btxnq_vsum",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6760,7 +6760,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_cycles,
             {
                 "Number of cycles in calculation",
-                "rtcp.xr.btxnq.cycles",
+                "rtcp_xr_btxnq_cycles",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6772,7 +6772,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_jbevents,
             {
                 "Number of jitter buffer adaptations to date",
-                "rtcp.xr.btxnq.jbevents",
+                "rtcp_xr_btxnq_jbevents",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6784,7 +6784,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_spare,
             {
                 "Spare/reserved bits",
-                "rtcp.xr.btxnq.spare",
+                "rtcp_xr_btxnq_spare",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -6796,7 +6796,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_tdegnet,
             {
                 "Time degraded by packet loss or late delivery",
-                "rtcp.xr.btxnq.tdegnet",
+                "rtcp_xr_btxnq_tdegnet",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6808,7 +6808,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_tdegjit,
             {
                 "Time degraded by jitter buffer adaptation events",
-                "rtcp.xr.btxnq.tdegjit",
+                "rtcp_xr_btxnq_tdegjit",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6820,7 +6820,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_es,
             {
                 "ES due to unavailable packet events",
-                "rtcp.xr.btxnq.es",
+                "rtcp_xr_btxnq_es",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6832,7 +6832,7 @@ proto_register_rtcp(void)
             &hf_rtcp_xr_btxnq_ses,
             {
                 "SES due to unavailable packet events",
-                "rtcp.xr.btxnq.ses",
+                "rtcp_xr_btxnq_ses",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6845,7 +6845,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_bandwidth,
             {
                 "Bandwidth",
-                "rtcp.ms_pse.bandwidth",
+                "rtcp_ms_pse_bandwidth",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6857,7 +6857,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_confidence_level,
             {
                 "Confidence Level",
-                "rtcp.ms_pse.confidence_level",
+                "rtcp_ms_pse_confidence_level",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6869,7 +6869,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_seq_num,
             {
                 "Sequence Number",
-                "rtcp.ms_pse.seq_num",
+                "rtcp_ms_pse_seq_num",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6881,7 +6881,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_frame_resolution_width,
             {
                 "Frame Resolution Width",
-                "rtcp.ms_pse.frame_res_width",
+                "rtcp_ms_pse_frame_res_width",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6893,7 +6893,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_frame_resolution_height,
             {
                 "Frame Resolution Height",
-                "rtcp.ms_pse.frame_res_height",
+                "rtcp_ms_pse_frame_res_height",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6905,7 +6905,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_bitrate,
             {
                 "Bitrate",
-                "rtcp.ms_pse.bitrate",
+                "rtcp_ms_pse_bitrate",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6917,7 +6917,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_frame_rate,
             {
                 "Frame Rate",
-                "rtcp.ms_pse.frame_rate",
+                "rtcp_ms_pse_frame_rate",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -6929,7 +6929,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_concealed_frames,
             {
                 "Concealed Frames",
-                "rtcp.ms_pse.concealed_frames",
+                "rtcp_ms_pse_concealed_frames",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6941,7 +6941,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_stretched_frames,
             {
                 "Stretched Frames",
-                "rtcp.ms_pse.stretched_frames",
+                "rtcp_ms_pse_stretched_frames",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6953,7 +6953,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_compressed_frames,
             {
                 "Compressed Frames",
-                "rtcp.ms_pse.compressed_frames",
+                "rtcp_ms_pse_compressed_frames",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6965,7 +6965,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_total_frames,
             {
                 "Total Frames",
-                "rtcp.ms_pse.total_frames",
+                "rtcp_ms_pse_total_frames",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -6977,7 +6977,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_receive_quality_state,
             {
                 "Received Quality State",
-                "rtcp.ms_pse.receive_quality_state",
+                "rtcp_ms_pse_receive_quality_state",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -6989,7 +6989,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_fec_distance_request,
             {
                 "FEC Distance Request",
-                "rtcp.ms_pse.fec_distance_request",
+                "rtcp_ms_pse_fec_distance_request",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7001,7 +7001,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_last_packet_train,
             {
                 "Last Packet Train Flag",
-                "rtcp.ms_pse.last_packet_train",
+                "rtcp_ms_pse_last_packet_train",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7013,7 +7013,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_packet_idx,
             {
                 "Packet Index",
-                "rtcp.ms_pse.packet_index",
+                "rtcp_ms_pse_packet_index",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7025,7 +7025,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_packet_cnt,
             {
                 "Packet Count",
-                "rtcp.ms_pse.packet_count",
+                "rtcp_ms_pse_packet_count",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7037,7 +7037,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_packet_train_byte_cnt,
             {
                 "Packet Train Byte Count",
-                "rtcp.ms_pse.packet_train_byte_count",
+                "rtcp_ms_pse_packet_train_byte_count",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7049,7 +7049,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_inbound_bandwidth,
             {
                 "Inbound Link Bandwidth",
-                "rtcp.ms_pse.inbound_bandwidth",
+                "rtcp_ms_pse_inbound_bandwidth",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -7061,7 +7061,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_outbound_bandwidth,
             {
                 "Outbound Link Bandwidth",
-                "rtcp.ms_pse.outbound_bandwidth",
+                "rtcp_ms_pse_outbound_bandwidth",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -7073,7 +7073,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_no_cache,
             {
                 "No Cache Flag",
-                "rtcp.ms_pse.no_cache",
+                "rtcp_ms_pse_no_cache",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7085,7 +7085,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_congestion_info,
             {
                 "Congestion Information",
-                "rtcp.ms_pse.congestion_info",
+                "rtcp_ms_pse_congestion_info",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7097,7 +7097,7 @@ proto_register_rtcp(void)
             &hf_rtcp_pse_ms_modality,
             {
                 "Modality",
-                "rtcp.ms_pse.modality",
+                "rtcp_ms_pse_modality",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7111,7 +7111,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_pli_ms_request_id,
             {
                 "Request ID",
-                "rtcp.psfb.ms.pli.request_id",
+                "rtcp_psfb_ms_pli_request_id",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7123,7 +7123,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_pli_ms_sfr,
             {
                 "Sync Frame Request",
-                "rtcp.psfb.ms.pli.sync_frame_request",
+                "rtcp_psfb_ms_pli_sync_frame_request",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7137,7 +7137,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_type,
             {
                 "Application Layer Feedback Type",
-                "rtcp.psfb.ms.afb_type",
+                "rtcp_psfb_ms_afb_type",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7149,7 +7149,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_length,
             {
                 "Length",
-                "rtcp.psfb.ms.length",
+                "rtcp_psfb_ms_length",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7161,7 +7161,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_msi,
             {
                 "Requested Media Source ID (MSI)",
-                "rtcp.psfb.ms.msi",
+                "rtcp_psfb_ms_msi",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -7173,7 +7173,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsr_request_id,
             {
                 "Request Id",
-                "rtcp.psfb.ms.vsr.request_id",
+                "rtcp_psfb_ms_vsr_request_id",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7185,7 +7185,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsr_version,
             {
                 "Version",
-                "rtcp.psfb.ms.vsr.version",
+                "rtcp_psfb_ms_vsr_version",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7197,7 +7197,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsr_key_frame_request,
             {
                 "Key Frame Request",
-                "rtcp.psfb.ms.vsr.key_frame_request",
+                "rtcp_psfb_ms_vsr_key_frame_request",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7209,7 +7209,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsr_num_entries,
             {
                 "Number of Entries",
-                "rtcp.psfb.ms.vsr.num_entries",
+                "rtcp_psfb_ms_vsr_num_entries",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7221,7 +7221,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsr_entry_length,
             {
                 "Entry Length",
-                "rtcp.psfb.ms.vsr.entry_length",
+                "rtcp_psfb_ms_vsr_entry_length",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7233,7 +7233,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_payload_type,
             {
                 "Payload Type",
-                "rtcp.psfb.ms.vsr.entry.payload_type",
+                "rtcp_psfb_ms_vsr_entry_payload_type",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7245,7 +7245,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_ucconfig_mode,
             {
                 "UCConfig Mode",
-                "rtcp.psfb.ms.vsr.entry.ucconfig_mode",
+                "rtcp_psfb_ms_vsr_entry_ucconfig_mode",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -7257,7 +7257,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_no_sp_frames,
             {
                 "No support for SP Frames (RT only)",
-                "rtcp.psfb.ms.vsr.entry.no_sp_frames",
+                "rtcp_psfb_ms_vsr_entry_no_sp_frames",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7269,7 +7269,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_baseline,
             {
                 "Only Supports Constrained Baseline (H.264 only)",
-                "rtcp.psfb.ms.vsr.entry.no_sp_baseline",
+                "rtcp_psfb_ms_vsr_entry_no_sp_baseline",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7281,7 +7281,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_cgs,
             {
                 "Supports CGS rewrite (H.264 only)",
-                "rtcp.psfb.ms.vsr.entry.cgs",
+                "rtcp_psfb_ms_vsr_entry_cgs",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7293,7 +7293,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_aspect_ratio_bitmask,
             {
                 "Aspect Ratio Bitmask",
-                "rtcp.psfb.ms.vsr.entry.apsect_ratio",
+                "rtcp_psfb_ms_vsr_entry_apsect_ratio",
                 FT_UINT8,
                 BASE_HEX,
                 NULL,
@@ -7305,7 +7305,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_aspect_ratio_4by3,
             {
                 "Aspect Ratio 4 by 3",
-                "rtcp.psfb.ms.vsr.entry.apsect_ratio_4by3",
+                "rtcp_psfb_ms_vsr_entry_apsect_ratio_4by3",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7317,7 +7317,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_aspect_ratio_16by9,
             {
                 "Aspect Ratio 16 by 9",
-                "rtcp.psfb.ms.vsr.entry.apsect_ratio_16by9",
+                "rtcp_psfb_ms_vsr_entry_apsect_ratio_16by9",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7329,7 +7329,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_aspect_ratio_1by1,
             {
                 "Aspect Ratio 1 by 1",
-                "rtcp.psfb.ms.vsr.entry.apsect_ratio_1by1",
+                "rtcp_psfb_ms_vsr_entry_apsect_ratio_1by1",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7341,7 +7341,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_aspect_ratio_3by4,
             {
                 "Aspect Ratio 3 by 4",
-                "rtcp.psfb.ms.vsr.entry.apsect_ratio_3by4",
+                "rtcp_psfb_ms_vsr_entry_apsect_ratio_3by4",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7353,7 +7353,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_aspect_ratio_9by16,
             {
                 "Aspect Ratio 9 by 16",
-                "rtcp.psfb.ms.vsr.entry.apsect_ratio_9by16",
+                "rtcp_psfb_ms_vsr_entry_apsect_ratio_9by16",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7365,7 +7365,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_aspect_ratio_20by3,
             {
                 "Aspect Ratio 20 by 3",
-                "rtcp.psfb.ms.vsr.entry.apsect_ratio_20by3",
+                "rtcp_psfb_ms_vsr_entry_apsect_ratio_20by3",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7377,7 +7377,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_max_width,
             {
                 "Max Width",
-                "rtcp.psfb.ms.vsr.entry.max_width",
+                "rtcp_psfb_ms_vsr_entry_max_width",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7389,7 +7389,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_max_height,
             {
                 "Max Height",
-                "rtcp.psfb.ms.vsr.entry.max_height",
+                "rtcp_psfb_ms_vsr_entry_max_height",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7401,7 +7401,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_min_bitrate,
             {
                 "Min bit rate",
-                "rtcp.psfb.ms.vsr.entry.min_bitrate",
+                "rtcp_psfb_ms_vsr_entry_min_bitrate",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -7413,7 +7413,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_bitrate_per_level,
             {
                 "Bit rate per level",
-                "rtcp.psfb.ms.vsr.entry.bitrate_per_level",
+                "rtcp_psfb_ms_vsr_entry_bitrate_per_level",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -7425,7 +7425,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_bitrate_histogram,
             {
                 "Receiver Count",
-                "rtcp.psfb.ms.vsr.entry.bitrate_histogram",
+                "rtcp_psfb_ms_vsr_entry_bitrate_histogram",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7437,7 +7437,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_frame_rate_mask,
             {
                 "Frame rate mask",
-                "rtcp.psfb.ms.vsr.entry.frame_rate_mask",
+                "rtcp_psfb_ms_vsr_entry_frame_rate_mask",
                 FT_UINT32,
                 BASE_HEX,
                 NULL,
@@ -7449,7 +7449,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_frame_rate_7_5,
             {
                 "7.5 fps",
-                "rtcp.psfb.ms.vsr.entry.frame_rate_7_5",
+                "rtcp_psfb_ms_vsr_entry_frame_rate_7_5",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7461,7 +7461,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_frame_rate_12_5,
             {
                 "12.5 fps",
-                "rtcp.psfb.ms.vsr.entry.frame_rate_12_5",
+                "rtcp_psfb_ms_vsr_entry_frame_rate_12_5",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7473,7 +7473,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_frame_rate_15,
             {
                 "15 fps",
-                "rtcp.psfb.ms.vsr.entry.frame_rate_15",
+                "rtcp_psfb_ms_vsr_entry_frame_rate_15",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7485,7 +7485,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_frame_rate_25,
             {
                 "25 fps",
-                "rtcp.psfb.ms.vsr.entry.frame_rate_25",
+                "rtcp_psfb_ms_vsr_entry_frame_rate_25",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7497,7 +7497,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_frame_rate_30,
             {
                 "30 fps",
-                "rtcp.psfb.ms.vsr.entry.frame_rate_30",
+                "rtcp_psfb_ms_vsr_entry_frame_rate_30",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7509,7 +7509,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_frame_rate_50,
             {
                 "50 fps",
-                "rtcp.psfb.ms.vsr.entry.frame_rate_50",
+                "rtcp_psfb_ms_vsr_entry_frame_rate_50",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7521,7 +7521,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_frame_rate_60,
             {
                 "60 fps",
-                "rtcp.psfb.ms.vsr.entry.frame_rate_60",
+                "rtcp_psfb_ms_vsr_entry_frame_rate_60",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -7533,7 +7533,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_must_instances,
             {
                 "Number of MUST instances",
-                "rtcp.psfb.ms.vsr.entry.musts",
+                "rtcp_psfb_ms_vsr_entry_musts",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7545,7 +7545,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_may_instances,
             {
                 "Number of MAY instances",
-                "rtcp.psfb.ms.vsr.entry.mays",
+                "rtcp_psfb_ms_vsr_entry_mays",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7557,7 +7557,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_quality_histogram,
             {
                 "Receiver Count",
-                "rtcp.psfb.ms.vsr.entry.quality_histogram",
+                "rtcp_psfb_ms_vsr_entry_quality_histogram",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -7569,7 +7569,7 @@ proto_register_rtcp(void)
             &hf_rtcp_psfb_ms_vsre_max_pixels,
             {
                 "Max Pixels per Frame",
-                "rtcp.psfb.ms.vsr.entry.max_pixels",
+                "rtcp_psfb_ms_vsr_entry_max_pixels",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -7578,277 +7578,277 @@ proto_register_rtcp(void)
             }
         },
         {&hf_rtcp_mcptt_fld_id,
-            { "Field Id", "rtcp.mcptt.fld_id",
+            { "Field Id", "rtcp_mcptt_fld_id",
             FT_UINT32, BASE_DEC, VALS(rtcp_mcpt_field_id_vals), 0x0,
             NULL, HFILL }
         },
         {&hf_rtcp_mcptt_fld_len,
-            { "Length", "rtcp.mcptt.fld_len",
+            { "Length", "rtcp_mcptt_fld_len",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_fld_val,
-        { "Field value", "rtcp.mcptt.fld_val",
+        { "Field value", "rtcp_mcptt_fld_val",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_granted_partys_id,
-        { "Granted Party's Identity", "rtcp.mcptt.granted_partys_id",
+        { "Granted Party's Identity", "rtcp_mcptt_granted_partys_id",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_app_data_padding,
-            { "Padding", "rtcp.app_data.padding",
+            { "Padding", "rtcp_app_data_padding",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_priority,
-            { "Floor Priority", "rtcp.app_data.mcptt.priority",
+            { "Floor Priority", "rtcp_app_data_mcptt_priority",
             FT_UINT16, BASE_DEC, NULL, 0xff00,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_user_id,
-            { "User ID", "rtcp.app_data.mcptt.user_id",
+            { "User ID", "rtcp_app_data_mcptt_user_id",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_duration,
-            { "Duration", "rtcp.app_data.mcptt.duration",
+            { "Duration", "rtcp_app_data_mcptt_duration",
             FT_UINT16, BASE_DEC | BASE_UNIT_STRING,& units_second_seconds, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_floor_ind,
-            { "Floor Indicator", "rtcp.app_data.mcptt.floor_ind",
+            { "Floor Indicator", "rtcp_app_data_mcptt_floor_ind",
             FT_UINT16, BASE_DEC, VALS(mcptt_floor_ind_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_rej_cause,
-            { "Reject Cause", "rtcp.app_data.mcptt.rej_cause",
+            { "Reject Cause", "rtcp_app_data_mcptt_rej_cause",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_rej_cause_floor_deny,
-            { "Reject Cause", "rtcp.app_data.mcptt.rej_cause.floor_deny",
+            { "Reject Cause", "rtcp_app_data_mcptt_rej_cause_floor_deny",
             FT_UINT16, BASE_DEC, VALS(rtcp_mcptt_rej_cause_floor_deny_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_rej_cause_floor_revoke,
-            { "Reject Cause", "rtcp.app_data.mcptt.rej_cause.floor_revoke",
+            { "Reject Cause", "rtcp_app_data_mcptt_rej_cause_floor_revoke",
             FT_UINT16, BASE_DEC, VALS(rtcp_mcptt_rej_cause_floor_revoke_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_rej_phrase,
-        { "Reject Phrase", "rtcp.mcptt.rej_phrase",
+        { "Reject Phrase", "rtcp_mcptt_rej_phrase",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_queue_pos_inf,
-            { "Queue Position Info", "rtcp.app_data.mcptt.queue_pos_inf",
+            { "Queue Position Info", "rtcp_app_data_mcptt_queue_pos_inf",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_queue_pri_lev,
-            { "Queue Priority Level", "rtcp.app_data.mcptt.queue_pri_lev",
+            { "Queue Priority Level", "rtcp_app_data_mcptt_queue_pri_lev",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_perm_to_req_floor,
-            { "Permission to Request the Floor", "rtcp.app_data.mcptt.perm_to_req_floor",
+            { "Permission to Request the Floor", "rtcp_app_data_mcptt_perm_to_req_floor",
             FT_UINT16, BASE_DEC, VALS(rtcp_mcptt_perm_to_req_floor_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_queue_size,
-            { "Queue Size", "rtcp.app_data.mcptt.queue_size",
+            { "Queue Size", "rtcp_app_data_mcptt_queue_size",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_msg_seq_num,
-            { "Message Sequence Number", "rtcp.app_data.mcptt.msg_seq_num",
+            { "Message Sequence Number", "rtcp_app_data_mcptt_msg_seq_num",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_queued_user_id,
-        { "Queued User ID", "rtcp.mcptt.queued_user_id",
+        { "Queued User ID", "rtcp_mcptt_queued_user_id",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_source,
-            { "Source", "rtcp.app_data.mcptt.source",
+            { "Source", "rtcp_app_data_mcptt_source",
             FT_UINT16, BASE_DEC, VALS(rtcp_mcptt_source_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_queueing_cap,
-            { "Queueing Capability", "rtcp.app_data.mcptt.queueing_cap",
+            { "Queueing Capability", "rtcp_app_data_mcptt_queueing_cap",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_part_type_len,
-            { "Participant Type Length", "rtcp.app_data.mcptt.part_type_len",
+            { "Participant Type Length", "rtcp_app_data_mcptt_part_type_len",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_participant_type,
-        { "Participant Type", "rtcp.mcptt.participant_type",
+        { "Participant Type", "rtcp_mcptt_participant_type",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_participant_ref,
-            { "Floor Participant Reference", "rtcp.app_data.mcptt.floor_participant_ref",
+            { "Floor Participant Reference", "rtcp_app_data_mcptt_floor_participant_ref",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_ssrc,
-            { "SSRC", "rtcp.app_data.mcptt.rtcp",
+            { "SSRC", "rtcp_app_data_mcptt_rtcp",
             FT_UINT48, BASE_DEC, NULL, 0xffffffff00000,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_num_users,
-            { "Number of users", "rtcp.app_data.mcptt.num_users",
+            { "Number of users", "rtcp_app_data_mcptt_num_users",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_user_id_len,
-            { "User ID length", "rtcp.app_data.mcptt.user_id_len",
+            { "User ID length", "rtcp_app_data_mcptt_user_id_len",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_spare16,
-            { "Spare", "rtcp.spare16",
+            { "Spare", "rtcp_spare16",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_num_ssrc,
-            { "Number of SSRC", "rtcp.app_data.mcptt.num_ssrc",
+            { "Number of SSRC", "rtcp_app_data_mcptt_num_ssrc",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_func_alias,
-        { "Functional Alias", "rtcp.mcptt.func_alias",
+        { "Functional Alias", "rtcp_mcptt_func_alias",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_fa_len,
-            { "Functional Alias length", "rtcp.app_data.mcptt.fa_len",
+            { "Functional Alias length", "rtcp_app_data_mcptt_fa_len",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_num_fas,
-            { "Number of Functional Alias", "rtcp.app_data.mcptt.num_fa",
+            { "Number of Functional Alias", "rtcp_app_data_mcptt_num_fa",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_loc_type,
-            { "Location Type", "rtcp.app_data.mcptt.loc_type",
+            { "Location Type", "rtcp_app_data_mcptt_loc_type",
             FT_UINT8, BASE_DEC, VALS(rtcp_mcptt_loc_type_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_cellid,
-         {"CellId", "rtcp.app_data.mcptt.cellid",
+         {"CellId", "rtcp_app_data_mcptt_cellid",
           FT_UINT32, BASE_DEC, NULL, 0xFF,
           NULL, HFILL}
         },
         { &hf_rtcp_mcptt_enodebid,
-         { "eNodeB Id", "rtcp.app_data.mcptt.enodebid",
+         { "eNodeB Id", "rtcp_app_data_mcptt_enodebid",
           FT_UINT32, BASE_DEC, NULL, 0x0FFFFF00,
           NULL, HFILL }
         },
         { &hf_rtcp_mcptt_ecgi_eci,
-         {"ECI (E-UTRAN Cell Identifier)", "rtcp.app_data.mcptt.ecgi_eci",
+         {"ECI (E-UTRAN Cell Identifier)", "rtcp_app_data_mcptt_ecgi_eci",
           FT_UINT32, BASE_DEC, NULL, 0x0,
           NULL, HFILL}
         },
         { &hf_rtcp_mcptt_tac,
-            { "Tracking Area Code", "rtcp.app_data.mcptt.tac",
+            { "Tracking Area Code", "rtcp_app_data_mcptt_tac",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_mbms_serv_area,
-            { "MBMS Service Area", "rtcp.app_data.mcptt.mbms_serv_area",
+            { "MBMS Service Area", "rtcp_app_data_mcptt_mbms_serv_area",
             FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_mbsfn_area_id,
-            { "MBSFN Area ID", "rtcp.app_data.mcptt.mbsfn_area_id",
+            { "MBSFN Area ID", "rtcp_app_data_mcptt_mbsfn_area_id",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_lat,
-            { "Latitude value", "rtcp.app_data.mcptt.lat",
+            { "Latitude value", "rtcp_app_data_mcptt_lat",
             FT_INT24, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_long,
-            { "Longitude value", "rtcp.app_data.mcptt.long",
+            { "Longitude value", "rtcp_app_data_mcptt_long",
             FT_INT24, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_msg_type,
-            { "Message Type", "rtcp.app_data.mcptt.msg_type",
+            { "Message Type", "rtcp_app_data_mcptt_msg_type",
             FT_UINT8, BASE_DEC, VALS(rtcp_mcpt_subtype_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_num_loc,
-            { "Number of Locations", "rtcp.app_data.mcptt.num_loc",
+            { "Number of Locations", "rtcp_app_data_mcptt_num_loc",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_str,
-            { "String", "rtcp.app_data.mcptt.str",
+            { "String", "rtcp_app_data_mcptt_str",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_len,
-            { "Length", "rtcp.app_data.mccp.len",
+            { "Length", "rtcp_app_data_mccp_len",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_field_id,
-            { "Field id", "rtcp.app_data.mccp.field_id",
+            { "Field id", "rtcp_app_data_mccp_field_id",
             FT_UINT8, BASE_DEC, VALS(rtcp_mccp_field_id_vals), 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mcptt_group_id,
-            { "MCPTT Group Identity", "rtcp.app_data.mccp.mcptt_grp_id",
+            { "MCPTT Group Identity", "rtcp_app_data_mccp_mcptt_grp_id",
             FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_audio_m_line_no,
-            { "Audio m-line Number", "rtcp.app_data.mccp.audio_m_line_no",
+            { "Audio m-line Number", "rtcp_app_data_mccp_audio_m_line_no",
             FT_UINT8, BASE_DEC, NULL, 0xf0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_floor_m_line_no,
-            { "Floor m-line Number", "rtcp.app_data.mccp.floor_m_line_no",
+            { "Floor m-line Number", "rtcp_app_data_mccp_floor_m_line_no",
             FT_UINT8, BASE_DEC, NULL, 0x0f,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_ip_version,
-            { "IP version", "rtcp.app_data.mccp.ip_version",
+            { "IP version", "rtcp_app_data_mccp_ip_version",
             FT_UINT8, BASE_DEC, NULL, 0xf0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_floor_port_no,
-            { "Floor Port Number", "rtcp.app_data.mccp.floor_port_no",
+            { "Floor Port Number", "rtcp_app_data_mccp_floor_port_no",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_media_port_no,
-            { "Media Port Number", "rtcp.app_data.mccp.media_port_no",
+            { "Media Port Number", "rtcp_app_data_mccp_media_port_no",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_ipv4,
-            { "IP Address", "rtcp.app_data.mccp.ipv4",
+            { "IP Address", "rtcp_app_data_mccp_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_ipv6,
-            { "IP Address", "rtcp.app_data.mccp.ipv4",
+            { "IP Address", "rtcp_app_data_mccp_ipv4",
             FT_IPv6, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_rtcp_mccp_tmgi,
-            { "TMGI", "rtcp.app_data.mccp.tmgi",
+            { "TMGI", "rtcp_app_data_mccp_tmgi",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },

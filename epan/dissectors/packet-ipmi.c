@@ -1725,23 +1725,23 @@ void
 proto_register_ipmi(void)
 {
 	static hf_register_info	hf[] = {
-		{ &hf_ipmi_command_data, { "Bus command data", "ipmi.bus_command_data", FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_session_handle, { "Session handle", "ipmi.session_handle", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_header_trg, { "Target Address", "ipmi.header.target", FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL }},
-		{ &hf_ipmi_header_trg_lun, { "Target LUN", "ipmi.header.trg_lun", FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }},
-		{ &hf_ipmi_header_netfn, { "NetFN", "ipmi.header.netfn", FT_UINT8, BASE_HEX, NULL, 0xfc, NULL, HFILL }},
-		{ &hf_ipmi_header_crc, { "Header Checksum", "ipmi.header.crc", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_header_src, { "Source Address", "ipmi.header.source", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_header_src_lun, { "Source LUN", "ipmi.header.src_lun", FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }},
-		{ &hf_ipmi_header_bridged, { "Bridged", "ipmi.header.bridged", FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }},
-		{ &hf_ipmi_header_sequence, { "Sequence Number", "ipmi.header.sequence", FT_UINT8, BASE_HEX, NULL, 0xfc, NULL, HFILL }},
-		{ &hf_ipmi_header_command, { "Command", "ipmi.header.command", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_header_completion, { "Completion Code", "ipmi.header.completion", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_header_sig, { "Signature", "ipmi.header.signature", FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_data_crc, { "Data checksum", "ipmi.data.crc", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_response_to, { "Response to", "ipmi.response_to", FT_FRAMENUM, BASE_NONE, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_response_in, { "Response in", "ipmi.response_in", FT_FRAMENUM, BASE_NONE, NULL, 0, NULL, HFILL }},
-		{ &hf_ipmi_response_time, { "Responded in", "ipmi.response_time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0, NULL, HFILL }}
+		{ &hf_ipmi_command_data, { "Bus command data", "ipmi_bus_command_data", FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_session_handle, { "Session handle", "ipmi_session_handle", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_header_trg, { "Target Address", "ipmi_header_target", FT_UINT8, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+		{ &hf_ipmi_header_trg_lun, { "Target LUN", "ipmi_header_trg_lun", FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }},
+		{ &hf_ipmi_header_netfn, { "NetFN", "ipmi_header_netfn", FT_UINT8, BASE_HEX, NULL, 0xfc, NULL, HFILL }},
+		{ &hf_ipmi_header_crc, { "Header Checksum", "ipmi_header_crc", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_header_src, { "Source Address", "ipmi_header_source", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_header_src_lun, { "Source LUN", "ipmi_header_src_lun", FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }},
+		{ &hf_ipmi_header_bridged, { "Bridged", "ipmi_header_bridged", FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }},
+		{ &hf_ipmi_header_sequence, { "Sequence Number", "ipmi_header_sequence", FT_UINT8, BASE_HEX, NULL, 0xfc, NULL, HFILL }},
+		{ &hf_ipmi_header_command, { "Command", "ipmi_header_command", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_header_completion, { "Completion Code", "ipmi_header_completion", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_header_sig, { "Signature", "ipmi_header_signature", FT_BYTES, BASE_NONE, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_data_crc, { "Data checksum", "ipmi_data_crc", FT_UINT8, BASE_HEX, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_response_to, { "Response to", "ipmi_response_to", FT_FRAMENUM, BASE_NONE, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_response_in, { "Response in", "ipmi_response_in", FT_FRAMENUM, BASE_NONE, NULL, 0, NULL, HFILL }},
+		{ &hf_ipmi_response_time, { "Responded in", "ipmi_response_time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0, NULL, HFILL }}
 	};
 	static gint *ett[] = {
 		&ett_ipmi,

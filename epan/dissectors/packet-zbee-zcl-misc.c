@@ -462,84 +462,84 @@ proto_register_zbee_zcl_thermostat(void)
     static hf_register_info hf[] = {
 
         { &hf_zbee_zcl_thermostat_attr_id,
-            { "Attribute", "zbee_zcl_hvac.thermostat.attr_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_thermostat_attr_names),
+            { "Attribute", "zbee_zcl_hvac_thermostat_attr_id", FT_UINT16, BASE_HEX, VALS(zbee_zcl_thermostat_attr_names),
             0x0, NULL, HFILL } },
 
         { &hf_zbee_zcl_thermostat_srv_rx_cmd_id,
-            { "Command", "zbee_zcl_hvac.thermostat.cmd.srv_rx.id", FT_UINT8, BASE_HEX,
+            { "Command", "zbee_zcl_hvac_thermostat_cmd_srv_rx_id", FT_UINT8, BASE_HEX,
                 VALS(zbee_zcl_thermostat_srv_rx_cmd_names), 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_srv_tx_cmd_id,
-            { "Command", "zbee_zcl_hvac.thermostat.cmd.srv_tx.id", FT_UINT8, BASE_HEX,
+            { "Command", "zbee_zcl_hvac_thermostat_cmd_srv_tx_id", FT_UINT8, BASE_HEX,
                 VALS(zbee_zcl_thermostat_srv_tx_cmd_names), 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_setpoint_mode,
-            { "Mode", "zbee_zcl_hvac.thermostat.mode", FT_UINT8, BASE_HEX,
+            { "Mode", "zbee_zcl_hvac_thermostat_mode", FT_UINT8, BASE_HEX,
                 VALS(zbee_zcl_thermostat_setpoint_mode_names), 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_setpoint_amount,
-            { "Amount", "zbee_zcl_hvac.thermostat.amount", FT_FLOAT, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+            { "Amount", "zbee_zcl_hvac_thermostat_amount", FT_FLOAT, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_num_trans,
-            { "Number of Transitions for Sequence", "zbee_zcl_hvac.thermostat.num_trans", FT_UINT8, BASE_HEX, NULL,
+            { "Number of Transitions for Sequence", "zbee_zcl_hvac_thermostat_num_trans", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_sequence,
-            { "Days of Week for Sequence", "zbee_zcl_hvac.thermostat.day_sequence", FT_UINT8, BASE_HEX, NULL,
+            { "Days of Week for Sequence", "zbee_zcl_hvac_thermostat_day_sequence", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_sunday,
-            { "Sunday", "zbee_zcl_hvac.thermostat.day.sunday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x01, NULL,
+            { "Sunday", "zbee_zcl_hvac_thermostat_day_sunday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x01, NULL,
                 HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_monday,
-            { "Monday", "zbee_zcl_hvac.thermostat.day.monday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x02, NULL,
+            { "Monday", "zbee_zcl_hvac_thermostat_day_monday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x02, NULL,
                 HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_tuesday,
-            { "Tuesday", "zbee_zcl_hvac.thermostat.day.tuesday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04, NULL,
+            { "Tuesday", "zbee_zcl_hvac_thermostat_day_tuesday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x04, NULL,
                 HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_wednesday,
-            { "Wednesday", "zbee_zcl_hvac.thermostat.day.wednesday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x08, NULL,
+            { "Wednesday", "zbee_zcl_hvac_thermostat_day_wednesday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x08, NULL,
                 HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_thursday,
-            { "Thursday", "zbee_zcl_hvac.thermostat.day.thursday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x10, NULL,
+            { "Thursday", "zbee_zcl_hvac_thermostat_day_thursday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x10, NULL,
                 HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_friday,
-            { "Friday", "zbee_zcl_hvac.thermostat.day.friday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x20, NULL,
+            { "Friday", "zbee_zcl_hvac_thermostat_day_friday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x20, NULL,
                 HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_saturday,
-            { "Saturday", "zbee_zcl_hvac.thermostat.day.saturday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x40, NULL,
+            { "Saturday", "zbee_zcl_hvac_thermostat_day_saturday", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x40, NULL,
                 HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_day_vacation,
-            { "Away/Vacation", "zbee_zcl_hvac.thermostat.day.vacation", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x80, NULL,
+            { "Away/Vacation", "zbee_zcl_hvac_thermostat_day_vacation", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x80, NULL,
                 HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_mode_sequence,
-            { "Mode for Sequence", "zbee_zcl_hvac.thermostat.mode_sequence", FT_UINT8, BASE_HEX, NULL,
+            { "Mode for Sequence", "zbee_zcl_hvac_thermostat_mode_sequence", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_mode_heat,
-            { "Heating", "zbee_zcl_hvac.thermostat.mode.heat", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x01, NULL, HFILL }},
+            { "Heating", "zbee_zcl_hvac_thermostat_mode_heat", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x01, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_mode_cool,
-            { "Cooling", "zbee_zcl_hvac.thermostat.mode.cool", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x02, NULL, HFILL }},
+            { "Cooling", "zbee_zcl_hvac_thermostat_mode_cool", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0x02, NULL, HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_time,
-            { "Transition Time", "zbee_zcl_hvac.thermostat.time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+            { "Transition Time", "zbee_zcl_hvac_thermostat_time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
                 "Setpoint transition time relative to midnight of the scheduled day", HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_heat,
-            { "Heating Setpoint", "zbee_zcl_hvac.thermostat.heat", FT_FLOAT, BASE_NONE, NULL, 0x0,
+            { "Heating Setpoint", "zbee_zcl_hvac_thermostat_heat", FT_FLOAT, BASE_NONE, NULL, 0x0,
                 "Heating setpoint in degrees Celcius", HFILL }},
 
         { &hf_zbee_zcl_thermostat_schedule_cool,
-            { "Cooling Setpoint", "zbee_zcl_hvac.thermostat.cool", FT_FLOAT, BASE_NONE, NULL, 0x0,
+            { "Cooling Setpoint", "zbee_zcl_hvac_thermostat_cool", FT_FLOAT, BASE_NONE, NULL, 0x0,
                 "Cooling setpoint in degrees Celcius", HFILL }}
     };
 

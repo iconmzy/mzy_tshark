@@ -1666,374 +1666,374 @@ proto_register_atalk(void)
 {
   static hf_register_info hf_llap[] = {
     { &hf_llap_dst,
-      { "Destination Node",     "llap.dst",     FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Destination Node",     "llap_dst",     FT_UINT8,  BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_llap_src,
-      { "Source Node",          "llap.src",     FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Source Node",          "llap_src",     FT_UINT8,  BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_llap_type,
-      { "Type",                 "llap.type",    FT_UINT8,  BASE_HEX|BASE_EXT_STRING, &llap_type_vals_ext, 0x0,
+      { "Type",                 "llap_type",    FT_UINT8,  BASE_HEX|BASE_EXT_STRING, &llap_type_vals_ext, 0x0,
         NULL, HFILL }},
   };
 
   static hf_register_info hf_llc[] = {
     { &hf_llc_apple_atalk_pid,
-      { "PID",                  "llc.apple_atalk_pid", FT_UINT16, BASE_HEX,
+      { "PID",                  "llc_apple_atalk_pid", FT_UINT16, BASE_HEX,
         VALS(apple_atalk_pid_vals), 0x0, "Protocol ID", HFILL }
     }
   };
 
   static hf_register_info hf_ddp[] = {
     { &hf_ddp_hopcount,
-      { "Hop count",            "ddp.hopcount", FT_UINT16,  BASE_DEC, NULL, 0x3C00,
+      { "Hop count",            "ddp_hopcount", FT_UINT16,  BASE_DEC, NULL, 0x3C00,
         NULL, HFILL }},
 
     { &hf_ddp_len,
-      { "Datagram length",      "ddp.len",      FT_UINT16, BASE_DEC, NULL, 0x03FF,
+      { "Datagram length",      "ddp_len",      FT_UINT16, BASE_DEC, NULL, 0x03FF,
         NULL, HFILL }},
 
     { &hf_ddp_checksum,
-      { "Checksum",             "ddp.checksum", FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Checksum",             "ddp_checksum", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_dst,
-      { "Destination address",  "ddp.dst",      FT_STRING, BASE_NONE, NULL, 0x0,
+      { "Destination address",  "ddp_dst",      FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_dst_net,
-      { "Destination Net",      "ddp.dst.net",  FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Destination Net",      "ddp_dst_net",  FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_src,
-      { "Source address",       "ddp.src",      FT_STRING, BASE_NONE, NULL, 0x0,
+      { "Source address",       "ddp_src",      FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_src_net,
-      { "Source Net",           "ddp.src.net",  FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Source Net",           "ddp_src_net",  FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_dst_node,
-      { "Destination Node",     "ddp.dst.node", FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Destination Node",     "ddp_dst_node", FT_UINT8,  BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_src_node,
-      { "Source Node",          "ddp.src.node", FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Source Node",          "ddp_src_node", FT_UINT8,  BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_dst_socket,
-      { "Destination Socket",   "ddp.dst_socket", FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Destination Socket",   "ddp_dst_socket", FT_UINT8,  BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_src_socket,
-      { "Source Socket",        "ddp.src_socket", FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Source Socket",        "ddp_src_socket", FT_UINT8,  BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_ddp_type,
-      { "Protocol type",        "ddp.type",     FT_UINT8,  BASE_DEC|BASE_EXT_STRING, &op_vals_ext, 0x0,
+      { "Protocol type",        "ddp_type",     FT_UINT8,  BASE_DEC|BASE_EXT_STRING, &op_vals_ext, 0x0,
         NULL, HFILL }},
   };
 
   static hf_register_info hf_nbp[] = {
     { &hf_nbp_op,
-      { "Operation",            "nbp.op",       FT_UINT8,  BASE_DEC,
+      { "Operation",            "nbp_op",       FT_UINT8,  BASE_DEC,
                 VALS(nbp_op_vals), 0xF0, NULL, HFILL }},
     { &hf_nbp_info,
-      { "Info",         "nbp.info",     FT_UINT8,  BASE_HEX,
+      { "Info",         "nbp_info",     FT_UINT8,  BASE_HEX,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_nbp_count,
-      { "Count",                "nbp.count",    FT_UINT8,  BASE_DEC,
+      { "Count",                "nbp_count",    FT_UINT8,  BASE_DEC,
                 NULL, 0x0F, NULL, HFILL }},
     { &hf_nbp_node_net,
-      { "Network",              "nbp.net",      FT_UINT16,  BASE_DEC,
+      { "Network",              "nbp_net",      FT_UINT16,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_nbp_node_node,
-      { "Node",         "nbp.node",     FT_UINT8,  BASE_DEC,
+      { "Node",         "nbp_node",     FT_UINT8,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_nbp_node_port,
-      { "Port",         "nbp.port",     FT_UINT8,  BASE_DEC,
+      { "Port",         "nbp_port",     FT_UINT8,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_nbp_node_enum,
-      { "Enumerator",           "nbp.enum",     FT_UINT8,  BASE_DEC,
+      { "Enumerator",           "nbp_enum",     FT_UINT8,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_nbp_node_object,
-      { "Object",               "nbp.object",   FT_UINT_STRING,  STR_UNICODE,
+      { "Object",               "nbp_object",   FT_UINT_STRING,  STR_UNICODE,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_nbp_node_type,
-      { "Type",         "nbp.type",     FT_UINT_STRING,  STR_UNICODE,
+      { "Type",         "nbp_type",     FT_UINT_STRING,  STR_UNICODE,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_nbp_node_zone,
-      { "Zone",         "nbp.zone",     FT_UINT_STRING,  STR_UNICODE,
+      { "Zone",         "nbp_zone",     FT_UINT_STRING,  STR_UNICODE,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_nbp_tid,
-      { "Transaction ID",               "nbp.tid",      FT_UINT8,  BASE_DEC,
+      { "Transaction ID",               "nbp_tid",      FT_UINT8,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }}
   };
 
   static hf_register_info hf_rtmp[] = {
     { &hf_rtmp_net,
-      { "Net",          "rtmp.net",     FT_UINT16,  BASE_DEC,
+      { "Net",          "rtmp_net",     FT_UINT16,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_rtmp_node,
-      { "Node",         "nbp.nodeid",   FT_UINT8,  BASE_DEC,
+      { "Node",         "nbp_nodeid",   FT_UINT8,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_rtmp_node_len,
-      { "Node Length",          "nbp.nodeid.length",    FT_UINT8,  BASE_DEC,
+      { "Node Length",          "nbp_nodeid_length",    FT_UINT8,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_rtmp_tuple_net,
-      { "Net",          "rtmp.tuple.net",       FT_UINT16,  BASE_DEC,
+      { "Net",          "rtmp_tuple_net",       FT_UINT16,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_rtmp_tuple_range_start,
-      { "Range Start",          "rtmp.tuple.range_start",       FT_UINT16,  BASE_DEC,
+      { "Range Start",          "rtmp_tuple_range_start",       FT_UINT16,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_rtmp_tuple_range_end,
-      { "Range End",            "rtmp.tuple.range_end", FT_UINT16,  BASE_DEC,
+      { "Range End",            "rtmp_tuple_range_end", FT_UINT16,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_rtmp_tuple_dist,
-      { "Distance",             "rtmp.tuple.dist",      FT_UINT16,  BASE_DEC,
+      { "Distance",             "rtmp_tuple_dist",      FT_UINT16,  BASE_DEC,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_rtmp_version,
-      { "Version",              "rtmp.version",   FT_UINT8,   BASE_HEX,
+      { "Version",              "rtmp_version",   FT_UINT8,   BASE_HEX,
                 NULL, 0x0, NULL, HFILL }},
     { &hf_rtmp_function,
-      { "Function",             "rtmp.function",        FT_UINT8,  BASE_DEC,
+      { "Function",             "rtmp_function",        FT_UINT8,  BASE_DEC,
                 VALS(rtmp_function_vals), 0x0, "Request Function", HFILL }}
   };
 
   static hf_register_info hf_atp[] = {
     { &hf_atp_ctrlinfo,
-      { "Control info",         "atp.ctrlinfo", FT_UINT8,  BASE_HEX,
+      { "Control info",         "atp_ctrlinfo", FT_UINT8,  BASE_HEX,
                 NULL, 0, NULL, HFILL }},
 
     { &hf_atp_function,
-      { "Function",             "atp.function", FT_UINT8,  BASE_DEC,
+      { "Function",             "atp_function", FT_UINT8,  BASE_DEC,
                 VALS(atp_function_vals), ATP_FUNCMASK, "function code", HFILL }},
 
 
     { &hf_atp_xo,
-      { "XO",           "atp.xo",       FT_BOOLEAN,  8,
+      { "XO",           "atp_xo",       FT_BOOLEAN,  8,
                 NULL, ATP_XO, "Exactly-once flag", HFILL }},
 
     { &hf_atp_eom,
-      { "EOM",          "atp.eom",      FT_BOOLEAN,  8,
+      { "EOM",          "atp_eom",      FT_BOOLEAN,  8,
                 NULL, ATP_EOM, "End-of-message", HFILL }},
 
     { &hf_atp_sts,
-      { "STS",          "atp.sts",      FT_BOOLEAN,  8,
+      { "STS",          "atp_sts",      FT_BOOLEAN,  8,
                 NULL, ATP_STS, "Send transaction status", HFILL }},
 
     { &hf_atp_treltimer,
-      { "TRel timer",           "atp.treltimer",        FT_UINT8,  BASE_DEC,
+      { "TRel timer",           "atp_treltimer",        FT_UINT8,  BASE_DEC,
                 VALS(atp_trel_timer_vals), 0x07, NULL, HFILL }},
 
     { &hf_atp_bitmap,
-      { "Bitmap",               "atp.bitmap",   FT_UINT8,  BASE_HEX,
+      { "Bitmap",               "atp_bitmap",   FT_UINT8,  BASE_HEX,
                 NULL, 0x0, "Bitmap or sequence number", HFILL }},
 
     { &hf_atp_tid,
-      { "TID",                  "atp.tid",      FT_UINT16,  BASE_DEC,
+      { "TID",                  "atp_tid",      FT_UINT16,  BASE_DEC,
                 NULL, 0x0, "Transaction id", HFILL }},
     { &hf_atp_user_bytes,
-      { "User bytes",                   "atp.user_bytes",       FT_UINT32,  BASE_HEX,
+      { "User bytes",                   "atp_user_bytes",       FT_UINT32,  BASE_HEX,
                 NULL, 0x0, NULL, HFILL }},
 
     { &hf_atp_segment_overlap,
-      { "Segment overlap",      "atp.segment.overlap", FT_BOOLEAN, BASE_NONE,
+      { "Segment overlap",      "atp_segment_overlap", FT_BOOLEAN, BASE_NONE,
                 NULL, 0x0, "Segment overlaps with other segments", HFILL }},
 
     { &hf_atp_segment_overlap_conflict,
-      { "Conflicting data in segment overlap", "atp.segment.overlap.conflict",
+      { "Conflicting data in segment overlap", "atp_segment_overlap_conflict",
         FT_BOOLEAN, BASE_NONE,
                 NULL, 0x0, "Overlapping segments contained conflicting data", HFILL }},
 
     { &hf_atp_segment_multiple_tails,
-      { "Multiple tail segments found", "atp.segment.multipletails",
+      { "Multiple tail segments found", "atp_segment_multipletails",
         FT_BOOLEAN, BASE_NONE,
                 NULL, 0x0, "Several tails were found when desegmenting the packet", HFILL }},
 
     { &hf_atp_segment_too_long_segment,
-      { "Segment too long",     "atp.segment.toolongsegment", FT_BOOLEAN, BASE_NONE,
+      { "Segment too long",     "atp_segment_toolongsegment", FT_BOOLEAN, BASE_NONE,
                 NULL, 0x0, "Segment contained data past end of packet", HFILL }},
 
     { &hf_atp_segment_error,
-      {"Desegmentation error",  "atp.segment.error", FT_FRAMENUM, BASE_NONE,
+      {"Desegmentation error",  "atp_segment_error", FT_FRAMENUM, BASE_NONE,
                 NULL, 0x0, "Desegmentation error due to illegal segments", HFILL }},
 
     { &hf_atp_segment_count,
-      { "Segment count", "atp.segment.count", FT_UINT32, BASE_DEC, NULL, 0x0,
+      { "Segment count", "atp_segment_count", FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_atp_segment,
-      { "ATP Fragment",         "atp.fragment", FT_FRAMENUM, BASE_NONE,
+      { "ATP Fragment",         "atp_fragment", FT_FRAMENUM, BASE_NONE,
                 NULL, 0x0, NULL, HFILL }},
 
     { &hf_atp_segments,
-      { "ATP Fragments",        "atp.fragments", FT_NONE, BASE_NONE,
+      { "ATP Fragments",        "atp_fragments", FT_NONE, BASE_NONE,
                 NULL, 0x0, NULL, HFILL }},
 
     { &hf_atp_reassembled_in,
-      { "Reassembled ATP in frame", "atp.reassembled_in", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+      { "Reassembled ATP in frame", "atp_reassembled_in", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
         "This ATP packet is reassembled in this frame", HFILL }},
 
     { &hf_atp_reassembled_length,
-      { "Reassembled ATP length", "atp.reassembled.length", FT_UINT32, BASE_DEC, NULL, 0x0,
+      { "Reassembled ATP length", "atp_reassembled_length", FT_UINT32, BASE_DEC, NULL, 0x0,
         "The total length of the reassembled payload", HFILL }}
   };
 
   static hf_register_info hf_asp[] = {
     { &hf_asp_func,
-      { "asp function",         "asp.function", FT_UINT8,  BASE_DEC|BASE_EXT_STRING,
+      { "asp function",         "asp_function", FT_UINT8,  BASE_DEC|BASE_EXT_STRING,
                 &asp_func_vals_ext, 0, NULL, HFILL }},
 
     { &hf_asp_error,
-      { "asp error",            "asp.error",    FT_INT32,  BASE_DEC|BASE_EXT_STRING,
+      { "asp error",            "asp_error",    FT_INT32,  BASE_DEC|BASE_EXT_STRING,
                 &asp_error_vals_ext, 0, "return error code", HFILL }},
 
     { &hf_asp_version,
-      { "Version",              "asp.version",  FT_UINT16,  BASE_HEX,
+      { "Version",              "asp_version",  FT_UINT16,  BASE_HEX,
                 NULL, 0, "asp version", HFILL }},
 
     { &hf_asp_attn_code,
-      { "Attn code",            "asp.attn_code",        FT_UINT16,  BASE_HEX,
+      { "Attn code",            "asp_attn_code",        FT_UINT16,  BASE_HEX,
                 NULL, 0, "asp attention code", HFILL }},
 
     { &hf_asp_init_error,
-      { "Error",                "asp.init_error",       FT_UINT16,  BASE_DEC,
+      { "Error",                "asp_init_error",       FT_UINT16,  BASE_DEC,
                 NULL, 0, "asp init error", HFILL }},
 
     { &hf_asp_session_id,
-      { "Session ID",           "asp.session_id", FT_UINT8,  BASE_DEC,
+      { "Session ID",           "asp_session_id", FT_UINT8,  BASE_DEC,
                 NULL, 0, "asp session id", HFILL }},
 
     { &hf_asp_socket,
-      { "Socket",               "asp.socket",   FT_UINT8,  BASE_DEC,
+      { "Socket",               "asp_socket",   FT_UINT8,  BASE_DEC,
                 NULL, 0, "asp socket", HFILL }},
 
     { &hf_asp_seq,
-      { "Sequence",             "asp.seq",      FT_UINT16,  BASE_DEC,
+      { "Sequence",             "asp_seq",      FT_UINT16,  BASE_DEC,
                 NULL, 0, "asp sequence number", HFILL }},
 
     { &hf_asp_size,
-      { "size",         "asp.size",     FT_UINT16,  BASE_DEC,
+      { "size",         "asp_size",     FT_UINT16,  BASE_DEC,
                 NULL, 0, "asp available size for reply", HFILL }},
 
     { &hf_asp_zero_value,
-      { "Pad (0)",         "asp.zero_value",
+      { "Pad (0)",         "asp_zero_value",
         FT_BYTES, BASE_NONE, NULL, 0x0,
         "Pad", HFILL }},
   };
 
   static hf_register_info hf_zip[] = {
     { &hf_zip_function,
-      { "Function",     "zip.function", FT_UINT8,  BASE_DEC|BASE_EXT_STRING, &zip_function_vals_ext, 0x0,
+      { "Function",     "zip_function", FT_UINT8,  BASE_DEC|BASE_EXT_STRING, &zip_function_vals_ext, 0x0,
         "ZIP function", HFILL }},
 
     { &hf_zip_zero_value,
-      { "Pad (0)",      "zip.zero_value",FT_BYTES, BASE_NONE, NULL, 0x0,
+      { "Pad (0)",      "zip_zero_value",FT_BYTES, BASE_NONE, NULL, 0x0,
         "Pad", HFILL }},
 
     { &hf_zip_atp_function,
-      { "Function",     "zip.atp_function", FT_UINT8,  BASE_DEC, VALS(zip_atp_function_vals), 0x0,
+      { "Function",     "zip_atp_function", FT_UINT8,  BASE_DEC, VALS(zip_atp_function_vals), 0x0,
         NULL, HFILL }},
 
     { &hf_zip_start_index,
-      { "Start index",  "zip.start_index", FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Start index",  "zip_start_index", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_zip_count,
-      { "Count",        "zip.count", FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Count",        "zip_count", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_zip_network_count,
-      { "Count",        "zip.network_count", FT_UINT8, BASE_DEC, NULL, 0x0,
+      { "Count",        "zip_network_count", FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_zip_network,
-      { "Network","zip.network", FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Network","zip_network", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_zip_network_start,
-      { "Network start","zip.network_start", FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Network start","zip_network_start", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
     { &hf_zip_network_end,
-      { "Network end",  "zip.network_end", FT_UINT16, BASE_DEC, NULL, 0x0,
+      { "Network end",  "zip_network_end", FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_zip_flags,
-      { "Flags",        "zip.flags", FT_UINT8, BASE_HEX, NULL, 0xC0,
+      { "Flags",        "zip_flags", FT_UINT8, BASE_HEX, NULL, 0xC0,
         NULL, HFILL }},
     { &hf_zip_last_flag,
-      { "Last Flag",    "zip.last_flag", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+      { "Last Flag",    "zip_last_flag", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
         "Non zero if contains last zone name in the zone list", HFILL }},
 
     { &hf_zip_flags_zone_invalid,
-      { "Zone invalid", "zip.flags.zone_invalid", FT_BOOLEAN, 8, NULL, 0x80,
+      { "Zone invalid", "zip_flags_zone_invalid", FT_BOOLEAN, 8, NULL, 0x80,
         NULL, HFILL }},
 
     { &hf_zip_flags_use_broadcast,
-      { "Use broadcast","zip.flags.use_broadcast", FT_BOOLEAN, 8, NULL, 0x40,
+      { "Use broadcast","zip_flags_use_broadcast", FT_BOOLEAN, 8, NULL, 0x40,
         NULL, HFILL }},
 
     { &hf_zip_flags_only_one_zone,
-      { "Only one zone","zip.flags.only_one_zone", FT_BOOLEAN, 8, NULL, 0x20,
+      { "Only one zone","zip_flags_only_one_zone", FT_BOOLEAN, 8, NULL, 0x20,
         NULL, HFILL }},
 
     { &hf_zip_zone_name,
-      { "Zone",         "zip.zone_name", FT_UINT_STRING, STR_UNICODE, NULL, 0x0,
+      { "Zone",         "zip_zone_name", FT_UINT_STRING, STR_UNICODE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_zip_default_zone,
-      { "Default zone", "zip.default_zone",FT_UINT_STRING, STR_UNICODE, NULL, 0x0,
+      { "Default zone", "zip_default_zone",FT_UINT_STRING, STR_UNICODE, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_zip_multicast_length,
-      { "Multicast length",     "zip.multicast_length", FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Multicast length",     "zip_multicast_length", FT_UINT8,  BASE_DEC, NULL, 0x0,
         "Multicast address length", HFILL }},
 
     { &hf_zip_multicast_address,
-      { "Multicast address", "zip.multicast_address",FT_BYTES, BASE_NONE, NULL, 0x0,
+      { "Multicast address", "zip_multicast_address",FT_BYTES, BASE_NONE, NULL, 0x0,
         NULL, HFILL }},
 
   };
 
   static hf_register_info hf_pap[] = {
     { &hf_pap_connid,
-      { "ConnID",       "prap.connid",   FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "ConnID",       "prap_connid",   FT_UINT8,  BASE_DEC, NULL, 0x0,
         "PAP connection ID", HFILL }},
 
     { &hf_pap_function,
-      { "Function",     "prap.function", FT_UINT8,  BASE_DEC|BASE_EXT_STRING, &pap_function_vals_ext, 0x0,
+      { "Function",     "prap_function", FT_UINT8,  BASE_DEC|BASE_EXT_STRING, &pap_function_vals_ext, 0x0,
         "PAP function", HFILL }},
 
     { &hf_pap_socket,
-      { "Socket",       "prap.socket",   FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Socket",       "prap_socket",   FT_UINT8,  BASE_DEC, NULL, 0x0,
         "ATP responding socket number", HFILL }},
 
     { &hf_pap_quantum,
-      { "Quantum",      "prap.quantum",  FT_UINT8,  BASE_DEC, NULL, 0x0,
+      { "Quantum",      "prap_quantum",  FT_UINT8,  BASE_DEC, NULL, 0x0,
         "Flow quantum", HFILL }},
 
     { &hf_pap_waittime,
-      { "Wait time",    "prap.waittime",  FT_UINT16,  BASE_DEC, NULL, 0x0,
+      { "Wait time",    "prap_waittime",  FT_UINT16,  BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_pap_result,
-      { "Result",       "prap.result",  FT_UINT16,  BASE_DEC, NULL, 0x0,
+      { "Result",       "prap_result",  FT_UINT16,  BASE_DEC, NULL, 0x0,
         NULL, HFILL }},
 
     { &hf_pap_seq,
-      { "Sequence",     "prap.seq",      FT_UINT16,  BASE_DEC, NULL, 0x0,
+      { "Sequence",     "prap_seq",      FT_UINT16,  BASE_DEC, NULL, 0x0,
         "Sequence number", HFILL }},
 
     { &hf_pap_status,
-      { "Status",       "prap.status",   FT_UINT_STRING,  STR_UNICODE, NULL, 0x0,
+      { "Status",       "prap_status",   FT_UINT_STRING,  STR_UNICODE, NULL, 0x0,
                 "Printer status", HFILL }},
 
     { &hf_pap_eof,
-      { "EOF",  "prap.eof", FT_BOOLEAN, BASE_NONE,
+      { "EOF",  "prap_eof", FT_BOOLEAN, BASE_NONE,
                 NULL, 0x0, NULL, HFILL }},
 
     { &hf_pap_pad,
-      { "Pad",          "prap.pad",              FT_NONE,   BASE_NONE, NULL, 0,
+      { "Pad",          "prap_pad",              FT_NONE,   BASE_NONE, NULL, 0,
                 "Pad Byte",     HFILL }},
 
   };

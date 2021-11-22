@@ -66,17 +66,17 @@ proto_register_bicc_mst(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_lcls_gcr_network_id_len, { "Length of LCLS GCR Network ID",
-		  "bicc_mst.lcls_gcr.network_id_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+		  "bicc_mst_lcls_gcr_network_id_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 		{ &hf_lcls_gcr_network_id, { "LCLS GCR Network ID",
-		  "bicc_mst.lcls_gcr.network_id", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+		  "bicc_mst_lcls_gcr_network_id", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 		{ &hf_lcls_gcr_node_id_len, { "Length of LCLS GCR Node ID",
-		  "bicc_mst.lcls_gcr.node_id_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+		  "bicc_mst_lcls_gcr_node_id_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 		{ &hf_lcls_gcr_node_id, { "LCLS GCR Network ID",
-		  "bicc_mst.lcls_gcr.network_id", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+		  "bicc_mst_lcls_gcr_network_id", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 		{ &hf_lcls_gcr_call_ref_id_len, { "Length of LCLS GCR Call Ref ID",
-		  "bicc_mst.lcls_gcr.call_ref_id_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+		  "bicc_mst_lcls_gcr_call_ref_id_len", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 		{ &hf_lcls_gcr_call_ref_id, { "LCLS GCR Call Ref ID",
-		  "bicc_mst.lcls_gcr.call_ref_id", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+		  "bicc_mst_lcls_gcr_call_ref_id", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 	};
 
 	static gint *ett[] = {

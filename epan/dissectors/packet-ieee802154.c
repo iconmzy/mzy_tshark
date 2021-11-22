@@ -5589,1040 +5589,1040 @@ void proto_register_ieee802154(void)
         /* PHY level */
 
         { &hf_ieee802154_nonask_phy_preamble,
-        { "Preamble",                       "wpan-nonask-phy.preamble", FT_UINT32, BASE_HEX, NULL, 0x0,
+        { "Preamble",                       "wpan-nonask-phy_preamble", FT_UINT32, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_nonask_phy_sfd,
-        { "Start of Frame Delimiter",       "wpan-nonask-phy.sfd", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Start of Frame Delimiter",       "wpan-nonask-phy_sfd", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_nonask_phy_length,
-        { "Frame Length",                   "wpan-nonask-phy.frame_length", FT_UINT8, BASE_HEX, NULL,
+        { "Frame Length",                   "wpan-nonask-phy_frame_length", FT_UINT8, BASE_HEX, NULL,
             IEEE802154_PHY_LENGTH_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_nonask_phr,
-        { "PHR",                            "wpan-nonask-phy.phr", FT_UINT8, BASE_HEX, NULL,
+        { "PHR",                            "wpan-nonask-phy_phr", FT_UINT8, BASE_HEX, NULL,
             0x0, NULL, HFILL }},
     };
 
     static hf_register_info hf[] = {
 
         { &hf_ieee802154_frame_length,
-        { "Frame Length",                   "wpan.frame_length", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Frame Length",                   "wpan_frame_length", FT_UINT8, BASE_DEC, NULL, 0x0,
             "Frame Length as reported from lower layer", HFILL }},
 
         { &hf_ieee802154_fcf,
-        { "Frame Control Field",            "wpan.fcf", FT_UINT16, BASE_HEX, NULL,
+        { "Frame Control Field",            "wpan_fcf", FT_UINT16, BASE_HEX, NULL,
             0x0, NULL, HFILL }},
 
         { &hf_ieee802154_frame_type,
-        { "Frame Type",                     "wpan.frame_type", FT_UINT16, BASE_HEX, VALS(ieee802154_frame_types),
+        { "Frame Type",                     "wpan_frame_type", FT_UINT16, BASE_HEX, VALS(ieee802154_frame_types),
             IEEE802154_FCF_TYPE_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_security,
-        { "Security Enabled",               "wpan.security", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_SEC_EN,
+        { "Security Enabled",               "wpan_security", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_SEC_EN,
             "Whether security operations are performed at the MAC layer or not.", HFILL }},
 
         { &hf_ieee802154_pending,
-        { "Frame Pending",                  "wpan.pending", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_FRAME_PND,
+        { "Frame Pending",                  "wpan_pending", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_FRAME_PND,
             "Indication of additional packets waiting to be transferred from the source device.", HFILL }},
 
         { &hf_ieee802154_ack_request,
-        { "Acknowledge Request",            "wpan.ack_request", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_ACK_REQ,
+        { "Acknowledge Request",            "wpan_ack_request", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_ACK_REQ,
             "Whether the sender of this packet requests acknowledgment or not.", HFILL }},
 
         { &hf_ieee802154_pan_id_compression,
-        { "PAN ID Compression",             "wpan.pan_id_compression", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_PAN_ID_COMPRESSION,
+        { "PAN ID Compression",             "wpan_pan_id_compression", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_PAN_ID_COMPRESSION,
             "Whether this packet contains the PAN ID or not.", HFILL }},
 
         { &hf_ieee802154_fcf_reserved,
-        { "Reserved",                       "wpan.fcf.reserved", FT_BOOLEAN, 16, NULL, 0x0080,
+        { "Reserved",                       "wpan_fcf_reserved", FT_BOOLEAN, 16, NULL, 0x0080,
             NULL, HFILL }},
 
         { &hf_ieee802154_seqno_suppression,
-        { "Sequence Number Suppression",    "wpan.seqno_suppression", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_SEQNO_SUPPRESSION,
+        { "Sequence Number Suppression",    "wpan_seqno_suppression", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_SEQNO_SUPPRESSION,
             "Whether this packet contains the Sequence Number or not.", HFILL }},
 
         { &hf_ieee802154_ie_present,
-        { "Information Elements Present",   "wpan.ie_present", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_IE_PRESENT,
+        { "Information Elements Present",   "wpan_ie_present", FT_BOOLEAN, 16, NULL, IEEE802154_FCF_IE_PRESENT,
             "Whether this packet contains the Information Elements or not.", HFILL }},
 
         { &hf_ieee802154_dst_addr_mode,
-        { "Destination Addressing Mode",    "wpan.dst_addr_mode", FT_UINT16, BASE_HEX, VALS(ieee802154_addr_modes),
+        { "Destination Addressing Mode",    "wpan_dst_addr_mode", FT_UINT16, BASE_HEX, VALS(ieee802154_addr_modes),
             IEEE802154_FCF_DADDR_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_version,
-        { "Frame Version",                  "wpan.version", FT_UINT16, BASE_DEC, VALS(ieee802154_frame_versions),
+        { "Frame Version",                  "wpan_version", FT_UINT16, BASE_DEC, VALS(ieee802154_frame_versions),
             IEEE802154_FCF_VERSION, NULL, HFILL }},
 
         { &hf_ieee802154_src_addr_mode,
-        { "Source Addressing Mode",         "wpan.src_addr_mode", FT_UINT16, BASE_HEX, VALS(ieee802154_addr_modes),
+        { "Source Addressing Mode",         "wpan_src_addr_mode", FT_UINT16, BASE_HEX, VALS(ieee802154_addr_modes),
             IEEE802154_FCF_SADDR_MASK, NULL, HFILL }},
 
         /* 802.15.4-2015 Multipurpose frame control fields */
         { &hf_ieee802154_mpf_long_frame_control,
-        { "Long Frame Control",             "wpan.long_frame_control", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_LONG_FC,
+        { "Long Frame Control",             "wpan_long_frame_control", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_LONG_FC,
             "Whether this frame control field uses one or two octets.", HFILL }},
 
         { &hf_ieee802154_mpf_dst_addr_mode,
-        { "Destination Addressing Mode",    "wpan.dst_addr_mode", FT_UINT16, BASE_HEX, VALS(ieee802154_addr_modes),
+        { "Destination Addressing Mode",    "wpan_dst_addr_mode", FT_UINT16, BASE_HEX, VALS(ieee802154_addr_modes),
             IEEE802154_MPF_FCF_DADDR_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_mpf_src_addr_mode,
-        { "Source Addressing Mode",         "wpan.src_addr_mode", FT_UINT16, BASE_HEX, VALS(ieee802154_addr_modes),
+        { "Source Addressing Mode",         "wpan_src_addr_mode", FT_UINT16, BASE_HEX, VALS(ieee802154_addr_modes),
             IEEE802154_MPF_FCF_SADDR_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_mpf_pan_id_present,
-        { "PAN ID Present",                 "wpan.pan_id_present", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_PAN_ID_PRESENT,
+        { "PAN ID Present",                 "wpan_pan_id_present", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_PAN_ID_PRESENT,
             "Whether this packet contains the destination PAN ID or not", HFILL }},
 
         { &hf_ieee802154_mpf_security,
-        { "Security Enabled",               "wpan.security", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_SEC_EN,
+        { "Security Enabled",               "wpan_security", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_SEC_EN,
             "Whether security operations are performed at the MAC layer or not.", HFILL }},
 
         { &hf_ieee802154_mpf_seqno_suppression,
-        { "Sequence Number Suppression",    "wpan.seqno_suppression", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_SEQNO_SUPPRESSION,
+        { "Sequence Number Suppression",    "wpan_seqno_suppression", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_SEQNO_SUPPRESSION,
             "Whether this packet contains the Sequence Number or not.", HFILL }},
 
         { &hf_ieee802154_mpf_pending,
-        { "Frame Pending",                  "wpan.pending", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_FRAME_PND,
+        { "Frame Pending",                  "wpan_pending", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_FRAME_PND,
             "Indication of additional packets waiting to be transferred from the source device.", HFILL }},
 
         { &hf_ieee802154_mpf_version,
-        { "Multipurpose Frame Version",     "wpan.mpf_version", FT_UINT16, BASE_DEC, NULL,
+        { "Multipurpose Frame Version",     "wpan_mpf_version", FT_UINT16, BASE_DEC, NULL,
             IEEE802154_MPF_FCF_VERSION, NULL, HFILL }},
 
         { &hf_ieee802154_mpf_ack_request,
-        { "Acknowledge Request",            "wpan.ack_request", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_ACK_REQ,
+        { "Acknowledge Request",            "wpan_ack_request", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_ACK_REQ,
             "Whether the sender of this packet requests acknowledgment or not.", HFILL }},
 
         { &hf_ieee802154_mpf_ie_present,
-        { "Information Elements Present",   "wpan.ie_present", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_IE_PRESENT,
+        { "Information Elements Present",   "wpan_ie_present", FT_BOOLEAN, 16, NULL, IEEE802154_MPF_FCF_IE_PRESENT,
             "Whether this packet contains the Information Elements or not.", HFILL }},
 
         { &hf_ieee802154_seqno,
-        { "Sequence Number",                "wpan.seq_no", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Sequence Number",                "wpan_seq_no", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_dst_panID,
-        { "Destination PAN",                "wpan.dst_pan", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Destination PAN",                "wpan_dst_pan", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_dst16,
-        { "Destination",                    "wpan.dst16", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Destination",                    "wpan_dst16", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_dst64,
-        { "Destination",                    "wpan.dst64", FT_EUI64, BASE_NONE, NULL, 0x0,
+        { "Destination",                    "wpan_dst64", FT_EUI64, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_src_panID,
-        { "Source PAN",                     "wpan.src_pan", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Source PAN",                     "wpan_src_pan", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_src16,
-        { "Source",                         "wpan.src16", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Source",                         "wpan_src16", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_src64,
-        { "Extended Source",                "wpan.src64", FT_EUI64, BASE_NONE, NULL, 0x0,
+        { "Extended Source",                "wpan_src64", FT_EUI64, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_addr16,
-        { "Address",                        "wpan.addr16", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Address",                        "wpan_addr16", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_addr64,
-        { "Extended Address",               "wpan.addr64", FT_EUI64, BASE_NONE, NULL, 0x0,
+        { "Extended Address",               "wpan_addr64", FT_EUI64, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_src64_origin,
-        { "Origin",                         "wpan.src64.origin", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+        { "Origin",                         "wpan_src64_origin", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_fcs,
-        { "FCS",                            "wpan.fcs", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "FCS",                            "wpan_fcs", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_fcs32,
-        { "FCS",                            "wpan.fcs32", FT_UINT32, BASE_HEX, NULL, 0x0,
+        { "FCS",                            "wpan_fcs32", FT_UINT32, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_rssi,
-        { "RSSI",                           "wpan.rssi", FT_INT8, BASE_DEC|BASE_UNIT_STRING, &units_decibels, 0x0,
+        { "RSSI",                           "wpan_rssi", FT_INT8, BASE_DEC|BASE_UNIT_STRING, &units_decibels, 0x0,
             "Received Signal Strength", HFILL }},
 
         { &hf_ieee802154_fcs_ok,
-        { "FCS Valid",                      "wpan.fcs_ok", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+        { "FCS Valid",                      "wpan_fcs_ok", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_correlation,
-        { "LQI Correlation Value",          "wpan.correlation", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "LQI Correlation Value",          "wpan_correlation", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         /* Information Elements */
 
         { &hf_ieee802154_ie_unknown_content,
-        { "Unknown Content",                "wpan.ie.unknown_content", FT_BYTES, SEP_SPACE, NULL, 0x0,
+        { "Unknown Content",                "wpan_ie_unknown_content", FT_BYTES, SEP_SPACE, NULL, 0x0,
             NULL, HFILL }},
 
         /* Header IE */
 
         { &hf_ieee802154_header_ies,
-        { "Header IEs",                     "wpan.header_ie", FT_NONE, BASE_NONE, NULL,
+        { "Header IEs",                     "wpan_header_ie", FT_NONE, BASE_NONE, NULL,
             0x0, NULL, HFILL }},
 
         { &hf_ieee802154_header_ie_tlv,
-          { "IE Header",                    "wpan.header_ie_tlv", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}},
+          { "IE Header",                    "wpan_header_ie_tlv", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL}},
 
         { &hf_ieee802154_header_ie_type,
-        { "Type",                           "wpan.header_ie.type", FT_UINT16, BASE_DEC, VALS(ieee802154_ie_types),
+        { "Type",                           "wpan_header_ie_type", FT_UINT16, BASE_DEC, VALS(ieee802154_ie_types),
                 IEEE802154_HEADER_IE_TYPE_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_header_ie_id,
-        { "Id",                             "wpan.header_ie.id", FT_UINT16, BASE_HEX, VALS(ieee802154_header_ie_names),
+        { "Id",                             "wpan_header_ie_id", FT_UINT16, BASE_HEX, VALS(ieee802154_header_ie_names),
                 IEEE802154_HEADER_IE_ID_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_header_ie_length,
-        { "Length",                         "wpan.header_ie.length", FT_UINT16, BASE_DEC, NULL,
+        { "Length",                         "wpan_header_ie_length", FT_UINT16, BASE_DEC, NULL,
                 IEEE802154_HEADER_IE_LENGTH_MASK, NULL, HFILL }},
 
 
         /* Individual Header IEs */
 
         { &hf_ieee802154_hie_unsupported,
-        { "Unsupported Header IE",          "wpan.header_ie.unsupported", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Unsupported Header IE",          "wpan_header_ie_unsupported", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_hie_ht1,
-        { "Header Termination 1 IE (Payload IEs follow)", "wpan.header_ie.ht1", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Header Termination 1 IE (Payload IEs follow)", "wpan_header_ie_ht1", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_hie_ht2,
-        { "Header Termination 2 IE (Payload follows)",    "wpan.header_ie.ht2", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Header Termination 2 IE (Payload follows)",    "wpan_header_ie_ht2", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
 
         /* Time correction IE */
         { &hf_ieee802154_hie_time_correction,
-        { "Time Correction IE",             "wpan.header_ie.time_correction", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Time Correction IE",             "wpan_header_ie_time_correction", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_hie_time_correction_time_sync_info,
-        { "Time Sync Info",                 "wpan.header_ie.time_correction.time_sync_info", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Time Sync Info",                 "wpan_header_ie_time_correction_time_sync_info", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_nack,
-        { "Nack",                           "wpan.nack", FT_BOOLEAN, 16, TFS(&hf_ieee802154_nack_tfs), 0x8000,
+        { "Nack",                           "wpan_nack", FT_BOOLEAN, 16, TFS(&hf_ieee802154_nack_tfs), 0x8000,
             NULL, HFILL }},
 
         { &hf_ieee802154_hie_time_correction_value,
-        { "Time Correction",                "wpan.header_ie.time_correction.value", FT_INT16, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x0FFF,
+        { "Time Correction",                "wpan_header_ie_time_correction_value", FT_INT16, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x0FFF,
             "Time correction in microseconds", HFILL }},
 
         /* CSL IE */
         { &hf_ieee802154_hie_csl,
-        { "CSL IE", "wpan.header_ie.csl", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "CSL IE", "wpan_header_ie_csl", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_hie_csl_phase,
-        { "Phase", "wpan.header_ie.csl.phase", FT_INT16, BASE_DEC, NULL, 0x0,
+        { "Phase", "wpan_header_ie_csl_phase", FT_INT16, BASE_DEC, NULL, 0x0,
             "CSL Phase in units of 10 symbols", HFILL }},
 
         { &hf_ieee802154_hie_csl_period,
-        { "Period", "wpan.header_ie.csl.period", FT_INT16, BASE_DEC, NULL, 0x0,
+        { "Period", "wpan_header_ie_csl_period", FT_INT16, BASE_DEC, NULL, 0x0,
             "CSL Period in units of 10 symbols", HFILL }},
 
         { &hf_ieee802154_hie_csl_rendezvous_time,
-        { "Rendezvous Time", "wpan.header_ie.csl.rendezvous_time", FT_INT16, BASE_DEC, NULL, 0x0,
+        { "Rendezvous Time", "wpan_header_ie_csl_rendezvous_time", FT_INT16, BASE_DEC, NULL, 0x0,
             "CSL Rendezvous Time in units of 10 symbols", HFILL }},
 
         /* Global Time IE */
         { &hf_ieee802154_hie_global_time,
-        { "Global Time IE",                 "wpan.header_ie.global_time", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Global Time IE",                 "wpan_header_ie_global_time", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_hie_global_time_value,
-        { "Global Time",                    "wpan.header_ie.global_time.value", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
+        { "Global Time",                    "wpan_header_ie_global_time_value", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0,
             NULL, HFILL }},
 
         /* Payload IEs */
 
         { &hf_ieee802154_payload_ies,
-        { "Payload IEs",                    "wpan.payload_ie", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { "Payload IEs",                    "wpan_payload_ie", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_ieee802154_payload_ie_tlv,
-        { "IE Header",                      "wpan.payload_ie_tlv", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
+        { "IE Header",                      "wpan_payload_ie_tlv", FT_UINT16, BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
         { &hf_ieee802154_payload_ie_type,
-        { "Type",                           "wpan.payload_ie.type", FT_UINT16, BASE_DEC, VALS(ieee802154_ie_types),
+        { "Type",                           "wpan_payload_ie_type", FT_UINT16, BASE_DEC, VALS(ieee802154_ie_types),
                 IEEE802154_PAYLOAD_IE_TYPE_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_payload_ie_id,
-        { "Id",                             "wpan.payload_ie.id", FT_UINT16, BASE_HEX, VALS(ieee802154_payload_ie_names),
+        { "Id",                             "wpan_payload_ie_id", FT_UINT16, BASE_HEX, VALS(ieee802154_payload_ie_names),
                 IEEE802154_PAYLOAD_IE_ID_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_payload_ie_length,
-        { "Length",                         "wpan.payload_ie.length", FT_UINT16, BASE_DEC, NULL,
+        { "Length",                         "wpan_payload_ie_length", FT_UINT16, BASE_DEC, NULL,
                 IEEE802154_PAYLOAD_IE_LENGTH_MASK, NULL, HFILL }},
 
 
         /* Individual Payload IEs */
 
         { &hf_ieee802154_pie_unsupported,
-        { "Unknown Payload IE",             "wpan.payload_ie.unknown", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Unknown Payload IE",             "wpan_payload_ie_unknown", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_pie_termination,
-        { "Payload Termination IE",         "wpan.payload_ie.termination", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Payload Termination IE",         "wpan_payload_ie_termination", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_pie_vendor,
-        { "Vendor Specific IE",             "wpan.payload_ie.vendor", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Vendor Specific IE",             "wpan_payload_ie_vendor", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_pie_vendor_oui,
-        { "Vendor OUI",                     "wpan.payload_ie.vendor.oui", FT_UINT24, BASE_OUI, NULL, 0x0,
+        { "Vendor OUI",                     "wpan_payload_ie_vendor_oui", FT_UINT24, BASE_OUI, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_mlme,
-        { "MLME IE",                        "wpan.mlme", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { "MLME IE",                        "wpan_mlme", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_ieee802154_psie_type,
-        { "Type",                           "wpan.mlme.ie.type", FT_UINT16, BASE_DEC, VALS(ieee802154_psie_types),
+        { "Type",                           "wpan_mlme_ie_type", FT_UINT16, BASE_DEC, VALS(ieee802154_psie_types),
                 IEEE802154_PSIE_TYPE_MASK, NULL, HFILL }},
 
         { &hf_ieee802154_psie,
-        { "MLME Sub IE",                    "wpan.mlme.ie", FT_UINT16, BASE_HEX, NULL,
+        { "MLME Sub IE",                    "wpan_mlme_ie", FT_UINT16, BASE_HEX, NULL,
             0x0, NULL, HFILL }},
 
         { &hf_ieee802154_psie_id_short,
-        { "Sub ID",                         "wpan.mlme.ie.id", FT_UINT16, BASE_HEX, VALS(ieee802154_psie_names),
+        { "Sub ID",                         "wpan_mlme_ie_id", FT_UINT16, BASE_HEX, VALS(ieee802154_psie_names),
                 IEEE802154_PSIE_ID_MASK_SHORT, NULL, HFILL }},
 
         { &hf_ieee802154_psie_length_short,
-        { "Length",                         "wpan.mlme.ie.length", FT_UINT16, BASE_DEC, NULL,
+        { "Length",                         "wpan_mlme_ie_length", FT_UINT16, BASE_DEC, NULL,
                 IEEE802154_PSIE_LENGTH_MASK_SHORT, NULL, HFILL }},
 
         { &hf_ieee802154_psie_id_long,
-        { "Sub ID",                         "wpan.mlme.ie.id", FT_UINT16, BASE_HEX, VALS(ieee802154_psie_names),
+        { "Sub ID",                         "wpan_mlme_ie_id", FT_UINT16, BASE_HEX, VALS(ieee802154_psie_names),
                 IEEE802154_PSIE_ID_MASK_LONG, NULL, HFILL }},
 
         { &hf_ieee802154_psie_length_long,
-        { "Length",                         "wpan.mlme.ie.length", FT_UINT16, BASE_DEC, NULL,
+        { "Length",                         "wpan_mlme_ie_length", FT_UINT16, BASE_DEC, NULL,
                 IEEE802154_PSIE_LENGTH_MASK_LONG, NULL, HFILL }},
 
         { &hf_ieee802154_mlme_ie_unsupported,
-        { "Unsupported Sub IE",             "wpan.mlme.unsupported", FT_NONE, BASE_NONE, NULL,
+        { "Unsupported Sub IE",             "wpan_mlme_unsupported", FT_NONE, BASE_NONE, NULL,
               0, NULL, HFILL }},
 
         { &hf_ieee802154_mlme_ie_data,
-        { "Data",                            "wpan.mlme.data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { "Data",                            "wpan_mlme_data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_ieee802154_psie_eb_filter,
-        { "Enhanced Beacon Filter",         "wpan.eb_filter", FT_UINT8, BASE_HEX, NULL,
+        { "Enhanced Beacon Filter",         "wpan_eb_filter", FT_UINT8, BASE_HEX, NULL,
               0, NULL, HFILL }},
 
         { &hf_ieee802154_psie_eb_filter_pjoin,
-        { "Permit Join Filter",             "wpan.eb_filter.pjoin", FT_BOOLEAN, 8, TFS(&tfs_enabled_disabled),
+        { "Permit Join Filter",             "wpan_eb_filter_pjoin", FT_BOOLEAN, 8, TFS(&tfs_enabled_disabled),
               IEEE802154_MLME_PSIE_EB_FLT_PJOIN, NULL, HFILL }},
 
         { &hf_ieee802154_psie_eb_filter_lqi,
-        { "LQI Filter",                     "wpan.eb_filter.lqi", FT_BOOLEAN, 8, TFS(&tfs_enabled_disabled),
+        { "LQI Filter",                     "wpan_eb_filter_lqi", FT_BOOLEAN, 8, TFS(&tfs_enabled_disabled),
             IEEE802154_MLME_PSIE_EB_FLT_LQI, NULL, HFILL }},
 
         { &hf_ieee802154_psie_eb_filter_lqi_min,
-        { "Minimum LQI",                    "wpan.eb_filter.lqi_minimum", FT_UINT8, BASE_DEC, NULL,
+        { "Minimum LQI",                    "wpan_eb_filter_lqi_minimum", FT_UINT8, BASE_DEC, NULL,
              0x0, NULL, HFILL }},
 
         { &hf_ieee802154_psie_eb_filter_percent,
-        { "Probability to Respond",         "wpan.eb_filter.contains_prob", FT_BOOLEAN, 8, TFS(&tfs_enabled_disabled),
+        { "Probability to Respond",         "wpan_eb_filter_contains_prob", FT_BOOLEAN, 8, TFS(&tfs_enabled_disabled),
             IEEE802154_MLME_PSIE_EB_FLT_PERCENT, NULL, HFILL }},
 
         { &hf_ieee802154_psie_eb_filter_percent_prob,
-        { "Response Probability Percentage", "wpan.eb_filter.prob", FT_UINT8, BASE_DEC, NULL,
+        { "Response Probability Percentage", "wpan_eb_filter_prob", FT_UINT8, BASE_DEC, NULL,
                  0x0, NULL, HFILL }},
 
         { &hf_ieee802154_psie_eb_filter_attr_id,
-        { "Requested Attribute Length",      "wpan.eb_filter.attr_id", FT_UINT8, BASE_DEC, NULL,
+        { "Requested Attribute Length",      "wpan_eb_filter_attr_id", FT_UINT8, BASE_DEC, NULL,
             IEEE802154_MLME_PSIE_EB_FLT_ATTR_LEN, NULL, HFILL }},
 
         { &hf_ieee802154_psie_eb_filter_attr_id_bitmap,
-        { "Attribute ID Bitmap",             "wpan.eb_filter.attr_id_bits", FT_UINT24, BASE_HEX, NULL,
+        { "Attribute ID Bitmap",             "wpan_eb_filter_attr_id_bits", FT_UINT24, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_ieee802154_tsch_sync,
-          { "TSCH Synchronization IE",      "wpan.tsch.time_sync", FT_NONE, BASE_NONE, NULL, 0x0,
+          { "TSCH Synchronization IE",      "wpan_tsch_time_sync", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_asn,
-        { "Absolute Slot Number",           "wpan.tsch.asn", FT_UINT40, BASE_DEC, NULL, 0x0,
+        { "Absolute Slot Number",           "wpan_tsch_asn", FT_UINT40, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_join_metric,
-        { "Join Metric",                    "wpan.tsch.join_metric", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Join Metric",                    "wpan_tsch_join_metric", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_timeslot,
-          { "TSCH Timeslot IE",             "wpan.tsch.timeslot", FT_NONE, BASE_NONE, NULL, 0x0,
+          { "TSCH Timeslot IE",             "wpan_tsch_timeslot", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_id,
-          { "Timeslot ID",                  "wpan.tsch.timeslot.id", FT_UINT8, BASE_HEX, NULL, 0x0,
+          { "Timeslot ID",                  "wpan_tsch_timeslot_id", FT_UINT8, BASE_HEX, NULL, 0x0,
             "Identifier of the Timeslot Template", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_cca_offset,
-          { "CCA Offset",                   "wpan.tsch.timeslot.cca_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "CCA Offset",                   "wpan_tsch_timeslot_cca_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Time between the beginning of the timeslot and the start of CCA", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_cca,
-          { "CCA",                          "wpan.tsch.timeslot.cca", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "CCA",                          "wpan_tsch_timeslot_cca", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Duration of CCA", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_tx_offset,
-          { "TX Offset",                    "wpan.tsch.timeslot.tx_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "TX Offset",                    "wpan_tsch_timeslot_tx_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Time between the beginning of the timeslot and the start of frame transmission", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_rx_offset,
-          { "RX Offset",                    "wpan.tsch.timeslot.rx_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "RX Offset",                    "wpan_tsch_timeslot_rx_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Time between the beginning of the timeslot to when the receiver shall be listening", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_rx_ack_delay,
-          { "RX Ack Delay",                "wpan.tsch.timeslot.rx_ack_delay", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "RX Ack Delay",                "wpan_tsch_timeslot_rx_ack_delay", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Time between the end of frame to when the transmitter shall listen for acknowledgment", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_tx_ack_delay,
-          { "TX Ack Delay",                "wpan.tsch.timeslot.tx_ack_delay", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "TX Ack Delay",                "wpan_tsch_timeslot_tx_ack_delay", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Time between the end of frame to start of acknowledgment", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_rx_wait,
-          { "RX Wait",                      "wpan.tsch.timeslot.rx_wait", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "RX Wait",                      "wpan_tsch_timeslot_rx_wait", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Time to wait for the start of frame", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_ack_wait,
-          { "Ack Wait",                     "wpan.tsch.timeslot.ack_wait", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "Ack Wait",                     "wpan_tsch_timeslot_ack_wait", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Minimum time to wait for the start of an acknowledgment", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_turnaround,
-          { "Turn Around",                  "wpan.tsch.timeslot.turnaround", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "Turn Around",                  "wpan_tsch_timeslot_turnaround", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Transmit to receive turnaround time", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_max_ack,
-          { "Max Ack",                      "wpan.tsch.timeslot.max_ack", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "Max Ack",                      "wpan_tsch_timeslot_max_ack", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Transmission time to send an acknowledgment", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_max_tx,
-          { "Max TX",                      "wpan.tsch.timeslot.max_tx", FT_UINT24, BASE_DEC, NULL, 0x0,
+          { "Max TX",                      "wpan_tsch_timeslot_max_tx", FT_UINT24, BASE_DEC, NULL, 0x0,
             "Transmission time to send the maximum length frame", HFILL }},
 
         { &hf_ieee802154_tsch_timeslot_length,
-          { "Timeslot Length",              "wpan.tsch.timeslot.length", FT_UINT24, BASE_DEC, NULL, 0x0,
+          { "Timeslot Length",              "wpan_tsch_timeslot_length", FT_UINT24, BASE_DEC, NULL, 0x0,
             "Total length of the timeslot, including any unused time after frame transmission", HFILL }},
 
         { &hf_ieee802154_tsch_channel_hopping,
-        { "Channel Hopping IE",             "wpan.channel_hopping", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Channel Hopping IE",             "wpan_channel_hopping", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotframe,
-        { "Slotframe IE", "wpan.tsch.slotframe", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { "Slotframe IE", "wpan_tsch_slotframe", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_ieee802154_tsch_link_info,
-        { "Link Information", "wpan.tsch.link_info", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { "Link Information", "wpan_tsch_link_info", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_nb_slotf,
-        { "Number of Slotframes",           "wpan.tsch.slotframe_num", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Number of Slotframes",           "wpan_tsch_slotframe_num", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_slotf_handle,
-        { "Slotframe handle",               "wpan.tsch.slotframe_handle", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Slotframe handle",               "wpan_tsch_slotframe_handle", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_size,
-        { "Slotframe size",                 "wpan.tsch.slotframe_size", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Slotframe size",                 "wpan_tsch_slotframe_size", FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_nb_links,
-        { "Number of Links",                "wpan.tsch.nb_links", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Number of Links",                "wpan_tsch_nb_links", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_timeslot,
-        { "Timeslot",                       "wpan.tsch.link_timeslot", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Timeslot",                       "wpan_tsch_link_timeslot", FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_channel_offset,
-        { "Channel Offset",                 "wpan.tsch.channel_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Channel Offset",                 "wpan_tsch_channel_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_options,
-        { "Link Options",                   "wpan.tsch.link_options", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Link Options",                   "wpan_tsch_link_options", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_options_tx,
-        { "TX Link",                        "wpan.tsch.link_options.tx", FT_BOOLEAN, 8, NULL, (1 << 0),
+        { "TX Link",                        "wpan_tsch_link_options_tx", FT_BOOLEAN, 8, NULL, (1 << 0),
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_options_rx,
-        { "RX Link",                        "wpan.tsch.link_options.rx", FT_BOOLEAN, 8, NULL, (1 << 1),
+        { "RX Link",                        "wpan_tsch_link_options_rx", FT_BOOLEAN, 8, NULL, (1 << 1),
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_options_shared,
-        { "Shared Link",                    "wpan.tsch.link_options.shared", FT_BOOLEAN, 8, NULL, (1 << 2),
+        { "Shared Link",                    "wpan_tsch_link_options_shared", FT_BOOLEAN, 8, NULL, (1 << 2),
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_options_timkeeping,
-        { "Timekeeping",                    "wpan.tsch.link_options.timekeeping", FT_BOOLEAN, 8, NULL, (1 << 3),
+        { "Timekeeping",                    "wpan_tsch_link_options_timekeeping", FT_BOOLEAN, 8, NULL, (1 << 3),
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_slotf_link_options_priority,
-        { "Priority",                       "wpan.tsch.link_options.priority", FT_BOOLEAN, 8, NULL, (1 << 4),
+        { "Priority",                       "wpan_tsch_link_options_priority", FT_BOOLEAN, 8, NULL, (1 << 4),
             NULL, HFILL }},
 
         { &hf_ieee802154_tsch_hopping_sequence_id,
-        { "Hopping Sequence ID",            "wpan.tsch.hopping_sequence_id", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Hopping Sequence ID",            "wpan_tsch_hopping_sequence_id", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         /* IETF IE */
         { &hf_ieee802154_pie_ietf,
-        { "IETF Payload IE",                 "wpan.payload_ie.ietf", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
+        { "IETF Payload IE",                 "wpan_payload_ie_ietf", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
         { &hf_ieee802154_p_ie_ietf_sub_id,
-        { "Sub-ID",                          "wpan.ietf_ie.sub_id", FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL }},
+        { "Sub-ID",                          "wpan_ietf_ie_sub_id", FT_UINT8, BASE_DEC, NULL, 0, NULL, HFILL }},
 
         /* IETF IE - 6top IE */
         { &hf_ieee802154_6top,
-        { "6top IE", "wpan.6top", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "6top IE", "wpan_6top", FT_NONE, BASE_NONE, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_version,
-        { "6P Version", "wpan.6top_version", FT_UINT8, BASE_DEC, NULL, IETF_6TOP_VERSION,
+        { "6P Version", "wpan_6top_version", FT_UINT8, BASE_DEC, NULL, IETF_6TOP_VERSION,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_type,
-          { "Type", "wpan.6top_type", FT_UINT8, BASE_HEX, VALS(ietf_6top_types), IETF_6TOP_TYPE,
+          { "Type", "wpan_6top_type", FT_UINT8, BASE_HEX, VALS(ietf_6top_types), IETF_6TOP_TYPE,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_flags_reserved,
-        { "Reserved", "wpan.6top_flags_reserved", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_FLAGS_RESERVED,
+        { "Reserved", "wpan_6top_flags_reserved", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_FLAGS_RESERVED,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_code,
-        { "Code",  "wpan.6top_code", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Code",  "wpan_6top_code", FT_UINT8, BASE_HEX, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_sfid,
-        { "SFID (6top Scheduling Function ID)", "wpan.6top_sfid", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "SFID (6top Scheduling Function ID)", "wpan_6top_sfid", FT_UINT8, BASE_HEX, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_seqnum,
-        { "SeqNum", "wpan.6top_seqnum", FT_UINT8, BASE_DEC, NULL, IETF_6TOP_SEQNUM,
+        { "SeqNum", "wpan_6top_seqnum", FT_UINT8, BASE_DEC, NULL, IETF_6TOP_SEQNUM,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_metadata,
-        { "Metadata", "wpan.6top_metadata", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Metadata", "wpan_6top_metadata", FT_UINT16, BASE_HEX, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_cell_options,
-          { "Cell Options", "wpan.6top_cell_options", FT_UINT8, BASE_HEX, VALS(ietf_6top_cell_options), 0x0,
+          { "Cell Options", "wpan_6top_cell_options", FT_UINT8, BASE_HEX, VALS(ietf_6top_cell_options), 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_cell_option_tx,
-        { "Transmit (TX) Cell", "wpan.6top_cell_option_tx", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_CELL_OPTION_TX,
+        { "Transmit (TX) Cell", "wpan_6top_cell_option_tx", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_CELL_OPTION_TX,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_cell_option_rx,
-        { "Receive (RX) Cell", "wpan.6top_cell_option_rx", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_CELL_OPTION_RX,
+        { "Receive (RX) Cell", "wpan_6top_cell_option_rx", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_CELL_OPTION_RX,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_cell_option_shared,
-        { "SHARED Cell", "wpan.6top_cell_option_shared", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_CELL_OPTION_SHARED,
+        { "SHARED Cell", "wpan_6top_cell_option_shared", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_CELL_OPTION_SHARED,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_cell_option_reserved,
-        { "Reserved", "wpan.6top_cell_option_reserved", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_CELL_OPTION_RESERVED,
+        { "Reserved", "wpan_6top_cell_option_reserved", FT_UINT8, BASE_HEX, NULL, IETF_6TOP_CELL_OPTION_RESERVED,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_num_cells,
-        { "Number of Cells", "wpan.6top_num_cells", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Number of Cells", "wpan_6top_num_cells", FT_UINT8, BASE_DEC, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_cell_list,
-        { "CellList", "wpan.6top_cell_list", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "CellList", "wpan_6top_cell_list", FT_NONE, BASE_NONE, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_rel_cell_list,
-        { "Rel. CellList", "wpan.6top_rel_cell_list", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Rel. CellList", "wpan_6top_rel_cell_list", FT_NONE, BASE_NONE, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_cand_cell_list,
-        { "Cand. CellList", "wpan.6top_cand_cell_list", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "Cand. CellList", "wpan_6top_cand_cell_list", FT_NONE, BASE_NONE, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_cell,
-        { "Cell", "wpan.6top_cell", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "Cell", "wpan_6top_cell", FT_BYTES, BASE_NONE, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_reserved,
-        { "Reserved", "wpan.6top_reserved", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Reserved", "wpan_6top_reserved", FT_UINT8, BASE_HEX, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_offset,
-        { "Offset", "wpan.6top_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Offset", "wpan_6top_offset", FT_UINT16, BASE_DEC, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_max_num_cells,
-        { "Maximum Number of Requested Cells", "wpan.6top_max_num_cells", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Maximum Number of Requested Cells", "wpan_6top_max_num_cells", FT_UINT16, BASE_DEC, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_slot_offset,
-        { "Slot Offset", "wpan.6top_cell_slot_offset", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Slot Offset", "wpan_6top_cell_slot_offset", FT_UINT16, BASE_HEX, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_channel_offset,
-        { "Channel Offset", "wpan.6top_channel_offset", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Channel Offset", "wpan_6top_channel_offset", FT_UINT16, BASE_HEX, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_total_num_cells,
-        { "Total Number of Cells", "wpan.6top_total_num_cells", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Total Number of Cells", "wpan_6top_total_num_cells", FT_UINT16, BASE_DEC, NULL, 0x0,
           NULL, HFILL }},
 
         { &hf_ieee802154_6top_payload,
-        { "Payload", "wpan.6top_payload", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "Payload", "wpan_6top_payload", FT_BYTES, BASE_NONE, NULL, 0x0,
           NULL, HFILL }},
 
         /* MPX IE (IEEE 802.15.9) */
         { &hf_ieee802159_mpx,
-          { "MPX IE", "wpan.mpx", FT_NONE, BASE_NONE, NULL, 0x0,
+          { "MPX IE", "wpan_mpx", FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_transaction_control,
-          { "Transaction Control", "wpan.mpx.transaction_control", FT_UINT8, BASE_HEX, NULL, 0x0,
+          { "Transaction Control", "wpan_mpx_transaction_control", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_transfer_type,
-          { "Transfer Type", "wpan.mpx.transfer_type", FT_UINT8, BASE_HEX, VALS(mpx_transfer_type_vals), IEEE802159_MPX_TRANSFER_TYPE_MASK,
+          { "Transfer Type", "wpan_mpx_transfer_type", FT_UINT8, BASE_HEX, VALS(mpx_transfer_type_vals), IEEE802159_MPX_TRANSFER_TYPE_MASK,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_transaction_id,
-          { "Transaction ID", "wpan.mpx.transaction_id", FT_UINT8, BASE_HEX, NULL, IEEE802159_MPX_TRANSACTION_ID_MASK,
+          { "Transaction ID", "wpan_mpx_transaction_id", FT_UINT8, BASE_HEX, NULL, IEEE802159_MPX_TRANSACTION_ID_MASK,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_transaction_id_as_multiplex_id,
-          { "Multiplex ID", "wpan.mpx.multiplex_id", FT_UINT8, BASE_HEX, VALS(mpx_multiplex_id_vals), IEEE802159_MPX_TRANSACTION_ID_MASK,
+          { "Multiplex ID", "wpan_mpx_multiplex_id", FT_UINT8, BASE_HEX, VALS(mpx_multiplex_id_vals), IEEE802159_MPX_TRANSACTION_ID_MASK,
             "Transaction ID used as Multiplex ID", HFILL }
         },
 
         { &hf_ieee802159_mpx_fragment_number,
-          { "Fragment Number", "wpan.mpx.fragment_number", FT_UINT8, BASE_DEC, NULL, 0x0,
+          { "Fragment Number", "wpan_mpx_fragment_number", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_total_frame_size,
-          { "Total Frame Size", "wpan.mpx.total_frame_size", FT_UINT16, BASE_DEC, NULL, 0x0,
+          { "Total Frame Size", "wpan_mpx_total_frame_size", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Total Upper-Layer Frame Size", HFILL }
         },
 
         { &hf_ieee802159_mpx_multiplex_id,
-          { "Multiplex ID", "wpan.mpx.multiplex_id", FT_UINT16, BASE_HEX, NULL, 0x0,
+          { "Multiplex ID", "wpan_mpx_multiplex_id", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_kmp_id,
-          { "KMP ID", "wpan.mpx.kmp.id", FT_UINT8, BASE_DEC, VALS(ieee802154_mpx_kmp_id_vals), 0x0,
+          { "KMP ID", "wpan_mpx_kmp_id", FT_UINT8, BASE_DEC, VALS(ieee802154_mpx_kmp_id_vals), 0x0,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_kmp_vendor_oui,
-          { "Vendor OUI", "wpan.mpx.kmp.vendor_oui", FT_UINT24, BASE_OUI, NULL, 0x0,
+          { "Vendor OUI", "wpan_mpx_kmp_vendor_oui", FT_UINT24, BASE_OUI, NULL, 0x0,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_fragment,
-          { "Upper-Layer Frame Fragment", "wpan.mpx.fragment", FT_BYTES, SEP_SPACE, NULL, 0x0,
+          { "Upper-Layer Frame Fragment", "wpan_mpx_fragment", FT_BYTES, SEP_SPACE, NULL, 0x0,
             NULL, HFILL }
         },
 
         { &hf_ieee802159_mpx_wisun_subid,
-          { "Wi-SUN Multiplex Sub ID", "wpan.mpx.wisun", FT_UINT8, BASE_HEX, VALS(mpx_wisun_subid_vals), 0x0,
+          { "Wi-SUN Multiplex Sub ID", "wpan_mpx_wisun", FT_UINT8, BASE_HEX, VALS(mpx_wisun_subid_vals), 0x0,
             NULL, HFILL }
         },
 
         /* Command Frame Specific Fields */
 
         { &hf_ieee802154_cmd_id,
-        { "Command Identifier",         "wpan.cmd", FT_UINT8, BASE_HEX, VALS(ieee802154_cmd_names), 0x0,
+        { "Command Identifier",         "wpan_cmd", FT_UINT8, BASE_HEX, VALS(ieee802154_cmd_names), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_cmd_vendor_oui,
-        { "Vendor OUI",                 "wpan.cmd.vendor_oui", FT_UINT24, BASE_OUI, NULL, 0x0,
+        { "Vendor OUI",                 "wpan_cmd_vendor_oui", FT_UINT24, BASE_OUI, NULL, 0x0,
             NULL, HFILL }},
 
         /*  Capability Information Fields */
 
         { &hf_ieee802154_cinfo_alt_coord,
-        { "Alternate PAN Coordinator",  "wpan.cinfo.alt_coord", FT_BOOLEAN, 8, NULL, IEEE802154_CMD_CINFO_ALT_PAN_COORD,
+        { "Alternate PAN Coordinator",  "wpan_cinfo_alt_coord", FT_BOOLEAN, 8, NULL, IEEE802154_CMD_CINFO_ALT_PAN_COORD,
             "Whether this device can act as a PAN coordinator or not.", HFILL }},
 
         { &hf_ieee802154_cinfo_device_type,
-        { "Device Type",                "wpan.cinfo.device_type", FT_BOOLEAN, 8, TFS(&tfs_cinfo_device_type), IEEE802154_CMD_CINFO_DEVICE_TYPE,
+        { "Device Type",                "wpan_cinfo_device_type", FT_BOOLEAN, 8, TFS(&tfs_cinfo_device_type), IEEE802154_CMD_CINFO_DEVICE_TYPE,
             "Whether this device is RFD (reduced-function device) or FFD (full-function device).", HFILL }},
 
         { &hf_ieee802154_cinfo_power_src,
-        { "Power Source",               "wpan.cinfo.power_src", FT_BOOLEAN, 8, TFS(&tfs_cinfo_power_src), IEEE802154_CMD_CINFO_POWER_SRC,
+        { "Power Source",               "wpan_cinfo_power_src", FT_BOOLEAN, 8, TFS(&tfs_cinfo_power_src), IEEE802154_CMD_CINFO_POWER_SRC,
             "Whether this device is operating on AC/mains or battery power.", HFILL }},
 
         { &hf_ieee802154_cinfo_idle_rx,
-        { "Receive On When Idle",       "wpan.cinfo.idle_rx", FT_BOOLEAN, 8, NULL, IEEE802154_CMD_CINFO_IDLE_RX,
+        { "Receive On When Idle",       "wpan_cinfo_idle_rx", FT_BOOLEAN, 8, NULL, IEEE802154_CMD_CINFO_IDLE_RX,
             "Whether this device can receive packets while idle or not.", HFILL }},
 
         { &hf_ieee802154_cinfo_sec_capable,
-        { "Security Capability",        "wpan.cinfo.sec_capable", FT_BOOLEAN, 8, NULL, IEEE802154_CMD_CINFO_SEC_CAPABLE,
+        { "Security Capability",        "wpan_cinfo_sec_capable", FT_BOOLEAN, 8, NULL, IEEE802154_CMD_CINFO_SEC_CAPABLE,
             "Whether this device is capable of receiving encrypted packets.", HFILL }},
 
         { &hf_ieee802154_cinfo_alloc_addr,
-        { "Allocate Address",           "wpan.cinfo.alloc_addr", FT_BOOLEAN, 8, NULL, IEEE802154_CMD_CINFO_ALLOC_ADDR,
+        { "Allocate Address",           "wpan_cinfo_alloc_addr", FT_BOOLEAN, 8, NULL, IEEE802154_CMD_CINFO_ALLOC_ADDR,
             "Whether this device wishes to use a 16-bit short address instead of its IEEE 802.15.4 64-bit long address.", HFILL }},
 
         /*  Association response fields */
 
         { &hf_ieee802154_assoc_addr,
-        { "Short Address",              "wpan.asoc.addr", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Short Address",              "wpan_asoc_addr", FT_UINT16, BASE_HEX, NULL, 0x0,
             "The short address that the device should assume. An address of 0xfffe indicates that the device should use its IEEE 64-bit long address.", HFILL }},
 
         { &hf_ieee802154_assoc_status,
-        { "Association Status",         "wpan.assoc.status", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Association Status",         "wpan_assoc_status", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_disassoc_reason,
-        { "Disassociation Reason",      "wpan.disassoc.reason", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Disassociation Reason",      "wpan_disassoc_reason", FT_UINT8, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         /*  Coordinator Realignment fields */
 
         { &hf_ieee802154_realign_pan,
-        { "PAN ID",                     "wpan.realign.pan", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "PAN ID",                     "wpan_realign_pan", FT_UINT16, BASE_HEX, NULL, 0x0,
             "The PAN identifier the coordinator wishes to use for future communication.", HFILL }},
 
         { &hf_ieee802154_realign_caddr,
-        { "Coordinator Short Address",  "wpan.realign.addr", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Coordinator Short Address",  "wpan_realign_addr", FT_UINT16, BASE_HEX, NULL, 0x0,
             "The 16-bit address the coordinator wishes to use for future communication.", HFILL }},
 
         { &hf_ieee802154_realign_channel,
-        { "Logical Channel",            "wpan.realign.channel", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Logical Channel",            "wpan_realign_channel", FT_UINT8, BASE_DEC, NULL, 0x0,
             "The logical channel the coordinator wishes to use for future communication.", HFILL }},
 
         { &hf_ieee802154_realign_addr,
-        { "Short Address",              "wpan.realign.addr", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Short Address",              "wpan_realign_addr", FT_UINT16, BASE_HEX, NULL, 0x0,
             "A short-address that the orphaned device shall assume if applicable.", HFILL }},
 
         { &hf_ieee802154_realign_channel_page,
-        { "Channel Page",               "wpan.realign.channel_page", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Channel Page",               "wpan_realign_channel_page", FT_UINT8, BASE_DEC, NULL, 0x0,
             "The logical channel page the coordinator wishes to use for future communication.", HFILL }},
 
         { &hf_ieee802154_gtsreq_len,
-        { "GTS Length",                 "wpan.gtsreq.length", FT_UINT8, BASE_DEC, NULL, IEEE802154_CMD_GTS_REQ_LEN,
+        { "GTS Length",                 "wpan_gtsreq_length", FT_UINT8, BASE_DEC, NULL, IEEE802154_CMD_GTS_REQ_LEN,
             "Number of superframe slots the device is requesting.", HFILL }},
 
         { &hf_ieee802154_gtsreq_dir,
-        { "GTS Direction",              "wpan.gtsreq.direction", FT_BOOLEAN, 8, TFS(&tfs_gtsreq_dir), IEEE802154_CMD_GTS_REQ_DIR,
+        { "GTS Direction",              "wpan_gtsreq_direction", FT_BOOLEAN, 8, TFS(&tfs_gtsreq_dir), IEEE802154_CMD_GTS_REQ_DIR,
             "The direction of traffic in the guaranteed timeslot.", HFILL }},
 
         { &hf_ieee802154_gtsreq_type,
-        { "Characteristic Type",        "wpan.gtsreq.type", FT_BOOLEAN, 8, TFS(&tfs_gtsreq_type), IEEE802154_CMD_GTS_REQ_TYPE,
+        { "Characteristic Type",        "wpan_gtsreq_type", FT_BOOLEAN, 8, TFS(&tfs_gtsreq_type), IEEE802154_CMD_GTS_REQ_TYPE,
             "Whether this request is to allocate or deallocate a timeslot.", HFILL }},
 
         /* Beacon Frame Specific Fields */
 
         { &hf_ieee802154_beacon_order,
-        { "Beacon Interval",            "wpan.beacon_order", FT_UINT16, BASE_DEC, NULL, IEEE802154_BEACON_ORDER_MASK,
+        { "Beacon Interval",            "wpan_beacon_order", FT_UINT16, BASE_DEC, NULL, IEEE802154_BEACON_ORDER_MASK,
             "Specifies the transmission interval of the beacons.", HFILL }},
 
         { &hf_ieee802154_superframe_order,
-        { "Superframe Interval",        "wpan.superframe_order", FT_UINT16, BASE_DEC, NULL,
+        { "Superframe Interval",        "wpan_superframe_order", FT_UINT16, BASE_DEC, NULL,
             IEEE802154_SUPERFRAME_ORDER_MASK,
             "Specifies the length of time the coordinator will interact with the PAN.", HFILL }},
 
         { &hf_ieee802154_cap,
-        { "Final CAP Slot",             "wpan.cap", FT_UINT16, BASE_DEC, NULL, IEEE802154_SUPERFRAME_CAP_MASK,
+        { "Final CAP Slot",             "wpan_cap", FT_UINT16, BASE_DEC, NULL, IEEE802154_SUPERFRAME_CAP_MASK,
             "Specifies the final superframe slot used by the CAP.", HFILL }},
 
         { &hf_ieee802154_superframe_battery_ext,
-        { "Battery Extension",          "wpan.battery_ext", FT_BOOLEAN, 16, NULL, IEEE802154_BATT_EXTENSION_MASK,
+        { "Battery Extension",          "wpan_battery_ext", FT_BOOLEAN, 16, NULL, IEEE802154_BATT_EXTENSION_MASK,
             "Whether transmissions may not extend past the length of the beacon frame.", HFILL }},
 
         { &hf_ieee802154_superframe_coord,
-        { "PAN Coordinator",            "wpan.bcn_coord", FT_BOOLEAN, 16, NULL, IEEE802154_SUPERFRAME_COORD_MASK,
+        { "PAN Coordinator",            "wpan_bcn_coord", FT_BOOLEAN, 16, NULL, IEEE802154_SUPERFRAME_COORD_MASK,
             "Whether this beacon frame is being transmitted by the PAN coordinator or not.", HFILL }},
 
         { &hf_ieee802154_assoc_permit,
-        { "Association Permit",         "wpan.assoc_permit", FT_BOOLEAN, 16, NULL, IEEE802154_ASSOC_PERMIT_MASK,
+        { "Association Permit",         "wpan_assoc_permit", FT_BOOLEAN, 16, NULL, IEEE802154_ASSOC_PERMIT_MASK,
             "Whether this PAN is accepting association requests or not.", HFILL }},
 
         { &hf_ieee802154_gts_count,
-        { "GTS Descriptor Count",       "wpan.gts.count", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "GTS Descriptor Count",       "wpan_gts_count", FT_UINT8, BASE_DEC, NULL, 0x0,
             "The number of GTS descriptors present in this beacon frame.", HFILL }},
 
         { &hf_ieee802154_gts_permit,
-        { "GTS Permit",                 "wpan.gts.permit", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
+        { "GTS Permit",                 "wpan_gts_permit", FT_BOOLEAN, BASE_NONE, NULL, 0x0,
             "Whether the PAN coordinator is accepting GTS requests or not.", HFILL }},
 
         { &hf_ieee802154_gts_direction,
-        { "Direction",                  "wpan.gts.direction", FT_BOOLEAN, BASE_NONE, TFS(&ieee802154_gts_direction_tfs), 0x0,
+        { "Direction",                  "wpan_gts_direction", FT_BOOLEAN, BASE_NONE, TFS(&ieee802154_gts_direction_tfs), 0x0,
             "A flag defining the direction of the GTS Slot.", HFILL }},
 
         { &hf_ieee802154_gts_address,
-        { "Address",                    "wpan.gts.address", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Address",                    "wpan_gts_address", FT_UINT16, BASE_HEX, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_pending16,
-        { "Address",                    "wpan.pending16", FT_UINT16, BASE_HEX, NULL, 0x0,
+        { "Address",                    "wpan_pending16", FT_UINT16, BASE_HEX, NULL, 0x0,
             "Device with pending data to receive.", HFILL }},
 
         { &hf_ieee802154_pending64,
-        { "Address",                    "wpan.pending64", FT_EUI64, BASE_NONE, NULL, 0x0,
+        { "Address",                    "wpan_pending64", FT_EUI64, BASE_NONE, NULL, 0x0,
             "Device with pending data to receive.", HFILL }},
 
         /* Auxiliary Security Header Fields */
         { &hf_ieee802154_aux_security_header,
-        { "Auxiliary Security Header", "wpan.aux_sec.hdr", FT_NONE, BASE_NONE, NULL,
+        { "Auxiliary Security Header", "wpan_aux_sec_hdr", FT_NONE, BASE_NONE, NULL,
             0x0, "The Auxiliary Security Header of the frame", HFILL }},
 
         { &hf_ieee802154_aux_sec_security_level,
-        { "Security Level", "wpan.aux_sec.sec_level", FT_UINT8, BASE_HEX, VALS(ieee802154_sec_level_names),
+        { "Security Level", "wpan_aux_sec_sec_level", FT_UINT8, BASE_HEX, VALS(ieee802154_sec_level_names),
             IEEE802154_AUX_SEC_LEVEL_MASK, "The Security Level of the frame", HFILL }},
 
         { &hf_ieee802154_aux_sec_security_control,
-        { "Security Control Field", "wpan.aux_sec.security_control_field", FT_UINT8, BASE_HEX, NULL,
+        { "Security Control Field", "wpan_aux_sec_security_control_field", FT_UINT8, BASE_HEX, NULL,
             0x0, NULL, HFILL }},
 
         { &hf_ieee802154_aux_sec_key_id_mode,
-        { "Key Identifier Mode", "wpan.aux_sec.key_id_mode", FT_UINT8, BASE_HEX, VALS(ieee802154_key_id_mode_names),
+        { "Key Identifier Mode", "wpan_aux_sec_key_id_mode", FT_UINT8, BASE_HEX, VALS(ieee802154_key_id_mode_names),
             IEEE802154_AUX_KEY_ID_MODE_MASK,
             "The scheme to use by the recipient to lookup the key in its key table", HFILL }},
 
         { &hf_ieee802154_aux_sec_frame_counter_suppression,
-        { "Frame Counter Suppression", "wpan.aux_sec.frame_counter_suppression", FT_BOOLEAN, 8, NULL,
+        { "Frame Counter Suppression", "wpan_aux_sec_frame_counter_suppression", FT_BOOLEAN, 8, NULL,
             IEEE802154_AUX_FRAME_COUNTER_SUPPRESSION_MASK,
             "Whether the frame counter is omitted from the Auxiliary Security Header", HFILL }},
 
         { &hf_ieee802154_aux_sec_asn_in_nonce,
-        { "ASN in Nonce", "wpan.aux_sec.asn_in_nonce", FT_BOOLEAN, 8, NULL,
+        { "ASN in Nonce", "wpan_aux_sec_asn_in_nonce", FT_BOOLEAN, 8, NULL,
             IEEE802154_AUX_ASN_IN_NONCE_MASK,
             "Whether the ASN is used to generate the nonce instead of the frame counter", HFILL }},
 
         { &hf_ieee802154_aux_sec_reserved,
-        { "Reserved", "wpan.aux_sec.reserved", FT_UINT8, BASE_HEX, NULL, IEEE802154_AUX_CTRL_RESERVED_MASK,
+        { "Reserved", "wpan_aux_sec_reserved", FT_UINT8, BASE_HEX, NULL, IEEE802154_AUX_CTRL_RESERVED_MASK,
             NULL, HFILL }},
 
         { &hf_ieee802154_aux_sec_frame_counter,
-        { "Frame Counter", "wpan.aux_sec.frame_counter", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Frame Counter", "wpan_aux_sec_frame_counter", FT_UINT32, BASE_DEC, NULL, 0x0,
             "Frame counter of the originator of the protected frame", HFILL }},
 
         { &hf_ieee802154_aux_sec_key_source,
-        { "Key Source", "wpan.aux_sec.key_source", FT_UINT64, BASE_HEX, NULL, 0x0,
+        { "Key Source", "wpan_aux_sec_key_source", FT_UINT64, BASE_HEX, NULL, 0x0,
             "Key Source for processing of the protected frame", HFILL }},
 
         { &hf_ieee802154_aux_sec_key_source_bytes,
-        { "Key Source", "wpan.aux_sec.key_source.bytes", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "Key Source", "wpan_aux_sec_key_source_bytes", FT_BYTES, BASE_NONE, NULL, 0x0,
             "Key Source for processing of the protected frame", HFILL }},
 
         { &hf_ieee802154_aux_sec_key_index,
-        { "Key Index", "wpan.aux_sec.key_index", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Key Index", "wpan_aux_sec_key_index", FT_UINT8, BASE_HEX, NULL, 0x0,
             "Key Index for processing of the protected frame", HFILL }},
 
         { &hf_ieee802154_mic,
-        { "MIC", "wpan.mic", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "MIC", "wpan_mic", FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_key_number,
-        { "Key Number", "wpan.key_number", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Key Number", "wpan_key_number", FT_UINT8, BASE_DEC, NULL, 0x0,
             "Key number used to decode", HFILL }},
 
         /* IEEE 802.15.4-2003 Security Header Fields */
         { &hf_ieee802154_sec_frame_counter,
-        { "Frame Counter", "wpan.sec_frame_counter", FT_UINT32, BASE_HEX, NULL, 0x0,
+        { "Frame Counter", "wpan_sec_frame_counter", FT_UINT32, BASE_HEX, NULL, 0x0,
             "Frame counter of the originator of the protected frame (802.15.4-2003)", HFILL }},
 
         { &hf_ieee802154_sec_key_sequence_counter,
-        { "Key Sequence Counter", "wpan.sec_key_sequence_counter", FT_UINT8, BASE_HEX, NULL, 0x0,
+        { "Key Sequence Counter", "wpan_sec_key_sequence_counter", FT_UINT8, BASE_HEX, NULL, 0x0,
             "Key Sequence counter of the originator of the protected frame (802.15.4-2003)", HFILL }},
 
         { &hf_ieee802154_no_ack,
-        { "No ack found", "wpan.no_ack", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "No ack found", "wpan_no_ack", FT_NONE, BASE_NONE, NULL, 0x0,
             "No corresponding ack frame was found", HFILL }},
 
         { &hf_ieee802154_no_ack_request,
-        { "No request found", "wpan.no_ack_request", FT_NONE, BASE_NONE, NULL, 0x0,
+        { "No request found", "wpan_no_ack_request", FT_NONE, BASE_NONE, NULL, 0x0,
             "No corresponding request frame was found", HFILL }},
 
         { &hf_ieee802154_ack_in,
-        { "Ack In", "wpan.ack_in", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+        { "Ack In", "wpan_ack_in", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "The ack to this request is in this frame", HFILL }},
 
         { &hf_ieee802154_ack_to,
-        { "Ack To", "wpan.ack_to", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_ACK), 0x0,
+        { "Ack To", "wpan_ack_to", FT_FRAMENUM, BASE_NONE, FRAMENUM_TYPE(FT_FRAMENUM_ACK), 0x0,
             "This is the ack to the request in this frame", HFILL }},
 
         { &hf_ieee802154_ack_time,
-        { "Ack Time", "wpan.ack_time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
+        { "Ack Time", "wpan_ack_time", FT_RELATIVE_TIME, BASE_NONE, NULL, 0x0,
             "The time between the request and the ack", HFILL }},
 
         /* ZBOSS dump */
 
         { &hf_zboss_page,
-        { "Page", "wpan-zboss.page", FT_UINT8, BASE_DEC_HEX, VALS(zboss_page_names), 0xFE,
+        { "Page", "wpan-zboss_page", FT_UINT8, BASE_DEC_HEX, VALS(zboss_page_names), 0xFE,
             "IEEE802.15.4 page number", HFILL } },
 
         { &hf_zboss_channel,
-        { "Channel", "wpan-zboss.channel", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Channel", "wpan-zboss_channel", FT_UINT8, BASE_DEC, NULL, 0x0,
             "Channel number", HFILL }},
 
         { &hf_zboss_direction,
-        { "ZBOSS Direction", "wpan-zboss.direction", FT_UINT8, BASE_HEX, VALS(zboss_direction_names), 0x01,
+        { "ZBOSS Direction", "wpan-zboss_direction", FT_UINT8, BASE_HEX, VALS(zboss_direction_names), 0x01,
             "ZBOSS Packet Direction", HFILL }},
 
         { &hf_zboss_trace_number,
-        { "Trace number", "wpan-zboss.trace", FT_UINT32, BASE_DEC, NULL, 0x0,
+        { "Trace number", "wpan-zboss_trace", FT_UINT32, BASE_DEC, NULL, 0x0,
             "Trace item number", HFILL }},
 
         /* TAP Packet Fields */
         { &hf_ieee802154_tap_version,
-        { "Version",        "wpan-tap.version", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Version",        "wpan-tap_version", FT_UINT8, BASE_DEC, NULL, 0x0,
             "TAP Packet Version", HFILL }},
 
         { &hf_ieee802154_tap_reserved,
-        { "Reserved",        "wpan-tap.reserved", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Reserved",        "wpan-tap_reserved", FT_UINT8, BASE_DEC, NULL, 0x0,
             "TAP Packet Reserved", HFILL }},
 
         { &hf_ieee802154_tap_length,
-        { "Length",        "wpan-tap.length", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Length",        "wpan-tap_length", FT_UINT16, BASE_DEC, NULL, 0x0,
             "TAP Packet Length", HFILL }},
 
         { &hf_ieee802154_tap_tlv_type,
-        { "TLV Type",       "wpan-tap.tlv.type", FT_UINT16, BASE_DEC, VALS(tap_tlv_types), 0x0,
+        { "TLV Type",       "wpan-tap_tlv_type", FT_UINT16, BASE_DEC, VALS(tap_tlv_types), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tap_tlv_length,
-        { "TLV Length",       "wpan-tap.tlv.length", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "TLV Length",       "wpan-tap_tlv_length", FT_UINT16, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tap_tlv_unknown,
-        { "Unknown",                "wpan-tap.tlv.unknown", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "Unknown",                "wpan-tap_tlv_unknown", FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tap_tlv_padding,
-        { "Padding",                "wpan-tap.tlv.padding", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "Padding",                "wpan-tap_tlv_padding", FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tap_fcs_type,
-        { "FCS Type",       "wpan-tap.fcs_type", FT_UINT8, BASE_DEC, VALS(tap_fcs_type_names), 0x0,
+        { "FCS Type",       "wpan-tap_fcs_type", FT_UINT8, BASE_DEC, VALS(tap_fcs_type_names), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tap_rss,
-        { "RSS",           "wpan-tap.rss", FT_FLOAT, BASE_FLOAT|BASE_UNIT_STRING, &units_dbm, 0x0,
+        { "RSS",           "wpan-tap_rss", FT_FLOAT, BASE_FLOAT|BASE_UNIT_STRING, &units_dbm, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_ch_num,
-        { "Channel",        "wpan-tap.ch_num", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Channel",        "wpan-tap_ch_num", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Channel number", HFILL }},
 
         { &hf_ieee802154_ch_page,
-        { "Page",           "wpan-tap.ch_page", FT_UINT8, BASE_DEC, VALS(channel_page_names), 0x0,
+        { "Page",           "wpan-tap_ch_page", FT_UINT8, BASE_DEC, VALS(channel_page_names), 0x0,
             "Channel page", HFILL }},
 
         { &hf_ieee802154_bit_rate,
-        { "Bit Rate",       "wpan-tap.bit_rate", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_bit_sec, 0x0,
+        { "Bit Rate",       "wpan-tap_bit_rate", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_bit_sec, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_sun_band,
-        { "Band",           "wpan-tap.sun_band", FT_UINT8, BASE_DEC, VALS(sun_bands), 0x0,
+        { "Band",           "wpan-tap_sun_band", FT_UINT8, BASE_DEC, VALS(sun_bands), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_sun_type,
-        { "Type",           "wpan-tap.sun_type", FT_UINT8, BASE_DEC, VALS(sun_types), 0x0,
+        { "Type",           "wpan-tap_sun_type", FT_UINT8, BASE_DEC, VALS(sun_types), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_sun_mode,
-        { "Mode",           "wpan-tap.sun_mode", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Mode",           "wpan-tap_sun_mode", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_mode_fsk_a,
-        { "FSK-A mode",     "wpan-tap.mode.fsk_a", FT_UINT8, BASE_DEC, VALS(fsk_a_modes), 0x0,
+        { "FSK-A mode",     "wpan-tap_mode_fsk_a", FT_UINT8, BASE_DEC, VALS(fsk_a_modes), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_mode_fsk_b,
-        { "FSK-B mode",     "wpan-tap.mode.fsk_b", FT_UINT8, BASE_DEC, VALS(fsk_b_modes), 0x0,
+        { "FSK-B mode",     "wpan-tap_mode_fsk_b", FT_UINT8, BASE_DEC, VALS(fsk_b_modes), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_mode_oqpsk_a,
-        { "O-QPSK-A mode",   "wpan-tap.mode.oqpsk_a", FT_UINT8, BASE_DEC, VALS(oqpsk_a_modes), 0x0,
+        { "O-QPSK-A mode",   "wpan-tap_mode_oqpsk_a", FT_UINT8, BASE_DEC, VALS(oqpsk_a_modes), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_mode_oqpsk_b,
-        { "O-QPSK-B mode",   "wpan-tap.mode.oqpsk_b", FT_UINT8, BASE_DEC, VALS(oqpsk_b_modes), 0x0,
+        { "O-QPSK-B mode",   "wpan-tap_mode_oqpsk_b", FT_UINT8, BASE_DEC, VALS(oqpsk_b_modes), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_mode_oqpsk_c,
-        { "O-QPSK-C mode",   "wpan-tap.mode.oqpsk_c", FT_UINT8, BASE_DEC, VALS(oqpsk_c_modes), 0x0,
+        { "O-QPSK-C mode",   "wpan-tap_mode_oqpsk_c", FT_UINT8, BASE_DEC, VALS(oqpsk_c_modes), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_mode_ofdm,
-        { "OFDM mode",       "wpan-tap.mode.ofdm", FT_UINT8, BASE_DEC, VALS(ofdm_modes), 0x0,
+        { "OFDM mode",       "wpan-tap_mode_ofdm", FT_UINT8, BASE_DEC, VALS(ofdm_modes), 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_sof_ts,
-        { "Start of frame timestamp",   "wpan-tap.sof_ts", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_nanoseconds, 0x0,
+        { "Start of frame timestamp",   "wpan-tap_sof_ts", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_nanoseconds, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_eof_ts,
-        { "End of frame timestamp",     "wpan-tap.eof_ts", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_nanoseconds, 0x0,
+        { "End of frame timestamp",     "wpan-tap_eof_ts", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_nanoseconds, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_slot_start_ts,
-        { "Start of slot timestamp",    "wpan-tap.slot_start_ts", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_nanoseconds, 0x0,
+        { "Start of slot timestamp",    "wpan-tap_slot_start_ts", FT_UINT64, BASE_DEC|BASE_UNIT_STRING, &units_nanoseconds, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tap_timeslot_length,
-        { "Timeslot length",            "wpan-tap.timeslot_length", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x0,
+        { "Timeslot length",            "wpan-tap_timeslot_length", FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_tap_lqi,
-        { "Link Quality Indicator",     "wpan-tap.lqi", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Link Quality Indicator",     "wpan-tap_lqi", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_ieee802154_chplan_start,
-        { "Channel0 freq",              "wpan-tap.chplan.start", FT_FLOAT, BASE_FLOAT|BASE_UNIT_STRING, &units_khz, 0x0,
+        { "Channel0 freq",              "wpan-tap_chplan_start", FT_FLOAT, BASE_FLOAT|BASE_UNIT_STRING, &units_khz, 0x0,
             "Channel 0 center frequency", HFILL }},
 
         { &hf_ieee802154_chplan_spacing,
-        { "Spacing",                    "wpan-tap.chplan.spacing", FT_FLOAT, BASE_FLOAT|BASE_UNIT_STRING, &units_khz, 0x0,
+        { "Spacing",                    "wpan-tap_chplan_spacing", FT_FLOAT, BASE_FLOAT|BASE_UNIT_STRING, &units_khz, 0x0,
             "Channel spacing", HFILL }},
 
         { &hf_ieee802154_chplan_channels,
-        { "Channels",                   "wpan-tap.chplan.channels", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Channels",                   "wpan-tap_chplan_channels", FT_UINT16, BASE_DEC, NULL, 0x0,
             "Number of channels", HFILL }},
 
         { &hf_ieee802154_ch_freq,
-        { "Frequency",                  "wpan-tap.ch_freq", FT_FLOAT, BASE_FLOAT|BASE_UNIT_STRING, &units_khz, 0x0,
+        { "Frequency",                  "wpan-tap_ch_freq", FT_FLOAT, BASE_FLOAT|BASE_UNIT_STRING, &units_khz, 0x0,
             "Channel center frequency", HFILL }},
 
         { &hf_ieee802154_frame_start_offset,
-        { "Frame start offset",       "wpan.tsch.frame_start_offset", FT_DOUBLE, BASE_NONE|BASE_UNIT_STRING, &units_microseconds, 0x0,
+        { "Frame start offset",       "wpan_tsch_frame_start_offset", FT_DOUBLE, BASE_NONE|BASE_UNIT_STRING, &units_microseconds, 0x0,
             "Start of frame timestamp - start of slot timestamp", HFILL }},
 
         { &hf_ieee802154_frame_duration,
-        { "Frame duration",           "wpan.tsch.frame_duration", FT_DOUBLE, BASE_NONE|BASE_UNIT_STRING, &units_microseconds, 0x0,
+        { "Frame duration",           "wpan_tsch_frame_duration", FT_DOUBLE, BASE_NONE|BASE_UNIT_STRING, &units_microseconds, 0x0,
             "End of frame timestamp - start of frame timestamp", HFILL }},
 
         { &hf_ieee802154_frame_end_offset,
-        { "Frame end offset", "wpan.tsch.frame_end_offset", FT_DOUBLE, BASE_NONE|BASE_UNIT_STRING, &units_microseconds, 0x0,
+        { "Frame end offset", "wpan_tsch_frame_end_offset", FT_DOUBLE, BASE_NONE|BASE_UNIT_STRING, &units_microseconds, 0x0,
             "End of frame timestamp - (start of slot timestamp + timeslot length)", HFILL }},
 
         { &hf_ieee802154_asn,
-        { "ASN", "wpan-tap.asn", FT_UINT64, BASE_DEC, NULL, 0x0,
+        { "ASN", "wpan-tap_asn", FT_UINT64, BASE_DEC, NULL, 0x0,
             "Absolute Slot Number", HFILL }},
 
     };

@@ -305,103 +305,103 @@ proto_register_ipxwan(void)
 {
 	static hf_register_info hf[] = {
 	    { &hf_ipxwan_identifier,
-	      { "Identifier",	"ipxwan.identifier",
+	      { "Identifier",	"ipxwan_identifier",
 		FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_packet_type,
-	      { "Packet Type", "ipxwan.packet_type",
+	      { "Packet Type", "ipxwan_packet_type",
 	        FT_UINT8, BASE_DEC, VALS(ipxwan_packet_type_vals), 0x0, NULL,
 	        HFILL }},
 
 	    { &hf_ipxwan_node_id,
-	      { "Node ID", "ipxwan.node_id", FT_UINT32,
+	      { "Node ID", "ipxwan_node_id", FT_UINT32,
 	         BASE_HEX, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_sequence_number,
-	      { "Sequence Number", "ipxwan.sequence_number", FT_UINT8,
+	      { "Sequence Number", "ipxwan_sequence_number", FT_UINT8,
 	         BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_num_options,
-	      { "Number of Options", "ipxwan.num_options", FT_UINT8,
+	      { "Number of Options", "ipxwan_num_options", FT_UINT8,
 	         BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_option_num,
-	      { "Option Number", "ipxwan.option_num", FT_UINT8,
+	      { "Option Number", "ipxwan_option_num", FT_UINT8,
 	         BASE_HEX, VALS(ipxwan_option_num_vals), 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_accept_option,
-	      { "Accept Option", "ipxwan.accept_option", FT_UINT8,
+	      { "Accept Option", "ipxwan_accept_option", FT_UINT8,
 	         BASE_DEC, VALS(ipxwan_accept_option_vals), 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_option_data_len,
-	      { "Option Data Length", "ipxwan.option_data_len", FT_UINT16,
+	      { "Option Data Length", "ipxwan_option_data_len", FT_UINT16,
 	         BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_routing_type,
-	      { "Routing Type", "ipxwan.routing_type", FT_UINT8,
+	      { "Routing Type", "ipxwan_routing_type", FT_UINT8,
 	         BASE_DEC, VALS(ipxwan_routing_type_vals), 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_wan_link_delay,
-	      { "WAN Link Delay", "ipxwan.rip_sap_info_exchange.wan_link_delay",
+	      { "WAN Link Delay", "ipxwan_rip_sap_info_exchange_wan_link_delay",
 	         FT_UINT16, BASE_DEC|BASE_UNIT_STRING, &units_milliseconds, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_common_network_number,
-	      { "Common Network Number", "ipxwan.rip_sap_info_exchange.common_network_number",
+	      { "Common Network Number", "ipxwan_rip_sap_info_exchange_common_network_number",
 	         FT_IPXNET, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_router_name,
-	      { "Router Name", "ipxwan.rip_sap_info_exchange.router_name",
+	      { "Router Name", "ipxwan_rip_sap_info_exchange_router_name",
 	         FT_STRING, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_delay,
-	      { "Delay", "ipxwan.nlsp_information.delay",
+	      { "Delay", "ipxwan_nlsp_information_delay",
 	         FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_throughput,
-	      { "Throughput", "ipxwan.nlsp_information.throughput",
+	      { "Throughput", "ipxwan_nlsp_information_throughput",
 	         FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_request_size,
-	      { "Request Size", "ipxwan.nlsp_raw_throughput_data.request_size",
+	      { "Request Size", "ipxwan_nlsp_raw_throughput_data_request_size",
 	         FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_delta_time,
-	      { "Delta Time", "ipxwan.nlsp_raw_throughput_data.delta_time",
+	      { "Delta Time", "ipxwan_nlsp_raw_throughput_data_delta_time",
 	         FT_UINT32, BASE_DEC|BASE_UNIT_STRING, &units_microseconds, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_extended_node_id,
-	      { "Extended Node ID", "ipxwan.extended_node_id",
+	      { "Extended Node ID", "ipxwan_extended_node_id",
 	         FT_IPXNET, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_node_number,
-	      { "Node Number", "ipxwan.node_number",
+	      { "Node Number", "ipxwan_node_number",
 	         FT_ETHER, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_compression_type,
-	      { "Compression Type", "ipxwan.compression.type",
+	      { "Compression Type", "ipxwan_compression_type",
 	         FT_UINT8, BASE_DEC, VALS(ipxwan_compression_type_vals), 0x0,
 	         NULL, HFILL }},
 
 	    { &hf_ipxwan_compression_options,
-	      { "Compression options", "ipxwan.compression.options",
+	      { "Compression options", "ipxwan_compression_options",
 	         FT_UINT8, BASE_HEX, NULL, 0x0,
 	         NULL, HFILL }},
 
 	    { &hf_ipxwan_compression_slots,
-	      { "Number of compression slots", "ipxwan.compression.slots",
+	      { "Number of compression slots", "ipxwan_compression_slots",
 	         FT_UINT8, BASE_DEC, NULL, 0x0,
 	         NULL, HFILL }},
 
 	    { &hf_ipxwan_compression_parameters,
-	      { "Option parameters", "ipxwan.compression.parameters",
+	      { "Option parameters", "ipxwan_compression_parameters",
 	         FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_padding,
-	      { "Padding", "ipxwan.padding",
+	      { "Padding", "ipxwan_padding",
 	         FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 
 	    { &hf_ipxwan_option_value,
-	      { "Option value", "ipxwan.option_value",
+	      { "Option value", "ipxwan_option_value",
 	         FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL }},
 	};
 	static gint *ett[] = {

@@ -7396,25 +7396,25 @@ void proto_register_c15ch_hbeat(void)
 {
     static hf_register_info hf[] = {
             { &hf_c15ch_hbeat_clli,
-                {"CLLI", "c15hbeat.clli",
+                {"CLLI", "c15hbeat_clli",
                 FT_STRINGZ, BASE_NONE,
                 NULL,
                 0x0, NULL, HFILL}
             },
             { &hf_c15ch_hbeat_primary,
-                {"Primary", "c15hbeat.primary",
+                {"Primary", "c15hbeat_primary",
                 FT_UINT8, BASE_DEC,
                 NULL,
                 0x0, NULL, HFILL}
             },
             { &hf_c15ch_hbeat_secondary,
-                {"Secondary", "c15hbeat.secondary",
+                {"Secondary", "c15hbeat_secondary",
                 FT_UINT8, BASE_DEC,
                 NULL,
                 0x0, NULL, HFILL}
             },
             {  &hf_c15ch_hbeat_interface,
-                {"Interface", "c15hbeat.interface",
+                {"Interface", "c15hbeat_interface",
                 FT_STRINGZ, BASE_NONE,
                 NULL,
                 0x0, NULL, HFILL}

@@ -2297,249 +2297,249 @@ void proto_register_zbee_zcl(void)
 
     static hf_register_info hf[] = {
         { &hf_zbee_zcl_fcf_frame_type,
-            { "Frame Type", "zbee_zcl.type", FT_UINT8, BASE_HEX, VALS(zbee_zcl_frame_types),
+            { "Frame Type", "zbee_zcl_type", FT_UINT8, BASE_HEX, VALS(zbee_zcl_frame_types),
                 ZBEE_ZCL_FCF_FRAME_TYPE, NULL, HFILL }},
 
         { &hf_zbee_zcl_fcf_mfr_spec,
-            { "Manufacturer Specific", "zbee_zcl.ms", FT_BOOLEAN, 8, NULL,
+            { "Manufacturer Specific", "zbee_zcl_ms", FT_BOOLEAN, 8, NULL,
                 ZBEE_ZCL_FCF_MFR_SPEC, NULL, HFILL }},
 
         { &hf_zbee_zcl_fcf_dir,
-            { "Direction", "zbee_zcl.dir", FT_BOOLEAN, 8, TFS(&tfs_s2c_c2s),
+            { "Direction", "zbee_zcl_dir", FT_BOOLEAN, 8, TFS(&tfs_s2c_c2s),
                 ZBEE_ZCL_FCF_DIRECTION, NULL, HFILL }},
 
         { &hf_zbee_zcl_fcf_disable_default_resp,
-            { "Disable Default Response", "zbee_zcl.ddr", FT_BOOLEAN, 8, NULL,
+            { "Disable Default Response", "zbee_zcl_ddr", FT_BOOLEAN, 8, NULL,
                 ZBEE_ZCL_FCF_DISABLE_DEFAULT_RESP, NULL, HFILL }},
 
         { &hf_zbee_zcl_mfr_code,
-            { "Manufacturer Code", "zbee_zcl.cmd.mc", FT_UINT16, BASE_HEX|BASE_EXT_STRING,
+            { "Manufacturer Code", "zbee_zcl_cmd_mc", FT_UINT16, BASE_HEX|BASE_EXT_STRING,
                     &zbee_mfr_code_names_ext, 0x0, "Assigned manufacturer code.", HFILL }},
 
         { &hf_zbee_zcl_tran_seqno,
-            { "Sequence Number", "zbee_zcl.cmd.tsn", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Sequence Number", "zbee_zcl_cmd_tsn", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_cmd_id,
-            { "Command",    "zbee_zcl.cmd.id", FT_UINT8, BASE_HEX|BASE_EXT_STRING, &zbee_zcl_cmd_names_ext,
+            { "Command",    "zbee_zcl_cmd_id", FT_UINT8, BASE_HEX|BASE_EXT_STRING, &zbee_zcl_cmd_names_ext,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_cs_cmd_id,
-          { "Command",    "zbee_zcl.cs.cmd.id", FT_UINT8, BASE_HEX, VALS(zbee_zcl_cs_cmd_names) /*"Unknown"*/,
+          { "Command",    "zbee_zcl_cs_cmd_id", FT_UINT8, BASE_HEX, VALS(zbee_zcl_cs_cmd_names) /*"Unknown"*/,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_cmd_id_rsp,
-          { "Response to Command", "zbee_zcl.cmd.id.rsp", FT_UINT8, BASE_HEX, NULL,
+          { "Response to Command", "zbee_zcl_cmd_id_rsp", FT_UINT8, BASE_HEX, NULL,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_id,
-            { "Attribute",  "zbee_zcl.attr.id", FT_UINT16, BASE_HEX, NULL, 0x0,
+            { "Attribute",  "zbee_zcl_attr_id", FT_UINT16, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_data_type,
-            { "Data Type",  "zbee_zcl.attr.data.type", FT_UINT8, BASE_HEX|BASE_EXT_STRING,
+            { "Data Type",  "zbee_zcl_attr_data_type", FT_UINT8, BASE_HEX|BASE_EXT_STRING,
                 &zbee_zcl_data_type_names_ext, 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_boolean,
-            { "Boolean",    "zbee_zcl.attr.boolean", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0xff,
+            { "Boolean",    "zbee_zcl_attr_boolean", FT_BOOLEAN, 8, TFS(&tfs_true_false), 0xff,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bitmap8,
-            { "Bitmap8",  "zbee_zcl.attr.bitmap8", FT_UINT8, BASE_HEX, NULL, 0x0,
+            { "Bitmap8",  "zbee_zcl_attr_bitmap8", FT_UINT8, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bitmap16,
-            { "Bitmap16", "zbee_zcl.attr.bitmap16", FT_UINT16, BASE_HEX, NULL, 0x0,
+            { "Bitmap16", "zbee_zcl_attr_bitmap16", FT_UINT16, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bitmap24,
-            { "Bitmap24", "zbee_zcl.attr.bitmap24", FT_UINT24, BASE_HEX, NULL, 0x0,
+            { "Bitmap24", "zbee_zcl_attr_bitmap24", FT_UINT24, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bitmap32,
-            { "Bitmap32", "zbee_zcl.attr.bitmap32", FT_UINT32, BASE_HEX, NULL, 0x0,
+            { "Bitmap32", "zbee_zcl_attr_bitmap32", FT_UINT32, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bitmap40,
-            { "Bitmap40", "zbee_zcl.attr.bitmap40", FT_UINT64, BASE_HEX, NULL, 0x0,
+            { "Bitmap40", "zbee_zcl_attr_bitmap40", FT_UINT64, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bitmap48,
-            { "Bitmap48", "zbee_zcl.attr.bitmap48", FT_UINT64, BASE_HEX, NULL, 0x0,
+            { "Bitmap48", "zbee_zcl_attr_bitmap48", FT_UINT64, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bitmap56,
-            { "Bitmap56", "zbee_zcl.attr.bitmap56", FT_UINT64, BASE_HEX, NULL, 0x0,
+            { "Bitmap56", "zbee_zcl_attr_bitmap56", FT_UINT64, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bitmap64,
-            { "Bitmap64", "zbee_zcl.attr.bitmap64", FT_UINT64, BASE_HEX, NULL, 0x0,
+            { "Bitmap64", "zbee_zcl_attr_bitmap64", FT_UINT64, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_uint8,
-            { "Uint8",  "zbee_zcl.attr.uint8", FT_UINT8, BASE_DEC_HEX, NULL, 0x0,
+            { "Uint8",  "zbee_zcl_attr_uint8", FT_UINT8, BASE_DEC_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_uint16,
-            { "Uint16", "zbee_zcl.attr.uint16", FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
+            { "Uint16", "zbee_zcl_attr_uint16", FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_uint24,
-            { "Uint24", "zbee_zcl.attr.uint24", FT_UINT24, BASE_DEC_HEX, NULL, 0x0,
+            { "Uint24", "zbee_zcl_attr_uint24", FT_UINT24, BASE_DEC_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_uint32,
-            { "Uint32", "zbee_zcl.attr.uint32", FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
+            { "Uint32", "zbee_zcl_attr_uint32", FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_uint40,
-            { "Uint40", "zbee_zcl.attr.uint40", FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
+            { "Uint40", "zbee_zcl_attr_uint40", FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_uint48,
-            { "Uint48", "zbee_zcl.attr.uint48", FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
+            { "Uint48", "zbee_zcl_attr_uint48", FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_uint56,
-            { "Uint56", "zbee_zcl.attr.uint56", FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
+            { "Uint56", "zbee_zcl_attr_uint56", FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_uint64,
-            { "Uint64", "zbee_zcl.attr.uint64", FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
+            { "Uint64", "zbee_zcl_attr_uint64", FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_int8,
-            { "Int8",   "zbee_zcl.attr.int8", FT_INT8, BASE_DEC, NULL, 0x0,
+            { "Int8",   "zbee_zcl_attr_int8", FT_INT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_int16,
-            { "Int16",  "zbee_zcl.attr.int16", FT_INT16, BASE_DEC, NULL, 0x0,
+            { "Int16",  "zbee_zcl_attr_int16", FT_INT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_int24,
-            { "Int24",  "zbee_zcl.attr.int24", FT_INT24, BASE_DEC, NULL, 0x0,
+            { "Int24",  "zbee_zcl_attr_int24", FT_INT24, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_int32,
-            { "Int32",  "zbee_zcl.attr.int32", FT_INT32, BASE_DEC, NULL, 0x0,
+            { "Int32",  "zbee_zcl_attr_int32", FT_INT32, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_int64,
-            { "Int64",  "zbee_zcl.attr.int64", FT_INT64, BASE_DEC, NULL, 0x0,
+            { "Int64",  "zbee_zcl_attr_int64", FT_INT64, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_float,
-            { "Float", "zbee_zcl.attr.float", FT_FLOAT, BASE_NONE, NULL, 0x0,
+            { "Float", "zbee_zcl_attr_float", FT_FLOAT, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_double,
-            { "Double Float", "zbee_zcl.attr.float", FT_DOUBLE, BASE_NONE, NULL, 0x0,
+            { "Double Float", "zbee_zcl_attr_float", FT_DOUBLE, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bytes,
-            { "Bytes",  "zbee_zcl.attr.bytes", FT_BYTES, BASE_NONE, NULL, 0x0,
+            { "Bytes",  "zbee_zcl_attr_bytes", FT_BYTES, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_minint,
-            { "Minimum Interval", "zbee_zcl.attr.minint", FT_UINT16, BASE_DEC, NULL, 0x0,
+            { "Minimum Interval", "zbee_zcl_attr_minint", FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_maxint,
-            { "Maximum Interval", "zbee_zcl.attr.maxint", FT_UINT16, BASE_DEC, NULL, 0x0,
+            { "Maximum Interval", "zbee_zcl_attr_maxint", FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_timeout,
-            { "Timeout", "zbee_zcl.attr.timeout", FT_UINT16, BASE_DEC, NULL, 0x0,
+            { "Timeout", "zbee_zcl_attr_timeout", FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_hours,
-            { "Hours",  "zbee_zcl.attr.hours", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Hours",  "zbee_zcl_attr_hours", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_mins,
-            { "Minutes", "zbee_zcl.attr.mins", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Minutes", "zbee_zcl_attr_mins", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_secs,
-            { "Seconds", "zbee_zcl.attr.secs", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Seconds", "zbee_zcl_attr_secs", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_csecs,
-            { "Centiseconds", "zbee_zcl.attr.csecs", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Centiseconds", "zbee_zcl_attr_csecs", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_yy,
-            { "Year", "zbee_zcl.attr.yy", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "Year", "zbee_zcl_attr_yy", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_mm,
-            { "Month", "zbee_zcl.attr.mm", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "Month", "zbee_zcl_attr_mm", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_md,
-            { "Day of Month", "zbee_zcl.attr.md", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "Day of Month", "zbee_zcl_attr_md", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_wd,
-            { "Day of Week", "zbee_zcl.attr.wd", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
+            { "Day of Week", "zbee_zcl_attr_wd", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_utc,
-            { "UTC", "zbee_zcl.attr.utc", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL }},
+            { "UTC", "zbee_zcl_attr_utc", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_status,
-            { "Status", "zbee_zcl.attr.status", FT_UINT8, BASE_HEX|BASE_EXT_STRING, &zbee_zcl_status_names_ext,
+            { "Status", "zbee_zcl_attr_status", FT_UINT8, BASE_HEX|BASE_EXT_STRING, &zbee_zcl_status_names_ext,
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_dir,
-            { "Direction", "zbee_zcl.attr.dir", FT_UINT8, BASE_HEX, VALS(zbee_zcl_dir_names),
+            { "Direction", "zbee_zcl_attr_dir", FT_UINT8, BASE_HEX, VALS(zbee_zcl_dir_names),
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_dis,
-            { "Discovery", "zbee_zcl.attr.dis", FT_UINT8, BASE_HEX, VALS(zbee_zcl_dis_names),
+            { "Discovery", "zbee_zcl_attr_dis", FT_UINT8, BASE_HEX, VALS(zbee_zcl_dis_names),
                 0x0, NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_cid,
-            { "Cluster", "zbee_zcl.attr.cid", FT_UINT16, BASE_HEX, NULL, 0x0,
+            { "Cluster", "zbee_zcl_attr_cid", FT_UINT16, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_start,
-            { "Start Attribute", "zbee_zcl.attr.start", FT_UINT16, BASE_HEX, NULL, 0x0,
+            { "Start Attribute", "zbee_zcl_attr_start", FT_UINT16, BASE_HEX, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_maxnum,
-            { "Maximum Number", "zbee_zcl.attr.maxnum", FT_UINT8, BASE_DEC, NULL, 0x0,
+            { "Maximum Number", "zbee_zcl_attr_maxnum", FT_UINT8, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_str,
-            { "String", "zbee_zcl.attr.str", FT_UINT_STRING, BASE_NONE, NULL, 0x0,
+            { "String", "zbee_zcl_attr_str", FT_UINT_STRING, BASE_NONE, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_ostr,
-            { "Octet String",   "zbee_zcl.attr.ostr", FT_UINT_BYTES, SEP_COLON, NULL, 0x0,
+            { "Octet String",   "zbee_zcl_attr_ostr", FT_UINT_BYTES, SEP_COLON, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_array_elements_type,
-            { "Elements Type",   "zbee_zcl.attr.array.elements_type", FT_UINT8, BASE_HEX|BASE_EXT_STRING,
+            { "Elements Type",   "zbee_zcl_attr_array_elements_type", FT_UINT8, BASE_HEX|BASE_EXT_STRING,
                 &zbee_zcl_data_type_names_ext, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_array_elements_num,
-            { "Elements Number",   "zbee_zcl.attr.array.elements_num", FT_UINT16, BASE_DEC, NULL, 0x0,
+            { "Elements Number",   "zbee_zcl_attr_array_elements_num", FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_set_elements_type,
-            { "Elements Type",   "zbee_zcl.attr.set.elements_type", FT_UINT8, BASE_HEX|BASE_EXT_STRING,
+            { "Elements Type",   "zbee_zcl_attr_set_elements_type", FT_UINT8, BASE_HEX|BASE_EXT_STRING,
                 &zbee_zcl_data_type_names_ext, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_set_elements_num,
-            { "Elements Number",   "zbee_zcl.attr.set.elements_num", FT_UINT16, BASE_DEC, NULL, 0x0,
+            { "Elements Number",   "zbee_zcl_attr_set_elements_num", FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bag_elements_type,
-            { "Elements Type",   "zbee_zcl.attr.bag.elements_type", FT_UINT8, BASE_HEX|BASE_EXT_STRING,
+            { "Elements Type",   "zbee_zcl_attr_bag_elements_type", FT_UINT8, BASE_HEX|BASE_EXT_STRING,
                 &zbee_zcl_data_type_names_ext, 0x0,
                 NULL, HFILL }},
 
         { &hf_zbee_zcl_attr_bag_elements_num,
-            { "Elements Number",   "zbee_zcl.attr.bag.elements_num", FT_UINT16, BASE_DEC, NULL, 0x0,
+            { "Elements Number",   "zbee_zcl_attr_bag_elements_num", FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL }}
     };
 

@@ -183,7 +183,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_magic,
             {
-                "Magic", "caneth.magic",
+                "Magic", "caneth_magic",
                 FT_STRING, STR_ASCII,
                 NULL, 0x0,
                 "The magic identifier used to denote the start of a CAN-ETH packet", HFILL
@@ -192,7 +192,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_version,
             {
-                "Version", "caneth.version",
+                "Version", "caneth_version",
                 FT_UINT8, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL
@@ -201,7 +201,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_frames,
             {
-                "CAN Frames", "caneth.frames",
+                "CAN Frames", "caneth_frames",
                 FT_UINT8, BASE_DEC,
                 NULL, 0x0,
                 "Number of enclosed CAN frames", HFILL
@@ -210,7 +210,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_options,
             {
-                "Options (Reserved)", "caneth.options",
+                "Options (Reserved)", "caneth_options",
                 FT_BYTES, BASE_NONE,
                 NULL, 0x0,
                 "Options field, reserved for future use, should be empty", HFILL
@@ -219,7 +219,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_can_ident_ext,
             {
-                "Identifier", "can.id",
+                "Identifier", "can_id",
                 FT_UINT32, BASE_HEX,
                 NULL, CAN_EFF_MASK,
                 NULL, HFILL
@@ -228,7 +228,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_can_ident_std,
             {
-                "Identifier", "can.id",
+                "Identifier", "can_id",
                 FT_UINT32, BASE_HEX,
                 NULL, CAN_SFF_MASK,
                 NULL, HFILL
@@ -237,7 +237,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_can_extflag,
             {
-                "Extended Flag", "can.flags.xtd",
+                "Extended Flag", "can_flags_xtd",
                 FT_BOOLEAN, BASE_NONE,
                 NULL, 0,
                 NULL, HFILL
@@ -246,7 +246,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_can_rtrflag,
             {
-                "Remote Transmission Request Flag", "can.flags.rtr",
+                "Remote Transmission Request Flag", "can_flags_rtr",
                 FT_BOOLEAN, BASE_NONE,
                 NULL, 0,
                 NULL, HFILL
@@ -255,7 +255,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_can_len,
             {
-                "Frame-Length", "can.len",
+                "Frame-Length", "can_len",
                 FT_UINT8, BASE_DEC,
                 NULL, 0x0,
                 NULL, HFILL
@@ -264,7 +264,7 @@ proto_register_caneth(void)
         {
             &hf_caneth_can_padding,
             {
-                "Padding", "caneth.can.padding",
+                "Padding", "caneth_can_padding",
                 FT_BYTES, BASE_NONE,
                 NULL, 0x0,
                 NULL, HFILL

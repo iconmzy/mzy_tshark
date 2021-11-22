@@ -60,7 +60,7 @@ proto_register_lapbether(void)
 {
     static hf_register_info hf[] = {
       { &hf_lapbether_length,
-        { "Length Field", "lapbether.length", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Length Field", "lapbether_length", FT_UINT16, BASE_DEC, NULL, 0x0,
           "LAPBEther Length Field", HFILL }},
 
     };

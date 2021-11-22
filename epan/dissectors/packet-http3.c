@@ -347,27 +347,27 @@ proto_register_http3(void)
 
     static hf_register_info hf[] = {
         { &hf_http3_stream_type,
-          { "Stream Type", "http3.stream_type",
+          { "Stream Type", "http3_stream_type",
             FT_UINT64, BASE_HEX|BASE_VAL64_STRING, VALS64(http3_stream_types), 0x0,
             NULL, HFILL }
         },
         { &hf_http3_push_id,
-          { "Push ID", "http3.push_id",
+          { "Push ID", "http3_push_id",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_http3_frame_type,
-          { "Type", "http3.frame_type",
+          { "Type", "http3_frame_type",
             FT_UINT64, BASE_HEX|BASE_VAL64_STRING, VALS64(http3_frame_types), 0x0,
             "Frame Type", HFILL }
         },
         { &hf_http3_frame_length,
-          { "Length", "http3.frame_length",
+          { "Length", "http3_frame_length",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Length of the Frame Payload", HFILL }
         },
         { &hf_http3_frame_payload,
-          { "Frame Payload", "http3.frame_payload",
+          { "Frame Payload", "http3_frame_payload",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },

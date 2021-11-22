@@ -7201,206 +7201,206 @@ proto_register_acn(void)
     /* Address Type */
     /* PDU flags*/
     { &hf_acn_ip_address_type,
-      { "Addr Type", "acn.ip_address_type",
+      { "Addr Type", "acn_ip_address_type",
         FT_UINT8, BASE_DEC, VALS(acn_ip_address_type_vals), 0x0,
         NULL, HFILL }
     },
     /* Association */
     { &hf_acn_association,
-      { "Association", "acn.association",
+      { "Association", "acn_association",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* Blob */
     { &hf_acn_blob,
-      { "Blob", "acn.blob",
+      { "Blob", "acn_blob",
         FT_NONE, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 #if 0
     /* Blob Dimmer Load Properties 2 Type */
     { &hf_acn_blob_dimmer_load_properties2_type,
-      { "Blob Field", "acn.blob_dimmer_load_properties2_type",
+      { "Blob Field", "acn_blob_dimmer_load_properties2_type",
         FT_NONE, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 #endif
     /* Blob Field Length */
     { &hf_acn_blob_field_length,
-      { "Field Length", "acn.blob_field_length",
+      { "Field Length", "acn_blob_field_length",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* Blob Field Type */
     { &hf_acn_blob_field_type,
-      { "Field Type", "acn.blob_field_type",
+      { "Field Type", "acn_blob_field_type",
         FT_UINT8, BASE_DEC, VALS(acn_blob_field_type_vals), 0x0,
         NULL, HFILL }
     },
     /* Blob Field Value Number */
     { &hf_acn_blob_field_value_number,
-      { "Field Value", "acn.blob_field_value_number",
+      { "Field Value", "acn_blob_field_value_number",
         FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_field_value_number64,
-      { "Field Value", "acn.blob_field_value_number64",
+      { "Field Value", "acn_blob_field_value_number64",
         FT_UINT64, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_field_value_float,
-      { "Field Value", "acn.blob_field_value_float",
+      { "Field Value", "acn_blob_field_value_float",
         FT_FLOAT, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_field_value_double,
-      { "Field Value", "acn.blob_field_value_double",
+      { "Field Value", "acn_blob_field_value_double",
         FT_DOUBLE, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_field_value_guid,
-      { "Field Value", "acn.blob_field_value_guid",
+      { "Field Value", "acn_blob_field_value_guid",
         FT_GUID, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* Blob Field Value String*/
     { &hf_acn_blob_field_value_string,
-      { "Field Value", "acn.blob_field_value_string",
+      { "Field Value", "acn_blob_field_value_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Blob Field Value IPV4 */
     { &hf_acn_blob_field_value_ipv4,
-      { "Field Value", "acn.blob_field_value_ipv4",
+      { "Field Value", "acn_blob_field_value_ipv4",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Blob Field Value IPV6 */
     { &hf_acn_blob_field_value_ipv6,
-      { "Field Value", "acn.blob_field_value_ipv6",
+      { "Field Value", "acn_blob_field_value_ipv6",
         FT_IPv6, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Blob Metadata Device Type */
     { &hf_acn_blob_tree_field_type,
-      { "Blob Field", "acn.blob_tree_field_type",
+      { "Blob Field", "acn_blob_tree_field_type",
         FT_NONE, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 #if 0
     /* Blob Metadata Types Type */
     { &hf_acn_blob_metadata_types_type,
-      { "Blob Field", "acn.blob_metadata_types_type",
+      { "Blob Field", "acn_blob_metadata_types_type",
         FT_NONE, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 #endif
     /* Blob Range Number */
     { &hf_acn_blob_range_number,
-      { "Blob Range Number", "acn.blob_range_number",
+      { "Blob Range Number", "acn_blob_range_number",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* Blob Range Type */
     { &hf_acn_blob_range_type,
-      { "Blob Range Type", "acn.blob_range_type",
+      { "Blob Range Type", "acn_blob_range_type",
         FT_UINT8, BASE_HEX, VALS(acn_blob_range_type_vals), 0x0,
         NULL, HFILL }
     },
 #if 0
     /* Blob Range Start */
     { &hf_acn_blob_range_start,
-      { "Blob Range Start", "acn.blob_range_start",
+      { "Blob Range Start", "acn_blob_range_start",
         FT_UINT8, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
 #endif
     /* Blob Type */
     { &hf_acn_blob_type,
-      { "Blob Type", "acn.blob_type",
+      { "Blob Type", "acn_blob_type",
         FT_UINT8, BASE_DEC, VALS(acn_blob_type_vals), 0x0,
         NULL, HFILL }
     },
     /* Blob Version */
     { &hf_acn_blob_version,
-      { "Blob Version", "acn.blob_version",
+      { "Blob Version", "acn_blob_version",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_time_zone,
-      { "Time Zone", "acn.blob_time_zone",
+      { "Time Zone", "acn_blob_time_zone",
         FT_INT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_dst_type,
-      { "DST Type", "acn.blob_dst_type",
+      { "DST Type", "acn_blob_dst_type",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_dst_start_day,
-      { "DST Start Day", "acn.blob_dst_start_day",
+      { "DST Start Day", "acn_blob_dst_start_day",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_dst_stop_day,
-      { "DST Stop Day", "acn.blob_dst_stop_day",
+      { "DST Stop Day", "acn_blob_dst_stop_day",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_dst_start_locality,
-      { "DST Start Locality", "acn.blob_dst_start_locality",
+      { "DST Start Locality", "acn_blob_dst_start_locality",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_blob_dst_stop_locality,
-      { "DST Stop Locality", "acn.blob_dst_stop_locality",
+      { "DST Stop Locality", "acn_blob_dst_stop_locality",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* Channel Number */
     { &hf_acn_channel_number,
-      { "Channel Number", "acn.channel_number",
+      { "Channel Number", "acn_channel_number",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* CID */
     { &hf_acn_cid,
-      { "CID", "acn.cid",
+      { "CID", "acn_cid",
         FT_GUID, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Client Protocol ID */
 #if 0
     { &hf_acn_client_protocol_id,
-      { "Client Protocol ID", "acn.client_protocol_id",
+      { "Client Protocol ID", "acn_client_protocol_id",
         FT_UINT32, BASE_DEC, VALS(acn_protocol_id_vals), 0x0,
         NULL, HFILL }
     },
 #endif
     /* DMP data */
     { &hf_acn_data,
-      { "Data", "acn.dmp_data",
+      { "Data", "acn_dmp_data",
         FT_BYTES, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_acn_data8,
-      { "Addr", "acn.dmp_data8",
+      { "Addr", "acn_dmp_data8",
         FT_UINT8, BASE_DEC_HEX, NULL, 0x0,
         "Data8", HFILL }
     },
     { &hf_acn_data16,
-      { "Addr", "acn.dmp_data16",
+      { "Addr", "acn_dmp_data16",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         "Data16", HFILL }
     },
     { &hf_acn_data24,
-      { "Addr", "acn.dmp_data24",
+      { "Addr", "acn_dmp_data24",
         FT_UINT24, BASE_DEC_HEX, NULL, 0x0,
         "Data24", HFILL }
     },
     { &hf_acn_data32,
-      { "Addr", "acn.dmp_data32",
+      { "Addr", "acn_dmp_data32",
         FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         "Data32", HFILL }
     },
@@ -7408,355 +7408,355 @@ proto_register_acn(void)
     /* DMP Address type*/
 #if 0
     { &hf_acn_dmp_adt,
-      { "Address and Data Type", "acn.dmp_adt",
+      { "Address and Data Type", "acn_dmp_adt",
         FT_UINT8, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
 #endif
     { &hf_acn_dmp_adt_a,
-      { "Size", "acn.dmp_adt_a",
+      { "Size", "acn_dmp_adt_a",
         FT_UINT8, BASE_DEC, VALS(acn_dmp_adt_a_vals), 0x03,
         NULL, HFILL }
     },
     { &hf_acn_dmp_adt_d,
-      { "Data Type", "acn.dmp_adt_d",
+      { "Data Type", "acn_dmp_adt_d",
         FT_UINT8, BASE_DEC, VALS(acn_dmp_adt_d_vals), 0x30,
         NULL, HFILL }
     },
     { &hf_acn_dmp_adt_r,
-      { "Relative", "acn.dmp_adt_r",
+      { "Relative", "acn_dmp_adt_r",
         FT_UINT8, BASE_DEC, VALS(acn_dmp_adt_r_vals), 0x40,
         NULL, HFILL }
     },
     { &hf_acn_dmp_adt_v,
-      { "Virtual", "acn.dmp_adt_v",
+      { "Virtual", "acn_dmp_adt_v",
         FT_UINT8, BASE_DEC, VALS(acn_dmp_adt_v_vals), 0x80,
         NULL, HFILL }
     },
     { &hf_acn_dmp_adt_x,
-      { "Reserved", "acn.dmp_adt_x",
+      { "Reserved", "acn_dmp_adt_x",
         FT_UINT8, BASE_DEC, NULL, 0x0c,
         NULL, HFILL }
     },
 
     /* DMP Reason Code */
     { &hf_acn_dmp_reason_code,
-      { "Reason Code", "acn.dmp_reason_code",
+      { "Reason Code", "acn_dmp_reason_code",
         FT_UINT8, BASE_DEC, VALS(acn_dmp_reason_code_vals), 0x0,
         NULL, HFILL }
     },
 
     /* DMP Vector */
     { &hf_acn_dmp_vector,
-      { "DMP Vector", "acn.dmp_vector",
+      { "DMP Vector", "acn_dmp_vector",
         FT_UINT8, BASE_DEC, VALS(acn_dmp_vector_vals), 0x0,
         NULL, HFILL }
     },
 
     { &hf_acn_dmp_actual_address,
-      { "Actual Address", "acn.dmp_actual_address",
+      { "Actual Address", "acn_dmp_actual_address",
         FT_UINT32, BASE_HEX, NULL, 0x0,
         NULL, HFILL }
     },
 
     { &hf_acn_dmp_virtual_address,
-      { "Virtual Address", "acn.dmp_virtual_address",
+      { "Virtual Address", "acn_dmp_virtual_address",
         FT_UINT32, BASE_HEX, NULL, 0x0,
         NULL, HFILL }
     },
 
     { &hf_acn_dmp_actual_address_first,
-      { "Actual Address First", "acn.dmp_actual_address_first",
+      { "Actual Address First", "acn_dmp_actual_address_first",
         FT_UINT32, BASE_HEX, NULL, 0x0,
         NULL, HFILL }
     },
 
     { &hf_acn_dmp_virtual_address_first,
-      { "Virtual Address First", "acn.dmp_virtual_address_first",
+      { "Virtual Address First", "acn_dmp_virtual_address_first",
         FT_UINT32, BASE_HEX, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* Expiry */
     { &hf_acn_expiry,
-      { "Expiry", "acn.expiry",
+      { "Expiry", "acn_expiry",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* First Member to ACK */
     { &hf_acn_first_member_to_ack,
-      { "First Member to ACK", "acn.first_member_to_ack",
+      { "First Member to ACK", "acn_first_member_to_ack",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* First Missed Sequence */
     { &hf_acn_first_missed_sequence,
-      { "First Missed Sequence", "acn.first_missed_sequence",
+      { "First Missed Sequence", "acn_first_missed_sequence",
         FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* IPV4 */
     { &hf_acn_ipv4,
-      { "IPV4", "acn.ipv4",
+      { "IPV4", "acn_ipv4",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* IPV6 */
     { &hf_acn_ipv6,
-      { "IPV6", "acn.ipv6",
+      { "IPV6", "acn_ipv6",
         FT_IPv6, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Last Member to ACK */
     { &hf_acn_last_member_to_ack,
-      { "Last Member to ACK", "acn.last_member_to_ack",
+      { "Last Member to ACK", "acn_last_member_to_ack",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* Last Missed Sequence */
     { &hf_acn_last_missed_sequence,
-      { "Last Missed Sequence", "acn.last_missed_sequence",
+      { "Last Missed Sequence", "acn_last_missed_sequence",
         FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* MAK threshold */
     { &hf_acn_mak_threshold,
-      { "MAK Threshold", "acn.mak_threshold",
+      { "MAK Threshold", "acn_mak_threshold",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* Member ID */
     { &hf_acn_member_id,
-      { "Member ID", "acn.member_id",
+      { "Member ID", "acn_member_id",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* NAK Holdoff */
     { &hf_acn_nak_holdoff,
-      { "NAK holdoff (ms)", "acn.nak_holdoff",
+      { "NAK holdoff (ms)", "acn_nak_holdoff",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* NAK Max Wait */
     { &hf_acn_nak_max_wait,
-      { "NAK Max Wait (ms)", "acn.nak_max_wait",
+      { "NAK Max Wait (ms)", "acn_nak_max_wait",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* NAK Modulus */
     { &hf_acn_nak_modulus,
-      { "NAK Modulus", "acn.nak_modulus",
+      { "NAK Modulus", "acn_nak_modulus",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* NAK Outbound Flag */
     { &hf_acn_nak_outbound_flag,
-      { "NAK Outbound Flag", "acn.nak_outbound_flag",
+      { "NAK Outbound Flag", "acn_nak_outbound_flag",
         FT_BOOLEAN, 8, NULL, 0x80,
         NULL, HFILL }
     },
     /* Oldest Available Wrapper */
     { &hf_acn_oldest_available_wrapper,
-      { "Oldest Available Wrapper", "acn.oldest_available_wrapper",
+      { "Oldest Available Wrapper", "acn_oldest_available_wrapper",
         FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* Preamble Size */
     { &hf_acn_preamble_size,
-      { "Size of preamble", "acn.preamble_size",
+      { "Size of preamble", "acn_preamble_size",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "Preamble size in bytes", HFILL }
     },
     /* Packet Identifier */
     { &hf_acn_packet_identifier,
-      { "Packet Identifier", "acn.packet_identifier",
+      { "Packet Identifier", "acn_packet_identifier",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* PDU */
     { &hf_acn_pdu,
-      { "PDU", "acn.pdu",
+      { "PDU", "acn_pdu",
         FT_NONE, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* PDU flags*/
     { &hf_acn_pdu_flags,
-      { "Flags", "acn.pdu.flags",
+      { "Flags", "acn_pdu_flags",
         FT_UINT8, BASE_HEX, NULL, 0x0,
         "PDU Flags", HFILL }
     },
     { &hf_acn_pdu_flag_d,
-      { "Data", "acn.pdu.flag_d",
+      { "Data", "acn_pdu_flag_d",
         FT_BOOLEAN, 8, NULL, ACN_PDU_FLAG_D,
         "Data flag", HFILL }
     },
     { &hf_acn_pdu_flag_h,
-      { "Header", "acn.pdu.flag_h",
+      { "Header", "acn_pdu_flag_h",
         FT_BOOLEAN, 8, NULL, ACN_PDU_FLAG_H,
         "Header flag", HFILL }
     },
     { &hf_acn_pdu_flag_l,
-      { "Length", "acn.pdu.flag_l",
+      { "Length", "acn_pdu_flag_l",
         FT_BOOLEAN, 8, NULL, ACN_PDU_FLAG_L,
         "Length flag", HFILL }
     },
     { &hf_acn_pdu_flag_v,
-      { "Vector", "acn.pdu.flag_v",
+      { "Vector", "acn_pdu_flag_v",
         FT_BOOLEAN, 8, NULL, ACN_PDU_FLAG_V,
         "Vector flag", HFILL }
     },
     /* PDU Length */
     { &hf_acn_pdu_length,
-      { "Length", "acn.pdu.length",
+      { "Length", "acn_pdu_length",
         FT_UINT32, BASE_DEC, NULL, 0x0,
         "PDU Length", HFILL }
     },
     /* Port */
     { &hf_acn_port,
-      { "Port", "acn.port",
+      { "Port", "acn_port",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* Postamble Size */
     { &hf_acn_postamble_size,
-      { "Size of postamble", "acn.postamble_size",
+      { "Size of postamble", "acn_postamble_size",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "Postamble size in bytes", HFILL }
     },
     /* Protocol ID */
     { &hf_acn_protocol_id,
-      { "Protocol ID", "acn.protocol_id",
+      { "Protocol ID", "acn_protocol_id",
         FT_UINT32, BASE_DEC, VALS(acn_protocol_id_vals), 0x0,
         NULL, HFILL }
     },
     /* Reason Code */
     { &hf_acn_reason_code,
-      { "Reason Code", "acn.reason_code",
+      { "Reason Code", "acn_reason_code",
         FT_UINT8, BASE_DEC, VALS(acn_reason_code_vals), 0x0,
         NULL, HFILL }
     },
     /* Reciprocal Channel */
     { &hf_acn_reciprocal_channel,
-      { "Reciprocal Channel Number", "acn.reciprocal_channel",
+      { "Reciprocal Channel Number", "acn_reciprocal_channel",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         "Reciprocal Channel", HFILL }
     },
     /* Refuse Code */
     { &hf_acn_refuse_code,
-      { "Refuse Code", "acn.refuse_code",
+      { "Refuse Code", "acn_refuse_code",
         FT_UINT8, BASE_DEC, VALS(acn_refuse_code_vals), 0x0,
         NULL, HFILL }
     },
     /* Reliable Sequence Number */
     { &hf_acn_reliable_sequence_number,
-      { "Reliable Sequence Number", "acn.reliable_sequence_number",
+      { "Reliable Sequence Number", "acn_reliable_sequence_number",
         FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* Ad-hoc Expiry */
     { &hf_acn_adhoc_expiry,
-      { "Ad-hoc Expiry", "acn.adhoc_expiry",
+      { "Ad-hoc Expiry", "acn_adhoc_expiry",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* SDT Vector */
     { &hf_acn_sdt_vector,
-      { "SDT Vector", "acn.sdt_vector",
+      { "SDT Vector", "acn_sdt_vector",
         FT_UINT8, BASE_DEC, VALS(acn_sdt_vector_vals), 0x0,
         NULL, HFILL }
     },
 
     /* DMX Vector */
     { &hf_acn_dmx_vector,
-      { "Vector", "acn.dmx_vector",
+      { "Vector", "acn_dmx_vector",
         FT_UINT32, BASE_DEC, VALS(acn_dmx_vector_vals), 0x0,
         "DMX Vector", HFILL }
     },
     /* DMX Source Name */
     { &hf_acn_dmx_source_name,
-      { "Source", "acn.dmx.source_name",
+      { "Source", "acn_dmx_source_name",
         FT_STRING, BASE_NONE, NULL, 0x0,
         "DMX Source Name", HFILL }
     },
 
     /* DMX priority */
     { &hf_acn_dmx_priority,
-      { "Priority", "acn.dmx.priority",
+      { "Priority", "acn_dmx_priority",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         "DMX Priority", HFILL }
     },
 
     /* DMX 2 reserved */
     { &hf_acn_dmx_2_reserved,
-      { "Reserved", "acn.dmx.reserved",
+      { "Reserved", "acn_dmx_reserved",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "DMX Reserved", HFILL }
     },
 
     /* DMX Sequence number */
     { &hf_acn_dmx_sequence_number,
-      { "Seq No", "acn.dmx.seq_number",
+      { "Seq No", "acn_dmx_seq_number",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         "DMX Sequence Number", HFILL }
     },
 
     /* DMX 2 options */
     { &hf_acn_dmx_2_options,
-      { "Options", "acn.dmx.options",
+      { "Options", "acn_dmx_options",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         "DMX Options", HFILL }
     },
 
     { &hf_acn_dmx_2_option_p,
-      { "Preview Data", "acn.dmx.option_p",
+      { "Preview Data", "acn_dmx_option_p",
         FT_BOOLEAN, 8, NULL, ACN_DMX_OPTION_P,
         "Preview Data flag", HFILL }
     },
 
     { &hf_acn_dmx_2_option_s,
-      { "Stream Terminated", "acn.dmx.option_s",
+      { "Stream Terminated", "acn_dmx_option_s",
         FT_BOOLEAN, 8, NULL, ACN_DMX_OPTION_S,
         "Stream Terminated flag", HFILL }
     },
 
     /* DMX Universe */
     { &hf_acn_dmx_universe,
-      { "Universe", "acn.dmx.universe",
+      { "Universe", "acn_dmx_universe",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "DMX Universe", HFILL }
     },
 
     /* DMX Start Code */
     { &hf_acn_dmx_start_code,
-      { "Start Code", "acn.dmx.start_code",
+      { "Start Code", "acn_dmx_start_code",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         "DMX Start Code", HFILL }
     },
 
     /* DMX 2 First Property Address */
     { &hf_acn_dmx_2_first_property_address,
-      { "First Property Address", "acn.dmx.first_property_address",
+      { "First Property Address", "acn_dmx_first_property_address",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         "DMX First Property Address", HFILL }
     },
 
     /* DMX Address Increment */
     { &hf_acn_dmx_increment,
-      { "Increment", "acn.dmx.increment",
+      { "Increment", "acn_dmx_increment",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "DMX Increment", HFILL }
     },
 
     /* DMX Packet Count */
     { &hf_acn_dmx_count,
-      { "Count", "acn.dmx.count",
+      { "Count", "acn_dmx_count",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "DMX Count", HFILL }
     },
 
     /* DMX 2 Start Code */
     { &hf_acn_dmx_2_start_code,
-      { "Start Code", "acn.dmx.start_code2",
+      { "Start Code", "acn_dmx_start_code2",
         FT_UINT8, BASE_DEC_HEX, NULL, 0x0,
         "DMX Start Code", HFILL }
     },
@@ -7770,7 +7770,7 @@ proto_register_acn(void)
      * to put the pretty-printed data into the display but not the field.
      */
     { &hf_acn_dmx_data,
-      { "Data", "acn.dmx.data",
+      { "Data", "acn_dmx_data",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
@@ -7778,14 +7778,14 @@ proto_register_acn(void)
     /* Session Count */
 #if 0
     { &hf_acn_session_count,
-      { "Session Count", "acn.session_count",
+      { "Session Count", "acn_session_count",
         FT_UINT16, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
 #endif
     /* Total Sequence Number */
     { &hf_acn_total_sequence_number,
-      { "Total Sequence Number", "acn.total_sequence_number",
+      { "Total Sequence Number", "acn_total_sequence_number",
         FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     }
@@ -7794,168 +7794,168 @@ proto_register_acn(void)
   static hf_register_info magic_hf[] = {
     /* Protocol ID */
     { &hf_magic_protocol_id,
-      { "Protocol ID", "magic.protocol_id",
+      { "Protocol ID", "magic_protocol_id",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* PDU Type */
     { &hf_magic_pdu_subtype,
-      { "PDU type", "magic.type",
+      { "PDU type", "magic_type",
         FT_UINT8, BASE_DEC, VALS(magic_pdu_subtypes), 0x0,
         NULL, HFILL },
     },
 
     /* Major Version */
     { &hf_magic_major_version,
-      { "Major Version", "magic.major_version",
+      { "Major Version", "magic_major_version",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* Minor Version */
     { &hf_magic_minor_version,
-      { "Minor Version", "magic.minor_version",
+      { "Minor Version", "magic_minor_version",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* V1 Command */
     { &hf_magic_v1command_vals,
-      { "Command", "magic.v1_command",
+      { "Command", "magic_v1_command",
         FT_UINT32, BASE_DEC, VALS(magic_v1command_vals), 0x0,
         NULL, HFILL }
     },
 
     /* V2 Command */
     { &hf_magic_command_vals,
-      { "Command", "magic.command",
+      { "Command", "magic_command",
         FT_UINT32, BASE_DEC, VALS(magic_command_vals), 0x0,
         NULL, HFILL }
     },
 
     /* Beacon Duration */
     { &hf_magic_command_beacon_duration,
-      { "Duration", "magic.beacon_duration",
+      { "Duration", "magic_beacon_duration",
         FT_UINT32, BASE_DEC, NULL, 0x0,
         "Beacon Duration", HFILL }
     },
 
     /* TFTP */
     { &hf_magic_command_tftp,
-      { "TFTP IP", "magic.tftp",
+      { "TFTP IP", "magic_tftp",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         "IP of TFTP server", HFILL }
     },
 
     /* Reset Lease */
     { &hf_magic_command_reset_lease,
-      { "Reset Lease", "magic.reset_lease",
+      { "Reset Lease", "magic_reset_lease",
         FT_UINT32, BASE_DEC, VALS(magic_reset_lease_vals), 0x0,
         NULL, HFILL }
     },
 
     /* CID */
     { &hf_magic_command_cid,
-      { "CID", "magic.cid",
+      { "CID", "magic_cid",
         FT_GUID, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* Command IP Configuration */
     { &hf_magic_command_ip_configuration,
-      { "IP Configuration", "magic.ip_configuration",
+      { "IP Configuration", "magic_ip_configuration",
         FT_UINT32, BASE_DEC, VALS(magic_ip_configuration_vals), 0x0,
         NULL, HFILL }
     },
 
     /* Command IP Address */
     { &hf_magic_command_ip_address,
-      { "IP Address", "magic.ip_address",
+      { "IP Address", "magic_ip_address",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* Command Subnet Mask */
     { &hf_magic_command_subnet_mask,
-      { "Subnet Mask", "magic.subnet_mask",
+      { "Subnet Mask", "magic_subnet_mask",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* Command Gateway */
     { &hf_magic_command_gateway,
-      { "Gateway", "magic.gateway",
+      { "Gateway", "magic_gateway",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* Reply IP Address */
     { &hf_magic_reply_ip_address,
-      { "IP", "magic.reply.ip_address",
+      { "IP", "magic_reply_ip_address",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         "Local IP Address", HFILL }
     },
 
     /* Reply Subnet Mask */
     { &hf_magic_reply_subnet_mask,
-      { "Subnet Mask", "magic.reply.subnet_mask",
+      { "Subnet Mask", "magic_reply_subnet_mask",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         "Local Subnet Mask", HFILL }
     },
 
     /* Reply Gateway */
     { &hf_magic_reply_gateway,
-      { "Gateway", "magic.reply.gateway",
+      { "Gateway", "magic_reply_gateway",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         "Local Gateway", HFILL }
     },
 
     /* Reply TFTP */
     { &hf_magic_reply_tftp,
-      { "TFTP IP", "magic.reply.tftp",
+      { "TFTP IP", "magic_reply_tftp",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         "IP of TFTP server", HFILL }
     },
 
     /* Reply Version */
     { &hf_magic_reply_version,
-      { "Reply Version", "magic.reply.version",
+      { "Reply Version", "magic_reply_version",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
 
     /* Reply Device Type Name */
     { &hf_magic_reply_device_type_name,
-      { "Device Type Name", "magic.reply.device_type_name",
+      { "Device Type Name", "magic_reply_device_type_name",
         FT_UINT_STRING, BASE_NONE, NULL, 0x0,
         "Reply Device Type Name", HFILL }
     },
 
     /* Reply Default Name */
     { &hf_magic_reply_default_name,
-      { "Default Name", "magic.reply.default_name",
+      { "Default Name", "magic_reply_default_name",
         FT_UINT_STRING, BASE_NONE, NULL, 0x0,
         "Reply Default Name", HFILL }
     },
 
     /* Reply User Name */
     { &hf_magic_reply_user_name,
-      { "User Name", "magic.reply.user_name",
+      { "User Name", "magic_reply_user_name",
         FT_UINT_STRING, BASE_NONE, NULL, 0x0,
         "Reply User Name", HFILL }
     },
 
     /* CID */
     { &hf_magic_reply_cid,
-      { "CID", "magic.reply.cid",
+      { "CID", "magic_reply_cid",
         FT_GUID, BASE_NONE, NULL, 0x0,
         "Reply CID", HFILL }
     },
 
     /* DCID */
     { &hf_magic_reply_dcid,
-      { "DCID", "magic.reply.dcid",
+      { "DCID", "magic_reply_dcid",
         FT_GUID, BASE_NONE, NULL, 0x0,
         "Reply DCID", HFILL }
     },
@@ -7964,551 +7964,551 @@ proto_register_acn(void)
   static hf_register_info rdmnet_hf[] = {
     /* CID */
     { &hf_rdmnet_cid,
-      { "CID", "rdmnet.cid",
+      { "CID", "rdmnet_cid",
         FT_GUID, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Packet Identifier */
     { &hf_rdmnet_packet_identifier,
-      { "Packet Identifier", "rdmnet.packet_identifier",
+      { "Packet Identifier", "rdmnet_packet_identifier",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* PDU */
     { &hf_rdmnet_pdu,
-      { "PDU", "rdmnet.pdu",
+      { "PDU", "rdmnet_pdu",
         FT_NONE, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* PDU flags*/
     { &hf_rdmnet_pdu_flags,
-      { "Flags", "rdmnet.pdu.flags",
+      { "Flags", "rdmnet_pdu_flags",
         FT_UINT8, BASE_HEX, NULL, 0x0,
         "PDU Flags", HFILL }
     },
     { &hf_rdmnet_pdu_flag_d,
-      { "Data", "rdmnet.pdu.flag_d",
+      { "Data", "rdmnet_pdu_flag_d",
         FT_BOOLEAN, 8, NULL, ACN_PDU_FLAG_D,
         "Data flag", HFILL }
     },
     { &hf_rdmnet_pdu_flag_h,
-      { "Header", "rdmnet.pdu.flag_h",
+      { "Header", "rdmnet_pdu_flag_h",
         FT_BOOLEAN, 8, NULL, ACN_PDU_FLAG_H,
         "Header flag", HFILL }
     },
     { &hf_rdmnet_pdu_flag_l,
-      { "Length", "rdmnet.pdu.flag_l",
+      { "Length", "rdmnet_pdu_flag_l",
         FT_BOOLEAN, 8, NULL, ACN_PDU_FLAG_L,
         "Length flag", HFILL }
     },
     { &hf_rdmnet_pdu_flag_v,
-      { "Vector", "rdmnet.pdu.flag_v",
+      { "Vector", "rdmnet_pdu_flag_v",
         FT_BOOLEAN, 8, NULL, ACN_PDU_FLAG_V,
         "Vector flag", HFILL }
     },
     /* PDU Length */
     { &hf_rdmnet_pdu_length,
-      { "Length", "rdmnet.pdu.length",
+      { "Length", "rdmnet_pdu_length",
         FT_UINT32, BASE_DEC, NULL, 0x0,
         "PDU Length", HFILL }
     },
     /* Postamble Size */
     { &hf_rdmnet_postamble_size,
-      { "Size of postamble", "rdmnet.postamble_size",
+      { "Size of postamble", "rdmnet_postamble_size",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "Postamble size in bytes", HFILL }
     },
     /* Preamble Size */
     { &hf_rdmnet_preamble_size,
-      { "Size of preamble", "rdmnet.preamble_size",
+      { "Size of preamble", "rdmnet_preamble_size",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "Preamble size in bytes", HFILL }
     },
     /* Protocol ID */
     { &hf_rdmnet_protocol_id,
-      { "Protocol ID", "rdmnet.protocol_id",
+      { "Protocol ID", "rdmnet_protocol_id",
         FT_UINT32, BASE_DEC, VALS(acn_protocol_id_vals), 0x0,
         NULL, HFILL }
     },
     /* Postamble Size */
     { &hf_rdmnet_tcp_length,
-      { "Data length", "rdmnet.tcp_length",
+      { "Data length", "rdmnet_tcp_length",
         FT_UINT32, BASE_DEC, NULL, 0x0,
         "TCP data size in bytes", HFILL }
     },
     /* LLRP Vector */
     { &hf_rdmnet_llrp_vector,
-      { "LLRP Vector", "rdmnet.llrp_vector",
+      { "LLRP Vector", "rdmnet_llrp_vector",
         FT_UINT32, BASE_DEC, VALS(rdmnet_llrp_vector_vals), 0x0,
         NULL, HFILL }
     },
     /* LLRP Destination CID */
     { &hf_rdmnet_llrp_destination_cid,
-      { "CID", "rdmnet.llrp.destination_cid",
+      { "CID", "rdmnet_llrp_destination_cid",
         FT_GUID, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* LLRP Transaction Number */
     { &hf_rdmnet_llrp_transaction_number,
-      { "Transaction Number", "rdmnet.llrp.transaction_number",
+      { "Transaction Number", "rdmnet_llrp_transaction_number",
         FT_UINT32, BASE_DEC_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* LLRP Probe Request PDU Length */
     { &hf_rdmnet_llrp_probe_request_pdu_length,
-      { "Length", "rdmnet.llrp.probe_request.pdu.length",
+      { "Length", "rdmnet_llrp_probe_request_pdu_length",
         FT_UINT24, BASE_DEC, NULL, 0x0,
         "PDU Length", HFILL }
     },
     /* LLRP Probe Request Vector */
     { &hf_rdmnet_llrp_probe_request_vector,
-      { "LLRP Vector", "rdmnet.llrp.probe_request_vector",
+      { "LLRP Vector", "rdmnet_llrp_probe_request_vector",
         FT_UINT8, BASE_DEC, VALS(rdmnet_llrp_probe_request_vals), 0x0,
         NULL, HFILL }
     },
     /* LLRP Probe Request Lower UID */
     { &hf_rdmnet_llrp_probe_request_lower_uid,
-      { "Lower UID", "rdmnet.llrp.probe_request.lower_uid",
+      { "Lower UID", "rdmnet_llrp_probe_request_lower_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* LLRP Probe Request Upper UID */
     { &hf_rdmnet_llrp_probe_request_upper_uid,
-      { "Upper UID", "rdmnet.llrp.probe_request.upper_uid",
+      { "Upper UID", "rdmnet_llrp_probe_request_upper_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* LLRP Probe Request Filter */
     { &hf_rdmnet_llrp_probe_request_filter,
-      { "Filter", "rdmnet.llrp.probe_request.filter",
+      { "Filter", "rdmnet_llrp_probe_request_filter",
         FT_UINT16, BASE_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     { &hf_rdmnet_llrp_probe_request_filter_brokers_only,
-      { "Brokers Only", "rdmnet.llrp.probe_request.filter_brokers_only",
+      { "Brokers Only", "rdmnet_llrp_probe_request_filter_brokers_only",
         FT_BOOLEAN, 8, NULL, RDMNET_LLRP_VECTOR_PROBE_REQUEST_BROKERS_ONLY,
         "Brokers only flag", HFILL }
     },
     { &hf_rdmnet_llrp_probe_request_filter_client_tcp_inactive,
-      { "Client TCP Inactive", "rdmnet.llrp.probe_request.filter_client_tcp_inactive",
+      { "Client TCP Inactive", "rdmnet_llrp_probe_request_filter_client_tcp_inactive",
         FT_BOOLEAN, 8, NULL, RDMNET_LLRP_VECTOR_PROBE_REQUEST_CLIENT_TCP_INACTIVE,
         "Client TCP inactive flag", HFILL }
     },
     /* LLRP Probe Request Unknown UID */
     { &hf_rdmnet_llrp_probe_request_known_uid,
-      { "Known UID", "rdmnet.llrp.probe_request.known_uid",
+      { "Known UID", "rdmnet_llrp_probe_request_known_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* LLRP Probe Reply Vector */
     { &hf_rdmnet_llrp_probe_reply_vector,
-      { "LLRP Vector", "rdmnet.llrp.probe_reply_vector",
+      { "LLRP Vector", "rdmnet_llrp_probe_reply_vector",
         FT_UINT8, BASE_DEC, VALS(rdmnet_llrp_probe_reply_vals), 0x0,
         NULL, HFILL }
     },
     /* LLRP Probe Reply UID */
     { &hf_rdmnet_llrp_probe_reply_uid,
-      { "UID", "rdmnet.llrp.probe_reply.uid",
+      { "UID", "rdmnet_llrp_probe_reply_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* LLRP Probe Reply Hardware Address */
     { &hf_rdmnet_llrp_probe_reply_hardware_address,
-      { "Hardware Address", "rdmnet.llrp.probe_reply.hardware_address",
+      { "Hardware Address", "rdmnet_llrp_probe_reply_hardware_address",
         FT_BYTES, SEP_COLON, NULL, 0x0,
         NULL, HFILL }
     },
     /* LLRP Probe Reply Component Type */
     { &hf_rdmnet_llrp_probe_reply_component_type,
-      { "Component Type", "rdmnet.llrp.probe_reply.component_type",
+      { "Component Type", "rdmnet_llrp_probe_reply_component_type",
         FT_UINT8, BASE_DEC, VALS(rdmnet_llrp_probe_reply_component_type_vals), 0x0,
         NULL, HFILL }
     },
     /* LLRP RDM Command Start Code */
     { &hf_rdmnet_llrp_rdm_command_start_code,
-      { "RDM Command", "rdmnet.llrp.rdm_command.start_code",
+      { "RDM Command", "rdmnet_llrp_rdm_command_start_code",
         FT_UINT8, BASE_DEC, VALS(rdmnet_llrp_rdm_command_start_code_vals), 0x0,
         NULL, HFILL }
     },
     /* RPT Vector */
     { &hf_rdmnet_rpt_vector,
-      { "RPT Vector", "rdmnet.rpt_vector",
+      { "RPT Vector", "rdmnet_rpt_vector",
         FT_UINT8, BASE_DEC, VALS(rdmnet_rpt_vector_vals), 0x0,
         NULL, HFILL }
     },
     /* RPT Source UID */
     { &hf_rdmnet_rpt_source_uid,
-      { "Source UID", "rdmnet.rpt.source_uid",
+      { "Source UID", "rdmnet_rpt_source_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Source Endpoint ID */
     { &hf_rdmnet_rpt_source_endpoint_id,
-      { "Source Endpoint ID", "rdmnet.rpt.source_endpoint_id",
+      { "Source Endpoint ID", "rdmnet_rpt_source_endpoint_id",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Destination UID */
     { &hf_rdmnet_rpt_destination_uid,
-      { "Destination UID", "rdmnet.rpt.destination_uid",
+      { "Destination UID", "rdmnet_rpt_destination_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Destination Endpoint ID */
     { &hf_rdmnet_rpt_destination_endpoint_id,
-      { "Destination Endpoint ID", "rdmnet.rpt.destination_endpoint_id",
+      { "Destination Endpoint ID", "rdmnet_rpt_destination_endpoint_id",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Sequence Number */
     { &hf_rdmnet_rpt_sequence_number,
-      { "Sequence Number", "rdmnet.rpt.sequence_number",
+      { "Sequence Number", "rdmnet_rpt_sequence_number",
         FT_UINT32, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Reserved */
     { &hf_rdmnet_rpt_reserved,
-      { "Reserved", "rdmnet.rpt.reserved",
+      { "Reserved", "rdmnet_rpt_reserved",
         FT_UINT8, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Request Vector */
     { &hf_rdmnet_rpt_request_vector,
-      { "RPT Request Vector", "rdmnet.rpt.request_vector",
+      { "RPT Request Vector", "rdmnet_rpt_request_vector",
         FT_UINT32, BASE_DEC, VALS(rdmnet_rpt_request_vals), 0x0,
         NULL, HFILL }
     },
     /* RPT Request RDM Command */
     { &hf_rdmnet_rpt_request_rdm_command,
-      { "RDM Command", "rdmnet.rpt.request.rdm_command",
+      { "RDM Command", "rdmnet_rpt_request_rdm_command",
         FT_UINT8, BASE_DEC, VALS(rdmnet_rpt_request_rdm_command_start_code_vals), 0x0,
         NULL, HFILL }
     },
     /* RPT Status Vector */
     { &hf_rdmnet_rpt_status_vector,
-      { "Status Vector", "rdmnet.rpt.status.vector",
+      { "Status Vector", "rdmnet_rpt_status_vector",
         FT_UINT16, BASE_DEC, VALS(rdmnet_rpt_status_vector_vals), 0x0,
         NULL, HFILL }
     },
     /* RPT Status Unknown RPT UID String */
     { &hf_rdmnet_rpt_status_unknown_rpt_uid_string,
-      { "Status", "rdmnet.rpt.status.unknown_rpt_uid_string",
+      { "Status", "rdmnet_rpt_status_unknown_rpt_uid_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Status RDM Timeout String */
     { &hf_rdmnet_rpt_status_rdm_timeout_string,
-      { "Status", "rdmnet.rpt.status.rdm_timeout_string",
+      { "Status", "rdmnet_rpt_status_rdm_timeout_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Status Invalid RDM Response String */
     { &hf_rdmnet_rpt_status_rdm_invalid_response_string,
-      { "Status", "rdmnet.rpt.status.invalid_rdm_response_string",
+      { "Status", "rdmnet_rpt_status_invalid_rdm_response_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Status Unknown RDM UID String */
     { &hf_rdmnet_rpt_status_unknown_rdm_uid_string,
-      { "Status", "rdmnet.rpt.status.unknown_rdm_uid_string",
+      { "Status", "rdmnet_rpt_status_unknown_rdm_uid_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Status Unknown Endpoint String */
     { &hf_rdmnet_rpt_status_unknown_endpoint_string,
-      { "Status", "rdmnet.rpt.status.unknown_endpoint_string",
+      { "Status", "rdmnet_rpt_status_unknown_endpoint_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Status Broadcast Complete String */
     { &hf_rdmnet_rpt_status_broadcast_complete_string,
-      { "Status", "rdmnet.rpt.status.broadcast_complete_string",
+      { "Status", "rdmnet_rpt_status_broadcast_complete_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Status Unknown Vector String */
     { &hf_rdmnet_rpt_status_unknown_vector_string,
-      { "Status", "rdmnet.rpt.status.unknown_vector_string",
+      { "Status", "rdmnet_rpt_status_unknown_vector_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* RPT Notification Vector */
     { &hf_rdmnet_rpt_notification_vector,
-      { "RPT Notification Vector", "rdmnet.rpt.notification_vector",
+      { "RPT Notification Vector", "rdmnet_rpt_notification_vector",
         FT_UINT32, BASE_DEC, VALS(rdmnet_rpt_notification_vals), 0x0,
         NULL, HFILL }
     },
     /* RPT Notification RDM Command */
     { &hf_rdmnet_rpt_notification_rdm_command,
-      { "RDM Command", "rdmnet.rpt.notification.rdm_command",
+      { "RDM Command", "rdmnet_rpt_notification_rdm_command",
         FT_UINT8, BASE_DEC, VALS(rdmnet_rpt_request_rdm_command_start_code_vals), 0x0,
         NULL, HFILL }
     },
     /* Broker Vector */
     { &hf_rdmnet_broker_vector,
-      { "Broker Vector", "rdmnet.broker_vector",
+      { "Broker Vector", "rdmnet_broker_vector",
         FT_UINT8, BASE_DEC, VALS(rdmnet_broker_vector_vals), 0x0,
         NULL, HFILL }
     },
     /* Broker Client Protocol Vector */
     { &hf_rdmnet_broker_client_protocol_vector,
-      { "Client Protocol", "rdmnet.broker_client_protocol_vector",
+      { "Client Protocol", "rdmnet_broker_client_protocol_vector",
         FT_UINT32, BASE_DEC, VALS(broker_client_protocol_vals), 0x0,
         NULL, HFILL }
     },
     /* Broker Client Protocol CID */
     { &hf_rdmnet_broker_client_protocol_cid,
-      { "Client CID", "rdmnet.broker_client_cid",
+      { "Client CID", "rdmnet_broker_client_cid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Client RPT Client UID */
     { &hf_rdmnet_broker_client_rpt_client_uid,
-      { "Client UID", "rdmnet.broker_client_rpt_client_uid",
+      { "Client UID", "rdmnet_broker_client_rpt_client_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Client RPT Client Type */
     { &hf_rdmnet_broker_client_rpt_client_type,
-      { "RPT client type", "rdmnet.broker_client_rpt_client_type",
+      { "RPT client type", "rdmnet_broker_client_rpt_client_type",
         FT_UINT8, BASE_DEC, VALS(broker_client_rpt_client_type_vals), 0x0,
         NULL, HFILL }
     },
     /* Broker Client RPT Binding CID */
     { &hf_rdmnet_broker_client_rpt_binding_cid,
-      { "Binding CID", "rdmnet.broker_client_rpt_binding_cid",
+      { "Binding CID", "rdmnet_broker_client_rpt_binding_cid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Client EPT Protocol Vector */
     { &hf_rdmnet_broker_client_ept_protocol_vector,
-      { "Protocol Vector", "rdmnet.broker_client_ept_vector",
+      { "Protocol Vector", "rdmnet_broker_client_ept_vector",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Client EPT Manufacturer ID */
     { &hf_rdmnet_broker_client_ept_protocol_manufacturer_id,
-      { "Manufacturer ID", "rdmnet.broker_client_ept_manufacturer_id",
+      { "Manufacturer ID", "rdmnet_broker_client_ept_manufacturer_id",
         FT_UINT16, BASE_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Client EPT Protocol ID */
     { &hf_rdmnet_broker_client_ept_protocol_protocol_id,
-      { "Protocol ID", "rdmnet.broker_client_ept_protocol_id",
+      { "Protocol ID", "rdmnet_broker_client_ept_protocol_id",
         FT_UINT16, BASE_HEX, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Client EPT Protocol String */
     { &hf_rdmnet_broker_client_ept_protocol_string,
-      { "Protocol String", "rdmnet.broker_client_ept_protocol_string",
+      { "Protocol String", "rdmnet_broker_client_ept_protocol_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Connect Scope */
     { &hf_rdmnet_broker_connect_client_scope,
-      { "Client Scope", "rdmnet.broker.connect.client_scope",
+      { "Client Scope", "rdmnet_broker_connect_client_scope",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Connect E1.33 Version */
     { &hf_rdmnet_broker_connect_e133_version,
-      { "E1.33 Version", "rdmnet.broker.connect.e133_version",
+      { "E1.33 Version", "rdmnet_broker_connect_e133_version",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Connect Search Domain */
     { &hf_rdmnet_broker_connect_search_domain,
-      { "Search Domain", "rdmnet.broker.connect.search_domain",
+      { "Search Domain", "rdmnet_broker_connect_search_domain",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Connect Connection Flags */
     { &hf_rdmnet_broker_connect_connection_flags,
-      { "Flags", "rdmnet.broker.connect.flags",
+      { "Flags", "rdmnet_broker_connect_flags",
         FT_UINT8, BASE_HEX, NULL, 0x0,
         "Connection Flags", HFILL }
     },
     { &hf_rdmnet_broker_connect_connection_flags_incremental_updates,
-      { "Incremental Updates", "rdmnet.broker.connect.flags_incremental_updates",
+      { "Incremental Updates", "rdmnet_broker_connect_flags_incremental_updates",
         FT_BOOLEAN, 8, NULL, RDMNET_BROKER_VECTOR_CONNECT_INCREMENTAL_UPDATES,
         "Incremental updates flag", HFILL }
     },
     /* Broker Connect Reply Connection Code */
     { &hf_rdmnet_broker_connect_reply_connection_code,
-      { "Connection Code", "rdmnet.broker.connect_reply.connection_code",
+      { "Connection Code", "rdmnet_broker_connect_reply_connection_code",
         FT_UINT16, BASE_DEC, VALS(rdmnet_broker_status_code_vals), 0x0,
         NULL, HFILL }
     },
     /* Broker Connect Reply E1.33 Version */
     { &hf_rdmnet_broker_connect_reply_e133_version,
-      { "E1.33 Version", "rdmnet.broker.connect_reply.e133_version",
+      { "E1.33 Version", "rdmnet_broker_connect_reply_e133_version",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Connect Reply Broker UID */
     { &hf_rdmnet_broker_connect_reply_broker_uid,
-      { "Broker UID", "rdmnet.broker.connect_reply.broker_uid",
+      { "Broker UID", "rdmnet_broker_connect_reply_broker_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Connect Reply Client UID */
     { &hf_rdmnet_broker_connect_reply_client_uid,
-      { "Client UID", "rdmnet.broker.connect_reply.client_uid",
+      { "Client UID", "rdmnet_broker_connect_reply_client_uid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Client Entry Update Connection Flags */
     { &hf_rdmnet_broker_client_entry_update_connection_flags,
-      { "Flags", "rdmnet.broker.client_entry_update.flags",
+      { "Flags", "rdmnet_broker_client_entry_update_flags",
         FT_UINT8, BASE_HEX, NULL, 0x0,
         "Connection Flags", HFILL }
     },
     { &hf_rdmnet_broker_client_entry_update_connection_flags_incremental_updates,
-      { "Incremental Updates", "rdmnet.broker.client_entry_update.flags_incremental_updates",
+      { "Incremental Updates", "rdmnet_broker_client_entry_update_flags_incremental_updates",
         FT_BOOLEAN, 8, NULL, RDMNET_BROKER_VECTOR_CONNECT_INCREMENTAL_UPDATES,
         "Incremental updates flag", HFILL }
     },
     /* Broker Redirect IPv4 Address */
     { &hf_rdmnet_broker_redirect_ipv4_address,
-      { "IPv4 Address", "rdmnet.broker.redirect_ipv4.ipv4_address",
+      { "IPv4 Address", "rdmnet_broker_redirect_ipv4_ipv4_address",
         FT_IPv4, BASE_NONE, NULL, 0x0,
         "Redirect IPv4 address", HFILL }
     },
     /* Broker Redirect IPv4 TCP Port */
     { &hf_rdmnet_broker_redirect_ipv4_tcp_port,
-      { "IPv4 TCP Port", "rdmnet.broker.redirect_ipv4.tcp_port",
+      { "IPv4 TCP Port", "rdmnet_broker_redirect_ipv4_tcp_port",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "Redirect IPv4 TCP port", HFILL }
     },
     /* Broker Redirect IPv6 Address */
     { &hf_rdmnet_broker_redirect_ipv6_address,
-      { "IPv6 Address", "rdmnet.broker.redirect_ipv6.ipv4_address",
+      { "IPv6 Address", "rdmnet_broker_redirect_ipv6_ipv4_address",
         FT_IPv6, BASE_NONE, NULL, 0x0,
         "Redirect IPv6 address", HFILL }
     },
     /* Broker Redirect IPv6 TCP Port */
     { &hf_rdmnet_broker_redirect_ipv6_tcp_port,
-      { "TCP Port", "rdmnet.broker.redirect_ipv6.tcp_port",
+      { "TCP Port", "rdmnet_broker_redirect_ipv6_tcp_port",
         FT_UINT16, BASE_DEC, NULL, 0x0,
         "Redirect IPv6 TCP port", HFILL }
     },
     /* Broker Disconnect Reason */
     { &hf_rdmnet_broker_disconnect_reason,
-      { "Reason", "rdmnet.broker.disconnect.reason",
+      { "Reason", "rdmnet_broker_disconnect_reason",
         FT_UINT16, BASE_DEC, VALS(rdmnet_broker_disconnect_reason_vals), 0x0,
         "Disconnect reason", HFILL }
     },
     /* Broker Dynamic UID Request */
     { &hf_rdmnet_broker_dynamic_uid_request,
-      { "Dynamic UID Request", "rdmnet.broker.request_dynamic_uids.dynamic_uid_request",
+      { "Dynamic UID Request", "rdmnet_broker_request_dynamic_uids_dynamic_uid_request",
         FT_BYTES, SEP_DOT, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker RID */
     { &hf_rdmnet_broker_rid,
-      { "RID", "rdmnet.broker.request_dynamic_uids.rid",
+      { "RID", "rdmnet_broker_request_dynamic_uids_rid",
         FT_BYTES, SEP_DOT, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Assigned Dynamic UID */
     { &hf_rdmnet_broker_assigned_dynamic_uid,
-      { "Dynamic UID Request", "rdmnet.broker.assigned_dynamic_uids.dynamic_uid",
+      { "Dynamic UID Request", "rdmnet_broker_assigned_dynamic_uids_dynamic_uid",
         FT_BYTES, SEP_DOT, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker Assigned RID */
     { &hf_rdmnet_broker_assigned_rid,
-      { "RID", "rdmnet.broker.assigned_dynamic_uids.rid",
+      { "RID", "rdmnet_broker_assigned_dynamic_uids_rid",
         FT_BYTES, SEP_DOT, NULL, 0x0,
         NULL, HFILL }
     },
     /* Broker_Assigned Status Code */
     { &hf_rdmnet_broker_assigned_status_code,
-      { "Status Code", "rdmnet.broker.assigned_dynamic_uids.status_code",
+      { "Status Code", "rdmnet_broker_assigned_dynamic_uids_status_code",
         FT_UINT16, BASE_DEC, VALS(dynamic_uid_mapping_status_code_vals), 0x0,
         NULL, HFILL }
     },
     /* Broker Fetch Dynamic UID */
     { &hf_rdmnet_broker_fetch_dynamic_uid,
-      { "Dynamic UID", "rdmnet.broker.fetch_dynamic_uids.dynamic_uid",
+      { "Dynamic UID", "rdmnet_broker_fetch_dynamic_uids_dynamic_uid",
         FT_BYTES, SEP_DOT, NULL, 0x0,
         NULL, HFILL }
     },
     /* EPT Vector */
     { &hf_rdmnet_ept_vector,
-      { "EPT Vector", "rdmnet.ept_vector",
+      { "EPT Vector", "rdmnet_ept_vector",
         FT_UINT8, BASE_DEC, VALS(rdmnet_ept_vector_vals), 0x0,
         NULL, HFILL }
     },
     /* EPT Destination CID */
     { &hf_rdmnet_ept_destination_cid,
-      { "Destination CID", "rdmnet.ept.destination_cid",
+      { "Destination CID", "rdmnet_ept_destination_cid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* EPT Data PDU Length */
     { &hf_rdmnet_ept_data_pdu_length,
-      { "Length", "rdmnet.ept.data.pdu.length",
+      { "Length", "rdmnet_ept_data_pdu_length",
         FT_UINT24, BASE_DEC, NULL, 0x0,
         "PDU Length", HFILL }
     },
     /* EPT Data Vector */
     { &hf_rdmnet_ept_data_vector,
-      { "Vector", "rdmnet.ept.data.vector",
+      { "Vector", "rdmnet_ept_data_vector",
         FT_UINT32, BASE_HEX, NULL, 0x0,
         "Data vector", HFILL }
     },
     /* EPT Data Vector Manufacturer ID */
     { &hf_rdmnet_ept_data_vector_manufacturer_id,
-      { "Manufac. ID", "rdmnet.ept.data.vector.manufacturer_id",
+      { "Manufac. ID", "rdmnet_ept_data_vector_manufacturer_id",
         FT_UINT16, BASE_HEX, NULL, 0x0,
         "Manufacturer id", HFILL }
     },
     /* EPT Data Vector Protocol ID */
     { &hf_rdmnet_ept_data_vector_protocol_id,
-      { "Protocol", "rdmnet.ept.data.vector.protocol_id",
+      { "Protocol", "rdmnet_ept_data_vector_protocol_id",
         FT_UINT16, BASE_HEX, NULL, 0x0,
         "Protocol id", HFILL }
     },
     /* EPT Data Opaque Data */
     { &hf_rdmnet_ept_data_opaque_data,
-      { "Data", "rdmnet.ept.data.opaque_data",
+      { "Data", "rdmnet_ept_data_opaque_data",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* EPT Status PDU Length */
     { &hf_rdmnet_ept_status_pdu_length,
-      { "Length", "rdmnet.ept.status.pdu.length",
+      { "Length", "rdmnet_ept_status_pdu_length",
         FT_UINT24, BASE_DEC, NULL, 0x0,
         "PDU Length", HFILL }
     },
     /* EPT Status Unknown CID */
     { &hf_rdmnet_ept_status_unknown_cid,
-      { "Unknown CID", "rdmnet.ept.status.unknown_cid",
+      { "Unknown CID", "rdmnet_ept_status_unknown_cid",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* EPT Status Status String */
     { &hf_rdmnet_ept_status_status_string,
-      { "Status String", "rdmnet.ept.status.status_string",
+      { "Status String", "rdmnet_ept_status_status_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     },
     /* EPT Status Vector */
     { &hf_rdmnet_ept_status_vector,
-      { "Unknown Vector", "rdmnet.ept.status.vector",
+      { "Unknown Vector", "rdmnet_ept_status_vector",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* EPT Status Unknown Vector */
     { &hf_rdmnet_ept_status_unknown_vector,
-      { "Unknown Vector", "rdmnet.ept.status.unknown_vector",
+      { "Unknown Vector", "rdmnet_ept_status_unknown_vector",
         FT_BYTES, SEP_SPACE, NULL, 0x0,
         NULL, HFILL }
     },
     /* EPT Status Vector String */
     { &hf_rdmnet_ept_status_vector_string,
-      { "Vector String", "rdmnet.ept.status.vector_string",
+      { "Vector String", "rdmnet_ept_status_vector_string",
         FT_STRING, BASE_NONE, NULL, 0x0,
         NULL, HFILL }
     }

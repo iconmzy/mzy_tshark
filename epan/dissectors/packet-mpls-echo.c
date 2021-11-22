@@ -1942,825 +1942,825 @@ proto_register_mpls_echo(void)
 
     static hf_register_info hf[] = {
         { &hf_mpls_echo_version,
-          { "Version", "mpls_echo.version",
+          { "Version", "mpls_echo_version",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO Version Number", HFILL}
         },
         { &hf_mpls_echo_mbz,
-          { "MBZ", "mpls_echo.mbz",
+          { "MBZ", "mpls_echo_mbz",
             FT_UINT16, BASE_HEX, NULL, 0x0, "MPLS ECHO Must be Zero", HFILL}
         },
         { &hf_mpls_echo_gflags,
-          { "Global Flags", "mpls_echo.flags",
+          { "Global Flags", "mpls_echo_flags",
             FT_UINT16, BASE_HEX, NULL, 0x0, "MPLS ECHO Global Flags", HFILL}
         },
         { &hf_mpls_echo_flag_sbz,
-          { "Reserved", "mpls_echo.flag_sbz",
+          { "Reserved", "mpls_echo_flag_sbz",
             FT_UINT16, BASE_HEX, NULL, 0xFFF8, "MPLS ECHO Reserved Flags", HFILL}
         },
         { &hf_mpls_echo_flag_v,
-          { "Validate FEC Stack", "mpls_echo.flag_v",
+          { "Validate FEC Stack", "mpls_echo_flag_v",
             FT_BOOLEAN, 16, NULL, 0x0001, "MPLS ECHO Validate FEC Stack Flag", HFILL}
         },
         { &hf_mpls_echo_flag_t,
-          { "Respond only if TTL expired", "mpls_echo.flag_t",
+          { "Respond only if TTL expired", "mpls_echo_flag_t",
             FT_BOOLEAN, 16, NULL, 0x0002, "MPLS ECHO Respond only if TTL expired Flag", HFILL}
         },
         { &hf_mpls_echo_flag_r,
-          { "Validate Reverse Path", "mpls_echo.flag_r",
+          { "Validate Reverse Path", "mpls_echo_flag_r",
             FT_BOOLEAN, 16, NULL, 0x0004, "MPLS ECHO Validate Reverse Path Flag", HFILL}
         },
         { &hf_mpls_echo_msgtype,
-          { "Message Type", "mpls_echo.msg_type",
+          { "Message Type", "mpls_echo_msg_type",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_msgtype), 0x0, "MPLS ECHO Message Type", HFILL}
         },
         { &hf_mpls_echo_replymode,
-          { "Reply Mode", "mpls_echo.reply_mode",
+          { "Reply Mode", "mpls_echo_reply_mode",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_replymode), 0x0, "MPLS ECHO Reply Mode", HFILL}
         },
         { &hf_mpls_echo_returncode,
-          { "Return Code", "mpls_echo.return_code",
+          { "Return Code", "mpls_echo_return_code",
             FT_UINT8, BASE_DEC | BASE_EXT_STRING, &mpls_echo_returncode_ext, 0x0, "MPLS ECHO Return Code", HFILL}
         },
         { &hf_mpls_echo_returnsubcode,
-          { "Return Subcode", "mpls_echo.return_subcode",
+          { "Return Subcode", "mpls_echo_return_subcode",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO Return Subcode", HFILL}
         },
         { &hf_mpls_echo_handle,
-          { "Sender's Handle", "mpls_echo.sender_handle",
+          { "Sender's Handle", "mpls_echo_sender_handle",
             FT_UINT32, BASE_HEX, NULL, 0x0, "MPLS ECHO Sender's Handle", HFILL}
         },
         { &hf_mpls_echo_sequence,
-          { "Sequence Number", "mpls_echo.sequence",
+          { "Sequence Number", "mpls_echo_sequence",
             FT_UINT32, BASE_DEC, NULL, 0x0, "MPLS ECHO Sequence Number", HFILL}
         },
         { &hf_mpls_echo_ts_sent,
-          { "Timestamp Sent", "mpls_echo.timestamp_sent",
+          { "Timestamp Sent", "mpls_echo_timestamp_sent",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0, "MPLS ECHO Timestamp Sent", HFILL}
         },
         { &hf_mpls_echo_ts_rec,
-          { "Timestamp Received", "mpls_echo.timestamp_rec",
+          { "Timestamp Received", "mpls_echo_timestamp_rec",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_UTC, NULL, 0x0, "MPLS ECHO Timestamp Received", HFILL}
         },
         { &hf_mpls_echo_tlv_type,
-          { "Type", "mpls_echo.tlv.type",
+          { "Type", "mpls_echo_tlv_type",
             FT_UINT16, BASE_DEC | BASE_EXT_STRING, &mpls_echo_tlv_type_names_ext, 0x0,
             "MPLS ECHO TLV Type", HFILL}
         },
         { &hf_mpls_echo_tlv_len,
-          { "Length", "mpls_echo.tlv.len",
+          { "Length", "mpls_echo_tlv_len",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Length", HFILL}
         },
         { &hf_mpls_echo_tlv_value,
-          { "Value", "mpls_echo.tlv.value",
+          { "Value", "mpls_echo_tlv_value",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Value", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_type,
-          { "Type", "mpls_echo.tlv.fec.type",
+          { "Type", "mpls_echo_tlv_fec_type",
             FT_UINT16, BASE_DEC | BASE_EXT_STRING, &mpls_echo_tlv_fec_names_ext, 0x0,
             "MPLS ECHO TLV FEC Stack Type", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_len,
-          { "Length", "mpls_echo.tlv.fec.len",
+          { "Length", "mpls_echo_tlv_fec_len",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack Length", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_value,
-          { "Value", "mpls_echo.tlv.fec.value",
+          { "Value", "mpls_echo_tlv_fec_value",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack Value", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_ldp_ipv4,
-          { "IPv4 Prefix", "mpls_echo.tlv.fec.ldp_ipv4",
+          { "IPv4 Prefix", "mpls_echo_tlv_fec_ldp_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack LDP IPv4", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_ldp_ipv4_mask,
-          { "Prefix Length", "mpls_echo.tlv.fec.ldp_ipv4_mask",
+          { "Prefix Length", "mpls_echo_tlv_fec_ldp_ipv4_mask",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack LDP IPv4 Prefix Length", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_ldp_ipv6,
-          { "IPv6 Prefix", "mpls_echo.tlv.fec.ldp_ipv6",
+          { "IPv6 Prefix", "mpls_echo_tlv_fec_ldp_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack LDP IPv6", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_ldp_ipv6_mask,
-          { "Prefix Length", "mpls_echo.tlv.fec.ldp_ipv6_mask",
+          { "Prefix Length", "mpls_echo_tlv_fec_ldp_ipv6_mask",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack LDP IPv6 Prefix Length", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ipv4_ipv4_endpoint,
-          { "IPv4 Tunnel endpoint address", "mpls_echo.tlv.fec.rsvp_ipv4_ep",
+          { "IPv4 Tunnel endpoint address", "mpls_echo_tlv_fec_rsvp_ipv4_ep",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP IPv4 Tunnel Endpoint Address", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ipv6_ipv6_endpoint,
-          { "IPv6 Tunnel endpoint address", "mpls_echo.tlv.fec.rsvp_ipv6_ep",
+          { "IPv6 Tunnel endpoint address", "mpls_echo_tlv_fec_rsvp_ipv6_ep",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP IPv6 Tunnel Endpoint Address", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ip_mbz1,
-          { "Must Be Zero", "mpls_echo.tlv.fec.rsvp_ip_mbz1",
+          { "Must Be Zero", "mpls_echo_tlv_fec_rsvp_ip_mbz1",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP MBZ", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ip_tunnel_id,
-          { "Tunnel ID", "mpls_echo.tlv.fec.rsvp_ip_tun_id",
+          { "Tunnel ID", "mpls_echo_tlv_fec_rsvp_ip_tun_id",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP Tunnel ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ipv4_ext_tunnel_id,
-          { "Extended Tunnel ID", "mpls_echo.tlv.fec.rsvp_ipv4_ext_tun_id",
+          { "Extended Tunnel ID", "mpls_echo_tlv_fec_rsvp_ipv4_ext_tun_id",
             FT_UINT32, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP IPv4 Extended Tunnel ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ipv4_ipv4_sender,
-          { "IPv4 Tunnel sender address", "mpls_echo.tlv.fec.rsvp_ipv4_sender",
+          { "IPv4 Tunnel sender address", "mpls_echo_tlv_fec_rsvp_ipv4_sender",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP IPv4 Sender", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ipv6_ext_tunnel_id,
-          { "Extended Tunnel ID", "mpls_echo.tlv.fec.rsvp_ipv6_ext_tun_id",
+          { "Extended Tunnel ID", "mpls_echo_tlv_fec_rsvp_ipv6_ext_tun_id",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP IPv6 Extended Tunnel ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ipv6_ipv6_sender,
-          { "IPv6 Tunnel sender address", "mpls_echo.tlv.fec.rsvp_ipv6_sender",
+          { "IPv6 Tunnel sender address", "mpls_echo_tlv_fec_rsvp_ipv6_sender",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP IPv4 Sender", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ip_mbz2,
-          { "Must Be Zero", "mpls_echo.tlv.fec.rsvp_ip_mbz2",
+          { "Must Be Zero", "mpls_echo_tlv_fec_rsvp_ip_mbz2",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP MBZ", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_ip_lsp_id,
-          { "LSP ID", "mpls_echo.tlv.fec.rsvp_ip_lsp_id",
+          { "LSP ID", "mpls_echo_tlv_fec_rsvp_ip_lsp_id",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP LSP ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_vpn_route_dist,
-          { "Route Distinguisher", "mpls_echo.tlv.fec.vpn_route_dist",
+          { "Route Distinguisher", "mpls_echo_tlv_fec_vpn_route_dist",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack VPN Route Distinguisher", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_vpn_ipv4,
-          { "IPv4 Prefix", "mpls_echo.tlv.fec.vpn_ipv4",
+          { "IPv4 Prefix", "mpls_echo_tlv_fec_vpn_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack VPN IPv4", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_vpn_ipv6,
-          { "IPv6 Prefix", "mpls_echo.tlv.fec.vpn_ipv6",
+          { "IPv6 Prefix", "mpls_echo_tlv_fec_vpn_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack VPN IPv6", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_vpn_len,
-          { "Prefix Length", "mpls_echo.tlv.fec.vpn_len",
+          { "Prefix Length", "mpls_echo_tlv_fec_vpn_len",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack VPN Prefix Length", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2_vpn_route_dist,
-          { "Route Distinguisher", "mpls_echo.tlv.fec.l2vpn_route_dist",
+          { "Route Distinguisher", "mpls_echo_tlv_fec_l2vpn_route_dist",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack L2VPN Route Distinguisher", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2_vpn_send_ve_id,
-          { "Sender's VE ID", "mpls_echo.tlv.fec.l2vpn_send_ve_id",
+          { "Sender's VE ID", "mpls_echo_tlv_fec_l2vpn_send_ve_id",
             FT_UINT16, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV FEC Stack L2VPN Sender's VE ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2_vpn_recv_ve_id,
-          { "Receiver's VE ID", "mpls_echo.tlv.fec.l2vpn_recv_ve_id",
+          { "Receiver's VE ID", "mpls_echo_tlv_fec_l2vpn_recv_ve_id",
             FT_UINT16, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV FEC Stack L2VPN Receiver's VE ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2_vpn_encap_type,
-          { "Encapsulation", "mpls_echo.tlv.fec.l2vpn_encap_type",
+          { "Encapsulation", "mpls_echo_tlv_fec_l2vpn_encap_type",
             FT_UINT16, BASE_DEC, VALS(fec_vc_types_vals), 0x0, "MPLS ECHO TLV FEC Stack L2VPN Encapsulation", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2cid_sender,
-          { "Sender's PE Address", "mpls_echo.tlv.fec.l2cid_sender",
+          { "Sender's PE Address", "mpls_echo_tlv_fec_l2cid_sender",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack L2CID Sender", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2cid_remote,
-          { "Remote PE Address", "mpls_echo.tlv.fec.l2cid_remote",
+          { "Remote PE Address", "mpls_echo_tlv_fec_l2cid_remote",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack L2CID Remote", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2cid_vcid,
-          { "VC ID", "mpls_echo.tlv.fec.l2cid_vcid",
+          { "VC ID", "mpls_echo_tlv_fec_l2cid_vcid",
             FT_UINT32, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack L2CID VCID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2cid_encap,
-          { "Encapsulation", "mpls_echo.tlv.fec.l2cid_encap",
+          { "Encapsulation", "mpls_echo_tlv_fec_l2cid_encap",
             FT_UINT16, BASE_DEC, VALS(fec_vc_types_vals), 0x0, "MPLS ECHO TLV FEC Stack L2CID Encapsulation", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_l2cid_mbz,
-          { "MBZ", "mpls_echo.tlv.fec.l2cid_mbz",
+          { "MBZ", "mpls_echo_tlv_fec_l2cid_mbz",
             FT_UINT16, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV FEC Stack L2CID MBZ", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_bgp_ipv4,
-          { "IPv4 Prefix", "mpls_echo.tlv.fec.bgp_ipv4",
+          { "IPv4 Prefix", "mpls_echo_tlv_fec_bgp_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack BGP IPv4", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_bgp_ipv6,
-          { "IPv6 Prefix", "mpls_echo.tlv.fec.bgp_ipv6",
+          { "IPv6 Prefix", "mpls_echo_tlv_fec_bgp_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack BGP IPv6", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_bgp_len,
-          { "Prefix Length", "mpls_echo.tlv.fec.bgp_len",
+          { "Prefix Length", "mpls_echo_tlv_fec_bgp_len",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack BGP Prefix Length", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_gen_ipv4,
-          { "IPv4 Prefix", "mpls_echo.tlv.fec.gen_ipv4",
+          { "IPv4 Prefix", "mpls_echo_tlv_fec_gen_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack Generic IPv4", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_gen_ipv4_mask,
-          { "Prefix Length", "mpls_echo.tlv.fec.gen_ipv4_mask",
+          { "Prefix Length", "mpls_echo_tlv_fec_gen_ipv4_mask",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack Generic IPv4 Prefix Length", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_gen_ipv6,
-          { "IPv6 Prefix", "mpls_echo.tlv.fec.gen_ipv6",
+          { "IPv6 Prefix", "mpls_echo_tlv_fec_gen_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack Generic IPv6", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_gen_ipv6_mask,
-          { "Prefix Length", "mpls_echo.tlv.fec.gen_ipv6_mask",
+          { "Prefix Length", "mpls_echo_tlv_fec_gen_ipv6_mask",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack Generic IPv6 Prefix Length", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_nil_label,
-          { "Label", "mpls_echo.tlv.fec.nil_label",
+          { "Label", "mpls_echo_tlv_fec_nil_label",
             FT_UINT24, BASE_DEC, VALS(special_labels), 0x0, "MPLS ECHO TLV FEC Stack NIL Label", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_pw_ipv6_128_sender,
-          { "Sender's PE Address", "mpls_echo.tlv.fec.pw_ipv6_128_sender",
+          { "Sender's PE Address", "mpls_echo_tlv_fec_pw_ipv6_128_sender",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC PW IPV6 FEC 128 SENDER", HFILL }
         },
         { &hf_mpls_echo_tlv_fec_pw_ipv6_128_remote,
-          { "Remote's PE Address", "mpls_echo.tlv.fec.pw_ipv6_128_remote",
+          { "Remote's PE Address", "mpls_echo_tlv_fec_pw_ipv6_128_remote",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC PW IPV6 FEC 128 REMOTE", HFILL }
         },
         { &hf_mpls_echo_tlv_fec_pw_ipv6_128_pw_id,
-          { "PW ID", "mpls_echo.tlv.fec.fec.pw_ipv6_128_pwid",
+          { "PW ID", "mpls_echo_tlv_fec_fec_pw_ipv6_128_pwid",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC PW IPV6 FEC 128 PW ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_pw_ipv6_128_pw_type,
-          { "PW TYPE", "mpls_echo.tlv.fec.fec.pw_ipv6_128_pw_type",
+          { "PW TYPE", "mpls_echo_tlv_fec_fec_pw_ipv6_128_pw_type",
             FT_UINT16, BASE_DEC, VALS(fec_vc_types_vals), 0x0, "MPLS ECHO TLV FEC PW IPV6 FEC 128 PW TYPE", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_pw_ipv6_128_mbz,
-          { "MBZ", "mpls_echo.tlv.fec.fec.pw_ipv6_128_mbz",
+          { "MBZ", "mpls_echo_tlv_fec_fec_pw_ipv6_128_mbz",
             FT_UINT16, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV FEC PW IPV6 FEC 128 MBZ", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_ipv4,
-          { "IPv4 Prefix", "mpls_echo.tlv.fec.igp_ipv4",
+          { "IPv4 Prefix", "mpls_echo_tlv_fec_igp_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP IPv4", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_ipv6,
-          { "IPv6 Prefix", "mpls_echo.tlv.fec.igp_ipv6",
+          { "IPv6 Prefix", "mpls_echo_tlv_fec_igp_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP IPv6", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_mask,
-          { "Prefix Length", "mpls_echo.tlv.fec.igp_mask",
+          { "Prefix Length", "mpls_echo_tlv_fec_igp_mask",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Prefix Length", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_protocol,
-          { "Protocol", "mpls_echo.tlv.fec.igp_protocol",
+          { "Protocol", "mpls_echo_tlv_fec_igp_protocol",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_subtlv_sr_protocol_types), 0x0, "MPLS ECHO TLV FEC Stack IGP Protocol", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_reserved,
-          { "Reserved", "mpls_echo.tlv.fec.igp_reserved",
+          { "Reserved", "mpls_echo_tlv_fec_igp_reserved",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Reserved", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_type,
-          { "Adjacency Type", "mpls_echo.tlv.fec.igp_adj_type",
+          { "Adjacency Type", "mpls_echo_tlv_fec_igp_adj_type",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_subtlv_igp_adjacency_types), 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Type", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_local_ipv4,
-          { "Local Interface ID", "mpls_echo.tlv.fec.igp_adj_local_id.ipv4",
+          { "Local Interface ID", "mpls_echo_tlv_fec_igp_adj_local_id_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Local Interface ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_local_ipv6,
-          { "Local Interface ID", "mpls_echo.tlv.fec.igp_adj_local_id.ipv6",
+          { "Local Interface ID", "mpls_echo_tlv_fec_igp_adj_local_id_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Local Interface ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_local_ident,
-          { "Local Interface ID", "mpls_echo.tlv.fec.igp_adj_local_id.ident",
+          { "Local Interface ID", "mpls_echo_tlv_fec_igp_adj_local_id_ident",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Local Interface ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_remote_ipv4,
-          { "Remote Interface ID", "mpls_echo.tlv.fec.igp_adj_remote_id.ipv4",
+          { "Remote Interface ID", "mpls_echo_tlv_fec_igp_adj_remote_id_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Remote Interface ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_remote_ipv6,
-          { "Remote Interface ID", "mpls_echo.tlv.fec.igp_adj_remote_id.ipv6",
+          { "Remote Interface ID", "mpls_echo_tlv_fec_igp_adj_remote_id_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Remote Interface ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_remote_ident,
-          { "Remote Interface ID", "mpls_echo.tlv.fec.igp_adj_remote_id.ident",
+          { "Remote Interface ID", "mpls_echo_tlv_fec_igp_adj_remote_id_ident",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Remote Interface ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_adv_ident_ospf,
-          { "Advertising Node Identifier Router ID", "mpls_echo.tlv.fec.igp_adj_adv_node_id.ospf",
+          { "Advertising Node Identifier Router ID", "mpls_echo_tlv_fec_igp_adj_adv_node_id_ospf",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Advertising Node Identifier OSPF Router ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_adv_ident_isis,
-          { "Advertising Node Identifier System ID", "mpls_echo.tlv.fec.igp_adj_adv_node_id.isis",
+          { "Advertising Node Identifier System ID", "mpls_echo_tlv_fec_igp_adj_adv_node_id_isis",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Advertising Node Identifier IS-IS System ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_adv_ident,
-          { "Advertising Node Identifier", "mpls_echo.tlv.fec.igp_adj_adv_node_id.ident",
+          { "Advertising Node Identifier", "mpls_echo_tlv_fec_igp_adj_adv_node_id_ident",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Advertising Node Identifier", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_rec_ident_ospf,
-          { "Receiving Node Identifier Router ID", "mpls_echo.tlv.fec.igp_adj_rec_node_id.ospf",
+          { "Receiving Node Identifier Router ID", "mpls_echo_tlv_fec_igp_adj_rec_node_id_ospf",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Receiving Node Identifier OSPF Router ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_rec_ident_isis,
-          { "Receiving Node Identifier System ID", "mpls_echo.tlv.fec.igp_adj_rec_node_id.isis",
+          { "Receiving Node Identifier System ID", "mpls_echo_tlv_fec_igp_adj_rec_node_id_isis",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Receiving Node Identifier IS-IS System ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_igp_adj_rec_ident,
-          { "Receiving Node Identifier", "mpls_echo.tlv.fec.igp_adj_rec_node_id.ident",
+          { "Receiving Node Identifier", "mpls_echo_tlv_fec_igp_adj_rec_node_id_ident",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack IGP Adjacency Receiving Node Identifier", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mtu,
-          { "MTU", "mpls_echo.tlv.ds_map.mtu",
+          { "MTU", "mpls_echo_tlv_ds_map_mtu",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Downstream Map MTU", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_addr_type,
-          { "Address Type", "mpls_echo.tlv.ds_map.addr_type",
+          { "Address Type", "mpls_echo_tlv_ds_map_addr_type",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_tlv_addr_type), 0x0,
             "MPLS ECHO TLV Downstream Map Address Type", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_res,
-          { "DS Flags", "mpls_echo.tlv.ds_map.res",
+          { "DS Flags", "mpls_echo_tlv_ds_map_res",
             FT_UINT8, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV Downstream Map DS Flags", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_flag_res,
-          { "MBZ", "mpls_echo.tlv.ds_map.flag_res",
+          { "MBZ", "mpls_echo_tlv_ds_map_flag_res",
             FT_UINT8, BASE_HEX, NULL, 0xFC, "MPLS ECHO TLV Downstream Map Reserved Flags", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_flag_i,
-          { "Interface and Label Stack Request", "mpls_echo.tlv.ds_map.flag_i",
+          { "Interface and Label Stack Request", "mpls_echo_tlv_ds_map_flag_i",
             FT_BOOLEAN, 8, NULL, 0x02, "MPLS ECHO TLV Downstream Map I-Flag", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_flag_n,
-          { "Treat as Non-IP Packet", "mpls_echo.tlv.ds_map.flag_n",
+          { "Treat as Non-IP Packet", "mpls_echo_tlv_ds_map_flag_n",
             FT_BOOLEAN, 8, NULL, 0x01, "MPLS ECHO TLV Downstream Map N-Flag", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_ds_ip,
-          { "Downstream IP Address", "mpls_echo.tlv.ds_map.ds_ip",
+          { "Downstream IP Address", "mpls_echo_tlv_ds_map_ds_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Downstream Map IP Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_int_ip,
-          { "Downstream Interface Address", "mpls_echo.tlv.ds_map.int_ip",
+          { "Downstream Interface Address", "mpls_echo_tlv_ds_map_int_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Downstream Map Interface Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_if_index,
-          { "Upstream Interface Index", "mpls_echo.tlv.ds_map.if_index",
+          { "Upstream Interface Index", "mpls_echo_tlv_ds_map_if_index",
             FT_UINT32, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Downstream Map Interface Index", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_ds_ipv6,
-          { "Downstream IPv6 Address", "mpls_echo.tlv.ds_map.ds_ipv6",
+          { "Downstream IPv6 Address", "mpls_echo_tlv_ds_map_ds_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Downstream Map IPv6 Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_int_ipv6,
-          { "Downstream Interface IPv6 Address", "mpls_echo.tlv.ds_map.int_ipv6",
+          { "Downstream Interface IPv6 Address", "mpls_echo_tlv_ds_map_int_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Downstream Map Interface IPv6 Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_hash_type,
-          { "Multipath Type", "mpls_echo.tlv.ds_map.hash_type",
+          { "Multipath Type", "mpls_echo_tlv_ds_map_hash_type",
             FT_UINT8, BASE_DEC | BASE_EXT_STRING, &mpls_echo_tlv_ds_map_hash_type_ext, 0x0,
             "MPLS ECHO TLV Downstream Map Multipath Type", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_depth,
-          { "Depth Limit", "mpls_echo.tlv.ds_map.depth",
+          { "Depth Limit", "mpls_echo_tlv_ds_map_depth",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Downstream Map Depth Limit", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_muti_len,
-          { "Multipath Length", "mpls_echo.tlv.ds_map.multi_len",
+          { "Multipath Length", "mpls_echo_tlv_ds_map_multi_len",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Downstream Map Multipath Length", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_ip,
-          { "IP Address", "mpls_echo.tlv.ds_map_mp.ip",
+          { "IP Address", "mpls_echo_tlv_ds_map_mp_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Downstream Map Multipath IP Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_mask,
-          { "Mask", "mpls_echo.tlv.ds_map_mp.mask",
+          { "Mask", "mpls_echo_tlv_ds_map_mp_mask",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Downstream Map Multipath Mask", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_ip_low,
-          { "IP Address Low", "mpls_echo.tlv.ds_map_mp.ip_low",
+          { "IP Address Low", "mpls_echo_tlv_ds_map_mp_ip_low",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Downstream Map Multipath Low IP Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_ip_high,
-          { "IP Address High", "mpls_echo.tlv.ds_map_mp.ip_high",
+          { "IP Address High", "mpls_echo_tlv_ds_map_mp_ip_high",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Downstream Map Multipath High IP Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_no_multipath_info,
-          { "No Multipath Information", "mpls_echo.tlv.ds_map_mp.no_multipath_info",
+          { "No Multipath Information", "mpls_echo_tlv_ds_map_mp_no_multipath_info",
             FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_value,
-          { "Multipath Value", "mpls_echo.tlv.ds_map_mp.value",
+          { "Multipath Value", "mpls_echo_tlv_ds_map_mp_value",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Multipath Value", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_label,
-          { "Downstream Label", "mpls_echo.tlv.ds_map.mp_label",
+          { "Downstream Label", "mpls_echo_tlv_ds_map_mp_label",
             FT_UINT24, BASE_DEC, VALS(special_labels), 0x0, "MPLS ECHO TLV Downstream Map Downstream Label", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_exp,
-          { "Downstream Exp", "mpls_echo.tlv.ds_map.mp_exp",
+          { "Downstream Exp", "mpls_echo_tlv_ds_map_mp_exp",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Downstream Map Downstream Experimental", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_bos,
-          { "Downstream BOS", "mpls_echo.tlv.ds_map.mp_bos",
+          { "Downstream BOS", "mpls_echo_tlv_ds_map_mp_bos",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Downstream Map Downstream BOS", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_mp_proto,
-          { "Downstream Protocol", "mpls_echo.tlv.ds_map.mp_proto",
+          { "Downstream Protocol", "mpls_echo_tlv_ds_map_mp_proto",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_tlv_ds_map_mp_proto), 0x0,
             "MPLS ECHO TLV Downstream Map Downstream Protocol", HFILL}
         },
         { &hf_mpls_echo_tlv_padaction,
-          { "Pad Action", "mpls_echo.tlv.pad_action",
+          { "Pad Action", "mpls_echo_tlv_pad_action",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_tlv_pad), 0x0, "MPLS ECHO Pad TLV Action", HFILL}
         },
         { &hf_mpls_echo_tlv_padding,
-          { "Padding", "mpls_echo.tlv.pad_padding",
+          { "Padding", "mpls_echo_tlv_pad_padding",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO Pad TLV Padding", HFILL}
         },
         { &hf_mpls_echo_tlv_vendor,
-          { "Vendor Id", "mpls_echo.tlv.vendor_id",
+          { "Vendor Id", "mpls_echo_tlv_vendor_id",
             FT_UINT32, BASE_ENTERPRISES, STRINGS_ENTERPRISES, 0x0, "MPLS ECHO Vendor Id", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_addr_type,
-          { "Address Type", "mpls_echo.tlv.ilso.addr_type",
+          { "Address Type", "mpls_echo_tlv_ilso_addr_type",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_tlv_addr_type), 0x0,
             "MPLS ECHO TLV Interface and Label Stack Address Type", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_mbz,
-          { "Must Be Zero", "mpls_echo.tlv.ilso.mbz",
+          { "Must Be Zero", "mpls_echo_tlv_ilso_mbz",
             FT_UINT24, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack MBZ", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_ipv4_addr,
-          { "Downstream IPv4 Address", "mpls_echo.tlv.ilso_ipv4.addr",
+          { "Downstream IPv4 Address", "mpls_echo_tlv_ilso_ipv4_addr",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_ipv4_int_addr,
-          { "Downstream Interface Address", "mpls_echo.tlv.ilso_ipv4.int_addr",
+          { "Downstream Interface Address", "mpls_echo_tlv_ilso_ipv4_int_addr",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack Interface Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_ipv6_addr,
-          { "Downstream IPv6 Address", "mpls_echo.tlv.ilso_ipv6.addr",
+          { "Downstream IPv6 Address", "mpls_echo_tlv_ilso_ipv6_addr",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_ipv6_int_addr,
-          { "Downstream Interface Address", "mpls_echo.tlv.ilso_ipv6.int_addr",
+          { "Downstream Interface Address", "mpls_echo_tlv_ilso_ipv6_int_addr",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack Interface Address", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_int_index,
-          { "Downstream Interface Index", "mpls_echo.tlv.ilso.int_index",
+          { "Downstream Interface Index", "mpls_echo_tlv_ilso_int_index",
             FT_UINT32, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack Interface Index", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_label,
-          { "Label", "mpls_echo.tlv.ilso_ipv4.label",
+          { "Label", "mpls_echo_tlv_ilso_ipv4_label",
             FT_UINT24, BASE_DEC, VALS(special_labels), 0x0, "MPLS ECHO TLV Interface and Label Stack Label", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_exp,
-          { "Exp", "mpls_echo.tlv.ilso_ipv4.exp",
+          { "Exp", "mpls_echo_tlv_ilso_ipv4_exp",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack Exp", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_bos,
-          { "BOS", "mpls_echo.tlv.ilso_ipv4.bos",
+          { "BOS", "mpls_echo_tlv_ilso_ipv4_bos",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack BOS", HFILL}
         },
         { &hf_mpls_echo_tlv_ilso_ttl,
-          { "TTL", "mpls_echo.tlv.ilso_ipv4.ttl",
+          { "TTL", "mpls_echo_tlv_ilso_ipv4_ttl",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Interface and Label Stack TTL", HFILL}
         },
 #if 0
         { &hf_mpls_echo_tlv_rto_ipv4,
-          { "Reply-to IPv4 Address", "mpls_echo.tlv.rto.ipv4",
+          { "Reply-to IPv4 Address", "mpls_echo_tlv_rto_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV IPv4 Reply-To Object", HFILL}
         },
         { &hf_mpls_echo_tlv_rto_ipv6,
-          { "Reply-to IPv6 Address", "mpls_echo.tlv.rto.ipv6",
+          { "Reply-to IPv6 Address", "mpls_echo_tlv_rto_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV IPv6 Reply-To Object", HFILL}
         },
 #endif
         { &hf_mpls_echo_tlv_reply_tos,
-          { "Reply-TOS Byte", "mpls_echo.tlv.reply.tos",
+          { "Reply-TOS Byte", "mpls_echo_tlv_reply_tos",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Reply-TOS Byte", HFILL}
         },
         { &hf_mpls_echo_tlv_reply_tos_mbz,
-          { "MBZ", "mpls_echo.tlv.reply.tos.mbz",
+          { "MBZ", "mpls_echo_tlv_reply_tos_mbz",
             FT_UINT24, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV Reply-TOS MBZ", HFILL}
         },
         { &hf_mpls_echo_tlv_errored_type,
-          { "Errored TLV Type", "mpls_echo.tlv.errored.type",
+          { "Errored TLV Type", "mpls_echo_tlv_errored_type",
             FT_UINT16, BASE_DEC | BASE_EXT_STRING, &mpls_echo_tlv_type_names_ext, 0x0,
             "MPLS ECHO TLV Errored TLV Type", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_ingress_if_num,
-          { "Ingress Interface Number", "mpls_echo.tlv.ds_map.ingress.if.num",
+          { "Ingress Interface Number", "mpls_echo_tlv_ds_map_ingress_if_num",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "MPLS ECHO TLV DownStream Map Ingress Interface Number", HFILL}
         },
         { &hf_mpls_echo_tlv_ds_map_egress_if_num,
-          { "Egress Interface Number", "mpls_echo.tlv.ds_map.egress.if.num",
+          { "Egress Interface Number", "mpls_echo_tlv_ds_map_egress_if_num",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "MPLS ECHO TLV DownStream Map Egress Interface Number", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_src_gid,
-          { "SRC GLOBAL ID", "mpls_echo.lspping.tlv.src.gid",
+          { "SRC GLOBAL ID", "mpls_echo_lspping_tlv_src_gid",
             FT_UINT32, BASE_DEC, NULL, 0x0, "LSP SRC  GID", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_src_nid,
-          { "SRC NODE ID", "mpls_echo.lspping.tlv.src.nid",
+          { "SRC NODE ID", "mpls_echo_lspping_tlv_src_nid",
             FT_IPv4, BASE_NONE, NULL, 0x0, "LSP SRC NID", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_src_tunnel_no,
-          { "SRC Tunnel Number", "mpls_echo.lspping.tlv.tunnel.no",
+          { "SRC Tunnel Number", "mpls_echo_lspping_tlv_tunnel_no",
             FT_UINT16, BASE_DEC, NULL, 0x0, "LSP FEC Tunnel Number", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_lsp_no,
-          { "SRC LSP Number", "mpls_echo.lspping.tlv.lsp.no",
+          { "SRC LSP Number", "mpls_echo_lspping_tlv_lsp_no",
             FT_UINT16, BASE_DEC, NULL, 0x0, "LSP FEC LSP  Number", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_dst_gid,
-          { "DST GLOBAL ID", "mpls_echo.lspping.tlv.dst.gid",
+          { "DST GLOBAL ID", "mpls_echo_lspping_tlv_dst_gid",
             FT_UINT32, BASE_DEC, NULL, 0x0, "LSP FEC DST  GID", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_dst_nid,
-          { "DST NODE ID", "mpls_echo.lspping.tlv.dst.nid",
+          { "DST NODE ID", "mpls_echo_lspping_tlv_dst_nid",
             FT_IPv4, BASE_NONE, NULL, 0x0, "LSP FEC DST NID", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_dst_tunnel_no,
-          { "DST Tunnel Number", "mpls_echo.lspping.tlv.dst.tunnel.no",
+          { "DST Tunnel Number", "mpls_echo_lspping_tlv_dst_tunnel_no",
             FT_UINT16, BASE_DEC, NULL, 0x0, "LSP FEC DST Tunnel Number", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_resv,
-          { "RESERVED", "mpls_echo.lspping.tlv.resv",
+          { "RESERVED", "mpls_echo_lspping_tlv_resv",
             FT_UINT16, BASE_DEC, NULL, 0x0, "RESERVED BITS", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_src_addr_gid,
-          { "Global ID", "mpls_echo.lspping.tlv.src.addr.gid",
+          { "Global ID", "mpls_echo_lspping_tlv_src_addr_gid",
             FT_UINT32, BASE_DEC, NULL, 0x0, "SRC ADDR TLV GID", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_src_addr_nid,
-          { "Node ID", "mpls_echo.lspping.tlv.src.addr.nid",
+          { "Node ID", "mpls_echo_lspping_tlv_src_addr_nid",
             FT_IPv4, BASE_NONE, NULL, 0x0, "SRC ADDR TLV NID", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_pw_serv_identifier,
-          { "Service identifier", "mpls_echo.lspping.tlv.pw.serv.identifier",
+          { "Service identifier", "mpls_echo_lspping_tlv_pw_serv_identifier",
             FT_UINT64, BASE_DEC, NULL, 0x0, "PW FEC Service identifier", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_pw_src_ac_id,
-          { "SRC AC ID", "mpls_echo.lspping.tlv.pw.src.ac.id",
+          { "SRC AC ID", "mpls_echo_lspping_tlv_pw_src_ac_id",
             FT_UINT32, BASE_DEC, NULL, 0x0, "PW FEC SRC AC ID", HFILL}
         },
         { &hf_mpls_echo_lspping_tlv_pw_dst_ac_id,
-          { "DST AC ID", "mpls_echo.lspping.tlv.pw.dst.ac.id",
+          { "DST AC ID", "mpls_echo_lspping_tlv_pw_dst_ac_id",
             FT_UINT32, BASE_DEC, NULL, 0x0, "PW FEC DST AC ID", HFILL}
         },
         { &hf_mpls_echo_padding,
-          { "Padding", "mpls_echo.padding",
+          { "Padding", "mpls_echo_padding",
             FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
 #if 0
         { &hf_mpls_echo_lspping_tlv_pw_agi_type,
-          { "AGI TYPE", "mpls_echo.lspping.tlv.pw.agi.type",
+          { "AGI TYPE", "mpls_echo_lspping_tlv_pw_agi_type",
             FT_UINT8, BASE_DEC, NULL, 0x0, "PW AGI TYPE", HFILL}
         },
 #endif
 #if 0
         { &hf_mpls_echo_lspping_tlv_pw_agi_len,
-          { "AGI Length", "mpls_echo.lspping.tlv.pw.agi.len",
+          { "AGI Length", "mpls_echo_lspping_tlv_pw_agi_len",
             FT_UINT8, BASE_DEC, NULL, 0x0, "PW AGI LENGTH", HFILL}
         },
 #endif
 #if 0
         { &hf_mpls_echo_lspping_tlv_pw_agi_val,
-          { "AGI VALUE", "mpls_echo.lspping.tlv.pw.agi.val",
+          { "AGI VALUE", "mpls_echo_lspping_tlv_pw_agi_val",
             FT_STRING, BASE_NONE, NULL, 0x0, "PW AGI VALUE", HFILL}
         },
 #endif
         { &hf_mpls_echo_tlv_dd_map_mtu,
-          { "MTU", "mpls_echo.lspping.tlv.dd_map.mtu",
+          { "MTU", "mpls_echo_lspping_tlv_dd_map_mtu",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map MTU", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_addr_type,
-          { "Address Type", "mpls_echo.tlv.dd_map.addr_type",
+          { "Address Type", "mpls_echo_tlv_dd_map_addr_type",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_tlv_addr_type), 0x0, "MPLS ECHO TLV Detailed Downstream Map Address Type", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_res,
-          { "DS Flags", "mpls_echo.tlv.dd_map.res",
+          { "DS Flags", "mpls_echo_tlv_dd_map_res",
             FT_UINT8, BASE_HEX, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map DS Flags", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_flag_res,
-          { "MBZ", "mpls_echo.tlv.dd_map.flag_res",
+          { "MBZ", "mpls_echo_tlv_dd_map_flag_res",
             FT_UINT8, BASE_HEX, NULL, 0xFC, "MPLS ECHO TLV Detailed Downstream Map Reserved Flags", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_flag_i,
-          { "Interface and Label Stack Request", "mpls_echo.tlv.dd_map.flag_i",
+          { "Interface and Label Stack Request", "mpls_echo_tlv_dd_map_flag_i",
             FT_BOOLEAN, 8, NULL, 0x02, "MPLS ECHO TLV Detailed Downstream Map I-Flag", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_flag_n,
-          { "Treat as Non-IP Packet", "mpls_echo.tlv.dd_map.flag_n",
+          { "Treat as Non-IP Packet", "mpls_echo_tlv_dd_map_flag_n",
             FT_BOOLEAN, 8, NULL, 0x01, "MPLS ECHO TLV Detailed Downstream Map N-Flag", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_ds_ip,
-          { "Downstream IP Address", "mpls_echo.tlv.dd_map.ds_ip",
+          { "Downstream IP Address", "mpls_echo_tlv_dd_map_ds_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map IP Address", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_int_ip,
-          { "Downstream Interface Address", "mpls_echo.tlv.dd_map.int_ip",
+          { "Downstream Interface Address", "mpls_echo_tlv_dd_map_int_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Interface Address", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_ds_ipv6,
-          { "Downstream IPv6 Address", "mpls_echo.tlv.dd_map.ds_ipv6",
+          { "Downstream IPv6 Address", "mpls_echo_tlv_dd_map_ds_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map IPv6 Address", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_int_ipv6,
-          { "Downstream Interface IPv6 Address", "mpls_echo.tlv.dd_map.int_ipv6",
+          { "Downstream Interface IPv6 Address", "mpls_echo_tlv_dd_map_int_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Interface IPv6 Address", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_return_code,
-          { "Return Code", "mpls_echo.tlv.dd_map.return_code",
+          { "Return Code", "mpls_echo_tlv_dd_map_return_code",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Return Code", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_return_subcode,
-          { "Return Subcode", "mpls_echo.tlv.dd_map.return_subcode",
+          { "Return Subcode", "mpls_echo_tlv_dd_map_return_subcode",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Return Subcode", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_ingress_if_num,
-          { "Ingress Interface Number", "mpls_echo.tlv.dd_map.ingress.if.num",
+          { "Ingress Interface Number", "mpls_echo_tlv_dd_map_ingress_if_num",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "MPLS ECHO TLV Detailed DownStream Map Ingress Interface Number", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_egress_if_num,
-          { "Egress Interface Number", "mpls_echo.tlv.dd_map.egress.if.num",
+          { "Egress Interface Number", "mpls_echo_tlv_dd_map_egress_if_num",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "MPLS ECHO TLV Detailed DownStream Map Egress Interface Number", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_subtlv_len,
-          { "Subtlv Length", "mpls_echo.tlv.dd_map.subtlv_len",
+          { "Subtlv Length", "mpls_echo_tlv_dd_map_subtlv_len",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Subtlv Length", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_multipath_type,
-          { "Multipath Type",  "mpls_echo.subtlv.dd_map.multipath_type",
+          { "Multipath Type",  "mpls_echo_subtlv_dd_map_multipath_type",
             FT_UINT8, BASE_DEC, NULL, 0x0, "Detailed Downstream Mapping TLV Multipath Data Sub-TLV Multipath Type", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_multipath_length,
-          { "Multipath Length", "mpls_echo.subtlv.dd_map.multipath_length",
+          { "Multipath Length", "mpls_echo_subtlv_dd_map_multipath_length",
             FT_UINT16, BASE_DEC, NULL, 0x0, "Detailed Downstream Mapping TLV Multipath Data Sub-TLV Multipath Length", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_multipath_value,
-          { "Multipath Value", "mpls_echo.subtlv.dd_map.multipath_value",
+          { "Multipath Value", "mpls_echo_subtlv_dd_map_multipath_value",
             FT_BYTES, BASE_NONE, NULL, 0x0, "Detailed Downstream Mapping TLV Multipath Data Sub-TLV Multipath Value", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_resv,
-          { "Reserved", "mpls_echo.subtlv.dd_map.reserved",
+          { "Reserved", "mpls_echo_subtlv_dd_map_reserved",
             FT_UINT8, BASE_DEC, NULL, 0x0, "Detailed Downstream Mapping TLV Multipath Data Sub-TLV Reserved Bits", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_multipath_info,
-          { "Multipath Information", "mpls_echo.subtlv.dd_map.multipath_info",
+          { "Multipath Information", "mpls_echo_subtlv_dd_map_multipath_info",
             FT_BYTES, BASE_NONE, NULL, 0x0, "Detailed Downstream Mapping TLV Multipath Data Sub-TLV Value", HFILL}
         },
 #if 0
         { &hf_mpls_echo_tlv_ddstlv_map_mp_label,
-          { "Downstream Label", "mpls_echo.tlv.ddstlv_map.mp_label",
+          { "Downstream Label", "mpls_echo_tlv_ddstlv_map_mp_label",
             FT_UINT24, BASE_DEC, VALS(special_labels), 0x0, "MPLS ECHO TLV Detailed Downstream Map Downstream Label", HFILL}
         },
 #endif
         { &hf_mpls_echo_tlv_ddstlv_map_mp_proto,
-          { "Downstream Protocol", "mpls_echo.tlv.ddstlv_map.mp_proto",
+          { "Downstream Protocol", "mpls_echo_tlv_ddstlv_map_mp_proto",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_tlv_ds_map_mp_proto), 0x0,
             "MPLS ECHO TLV Detailed Downstream Map Downstream Protocol", HFILL}
         },
 #if 0
         { &hf_mpls_echo_tlv_ddstlv_map_mp_exp,
-          { "Downstream Experimental", "mpls_echo.tlv.ddstlv_map.mp_exp",
+          { "Downstream Experimental", "mpls_echo_tlv_ddstlv_map_mp_exp",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Downstream Experimental", HFILL}
         },
 #endif
 #if 0
         { &hf_mpls_echo_tlv_ddstlv_map_mp_bos,
-          { "Downstream BOS", "mpls_echo.tlv.ddstlv_map.mp_bos",
+          { "Downstream BOS", "mpls_echo_tlv_ddstlv_map_mp_bos",
             FT_UINT8, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Downstream BOS", HFILL}
         },
 #endif
         { &hf_mpls_echo_sub_tlv_multipath_ip,
-          { "IP Address", "mpls_echo.tlv.ddstlv_map_mp.ip",
+          { "IP Address", "mpls_echo_tlv_ddstlv_map_mp_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Multipath IP Address", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_mp_ip_low,
-          { "IP Address Low", "mpls_echo.tlv.ddstlv_map_mp.ip_low",
+          { "IP Address Low", "mpls_echo_tlv_ddstlv_map_mp_ip_low",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Multipath Low IP Address", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_mp_ip_high,
-          { "IP Address High", "mpls_echo.tlv.ddstlv_map_mp.ip_high",
+          { "IP Address High", "mpls_echo_tlv_ddstlv_map_mp_ip_high",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Multipath High IP Address", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_mp_mask,
-          { "Mask", "mpls_echo.tlv.ddstlv_map_mp.mask",
+          { "Mask", "mpls_echo_tlv_ddstlv_map_mp_mask",
             FT_BYTES, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV Detailed Downstream Map Multipath Mask", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_op_type,
-          { "Operation Type", "mpls_echo.tlv.ddstlv_map.op_type",
+          { "Operation Type", "mpls_echo_tlv_ddstlv_map_op_type",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_subtlv_op_types), 0x0,
             "MPLS ECHO TLV Detailed Downstream Map Stack Change Operation Type", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_addr_type,
-          { "Address Type", "mpls_echo.tlv.ddstlv_map.address_type",
+          { "Address Type", "mpls_echo_tlv_ddstlv_map_address_type",
             FT_UINT8, BASE_DEC, VALS(mpls_echo_subtlv_addr_types), 0x0,
             "MPLS ECHO TLV Detailed Downstream Map Stack Change Address Type", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_fec_tlv_value,
-          { "FEC tlv Length", "mpls_echo.subtlv.dd_map.fec_tlv_type",
+          { "FEC tlv Length", "mpls_echo_subtlv_dd_map_fec_tlv_type",
             FT_UINT8, BASE_DEC, NULL, 0x0, "Detailed Downstream Map FEC TLV Length", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_label,
-          { "Label", "mpls_echo.subtlv.label",
+          { "Label", "mpls_echo_subtlv_label",
             FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_mpls_echo_sub_tlv_traffic_class,
-          { "Traffic Class", "mpls_echo.subtlv.traffic_class",
+          { "Traffic Class", "mpls_echo_subtlv_traffic_class",
             FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_mpls_echo_sub_tlv_s_bit,
-          { "S bit", "mpls_echo.subtlv.s_bit",
+          { "S bit", "mpls_echo_subtlv_s_bit",
             FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL}
         },
         { &hf_mpls_echo_sub_tlv_res,
-          { "Reserved", "mpls_echo.subtlv.dd_map.reserved",
+          { "Reserved", "mpls_echo_subtlv_dd_map_reserved",
             FT_UINT8, BASE_DEC, NULL, 0x0, "Detailed Downstream Map FEC Stack Change Reserved Bits", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_remote_peer_unspecified,
-          { "Unspecified (Address Length = 0)", "mpls_echo.tlv.dd_map.unspecified",
+          { "Unspecified (Address Length = 0)", "mpls_echo_tlv_dd_map_unspecified",
             FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL}
         },
         { &hf_mpls_echo_sub_tlv_remote_peer_ip,
-          { "Remote Peer IP Address", "mpls_echo.tlv.dd_map.remote_ip",
+          { "Remote Peer IP Address", "mpls_echo_tlv_dd_map_remote_ip",
             FT_IPv4, BASE_NONE, NULL, 0x0, "Detailed Downstream Map FEC Stack Change Remote Peer IP Address", HFILL}
         },
         { &hf_mpls_echo_sub_tlv_remore_peer_ipv6,
-          { "Remote Peer IPv6 Address", "mpls_echo.tlv.dd_map.remote_ipv6",
+          { "Remote Peer IPv6 Address", "mpls_echo_tlv_dd_map_remote_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "Detailed Downstream Map FEC Stack Change Remote Peer IPv6 Address", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_type,
-          { "Sub-TLV Type",  "mpls_echo.subtlv.dd_map.type",
+          { "Sub-TLV Type",  "mpls_echo_subtlv_dd_map_type",
             FT_UINT16, BASE_DEC, NULL, 0x0, "Detailed Downstream Mapping TLV Type", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_length,
-          { "Sub-TLV Length", "mpls_echo.subtlv.dd_map.length",
+          { "Sub-TLV Length", "mpls_echo_subtlv_dd_map_length",
             FT_UINT16, BASE_DEC, NULL, 0x0, "Detailed Downstream Mapping TLV Length", HFILL}
         },
         { &hf_mpls_echo_tlv_dd_map_value,
-          { "Sub-TLV Value", "mpls_echo.subtlv.dd_map.value",
+          { "Sub-TLV Value", "mpls_echo_subtlv_dd_map_value",
             FT_BYTES, BASE_NONE, NULL, 0x0, "Detailed Downstream Mapping TLV Value", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ipv4_p2mp_id,
-          { "P2MP ID", "mpls_echo.tlv.fec.rsvp_p2mp_ipv4_id",
+          { "P2MP ID", "mpls_echo_tlv_fec_rsvp_p2mp_ipv4_id",
             FT_UINT32, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ip_mbz1,
-          { "Must Be Zero", "mpls_echo.tlv.fec.rsvp_p2mp_ip_mbz1",
+          { "Must Be Zero", "mpls_echo_tlv_fec_rsvp_p2mp_ip_mbz1",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP MBZ", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ip_tunnel_id,
-          { "Tunnel ID", "mpls_echo.tlv.fec.rsvp_p2mp_ip_tun_id",
+          { "Tunnel ID", "mpls_echo_tlv_fec_rsvp_p2mp_ip_tun_id",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP Tunnel ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ipv4_ext_tunnel_id,
-          { "Extended Tunnel ID", "mpls_echo.tlv.fec.rsvp_p2mp_ipv4_ext_tun_id",
+          { "Extended Tunnel ID", "mpls_echo_tlv_fec_rsvp_p2mp_ipv4_ext_tun_id",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP IPv4 Extended Tunnel ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ipv4_ipv4_sender,
-          { "IPv4 Tunnel sender address", "mpls_echo.tlv.fec.rsvp_p2mp_ipv4_sender",
+          { "IPv4 Tunnel sender address", "mpls_echo_tlv_fec_rsvp_p2mp_ipv4_sender",
             FT_IPv4, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP IPv4 Sender", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ip_mbz2,
-          { "Must Be Zero", "mpls_echo.tlv.fec.rsvp_p2mp_ip_mbz2",
+          { "Must Be Zero", "mpls_echo_tlv_fec_rsvp_p2mp_ip_mbz2",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP MBZ", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ip_lsp_id,
-          { "LSP ID", "mpls_echo.tlv.fec.rsvp_p2mp_ip_lsp_id",
+          { "LSP ID", "mpls_echo_tlv_fec_rsvp_p2mp_ip_lsp_id",
             FT_UINT16, BASE_DEC, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP LSP ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ipv6_p2mp_id,
-          { "P2MP IPv6 Tunnel ID address", "mpls_echo.tlv.fec.rsvp_p2mp_ipv6_id",
+          { "P2MP IPv6 Tunnel ID address", "mpls_echo_tlv_fec_rsvp_p2mp_ipv6_id",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP IPv6 ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ipv6_ext_tunnel_id,
-          { "Extended Tunnel ID", "mpls_echo.tlv.fec.rsvp_p2mp_ipv6_ext_tun_id",
+          { "Extended Tunnel ID", "mpls_echo_tlv_fec_rsvp_p2mp_ipv6_ext_tun_id",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP IPv6 Extended Tunnel ID", HFILL}
         },
         { &hf_mpls_echo_tlv_fec_rsvp_p2mp_ipv6_ipv6_sender,
-          { "P2MP IPv6 Tunnel sender address", "mpls_echo.tlv.fec.rsvp_p2mp_ipv6_sender",
+          { "P2MP IPv6 Tunnel sender address", "mpls_echo_tlv_fec_rsvp_p2mp_ipv6_sender",
             FT_IPv6, BASE_NONE, NULL, 0x0, "MPLS ECHO TLV FEC Stack RSVP P2MP IPv6 Sender", HFILL}
         },
         { &hf_mpls_echo_tlv_responder_indent_type,
-          { "Target Type", "mpls_echo.tlv.resp_id.type",
+          { "Target Type", "mpls_echo_tlv_resp_id_type",
             FT_UINT16, BASE_DEC, VALS(mpls_echo_tlv_responder_ident_sub_tlv_type), 0x0, "P2MP Responder ID TLV", HFILL}
         },
         { &hf_mpls_echo_tlv_responder_indent_len,
-          { "Length", "mpls_echo.tlv.resp_id.length",
+          { "Length", "mpls_echo_tlv_resp_id_length",
             FT_UINT16, BASE_DEC, NULL, 0x0, "P2MP Responder ID TLV LENGTH", HFILL}
         },
         { &hf_mpls_echo_tlv_responder_indent_ipv4,
-          { "Target IPv4 Address", "mpls_echo.tlv.resp_id.ipv4",
+          { "Target IPv4 Address", "mpls_echo_tlv_resp_id_ipv4",
             FT_IPv4, BASE_NONE, NULL, 0x0, "P2MP Responder ID TLV IPv4 Address", HFILL}
         },
 #if 0
         { &hf_mpls_echo_tlv_responder_indent_ipv6,
-          { "Target IPv6 Address", "mpls_echo.tlv.resp_id.ipv6",
+          { "Target IPv6 Address", "mpls_echo_tlv_resp_id_ipv6",
             FT_IPv6, BASE_NONE, NULL, 0x0, "P2MP Responder ID TLV IPv6 Address", HFILL}
         },
 #endif
         { &hf_mpls_echo_tlv_echo_jitter,
-          { "Echo Jitter time", "mpls_echo.tlv.echo_jitter",
+          { "Echo Jitter time", "mpls_echo_tlv_echo_jitter",
             FT_UINT32, BASE_DEC, NULL, 0x0, "MPLS ECHO Jitter time", HFILL}
         },
         { &hf_mpls_echo_tlv_bfd,
-          { "BFD Discriminator", "mpls_echo.bfd_discriminator",
+          { "BFD Discriminator", "mpls_echo_bfd_discriminator",
             FT_UINT32, BASE_HEX, NULL, 0x0, "MPLS ECHO BFD Discriminator", HFILL}
         },
     };

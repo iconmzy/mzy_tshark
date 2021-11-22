@@ -577,182 +577,182 @@ proto_register_bluecom(void)
     static hf_register_info hf_bcp[] = {
         /* BCP_PROTOCOL_HDR */
         { &hf_bcp_hdr_version, {
-            "Version", "bluecom.hdr.version", FT_UINT8,
+            "Version", "bluecom_hdr_version", FT_UINT8,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_format, {
-            "Format", "bluecom.hdr.format", FT_UINT8,
+            "Format", "bluecom_hdr_format", FT_UINT8,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_protflags, {
-            "Flags", "bluecom.hdr.protflags", FT_UINT8,
+            "Flags", "bluecom_hdr_protflags", FT_UINT8,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_blocknb, {
-            "BlockNb", "bluecom.hdr.blocknb", FT_UINT8,
+            "BlockNb", "bluecom_hdr_blocknb", FT_UINT8,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_segcode, {
-            "SegCode", "bluecom.hdr.segcode", FT_UINT16,
+            "SegCode", "bluecom_hdr_segcode", FT_UINT16,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_auth, {
-            "Auth", "bluecom.hdr.auth", FT_UINT32,
+            "Auth", "bluecom_hdr_auth", FT_UINT32,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
 
         /* BCP_BLOCK_HDR */
         { &hf_bcp_hdr_sourceid, {
-            "SourceId", "bluecom.hdr.sourceid", FT_UINT16,
+            "SourceId", "bluecom_hdr_sourceid", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_destid, {
-            "DestId", "bluecom.hdr.destid", FT_UINT16,
+            "DestId", "bluecom_hdr_destid", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_transid, {
-            "TransId", "bluecom.hdr.transid", FT_UINT16,
+            "TransId", "bluecom_hdr_transid", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_cmd, {
-            "Cmd", "bluecom.hdr.cmd", FT_UINT32,
+            "Cmd", "bluecom_hdr_cmd", FT_UINT32,
             BASE_HEX, VALS(bcp_cmds), 0, NULL, HFILL }},
         { &hf_bcp_hdr_slavestate, {
-            "SlaveState", "bluecom.hdr.slavestate", FT_UINT8,
+            "SlaveState", "bluecom_hdr_slavestate", FT_UINT8,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_blockflags, {
-            "Flags", "bluecom.hdr.blockflags", FT_UINT8,
+            "Flags", "bluecom_hdr_blockflags", FT_UINT8,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_len, {
-            "Len", "bluecom.hdr.len", FT_UINT8,
+            "Len", "bluecom_hdr_len", FT_UINT8,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_fragoffset, {
-            "FragOffset", "bluecom.hdr.fragoffset", FT_UINT16,
+            "FragOffset", "bluecom_hdr_fragoffset", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_hdr_timestamp, {
-            "Timestamp", "bluecom.hdr.timestamp", FT_ABSOLUTE_TIME,
+            "Timestamp", "bluecom_hdr_timestamp", FT_ABSOLUTE_TIME,
             ABSOLUTE_TIME_LOCAL, NULL, 0, NULL, HFILL }},
 
         /* BCP_SYNC_DATA */
         { &hf_bcp_sync_starttime, {
-            "StartTime", "bluecom.sync.blockflags", FT_UINT32,
+            "StartTime", "bluecom_sync_blockflags", FT_UINT32,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_sync_cycletime, {
-            "CycleTime", "bluecom.sync.cycletime", FT_UINT32,
+            "CycleTime", "bluecom_sync_cycletime", FT_UINT32,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_sync_dataratio, {
-            "DataRatio", "bluecom.sync.dataratio", FT_UINT8,
+            "DataRatio", "bluecom_sync_dataratio", FT_UINT8,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_sync_identify, {
-            "Identify", "bluecom.sync.identify", FT_BOOLEAN,
+            "Identify", "bluecom_sync_identify", FT_BOOLEAN,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_sync_vlantag, {
-            "VlanTag", "bluecom.sync.vlantag", FT_UINT16,
+            "VlanTag", "bluecom_sync_vlantag", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_sync_ethaddr, {
-            "EthAddr", "bluecom.sync.ethaddr", FT_ETHER,
+            "EthAddr", "bluecom_sync_ethaddr", FT_ETHER,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_sync_ethaddr2, {
-            "EthAddr2", "bluecom.sync.ethaddr2", FT_ETHER,
+            "EthAddr2", "bluecom_sync_ethaddr2", FT_ETHER,
             BASE_NONE, NULL, 0, NULL, HFILL }},
 
         /* BCP_IDENTIFY_REQ */
         { &hf_bcp_identify_error, {
-            "Error", "bluecom.identify.error", FT_UINT32,
+            "Error", "bluecom_identify_error", FT_UINT32,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_identify_starttime, {
-            "StartTime", "bluecom.identify.starttime", FT_UINT32,
+            "StartTime", "bluecom_identify_starttime", FT_UINT32,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_identify_ipaddr, {
-            "IpAddr", "bluecom.identify.ipaddr", FT_IPv4,
+            "IpAddr", "bluecom_identify_ipaddr", FT_IPv4,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_identify_name, {
-            "Name", "bluecom.identify.name", FT_STRING,
+            "Name", "bluecom_identify_name", FT_STRING,
             STR_ASCII, NULL, 0, NULL, HFILL }},
         { &hf_bcp_identify_ethaddr, {
-            "EthAddr", "bluecom.identify.ethaddr", FT_ETHER,
+            "EthAddr", "bluecom_identify_ethaddr", FT_ETHER,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_identify_ethaddr2, {
-            "EthAddr2", "bluecom.identify.ethaddr2", FT_ETHER,
+            "EthAddr2", "bluecom_identify_ethaddr2", FT_ETHER,
             BASE_NONE, NULL, 0, NULL, HFILL }},
 
         /* BCP_SEARCH_REQ */
         { &hf_bcp_searchreq_addrtype, {
-            "AddrType", "bluecom.searchreq.addrtype", FT_UINT32,
+            "AddrType", "bluecom_searchreq_addrtype", FT_UINT32,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchreq_reserved, {
-            "Reserved", "bluecom.searchreq.reserved", FT_UINT32,
+            "Reserved", "bluecom_searchreq_reserved", FT_UINT32,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchreq_name, {
-            "Name", "bluecom.searchreq.name", FT_STRING,
+            "Name", "bluecom_searchreq_name", FT_STRING,
             STR_ASCII, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchreq_ipaddrfirst, {
-            "IpAddrFirst", "bluecom.searchreq.ipaddrfirst", FT_IPv4,
+            "IpAddrFirst", "bluecom_searchreq_ipaddrfirst", FT_IPv4,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchreq_ipaddrlast, {
-            "IpAddrLast", "bluecom.searchreq.ipaddrlast", FT_IPv4,
+            "IpAddrLast", "bluecom_searchreq_ipaddrlast", FT_IPv4,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchreq_addrdata, {
-            "Data", "bluecom.searchreq.addrdata", FT_BYTES,
+            "Data", "bluecom_searchreq_addrdata", FT_BYTES,
             BASE_NONE, NULL, 0, NULL, HFILL }},
 
          /* BCP_SEARCH_RSP */
         { &hf_bcp_searchrsp_error, {
-            "Error", "bluecom.searchrsp.error", FT_UINT32,
+            "Error", "bluecom_searchrsp_error", FT_UINT32,
              BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchrsp_starttime, {
-            "StartTime", "bluecom.searchrsp.starttime", FT_UINT32,
+            "StartTime", "bluecom_searchrsp_starttime", FT_UINT32,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchrsp_lenin, {
-            "LenIn", "bluecom.searchrsp.lenin", FT_UINT16,
+            "LenIn", "bluecom_searchrsp_lenin", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchrsp_lenout, {
-            "LenOut", "bluecom.searchrsp.lenout", FT_UINT16,
+            "LenOut", "bluecom_searchrsp_lenout", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchrsp_ipaddr, {
-            "IpAddr", "bluecom.searchrsp.ipaddr", FT_IPv4,
+            "IpAddr", "bluecom_searchrsp_ipaddr", FT_IPv4,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchrsp_name, {
-            "Name", "bluecom.searchrsp.name", FT_STRING,
+            "Name", "bluecom_searchrsp_name", FT_STRING,
             STR_ASCII, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchrsp_ethaddr, {
-            "EthAddr", "bluecom.searchrsp.ethaddr", FT_ETHER,
+            "EthAddr", "bluecom_searchrsp_ethaddr", FT_ETHER,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_searchrsp_ethaddr2, {
-            "EthAddr2", "bluecom.searchrsp.ethaddr2", FT_ETHER,
+            "EthAddr2", "bluecom_searchrsp_ethaddr2", FT_ETHER,
             BASE_NONE, NULL, 0, NULL, HFILL }},
 
          /* BCP_CONNECT_REQ */
         { &hf_bcp_connectreq_lenin, {
-            "LenIn", "bluecom.connectreq.lenin", FT_UINT16,
+            "LenIn", "bluecom_connectreq_lenin", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectreq_lenout, {
-            "LenOut", "bluecom.connectreq.lenout", FT_UINT16,
+            "LenOut", "bluecom_connectreq_lenout", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectreq_cycletime, {
-            "CycleTime", "bluecom.connectreq.cycletime", FT_UINT32,
+            "CycleTime", "bluecom_connectreq_cycletime", FT_UINT32,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectreq_offlinefactor, {
-            "OfflineFactor", "bluecom.connectreq.offlinefactor", FT_UINT16,
+            "OfflineFactor", "bluecom_connectreq_offlinefactor", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectreq_ipaddr, {
-            "IpAddr", "bluecom.connectreq.ipaddr", FT_IPv4,
+            "IpAddr", "bluecom_connectreq_ipaddr", FT_IPv4,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectreq_name, {
-            "Name", "bluecom.connectreq.name", FT_STRING,
+            "Name", "bluecom_connectreq_name", FT_STRING,
             STR_ASCII, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectreq_ethaddr, {
-            "EthAddr", "bluecom.connectreq.ethaddr", FT_ETHER,
+            "EthAddr", "bluecom_connectreq_ethaddr", FT_ETHER,
             BASE_NONE, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectreq_ethaddr2, {
-            "EthAddr2", "bluecom.connectreq.ethaddr2", FT_ETHER,
+            "EthAddr2", "bluecom_connectreq_ethaddr2", FT_ETHER,
             BASE_NONE, NULL, 0, NULL, HFILL }},
 
          /* BCP_CONNECT_RSP */
         { &hf_bcp_connectrsp_error, {
-            "Error", "bluecom.connectrsp.error", FT_UINT32,
+            "Error", "bluecom_connectrsp_error", FT_UINT32,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectrsp_lenin, {
-            "LenIn", "bluecom.connectrsp.lenin", FT_UINT16,
+            "LenIn", "bluecom_connectrsp_lenin", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
         { &hf_bcp_connectrsp_lenout, {
-            "LenOut", "bluecom.connectrsp.lenout", FT_UINT16,
+            "LenOut", "bluecom_connectrsp_lenout", FT_UINT16,
             BASE_DEC_HEX, NULL, 0, NULL, HFILL }},
 
         /* USERDATA */
         { &hf_bcp_userdata, {
-            "BCP Userdata", "bluecom.userdata", FT_BYTES,
+            "BCP Userdata", "bluecom_userdata", FT_BYTES,
              BASE_NONE, NULL, 0, NULL, HFILL }}
     };
 

@@ -463,52 +463,52 @@ proto_register_bthci_iso(void)
     expert_module_t  *bthci_iso_expert_module;
     static hf_register_info hf[] = {
         { &hf_bthci_iso_chandle,
-          { "Connection Handle",           "bthci_iso.chandle",
+          { "Connection Handle",           "bthci_iso_chandle",
             FT_UINT16, BASE_HEX, NULL, 0x0FFF,
             NULL, HFILL }
         },
         { &hf_bthci_iso_pb_flag,
-          { "PB Flag",               "bthci_iso.pb_flag",
+          { "PB Flag",               "bthci_iso_pb_flag",
             FT_UINT16, BASE_HEX, VALS(iso_pb_flag_vals), 0x3000,
             "Packet Boundary Flag", HFILL }
         },
         { &hf_bthci_iso_ts_flag,
-          { "Timestamp present",               "bthci_iso.ts_flag",
+          { "Timestamp present",               "bthci_iso_ts_flag",
             FT_BOOLEAN, 16, NULL, 0x4000,
             NULL, HFILL }
         },
         { &hf_bthci_iso_reserved,
-          { "Reserved",                    "bthci_iso.reserved",
+          { "Reserved",                    "bthci_iso_reserved",
             FT_UINT16, BASE_HEX, NULL, 0x8000,
             NULL, HFILL }
         },
         { &hf_bthci_iso_continuation_to,
-          { "This is a continuation to the PDU in frame",    "bthci_iso.continuation_to",
+          { "This is a continuation to the PDU in frame",    "bthci_iso_continuation_to",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "This is a continuation to the PDU in frame #", HFILL }
         },
         { &hf_bthci_iso_reassembled_in,
-          { "This PDU is reassembled in frame",              "bthci_iso.reassembled_in",
+          { "This PDU is reassembled in frame",              "bthci_iso_reassembled_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             "This PDU is reassembled in frame #", HFILL }
         },
         { &hf_bthci_iso_connect_in,
-          { "Connect in frame",            "bthci_iso.connect_in",
+          { "Connect in frame",            "bthci_iso_connect_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bthci_iso_disconnect_in,
-          { "Disconnect in frame",         "bthci_iso.disconnect_in",
+          { "Disconnect in frame",         "bthci_iso_disconnect_in",
             FT_FRAMENUM, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },
         { &hf_bthci_iso_data_length,
-          { "Data Length",           "bthci_iso.data_length",
+          { "Data Length",           "bthci_iso_data_length",
             FT_UINT16, BASE_DEC, NULL, 0x3FFF,
             NULL, HFILL }
         },
         { &hf_bthci_iso_data,
-          { "Data",                        "bthci_iso.data",
+          { "Data",                        "bthci_iso_data",
             FT_NONE, BASE_NONE, NULL, 0x0,
             NULL, HFILL }
         },

@@ -91,19 +91,19 @@ proto_register_artemis(void)
 {
     static hf_register_info hf[] = {
         {&hf_artemis_len, {
-            "Length", "artemis.length",
+            "Length", "artemis_length",
             FT_UINT32, BASE_DEC, NULL, 0x0,
             "Length of the frame", HFILL}},
         {&hf_artemis_type, {
-            "Type", "artemis.type",
+            "Type", "artemis_type",
             FT_UINT8, BASE_DEC, NULL, 0x0,
             "Type of the frame", HFILL}},
         {&hf_artemis_channel, {
-            "Channel", "artemis.channel",
+            "Channel", "artemis_channel",
             FT_UINT64, BASE_DEC, NULL, 0x0,
             "Channel ID of the frame", HFILL}},
         {&hf_artemis_buffer, {
-            "Buffer", "artemis.buffer",
+            "Buffer", "artemis_buffer",
             FT_BYTES, BASE_NONE, NULL, 0,
             "Binary buffer", HFILL}}
     };

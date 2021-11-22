@@ -98,23 +98,23 @@ proto_register_aruba_adp(void)
 {
     static hf_register_info hf[] = {
         { &hf_adp_version,
-        { "Version", "adp.version", FT_UINT16, BASE_DEC, NULL,0x0,
+        { "Version", "adp_version", FT_UINT16, BASE_DEC, NULL,0x0,
         "ADP version", HFILL}},
 
         { &hf_adp_type,
-        { "Type", "adp.type", FT_UINT16, BASE_DEC, VALS(adp_type_val), 0x0,
+        { "Type", "adp_type", FT_UINT16, BASE_DEC, VALS(adp_type_val), 0x0,
         "ADP type", HFILL}},
 
         { &hf_adp_id,
-        { "Transaction ID", "adp.id", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Transaction ID", "adp_id", FT_UINT16, BASE_DEC, NULL, 0x0,
         "ADP transaction ID", HFILL}},
 
         { &hf_adp_mac,
-        { "MAC address", "adp.mac", FT_ETHER, BASE_NONE, NULL, 0x0,
+        { "MAC address", "adp_mac", FT_ETHER, BASE_NONE, NULL, 0x0,
         NULL, HFILL}},
 
         { &hf_adp_switchip,
-        { "Switch IP", "adp.switch", FT_IPv4, BASE_NONE, NULL, 0x0,
+        { "Switch IP", "adp_switch", FT_IPv4, BASE_NONE, NULL, 0x0,
         "Switch IP address", HFILL}},
 
         };

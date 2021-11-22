@@ -156,7 +156,7 @@ proto_register_mpls_psc(void)
         {
             &hf_mpls_psc_ver,
             {
-                "Version", "mpls_psc.ver",
+                "Version", "mpls_psc_ver",
                 FT_UINT8, BASE_DEC, NULL, 0xC0,
                 NULL, HFILL
             }
@@ -164,7 +164,7 @@ proto_register_mpls_psc(void)
         {
             &hf_mpls_psc_req,
             {
-                "Request", "mpls_psc.req",
+                "Request", "mpls_psc_req",
                 FT_UINT8, BASE_RANGE_STRING | BASE_DEC, RVALS(mpls_psc_req_rvals), 0x3C,
                 NULL, HFILL
             }
@@ -172,7 +172,7 @@ proto_register_mpls_psc(void)
         {
             &hf_mpls_psc_pt,
             {
-                "Protection Type", "mpls_psc.pt",
+                "Protection Type", "mpls_psc_pt",
                 FT_UINT8, BASE_RANGE_STRING | BASE_DEC, RVALS(mpls_psc_pt_rvals), 0x03,
                 NULL, HFILL
             }
@@ -180,7 +180,7 @@ proto_register_mpls_psc(void)
         {
             &hf_mpls_psc_rev,
             {
-                "R", "mpls_psc.rev",
+                "R", "mpls_psc_rev",
                 FT_UINT8, BASE_RANGE_STRING | BASE_DEC, RVALS(mpls_psc_rev_rvals), 0x80,
                 NULL, HFILL
             }
@@ -188,7 +188,7 @@ proto_register_mpls_psc(void)
         {
             &hf_mpls_psc_fpath,
             {
-                "Fault Path", "mpls_psc.fpath",
+                "Fault Path", "mpls_psc_fpath",
                 FT_UINT8, BASE_RANGE_STRING | BASE_DEC, RVALS(mpls_psc_fpath_rvals), 0x0,
                 NULL, HFILL
             }
@@ -196,7 +196,7 @@ proto_register_mpls_psc(void)
         {
             &hf_mpls_psc_dpath,
             {
-                "Data Path", "mpls_psc.dpath",
+                "Data Path", "mpls_psc_dpath",
                 FT_UINT8, BASE_RANGE_STRING | BASE_DEC, RVALS(mpls_psc_dpath_rvals), 0x0,
                 NULL, HFILL
             }
@@ -204,7 +204,7 @@ proto_register_mpls_psc(void)
         {
             &hf_mpls_psc_tlvlen,
             {
-                "TLV Length", "mpls_psc.tlvlen",
+                "TLV Length", "mpls_psc_tlvlen",
                 FT_UINT16, BASE_DEC, NULL, 0x0,
                 NULL, HFILL
             }

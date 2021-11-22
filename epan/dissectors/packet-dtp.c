@@ -278,43 +278,43 @@ proto_register_dtp(void)
 {
 	static hf_register_info hf[] = {
 	{ &hf_dtp_version,
-		{ "Version",	"dtp.version", FT_UINT8, BASE_DEC,
+		{ "Version",	"dtp_version", FT_UINT8, BASE_DEC,
 		NULL, 0x0, NULL, HFILL }},
 
 	{ &hf_dtp_domain,
-		{ "Domain",	"dtp.domain", FT_STRING, BASE_NONE,
+		{ "Domain",	"dtp_domain", FT_STRING, BASE_NONE,
 		NULL, 0x0, NULL, HFILL }},
 
 	{ &hf_dtp_tlvtype,
-		{ "Type",	"dtp.tlv_type", FT_UINT16, BASE_HEX,
+		{ "Type",	"dtp_tlv_type", FT_UINT16, BASE_HEX,
 		VALS(dtp_tlv_type_vals), 0x0, NULL, HFILL }},
 
 	{ &hf_dtp_tlvlength,
-		{ "Length",	"dtp.tlv_len", FT_UINT16, BASE_DEC,
+		{ "Length",	"dtp_tlv_len", FT_UINT16, BASE_DEC,
 		NULL, 0x0, NULL, HFILL }},
 
 	{ &hf_dtp_tos,
-		{ "Trunk Operating Status", "dtp.tos", FT_UINT8, BASE_HEX,
+		{ "Trunk Operating Status", "dtp_tos", FT_UINT8, BASE_HEX,
 		VALS(dtp_tos_vals), DTP_TOS_MASK, NULL, HFILL }},
 
 	{ &hf_dtp_tas,
-		{ "Trunk Administrative Status", "dtp.tas", FT_UINT8, BASE_HEX,
+		{ "Trunk Administrative Status", "dtp_tas", FT_UINT8, BASE_HEX,
 		VALS(dtp_tas_vals), DTP_TAS_MASK, NULL, HFILL }},
 
 	{ &hf_dtp_tot,
-		{ "Trunk Operating Type", "dtp.tot", FT_UINT8, BASE_HEX,
+		{ "Trunk Operating Type", "dtp_tot", FT_UINT8, BASE_HEX,
 		VALS(dtp_tot_vals), DTP_TOT_MASK, NULL, HFILL }},
 
 	{ &hf_dtp_tat,
-		{ "Trunk Administrative Type", "dtp.tat", FT_UINT8, BASE_HEX,
+		{ "Trunk Administrative Type", "dtp_tat", FT_UINT8, BASE_HEX,
 		VALS(dtp_tat_vals), DTP_TAT_MASK, NULL, HFILL }},
 
 	{ &hf_dtp_senderid,
-		{ "Sender ID", "dtp.senderid", FT_ETHER, BASE_NONE,
+		{ "Sender ID", "dtp_senderid", FT_ETHER, BASE_NONE,
 		NULL, 0x0, "MAC Address of neighbor", HFILL }},
 
 	{ &hf_dtp_data,
-		{ "Data", "dtp.data", FT_ETHER, BASE_NONE,
+		{ "Data", "dtp_data", FT_ETHER, BASE_NONE,
 		NULL, 0x0, NULL, HFILL }},
 	};
 

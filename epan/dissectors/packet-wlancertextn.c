@@ -106,11 +106,11 @@ void proto_register_wlancertextn(void) {
 /*--- Included file: packet-wlancertextn-hfarr.c ---*/
 #line 1 "./asn1/wlancertextn/packet-wlancertextn-hfarr.c"
     { &hf_wlancertextn_SSIDList_PDU,
-      { "SSIDList", "wlancertextn.SSIDList",
+      { "SSIDList", "wlancertextn_SSIDList",
         FT_UINT32, BASE_DEC, NULL, 0,
         NULL, HFILL }},
     { &hf_wlancertextn_SSIDList_item,
-      { "SSID", "wlancertextn.SSID",
+      { "SSID", "wlancertextn_SSID",
         FT_BYTES, BASE_NONE, NULL, 0,
         NULL, HFILL }},
 

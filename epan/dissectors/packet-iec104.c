@@ -1947,27 +1947,27 @@ proto_register_iec60870_104(void)
 	static hf_register_info hf_ap[] = {
 
 		{ &hf_apdulen,
-		  { "ApduLen", "iec60870_104.apdulen", FT_UINT8, BASE_DEC, NULL, 0x0,
+		  { "ApduLen", "iec60870_104_apdulen", FT_UINT8, BASE_DEC, NULL, 0x0,
 		    "APDU Len", HFILL }},
 
 		{ &hf_apcitype,
-		  { "Type", "iec60870_104.type", FT_UINT8, BASE_HEX, VALS(apci_types), 0x00,
+		  { "Type", "iec60870_104_type", FT_UINT8, BASE_HEX, VALS(apci_types), 0x00,
 		    "APCI type", HFILL }},
 
 		{ &hf_apciutype,
-		  { "UType", "iec60870_104.utype", FT_UINT8, BASE_HEX, VALS(u_types), 0xFC,
+		  { "UType", "iec60870_104_utype", FT_UINT8, BASE_HEX, VALS(u_types), 0xFC,
 		    "Apci U type", HFILL }},
 
 		{ &hf_apcitx,
-		  { "Tx", "iec60870_104.tx", FT_UINT16, BASE_DEC, NULL, 0,
+		  { "Tx", "iec60870_104_tx", FT_UINT16, BASE_DEC, NULL, 0,
 		    NULL, HFILL }},
 
 		{ &hf_apcirx,
-		  { "Rx", "iec60870_104.rx", FT_UINT16, BASE_DEC, NULL, 0,
+		  { "Rx", "iec60870_104_rx", FT_UINT16, BASE_DEC, NULL, 0,
 		    NULL, HFILL }},
 
 		{ &hf_apcidata,
-		  { "Data", "iec60870_104.data", FT_BYTES, BASE_NONE, NULL, 0,
+		  { "Data", "iec60870_104_data", FT_BYTES, BASE_NONE, NULL, 0,
 		    NULL, HFILL }},
 	};
 

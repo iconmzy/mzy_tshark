@@ -144,28 +144,28 @@ proto_register_bootparams(void)
 {
 	static hf_register_info hf[] = {
 		{ &hf_bootparams_procedure_v1, {
-			"V1 Procedure", "bootparams.procedure_v1", FT_UINT32, BASE_DEC,
+			"V1 Procedure", "bootparams_procedure_v1", FT_UINT32, BASE_DEC,
 			VALS(bootparams1_proc_vals), 0, NULL, HFILL }},
 		{ &hf_bootparams_host, {
-			"Client Host", "bootparams.host", FT_STRING, BASE_NONE,
+			"Client Host", "bootparams_host", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_bootparams_domain, {
-			"Client Domain", "bootparams.domain", FT_STRING, BASE_NONE,
+			"Client Domain", "bootparams_domain", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_bootparams_fileid, {
-			"File ID", "bootparams.fileid", FT_STRING, BASE_NONE,
+			"File ID", "bootparams_fileid", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_bootparams_filepath, {
-			"File Path", "bootparams.filepath", FT_STRING, BASE_NONE,
+			"File Path", "bootparams_filepath", FT_STRING, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_bootparams_hostaddr, {
-			"Client Address", "bootparams.hostaddr", FT_IPv4, BASE_NONE,
+			"Client Address", "bootparams_hostaddr", FT_IPv4, BASE_NONE,
 			NULL, 0, "Address", HFILL }},
 		{ &hf_bootparams_routeraddr, {
-			"Router Address", "bootparams.routeraddr", FT_IPv4, BASE_NONE,
+			"Router Address", "bootparams_routeraddr", FT_IPv4, BASE_NONE,
 			NULL, 0, NULL, HFILL }},
 		{ &hf_bootparams_addresstype, {
-			"Address Type", "bootparams.type", FT_UINT32, BASE_DEC,
+			"Address Type", "bootparams_type", FT_UINT32, BASE_DEC,
 			VALS(addr_type), 0, NULL, HFILL }},
 	};
 	static gint *ett[] = {

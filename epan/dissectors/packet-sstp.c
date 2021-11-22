@@ -345,49 +345,49 @@ proto_register_sstp(void)
   static hf_register_info hf[] = {
     /* sstp minor version (4 Bit) */
     { &hf_sstp_major,
-      { "Major Version", "sstp.majorversion",
+      { "Major Version", "sstp_majorversion",
       FT_UINT8, BASE_DEC,
       NULL, SSTP_BITMASK_MAJORVERSION,
       NULL, HFILL }
     },
     /* sstp major version (4 Bit) */
     { &hf_sstp_minor,
-      { "Minor Version", "sstp.minorversion",
+      { "Minor Version", "sstp_minorversion",
       FT_UINT8, BASE_DEC,
       NULL, SSTP_BITMASK_MINORVERSION,
       NULL, HFILL }
     },
     /* Several Reserved Fields with different size */
     { &hf_sstp_reserved,
-      { "Reserved", "sstp.reserved",
+      { "Reserved", "sstp_reserved",
       FT_BYTES, BASE_NONE,
       NULL, 0x0,
       NULL, HFILL }
     },
     /* C (1 Bit, set to 1 if control packet, 0 means data packet) */
     { &hf_sstp_control_flag,
-      { "Control Packet", "sstp.iscontrol",
+      { "Control Packet", "sstp_iscontrol",
       FT_BOOLEAN, 8,
       NULL, SSTP_BITMASK_CONTROLFLAG,
       NULL, HFILL }
     },
     /* Length Packet (16 Bit) */
     { &hf_sstp_length,
-      { "Length-Packet", "sstp.length",
+      { "Length-Packet", "sstp_length",
       FT_UINT16, BASE_DEC,
       NULL, 0x0,
       NULL, HFILL }
     },
     /* Message Type (16 Bit) */
     { &hf_sstp_messagetype,
-      { "Message Type", "sstp.messagetype",
+      { "Message Type", "sstp_messagetype",
       FT_UINT16, BASE_HEX,
       VALS(sstp_messagetypes), 0x0,
       NULL, HFILL }
     },
     /* Number of Attributes (16 Bit) */
     { &hf_sstp_numattrib,
-      { "Number of Attributes", "sstp.numattrib",
+      { "Number of Attributes", "sstp_numattrib",
       FT_UINT16, BASE_DEC,
       NULL, 0x0,
       NULL, HFILL }
@@ -395,28 +395,28 @@ proto_register_sstp(void)
     /* Fields for Attributes */
     /* Attribute Reserved Field (8 Bit) */
     { &hf_sstp_attrib_reserved,
-      { "Reserved", "sstp.attribreserved",
+      { "Reserved", "sstp_attribreserved",
       FT_UINT8, BASE_HEX,
       NULL, 0x0,
       NULL, HFILL }
     },
     /* Attribute ID (8 Bit) */
     { &hf_sstp_attrib_id,
-      { "ID", "sstp.attribid",
+      { "ID", "sstp_attribid",
       FT_UINT8, BASE_DEC,
       VALS(sstp_attributes), 0x0,
       NULL, HFILL }
     },
     /* Attribute Length Reserved (4 Bit reserved for future use inside the 16 bit length field) */
     { &hf_sstp_attrib_length_reserved,
-      { "Reserved", "sstp.attriblengthreserved",
+      { "Reserved", "sstp_attriblengthreserved",
       FT_UINT16, BASE_HEX,
       NULL, SSTP_BITMASK_LENGTH_RESERVED,
       NULL, HFILL }
     },
     /* Attribute Length Actual Length (12 Bit) */
     { &hf_sstp_attrib_length,
-      { "Length", "sstp.attriblength",
+      { "Length", "sstp_attriblength",
       FT_UINT16, BASE_DEC,
       NULL, SSTP_BITMASK_LENGTH_LENGTH,
       NULL, HFILL }
@@ -428,63 +428,63 @@ proto_register_sstp(void)
            https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-sstp/e73ced14-7bef-407b-a85b-a6f624324dd1
      */
     { &hf_sstp_data_unknown,
-      { "Unknown Data", "sstp.dataunknown",
+      { "Unknown Data", "sstp_dataunknown",
       FT_BYTES, BASE_NONE,
       NULL, 0x0,
       NULL, HFILL }
     },
     /* Hash Protocol (8 Bit) */
     { &hf_sstp_hash_protocol,
-      { "Hash Protocol", "sstp.hash",
+      { "Hash Protocol", "sstp_hash",
       FT_UINT8, BASE_HEX,
       VALS(hash_protocols), 0x0,
       NULL, HFILL }
     },
     /* Nonce (256 Bit) */
     { &hf_sstp_nonce,
-      { "Nonce", "sstp.nonce",
+      { "Nonce", "sstp_nonce",
       FT_BYTES, BASE_NONE,
       NULL, 0x0,
       NULL, HFILL }
     },
     /* Cert Hash (20 Bytes if SHA1 is used, 32 Bytes with SHA256) */
     { &hf_sstp_cert_hash,
-      { "Cert Hash", "sstp.cert_hash",
+      { "Cert Hash", "sstp_cert_hash",
       FT_BYTES, BASE_NONE,
       NULL, 0x0,
       NULL, HFILL }
     },
     /* Cert Padding (0 Bytes if SHA256 is used, 12 Bytes with SHA1) */
     { &hf_sstp_padding,
-      { "Padding", "sstp.padding",
+      { "Padding", "sstp_padding",
       FT_BYTES, BASE_NONE,
       NULL, 0x0,
       NULL, HFILL }
     },
     /* Compound MAC (20 Bytes if SHA1 is used, 32 Bytes with SHA1) */
     { &hf_sstp_compound_mac,
-      { "Compound Mac", "sstp.compoundmac",
+      { "Compound Mac", "sstp_compoundmac",
       FT_BYTES, BASE_NONE,
       NULL, 0x0,
       NULL, HFILL }
     },
     /* Encapsulated Protocol (2 Bytes) */
     { &hf_sstp_ecapsulated_protocol,
-      { "Encapsulated Protocol", "sstp.encapsulatedprotocol",
+      { "Encapsulated Protocol", "sstp_encapsulatedprotocol",
       FT_UINT16, BASE_HEX,
       VALS(encapsulated_protocols), 0x0,
       NULL, HFILL }
     },
     /* Attribute Status (4 Bytes) */
     { &hf_sstp_status,
-      { "Status", "sstp.status",
+      { "Status", "sstp_status",
       FT_UINT32, BASE_HEX,
       VALS(attrib_status), 0x0,
       NULL, HFILL }
     },
     /* Attribute Value (Variable Length) */
     { &hf_sstp_attrib_value,
-      { "Attribute Value", "sstp.attribvalue",
+      { "Attribute Value", "sstp_attribvalue",
       FT_BYTES, BASE_NONE,
       NULL, 0x0,
       NULL, HFILL }

@@ -1,3 +1,4 @@
+
 /* packet-zep.c
  * Dissector  routines for the ZigBee Encapsulation Protocol
  * By Owen Kirby <osk@exegin.com>
@@ -251,47 +252,47 @@ void proto_register_zep(void)
 {
     static hf_register_info hf[] = {
         { &hf_zep_version,
-        { "Protocol Version",           "zep.version", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Protocol Version",           "zep_version", FT_UINT8, BASE_DEC, NULL, 0x0,
             "The version of the sniffer.", HFILL }},
 
         { &hf_zep_type,
-        { "Type",                       "zep.type", FT_UINT8, BASE_DEC|BASE_RANGE_STRING, RVALS(type_rvals), 0x0,
+        { "Type",                       "zep_type", FT_UINT8, BASE_DEC|BASE_RANGE_STRING, RVALS(type_rvals), 0x0,
             NULL, HFILL }},
 
         { &hf_zep_channel_id,
-        { "Channel ID",                 "zep.channel_id", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Channel ID",                 "zep_channel_id", FT_UINT8, BASE_DEC, NULL, 0x0,
             "The logical channel on which this packet was detected.", HFILL }},
 
         { &hf_zep_device_id,
-        { "Device ID",                  "zep.device_id", FT_UINT16, BASE_DEC, NULL, 0x0,
+        { "Device ID",                  "zep_device_id", FT_UINT16, BASE_DEC, NULL, 0x0,
             "The ID of the device that detected this packet.", HFILL }},
 
         { &hf_zep_lqi_mode,
-        { "LQI/CRC Mode",               "zep.lqi_mode", FT_BOOLEAN, BASE_NONE, TFS(&tfs_crc_lqi), 0x0,
+        { "LQI/CRC Mode",               "zep_lqi_mode", FT_BOOLEAN, BASE_NONE, TFS(&tfs_crc_lqi), 0x0,
             "Determines what format the last two bytes of the MAC frame use.", HFILL }},
 
         { &hf_zep_lqi,
-        { "Link Quality Indication",    "zep.lqi", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Link Quality Indication",    "zep_lqi", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zep_timestamp,
-        { "Timestamp",                  "zep.time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0,
+        { "Timestamp",                  "zep_time", FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zep_seqno,
-        { "Sequence Number",            "zep.seqno", FT_UINT8, BASE_DEC, NULL, 0x0,
+        { "Sequence Number",            "zep_seqno", FT_UINT8, BASE_DEC, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zep_ieee_length,
-        { "Length",              "zep.length", FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_byte_bytes, ZEP_LENGTH_MASK,
+        { "Length",              "zep_length", FT_UINT8, BASE_DEC|BASE_UNIT_STRING, &units_byte_bytes, ZEP_LENGTH_MASK,
             "The length (in bytes) of the encapsulated IEEE 802.15.4 MAC frame.", HFILL }},
 
         { &hf_zep_protocol_id,
-        { "Protocol ID String",            "zep.protocol_id", FT_STRING, BASE_NONE, NULL, 0x0,
+        { "Protocol ID String",            "zep_protocol_id", FT_STRING, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
 
         { &hf_zep_reserved_field,
-        { "Reserved Fields",            "zep.reserved_field", FT_BYTES, BASE_NONE, NULL, 0x0,
+        { "Reserved Fields",            "zep_reserved_field", FT_BYTES, BASE_NONE, NULL, 0x0,
             NULL, HFILL }},
     };
 

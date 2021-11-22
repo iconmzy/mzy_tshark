@@ -95,28 +95,28 @@ void
 proto_register_ipnet(void)
 {
   static hf_register_info hf[] = {
-    { &hf_version,      { "Header version",             "ipnet.version",
+    { &hf_version,      { "Header version",             "ipnet_version",
       FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
-    { &hf_family,       { "Address family",             "ipnet.family",
+    { &hf_family,       { "Address family",             "ipnet_family",
       FT_UINT8, BASE_DEC, VALS(solaris_family_vals), 0x0, NULL, HFILL }},
 
-    { &hf_htype,        { "Hook type",                  "ipnet.htype",
+    { &hf_htype,        { "Hook type",                  "ipnet_htype",
       FT_UINT16, BASE_DEC, VALS(htype_vals), 0x0, NULL, HFILL }},
 
-    { &hf_pktlen,       { "Data length",                "ipnet.pktlen",
+    { &hf_pktlen,       { "Data length",                "ipnet_pktlen",
       FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
-    { &hf_ifindex,      { "Interface index",            "ipnet.ifindex",
+    { &hf_ifindex,      { "Interface index",            "ipnet_ifindex",
       FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
-    { &hf_grifindex,    { "Group interface index",      "ipnet.grifindex",
+    { &hf_grifindex,    { "Group interface index",      "ipnet_grifindex",
       FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
-    { &hf_zsrc,         { "Source Zone ID",             "ipnet.zsrc",
+    { &hf_zsrc,         { "Source Zone ID",             "ipnet_zsrc",
       FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
 
-    { &hf_zdst,         { "Destination Zone ID",        "ipnet.zdst",
+    { &hf_zdst,         { "Destination Zone ID",        "ipnet_zdst",
       FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL }},
   };
   static gint *ett[] = {

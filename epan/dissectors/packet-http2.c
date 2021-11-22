@@ -617,301 +617,301 @@ register_static_headers(void) {
     static hf_register_info hf[] = {
         {
             &hf_http2_headers_authority,
-            {":authority", "http2.headers.authority",
+            {":authority", "http2_headers_authority",
                 FT_STRING, STR_UNICODE, NULL, 0x0,
                 "Authority portion of the target URI", HFILL}
         },
         {
             &hf_http2_headers_status,
-                {":status", "http2.headers.status",
+                {":status", "http2_headers_status",
                  FT_UINT16, BASE_DEC, NULL, 0x0,
                  NULL, HFILL}
         },
         {
             &hf_http2_headers_path,
-                {":path", "http2.headers.path",
+                {":path", "http2_headers_path",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  NULL, HFILL}
         },
         {
             &hf_http2_headers_method,
-                {":method", "http2.headers.method",
+                {":method", "http2_headers_method",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  NULL, HFILL}
         },
         {
             &hf_http2_headers_scheme,
-                {":scheme", "http2.headers.scheme",
+                {":scheme", "http2_headers_scheme",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  NULL, HFILL}
         },
         {
             &hf_http2_headers_accept,
-                {"accept", "http2.headers.accept",
+                {"accept", "http2_headers_accept",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Media types that are acceptable to the user agent", HFILL}
         },
         {
             &hf_http2_headers_accept_charset,
-                {"accept-charset", "http2.headers.accept_charset",
+                {"accept-charset", "http2_headers_accept_charset",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Acceptable charsets in textual responses for the user agent", HFILL}
         },
         {
             &hf_http2_headers_accept_encoding,
-                {"accept-encoding", "http2.headers.accept_encoding",
+                {"accept-encoding", "http2_headers_accept_encoding",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Acceptable content codings (like compression) in responses for the user agent", HFILL}
         },
         {
             &hf_http2_headers_accept_language,
-                {"accept-language", "http2.headers.accept_language",
+                {"accept-language", "http2_headers_accept_language",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Preferred natural languages for the user agent", HFILL}
         },
         {
             &hf_http2_headers_accept_ranges,
-                {"accept-ranges", "http2.headers.accept_ranges",
+                {"accept-ranges", "http2_headers_accept_ranges",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Bytes range which server may use for partial data transfer", HFILL}
         },
         {
             &hf_http2_headers_access_control_allow_origin,
-                {"access-control-allow-origin", "http2.headers.access_control_allow_origin",
+                {"access-control-allow-origin", "http2_headers_access_control_allow_origin",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Origin control for cross-origin resource sharing", HFILL}
         },
         {
             &hf_http2_headers_age,
-                {"age", "http2.headers.age",
+                {"age", "http2_headers_age",
                  FT_UINT64, BASE_DEC, NULL, 0x0,
                  "Time in seconds which was spent for transferring data through proxy", HFILL}
         },
         {
             &hf_http2_headers_allow,
-                {"allow", "http2.headers.allow",
+                {"allow", "http2_headers_allow",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "List of allowed methods for request", HFILL}
         },
         {
             &hf_http2_headers_authorization,
-                {"authorization", "http2.headers.authorization",
+                {"authorization", "http2_headers_authorization",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Credentials for a server-side authorization", HFILL}
         },
         {
             &hf_http2_headers_cache_control,
-                {"cache-control", "http2.headers.cache_control",
+                {"cache-control", "http2_headers_cache_control",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Request or response directives for a cache control", HFILL}
         },
         {
             &hf_http2_headers_content_disposition,
-                {"content-disposition", "http2.headers.content_disposition",
+                {"content-disposition", "http2_headers_content_disposition",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Indicates that response will be displayed as page or downloaded with dialog box", HFILL}
         },
         {
             &hf_http2_headers_content_encoding,
-                {"content-encoding", "http2.headers.content_encoding",
+                {"content-encoding", "http2_headers_content_encoding",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  NULL, HFILL}
         },
         {
             &hf_http2_headers_content_language,
-                {"content-language", "http2.headers.content_language",
+                {"content-language", "http2_headers_content_language",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  NULL, HFILL}
         },
         {
             &hf_http2_headers_content_length,
-                {"content-length", "http2.headers.content_length",
+                {"content-length", "http2_headers_content_length",
                  FT_UINT64, BASE_DEC, NULL, 0x0,
                  "Size of body in bytes", HFILL}
         },
         {
             &hf_http2_headers_content_location,
-                {"content-location", "http2.headers.content_location",
+                {"content-location", "http2_headers_content_location",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Alternative URL for a response data", HFILL}
         },
         {
             &hf_http2_headers_content_range,
-                {"content-range", "http2.headers.content_range",
+                {"content-range", "http2_headers_content_range",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Range of bytes which was sent by server for partial data transfer", HFILL}
         },
         {
             &hf_http2_headers_content_type,
-                {"content-type", "http2.headers.content_type",
+                {"content-type", "http2_headers_content_type",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "MIME type of response", HFILL}
         },
         {
             &hf_http2_headers_cookie,
-                {"cookie", "http2.headers.cookie",
+                {"cookie", "http2_headers_cookie",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Stored cookies", HFILL}
         },
         {
             &hf_http2_headers_date,
-                {"date", "http2.headers.date",
+                {"date", "http2_headers_date",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Date and time at which the data was originated", HFILL}
         },
         {
             &hf_http2_headers_etag,
-                {"etag", "http2.headers.etag",
+                {"etag", "http2_headers_etag",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Directive for version indication of resource", HFILL}
         },
         {
             &hf_http2_headers_expect,
-                {"expect", "http2.headers.expect",
+                {"expect", "http2_headers_expect",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Expectations that need to be fulfilled for correct request", HFILL}
         },
         {
             &hf_http2_headers_expires,
-                {"expires", "http2.headers.expires",
+                {"expires", "http2_headers_expires",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Data after which resource will be stale", HFILL}
         },
         {
             &hf_http2_headers_from,
-                {"from", "http2.headers.from",
+                {"from", "http2_headers_from",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Email of a person who responsible for a requesting data", HFILL}
         },
         {
             &hf_http2_headers_if_match,
-                {"if-match", "http2.headers.if_match",
+                {"if-match", "http2_headers_if_match",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Mechanism for requesting data matched by a list of ETags", HFILL}
         },
         {
             &hf_http2_headers_if_modified_since,
-                {"if-modified-since", "http2.headers.if_modified_since",
+                {"if-modified-since", "http2_headers_if_modified_since",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Resource will be sent with status code 200 if it was modified otherwise with status code 304", HFILL}
         },
         {
             &hf_http2_headers_if_none_match,
-                {"if-none-match", "http2.headers.if_none_match",
+                {"if-none-match", "http2_headers_if_none_match",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Mechanism for requesting data not matched by a list of ETags", HFILL}
         },
         {
             &hf_http2_headers_if_range,
-                {"if-range", "http2.headers.if_range",
+                {"if-range", "http2_headers_if_range",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Mechanism for a range request which is used to check if a resource was modified", HFILL}
         },
         {
             &hf_http2_headers_if_unmodified_since,
-                {"if-unmodified-since", "http2.headers.if_unmodified_since",
+                {"if-unmodified-since", "http2_headers_if_unmodified_since",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Resource will be processed if it was not modified otherwise 412 error will be returned", HFILL}
         },
         {
             &hf_http2_headers_last_modified,
-                {"last-modified", "http2.headers.last_modified",
+                {"last-modified", "http2_headers_last_modified",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Date and time at which the origin server believes the resource was last modified", HFILL}
         },
         {
             &hf_http2_headers_link,
-                {"link", "http2.headers.link",
+                {"link", "http2_headers_link",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Mechanism for indicating that resource will be preloaded", HFILL}
         },
         {
             &hf_http2_headers_location,
-                {"location", "http2.headers.location",
+                {"location", "http2_headers_location",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Mechanism for indicating that client will be redirected", HFILL}
         },
         {
             &hf_http2_headers_max_forwards,
-                {"max-forwards", "http2.headers.max_forwards",
+                {"max-forwards", "http2_headers_max_forwards",
                  FT_UINT64, BASE_DEC, NULL, 0x0,
                  "Mechanism for limiting the number of proxies", HFILL}
         },
         {
             &hf_http2_headers_proxy_authenticate,
-                {"proxy-authenticate", "http2.headers.proxy_authenticate",
+                {"proxy-authenticate", "http2_headers_proxy_authenticate",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Authentication method that should be used to gain access to a resource behind a proxy server", HFILL}
         },
         {
             &hf_http2_headers_proxy_authorization,
-                {"proxy-authorization", "http2.headers.proxy_authorization",
+                {"proxy-authorization", "http2_headers_proxy_authorization",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Credentials for a proxy-side authorization", HFILL}
         },
         {
             &hf_http2_headers_range,
-                {"range", "http2.headers.range",
+                {"range", "http2_headers_range",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Range of resource bytes that server should return", HFILL}
         },
         {
             &hf_http2_headers_referer,
-                {"referer", "http2.headers.referer",
+                {"referer", "http2_headers_referer",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Address of the previous web page", HFILL}
         },
         {
             &hf_http2_headers_refresh,
-                {"refresh", "http2.headers.refresh",
+                {"refresh", "http2_headers_refresh",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Time in seconds after which client will be redirected by given url", HFILL}
         },
         {
             &hf_http2_headers_retry_after,
-                {"retry-after", "http2.headers.retry_after",
+                {"retry-after", "http2_headers_retry_after",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Mechanism to indicate when resource expected to be available", HFILL}
         },
         {
             &hf_http2_headers_server,
-                {"server", "http2.headers.server",
+                {"server", "http2_headers_server",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Information about server software", HFILL}
         },
         {
             &hf_http2_headers_set_cookie,
-                {"set-cookie", "http2.headers.set_cookie",
+                {"set-cookie", "http2_headers_set_cookie",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Send a cookie to the client", HFILL}
         },
         {
             &hf_http2_headers_strict_transport_security,
-                {"strict-transport-security", "http2.headers.strict_transport_security",
+                {"strict-transport-security", "http2_headers_strict_transport_security",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "HSTS indicates that resource should be accessed only using HTTPS", HFILL}
         },
         {
             &hf_http2_headers_user_agent,
-                {"user-agent", "http2.headers.user_agent",
+                {"user-agent", "http2_headers_user_agent",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Information about client software", HFILL}
         },
         {
             &hf_http2_headers_vary,
-                {"vary", "http2.headers.vary",
+                {"vary", "http2_headers_vary",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Mechanism for selecting which header will be used for content negotiation algorithm", HFILL}
         },
         {
             &hf_http2_headers_via,
-                {"via", "http2.headers.via",
+                {"via", "http2_headers_via",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Additional information for loop detection and protocol capabilities in proxy requests", HFILL}
         },
         {
             &hf_http2_headers_www_authenticate,
-                {"www-authenticate", "http2.headers.www_authenticate",
+                {"www-authenticate", "http2_headers_www_authenticate",
                  FT_STRING, STR_UNICODE, NULL, 0x0,
                  "Authentication method that should be used to gain access to a resource", HFILL}
         }
@@ -3549,437 +3549,437 @@ proto_register_http2(void)
     static hf_register_info hf[] = {
         /* Packet Header */
         { &hf_http2_stream,
-            { "Stream", "http2.stream",
+            { "Stream", "http2_stream",
                FT_NONE, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_length,
-            { "Length", "http2.length",
+            { "Length", "http2_length",
               FT_UINT24, BASE_DEC, NULL, 0x0,
               "The length (24 bits) of the frame payload (The 9 octets of the frame header are not included)", HFILL }
         },
         { &hf_http2_type,
-            { "Type", "http2.type",
+            { "Type", "http2_type",
                FT_UINT8, BASE_DEC, VALS(http2_type_vals), 0x0,
               "The frame type determines how the remainder of the frame header and payload are interpreted", HFILL }
         },
         { &hf_http2_r,
-            { "Reserved", "http2.r",
+            { "Reserved", "http2_r",
                FT_UINT32, BASE_HEX, NULL, MASK_HTTP2_RESERVED,
               "The semantics of this bit are undefined and the bit MUST remain unset (0) when sending and MUST be ignored when receiving", HFILL }
         },
 
         { &hf_http2_weight,
-            { "Weight", "http2.headers.weight",
+            { "Weight", "http2_headers_weight",
                FT_UINT8, BASE_DEC, NULL, 0x0,
               "An 8-bit weight for the identified priority", HFILL }
         },
         { &hf_http2_weight_real,
-            { "Weight real", "http2.headers.weight_real",
+            { "Weight real", "http2_headers_weight_real",
                FT_UINT8, BASE_DEC, NULL, 0x0,
               "Real Weight value (Add one to value)", HFILL }
         },
         { &hf_http2_streamid,
-            { "Stream Identifier", "http2.streamid",
+            { "Stream Identifier", "http2_streamid",
                FT_UINT32, BASE_DEC, NULL, MASK_HTTP2_STREAMID,
               "A 31-bit stream identifier", HFILL }
         },
         { &hf_http2_magic,
-            { "Magic", "http2.magic",
+            { "Magic", "http2_magic",
                FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_unknown,
-            { "Unknown", "http2.unknown",
+            { "Unknown", "http2_unknown",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         /* Flags */
         { &hf_http2_flags,
-            { "Flags", "http2.flags",
+            { "Flags", "http2_flags",
                FT_UINT8, BASE_HEX, NULL, 0x0,
               "Flags are assigned semantics specific to the indicated frame type", HFILL }
         },
         { &hf_http2_flags_end_stream,
-            { "End Stream", "http2.flags.end_stream",
+            { "End Stream", "http2_flags_end_stream",
               FT_BOOLEAN, 8, NULL, HTTP2_FLAGS_END_STREAM,
               "Indicates that this frame is the last that the endpoint will send for the identified stream", HFILL }
         },
         { &hf_http2_flags_end_headers,
-            { "End Headers", "http2.flags.eh",
+            { "End Headers", "http2_flags_eh",
               FT_BOOLEAN, 8, NULL, HTTP2_FLAGS_END_HEADERS,
               "Indicates that this frame contains an entire header block  and is not followed by any CONTINUATION frames.", HFILL }
         },
         { &hf_http2_flags_padded,
-            { "Padded", "http2.flags.padded",
+            { "Padded", "http2_flags_padded",
               FT_BOOLEAN, 8, NULL, HTTP2_FLAGS_PADDED,
               "Indicates that the Pad Length field is present", HFILL }
         },
         { &hf_http2_flags_priority,
-            { "Priority", "http2.flags.priority",
+            { "Priority", "http2_flags_priority",
                FT_BOOLEAN, 8, NULL, HTTP2_FLAGS_PRIORITY,
               "Indicates that the Exclusive Flag (E), Stream Dependency, and Weight fields are present", HFILL }
         },
 
         { &hf_http2_flags_ping_ack,
-            { "ACK", "http2.flags.ack.ping",
+            { "ACK", "http2_flags_ack_ping",
                FT_BOOLEAN, 8, NULL, HTTP2_FLAGS_ACK,
               "Set indicates that this PING frame is a PING response", HFILL }
         },
         { &hf_http2_flags_unused,
-            { "Unused", "http2.flags.unused",
+            { "Unused", "http2_flags_unused",
                FT_UINT8, BASE_HEX, NULL, HTTP2_FLAGS_UNUSED,
               "Must be zero", HFILL }
         },
         { &hf_http2_flags_unused_settings,
-            { "Unused", "http2.flags.unused_settings",
+            { "Unused", "http2_flags_unused_settings",
                FT_UINT8, BASE_HEX, NULL, HTTP2_FLAGS_UNUSED_SETTINGS,
               "Must be zero", HFILL }
         },
         { &hf_http2_flags_unused_ping,
-            { "Unused", "http2.flags.unused_ping",
+            { "Unused", "http2_flags_unused_ping",
                FT_UINT8, BASE_HEX, NULL, HTTP2_FLAGS_UNUSED_PING,
               "Must be zero", HFILL }
         },
         { &hf_http2_flags_unused_continuation,
-            { "Unused", "http2.flags.unused_continuation",
+            { "Unused", "http2_flags_unused_continuation",
                FT_UINT8, BASE_HEX, NULL, HTTP2_FLAGS_UNUSED_CONTINUATION,
               "Must be zero", HFILL }
         },
         { &hf_http2_flags_unused_push_promise,
-            { "Unused", "http2.flags.unused_push_promise",
+            { "Unused", "http2_flags_unused_push_promise",
                FT_UINT8, BASE_HEX, NULL, HTTP2_FLAGS_UNUSED_PUSH_PROMISE,
               "Must be zero", HFILL }
         },
         { &hf_http2_flags_unused_data,
-            { "Unused", "http2.flags.unused_data",
+            { "Unused", "http2_flags_unused_data",
                FT_UINT8, BASE_HEX, NULL, HTTP2_FLAGS_UNUSED_DATA,
               "Must be zero", HFILL }
         },
         { &hf_http2_flags_unused_headers,
-            { "Unused", "http2.flags.unused_headers",
+            { "Unused", "http2_flags_unused_headers",
                FT_UINT8, BASE_HEX, NULL, HTTP2_FLAGS_UNUSED_HEADERS,
               "Must be zero", HFILL }
         },
         { &hf_http2_flags_settings_ack,
-            { "ACK", "http2.flags.ack.settings",
+            { "ACK", "http2_flags_ack_settings",
                FT_BOOLEAN, 8, NULL, HTTP2_FLAGS_ACK,
               "Indicates that this frame acknowledges receipt and application of the peer's SETTINGS frame", HFILL }
         },
         { &hf_http2_padding,
-            { "Pad Length", "http2.padding",
+            { "Pad Length", "http2_padding",
               FT_UINT8, BASE_HEX, NULL, 0x0,
               "Padding size", HFILL }
         },
         { &hf_http2_pad_length,
-            { "Pad Length", "http2.pad_length",
+            { "Pad Length", "http2_pad_length",
               FT_UINT16, BASE_DEC, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_excl_dependency,
-            { "Exclusive", "http2.exclusive",
+            { "Exclusive", "http2_exclusive",
               FT_BOOLEAN, 32, NULL, 0x80000000,
               "A single bit flag indicates that the stream dependency is exclusive", HFILL }
         },
         { &hf_http2_stream_dependency,
-            { "Stream Dependency", "http2.stream_dependency",
+            { "Stream Dependency", "http2_stream_dependency",
               FT_UINT32, BASE_DEC, NULL, 0x7FFFFFFF,
               "An identifier for the stream that this stream depends on", HFILL }
         },
 
         /* Data */
         { &hf_http2_data_segment,
-          { "DATA segment", "http2.data.segment",
+          { "DATA segment", "http2_data_segment",
             FT_BYTES, BASE_NONE, NULL, 0x0,
             "A data segment used in reassembly", HFILL}
         },
         { &hf_http2_data_data,
-            { "Data", "http2.data.data",
+            { "Data", "http2_data_data",
               FT_BYTES, BASE_NONE, NULL, 0x0,
               "Application data", HFILL }
         },
         { &hf_http2_data_padding,
-            { "Padding", "http2.data.padding",
+            { "Padding", "http2_data_padding",
               FT_BYTES, BASE_NONE, NULL, 0x0,
               "Padding octets", HFILL }
         },
         /* Body fragments */
         { &hf_http2_body_fragments,
-            { "Body fragments", "http2.body.fragments",
+            { "Body fragments", "http2_body_fragments",
               FT_NONE, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_body_fragment,
-            { "Body fragment", "http2.body.fragment",
+            { "Body fragment", "http2_body_fragment",
               FT_FRAMENUM, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_body_fragment_overlap,
-            { "Body fragment overlap", "http2.body.fragment.overlap",
+            { "Body fragment overlap", "http2_body_fragment_overlap",
               FT_BOOLEAN, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_body_fragment_overlap_conflicts,
-            { "Body fragment overlapping with conflicting data", "http2.body.fragment.overlap.conflicts",
+            { "Body fragment overlapping with conflicting data", "http2_body_fragment_overlap_conflicts",
               FT_BOOLEAN, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_body_fragment_multiple_tails,
-            { "Body has multiple tail fragments", "http2.body.fragment.multiple_tails",
+            { "Body has multiple tail fragments", "http2_body_fragment_multiple_tails",
               FT_BOOLEAN, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_body_fragment_too_long_fragment,
-            { "Body fragment too long", "http2.body.fragment.too_long_fragment",
+            { "Body fragment too long", "http2_body_fragment_too_long_fragment",
               FT_BOOLEAN, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_body_fragment_error,
-            { "Body defragment error", "http2.body.fragment.error",
+            { "Body defragment error", "http2_body_fragment_error",
               FT_FRAMENUM, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_body_fragment_count,
-            { "Body fragment count", "http2.body.fragment.count",
+            { "Body fragment count", "http2_body_fragment_count",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_body_reassembled_in,
-            { "Reassembled body in frame", "http2.body.reassembled.in",
+            { "Reassembled body in frame", "http2_body_reassembled_in",
               FT_FRAMENUM, BASE_NONE, NULL, 0x0,
               "Reassembled body in frame number", HFILL }
         },
         { &hf_http2_body_reassembled_length,
-            { "Reassembled body length", "http2.body.reassembled.length",
+            { "Reassembled body length", "http2_body_reassembled_length",
                FT_UINT32, BASE_DEC, NULL, 0x0,
               "Reassembled body in frame number", HFILL }
         },
         { &hf_http2_body_reassembled_data,
-            { "Reassembled body data", "http2.body.reassembled.data",
+            { "Reassembled body data", "http2_body_reassembled_data",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               "Reassembled body data for multisegment PDU spanning across DATAs", HFILL }
         },
 
         /* Headers */
         { &hf_http2_headers,
-            { "Header Block Fragment", "http2.headers",
+            { "Header Block Fragment", "http2_headers",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               "A header block fragment", HFILL }
         },
         { &hf_http2_headers_padding,
-            { "Padding", "http2.headers.padding",
+            { "Padding", "http2_headers_padding",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               "Padding octets", HFILL }
         },
         { &hf_http2_header,
-            { "Header", "http2.header",
+            { "Header", "http2_header",
                FT_NONE, BASE_NONE, NULL, 0x0,
                NULL, HFILL }
         },
         { &hf_http2_header_length,
-            { "Header Length", "http2.header.length",
+            { "Header Length", "http2_header_length",
                FT_UINT32, BASE_DEC, NULL, 0x0,
                NULL, HFILL }
         },
         { &hf_http2_header_count,
-            { "Header Count", "http2.header.count",
+            { "Header Count", "http2_header_count",
                FT_UINT32, BASE_DEC, NULL, 0x0,
                NULL, HFILL }
         },
         { &hf_http2_header_name_length,
-            { "Name Length", "http2.header.name.length",
+            { "Name Length", "http2_header_name_length",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_header_name,
-            { "Name", "http2.header.name",
+            { "Name", "http2_header_name",
               FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_header_value_length,
-            { "Value Length", "http2.header.value.length",
+            { "Value Length", "http2_header_value_length",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_header_value,
-            { "Value", "http2.header.value",
+            { "Value", "http2_header_value",
               FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_header_unescaped,
-            { "Unescaped", "http2.header.unescaped",
+            { "Unescaped", "http2_header_unescaped",
               FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_header_repr,
-            { "Representation", "http2.header.repr",
+            { "Representation", "http2_header_repr",
               FT_STRING, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_header_index,
-            { "Index", "http2.header.index",
+            { "Index", "http2_header_index",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_header_table_size_update,
-            { "Header table size update", "http2.header_table_size_update",
+            { "Header table size update", "http2_header_table_size_update",
                FT_NONE, BASE_NONE, NULL, 0x0,
                NULL, HFILL }
         },
         { &hf_http2_header_table_size,
-            { "Header table size", "http2.header_table_size_update.header_table_size",
+            { "Header table size", "http2_header_table_size_update_header_table_size",
                FT_UINT32, BASE_DEC, NULL, 0x0,
                NULL, HFILL }
         },
         /* RST Stream */
         { &hf_http2_rst_stream_error,
-            { "Error", "http2.rst_stream.error",
+            { "Error", "http2_rst_stream_error",
                FT_UINT32, BASE_DEC, VALS(http2_error_codes_vals), 0x0,
               "The error code indicates why the stream is being terminated", HFILL }
         },
 
         /* Settings */
         { &hf_http2_settings,
-            { "Settings", "http2.settings",
+            { "Settings", "http2_settings",
                FT_NONE, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_settings_identifier,
-            { "Settings Identifier", "http2.settings.id",
+            { "Settings Identifier", "http2_settings_id",
                FT_UINT16, BASE_DEC, VALS(http2_settings_vals), 0x0,
               NULL, HFILL }
         },
         { &hf_http2_settings_header_table_size,
-            { "Header table size", "http2.settings.header_table_size",
+            { "Header table size", "http2_settings_header_table_size",
                FT_UINT32, BASE_DEC, NULL, 0x0,
               "Allows the sender to inform the remote endpoint of the size of the header compression table used to decode header blocks. The initial value is 4096 bytes", HFILL }
         },
         { &hf_http2_settings_enable_push,
-            { "Enable PUSH", "http2.settings.enable_push",
+            { "Enable PUSH", "http2_settings_enable_push",
                FT_UINT32, BASE_DEC, NULL, 0x0,
               "The initial value is 1, which indicates that push is permitted", HFILL }
         },
         { &hf_http2_settings_max_concurrent_streams,
-            { "Max concurrent streams", "http2.settings.max_concurrent_streams",
+            { "Max concurrent streams", "http2_settings_max_concurrent_streams",
                FT_UINT32, BASE_DEC, NULL, 0x0,
               "Indicates the maximum number of concurrent streams that the sender will allow", HFILL }
         },
         { &hf_http2_settings_initial_window_size,
-            { "Initial Windows Size", "http2.settings.initial_window_size",
+            { "Initial Windows Size", "http2_settings_initial_window_size",
                FT_UINT32, BASE_DEC, NULL, 0x0,
               "Indicates the sender's initial window size (in bytes) for stream level flow control", HFILL }
         },
         { &hf_http2_settings_max_frame_size,
-            { "Max frame size", "http2.settings.max_frame_size",
+            { "Max frame size", "http2_settings_max_frame_size",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               "Indicates the size of the largest frame payload that the sender will allow", HFILL }
         },
         { &hf_http2_settings_max_header_list_size,
-            { "Max header list size", "http2.settings.max_header_list_size",
+            { "Max header list size", "http2_settings_max_header_list_size",
               FT_UINT32, BASE_DEC, NULL, 0x0,
               "This advisory setting informs a peer of the maximum size of header list that the sender is prepared to accept.", HFILL }
         },
         { &hf_http2_settings_unknown,
-            { "Unknown Settings", "http2.settings.unknown",
+            { "Unknown Settings", "http2_settings_unknown",
                FT_UINT32, BASE_DEC, NULL, 0x0,
               NULL, HFILL }
         },
 
         /* Push Promise */
         { &hf_http2_push_promise_r,
-            { "Reserved", "http2.push_promise.r",
+            { "Reserved", "http2_push_promise_r",
                FT_UINT32, BASE_HEX, NULL, MASK_HTTP2_RESERVED,
               "Must be zero", HFILL }
         },
 
         { &hf_http2_push_promise_promised_stream_id,
-            { "Promised-Stream-ID", "http2.push_promise.promised_stream_id",
+            { "Promised-Stream-ID", "http2_push_promise_promised_stream_id",
                FT_UINT32, BASE_DEC, NULL, MASK_HTTP2_PRIORITY,
               "Identifies the stream the endpoint intends to start sending frames for", HFILL }
         },
         { &hf_http2_push_promise_header,
-            { "Header Block Fragment", "http2.push_promise.header",
+            { "Header Block Fragment", "http2_push_promise_header",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               "Containing request header fields", HFILL }
         },
         { &hf_http2_push_promise_padding,
-            { "Padding", "http2.push_promise.padding",
+            { "Padding", "http2_push_promise_padding",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               "Padding octets", HFILL }
         },
 
         /* Ping / Pong */
         { &hf_http2_ping,
-            { "Ping", "http2.ping",
+            { "Ping", "http2_ping",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
         { &hf_http2_pong,
-            { "Pong", "http2.pong",
+            { "Pong", "http2_pong",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
 
         /* Goaway */
         { &hf_http2_goaway_r,
-            { "Reserved", "http2.goway.r",
+            { "Reserved", "http2_goway_r",
                FT_UINT32, BASE_HEX, NULL, MASK_HTTP2_RESERVED,
               "Must be zero", HFILL }
         },
         { &hf_http2_goaway_last_stream_id,
-            { "Promised-Stream-ID", "http2.goaway.last_stream_id",
+            { "Promised-Stream-ID", "http2_goaway_last_stream_id",
                FT_UINT32, BASE_DEC, NULL, MASK_HTTP2_PRIORITY,
               "Contains the highest numbered stream identifier for which the sender of the GOAWAY frame has received frames on and might have taken some action on", HFILL }
         },
         { &hf_http2_goaway_error,
-            { "Error", "http2.goaway.error",
+            { "Error", "http2_goaway_error",
                FT_UINT32, BASE_DEC, VALS(http2_error_codes_vals), 0x0,
               "The error code indicates the reason for closing the connection", HFILL }
         },
         { &hf_http2_goaway_addata,
-            { "Additional Debug Data", "http2.goaway.addata",
+            { "Additional Debug Data", "http2_goaway_addata",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               NULL, HFILL }
         },
 
         /* Window Update */
         { &hf_http2_window_update_r,
-            { "Reserved", "http2.window_update.r",
+            { "Reserved", "http2_window_update_r",
                FT_UINT32, BASE_HEX, NULL, MASK_HTTP2_RESERVED,
               "Must be zero", HFILL }
         },
         { &hf_http2_window_update_window_size_increment,
-            { "Window Size Increment", "http2.window_update.window_size_increment",
+            { "Window Size Increment", "http2_window_update_window_size_increment",
                FT_UINT32, BASE_DEC, NULL, MASK_HTTP2_PRIORITY,
               "Indicating the number of bytes that the sender can transmit in addition to the existing flow control window", HFILL }
         },
 
         /* Continuation */
         { &hf_http2_continuation_header,
-            { "Continuation Header", "http2.continuation.header",
+            { "Continuation Header", "http2_continuation_header",
                FT_STRING, BASE_NONE, NULL, 0x0,
               "Contains a header block fragment", HFILL }
         },
         { &hf_http2_continuation_padding,
-            { "Padding", "http2.continuation.padding",
+            { "Padding", "http2_continuation_padding",
                FT_BYTES, BASE_NONE, NULL, 0x0,
               "Padding octets", HFILL }
         },
 
         /* ALTSVC */
         { &hf_http2_altsvc_origin_len,
-            { "Origin Length", "http2.altsvc.origin.len",
+            { "Origin Length", "http2_altsvc_origin_len",
                FT_UINT16, BASE_DEC, NULL, 0x0,
               "indicating the length, in octets, of the Origin field.", HFILL }
         },
         { &hf_http2_altsvc_origin,
-            { "Origin", "http2.altsvc.origin",
+            { "Origin", "http2_altsvc_origin",
                FT_STRING, BASE_NONE, NULL, 0x0,
               "A sequence of characters containing ASCII serialisation of an "
               "origin that the alternate service is applicable to.", HFILL }
         },
         { &hf_http2_altsvc_field_value,
-            { "Field/Value", "http2.altsvc.field_value",
+            { "Field/Value", "http2_altsvc_field_value",
                FT_STRING, BASE_NONE, NULL, 0x0,
               "A sequence of octets containing a value identical to the Alt-Svc field value", HFILL }
         },

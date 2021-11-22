@@ -202,16 +202,16 @@ proto_register_chdlc(void)
 {
   static hf_register_info hf[] = {
     { &hf_chdlc_addr,
-      { "Address", "chdlc.address", FT_UINT8, BASE_HEX,
+      { "Address", "chdlc_address", FT_UINT8, BASE_HEX,
         VALS(chdlc_address_vals), 0x0, NULL, HFILL }},
     { &hf_chdlc_control,
-      { "Control", "chdlc.control", FT_UINT8, BASE_HEX,
+      { "Control", "chdlc_control", FT_UINT8, BASE_HEX,
         NULL, 0x0, NULL, HFILL }},
     { &hf_chdlc_proto,
-      { "Protocol", "chdlc.protocol", FT_UINT16, BASE_HEX,
+      { "Protocol", "chdlc_protocol", FT_UINT16, BASE_HEX,
         VALS(chdlc_vals), 0x0, NULL, HFILL }},
     { &hf_chdlc_clns_padding,
-      { "CLNS Padding", "chdlc.clns_padding", FT_UINT8, BASE_HEX,
+      { "CLNS Padding", "chdlc_clns_padding", FT_UINT8, BASE_HEX,
         NULL, 0x0, NULL, HFILL }},
   };
 
