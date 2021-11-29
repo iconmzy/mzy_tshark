@@ -1,26 +1,29 @@
 {
-	"protocolName": "TestProto23",
-	"shortName": "expro2",
-	"filterName": "exprotocol2",
+	"protocolName": "addprotocol1",
+	"shortName": "ADDPRO1",
+	"filterName": "addpro1",
 	"port": 1111,
 	"transportProtocol": "udp",
-	"totalLength": 25,
+	"totalLength": 32,
 	"parts": [
 		{
-			"name": "identify2",
-			"abbName": "id2",
-			"length": 12,
+			"name": "payload_feature",
+			"abbName": "pl_feature",
+			"length": 8,
 			"type": 2
-		},
-		{
-			"name": "function2",
-			"abbName": "func2",
+		}, {
+			"name": "identify",
+			"abbName": "id",
+			"length": 16,
+			"type": 2
+		}, {
+			"name": "Version",
+			"abbName": "version",
 			"length": 4,
 			"type": 2
-		},
-		{
-			"name": "data_left2",
-			"abbName": "dleft2",
+		}, {
+			"name": "data_left",
+			"abbName": "dleft",
 			"length": 4,
 			"type": 0
 		}

@@ -57,35 +57,35 @@ static header_field_info *hfi_udplite = NULL;
 #define UDPLITE_HFI_INIT HFI_INIT(proto_udplite)
 
 static header_field_info hfi_udp_srcport UDP_HFI_INIT =
-{ "Source Port", "udp.srcport", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
+{ "Source Port", "udp_srcport", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_dstport UDP_HFI_INIT =
-{ "Destination Port", "udp.dstport", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
+{ "Destination Port", "udp_dstport", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_port UDP_HFI_INIT =
-{ "Source or Destination Port", "udp.port", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
+{ "Source or Destination Port", "udp_port", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_stream UDP_HFI_INIT =
- { "Stream index", "udp.stream", FT_UINT32, BASE_DEC, NULL, 0x0,
+ { "Stream index", "udp_stream", FT_UINT32, BASE_DEC, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_length UDP_HFI_INIT =
-{ "Length", "udp.length", FT_UINT16, BASE_DEC, NULL, 0x0,
+{ "Length", "udp_length", FT_UINT16, BASE_DEC, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_checksum UDP_HFI_INIT =
-{ "Checksum", "udp.checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
+{ "Checksum", "udp_checksum", FT_UINT16, BASE_HEX, NULL, 0x0,
   "Details at: https://www.wireshark.org/docs/wsug.html.chunked/ChAdvChecksums.html", HFILL };
 
 static header_field_info hfi_udp_checksum_calculated UDP_HFI_INIT =
-{ "Calculated Checksum", "udp.checksum.calculated", FT_UINT16, BASE_HEX, NULL, 0x0,
+{ "Calculated Checksum", "udp_checksum_calculated", FT_UINT16, BASE_HEX, NULL, 0x0,
   "The expected UDP checksum field as calculated from the UDP packet", HFILL };
 
 static header_field_info hfi_udp_checksum_status UDP_HFI_INIT =
-{ "Checksum Status", "udp.checksum.status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
+{ "Checksum Status", "udp_checksum_status", FT_UINT8, BASE_NONE, VALS(proto_checksum_vals), 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_proc_src_uid UDP_HFI_INIT =
