@@ -610,9 +610,11 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
 
     //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
     /*返回string::npos表示未查找到匹配项*/
+/*
     while (key_str.find('.') != std::string::npos) {
         key_str.replace(key_str.find('.'), 1, "_");
     }
+*/
 
              //重复字段的数组处理
           /*  if(judgeDuplicateKeyStr(key_str)){
@@ -800,19 +802,19 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         while (child != nullptr) {
             /*该层协议具有内容*/
             field_info *child_finfo = child->finfo;
-            if (strcmp(child_finfo->hfinfo->abbrev, "frame.encap_type") == 0) {
+            if (strcmp(child_finfo->hfinfo->abbrev, "frame_encap_type") == 0) {
                 yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_encap_type", value_240);
                 child = child->next;
                 continue;
             }
-            else if (strcmp(child_finfo->hfinfo->abbrev, "frame.time_epoch") == 0) {
+            else if (strcmp(child_finfo->hfinfo->abbrev, "frame_time_epoch") == 0) {
                 yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_time_epoch", value_240);
                 child = child->next;
                 continue;
             }
-            else if (strcmp(child_finfo->hfinfo->abbrev, "frame.len") == 0) {
+            else if (strcmp(child_finfo->hfinfo->abbrev, "frame_len") == 0) {
                 yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                 cJSON_AddStringToObject(write_in_files_cJson, "frame_len", value_240);
                 break; //这里最后一个，提高效率
@@ -830,13 +832,13 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             proto_node *child = node->first_child;
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
-                if (strcmp(child_finfo->hfinfo->abbrev, "eth.dst") == 0) {
+                if (strcmp(child_finfo->hfinfo->abbrev, "eth_dst") == 0) {
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "eth_dst", value_240);
                     child = child->next;
                     continue;
                 }
-                else if (strcmp(child_finfo->hfinfo->abbrev, "eth.src") == 0) {
+                else if (strcmp(child_finfo->hfinfo->abbrev, "eth_src") == 0) {
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "eth_src", value_240);
                     break;//这里最后一个，提高效率
@@ -851,15 +853,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             proto_node *child = node->first_child;
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
-                if (strcmp(child_finfo->hfinfo->abbrev, "ip.src") == 0 or
-                    strcmp(child_finfo->hfinfo->abbrev, "ipv6.src") == 0) {
+                if (strcmp(child_finfo->hfinfo->abbrev, "ip_src") == 0 or
+                    strcmp(child_finfo->hfinfo->abbrev, "ipv6_src") == 0) {
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value_240);
                     child = child->next;
                     continue;
                 }
-                else if (strcmp(child_finfo->hfinfo->abbrev, "ip.dst") == 0 or
-                    strcmp(child_finfo->hfinfo->abbrev, "ipv6.dst") == 0) {
+                else if (strcmp(child_finfo->hfinfo->abbrev, "ip_dst") == 0 or
+                    strcmp(child_finfo->hfinfo->abbrev, "ipv6_dst") == 0) {
 //                    gchar value[&value_240_len] = {'\0'};
 //                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),&value_240_len);
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
@@ -878,15 +880,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             proto_node *child = node->first_child;
             while (child != nullptr) {
                 field_info *child_finfo = child->finfo;
-                if (strcmp(child_finfo->hfinfo->abbrev, "tcp.srcport") == 0 or
-                    strcmp(child_finfo->hfinfo->abbrev, "udp.srcport") == 0) {
+                if (strcmp(child_finfo->hfinfo->abbrev, "tcp_srcport") == 0 or
+                    strcmp(child_finfo->hfinfo->abbrev, "udp_srcport") == 0) {
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "src_port", value_240);
                     child = child->next;
                     continue;
                 }
-                else if (strcmp(child_finfo->hfinfo->abbrev, "tcp.dstport") == 0 or
-                    strcmp(child_finfo->hfinfo->abbrev, "udp.dstport") == 0) {
+                else if (strcmp(child_finfo->hfinfo->abbrev, "tcp_dstport") == 0 or
+                    strcmp(child_finfo->hfinfo->abbrev, "udp_dstport") == 0) {
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value_240);
                     child = child->next;
@@ -904,7 +906,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                 continue;
             }
             field_info *fi_data = node->first_child->finfo;
-            if(strcmp(fi_data->hfinfo->abbrev,"data.data") == 0){
+            if(strcmp(fi_data->hfinfo->abbrev,"data_data") == 0){
                 auto *value = (gchar*)g_malloc_n(sizeof(gchar),fi_data->length *2 +1);
                 int len = fi_data->length *2 +1;
                 yy_proto_item_fill_label(fi_data,&value,&len);
