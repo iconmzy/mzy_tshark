@@ -516,11 +516,20 @@ int GetProtoInfos(struct allExProtocols *exprotocols)
 {
     for (int i = 0; i < exprotocols->exProtocolNum; i++)
     {
+        for (int j = 0; j < 10; j++){
+            allProtoInfo[i].port[j] = 0;
+        }
         //一共有多少列的数据
         allProtoInfo[i].protoNum = exprotocols->exProto[i].partHead->partsNum;
         int num = exprotocols->exProto[i].partHead->partsNum;
+        int port_i = 0;
         //端口号
-        allProtoInfo[i].port = exprotocols->exProto[i].port;
+        while(exprotocols->exProto[i].port[port_i] != 0 && port_i < 10){
+            allProtoInfo[i].port[port_i] = exprotocols->exProto[i].port[port_i];
+            port_i++;
+        }
+
+
         //获得协议名称
         strcpy(allProtoInfo[i].protoName, exprotocols->exProto[i].protocolName);
         strcpy(allProtoInfo[i].shortName, exprotocols->exProto[i].shortName);
@@ -551,28 +560,66 @@ void proto_register_exprotocol(int j)
         hf[i].p_id = &(allProtoInfo[j].column[i].id);
         hf[i].hfinfo.name = allProtoInfo[j].column[i].name;
         hf[i].hfinfo.abbrev = allProtoInfo[j].column[i].abbName;
+
         switch (allProtoInfo[j].column[i].type)
         {
             case (0):
-                hf[i].hfinfo.type = FT_UINT8;
-                hf[i].hfinfo.display = BASE_HEX;
+                hf[i].hfinfo.type = FT_BOOLEAN;
+                hf[i].hfinfo.display = BASE_NONE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0x01;
+                hf[i].hfinfo.blurb = NULL;
                 break;
             case (1):
-                hf[i].hfinfo.type = FT_FLOAT;
-                hf[i].hfinfo.display = BASE_FLOAT;
+                hf[i].hfinfo.type = FT_IPv4;
+                hf[i].hfinfo.display = BASE_NONE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
                 break;
             case (2):
+                hf[i].hfinfo.type = FT_IPv6;
+                hf[i].hfinfo.display = BASE_NONE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
+                break;
+            case (3):
+                hf[i].hfinfo.type = FT_ABSOLUTE_TIME;
+                hf[i].hfinfo.display = ABSOLUTE_TIME_LOCAL;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
+                break;
+            case (4):
+                hf[i].hfinfo.type = FT_INT64;
+                hf[i].hfinfo.display = BASE_CUSTOM ;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
+                break;
+            case (5):
+                hf[i].hfinfo.type = FT_FLOAT;
+                hf[i].hfinfo.display = BASE_FLOAT;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
+                break;
+            case (6):
                 hf[i].hfinfo.type = FT_STRING;
                 hf[i].hfinfo.display = STR_UNICODE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
                 break;
+/*        case (99):
+                proto_register_exprotocol(i);
+                break;*/
             default:
                 hf[i].hfinfo.type = FT_BYTES;
                 hf[i].hfinfo.display = BASE_NONE;
         }
 
-        hf[i].hfinfo.strings = NULL;
-        hf[i].hfinfo.bitmask = 0;
-        hf[i].hfinfo.blurb = NULL;
         HFILL_INIT(hf[i]);
 
     }
@@ -598,7 +645,7 @@ void proto_register_exprotocol(int j)
 
 void proto_reg_handoff_exprotocol(int index)
 {
-
+    int port_i = 0;
     char *transProto_t;
     char *display_name_t;
     char *internal_name_t;
@@ -610,11 +657,19 @@ void proto_reg_handoff_exprotocol(int index)
     if(strcmp(transProto_t,"udp") == 0){
         strcat(display_name_t," over UDP");
         heur_dissector_add("udp", heur_functions[index], display_name_t, internal_name_t, intproto[index], HEURISTIC_ENABLE);
-        dissector_add_uint("udp.port", allProtoInfo[index].port, exprotocol_handle);
+        while(allProtoInfo[index].port[port_i] != 0 && port_i < 10){
+            dissector_add_uint("udp.port", allProtoInfo[index].port[port_i], exprotocol_handle);
+            port_i++;
+        }
+
     } else if(strcmp(transProto_t,"tcp") == 0){
         strcat(display_name_t," over TCP");
         heur_dissector_add("tcp", heur_functions[index], display_name_t, internal_name_t, intproto[index], HEURISTIC_ENABLE);
-        dissector_add_uint("tcp.port", allProtoInfo[index].port, exprotocol_handle);
+        while(allProtoInfo[index].port[port_i] != 0 && port_i < 10){
+            dissector_add_uint("tcp.port", allProtoInfo[index].port[port_i], exprotocol_handle);
+            port_i++;
+        }
+
     }
 
 }

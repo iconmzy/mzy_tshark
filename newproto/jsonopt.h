@@ -8,21 +8,21 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-enum DataType
+/*enum DataType
 {
     ITYPE = 0, //int
     FTYPE,     //float
     CTYPE,     //char
     DTYPE,     //dictory
 
-};
+};*/
 struct PartHead;
 typedef struct parts
 {
     int length;
     char name[20];
     char abbName[20];
-    enum DataType type;
+    int type;
     struct PartHead *partHead;
 } parts;
 
@@ -37,9 +37,9 @@ typedef struct exProtocol
     char protocolName[20];
     char shortName[20];
     char filterName[20];
-    int port;
+    int port[10];
     char transportProtocol[10];
-    int totalLength;
+    //int totalLength;
     PartHead *partHead;
 } exProtocol;
 
