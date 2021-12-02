@@ -9,7 +9,7 @@ void PrintDataParts(struct PartHead *partHead)
 //		printf("abbName:%s\n", partHead->dataParts[i].abbName);
 		int typeTemp = partHead->dataParts[i].type;
 //		printf("type:%d\n", typeTemp);
-		if (typeTemp == DTYPE)
+		if (typeTemp == 999)
 		{
 			PrintDataParts(partHead->dataParts[i].partHead);
 		}
@@ -17,12 +17,17 @@ void PrintDataParts(struct PartHead *partHead)
 }
 void PrintExProtocol(struct exProtocol *exproto)
 {
+    int i = 0;
 	printf("\nprotocolName:%s\n", exproto->protocolName);
 	printf("shortName:%s\n", exproto->shortName);
 	printf("filterName:%s\n", exproto->filterName);
-	printf("port:%d\n", exproto->port);
+	while (exproto->port[i] != 0 && i <10){
+        printf("port:%d\n", exproto->port[i]);
+        i++;
+	}
+
 	printf("transportProtocol:%s\n", exproto->transportProtocol);
-	printf("totalLength:%d\n", exproto->totalLength);
+	//printf("totalLength:%d\n", exproto->totalLength);
 	PrintDataParts(exproto->partHead);
 }
 
@@ -86,10 +91,10 @@ int ReadPart(JsonReader *reader, PartHead **partHead)
 			}
 			int typeTemp = json_reader_get_int_value(reader);
 			(*partHead)->dataParts[readNum].type = typeTemp;
-			// printf("type:%d\n", typeTemp);
+			 //printf("type:%d\n", typeTemp);
 			json_reader_end_member(reader);
 
-			if (typeTemp == DTYPE)
+			if (typeTemp == 999)
 			{
 				ReadPart(reader, &((*partHead)->dataParts[readNum].partHead));
 			}
@@ -106,6 +111,7 @@ int ReadPart(JsonReader *reader, PartHead **partHead)
 
 int ReadHead(JsonReader *reader, exProtocol *proto)
 {
+
 	//read protocolName
 	if (!json_reader_read_member(reader, "protocolName"))
 	{
@@ -129,18 +135,39 @@ int ReadHead(JsonReader *reader, exProtocol *proto)
 		json_reader_end_member(reader);
 	}
 	//read port
-	if (!json_reader_read_member(reader, "port"))
+    int readNum = 0;
+    int portsNum = 0;
+	if (!json_reader_read_member(reader, "ports"))
 	{
 		printf("Read port Error\n");
 		return 0;
 	}
 	else
 	{
-		proto->port = json_reader_get_int_value(reader);
-		json_reader_end_member(reader);
+
+         portsNum = json_reader_count_elements(reader);
+
+        while (readNum < 10 & readNum < portsNum  ){
+            gboolean readFlag;
+            //printf("\nreadNum:%d\n", readNum);
+            readFlag = json_reader_read_element(reader, readNum);
+            if (!readFlag)
+            {
+                printf("Read ports Element Error\n");
+            }
+            proto->port[readNum] = json_reader_get_int_value(reader);
+
+            readNum++;
+            json_reader_end_element(reader);
+
+        }
+
+        json_reader_end_member(reader);
+
 	}
 
 	//read totalLength
+/*
 	if (!json_reader_read_member(reader, "totalLength"))
 	{
 		printf("Read totalLength Error\n");
@@ -151,6 +178,7 @@ int ReadHead(JsonReader *reader, exProtocol *proto)
 		proto->totalLength = json_reader_get_int_value(reader);
 		json_reader_end_member(reader);
 	}
+*/
 
 	//read shortName
 	if (!json_reader_read_member(reader, "shortName"))

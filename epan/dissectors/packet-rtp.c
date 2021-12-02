@@ -2700,7 +2700,7 @@ proto_register_rtp(void)
             &hf_rtp_version,
             {
                 "Version",
-                "rtp.version",
+                "rtp_version",
                 FT_UINT8,
                 BASE_DEC,
                 VALS(rtp_version_vals),
@@ -2712,7 +2712,7 @@ proto_register_rtp(void)
             &hf_rtp_padding,
             {
                 "Padding",
-                "rtp.padding",
+                "rtp_padding",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -2724,7 +2724,7 @@ proto_register_rtp(void)
             &hf_rtp_extension,
             {
                 "Extension",
-                "rtp.ext",
+                "rtp_ext",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -2736,7 +2736,7 @@ proto_register_rtp(void)
             &hf_rtp_csrc_count,
             {
                 "Contributing source identifiers count",
-                "rtp.cc",
+                "rtp_cc",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -2748,7 +2748,7 @@ proto_register_rtp(void)
             &hf_rtp_marker,
             {
                 "Marker",
-                "rtp.marker",
+                "rtp_marker",
                 FT_BOOLEAN,
                 8,
                 NULL,
@@ -2760,7 +2760,7 @@ proto_register_rtp(void)
             &hf_rtp_payload_type,
             {
                 "Payload type",
-                "rtp.p_type",
+                "rtp_p_type",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -2772,7 +2772,7 @@ proto_register_rtp(void)
             &hf_rtp_seq_nr,
             {
                 "Sequence number",
-                "rtp.seq",
+                "rtp_seq",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -2784,7 +2784,7 @@ proto_register_rtp(void)
             &hf_rtp_ext_seq_nr,
             {
                 "Extended sequence number",
-                "rtp.extseq",
+                "rtp_extseq",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -2796,7 +2796,7 @@ proto_register_rtp(void)
             &hf_rtp_timestamp,
             {
                 "Timestamp",
-                "rtp.timestamp",
+                "rtp_timestamp",
                 FT_UINT32,
                 BASE_DEC,
                 NULL,
@@ -2808,7 +2808,7 @@ proto_register_rtp(void)
             &hf_rtp_ssrc,
             {
                 "Synchronization Source identifier",
-                "rtp.ssrc",
+                "rtp_ssrc",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -2820,7 +2820,7 @@ proto_register_rtp(void)
             &hf_rtp_prof_define,
             {
                 "Defined by profile",
-                "rtp.ext.profile",
+                "rtp_ext_profile",
                 FT_UINT16,
                 BASE_HEX_DEC,
                 VALS(rtp_ext_profile_vals),
@@ -2832,7 +2832,7 @@ proto_register_rtp(void)
             &hf_rtp_length,
             {
                 "Extension length",
-                "rtp.ext.len",
+                "rtp_ext_len",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -2844,7 +2844,7 @@ proto_register_rtp(void)
             &hf_rtp_csrc_items,
             {
                 "Contributing Source identifiers",
-                "rtp.csrc.items",
+                "rtp_csrc_items",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -2856,7 +2856,7 @@ proto_register_rtp(void)
             &hf_rtp_csrc_item,
             {
                 "CSRC item",
-                "rtp.csrc.item",
+                "rtp_csrc_item",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -2868,7 +2868,7 @@ proto_register_rtp(void)
             &hf_rtp_hdr_exts,
             {
                 "Header extensions",
-                "rtp.hdr_exts",
+                "rtp_hdr_exts",
                 FT_NONE,
                 BASE_NONE,
                 NULL,
@@ -2881,7 +2881,7 @@ proto_register_rtp(void)
             &hf_rtp_hdr_ext,
             {
                 "Header extension",
-                "rtp.hdr_ext",
+                "rtp_hdr_ext",
                 FT_UINT32,
                 BASE_HEX_DEC,
                 NULL,
@@ -2893,7 +2893,7 @@ proto_register_rtp(void)
             &hf_rtp_data,
             {
                 "Payload",
-                "rtp.payload",
+                "rtp_payload",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -2905,7 +2905,7 @@ proto_register_rtp(void)
             &hf_rtp_padding_data,
             {
                 "Padding data",
-                "rtp.padding.data",
+                "rtp_padding_data",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -2917,7 +2917,7 @@ proto_register_rtp(void)
             &hf_rtp_padding_count,
             {
                 "Padding count",
-                "rtp.padding.count",
+                "rtp_padding_count",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -2929,7 +2929,7 @@ proto_register_rtp(void)
             &hf_rtp_setup,
             {
                 "Stream setup",
-                "rtp.setup",
+                "rtp_setup",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -2941,7 +2941,7 @@ proto_register_rtp(void)
             &hf_rtp_setup_frame,
             {
                 "Setup frame",
-                "rtp.setup-frame",
+                "rtp_setup-frame",
                 FT_FRAMENUM,
                 BASE_NONE,
                 NULL,
@@ -2953,7 +2953,7 @@ proto_register_rtp(void)
             &hf_rtp_setup_method,
             {
                 "Setup Method",
-                "rtp.setup-method",
+                "rtp_setup-method",
                 FT_STRING,
                 BASE_NONE,
                 NULL,
@@ -2965,7 +2965,7 @@ proto_register_rtp(void)
             &hf_rtp_rfc2198_follow,
             {
                 "Follow",
-                "rtp.follow",
+                "rtp_follow",
                 FT_BOOLEAN,
                 8,
                 TFS(&tfs_set_notset),
@@ -2977,7 +2977,7 @@ proto_register_rtp(void)
             &hf_rtp_rfc2198_tm_off,
             {
                 "Timestamp offset",
-                "rtp.timestamp-offset",
+                "rtp_timestamp-offset",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -2989,7 +2989,7 @@ proto_register_rtp(void)
             &hf_rtp_rfc2198_bl_len,
             {
                 "Block length",
-                "rtp.block-length",
+                "rtp_block-length",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -3001,7 +3001,7 @@ proto_register_rtp(void)
             &hf_rtp_ext_rfc5285_id,
             {
                 "Identifier",
-                "rtp.ext.rfc5285.id",
+                "rtp_ext_rfc5285_id",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -3014,7 +3014,7 @@ proto_register_rtp(void)
             &hf_rtp_ext_rfc5285_length,
             {
                 "Length",
-                "rtp.ext.rfc5285.len",
+                "rtp_ext_rfc5285_len",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -3027,7 +3027,7 @@ proto_register_rtp(void)
             &hf_rtp_ext_rfc5285_appbits,
             {
                 "Application Bits",
-                "rtp.ext.rfc5285.appbits",
+                "rtp_ext_rfc5285_appbits",
                 FT_UINT8,
                 BASE_DEC,
                 NULL,
@@ -3040,7 +3040,7 @@ proto_register_rtp(void)
             &hf_rtp_ext_rfc5285_data,
             {
                 "Extension Data",
-                "rtp.ext.rfc5285.data",
+                "rtp_ext_rfc5285_data",
                 FT_BYTES,
                 BASE_NONE,
                 NULL,
@@ -3053,7 +3053,7 @@ proto_register_rtp(void)
             &hf_rfc4571_header_len,
             {
                 "RFC 4571 packet len",
-                "rtp.rfc4571.len",
+                "rtp_rfc4571_len",
                 FT_UINT16,
                 BASE_DEC,
                 NULL,
@@ -3064,79 +3064,79 @@ proto_register_rtp(void)
 
         /* reassembly stuff */
         {&hf_rtp_fragments,
-         {"RTP Fragments", "rtp.fragments", FT_NONE, BASE_NONE, NULL, 0x0,
+         {"RTP Fragments", "rtp_fragments", FT_NONE, BASE_NONE, NULL, 0x0,
           NULL, HFILL }
         },
 
         {&hf_rtp_fragment,
-         {"RTP Fragment data", "rtp.fragment", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
+         {"RTP Fragment data", "rtp_fragment", FT_FRAMENUM, BASE_NONE, NULL, 0x0,
           NULL, HFILL }
         },
 
         {&hf_rtp_fragment_overlap,
-         {"Fragment overlap", "rtp.fragment.overlap", FT_BOOLEAN, BASE_NONE,
+         {"Fragment overlap", "rtp_fragment_overlap", FT_BOOLEAN, BASE_NONE,
           NULL, 0x0, "Fragment overlaps with other fragments", HFILL }
         },
 
         {&hf_rtp_fragment_overlap_conflict,
-         {"Conflicting data in fragment overlap", "rtp.fragment.overlap.conflict",
+         {"Conflicting data in fragment overlap", "rtp_fragment_overlap_conflict",
           FT_BOOLEAN, BASE_NONE, NULL, 0x0,
           "Overlapping fragments contained conflicting data", HFILL }
         },
 
         {&hf_rtp_fragment_multiple_tails,
-         {"Multiple tail fragments found", "rtp.fragment.multipletails",
+         {"Multiple tail fragments found", "rtp_fragment_multipletails",
           FT_BOOLEAN, BASE_NONE, NULL, 0x0,
           "Several tails were found when defragmenting the packet", HFILL }
         },
 
         {&hf_rtp_fragment_too_long_fragment,
-         {"Fragment too long", "rtp.fragment.toolongfragment",
+         {"Fragment too long", "rtp_fragment_toolongfragment",
           FT_BOOLEAN, BASE_NONE, NULL, 0x0,
           "Fragment contained data past end of packet", HFILL }
         },
 
         {&hf_rtp_fragment_error,
-         {"Defragmentation error", "rtp.fragment.error",
+         {"Defragmentation error", "rtp_fragment_error",
           FT_FRAMENUM, BASE_NONE, NULL, 0x0,
           "Defragmentation error due to illegal fragments", HFILL }
         },
 
         {&hf_rtp_fragment_count,
-         {"Fragment count", "rtp.fragment.count",
+         {"Fragment count", "rtp_fragment_count",
           FT_UINT32, BASE_DEC, NULL, 0x0,
           NULL, HFILL }
         },
 
         {&hf_rtp_reassembled_in,
-         {"RTP fragment, reassembled in frame", "rtp.reassembled_in",
+         {"RTP fragment, reassembled in frame", "rtp_reassembled_in",
           FT_FRAMENUM, BASE_NONE, NULL, 0x0,
           "This RTP packet is reassembled in this frame", HFILL }
         },
         {&hf_rtp_reassembled_length,
-         {"Reassembled RTP length", "rtp.reassembled.length",
+         {"Reassembled RTP length", "rtp_reassembled_length",
           FT_UINT32, BASE_DEC, NULL, 0x0,
           "The total length of the reassembled payload", HFILL }
         },
         {&hf_srtp_encrypted_payload,
-         {"SRTP Encrypted Payload", "srtp.enc_payload",
+         {"SRTP Encrypted Payload", "srtp_enc_payload",
           FT_BYTES, BASE_NONE, NULL, 0x0,
           NULL, HFILL }
         },
 #if 0
         {&hf_srtp_null_encrypted_payload,
-         {"SRTP Payload with NULL encryption", "srtp.null_enc_payload",
+         {"SRTP Payload with NULL encryption", "srtp_null_enc_payload",
           FT_BYTES, BASE_NONE, NULL, 0x0,
           NULL, HFILL }
         },
 #endif
         {&hf_srtp_mki,
-         {"SRTP MKI", "srtp.mki",
+         {"SRTP MKI", "srtp_mki",
           FT_BYTES, BASE_NONE, NULL, 0x0,
           "SRTP Master Key Index", HFILL }
         },
         {&hf_srtp_auth_tag,
-         {"SRTP Auth Tag", "srtp.auth_tag",
+         {"SRTP Auth Tag", "srtp_auth_tag",
           FT_BYTES, BASE_NONE, NULL, 0x0,
           "SRTP Authentication Tag", HFILL }
         }

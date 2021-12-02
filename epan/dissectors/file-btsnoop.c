@@ -248,92 +248,92 @@ proto_register_btsnoop(void)
 
     static hf_register_info hf[] = {
         { &hf_btsnoop_header,
-            { "Header",                                    "btsnoop.header",
+            { "Header",                                    "btsnoop_header",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_magic_bytes,
-            { "Magic Bytes",                               "btsnoop.header.magic_bytes",
+            { "Magic Bytes",                               "btsnoop_header_magic_bytes",
             FT_STRINGZ, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_version,
-            { "Version",                                   "btsnoop.header.version",
+            { "Version",                                   "btsnoop_header_version",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_datalink,
-            { "Datalink",                                  "btsnoop.header.datalink",
+            { "Datalink",                                  "btsnoop_header_datalink",
             FT_UINT32, BASE_DEC_HEX, VALS(datalink_vals), 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_frame,
-            { "Frame",                                     "btsnoop.frame",
+            { "Frame",                                     "btsnoop_frame",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_origin_length,
-            { "Origin Length",                             "btsnoop.frame.origin_length",
+            { "Origin Length",                             "btsnoop_frame_origin_length",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_included_length,
-            { "Included Length",                           "btsnoop.frame.included_length",
+            { "Included Length",                           "btsnoop_frame_included_length",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_flags,
-            { "Flags",                                     "btsnoop.frame.flags",
+            { "Flags",                                     "btsnoop_frame_flags",
             FT_UINT32, BASE_HEX, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_cumulative_dropped_packets,
-            { "Cumulative Dropped Packets",                "btsnoop.frame.cumulative_dropped_packets",
+            { "Cumulative Dropped Packets",                "btsnoop_frame_cumulative_dropped_packets",
             FT_UINT32, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_timestamp_microseconds,
-            { "Timestamp Microseconds",                    "btsnoop.frame.timestamp_microseconds",
+            { "Timestamp Microseconds",                    "btsnoop_frame_timestamp_microseconds",
             FT_ABSOLUTE_TIME, ABSOLUTE_TIME_LOCAL, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_payload,
-            { "Payload",                                   "btsnoop.frame.payload",
+            { "Payload",                                   "btsnoop_frame_payload",
             FT_NONE, BASE_NONE, NULL, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_flags_h1_reserved,
-            { "Reserved",                                  "btsnoop.frame.flags.h1.reserved",
+            { "Reserved",                                  "btsnoop_frame_flags_h1_reserved",
             FT_UINT32, BASE_HEX, NULL, 0xFFFFFFFC,
             NULL, HFILL }
         },
         { &hf_btsnoop_flags_h1_channel_type,
-            { "Channel Type",                              "btsnoop.frame.flags.h1.channel_type",
+            { "Channel Type",                              "btsnoop_frame_flags_h1_channel_type",
             FT_UINT32, BASE_DEC, VALS(flags_h1_channel_type_vals), 0x02,
             NULL, HFILL }
         },
         { &hf_btsnoop_flags_h1_direction,
-            { "Direction",                                 "btsnoop.frame.flags.h1.direction",
+            { "Direction",                                 "btsnoop_frame_flags_h1_direction",
             FT_UINT32, BASE_DEC, VALS(flags_direction_vals), 0x01,
             NULL, HFILL }
         },
         { &hf_btsnoop_flags_h4_reserved,
-            { "Reserved",                                  "btsnoop.frame.flags.h4.reserved",
+            { "Reserved",                                  "btsnoop_frame_flags_h4_reserved",
             FT_UINT32, BASE_HEX, NULL, 0xFFFFFFFE,
             NULL, HFILL }
         },
         { &hf_btsnoop_flags_h4_direction,
-            { "Direction",                                 "btsnoop.frame.flags.h4.direction",
+            { "Direction",                                 "btsnoop_frame_flags_h4_direction",
             FT_UINT32, BASE_DEC, VALS(flags_direction_vals), 0x01,
             NULL, HFILL }
         },
         { &hf_btsnoop_flags_linux_monitor_opcode,
-            { "Opcode",                                    "btsnoop.frame.flags.linux_monitor.opcode",
+            { "Opcode",                                    "btsnoop_frame_flags_linux_monitor_opcode",
             FT_UINT16, BASE_HEX | BASE_EXT_STRING, &hci_mon_opcode_vals_ext, 0x00,
             NULL, HFILL }
         },
         { &hf_btsnoop_flags_linux_monitor_adapter_id,
-            { "Adapter ID",                                "btsnoop.frame.flags.linux_monitor.adapter_id",
+            { "Adapter ID",                                "btsnoop_frame_flags_linux_monitor_adapter_id",
             FT_UINT16, BASE_DEC, NULL, 0x00,
             NULL, HFILL }
         }

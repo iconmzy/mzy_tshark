@@ -9,13 +9,13 @@ struct columnInfo
     int id;
     char name[20];
     char abbName[20];
-    enum DataType type;
+    int type;
     int length;
 };
 struct protoInfo
 {
     int protoNum;
-    int port;
+    int port[10] ;
     char transportProto[10];
     char protoName[20];
     char shortName[20];

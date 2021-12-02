@@ -57,15 +57,15 @@ static header_field_info *hfi_udplite = NULL;
 #define UDPLITE_HFI_INIT HFI_INIT(proto_udplite)
 
 static header_field_info hfi_udp_srcport UDP_HFI_INIT =
-{ "Source Port", "udp.srcport", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
+{ "Source Port", "udp_srcport", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_dstport UDP_HFI_INIT =
-{ "Destination Port", "udp.dstport", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
+{ "Destination Port", "udp_dstport", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_port UDP_HFI_INIT =
-{ "Source or Destination Port", "udp.port", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
+{ "Source or Destination Port", "udp_port", FT_UINT16, BASE_PT_UDP, NULL, 0x0,
   NULL, HFILL };
 
 static header_field_info hfi_udp_stream UDP_HFI_INIT =
