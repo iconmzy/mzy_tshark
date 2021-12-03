@@ -2360,6 +2360,11 @@ int main(int argc, char *argv[]) {
                     pfileNameNode temp = headOfDirPath->next;
                     gboolean mutex = TRUE;
                     verify_identity_two(REGISTRATION_FILE_PATH);
+                    /* 若缺少该判断会导致在输出文件夹不存在时不会自动创建*/
+                    if (access(EXPORT_PATH, 0) != 0) {  // type为0表示判断该路径是否存在
+                        /*当前协议对应文件夹不存在*/
+                        mkdirs(EXPORT_PATH);
+                    }
                     while (temp != NULL) {
                         cf_name = temp->fileName_path;
                         /*将缓存的文件名全路径初始化*/
@@ -2412,6 +2417,8 @@ int main(int argc, char *argv[]) {
                         /*直接清理最终缓存*/
                         g_print("完成解析-->:%s\n",cf_name);
                         mutex_final_clean_flag = FALSE;
+
+
                         add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                         single_File_End_Init();
 
