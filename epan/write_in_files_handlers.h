@@ -77,7 +77,7 @@ WS_DLL_PUBLIC gboolean readConfigFilesStatus(void);
 WS_DLL_PUBLIC void clean_Temp_Files_All(void);
 
 WS_DLL_PUBLIC void add_record_in_result_file(void);
-
+WS_DLL_PUBLIC void mkdirs(const char *muldir);
 WS_DLL_PUBLIC void single_File_End_Init(void);
 
 WS_DLL_PUBLIC void change_result_file_name(void);

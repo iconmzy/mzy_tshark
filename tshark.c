@@ -2368,6 +2368,11 @@ int main(int argc, char *argv[]) {
                     pfileNameNode temp = headOfDirPath->next;
                     gboolean mutex = TRUE;
                     verify_identity_two(REGISTRATION_FILE_PATH);
+                    /* 若缺少该判断会导致在输出文件夹不存在时不会自动创建*/
+                    if (access(EXPORT_PATH, 0) != 0) {  // type为0表示判断该路径是否存在
+                        /*当前协议对应文件夹不存在*/
+                        mkdirs(EXPORT_PATH);
+                    }
                     while (temp != NULL) {
                         cf_name = temp->fileName_path;
                         /*将缓存的文件名全路径初始化*/
