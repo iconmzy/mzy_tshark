@@ -1765,6 +1765,10 @@ struct file_type_subtype_info {
 
 #define WTAP_TYPE_AUTO 0
 
+WS_DLL_PUBLIC
+gint64 wtap_read_pos(wtap *wth);
+
+
 /**
  * @brief Initialize the Wiretap library.
  *
