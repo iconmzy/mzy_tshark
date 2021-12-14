@@ -1954,6 +1954,11 @@ gzwfile_geterr(GZWFILE_T state)
 }
 #endif
 
+gint64 file_tell_pos(FILE_T stream)
+{
+    return stream->pos;
+}
+
 /*
  * Editor modelines  -  https://www.wireshark.org/tools/modelines.html
  *

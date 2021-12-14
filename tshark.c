@@ -3552,6 +3552,9 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
             } else {
                 g_print("Have processed %d packets! Total %ld Bytes ( %.2lf MB).", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
                 g_print("\r");
+                gint64 current = 0;
+                current = wtap_read_pos(cf->provider.wth);
+                printf("%ld--%ld\n", current - fdata.pkt_len, current);
                 fflush(stdout);
             }
         }
