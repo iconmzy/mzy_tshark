@@ -22,7 +22,7 @@ static const value_string names_cmd[] = {
 static dissector_handle_t exproto_handle;
 // static struct protoInfo proto[10];
 static int exFunIndex = 0;
-static int currentFunIndex = 0;
+static int heur_exFunIndex = 0;
 static gint dissect_exproto0(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
 {
     int offset = 0; //偏移变量，记录偏移位置
@@ -284,17 +284,19 @@ static gint (*functions[SupportJsonNum])(tvbuff_t *, packet_info *, proto_tree *
 
 static gboolean
 heur_dissect_exproto0(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 0;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROA";
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
 /*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
     if((linelen == -1)||(linelen == 8)){
         return FALSE;
     }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-        payload_len = functions[i](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -304,19 +306,21 @@ heur_dissect_exproto0(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 1;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROB";
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
 //strcat(payload_future_t,'A'+i);
 
 /*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
     if((linelen == -1)||(linelen == 8)){
         return FALSE;
     }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-        payload_len = functions[i](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -326,19 +330,21 @@ heur_dissect_exproto1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto2(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 2;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROC";
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
 //strcat(payload_future_t,'A'+i);
 
 /*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
     if((linelen == -1)||(linelen == 8)){
         return FALSE;
     }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-        payload_len = functions[i](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -348,19 +354,21 @@ heur_dissect_exproto2(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto3(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 3;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROD";
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
 //strcat(payload_future_t,'A'+i);
 
 /*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
     if((linelen == -1)||(linelen == 8)){
         return FALSE;
     }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-        payload_len = functions[i](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -370,19 +378,18 @@ heur_dissect_exproto3(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto4(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 4;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROE";
-//strcat(payload_future_t,'A'+i);
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
 
-/*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
-    if((linelen == -1)||(linelen == 8)){
-        return FALSE;
-    }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
 
-        payload_len = functions[i](tvb,pinfo,tree);
+
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
+
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -392,19 +399,18 @@ heur_dissect_exproto4(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto5(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 5;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROF";
-//strcat(payload_future_t,'A'+i);
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
 
-/*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
-    if((linelen == -1)||(linelen == 8)){
-        return FALSE;
-    }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
 
-        payload_len = functions[i](tvb,pinfo,tree);
+
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
+
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -414,19 +420,15 @@ heur_dissect_exproto5(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto6(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 6;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROG";
-//strcat(payload_future_t,'A'+i);
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-/*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
-    if((linelen == -1)||(linelen == 8)){
-        return FALSE;
-    }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
-
-        payload_len = functions[i](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -436,19 +438,15 @@ heur_dissect_exproto6(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto7(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 7;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROH";
-//strcat(payload_future_t,'A'+i);
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-/*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
-    if((linelen == -1)||(linelen == 8)){
-        return FALSE;
-    }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
-
-        payload_len = functions[i](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -458,19 +456,15 @@ heur_dissect_exproto7(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto8(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 8;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROH";
-//strcat(payload_future_t,'A'+i);
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-/*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
-    if((linelen == -1)||(linelen == 8)){
-        return FALSE;
-    }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
-
-        payload_len = functions[i](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -480,19 +474,15 @@ heur_dissect_exproto8(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 
 static gboolean
 heur_dissect_exproto9(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
-    int i = currentFunIndex;
+    heur_exFunIndex = 9;
     int payload_len = 0;
     gint offset = 0, next_offset, linelen;
-    char *payload_future_t = "ADDPROI";
-//strcat(payload_future_t,'A'+i);
+    char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
+    int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
+    int future_len_t = strlen(payload_future_t);
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-/*    linelen = tvb_find_line_end(tvb, offset, -1, &next_offset, TRUE);
-    if((linelen == -1)||(linelen == 8)){
-        return FALSE;
-    }*/
-    if((tvb_strncaseeql(tvb, 0, payload_future_t, 7) == 0)){
-
-        payload_len = functions[i](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
@@ -535,6 +525,9 @@ int GetProtoInfos(struct allExProtocols *exprotocols)
         strcpy(allProtoInfo[i].shortName, exprotocols->exProto[i].shortName);
         strcpy(allProtoInfo[i].filterName, exprotocols->exProto[i].filterName);
         strcpy(allProtoInfo[i].transportProto, exprotocols->exProto[i].transportProtocol);
+        strcpy(allProtoInfo[i].feature, exprotocols->exProto[i].feature);
+        allProtoInfo[i].feature_offset = exprotocols->exProto[i].feature_offset;
+
         allProtoInfo[i].column = (struct columnInfo *)malloc(num * sizeof(struct columnInfo));
         for (int j = 0; j < num; j++)
         {
@@ -656,11 +649,12 @@ void proto_reg_handoff_exprotocol(int index)
     internal_name_t = allProtoInfo[index].filterName;
     if(strcmp(transProto_t,"udp") == 0){
         strcat(display_name_t," over UDP");
-        heur_dissector_add("udp", heur_functions[index], display_name_t, internal_name_t, intproto[index], HEURISTIC_ENABLE);
+
         while(allProtoInfo[index].port[port_i] != 0 && port_i < 10){
             dissector_add_uint("udp.port", allProtoInfo[index].port[port_i], exprotocol_handle);
             port_i++;
         }
+        heur_dissector_add("udp", heur_functions[index], display_name_t, internal_name_t, intproto[index], HEURISTIC_ENABLE);
 
     } else if(strcmp(transProto_t,"tcp") == 0){
         strcat(display_name_t," over TCP");

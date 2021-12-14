@@ -3,10 +3,10 @@
 	"shortName": "ADDPRO1",
 	"filterName": "addpro1",
 	"ports":[
-		1111,3333,4444
+		9999,4444
 	],
 	"transportProtocol": "udp",
-	"totalLength": 100,
+
 	"feature": "ADDPROA",
 	"feature_offset":0,
 	"parts": [

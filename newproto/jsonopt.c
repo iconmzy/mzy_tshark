@@ -123,6 +123,30 @@ int ReadHead(JsonReader *reader, exProtocol *proto)
         strcpy(proto->protocolName, json_reader_get_string_value(reader));
         json_reader_end_member(reader);
     }
+    //read shortName
+    if (!json_reader_read_member(reader, "shortName"))
+    {
+        printf("Read shortName Error\n");
+        return 0;
+    }
+    else
+    {
+        strcpy(proto->shortName, json_reader_get_string_value(reader));
+        json_reader_end_member(reader);
+    }
+
+    //read filterName
+    if (!json_reader_read_member(reader, "filterName"))
+    {
+        printf("Read filterName Error\n");
+        return 0;
+    }
+    else
+    {
+        strcpy(proto->filterName, json_reader_get_string_value(reader));
+        json_reader_end_member(reader);
+    }
+
     //read transportProtocol
     if (!json_reader_read_member(reader, "transportProtocol"))
     {
@@ -147,7 +171,7 @@ int ReadHead(JsonReader *reader, exProtocol *proto)
 
         portsNum = json_reader_count_elements(reader);
 
-        while (readNum < 10 & readNum < portsNum  ){
+        while ((readNum < 10) & (readNum < portsNum)  ){
             gboolean readFlag;
             //printf("\nreadNum:%d\n", readNum);
             readFlag = json_reader_read_element(reader, readNum);
@@ -179,30 +203,29 @@ int ReadHead(JsonReader *reader, exProtocol *proto)
 		json_reader_end_member(reader);
 	}
 */
-
-    //read shortName
-    if (!json_reader_read_member(reader, "shortName"))
+    //read feature
+    if (!json_reader_read_member(reader, "feature"))
     {
-        printf("Read shortName Error\n");
+        printf("Read feature fail!\n");
         return 0;
     }
     else
     {
-        strcpy(proto->shortName, json_reader_get_string_value(reader));
+        strcpy(proto->feature, json_reader_get_string_value(reader));
         json_reader_end_member(reader);
     }
 
-    //read filterName
-    if (!json_reader_read_member(reader, "filterName"))
+    if (!json_reader_read_member(reader, "feature_offset"))
     {
-        printf("Read filterName Error\n");
+        printf("Read feature_offset  fail!\n");
         return 0;
     }
     else
     {
-        strcpy(proto->filterName, json_reader_get_string_value(reader));
+        proto->feature_offset = json_reader_get_int_value(reader);
         json_reader_end_member(reader);
     }
+
     return 1;
 }
 int ParseJson(char *filePath, struct exProtocol *proto)
