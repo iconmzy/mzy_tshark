@@ -786,6 +786,10 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
     /*单独的协议过滤*/
     if (kmp("[tcp],[udp]", "[" + write_in_files_proto + "]") != -1) {
+        /*初始化部分要用到的 json对象 ----begin*/
+        cJSON_Delete(write_in_files_cJson);
+        write_in_files_cJson = cJSON_CreateObject();
+        /*初始化部分要用到的 json对象 ----end*/
         return true;
     }
 
@@ -964,6 +968,23 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
     return true;
 }
+
+/**
+ *  将开始和结束位置写入文件缓存中 20211214MZY
+ * @param
+ * @return
+ */
+gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end){
+
+
+    cJSON_AddStringToObject(write_in_files_cJson, "start_position", numtos(begin).c_str());
+    cJSON_AddStringToObject(write_in_files_cJson, "end_position", numtos(end).c_str());
+
+
+     return true;
+
+ }
+
 
 /**
  * 程序结束后将tap-iousers.c中的统计会话数据conversation写入文件中。

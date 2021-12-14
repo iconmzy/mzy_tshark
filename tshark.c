@@ -3536,7 +3536,11 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
             ref_frame = fdata;
             cf->provider.ref = &ref_frame;
         }
-
+        gint64 current = 0;
+        current = wtap_read_pos(cf->provider.wth);
+        //printf("%ld--%ld\n", current - fdata.pkt_len, current);
+        //fflush(stdout);
+        write_range_into_write_in_files_cJson(current - fdata.pkt_len,current);
         epan_dissect_run_with_taps(edt, cf->cd_t, rec,
                                    frame_tvbuff_new_buffer(&cf->provider, &fdata, buf),
                                    &fdata, cinfo);  /* 获得edt中的tvbuff_t类型的数据指针，具有链表结构的数据包 */
@@ -3552,10 +3556,7 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
             } else {
                 g_print("Have processed %d packets! Total %ld Bytes ( %.2lf MB).", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
                 g_print("\r");
-                gint64 current = 0;
-                current = wtap_read_pos(cf->provider.wth);
-                printf("%ld--%ld\n", current - fdata.pkt_len, current);
-                fflush(stdout);
+
             }
         }
     }

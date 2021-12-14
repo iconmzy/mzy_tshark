@@ -83,7 +83,7 @@ WS_DLL_PUBLIC void single_File_End_Init(void);
 WS_DLL_PUBLIC void change_result_file_name(void);
 
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
-
+WS_DLL_PUBLIC  gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end);
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
 WS_DLL_PUBLIC void parse_offline_regex_dict();
 
