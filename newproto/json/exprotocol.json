@@ -4,31 +4,29 @@
 	"filterName": "addpro2",
 	"ports":[7777,3333],
 	"transportProtocol": "udp",
-	"totalLength": 28,
-	"parts": [		{
-		"name": "identify",
-		"abbName": "id",
-		"length": 12,
-		"type": 6
-	},
+
+	"feature": "ADDPROB",
+	"feature_offset":1,
+	"parts": [
+
 		{
 			"name": "payload_feature",
 			"abbName": "feature",
 			"length": 8,
-			"type": 2
+			"type": 6
 		},
 
 		{
-			"name": "function",
-			"abbName": "func",
+			"name": "Float_Data",
+			"abbName": "float_data",
 			"length": 4,
-			"type": 9
+			"type": 5
 		},
 		{
 			"name": "data_left",
 			"abbName": "dleft",
 			"length": 4,
-			"type": 6
+			"type": 4
 		}
 	]
 }
