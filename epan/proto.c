@@ -8640,7 +8640,7 @@ proto_register_field_init(header_field_info *hfinfo, const int parent) {
             same_name_hfinfo->same_name_next = hfinfo;
             hfinfo->same_name_prev_id = same_name_hfinfo->id;
 #ifdef ENABLE_CHECK_FILTER
-                                                                                                                                    while (same_name_hfinfo)
+            while (same_name_hfinfo)
 			{
 				if (_ftype_common(hfinfo->type) != _ftype_common(same_name_hfinfo->type))
 					g_warning("'%s' exists multiple times with incompatible types: %s and %s", hfinfo->abbrev, ftype_name(hfinfo->type), ftype_name(same_name_hfinfo->type));
