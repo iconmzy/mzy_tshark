@@ -46,7 +46,15 @@ std::list<std::string> lastLayerProtocolFilterList = {
 std::list<std::string> protoKeyFilterList = {"text"};
 /*内容缓存*/
 static std::string write_in_files_stream;
+
+
+/*export溯源内容缓存*/
+static std::string write_ex_origin_stream;
+
 static cJSON *write_in_files_cJson = cJSON_CreateObject();
+
+static cJSON *write_export_origin_cJson = cJSON_CreateObject();
+
 /*缓存会话数据内容*/
 static cJSON *write_in_files_conv_cJson = cJSON_CreateObject();
 static std::string conv_path_t;
@@ -453,6 +461,45 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
     g_assert(fp_t->fp); //这里肯定fp不能为空。否则文件不知道写到那里。
     fputs(stream.c_str(),fp_t->fp);
     fflush(fp_t->fp);
+    return true;
+}
+
+/**
+ * 将export信息与来源pcap写入文件中，文件名固定为export_result_时间戳.txt
+
+ * @return
+ */
+gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
+
+    char ex_resulty_filepath_t[MAXWRITEFILELENGTH] = {0};
+    std::string export_path_t = result_path;
+    std::string filepath_t_str =  export_path_t + "export-result-" + global_time_str +".txt";
+    //global_time_str
+    strcpy(ex_resulty_filepath_t,filepath_t_str.c_str());
+    pFILE_INFO *fp_t;
+    fp_t = new pFile_Info;
+    fp_t->fp = fopen(ex_resulty_filepath_t, "a+");
+    if (fp_t->fp == NULL) {
+        g_print("open filepath error!\n");
+        return false;
+    }
+
+    cJSON_AddStringToObject(write_export_origin_cJson, "origin_file_path", pcap_name);
+    cJSON_AddStringToObject(write_export_origin_cJson, "export_file_path", ex_name);
+    write_ex_origin_stream = cJSON_Print(write_export_origin_cJson);
+    g_assert(fp_t->fp); //这里肯定fp不能为空。否则文件不知道写到那里。
+    fputs(write_ex_origin_stream.c_str(),fp_t->fp);
+    fprintf(fp_t->fp,"\n");
+    fflush(fp_t->fp);
+
+    /*初始化部分要用到的 json对象 ----begin*/
+    cJSON_Delete(write_export_origin_cJson);
+    write_export_origin_cJson = cJSON_CreateObject();
+    /*初始化部分要用到的 json对象 ----end*/
+
+/*    fprintf(fp_t->fp,"%s\t",ex_name);
+    fprintf(fp_t->fp,"%s\n",pcap_name);*/
+    fclose(fp_t->fp);
     return true;
 }
 

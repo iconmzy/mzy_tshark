@@ -50,6 +50,10 @@ WS_DLL_PUBLIC char *my_itoa(long int n);
 
 WS_DLL_PUBLIC void mkdirs(const char *muldir);
 WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
+
+//存储生成的export文件与源pcap文件的溯源result文件
+WS_DLL_PUBLIC gboolean write_Export_result(char* ex_name,char * pcap_name,char* result_path);
+
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];
 //是否允许新增协议相关

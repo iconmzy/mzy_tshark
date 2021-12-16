@@ -2393,8 +2393,6 @@ int main(int argc, char *argv[]) {
                                 change_result_file_name();
                                 break;
                             }
-
-
                         }
                         if (mutex) {
                             start_requested_stats();
@@ -2437,12 +2435,13 @@ int main(int argc, char *argv[]) {
                         }
 
                         temp = temp->next;
-                        cf_close(&cfile);  //关闭打开的pcap文件
+
                         //清理流统计。
                         draw_taps = TRUE;
                         if (draw_taps){
                             draw_tap_listeners(TRUE);
                         }
+                        cf_close(&cfile);  //关闭打开的pcap文件
                     }
                 }
             }
@@ -2514,7 +2513,7 @@ int main(int argc, char *argv[]) {
                 single_File_End_Init();
                 change_result_file_name();
 
-                cf_close(&cfile);  //关闭打开的pcap文件
+
 
                 if (pdu_export_arg) {
                     if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
@@ -2524,12 +2523,15 @@ int main(int argc, char *argv[]) {
                     g_free(pdu_export_arg);
                     g_free(exp_pdu_filename);
                 }
+                //清理流统计。
+                draw_taps = TRUE;
+                if (draw_taps){
+                    draw_tap_listeners(TRUE);
+                }
+                cf_close(&cfile);  //关闭打开的pcap文件
+
             }
-            //清理流统计。
-            draw_taps = TRUE;
-            if (draw_taps){
-                draw_tap_listeners(TRUE);
-            }
+
         }
         g_print("解析完成");
     }
@@ -3550,12 +3552,13 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
             if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
                 if (ALL_PACKET_COUNT % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
                     g_print("Have processed %d packets! Total %ld Bytes ( %.2lf MB).", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
-                    g_print("\r");
+                    g_print("\n");
                     fflush(stdout);
                 }
             } else {
                 g_print("Have processed %d packets! Total %ld Bytes ( %.2lf MB).", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
-                g_print("\r");
+                g_print("\n");
+                fflush(stdout);
 
             }
         }
