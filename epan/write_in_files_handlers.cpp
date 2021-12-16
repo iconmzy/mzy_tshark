@@ -471,14 +471,17 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
  */
 gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
 
-    char ex_resulty_filepath_t[MAXWRITEFILELENGTH] = {0};
+    char ex_result_filepath_t[MAXWRITEFILELENGTH] = {0};
     std::string export_path_t = result_path;
-    std::string filepath_t_str =  export_path_t + "export-result-" + global_time_str +".txt";
+
+    //此处截断后七个字符在去除/export，在上一级输出//
+    std::string export_result_path_t = export_path_t.substr(0,export_path_t.length()-7);
+    std::string filepath_t_str =  export_result_path_t + "export-result_" + global_time_str +".txt";
     //global_time_str
-    strcpy(ex_resulty_filepath_t,filepath_t_str.c_str());
+    strcpy(ex_result_filepath_t,filepath_t_str.c_str());
     pFILE_INFO *fp_t;
     fp_t = new pFile_Info;
-    fp_t->fp = fopen(ex_resulty_filepath_t, "a+");
+    fp_t->fp = fopen(ex_result_filepath_t, "a+");
     if (fp_t->fp == NULL) {
         g_print("open filepath error!\n");
         return false;
@@ -1373,7 +1376,7 @@ void clean_Temp_Files_All() {
 void add_record_in_result_file() {
     if (fp_result_timestampe == nullptr) {
         std::string filepath_str = RESULT_PATH;
-        filepath_str += "result-" + global_time_str + ".writting";
+        filepath_str += "result_" + global_time_str + ".writting";
         fp_result_timestampe = fopen(filepath_str.c_str(), "a+");
         fputs(READ_FILE_PATH, fp_result_timestampe);
         fputs("\r\n", fp_result_timestampe);
@@ -1397,8 +1400,8 @@ void single_File_End_Init(){
  */
 void change_result_file_name() {
     std::string filepath_str = RESULT_PATH;
-    std::string oldName_t = filepath_str + "result-" + global_time_str + ".writting";
-    std::string newName_t = filepath_str + "result-" + global_time_str + ".txt";
+    std::string oldName_t = filepath_str + "result_" + global_time_str + ".writting";
+    std::string newName_t = filepath_str + "result_" + global_time_str + ".txt";
     rename(oldName_t.c_str(), newName_t.c_str());
 
     //std::time_t end_time = std::time(nullptr);
