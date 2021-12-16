@@ -2442,11 +2442,12 @@ int main(int argc, char *argv[]) {
                         }
 
                         temp = temp->next;
-                        cf_close(&cfile);  //关闭打开的pcap文件
+
                         draw_taps = TRUE;
                         if (draw_taps){
                             draw_tap_listeners(TRUE);
                         }
+                        cf_close(&cfile);  //关闭打开的pcap文件
                     }
                 }
             }
@@ -2517,7 +2518,7 @@ int main(int argc, char *argv[]) {
                 single_File_End_Init();
                 change_result_file_name();
 
-                cf_close(&cfile);  //关闭打开的pcap文件
+
 
                 if (pdu_export_arg) {
                     if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
@@ -2527,11 +2528,13 @@ int main(int argc, char *argv[]) {
                     g_free(pdu_export_arg);
                     g_free(exp_pdu_filename);
                 }
+                draw_taps = TRUE;
+                if (draw_taps){
+                    draw_tap_listeners(TRUE);
+                }
+                cf_close(&cfile);  //关闭打开的pcap文件
             }
-            draw_taps = TRUE;
-            if (draw_taps){
-                draw_tap_listeners(TRUE);
-            }
+
         }
         g_print("解析完成");
     }
@@ -3539,6 +3542,11 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
             ref_frame = fdata;
             cf->provider.ref = &ref_frame;
         }
+        gint64 current = 0;
+        current = wtap_read_pos(cf->provider.wth);
+        //printf("%ld--%ld\n", current - fdata.pkt_len, current);
+        //fflush(stdout);
+        write_range_into_write_in_files_cJson(current - fdata.pkt_len,current);
 
         epan_dissect_run_with_taps(edt, cf->cd_t, rec,
                                    frame_tvbuff_new_buffer(&cf->provider, &fdata, buf),
@@ -3548,11 +3556,11 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
         if (DISPLAY_PACKET_INFO_FLAG) {
             if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
                 if (ALL_PACKET_COUNT % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
-                    g_print("have processed %d packets!\n", ALL_PACKET_COUNT);
+                    g_print("Have processed %d packets! Total %ld Bytes ( %.2lf MB).\n", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
                     fflush(stdout);
                 }
             } else {
-                g_print("have processed %d packets!\n", ALL_PACKET_COUNT);
+                g_print("Have processed %d packets! Total %ld Bytes ( %.2lf MB).\n", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
                 fflush(stdout);
             }
         }

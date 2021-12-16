@@ -21,6 +21,8 @@ WS_DLL_PUBLIC gint64 file_seek(FILE_T stream, gint64 offset, int whence, int *er
 WS_DLL_PUBLIC gint64 file_tell(FILE_T stream);
 extern gint64 file_tell_raw(FILE_T stream);
 extern int file_fstat(FILE_T stream, ws_statb64 *statb, int *err);
+extern gint64 file_tell_pos(FILE_T stream);  // Add by Zhengjie Gao
+
 WS_DLL_PUBLIC gboolean file_iscompressed(FILE_T stream);
 WS_DLL_PUBLIC int file_read(void *buf, unsigned int count, FILE_T file);
 WS_DLL_PUBLIC int file_peekc(FILE_T stream);

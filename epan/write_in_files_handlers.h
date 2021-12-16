@@ -52,6 +52,9 @@ WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];
 
+//存储生成的export文件与源pcap文件的溯源result文件
+WS_DLL_PUBLIC gboolean write_Export_result(char* ex_name,char * pcap_name,char* result_path);
+
 //是否允许新增协议相关
 WS_DLL_PUBLIC gboolean JSON_ADD_PROTO;
 WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[256];
@@ -68,6 +71,8 @@ WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则
 #define MAXFILELENGTH 50
 #define MAXWRITEFILELENGTH 128
 
+
+WS_DLL_PUBLIC  gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end);
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
 
 WS_DLL_PUBLIC gboolean beginInitOnce(char *);

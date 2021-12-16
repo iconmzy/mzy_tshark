@@ -24,6 +24,7 @@
 #include <epan/packet.h>
 #include <epan/export_object.h>
 #include <ui/export_object_ui.h>
+#include <epan/write_in_files_handlers.h>
 #include "tap-exportobject.h"
 
 typedef struct _export_object_list_gui_t {
@@ -145,6 +146,7 @@ eo_draw(void *tapdata)
         } while (g_file_test(save_as_fullpath, G_FILE_TEST_EXISTS) && ++count < prefs.gui_max_export_objects);
         count = 0;
         eo_save_entry(save_as_fullpath, entry);  // 写入文件
+        write_Export_result(save_as_fullpath,cfile.filename,save_in_path);
         g_free(save_as_fullpath);
         save_as_fullpath = NULL;
         slist = slist->next;
