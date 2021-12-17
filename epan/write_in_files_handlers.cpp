@@ -1372,7 +1372,11 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
 
     char ex_resulty_filepath_t[MAXWRITEFILELENGTH] = {0};
     std::string export_path_t = result_path;
-    std::string filepath_t_str =  export_path_t + "export-result-" + global_time_str +".txt";
+
+    //此处截断后七个字符在去除/export，在上一级输出//
+    std::string export_result_path_t = export_path_t.substr(0,export_path_t.length()-7);
+    std::string filepath_t_str =  export_result_path_t + "export-result_" + global_time_str +".txt";
+
     //global_time_str
     strcpy(ex_resulty_filepath_t,filepath_t_str.c_str());
     pFILE_INFO *fp_t;
