@@ -74,7 +74,7 @@ gboolean WRITE_IN_FILES_CONFIG = 1;
 gboolean DISPLAY_PACKET_INFO_FLAG = 0;
 gboolean WRITE_IN_CONVERSATIONS_FLAG = 1;
 gboolean PACKET_PROTOCOL_FLAG = 0;
-char PACKET_PROTOCOL_TYPES[256] = {"imf,dicom,http,smb,tftp"};
+char PACKET_PROTOCOL_TYPES[256] = {};
 gboolean file_Name_From_Dir_Flag = 0;
 gboolean EDIT_FILES_DISSECT_FLAG = 0;
 char WRITE_IN_CONVERSATIONS_PATH[256] = {0};
@@ -1134,6 +1134,7 @@ gboolean readConfigFilesStatus() {
                 char *write_in_es_flag;
                 char *es_url;
                 char *per_files_max_linex;
+                char *packet_protocol_types;
 
                 /**
                  * 这里需要把当前运行的时间戳定下来
@@ -1167,6 +1168,12 @@ gboolean readConfigFilesStatus() {
                     if (ES_URL[len - 1] != '/') {
                         strcat(ES_URL, "/");
                     }
+                }
+                packet_protocol_types = getInfo_ConfigFile("PACKET_PROTOCOL_TYPES", info, lines);
+                if (packet_protocol_types != nullptr) {
+                    strcpy(PACKET_PROTOCOL_TYPES, packet_protocol_types);
+                } else {
+                    strcpy(PACKET_PROTOCOL_TYPES, "./");
                 }
 
                 registration_file_path = getInfo_ConfigFile("REGISTRATION_FILE_PATH", info, lines);
