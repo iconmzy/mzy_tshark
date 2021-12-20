@@ -48,6 +48,22 @@ std::list<std::string> special_not_leafNode = {
         "isis_lsp_ip_reachability_ipv4_prefix"
 };
 
+/* some special field value: it can be shown in wireshark but hasn't field in the edt tree,
+ * the special value can be found in the finfo->rep->representation under the same abbrev
+ * 2021/12/20 ymq */
+
+typedef struct {
+    const char * field_name;
+    bool (*special_field_cb)(proto_node *node, char* ret);
+} special_field_value;
+
+static bool need_special_field(const char* ,proto_node *, char*);
+static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *, char*);
+static special_field_value regist_speical_filed[] = {
+        {"isis_lsp_ip_reachability_ipv4_prefix", &get_isis_lsp_ip_reachability_ipv4_prefix_mask}
+};
+
+
 std::list<std::string> protoKeyFilterList = {"text"};
 /*内容缓存*/
 static std::string write_in_files_stream;
@@ -665,21 +681,20 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
         return false; //无意义的字段过滤掉
 
     //获取value
-    int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):1000;
-    /*debug test*/
-//    if(bufferlen == 97){
-//        int a =0;
-//    }
+    int bufferlen = (temp->finfo->length *3 +1)>100 ? (temp->finfo->length *3 +1) : 1000;
     auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
-    yy_proto_item_fill_label(temp->finfo,&value_t,&bufferlen);
+    //获取 special rep value
+    if(! need_special_field(temp->finfo->hfinfo->abbrev, temp, value_t)){
+        yy_proto_item_fill_label(temp->finfo, &value_t, &bufferlen);
+    }
 
     //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
     /*返回string::npos表示未查找到匹配项*/
-/*
-    while (key_str.find('.') != std::string::npos) {
-        key_str.replace(key_str.find('.'), 1, "_");
-    }
-*/
+        /*
+            while (key_str.find('.') != std::string::npos) {
+                key_str.replace(key_str.find('.'), 1, "_");
+            }
+        */
 
              //重复字段的数组处理
           /*  if(judgeDuplicateKeyStr(key_str)){
@@ -744,7 +759,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
         que.pop();
 
         if(temp->first_child == nullptr or temp->last_child == nullptr or (is_special_not_leafNode(temp->finfo->hfinfo->abbrev))){
-            dissect_Per_Node_No_Cursion(json_t,temp,cookie);
+            dissect_Per_Node_No_Cursion(json_t,temp, cookie);
         } else{
             temp = temp->first_child;
             while (temp != nullptr){
@@ -1472,4 +1487,29 @@ long int calculate_cost_time(char* end_time_t,char* begin_time_t){
 
     return  strtol(end_ms.c_str(), nullptr,10) - strtol(begin_ms.c_str(), nullptr,10);
 
+}
+
+
+bool need_special_field(const char* field, proto_node *node, char* ret){
+    for(auto & i : regist_speical_filed){
+        if (strcmp(field, i.field_name) == 0){
+            i.special_field_cb(node, ret);
+            return true;
+        }
+    }
+    return false;
+}
+static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *node, char* ret){
+    /* field: isis_lsp_ip_reachability_ipv4_prefix
+     * example rep : IPv4 prefix: 10.0.10.0/30
+     * */
+
+    if (node->finfo && node->finfo->rep){
+        char *cc_ptr = strrchr(reinterpret_cast<char *>(node->finfo->rep->representation), ':');
+        if(strlen(cc_ptr)>1){
+            strcpy(ret, cc_ptr+2);
+            return true;
+        }
+    }
+    return false;
 }

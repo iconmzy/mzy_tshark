@@ -1,5 +1,5 @@
 #注册文件的路径
-REGISTRATION_FILE_PATH:./
+REGISTRATION_FILE_PATH:/home/ymq/aurora/activate
 
 #配置是否新增协议JSON
 JSON_ADD_PROTO:1
@@ -17,7 +17,7 @@ PACKET_PROTOCOL_FLAG:1
 PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp,
 
 #配置协议解析输出文件的位置 不超过255字节
-EXPORT_PATH:/home/mzy/Documents/output
+EXPORT_PATH:/home/ymq/aurora/out
 #每个txt文件大致最大行数
 PER_FILES_MAX_LINES:10000
 #是否在命令行显示解析包数目
@@ -39,7 +39,7 @@ ONLINE_CAPTURE_DATA_DEVICE_NAME:enp4s0
 READ_PACKET_FROM_FILES_FLAG:1
 #读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap sip-rtp-g722.pcap
 #若选择解析文件夹，建议末尾添加“/”，进行标识
-READ_PACKET_FROM_FILES_PATH:/home/mzy/Documents/pcap/isis/
+READ_PACKET_FROM_FILES_PATH:/home/ymq/aurora/data/fhs_test/isis1217.cap
 
 
 #是否拆分文件解析

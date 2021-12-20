@@ -171,8 +171,6 @@
 #define LONGOPT_NO_DUPLICATE_KEYS LONGOPT_BASE_APPLICATION + 3
 #define LONGOPT_ELASTIC_MAPPING_FILTER LONGOPT_BASE_APPLICATION + 4
 
-#define AORURA_VERSION "2021-10-22-16:10"
-
 capture_file cfile;
 char READ_FILE_PATH[256] = {0}; //存放文件名——含路径。
 char FILE_NAME_T[256] = {0};//存放文件名。
@@ -755,7 +753,6 @@ int main(int argc, char *argv[]) {
     printf("                                        \n");
 
     cpu_id();
-    printf("VERSION:%s\n", AORURA_VERSION);
 
     struct allExProtocols protos;
 
