@@ -2,7 +2,7 @@
 REGISTRATION_FILE_PATH:./
 
 #配置是否新增协议JSON
-JSON_ADD_PROTO:0
+JSON_ADD_PROTO:1
 #新增协议JSON路径 不超过255字符
 JSON_ADD_PROTO_PATH:../../newproto/json
 
@@ -10,14 +10,18 @@ JSON_ADD_PROTO_PATH:../../newproto/json
 WRITE_IN_FILES_CONFIG:1
 #配置是否统计会话信息
 WRITE_IN_CONVERSATIONS_FLAG:1
+
 #配置是否组报
-PACKET_PROTOCOL_FLAG:0
+PACKET_PROTOCOL_FLAG:1
+#配置所需组包协议，英文逗号隔开
+PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp,
+
 #配置协议解析输出文件的位置 不超过255字节
-EXPORT_PATH:../temp
+EXPORT_PATH:/home/mzy/Documents/output
 #每个txt文件大致最大行数
 PER_FILES_MAX_LINES:10000
 #是否在命令行显示解析包数目
-DISPLAY_PACKET_INFO_FLAG:0
+DISPLAY_PACKET_INFO_FLAG:1
 
 #配置是否写入数据库
 WRITE_IN_DATABASE_FLAG:0
@@ -35,7 +39,7 @@ ONLINE_CAPTURE_DATA_DEVICE_NAME:enp4s0
 READ_PACKET_FROM_FILES_FLAG:1
 #读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap sip-rtp-g722.pcap
 #若选择解析文件夹，建议末尾添加“/”，进行标识
-READ_PACKET_FROM_FILES_PATH:/home/mzy/Documents/pcap/mzy3/http.pcap
+READ_PACKET_FROM_FILES_PATH:/home/mzy/Documents/pcap/isis/
 
 
 #是否拆分文件解析
@@ -43,12 +47,12 @@ EDIT_FILES_DISSECT_FLAG:0
 #拆分子文件大小
 EDIT_FILES_SIZES:100000
 #是否批量写入
-INSERT_MANY_PROTOCOL_STREAM_FLAG:0
+INSERT_MANY_PROTOCOL_STREAM_FLAG:1
 #每次每个协议批量写入行数
-INSERT_MANY_PROTOCOL_STREAM_NUM:1000
+INSERT_MANY_PROTOCOL_STREAM_NUM:10000
 
 #实时接入数据的线路号
 ONLINE_LINE_NO:123123
 #离线接入数据的识别线路号的正则表达式
-OFFLINE_LINE_NO_REGEX:{"lineno":"[^_]*","signal_type":"(?<=_).*(?=_)"}
+OFFLINE_LINE_NO_REGEX:{"line_no":"[^_]*","signal_type":"(?<=_).*(?=_)"}
 

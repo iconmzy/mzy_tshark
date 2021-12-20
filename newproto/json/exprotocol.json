@@ -8,25 +8,17 @@
 	"feature": "ADDPROB",
 	"feature_offset":1,
 	"parts": [
-
 		{
+
 			"name": "payload_feature",
-			"abbName": "feature",
+			"abbName": "pl_feature",
 			"length": 8,
 			"type": 6
-		},
-
-		{
-			"name": "Float_Data",
-			"abbName": "float_data",
-			"length": 4,
-			"type": 5
-		},
-		{
-			"name": "data_left",
-			"abbName": "dleft",
-			"length": 4,
-			"type": 4
+		},  {
+			"name": "addprotocol_ip",
+			"abbName": "addpro_ip",
+			"length": 16,
+			"type": 1
 		}
 	]
 }

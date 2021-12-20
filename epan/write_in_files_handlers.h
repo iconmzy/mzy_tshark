@@ -91,6 +91,9 @@ WS_DLL_PUBLIC  gboolean write_range_into_write_in_files_cJson(gint64 begin, gint
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
 WS_DLL_PUBLIC void parse_offline_regex_dict();
 
+
+gboolean is_special_not_leafNode(const char *fieldName);/*用于输出一些特殊的非叶子结点*/
+
 /**
  * 下面是读取配置文件相关函数
  * @param file

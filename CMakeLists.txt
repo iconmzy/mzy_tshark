@@ -1688,11 +1688,11 @@ set_package_properties(SNAPPY PROPERTIES
         URL "https://google.github.io/snappy/"
         PURPOSE "Snappy decompression in CQL and Kafka dissectors"
         )
-set_package_properties(ZSTD PROPERTIES
+#[[set_package_properties(ZSTD PROPERTIES
         DESCRIPTION "A compressor/decompressor from Facebook providing better compression than Snappy at a cost of speed"
         URL "https://facebook.github.io/zstd/"
         PURPOSE "Zstd decompression in Kafka dissector"
-        )
+        )]]
 set_package_properties(NGHTTP2 PROPERTIES
         DESCRIPTION "HTTP/2 C library and tools"
         URL "https://nghttp2.org"
@@ -2515,7 +2515,9 @@ if (BUILD_tshark)
             editcap_test.c
             newproto/jsonopt.c
             newproto/register_protocol.c
+
             ${TSHARK_TAP_SRC}
+
             )
 
     set(ENV{PKG_CONFIG_PATH} /usr/share/pkgconfig)
@@ -2546,6 +2548,7 @@ if (BUILD_tfshark)
             $<TARGET_OBJECTS:version_info>
             tfshark.c
             ${TSHARK_TAP_SRC}
+            authorize.c
             )
     set_executable_resources(tfshark "TFShark")
     add_executable(tfshark ${tfshark_FILES})
