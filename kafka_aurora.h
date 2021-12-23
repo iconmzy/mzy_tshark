@@ -15,6 +15,10 @@ struct producer_pa{
 	char brokers[512];
 	char topic[512];
 };
+struct consumer_pa{
+	char brokers[512];
+	char topic[512];
+};
 
 typedef struct kafka_pa{
 	char brokers[512];
