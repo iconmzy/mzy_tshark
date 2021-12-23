@@ -152,6 +152,7 @@
 #endif
 
 #include <epan/authorize.h>
+#include "kafka_aurora.h"
 
 /* Exit codes */
 #define INVALID_OPTION 1
