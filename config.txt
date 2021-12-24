@@ -30,6 +30,16 @@ DATABASE_ADDR:127.0.0.1
 #数据库端口
 DATABASE_PORT:27017
 
+# kafka configure
+# status: { 0:don't use kafka, 1:producer push data, 2: consumer pull data, 3:both produce and consume }
+KAFKA_STATUS:1
+KAFKA_BROKER:localhost:9092
+KAFKA_TOPIC:ymqtest
+
+# KAFKA_GROUPID, KAFKA_TOPIC_CNT for consumer
+KAFKA_GROUPID:test
+KAFKA_TOPIC_CNT:1
+
 #是否在线捕获数据  注意要和读取文件互斥
 ONLINE_CAPTURE_DATA_FLAG:0
 #在线捕获数据网卡device name  不超过31字符
@@ -39,7 +49,7 @@ ONLINE_CAPTURE_DATA_DEVICE_NAME:enp4s0
 READ_PACKET_FROM_FILES_FLAG:1
 #读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap sip-rtp-g722.pcap
 #若选择解析文件夹，建议末尾添加“/”，进行标识
-READ_PACKET_FROM_FILES_PATH:/home/ymq/aurora/data/fhs_test/isis1217.cap
+READ_PACKET_FROM_FILES_PATH:/home/ymq/aurora/data/fhs_test/qqq.pcap
 
 
 #是否拆分文件解析

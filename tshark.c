@@ -2699,6 +2699,7 @@ int main(int argc, char *argv[]) {
     clean_exit:
     clean_Temp_Files_All();
     cf_close(&cfile);
+	if (rk) destroy_producer(rk);
     if ((cf_name != READ_PACKET_FROM_FILES_PATH) && EDIT_FILES_DISSECT_FLAG == 1) {
         g_free(cf_name);
     } else {
