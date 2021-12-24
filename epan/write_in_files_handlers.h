@@ -20,8 +20,9 @@ struct ConfigInfo {
     char val[128];
 };
 
-extern rd_kafka_t *rk;
-WS_DLL_PUBLIC kafka_params kafkaParams_ymq;
+extern rd_kafka_t *rk;       //producer
+extern rd_kafka_t *rk_con;	 //consumer
+WS_DLL_PUBLIC kafka_params kafkaParams_ymq;       //kafka parameters
 
 WS_DLL_PUBLIC char CONFIG_FILES_PATH[128];
 

@@ -31,6 +31,10 @@ WS_DLL_PUBLIC rd_kafka_t* init_producer(kafka_params *kap);
 WS_DLL_PUBLIC int au_kafka_producer(rd_kafka_t* rk, kafka_params *kap, const char *key, const char *value);
 WS_DLL_PUBLIC void destroy_producer(rd_kafka_t* rk);
 
+WS_DLL_PUBLIC rd_kafka_t* init_consumer(kafka_params *kap);
+WS_DLL_PUBLIC int au_kafka_consumer(rd_kafka_t *rk, kafka_params *kap);
+WS_DLL_PUBLIC void destroy_consumer(rd_kafka_t* rk);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

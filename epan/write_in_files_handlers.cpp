@@ -122,7 +122,8 @@ gboolean WRITE_IN_ES_FLAG = 0;  /* 配置是否写入ElasticSearch数据库 */
 char ES_URL[256] = {0};  /* ElasticSearch地址 */
 
 kafka_params kafkaParams_ymq = {{0}, {0},{0},0, KAFKA_NO_RUN};
-rd_kafka_t *rk = nullptr;
+rd_kafka_t *rk = nullptr;  //producer
+rd_kafka_t *rk_con = nullptr; //consumer
 //end--------------------------------配置文件变量定义--------------------------------end//
 
 /*最终的初始化互斥变量1代表已经初始化过一次*/
@@ -1226,9 +1227,11 @@ gboolean readConfigFilesStatus() {
                         rk = init_producer(&kafkaParams_ymq);
                         break;
                     case KAFKA_CONSUMER:
-
+                        rk_con = init_consumer(&kafkaParams_ymq);
                         break;
                     case KAFKA_PRODUCER_CONSUMER:
+                        rk = init_producer(&kafkaParams_ymq);
+                        rk_con = init_consumer(&kafkaParams_ymq);
                         break;
                     default:
                         kafkaParams_ymq.status = KAFKA_NO_RUN;

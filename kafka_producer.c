@@ -34,7 +34,6 @@
 #include <stdio.h>
 #include <signal.h>
 #include <string.h>
-#include <stdlib.h>
 #include "kafka_aurora.h"
 
 static volatile sig_atomic_t run = 1;

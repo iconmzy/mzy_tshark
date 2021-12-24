@@ -32,10 +32,9 @@ DATABASE_PORT:27017
 
 # kafka configure
 # status: { 0:don't use kafka, 1:producer push data, 2: consumer pull data, 3:both produce and consume }
-KAFKA_STATUS:1
+KAFKA_STATUS:2
 KAFKA_BROKER:localhost:9092
-KAFKA_TOPIC:ymqtest
-
+KAFKA_TOPIC:kafka_test11
 # KAFKA_GROUPID, KAFKA_TOPIC_CNT for consumer
 KAFKA_GROUPID:test
 KAFKA_TOPIC_CNT:1
