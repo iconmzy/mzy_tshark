@@ -120,6 +120,10 @@ char OFFLINE_LINE_LINE_NO[256] = {0};
 //写入ES数据库相关配置
 gboolean WRITE_IN_ES_FLAG = 0;  /* 配置是否写入ElasticSearch数据库 */
 char ES_URL[256] = {0};  /* ElasticSearch地址 */
+
+kafka_params kafkaParams_ymq = {{0}, {0},{0},0, KAFKA_NO_RUN};
+rd_kafka_t *rk = nullptr;  //producer
+rd_kafka_t *rk_con = nullptr; //consumer
 //end--------------------------------配置文件变量定义--------------------------------end//
 
 /*最终的初始化互斥变量1代表已经初始化过一次*/
@@ -1045,6 +1049,12 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
 
+    if(kafkaParams_ymq.status == KAFKA_PRODUCER){
+        const char * data = cJSON_Print(write_in_files_cJson);
+        const char * key = write_in_files_proto.c_str();
+        au_kafka_producer(rk, &kafkaParams_ymq, key, data);
+    }
+
     if (WRITE_IN_FILES_CONFIG == 1) {
         if (!write_All_Temps_Into_Files(write_in_files_stream, write_in_files_proto)) {
             g_print("write in files error");
@@ -1194,6 +1204,40 @@ gboolean readConfigFilesStatus() {
                 } else {
                     return false;
                 }
+
+                // kafka parameters
+                char * kafka_status = getInfo_ConfigFile("KAFKA_STATUS", info, lines);
+                if (kafka_status != nullptr) {
+                    kafkaParams_ymq.status = (kafka_status_t)(*kafka_status - '0');
+                } else kafkaParams_ymq.status = KAFKA_NO_RUN;
+
+                char * kafka_broker = getInfo_ConfigFile("KAFKA_BROKER", info, lines);
+                if (kafka_broker != nullptr) { strcpy(kafkaParams_ymq.brokers, kafka_broker); }
+                char * kafka_topic = getInfo_ConfigFile("KAFKA_TOPIC", info, lines);
+                if (kafka_topic != nullptr) { strcpy(kafkaParams_ymq.topic, kafka_topic); }
+
+				// for consumer
+				char * kafka_groupid = getInfo_ConfigFile("KAFKA_GROUPID", info, lines);
+				if (kafka_groupid != nullptr) { strcpy(kafkaParams_ymq.groupid, kafka_groupid); }
+				char * kafka_topic_cnt = getInfo_ConfigFile("KAFKA_TOPIC_CNT", info, lines);
+				if (kafka_topic_cnt != nullptr) { kafkaParams_ymq.topic_cnt = *kafka_topic_cnt - '0'; }
+
+                switch (kafkaParams_ymq.status) {
+                    case KAFKA_PRODUCER:
+                        rk = init_producer(&kafkaParams_ymq);
+                        break;
+                    case KAFKA_CONSUMER:
+                        rk_con = init_consumer(&kafkaParams_ymq);
+                        break;
+                    case KAFKA_PRODUCER_CONSUMER:
+                        rk = init_producer(&kafkaParams_ymq);
+                        rk_con = init_consumer(&kafkaParams_ymq);
+                        break;
+                    default:
+                        kafkaParams_ymq.status = KAFKA_NO_RUN;
+                        break;
+                }
+
 
                 write_in_es_flag = getInfo_ConfigFile("WRITE_IN_ES_FLAG", info, lines);
                 if (write_in_es_flag != nullptr) {

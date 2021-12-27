@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "epan.h"
 #include "proto.h"
+#include "kafka_aurora.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -18,6 +19,11 @@ struct ConfigInfo {
     char key[64];
     char val[128];
 };
+
+extern rd_kafka_t *rk;       //producer
+extern rd_kafka_t *rk_con;	 //consumer
+WS_DLL_PUBLIC kafka_params kafkaParams_ymq;       //kafka parameters
+
 WS_DLL_PUBLIC char CONFIG_FILES_PATH[128];
 
 WS_DLL_PUBLIC gboolean WRITE_IN_FILES_CONFIG;

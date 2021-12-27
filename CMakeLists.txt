@@ -2510,6 +2510,10 @@ if (BUILD_tshark)
             $<TARGET_OBJECTS:cli_main>
             $<TARGET_OBJECTS:shark_common>
             $<TARGET_OBJECTS:version_info>
+
+            kafka_producer.c
+            kafka_consumer.c
+
             tshark-tap-register.c
             tshark.c
             editcap_test.c
@@ -2517,7 +2521,6 @@ if (BUILD_tshark)
             newproto/register_protocol.c
 
             ${TSHARK_TAP_SRC}
-
             )
 
     set(ENV{PKG_CONFIG_PATH} /usr/share/pkgconfig)
@@ -2529,7 +2532,7 @@ if (BUILD_tshark)
     set_executable_resources(aurora "TShark" UNIQUE_RC)  # old name tshark
     add_executable(aurora ${tshark_FILES})  # old name tshark
     set_extra_executable_properties(aurora "Executables")  # old name tshark
-    target_link_libraries(aurora ${tshark_LIBS} ${JSON_LIBRARY_DIRS} ${JSON_LDFLAGS})  # old name tshark
+    target_link_libraries(aurora ${tshark_LIBS} ${JSON_LIBRARY_DIRS} ${JSON_LDFLAGS} rdkafka)  # old name tshark
     install(TARGETS aurora RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})  # old name tshark
 endif ()
 
