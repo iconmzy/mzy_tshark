@@ -18,12 +18,12 @@
 			"type": 6
 		},  {
 			"name": "addprotocol_ip",
-			"abbName": "addpro_ip",
+			"abbName": "useless_0",
 			"length": 16,
 			"type": 1
 		}, {
 			"name": "Time_Stamp",
-			"abbName": "time_stamp",
+			"abbName": "useless_1",
 			"length": 6,
 			"type": 3
 		}, {

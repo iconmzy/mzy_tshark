@@ -191,9 +191,9 @@ int au_kafka_consumer(rd_kafka_t *rk, kafka_params *kap) {
         /* consumer_poll() will return either a proper message
          * or a consumer error (rkm->err is set). */
         if (rkm->err) {
-            /* Consumer errors are generally to be considered
-             * informational as the consumer will automatically try to recover from all types of errors. */
-            fprintf(stderr, "%% Consumer error: %s\n", rd_kafka_message_errstr(rkm));
+             //Consumer errors are generally to be considered
+             // informational as the consumer will automatically try to recover from all types of errors.
+            //fprintf(stderr, "%% Consumer error: %s\n", rd_kafka_message_errstr((const rd_kafka_message_t *)rkm));
             rd_kafka_message_destroy(rkm);
             continue;
         }

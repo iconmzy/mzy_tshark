@@ -4138,7 +4138,7 @@ pre_init_prefs(void)
     prefs.gui_qt_packet_header_column_definition = TRUE;
     prefs.gui_qt_show_selected_packet = FALSE;
     prefs.gui_qt_show_file_load_time = FALSE;
-    prefs.gui_max_export_objects     = 1000;
+    prefs.gui_max_export_objects     = 100000;
 
     if (prefs.col_list) {
         free_col_info(prefs.col_list);

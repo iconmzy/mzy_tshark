@@ -27,6 +27,7 @@ typedef struct kafka_pa{
 	kafka_status_t status;
 }kafka_params;
 
+
 WS_DLL_PUBLIC rd_kafka_t* init_producer(kafka_params *kap);
 WS_DLL_PUBLIC int au_kafka_producer(rd_kafka_t* rk, kafka_params *kap, const char *key, const char *value);
 WS_DLL_PUBLIC void destroy_producer(rd_kafka_t* rk);

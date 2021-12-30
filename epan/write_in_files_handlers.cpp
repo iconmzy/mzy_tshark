@@ -64,7 +64,7 @@ static special_field_value regist_speical_filed[] = {
 };
 
 
-std::list<std::string> protoKeyFilterList = {"text"};
+std::list<std::string> protoKeyFilterList = {"text","useless"};
 /*内容缓存*/
 static std::string write_in_files_stream;
 
@@ -121,6 +121,7 @@ char OFFLINE_LINE_LINE_NO[256] = {0};
 gboolean WRITE_IN_ES_FLAG = 0;  /* 配置是否写入ElasticSearch数据库 */
 char ES_URL[256] = {0};  /* ElasticSearch地址 */
 
+gboolean WRITE_IN_KAFKA_CONFIG = 0;
 kafka_params kafkaParams_ymq = {{0}, {0},{0},0, KAFKA_NO_RUN};
 rd_kafka_t *rk = nullptr;  //producer
 rd_kafka_t *rk_con = nullptr; //consumer
@@ -159,6 +160,20 @@ std::map<std::string, pFILE_INFO *> pFile_map;
 #define VALUE_240_LENGTH 256
 gchar* value_240 = nullptr; //240长度是一个协议名最大长度
 static int value_240_len = 0;
+
+
+//--------------------- 20211228 conversation协议栈缓存五元组 ---------------------------------//
+typedef struct comSevenStackContent{ //通信五元组内容及其他信息
+    std::string sip;
+    std::string dip;
+    std::string sport;
+    std::string dport;
+    std::string protocol_stack;//协议栈
+    std::string line_no;   //文件名
+    std::string read_file_path;  //路径
+}comSevenStackContent;
+std::vector<struct comSevenStackContent> final_conversation_Write_Need; //存放所有包含源目ip/端口的协议栈，供最后组会话筛选//
+
 
 /**
  * 输入数字，返回对应string
@@ -515,6 +530,13 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
     cJSON_AddStringToObject(write_export_origin_cJson, "origin_file_path", pcap_name);
     cJSON_AddStringToObject(write_export_origin_cJson, "export_file_path", ex_name);
     write_ex_origin_stream = cJSON_Print(write_export_origin_cJson);
+
+    if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
+        const char * data = cJSON_Print(write_export_origin_cJson);
+        const char * key = ex_result_filepath_t;
+        au_kafka_producer(rk, &kafkaParams_ymq, key, data);
+    }
+
     g_assert(fp_t->fp); //这里肯定fp不能为空。否则文件不知道写到那里。
     fputs(write_ex_origin_stream.c_str(),fp_t->fp);
     fprintf(fp_t->fp,"\n");
@@ -568,6 +590,13 @@ gboolean write_Files_conv(std::string &stream) {
             g_print("open %s error!\n", conv_path_t.c_str());
             return false;
         }
+    }
+
+    if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
+        std::string conversation_name_t = "conversation_" + global_time_str + ".txt";
+        const char * data = stream.c_str();
+        const char * key = conversation_name_t.c_str();
+        au_kafka_producer(rk, &kafkaParams_ymq, key, data);
     }
     try {
         fputs(stream.c_str(), conversation_Handle_File);
@@ -683,7 +712,11 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     std::string key_str = temp->finfo->hfinfo->abbrev;
     if(cursionkeyStrFilter(key_str.c_str()))
         return false; //无意义的字段过滤掉
-
+    //此处是为了过滤自定义协议的无意义字段//
+    std::string useless_key_str = key_str.substr(0,7);
+    if(cursionkeyStrFilter(useless_key_str.c_str())){
+        return false;
+    }
     //获取value
     int bufferlen = (temp->finfo->length *3 +1)>100 ? (temp->finfo->length *3 +1) : 1000;
     auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
@@ -858,7 +891,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 
     std::string protocol_stack_t;  // 记录协议栈
     proto_node *stack_node_t = node;
-
+    comSevenStackContent s7e;// 会话五元组
     int stack_node_layer = 0;
     while (stack_node_t != nullptr and ++stack_node_layer < 15) {
         field_info *fi = stack_node_t->finfo;
@@ -877,14 +910,10 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         }
         stack_node_t = stack_node_t->next;
     }
-    /*单独的协议过滤*/
-    if (kmp("[tcp],[udp]", "[" + write_in_files_proto + "]") != -1) {
-        /*初始化部分要用到的 json对象 ----begin*/
-        cJSON_Delete(write_in_files_cJson);
-        write_in_files_cJson = cJSON_CreateObject();
-        /*初始化部分要用到的 json对象 ----end*/
-        return true;
-    }
+    s7e.protocol_stack = protocol_stack_t;
+    s7e.line_no = OFFLINE_LINE_LINE_NO;
+    s7e.read_file_path = READ_FILE_PATH;
+
 
     /*获取文件来源*/
     if (read_Pcap_From_File_Flag == 1) {
@@ -964,6 +993,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "ipv6_src") == 0) {
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value_240);
+                    s7e.sip = value_240;
                     child = child->next;
                     continue;
                 }
@@ -973,6 +1003,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 //                    auto *value = (gchar*)g_malloc_n(sizeof(gchar),&value_240_len);
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value_240);
+                    s7e.dip = value_240;
 //                    g_free(value);
                     break;//这里最后一个，提高效率
                 }
@@ -991,6 +1022,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "udp_srcport") == 0) {
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "src_port", value_240);
+                    s7e.sport = value_240;
                     child = child->next;
                     continue;
                 }
@@ -998,7 +1030,27 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     strcmp(child_finfo->hfinfo->abbrev, "udp_dstport") == 0) {
                     yy_proto_item_fill_label(child_finfo, &value_240,&value_240_len);
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value_240);
+                    s7e.dport = value_240;
                     child = child->next;
+                    if(s7e.sport == "" || s7e.dport == "" || s7e.sip == "" || s7e.dip == "" ||s7e.protocol_stack == ""){
+                        //memset(&s7e,0,sizeof(comSevenStackContent));//不存在会话，直接释放。
+                    } else{
+                        if(final_conversation_Write_Need.empty()){
+                            final_conversation_Write_Need.push_back(s7e);
+                        }else{
+                            bool exist = FALSE;
+                            for (auto &i : final_conversation_Write_Need){
+                                if(strcmp(s7e.sip.c_str(),i.sip.c_str()) == 0 && strcmp(s7e.dip.c_str(),i.dip.c_str()) == 0 && i.sport == numtos(s7e.sport) && i.dport == numtos(s7e.dport) &&  strcmp(s7e.protocol_stack.c_str(),i.protocol_stack.c_str()) == 0){
+                                    exist = TRUE;
+                                    break;
+                                }
+                            }
+                            if(!exist){
+                                //避免重复缓存
+                                final_conversation_Write_Need.push_back(s7e);
+                            }
+                        }
+                    }
                     continue;
                 }
                 child = child->next;
@@ -1047,9 +1099,17 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         node = node->next;
     }
 
+    /*单独的协议过滤*/
+    if (kmp("[tcp],[udp]", "[" + write_in_files_proto + "]") != -1) {
+        //初始化部分要用到的 json对象 ----begin
+        cJSON_Delete(write_in_files_cJson);
+        write_in_files_cJson = cJSON_CreateObject();
+        //初始化部分要用到的 json对象 ----end
+        return true;
+    }
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
 
-    if(kafkaParams_ymq.status == KAFKA_PRODUCER){
+    if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
         const char * data = cJSON_Print(write_in_files_cJson);
         const char * key = write_in_files_proto.c_str();
         au_kafka_producer(rk, &kafkaParams_ymq, key, data);
@@ -1095,18 +1155,22 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
     std::string value_str = value;
     if (value_str == "-1END") {
         /*获取文件来源，将conversation与源文件进行关联*/
-        if (read_Pcap_From_File_Flag == 1) {
+/*        if (read_Pcap_From_File_Flag == 1) {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
-            cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
+            cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  *//* 离线接入数据的线路号 *//*
         } else {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "online");
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
-        }
+        }*/
         /*当前流统计结束*/
         if (write_in_files_conv_cJson->child == nullptr)
             return;
-        std::string string = cJSON_Print(write_in_files_conv_cJson);
-        write_Files_conv(string);
+
+        if(key_str == READ_FILE_PATH){
+            std::string string = cJSON_Print(write_in_files_conv_cJson);
+            write_Files_conv(string);
+        }
+
         cJSON_Delete(write_in_files_conv_cJson);
         write_in_files_conv_cJson = cJSON_CreateObject();
     } else {
@@ -1184,7 +1248,7 @@ gboolean readConfigFilesStatus() {
                 char *es_url;
                 char *per_files_max_linex;
                 char *packet_protocol_types;
-
+                char *write_in_kafka_config;
                 /**
                  * 这里需要把当前运行的时间戳定下来
                  */
@@ -1216,6 +1280,12 @@ gboolean readConfigFilesStatus() {
                 char * kafka_topic = getInfo_ConfigFile("KAFKA_TOPIC", info, lines);
                 if (kafka_topic != nullptr) { strcpy(kafkaParams_ymq.topic, kafka_topic); }
 
+                 write_in_kafka_config = getInfo_ConfigFile("WRITE_IN_KAFKA_CONFIG", info, lines);
+                if(write_in_kafka_config != nullptr){
+                    WRITE_IN_KAFKA_CONFIG = *write_in_kafka_config - '0';
+                }else{
+                    WRITE_IN_KAFKA_CONFIG == 0;
+                }
 				// for consumer
 				char * kafka_groupid = getInfo_ConfigFile("KAFKA_GROUPID", info, lines);
 				if (kafka_groupid != nullptr) { strcpy(kafkaParams_ymq.groupid, kafka_groupid); }
@@ -1556,4 +1626,52 @@ static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *node, char
         }
     }
     return false;
+}
+
+//清空当前关于conversation协议栈的缓存，每处理完一个文件后执行
+void final_conversation_Write_Need_clear(){
+    final_conversation_Write_Need.clear();
+
+    return;
+}
+
+
+
+
+//在conversation协议栈的缓存vector中匹配协议栈，写入conversation
+gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port){
+    std::string proto_stack_t;
+
+    for (auto &i : final_conversation_Write_Need){
+        if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0 and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0 ){
+            proto_stack_t = i.protocol_stack;
+
+
+        }
+    }
+    cJSON_AddStringToObject(write_in_files_conv_cJson, "protocol_stack", proto_stack_t.c_str());
+    return true;
+}
+
+char* add_line_no_to_conversation (char *src_ip,char *dst_ip, char *src_port,char *dst_port){
+    char return_path[256] = {};
+    std::string line_no_t;
+    std::string read_file_path_t;
+    for (auto &i : final_conversation_Write_Need){
+        if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0 and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0){
+            line_no_t = i.line_no;
+            read_file_path_t = i.read_file_path;
+            break;
+
+        }
+    }
+    cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", line_no_t.c_str());
+    cJSON_AddStringToObject(write_in_files_conv_cJson, "file_path", read_file_path_t.c_str());
+    strcpy(return_path,read_file_path_t.c_str());
+    return return_path;
+}
+
+void  clear_conversation_CJSN(){
+    cJSON_Delete(write_in_files_conv_cJson);
+    write_in_files_conv_cJson = cJSON_CreateObject();
 }

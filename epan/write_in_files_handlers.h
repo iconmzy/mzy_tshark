@@ -27,6 +27,8 @@ WS_DLL_PUBLIC kafka_params kafkaParams_ymq;       //kafka parameters
 WS_DLL_PUBLIC char CONFIG_FILES_PATH[128];
 
 WS_DLL_PUBLIC gboolean WRITE_IN_FILES_CONFIG;
+WS_DLL_PUBLIC gboolean WRITE_IN_KAFKA_CONFIG;
+
 WS_DLL_PUBLIC char EXPORT_PATH[256];
 WS_DLL_PUBLIC long int calculate_cost_time(char* end_time_t,char* begin_time_t);
 WS_DLL_PUBLIC gboolean WRITE_IN_CONVERSATIONS_FLAG;
@@ -59,6 +61,16 @@ WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
 
 //存储生成的export文件与源pcap文件的溯源result文件
 WS_DLL_PUBLIC gboolean write_Export_result(char* ex_name,char * pcap_name,char* result_path);
+//清空conversation中的缓存，在处理完一个文件后调用一次
+WS_DLL_PUBLIC void final_conversation_Write_Need_clear();
+//为conversation匹配协议栈字段//
+WS_DLL_PUBLIC gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
+
+void WS_DLL_PUBLIC clear_conversation_CJSN();
+
+WS_DLL_PUBLIC char* add_line_no_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
+
+
 
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];

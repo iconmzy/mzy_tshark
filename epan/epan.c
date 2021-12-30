@@ -581,19 +581,19 @@ void epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
 
     wmem_enter_packet_scope();
 
-    if (WRITE_IN_CONVERSATIONS_FLAG) {
+    if (WRITE_IN_CONVERSATIONS_FLAG|| WRITE_IN_KAFKA_CONFIG) {
         tap_queue_init(edt);
     }
 
     dissect_record(edt, file_type_subtype, rec, tvb, fd, cinfo);
 
     /* 直接将edt写入文件中 */
-    if (WRITE_IN_FILES_CONFIG) {
+    if (WRITE_IN_FILES_CONFIG || WRITE_IN_KAFKA_CONFIG) {
         dissect_edt_into_files(edt);
     }
 
     /* 协议组报，生成会话数据 */
-    if (WRITE_IN_CONVERSATIONS_FLAG) {
+    if (WRITE_IN_CONVERSATIONS_FLAG ||WRITE_IN_KAFKA_CONFIG) {
         tap_push_tapped_queue(edt);
     }
 

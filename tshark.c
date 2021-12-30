@@ -2443,10 +2443,15 @@ int main(int argc, char *argv[]) {
                         if (draw_taps){
                             draw_tap_listeners(TRUE);
                         }
+
                         cf_close(&cfile);  //关闭打开的pcap文件
+                        final_conversation_Write_Need_clear();
                     }
+                    final_conversation_Write_Need_clear();
                 }
+                //final_conversation_Write_Need_clear();
             }
+
             else {
                 //只有一个文件
                 /*文件名*/
@@ -2530,6 +2535,7 @@ int main(int argc, char *argv[]) {
                 if (draw_taps){
                     draw_tap_listeners(TRUE);
                 }
+                final_conversation_Write_Need_clear();
                 cf_close(&cfile);  //关闭打开的pcap文件
 
             }
