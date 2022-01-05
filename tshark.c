@@ -3511,7 +3511,7 @@ int ALL_PACKET_COUNT = 0;  // 全局变量统计总共处理了多少个packet�
  */
 static gboolean
 process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
-                           wtap_rec *rec, Buffer *buf, guint unuse1) {
+                           wtap_rec *rec, Buffer *buf, guint tap_flags) {
     frame_data fdata;
     column_info *cinfo = NULL;
     gboolean passed;
@@ -3540,8 +3540,14 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
 
         /* This is the first and only pass, so prime the epan_dissect_t
            with the hfids postdissectors want on the first pass. */
-        prime_epan_dissect_with_postdissector_wanted_hfids(edt);
 
+        prime_epan_dissect_with_postdissector_wanted_hfids(edt);
+/*        col_custom_prime_edt(edt, &cf->cinfo);
+        if ((tap_flags & TL_REQUIRES_COLUMNS) || (print_packet_info && print_summary) || output_fields_has_cols(output_fields))
+            cinfo = &cf->cinfo;
+        else
+            cinfo = NULL;
+*/
         frame_data_set_before_dissect(&fdata, &cf->elapsed_time,
                                       &cf->provider.ref, cf->provider.prev_dis);
         if (cf->provider.ref == &fdata) {

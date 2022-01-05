@@ -533,7 +533,7 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
 
     if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
         const char * data = cJSON_Print(write_export_origin_cJson);
-        const char * key = ex_result_filepath_t;
+        const char * key = "export_result";
         au_kafka_producer(rk, &kafkaParams_ymq, key, data);
     }
 
@@ -593,7 +593,7 @@ gboolean write_Files_conv(std::string &stream) {
     }
 
     if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
-        std::string conversation_name_t = "conversation_" + global_time_str + ".txt";
+        std::string conversation_name_t = "conversation";
         const char * data = stream.c_str();
         const char * key = conversation_name_t.c_str();
         au_kafka_producer(rk, &kafkaParams_ymq, key, data);
@@ -726,12 +726,10 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     }
 
     //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
-    /*返回string::npos表示未查找到匹配项*/
-        /*
+    //返回string::npos表示未查找到匹配项
             while (key_str.find('.') != std::string::npos) {
                 key_str.replace(key_str.find('.'), 1, "_");
             }
-        */
 
              //重复字段的数组处理
           /*  if(judgeDuplicateKeyStr(key_str)){
@@ -1107,6 +1105,10 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         //初始化部分要用到的 json对象 ----end
         return true;
     }
+
+
+    //std::string frame_info = edt->pi.cinfo;
+    //cJSON_AddStringToObject(write_in_files_cJson,"data",edt->pi.cinfo);
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
 
     if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
