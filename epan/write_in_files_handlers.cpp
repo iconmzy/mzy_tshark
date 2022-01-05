@@ -301,6 +301,7 @@ typedef struct _rtpTotalBufferContent{ //
     std::string fp_path{};
     gunit8Array data{};
 }rtpTotalBufferContent;
+
 std::map<std::string ,rtpTotalBufferContent> rtpTotalBuffer;
 typedef struct _rtpMatchingInfo{
     std::string sip;
@@ -388,8 +389,6 @@ gboolean packetProtoAlready = false;
 
 //根据payloadType调用解码器//
 void call_decode_by_i(int payloadType_i,char* it_fp_path_t,char* info_fp_path_t);
-
-
 
 //并发处理流数据的函数入口。
 void do_handle_strem(gpointer str,gpointer data);
@@ -1172,7 +1171,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 
     if(PACKET_PROTOCOL_FLAG){
         /*判断当前协议是否需要组包*/
-        if(g_list_find_custom(rtp_fields,write_in_files_proto.c_str(),(GCompareFunc)strcmp)){
+        if(g_list_find_custom(rtp_fields, write_in_files_proto.c_str(), (GCompareFunc)strcmp)){
             packetProtoAlready = true;
         }
     }
@@ -1326,7 +1325,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                         struct totalParam *cookie_t = g_new0(totalParam,1);
                         //通信五元组赋值
                         cookie_t->c5e = c5e; //这里释放在rtp流处理函数后释放
-                        dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child,cookie_t);
+                        dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child, cookie_t);
                         g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
                     }
                     else{
@@ -1413,13 +1412,9 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
  */
 gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end){
 
-
     cJSON_AddStringToObject(write_in_files_cJson, "start_position", numtos(begin).c_str());
     cJSON_AddStringToObject(write_in_files_cJson, "end_position", numtos(end).c_str());
-
-
     return true;
-
 }
 
 /**
@@ -1637,7 +1632,7 @@ void do_handle_strem(gpointer str,gpointer data __U__){
                 //确定rtp 输出的文件名 end
                 temp.data.push_back((guint8 *)&t->c5e->frame_time,8);
                 temp.data.push_back((guint8 *)&t->rtp_content->payload_len,4);
-                temp.data.push_back(t->rtp_content->payload,t->rtp_content->payload_len);
+                temp.data.push_back(t->rtp_content->payload, t->rtp_content->payload_len);
                 rtpTotalBuffer.insert(std::pair<std::string,rtpTotalBufferContent>(index_str,temp));
 
             } else{

@@ -253,21 +253,14 @@ int do_Files_Handlers(capture_file cfile, char *cf_name);
 
 static gboolean capture(void);
 
-static gboolean capture_input_new_file(capture_session *cap_session,
-                                       gchar *new_file);
-
-static void capture_input_new_packets(capture_session *cap_session,
-                                      int to_read);
-
+static gboolean capture_input_new_file(capture_session *cap_session, gchar *new_file);
+static void capture_input_new_packets(capture_session *cap_session, int to_read);
 static void capture_input_drops(capture_session *cap_session, guint32 dropped,
                                 const char *interface_name);
-
 static void capture_input_error(capture_session *cap_session,
                                 char *error_msg, char *secondary_error_msg);
-
 static void capture_input_cfilter_error(capture_session *cap_session,
                                         guint i, const char *error_message);
-
 static void capture_input_closed(capture_session *cap_session, gchar *msg);
 
 static void report_counts(void);
@@ -300,20 +293,15 @@ static gboolean process_packet_single_pass(capture_file *cf,
                                            guint tap_flags);
 
 static void show_print_file_io_error(void);
-
 static gboolean write_preamble(capture_file *cf);
-
 static gboolean write_finale(void);
-
 static void failure_warning_message(const char *msg_format, va_list ap);
-
 static void open_failure_message(const char *filename, int err,
                                  gboolean for_writing);
 
 static void read_failure_message(const char *filename, int err);
 
 static void write_failure_message(const char *filename, int err);
-
 static void failure_message_cont(const char *msg_format, va_list ap);
 
 static GHashTable *output_only_tables = NULL;
@@ -843,7 +831,6 @@ int main(int argc, char *argv[]) {
 #endif
 
     // tshark_debug("Aurora started with %d args", argc);
-
     cmdarg_err_init(failure_warning_message, failure_message_cont);
 
 #ifdef _WIN32
@@ -860,10 +847,8 @@ int main(int argc, char *argv[]) {
     print_current_user();
 
     /*
-     * Attempt to get the pathname of the directory containing the
-     * executable file.
+     * Attempt to get the pathname of the directory containing the executable file.
      */
-
     err_msg = init_progfile_dir(argv[0]);
     if (err_msg != NULL) {
         fprintf(stderr,
@@ -1015,7 +1000,6 @@ int main(int argc, char *argv[]) {
     }
 
     /** Send All g_log messages to our own handler **/
-
     log_flags =
             G_LOG_LEVEL_ERROR |
             G_LOG_LEVEL_CRITICAL |
@@ -1083,18 +1067,8 @@ int main(int argc, char *argv[]) {
     if (JSON_ADD_PROTO) {
         exproto_register(&protos);
     }
+
     /* Register all tap listeners. */
-
-#ifdef JSON_ADD_PROTO
-    exproto_register(&proto);
-    //free struct exProtocol
-    // for (int i = 0; i < proto.partsNum; i++)
-    // {
-    //   free(proto.dataParts[i].data);
-    // }
-    // free(proto.dataParts);
-#endif
-
     for (tap_reg_t *t = tap_reg_listener; t->cb_func != NULL; t++) {
         t->cb_func();
     }
@@ -1646,7 +1620,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (PACKET_PROTOCOL_FLAG) {  // 是否组包
-        char t[24] = {0};
+        char t[256] = {0};
         int len = strlen(PACKET_PROTOCOL_TYPES);
         int j = 0;
         for (int i = 0; i < len; ++i) {
@@ -1654,14 +1628,13 @@ int main(int argc, char *argv[]) {
                 continue;
             }
             t[j++] = PACKET_PROTOCOL_TYPES[i];
-
             if (i + 1 == len || PACKET_PROTOCOL_TYPES[i + 1] == ',') {
                 strcat(t, ",");
                 strcat(t, PACKET_PROTOCOL_PATH);
                 if (!eo_tap_opt_add(t)) {
                     g_print("somthing error in PACKET_PROTOCOL_TYPES and PACKET_PROTOCOL_PATH !\n but go on \n");
                 }
-                memset(t, '\0', 24);
+                memset(t, '\0', 256);
                 j = 0;
             }
         }
@@ -1673,7 +1646,7 @@ int main(int argc, char *argv[]) {
             g_print("someting error in conversation of tcp\n");
         }
         for (int i = 0; i < 100; ++i) { //这里的循环次数是文件解析最后支持输出流的个数，有多少流就应该多大。
-            char arg_t_1[24] = "follow,udp,raw,";
+            char arg_t_1[256] = "follow,udp,raw,";
             strcat(arg_t_1,my_itoa(i));
             if (!process_stat_cmd_arg(arg_t_1)) {
                 list_stat_cmd_args();
@@ -1705,9 +1678,7 @@ int main(int argc, char *argv[]) {
         exit_status = INVALID_OPTION;
         goto clean_exit;
     } else if (WRITE_FIELDS == output_action && 0 == output_fields_num_fields(output_fields)) {
-        cmdarg_err("\"-Tfields\" was specified, but no fields were "
-                   "specified with \"-e\".");
-
+        cmdarg_err("\"-Tfields\" was specified, but no fields were specified with \"-e\".");
         exit_status = INVALID_OPTION;
         goto clean_exit;
     }
@@ -1726,8 +1697,7 @@ int main(int argc, char *argv[]) {
     if (optind < argc) {
         if (cf_name != NULL) {
             if (dfilter != NULL) {
-                cmdarg_err("Display filters were specified both with \"-Y\" "
-                           "and with additional command-line arguments.");
+                cmdarg_err("Display filters were specified both with \"-Y\" and with additional command-line arguments.");
                 exit_status = INVALID_OPTION;
                 goto clean_exit;
             }
@@ -1843,7 +1813,8 @@ int main(int argc, char *argv[]) {
             exit_status = INVALID_OPTION;
             goto clean_exit;
         }
-    } else {
+    }
+    else {
         if (cf_name) {
             /*
              * "-r" was specified, so we're reading a capture file.
@@ -1860,8 +1831,7 @@ int main(int argc, char *argv[]) {
                 goto clean_exit;
             }
             if (global_capture_opts.multi_files_on) {
-                cmdarg_err("Multiple capture files requested, but "
-                           "a capture isn't being done.");
+                cmdarg_err("Multiple capture files requested, but a capture isn't being done.");
                 exit_status = INVALID_OPTION;
                 goto clean_exit;
             }
@@ -1902,12 +1872,12 @@ int main(int argc, char *argv[]) {
              * only for a write file.
              */
             if (global_capture_opts.has_autostop_duration) {
-                cmdarg_err("A maximum capture time was specified, but "
-                           "a capture isn't being done.");
+                cmdarg_err("A maximum capture time was specified, but a capture isn't being done.");
                 exit_status = INVALID_OPTION;
                 goto clean_exit;
             }
-        } else {
+        }
+        else {
             /*
              * "-r" wasn't specified, so we're doing a live capture.
              */
@@ -2039,8 +2009,7 @@ int main(int argc, char *argv[]) {
 #ifdef HAVE_LIBPCAP
     /* We currently don't support taps, or printing dissected packets,
        if we're writing to a pipe. */
-    if (global_capture_opts.saving_to_file &&
-        global_capture_opts.output_to_pipe) {
+    if (global_capture_opts.saving_to_file && global_capture_opts.output_to_pipe) {
         if (tap_listeners_require_dissection()) {
             cmdarg_err("Taps aren't supported when saving to a pipe.");
             exit_status = INVALID_OPTION;
@@ -2066,7 +2035,6 @@ int main(int argc, char *argv[]) {
     }
 
     timestamp_set_type(global_dissect_options.time_format);
-
     /*
      * Enabled and disabled protocols and heuristic dissectors as per
      * command-line options.
@@ -2139,8 +2107,7 @@ int main(int argc, char *argv[]) {
     cfile.dfcode = dfcode;
 
     if (print_packet_info) {
-        /* If we're printing as text or PostScript, we have
-           to create a print stream. */
+        /* If we're printing as text or PostScript, we have to create a print stream. */
         if (output_action == WRITE_TEXT) {
             switch (print_format) {
 
@@ -2184,8 +2151,7 @@ int main(int argc, char *argv[]) {
             goto clean_exit;
         }
 
-        exp_pdu_error = exp_pdu_pre_open(exp_pdu_tap_name, exp_pdu_filter,
-                                         &exp_pdu_tap_data);
+        exp_pdu_error = exp_pdu_pre_open(exp_pdu_tap_name, exp_pdu_filter, &exp_pdu_tap_data);
         if (exp_pdu_error) {
             cmdarg_err("Cannot register tap: %s", exp_pdu_error);
             g_free(exp_pdu_error);
@@ -2219,7 +2185,6 @@ int main(int argc, char *argv[]) {
             goto clean_exit;
         }
     }
-
     // tshark_debug("Aurora: do_dissection = %s", do_dissection ? "TRUE" : "FALSE");
 
     if (cf_name) {
@@ -2233,7 +2198,6 @@ int main(int argc, char *argv[]) {
             g_assert(fName_t->next != NULL);
             pfileNameNode pnext = fName_t->next;
 
-//        int edit_files_process_num = 0;
             pid_t fpid;
             while (pnext != NULL) {
                 fpid = fork();
@@ -2241,7 +2205,8 @@ int main(int argc, char *argv[]) {
                     g_print("error fork\n");
                     pnext = pnext->next;
                     continue;
-                } else if (fpid == 0) {
+                }
+                else if (fpid == 0) {
                     /*子进程*/
                     cf_name = pnext->fileName;
                     g_print("process %d->%s \n", getpid(), cf_name);
@@ -2267,16 +2232,16 @@ int main(int argc, char *argv[]) {
                                 /*直接清理最终缓存*/
                                 clean_Temp_Files_All();
                             }
-                            CATCH(OutOfMemoryError) {
-                                fprintf(stderr,
-                                        "Out Of Memory.\n"
-                                        "\n"
-                                        "Sorry, but TShark has to terminate now.\n"
-                                        "\n"
-                                        "More information and workarounds can be found at\n" WS_WIKI_URL(
-                                                "KnownBugs/OutOfMemory") "\n");
-                                status = PROCESS_FILE_ERROR;
-                            }
+					CATCH(OutOfMemoryError) {
+						fprintf(stderr,
+								"Out Of Memory.\n"
+								"\n"
+								"Sorry, but TShark has to terminate now.\n"
+								"\n"
+								"More information and workarounds can be found at\n" WS_WIKI_URL(
+										"KnownBugs/OutOfMemory") "\n");
+						status = PROCESS_FILE_ERROR;
+					}
                     ENDTRY;
                     switch (status) {
 
@@ -2339,8 +2304,9 @@ int main(int argc, char *argv[]) {
 
                     break;
 
-                } else {
-//                /*父进程*/
+                }
+                else {
+                /*父进程*/
                     pnext = pnext->next;
                 }
             }
@@ -2387,7 +2353,8 @@ int main(int argc, char *argv[]) {
                             if(temp->next != NULL){
                                 temp = temp->next;  //跳过该文件，否则会持续打开该文件，一直报错
                                 continue;
-                            }else{
+                            }
+                            else{
                                 temp = temp->next;
                                 clean_Temp_Files_All();
                                 draw_taps = TRUE;
@@ -2411,12 +2378,8 @@ int main(int argc, char *argv[]) {
                         g_print("正在解析-->:%s\n",cf_name);
                         status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP
-                                                  global_capture_opts.has_autostop_packets
-                                                  ? global_capture_opts.autostop_packets
-                                                  : 0,
-                                                  global_capture_opts.has_autostop_filesize
-                                                  ? global_capture_opts.autostop_filesize
-                                                  : 0);
+				  global_capture_opts.has_autostop_packets ? global_capture_opts.autostop_packets : 0,
+				  global_capture_opts.has_autostop_filesize ? global_capture_opts.autostop_filesize : 0);
 #else
                         max_packet_count,
                             0);
@@ -2440,7 +2403,6 @@ int main(int argc, char *argv[]) {
                             }
                             change_result_file_name();//final_process_and_clean_memory()
                         }
-
                         temp = temp->next;
 
                         draw_taps = TRUE;
@@ -2452,28 +2414,15 @@ int main(int argc, char *argv[]) {
                 }
             }
             else {
-                //只有一个文件
-                /*文件名*/
+                //只有一个文件 /*文件名*/
                 /*将缓存的文件名字初始化*/
                 verify_identity_two(REGISTRATION_FILE_PATH);
                 memset(READ_FILE_PATH, '\0', 256);
                 strcpy(READ_FILE_PATH, cf_name); //文件名含路径
-                char file_name_t[256] = {0}; //获取文件名
-                for (int i = (int)strlen(cf_name),j = 0; i != 0 ; i--) {
-                    if(cf_name[i] == '.' && j == 0){
-                        j=i;
-                    }
-                    else if(cf_name[i] == '/' && j != 0){
-                        int a = 0;
-                        i++;
-                        while (i < j){
-                            file_name_t[a++] = cf_name[i++];
-                        }
-                        break;
-                    }
-                }
+				char *file_name_t = g_path_get_basename(cf_name); //获取文件名
+
                 memset(FILE_NAME_T,'\0',256);
-                strcpy(FILE_NAME_T,file_name_t); //文件名
+                strcpy(FILE_NAME_T, file_name_t); //文件名
 
                 g_print("正在解析-->: %s\n",cf_name);
                 if (cf_open(&cfile, cf_name, in_file_type, FALSE, &err) != CF_OK) {
@@ -2483,8 +2432,7 @@ int main(int argc, char *argv[]) {
                     goto clean_exit;
                 }
                 parse_offline_regex_dict();
-                /* Start statistics taps; we do so after successfully opening the
-                   capture file, so we know we have something to compute stats
+                /* Start statistics taps; we do so after successfully opening the capture file, so we know we have something to compute stats
                    on, and after registering all dissectors, so that MATE will
                    have registered its field array so we can have a tap filter
                    with one of MATE's late-registered fields as part of the
@@ -2498,43 +2446,37 @@ int main(int argc, char *argv[]) {
 
                 /* Process the packets in the file */
                 // tshark_debug("Aurora: invoking process_cap_file() to process the packets");
-
                 status = process_cap_file(&cfile, output_file_name, out_file_type, out_file_name_res,
 #ifdef HAVE_LIBPCAP
-                                          global_capture_opts.has_autostop_packets
-                                          ? global_capture_opts.autostop_packets
-                                          : 0,
-                                          global_capture_opts.has_autostop_filesize
-                                          ? global_capture_opts.autostop_filesize
-                                          : 0);
+			  global_capture_opts.has_autostop_packets ? global_capture_opts.autostop_packets : 0,
+			  global_capture_opts.has_autostop_filesize ? global_capture_opts.autostop_filesize : 0);
 #else
                 max_packet_count,
                             0);
 #endif
                 /*直接清理最终缓存*/
                 g_print("完成解析-->:%s\n",cf_name);
+
+				if (pdu_export_arg) {
+					if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
+						cfile_close_failure_message(exp_pdu_filename, err, err_info);
+						exit_status = 2;
+					}
+					g_free(pdu_export_arg);
+					g_free(exp_pdu_filename);
+				}
+				draw_taps = TRUE;
+				if (draw_taps){
+					draw_tap_listeners(TRUE);
+				}
+
                 clean_Temp_Files_All();
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                 single_File_End_Init();
                 change_result_file_name();
 
-
-
-                if (pdu_export_arg) {
-                    if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
-                        cfile_close_failure_message(exp_pdu_filename, err, err_info);
-                        exit_status = 2;
-                    }
-                    g_free(pdu_export_arg);
-                    g_free(exp_pdu_filename);
-                }
-                draw_taps = TRUE;
-                if (draw_taps){
-                    draw_tap_listeners(TRUE);
-                }
-                cf_close(&cfile);  //关闭打开的pcap文件
+//                cf_close(&cfile);  //关闭打开的pcap文件
             }
-
         }
         g_print("解析完成");
     }
@@ -2685,8 +2627,8 @@ int main(int argc, char *argv[]) {
         cfile.provider.frames = NULL;
     }
 
-/*    //清理流统计old。
-    draw_taps = TRUE;
+    //清理流统计old。
+    /* draw_taps = TRUE;
     if (draw_taps){
         draw_tap_listeners(TRUE);
         followConnectFiveEleClear();
@@ -3383,14 +3325,14 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
                                                   int unuse1, gint64 unuse2,
                                                   int *err, gchar **err_info,
                                                   volatile guint32 *err_framenum) {
-    wtap_rec rec;
-    Buffer buf;
-    gboolean create_proto_tree = FALSE;
-    gboolean filtering_tap_listeners;
-    guint tap_flags;
-    guint32 framenum;
+    wtap_rec 	rec;
+    Buffer 		buf;
+    gboolean 	create_proto_tree = FALSE;
+    gboolean 	filtering_tap_listeners;
+    guint 		tap_flags;
+    guint32 	framenum;
     epan_dissect_t *edt = NULL;
-    gint64 data_offset;
+    gint64 		data_offset;
     pass_status_t status = PASS_SUCCEEDED;
 
     wtap_rec_init(&rec);
@@ -3399,7 +3341,6 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
 
     /* Do we have any tap listeners with filters? */
     filtering_tap_listeners = have_filtering_tap_listeners();
-
     /* Get the union of the flags for all tap listeners. */
     tap_flags = union_of_tap_listener_flags();
 
@@ -3409,18 +3350,20 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
                 (cf->rfcode || cf->dfcode || print_details || filtering_tap_listeners ||
                  (tap_flags & TL_REQUIRES_PROTO_TREE) || postdissectors_want_hfids() ||
                  have_custom_cols(&cf->cinfo) || dissect_color);
+
+		/* The protocol tree will be "visible", i.e., printed, only if we're printing packet details,
+		 * which is true if we're printing stuff ("print_packet_info" is true) and
+		 * we're in verbose mode ("packet_details" is true). */
+		edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
     }
     /*
-     * Force synchronous resolution of IP addresses; we're doing only
-     * one pass, so we can't do it in the background and fix up past
-     * dissections.
+     * Force synchronous resolution of IP addresses; we're doing only one pass,
+     * so we can't do it in the background and fix up past dissections.
      */
     set_resolution_synchrony(TRUE);
-//    set_resolution_synchrony(FALSE);
 
     *err = 0;
     while (wtap_read(cf->provider.wth, &rec, &buf, err, err_info, &data_offset)) {
-
         framenum++;
         /*
          * Process whatever IDBs we haven't seen yet.
@@ -3431,29 +3374,26 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
             break;
         }
 
-//        reset_epan_mem(cf, edt, create_proto_tree, print_packet_info && print_details);
-        edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
+        reset_epan_mem(cf, edt, create_proto_tree, print_packet_info && print_details);
+        // edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
         if (process_packet_single_pass(cf, edt, data_offset, &rec, &buf, tap_flags)) {
-            /* Either there's no read filtering or this packet passed the
-               filter, so, if we're writing to a capture file, write
-               this packet out. */
+            /* Either there's no read filtering or this packet passed the filter, so,
+             * if we're writing to a capture file, write this packet out. */
             if (pdh != NULL) {
-                // tshark_debug("Aurora: writing packet #%d to outfile", framenum);
                 if (!wtap_dump(pdh, &rec, ws_buffer_start_ptr(&buf), err, err_info)) {
                     /* Error writing to the output file. */
-                    // tshark_debug("Aurora: error writing to a capture file (%d)", *err);
                     *err_framenum = framenum;
                     status = PASS_WRITE_ERROR;
                     break;
                 }
             }
         }
-        epan_dissect_free(edt);
     }
-    if (*err != 0 && status == PASS_SUCCEEDED) {
-        /* Error reading from the input file. */
+    if (*err != 0 && status == PASS_SUCCEEDED) { /* Error reading from the input file. */
         status = PASS_READ_ERROR;
     }
+	if (edt)
+		epan_dissect_free(edt);
 
     ws_buffer_free(&buf);
     wtap_rec_cleanup(&rec);
@@ -3518,7 +3458,6 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
        packet information, we don't need to do a dissection. This means
        that all packets can be marked as 'passed'. */
     passed = TRUE;
-
     frame_data_init(&fdata, cf->count, rec, offset, cum_bytes);
 
     /* If we're going to print packet information, or we're going to
@@ -3527,13 +3466,11 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
        over the packets, so, if we'll be printing packet information
        or running taps, we'll be doing it here.) */
     if (edt) {
-        /* If we're running a filter, prime the epan_dissect_t with that
-           filter. */
-        /* if (cf->dfcode)
-           epan_dissect_prime_with_dfilter(edt, cf->dfcode);*/
+        /* If we're running a filter, prime the epan_dissect_t with that filter. */
+        if (cf->dfcode)
+           epan_dissect_prime_with_dfilter(edt, cf->dfcode);
 
-        /* This is the first and only pass, so prime the epan_dissect_t
-           with the hfids postdissectors want on the first pass. */
+        /* This is the first and only pass, so prime the epan_dissect_t with the hfids postdissectors want on the first pass. */
         prime_epan_dissect_with_postdissector_wanted_hfids(edt);
 
         frame_data_set_before_dissect(&fdata, &cf->elapsed_time,
@@ -3544,28 +3481,26 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
         }
         gint64 current = 0;
         current = wtap_read_pos(cf->provider.wth);
-        //printf("%ld--%ld\n", current - fdata.pkt_len, current);
-        //fflush(stdout);
         write_range_into_write_in_files_cJson(current - fdata.pkt_len,current);
 
         epan_dissect_run_with_taps(edt, cf->cd_t, rec,
                                    frame_tvbuff_new_buffer(&cf->provider, &fdata, buf),
                                    &fdata, cinfo);  /* 获得edt中的tvbuff_t类型的数据指针，具有链表结构的数据包 */
 
-
-        if (DISPLAY_PACKET_INFO_FLAG) {
-            if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
-                if (ALL_PACKET_COUNT % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
-                    g_print("Have processed %d packets! Total %ld Bytes ( %.2lf MB).\n", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
-                    fflush(stdout);
-                }
-            } else {
-                g_print("Have processed %d packets! Total %ld Bytes ( %.2lf MB).\n", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
-                fflush(stdout);
-            }
-        }
+//		if (DISPLAY_PACKET_INFO_FLAG) {
+//			if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {  // 是否批量写入
+//				if (ALL_PACKET_COUNT % INSERT_MANY_PROTOCOL_STREAM_NUM == 0) {
+//					fprintf(stdout, "Have processed %d packets! Total %ld Bytes ( %.2lf MB).\n", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
+//					fflush(stdout);
+//				}
+//			} else {
+//				fprintf(stdout, "Have processed %d packets! Total %ld Bytes ( %.2lf MB).\n", ALL_PACKET_COUNT, offset, offset/1024.0/1024);
+//				fflush(stdout);
+//			}
+//		}
     }
-    prev_cap_frame = fdata;
+	frame_data_set_after_dissect(&fdata, &cum_bytes);
+	prev_cap_frame = fdata;
     cf->provider.prev_cap = &prev_cap_frame;
 
     if (edt) {

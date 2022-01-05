@@ -11,7 +11,7 @@ if (WIN32)
     # Needed for add_custom_command() WORKING_DIRECTORY generator expressions
     cmake_minimum_required(VERSION 3.13)
 else ()
-    cmake_minimum_required(VERSION 3.5)
+    cmake_minimum_required(VERSION 3.15)
 endif ()
 
 if (POLICY CMP0069)
@@ -2512,10 +2512,10 @@ if (BUILD_tshark)
             $<TARGET_OBJECTS:version_info>
             tshark-tap-register.c
             tshark.c
+            ${TSHARK_TAP_SRC}
             editcap_test.c
             newproto/jsonopt.c
             newproto/register_protocol.c
-            ${TSHARK_TAP_SRC}
             authorize.c
             )
 
