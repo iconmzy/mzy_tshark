@@ -316,7 +316,6 @@ setup_enabled_and_disabled_protocols(void) {
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "osi");
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "osinlcp");
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "osinlcp_opt_def_pid");
-
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "smpp");
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "6lowpan");
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "llrp");
@@ -450,6 +449,44 @@ setup_enabled_and_disabled_protocols(void) {
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rpc");
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mount");
     //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "amt");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "smb2");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cattp");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ftam");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mms");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mmse");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dsr");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mapi");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtmp");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tali");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "amf");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "amp");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lpp");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xot");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rudp");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "pgm");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "magic");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f1ap");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ngap");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xnap");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "e1ap");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "capwap");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "capwap_data");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "quic");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sna");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rpl");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "qllc");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "trill");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "irc");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rlogin");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "socks");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gvrp");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mstp");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "bitcoin");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rsync");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "drda");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "diameter");
+    //global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dsi");
 
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "btpb");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "its");
@@ -491,7 +528,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "acap");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "acdr");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "acn");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "magic");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rdmnet");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "acp133");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "acr122");
@@ -531,8 +568,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ajp13");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "alc");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "alcap");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "amf");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "amp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "amqp_version_v0_9");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "amqp_version_v0_10");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "amqp_version_v1_0");
@@ -580,7 +615,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "asp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "prap");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "zip");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtmp");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ath");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "aal1");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "aal3_4");
@@ -636,8 +671,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "bencode");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ber");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "bfcp");
-
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "bitcoin");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "bjnp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "blip");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "bluecom");
@@ -713,13 +746,11 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "calcappprotocol");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "camel");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "canopen");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "capwap");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "capwap_data");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "etsi_cat");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "carp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cast");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dct2000");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cattp");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cbcp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cbcp_opt_no_callback");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cbcp_opt_callback_user");
@@ -837,7 +868,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "initshutdown");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "iremotewinspool");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lsarpc");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mapi");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mdssvc");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "messenger");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "netdfs");
@@ -869,7 +900,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "devicenet");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dhcpfo");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dhcpv6_bulk_leasequery");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "diameter");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "diameter_3gpp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "disp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "distcc");
@@ -966,12 +996,10 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dpnss_link");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "drb");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "drbd");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "drda");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "drsuapi");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dsi");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg_dsmcc");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dsp");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dsr");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dtcp-ip");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dtpt");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dtsprovider");
@@ -993,7 +1021,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dxl");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "e100");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "e164");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "e1ap");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "e212");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ebhscr");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "echo");
@@ -1042,7 +1070,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "exablaze");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "exec");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "exported_pdu");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f1ap");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f5ethtrailer");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f5ethtrailer_provider_noise");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f5ethtrailer_tls");
@@ -1086,7 +1113,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "frame");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "pkt_comment");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "syscall");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ftam");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ftdi-ft");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ftdi-mpsse");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ftserver");
@@ -1165,7 +1192,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nrup");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gtpv2");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gvcp");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gvrp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gvsp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "h1");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "h223");
@@ -1317,7 +1343,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ipxmsg");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ipxsap");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ipxwan");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "irc");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "isdn");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "isdn_sup");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "iser");
@@ -1447,7 +1472,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "loratap");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lorawan");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lpd");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lpp");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lppa");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lppe");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lsc");
@@ -1557,8 +1582,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mip6_options_dmnp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mka");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mle");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mms");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mmse");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mbtcp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mbudp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mbrtu");
@@ -1577,7 +1600,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg_ca");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg_descr");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg_pat");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg-pes");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg_pmt");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mpeg_sect");
@@ -1611,7 +1634,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "msnms");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "msproxy");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "msrp");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mstp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mswsp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mtp3mg");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "mudurl");
@@ -1671,7 +1693,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nfs_cb");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nfsacl");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nfsauth");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ngap");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nge");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nisplus");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nispluscb");
@@ -1775,7 +1797,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "per");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "pfcp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "pflog");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "pgm");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "pingpongprotocol");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "pkcs-1");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "pkcs10");
@@ -1840,7 +1862,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "q931");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "q932");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "q932_ros");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "qllc");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lwl4");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "qos");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lr");
@@ -1851,7 +1872,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "quake2");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "quake3");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "quakeworld");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "quic");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "r3");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "raw");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rbm");
@@ -1877,7 +1897,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rlc-lte");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rlc-nr");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rlm");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rlogin");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rmcp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rmi");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "serialization");
@@ -1892,7 +1911,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rpcap");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rpcordma");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rpkirtr");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rpl");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rpriv");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rquota");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rrc");
@@ -1920,7 +1938,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rstat");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rsvd");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rsvp-e2ei");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rsync");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtacser");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtcdc");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtcfg");
@@ -1934,7 +1951,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtpproxy");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtse");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rua");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rudp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rwall");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rx");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sabp");
@@ -1977,7 +1993,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sll");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "slsk");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sm");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "smb2");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "lanman");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "smb_direct");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "smb_netlogon");
@@ -1989,7 +2004,7 @@ setup_enabled_and_disabled_protocols(void) {
 
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "smrse");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "smux");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sna");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sna_xid");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "snaeth");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sndcp");
@@ -1998,7 +2013,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "caneth");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "can");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "canfd");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "socks");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "solaredge");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "someip");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "someipsd");
@@ -2040,7 +2054,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "t125");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "t30");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "t38");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tali");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tapa");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tcg_cp_oids");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tcp_options_nop");
@@ -2103,7 +2117,7 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tpm");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tpncp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tr");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "trill");
+
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "trmac");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ts2");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tsdns");
@@ -2231,8 +2245,6 @@ setup_enabled_and_disabled_protocols(void) {
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xip");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xipserval");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xmcp");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xnap");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xot");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xra");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "docsis_segment");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "docsis_plc");

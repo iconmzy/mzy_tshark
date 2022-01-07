@@ -3542,12 +3542,10 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
            with the hfids postdissectors want on the first pass. */
 
         prime_epan_dissect_with_postdissector_wanted_hfids(edt);
-/*        col_custom_prime_edt(edt, &cf->cinfo);
-        if ((tap_flags & TL_REQUIRES_COLUMNS) || (print_packet_info && print_summary) || output_fields_has_cols(output_fields))
-            cinfo = &cf->cinfo;
-        else
-            cinfo = NULL;
-*/
+        col_custom_prime_edt(edt, &cf->cinfo);
+
+        cinfo = &cf->cinfo;
+
         frame_data_set_before_dissect(&fdata, &cf->elapsed_time,
                                       &cf->provider.ref, cf->provider.prev_dis);
         if (cf->provider.ref == &fdata) {

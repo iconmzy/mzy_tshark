@@ -145,9 +145,23 @@ eo_draw(void *tapdata)
             g_string_free(safe_filename, TRUE);
         } while (g_file_test(save_as_fullpath, G_FILE_TEST_EXISTS) && ++count < prefs.gui_max_export_objects);
         count = 0;
+        char filename_t[256]={};
+        strcpy(filename_t,entry->filename);
+        int filename_t_len = strlen(filename_t);
+        int count_t = 0;
+        //check export filename tempeorarily//
+        for(int i = 0;i < filename_t_len;i++){
+            if (filename_t[i] == '.'){
+                count_t++;
+            }
+        }
+        if(count_t != 1){
+            break;
+        }
         eo_save_entry(save_as_fullpath, entry);  // 写入文件
         //记录写入的文件与原始pcap文件//
         write_Export_result(save_as_fullpath,cfile.filename,save_in_path);
+
         g_free(save_as_fullpath);
         save_as_fullpath = NULL;
         slist = slist->next;
