@@ -611,6 +611,9 @@ void proto_register_exprotocol(int j)
             default:
                 hf[i].hfinfo.type = FT_BYTES;
                 hf[i].hfinfo.display = BASE_NONE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
         }
 
         HFILL_INIT(hf[i]);

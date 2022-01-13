@@ -415,7 +415,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
     std::string filepath__str_t;
     std::string filedirpath_str_t;
     /* 20211208MZY ISIS的不同类型放到一个文件夹中输出*/
-    if(strncasecmp(protocol.c_str(),"isis",4) == 0){
+/*   if(strncasecmp(protocol.c_str(),"isis",4) == 0){
         std::string isis = "isis";
         filepath__str_t = EXPORT_PATH  + isis + "/"+  protocol + "/" + protocol + "_" + global_time_str + ".writting";
         filedirpath_str_t = EXPORT_PATH + isis + "/"+ protocol;
@@ -423,7 +423,9 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
     }else{
         filepath__str_t = EXPORT_PATH + protocol + "/" + protocol + "_" + global_time_str + ".writting";
         filedirpath_str_t = EXPORT_PATH + protocol;
-    }
+    }*/
+    filepath__str_t = EXPORT_PATH + protocol + "/" + protocol + "_" + global_time_str + ".writting";
+    filedirpath_str_t = EXPORT_PATH + protocol;
 
     char filepath_t[MAXWRITEFILELENGTH] = {0};
     char fileDirPath_t[MAXWRITEFILELENGTH] = {0};
