@@ -115,6 +115,11 @@ std::map<std::string,std::string> regex_dict_map;
 gboolean WRITE_IN_ES_FLAG = 0;  /* 配置是否写入ElasticSearch数据库 */
 char ES_URL[256] = {0};  /* ElasticSearch地址 */
 
+gboolean WRITE_IN_KAFKA_CONFIG = 0;
+kafka_params kafkaParams_ymq = {{0}, {0},{0},0, KAFKA_NO_RUN};
+rd_kafka_t *rk = nullptr;  //producer
+rd_kafka_t *rk_con = nullptr; //consumer
+
 static std::string global_time_str;  // long int types
 FILE *fp_result_timestampe = nullptr;
 
@@ -154,7 +159,7 @@ std::list<std::string> lastLayerProtocolFilterList = { //最后层协议名称�
         ,"ftp-data.current-working-directory","dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","ftp-data.command-frame","dcerpc.cn_deseg_req"\
         ,"dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str"
 };
-std::list<std::string> protoKeyFilterList = {"text"}; //协议KEY过滤
+std::list<std::string> protoKeyFilterList = {"text","useless"}; //协议KEY过滤
 
 //stream handle----------------------------begin 20210909 yy ----------------------------stream handle begin ||||
 class gunit8Array
@@ -794,6 +799,12 @@ gboolean write_Files_conv(std::string &stream) {
             return false;
         }
     }
+    if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
+        std::string conversation_name_t = "conversation";
+        const char * data = stream.c_str();
+        const char * key = conversation_name_t.c_str();
+        au_kafka_producer(rk, &kafkaParams_ymq, key, data);
+    }
     try {
         fputs(stream.c_str(), conversation_Handle_File);
         fflush(conversation_Handle_File);
@@ -1170,6 +1181,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         return true;
     }
 
+
     if(PACKET_PROTOCOL_FLAG){
         /*判断当前协议是否需要组包*/
         if(g_list_find_custom(rtp_fields, write_in_files_proto.c_str(), (GCompareFunc)strcmp)){
@@ -1353,6 +1365,11 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     }
 
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
+    if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
+        const char * data = cJSON_Print(write_in_files_cJson);
+        const char * key = write_in_files_proto.c_str();
+        au_kafka_producer(rk, &kafkaParams_ymq, key, data);
+    }
     if (WRITE_IN_ES_FLAG == 1) {
         write_into_es(write_in_files_stream, write_in_files_proto);
     }
@@ -1396,6 +1413,13 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
     cJSON_AddStringToObject(write_export_origin_cJson, "origin_file_path", pcap_name);
     cJSON_AddStringToObject(write_export_origin_cJson, "export_file_path", ex_name);
     write_ex_origin_stream = cJSON_Print(write_export_origin_cJson);
+
+    if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
+        const char * data = cJSON_Print(write_export_origin_cJson);
+        const char * key = "export_result";
+        au_kafka_producer(rk, &kafkaParams_ymq, key, data);
+    }
+
     g_assert(fp_t->fp); //这里肯定fp不能为空。否则文件不知道写到那里。
     fputs(write_ex_origin_stream.c_str(),fp_t->fp);
     fprintf(fp_t->fp,"\n");
@@ -2004,6 +2028,7 @@ gboolean readConfigFilesStatus() {
                 char *write_in_es_flag;
                 char *es_url;
                 char *per_files_max_linex;
+                char *write_in_kafka_config;
 
                 /**
                  * 这里需要把当前运行的时间戳定下来
@@ -2024,6 +2049,46 @@ gboolean readConfigFilesStatus() {
                 } else {
                     return false;
                 }
+                // kafka parameters
+                char * kafka_status = getInfo_ConfigFile("KAFKA_STATUS", info, lines);
+                if (kafka_status != nullptr) {
+                    kafkaParams_ymq.status = (kafka_status_t)(*kafka_status - '0');
+                } else kafkaParams_ymq.status = KAFKA_NO_RUN;
+
+                char * kafka_broker = getInfo_ConfigFile("KAFKA_BROKER", info, lines);
+                if (kafka_broker != nullptr) { strcpy(kafkaParams_ymq.brokers, kafka_broker); }
+                char * kafka_topic = getInfo_ConfigFile("KAFKA_TOPIC", info, lines);
+                if (kafka_topic != nullptr) { strcpy(kafkaParams_ymq.topic, kafka_topic); }
+
+                write_in_kafka_config = getInfo_ConfigFile("WRITE_IN_KAFKA_CONFIG", info, lines);
+                if(write_in_kafka_config != nullptr){
+                    WRITE_IN_KAFKA_CONFIG = *write_in_kafka_config - '0';
+                }else{
+                    WRITE_IN_KAFKA_CONFIG == 0;
+                }
+                // for consumer
+                char * kafka_groupid = getInfo_ConfigFile("KAFKA_GROUPID", info, lines);
+                if (kafka_groupid != nullptr) { strcpy(kafkaParams_ymq.groupid, kafka_groupid); }
+                char * kafka_topic_cnt = getInfo_ConfigFile("KAFKA_TOPIC_CNT", info, lines);
+                if (kafka_topic_cnt != nullptr) { kafkaParams_ymq.topic_cnt = *kafka_topic_cnt - '0'; }
+
+                switch (kafkaParams_ymq.status) {
+                    case KAFKA_PRODUCER:
+                        rk = init_producer(&kafkaParams_ymq);
+                        break;
+                    case KAFKA_CONSUMER:
+                        rk_con = init_consumer(&kafkaParams_ymq);
+                        break;
+                    case KAFKA_PRODUCER_CONSUMER:
+                        rk = init_producer(&kafkaParams_ymq);
+                        rk_con = init_consumer(&kafkaParams_ymq);
+                        break;
+                    default:
+                        kafkaParams_ymq.status = KAFKA_NO_RUN;
+                        break;
+                }
+
+
 
                 write_in_es_flag = getInfo_ConfigFile("WRITE_IN_ES_FLAG", info, lines);
                 if (write_in_es_flag != nullptr) {

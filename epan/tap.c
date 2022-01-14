@@ -24,6 +24,8 @@
 #include <epan/packet_info.h>
 #include <epan/dfilter/dfilter.h>
 #include <epan/tap.h>
+#include "write_in_files_handlers.h"
+
 
 static gboolean tapping_is_active=FALSE;
 

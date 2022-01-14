@@ -153,6 +153,8 @@
 #endif
 
 #include "authorize.h"
+#include "kafka_aurora.h"
+
 
 /* Exit codes */
 #define INVALID_OPTION 1
@@ -2187,6 +2189,11 @@ int main(int argc, char *argv[]) {
     }
     // tshark_debug("Aurora: do_dissection = %s", do_dissection ? "TRUE" : "FALSE");
 
+    if (kafkaParams_ymq.status == KAFKA_CONSUMER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) {
+        // get data from kafka and dissection, push result to kafka and txt?
+        au_kafka_consumer(rk_con,&kafkaParams_ymq);
+    }
+
     if (cf_name) {
         verify_identity_two(REGISTRATION_FILE_PATH);
         if (EDIT_FILES_DISSECT_FLAG) {
@@ -2648,6 +2655,8 @@ int main(int argc, char *argv[]) {
 	followConnectFiveEleClear();
     clean_Temp_Files_All();
     cf_close(&cfile);
+    if (rk) destroy_producer(rk);
+    if (rk_con) destroy_consumer(rk_con);
     if ((cf_name != READ_PACKET_FROM_FILES_PATH) && EDIT_FILES_DISSECT_FLAG == 1) {
         g_free(cf_name);
     } else {
