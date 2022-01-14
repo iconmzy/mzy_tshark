@@ -49,7 +49,7 @@ void g711u_decode_zhr(char filename1[],  char filename2[])
 			m=in2[i+8]+(in2[i+9]<<8)+(in2[i+10]<<16)+(in2[i+11]<<24); i+=12;
 			g711u_decode( out2+n, in2+i, m);	 n+=m*2; i+=m;
 		}		
-		sprintf(file, "%s.au",filename2);
+		sprintf(file, "%s.single.au",filename2);
 		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 		fwrite(AU_header, 1, 24, fp);
 		fwrite(out2, 1, n, fp);
@@ -68,7 +68,7 @@ void g711u_decode_zhr(char filename1[],  char filename2[])
 			g711u_decode( out1+n, in1+i, m);	 n+=m*2; i+=m;
 		}
 		len=n;
-		sprintf(file, "%s.au",filename1);
+		sprintf(file, "%s.single.au",filename1);
 		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 		fwrite(AU_header, 1, 24, fp);
 		fwrite(out1, 1, n, fp);
@@ -96,7 +96,7 @@ void g711u_decode_zhr(char filename1[],  char filename2[])
 		g711u_decode( out2+n, in2+i, m);	 n+=m*2; i+=m;
 	}
 	ll=n;
-	sprintf(file, "%s.au",filename1);
+	sprintf(file, "%s.paired.au",filename1);
 	if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 	AU_header[23]=2;
 	fwrite(AU_header, 1, 24, fp);

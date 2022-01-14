@@ -2115,7 +2115,7 @@ void g729a_decode_zhr(char filename1[],char filename2[])
 	{
 		fseek(fn, 0,SEEK_END);  ll = ftell(fn);  in2 = (unsigned char *)malloc(ll);   rewind(fn);   i = fread(in2,sizeof(char),ll,fn);fclose(fn);
 		out2  = (unsigned char*)malloc(ll*20);	 n=g729a_decode(in2, ll,  out2);	
-		sprintf(file,"%s.au",filename2);
+		sprintf(file,"%s.single.au",filename2);
 		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE2 FAIL\n");   return ; }
 		fwrite(AU_header, 1, 24, fp);
 		fwrite(out2, 1, n, fp);
@@ -2129,7 +2129,7 @@ void g729a_decode_zhr(char filename1[],char filename2[])
 	{
 		fseek(fp, 0,SEEK_END);  ll = ftell(fp);  in1 = (unsigned char *)malloc(ll);   rewind(fp);   i = fread(in1,sizeof(char),ll,fp);fclose(fp);
 		out1  = (unsigned char*)malloc(ll*20);	 n=g729a_decode(in1, ll,  out1);	
-		sprintf(file,"%s.au",filename1);
+		sprintf(file,"%s.single.au",filename1);
 		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE1 FAIL\n");   return ; }
 		fwrite(AU_header, 1, 24, fp);
 		fwrite(out1, 1, n, fp);
@@ -2145,9 +2145,9 @@ void g729a_decode_zhr(char filename1[],char filename2[])
 	out2  = (unsigned char*)malloc(ll*20);	 n=g729a_decode(in2, ll,  out2); ll=n;	
 	t1=in1[0]+ (in1[1]<<8)+ (in1[2]<<16)+ (in1[3]<<24);  	t2=in1[4]+ (in1[5]<<8)+ (in1[6]<<16)+ (in1[7]<<24);
 	t3=in2[0]+ (in2[1]<<8)+ (in2[2]<<16)+ (in2[3]<<24);	    t4=in2[0]+ (in2[1]<<8)+ (in2[2]<<16)+ (in2[3]<<24);
-	printf("%d %d\n%d %d\n",t1,t2,t3,t4);
+	//printf("%d %d\n%d %d\n",t1,t2,t3,t4);
 
-	sprintf(file,"%s.au",filename1);
+	sprintf(file,"%s.paired.au",filename1);
 	if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE FAIL\n");   return ; }
 	AU_header[23]=2;
 	fwrite(AU_header, 1, 24, fp);
