@@ -3554,9 +3554,9 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
         }
         gint64 current = 0;
         current = wtap_read_pos(cf->provider.wth);
-        //printf("%ld--%ld\n", current - fdata.pkt_len, current);
-        //fflush(stdout);
-        write_range_into_write_in_files_cJson(current - fdata.pkt_len,current);
+//        printf("%ld--%ld\n", current - fdata.pkt_len, current);
+//        fflush(stdout);
+        write_range_into_write_in_files_cJson(current - fdata.pkt_len, current);  // TODO：PCAPNG文件的开始和结束位置有误
         epan_dissect_run_with_taps(edt, cf->cd_t, rec,
                                    frame_tvbuff_new_buffer(&cf->provider, &fdata, buf),
                                    &fdata, cinfo);  /* 获得edt中的tvbuff_t类型的数据指针，具有链表结构的数据包 */
