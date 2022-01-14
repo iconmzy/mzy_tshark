@@ -580,7 +580,7 @@ dissect_record(epan_dissect_t *edt, int file_type_subtype,
 		frame_dissector_data.pkt_comment = rec->opt_comment;
 	else
 		frame_dissector_data.pkt_comment = NULL;
-	frame_dissector_data.file_type_subtype = file_type_subtype;
+ 	frame_dissector_data.file_type_subtype = file_type_subtype;
 	frame_dissector_data.color_edt = edt; /* Used strictly for "coloring rules" */
 
 	TRY {

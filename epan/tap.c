@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include <stdio.h>
-
 #include <sys/types.h>
 
 #ifdef HAVE_NETINET_IN_H
@@ -128,9 +127,7 @@ register_all_plugin_tap_listeners(void)
 /* This function is called once when wireshark starts up and is used
    to init any data structures we may need later.
 */
-void
-tap_init(void)
-{
+void tap_init(void) {
 	tap_packet_index=0;
 }
 
@@ -154,9 +151,7 @@ tap_init(void)
    call so that the tap subsystem knows to which tap point this tapped
    packet is associated.
 */
-int
-register_tap(const char *name)
-{
+int register_tap(const char *name) {
 	tap_dissector_t *td, *tdl = NULL, *tdl_prev = NULL;
 	int i=0;
 
@@ -272,67 +267,44 @@ tap_queue_init(epan_dissect_t *edt)
 	}
 
 	tapping_is_active=TRUE;
-
 	tap_packet_index=0;
-
-	tap_build_interesting (edt);
+	tap_build_interesting(edt);
 }
 
 /* this function is called after a packet has been fully dissected to push the tapped
    data to all extensions that has callbacks registered.
 */
-void
-tap_push_tapped_queue(epan_dissect_t *edt)
-{
+void tap_push_tapped_queue(epan_dissect_t *edt) {
 	tap_packet_t *tp;
 	tap_listener_t *tl;
 	guint i;
 
 	/* nothing to do, just return */
-	if(!tapping_is_active){
-		return;
-	}
-
+	if(!tapping_is_active){ return; }
 	tapping_is_active=FALSE;
 
 	/* nothing to do, just return */
-	if(!tap_packet_index){
-		return;
-	}
+	if(!tap_packet_index){ return; }
 
-	/* loop over all tap listeners and call the listener callback
-	   for all packets that match the filter. */
-	for(i=0;i<tap_packet_index;i++){
-		for(tl=tap_listener_queue;tl;tl=tl->next){
+	/* loop over all tap listeners and call the listener callback for all packets that match the filter. */
+	for(i=0; i<tap_packet_index; i++){
+		for(tl=tap_listener_queue; tl; tl=tl->next){
 			tp=&tap_packet_array[i];
-			/* Don't tap the packet if it's an "error packet"
-			 * unless the listener has requested that we do so.
-			 */
-			if (!(tp->flags & TAP_PACKET_IS_ERROR_PACKET) || (tl->flags & TL_REQUIRES_ERROR_PACKETS))
-			{
+			/* Don't tap the packet if it's an "error packet" unless the listener has requested that we do so. */
+			if (!(tp->flags & TAP_PACKET_IS_ERROR_PACKET) || (tl->flags & TL_REQUIRES_ERROR_PACKETS)) {
 				if(tp->tap_id==tl->tap_id){
 					if(!tl->packet){
-						/* There isn't a per-packet
-						 * routine for this tap.
-						 */
+						/* There isn't a per-packet routine for this tap. */
 						continue;
 					}
 					if(tl->failed){
-						/* A previous call failed,
-						 * meaning "stop running this
-						 * tap", so don't call the
-						 * packet routine.
-						 */
+						/* A previous call failed, meaning "stop running this tap", so don't call the packet routine. */
 						continue;
 					}
-
-					/* If we have a filter, see if the
-					 * packet passes.
-					 */
+					/* If we have a filter, see if the packet passes. */
 					if(tl->code){
 						if (!dfilter_apply_edt(tl->code, edt)){
-							/* The packet didn't
-							 * pass the filter. */
+							/* The packet didn't pass the filter. */
 							continue;
 						}
 					}
@@ -341,17 +313,14 @@ tap_push_tapped_queue(epan_dissect_t *edt)
 					tap_packet_status status;
 					status = tl->packet(tl->tapdata, tp->pinfo, edt, tp->tap_specific_data);
 					switch (status) {
-
-					case TAP_PACKET_DONT_REDRAW:
-						break;
-
-					case TAP_PACKET_REDRAW:
-						tl->needs_redraw=TRUE;
-						break;
-
-					case TAP_PACKET_FAILED:
-						tl->failed=TRUE;
-						break;
+						case TAP_PACKET_DONT_REDRAW:
+							break;
+						case TAP_PACKET_REDRAW:
+							tl->needs_redraw=TRUE;
+							break;
+						case TAP_PACKET_FAILED:
+							tl->failed=TRUE;
+							break;
 					}
 				}
 			}

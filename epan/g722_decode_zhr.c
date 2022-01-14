@@ -307,7 +307,7 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 	if(fp==NULL)
 	{		
 		fseek(fn, 0,SEEK_END); ll=ftell(fn); in2=(unsigned char *)malloc(ll); rewind(fn); i=fread(in2,sizeof(char),ll,fn);fclose(fn); out2=(unsigned char *)malloc(ll*4); 
-		printf("%d %d \n",ll,i);
+		//printf("%d %d \n",ll,i);
 		n=0; for(i=0; i<ll;)
 		{
 			m=in2[i+8]+(in2[i+9]<<8)+(in2[i+10]<<16)+(in2[i+11]<<24); i+=12;
@@ -315,9 +315,9 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 			//printf("%d %d %d %d %d %d\n",j,n,ll*4,ll,i,m);
 			n+=m*4; i+=m;
 		}		
-		printf("%d %d %d\n",j,n,ll*4);
-		sprintf(file, "%s.au",filename2);
-		printf("%s\n",file);
+		//printf("%d %d %d\n",j,n,ll*4);
+		sprintf(file, "%s.single.au",filename2);
+		//printf("%s\n",file);
 		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 		fwrite(AU_header, 1, 24, fp);
 		for(j=0;j<n;j+=2){sf[0] = out2[j]; out2[j] = out2[j+1]; out2[j+1] = sf[0];}
@@ -332,8 +332,8 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 	if(fn==NULL)
 	{
 		fseek(fp, 0,SEEK_END); ll=ftell(fp); in1=(unsigned char *)malloc(ll); rewind(fp); i=fread(in1,sizeof(char),ll,fp);fclose(fp); out1=(unsigned char *)malloc(ll*4); 
-		printf("%d %d\n",i,ll);	
-		printf("%s\n",file);
+		//printf("%d %d\n",i,ll);
+		//printf("%s\n",file);
 		n=0; for(i=0; i<ll;)
 		{
 			m=in1[i+8]+(in1[i+9]<<8)+(in1[i+10]<<16)+(in1[i+11]<<24); i+=12;
@@ -341,7 +341,7 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 			n+=m*4; i+=m;
 		}
 		len=n;
-		sprintf(file, "%s.au",filename1);
+		sprintf(file, "%s.single.au",filename1);
 		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 		fwrite(AU_header, 1, 24, fp);
 		for(j=0;j<n;j+=2){sf[0] = out1[j]; out1[j] = out1[j+1]; out1[j+1] = sf[0];}
@@ -355,9 +355,9 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 	}
 
 	fseek(fp, 0,SEEK_END); ll=ftell(fp); in1=(unsigned char *)malloc(ll); rewind(fp); i=fread(in1,sizeof(char),ll,fp);fclose(fp); out1=(unsigned char *)malloc(ll*4); len=i;
-	printf("%d %d\n",i,len);
+	//printf("%d %d\n",i,len);
 	fseek(fn, 0,SEEK_END); ll=ftell(fn); in2=(unsigned char *)malloc(ll); rewind(fn); i=fread(in2,sizeof(char),ll,fn);fclose(fn); out2=(unsigned char *)malloc(ll*4); 
-	printf("%d %d \n",ll,i);
+	//printf("%d %d \n",ll,i);
 	AU_header[23]=2;
 	
 	n=0; for(i=0; i<len;)
@@ -377,7 +377,7 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 	}
 	for(j=0;j<n;j+=2){sf[0] = out2[j]; out2[j] = out2[j+1]; out2[j+1] = sf[0];}
 	ll=n;
-	sprintf(file, "%s.au",filename1);
+	sprintf(file, "%s.paired.au",filename1);
 	if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 	AU_header[23]=2;
 	fwrite(AU_header, 1, 24, fp);

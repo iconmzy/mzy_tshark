@@ -166,8 +166,7 @@ scan_plugins_dir(GHashTable *plugins_module, const char *dirpath, plugin_type_e 
         g_free(plugin_file);
         if (handle == NULL) {
             /* g_module_error() provides file path. */
-            report_failure("Couldn't load plugin '%s': %s", name,
-                            g_module_error());
+            report_failure("Couldn't load plugin '%s': %s", name, g_module_error());
             continue;
         }
 

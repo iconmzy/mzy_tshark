@@ -90,7 +90,7 @@ WS_DLL_PUBLIC int calculate_cost_time(char* global_time_str, char* end_time_str)
 WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
-WS_DLL_PUBLIC void parse_offline_regex_dict();
+WS_DLL_PUBLIC void parse_offline_regex_dict(void);
 
 /**
  * 下面是读取配置文件相关函数
@@ -122,7 +122,7 @@ WS_DLL_PUBLIC void g729a_decode_zhr(char filename1[],  char filename2[]);
 
 
 WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
-WS_DLL_PUBLIC void followConnectFiveEleClear();
+WS_DLL_PUBLIC void followConnectFiveEleClear(void);
 WS_DLL_PUBLIC gboolean streamFollowIntoFiles(guint8 *data,guint len);
 #ifdef __cplusplus
 }

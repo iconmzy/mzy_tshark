@@ -598,7 +598,6 @@ void epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
     }
 
     /* free all memory allocated */
-
     wmem_leave_packet_scope();
 }
 
