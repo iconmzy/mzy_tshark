@@ -30,6 +30,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "curl/curl.h"
+#include <epan/export_object.h>
 #define __U__ __attribute__((unused))
 
 /*常用的一些字符串*/
@@ -517,7 +518,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
 
  * @return
  */
-gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
+gboolean write_Export_result(char *ex_name, char *pcap_name, char *result_path, export_object_entry_t *entry){
 
     char ex_result_filepath_t[MAXWRITEFILELENGTH] = {0};
     std::string export_path_t = result_path;
@@ -537,6 +538,11 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path){
 
     cJSON_AddStringToObject(write_export_origin_cJson, "origin_file_path", pcap_name);
     cJSON_AddStringToObject(write_export_origin_cJson, "export_file_path", ex_name);
+    cJSON_AddNumberToObject(write_export_origin_cJson, "pkt_num", entry->pkt_num);
+    cJSON_AddStringToObject(write_export_origin_cJson, "hostname", entry->hostname ? entry->hostname : "");
+    cJSON_AddStringToObject(write_export_origin_cJson, "content_type", entry->content_type ? entry->content_type : "");
+    cJSON_AddStringToObject(write_export_origin_cJson, "filename", entry->filename);
+    cJSON_AddNumberToObject(write_export_origin_cJson, "filesize", entry->payload_len);
     write_ex_origin_stream = cJSON_Print(write_export_origin_cJson);
 
     if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
@@ -1153,14 +1159,9 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
  * @return
  */
 gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end){
-
-
     cJSON_AddStringToObject(write_in_files_cJson, "start_position", numtos(begin).c_str());
     cJSON_AddStringToObject(write_in_files_cJson, "end_position", numtos(end).c_str());
-
-
      return true;
-
  }
 
 
