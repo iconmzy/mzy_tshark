@@ -5,6 +5,7 @@
 #ifndef WIRESHARK_WRITE_IN_FILES_HANDLERS_H
 #define WIRESHARK_WRITE_IN_FILES_HANDLERS_H
 
+#include <epan/export_object.h>
 #include <glib.h>
 #include "ws_symbol_export.h"
 #include <stdio.h>
@@ -60,7 +61,7 @@ WS_DLL_PUBLIC void mkdirs(const char *muldir);
 WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
 
 //存储生成的export文件与源pcap文件的溯源result文件
-WS_DLL_PUBLIC gboolean write_Export_result(char* ex_name,char * pcap_name,char* result_path);
+WS_DLL_PUBLIC gboolean write_Export_result(char *ex_name, char *pcap_name, char *result_path, export_object_entry_t *entry);
 //清空conversation中的缓存，在处理完一个文件后调用一次
 WS_DLL_PUBLIC void final_conversation_Write_Need_clear();
 //为conversation匹配协议栈字段//
