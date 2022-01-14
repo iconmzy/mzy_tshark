@@ -1640,7 +1640,7 @@ feed_eo_smb2(tvbuff_t * tvb,packet_info *pinfo,smb2_info_t * si, guint16 dataoff
 		/* Remove "File: " from filename */
 		if (g_str_has_prefix(auxstring, "File: ")) {
 			aux_string_v = g_strsplit(auxstring, "File: ", -1);
-			eo_info->filename = wmem_strdup_printf(wmem_packet_scope(), "\\%s",aux_string_v[g_strv_length(aux_string_v)-1]);
+			eo_info->filename = wmem_strdup_printf(wmem_packet_scope(), "%s",aux_string_v[g_strv_length(aux_string_v)-1]);
 			g_strfreev(aux_string_v);
 		} else {
 			if (g_str_has_prefix(auxstring, "\\")) {
