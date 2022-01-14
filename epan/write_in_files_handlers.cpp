@@ -29,6 +29,7 @@
 #include <string.h>
 #include <cstring>
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <mutex>
 #include "curl/curl.h"
@@ -1490,8 +1491,10 @@ size_t convert_payload_to_samples(unsigned int payload_type,guint8* payload_data
 void rtpVoiceMatching(rtpTotalBufferContent &info){
     std::vector<rtpMatchingInfo>::iterator it;
     for (it = rtpMachingVec.begin();it != rtpMachingVec.end(); it++ ) {
+        unsigned int tm_gap = info.time_begin > it->time_begin ? \
+                              info.time_begin - it->time_begin : it->time_begin - info.time_begin;
         if (it->sip == info.dip and it->dip == info.sip and it->sport == info.dport and it->dport == info.sport \
-            and (std::abs(it->time_begin - info.time_begin) < 3000) and \
+        and (tm_gap < 3000) and \
             it->rtpPayloadType == info.rtpPayloadType) { //这里不加结束时间的原因是程序最后的清空有可能没来得及给结束时间赋值，使用time_end可能会报错
             //匹配info.rtpPayloadType
             int payloadType_i = -1;
