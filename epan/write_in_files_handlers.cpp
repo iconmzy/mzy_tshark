@@ -53,6 +53,11 @@ static cJSON *pro_cJson = cJSON_CreateObject();
 static cJSON *write_in_files_conv_cJson = cJSON_CreateObject();
 static std::string conv_path_t;
 
+std::list<std::string> special_not_leafNode = {
+        "isis_lsp_ip_reachability_ipv4_prefix"
+};
+
+
 static FILE *conversation_Handle_File = nullptr;
 std::queue< proto_node* > que; //全局node节点队列
 #define VALUE_240_LENGTH 256
@@ -1030,7 +1035,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
  */
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
     while(node != nullptr){
-        if(node->first_child == nullptr or node->last_child == nullptr){
+        if(node->first_child == nullptr or node->last_child == nullptr or (is_special_not_leafNode(node->finfo->hfinfo->abbrev))){
             dissect_Per_Node_No_Cursion(json_t,node,cookie);
             node = node->next;
         } else{
@@ -1042,7 +1047,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
         proto_node* temp = que.front();
         que.pop();
 
-        if(temp->first_child == nullptr or temp->last_child == nullptr){
+        if(temp->first_child == nullptr or temp->last_child == nullptr or (is_special_not_leafNode(temp->finfo->hfinfo->abbrev))){
             dissect_Per_Node_No_Cursion(json_t,temp,cookie);
         } else{
             temp = temp->first_child;
@@ -2348,3 +2353,19 @@ void followConnectFiveEleClear(){
 
     final_Follow_Write_Need.clear();
 }
+
+/**
+ *  用于输出一些特殊的非叶子结点
+ * @param fieldName 字段名称
+
+ * @return true/false
+ */
+
+gboolean is_special_not_leafNode(const char *fieldName){
+    for (auto &i :special_not_leafNode) {  //special_not_leafNode 列表在上面定义20211217 MZY
+        if(i == fieldName)
+            return true;
+    }
+    return false;
+}
+

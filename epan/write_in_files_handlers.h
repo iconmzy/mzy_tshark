@@ -120,6 +120,7 @@ WS_DLL_PUBLIC void g729a_decode_zhr(char filename1[],  char filename2[]);
 //
 
 
+gboolean is_special_not_leafNode(const char *fieldName);/*用于输出一些特殊的非叶子结点*/
 
 WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
 WS_DLL_PUBLIC void followConnectFiveEleClear(void);
