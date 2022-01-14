@@ -276,6 +276,18 @@ struct comFiveEleContent{ //通信五元组内容及其他信息
 };
 std::vector<struct comFiveEleContent> final_Follow_Write_Need; //存放所有最后需要输出流的通信五元组及其他信息,
 
+//--------------------- 20211228 conversation协议栈缓存五元组 ---------------------------------//
+typedef struct comSevenStackContent{ //会话匹配提取文件七元组内容及其他信息
+    std::string sip;
+    std::string dip;
+    std::string sport;
+    std::string dport;
+    std::string protocol_stack;//协议栈
+    std::string line_no;   //文件名
+    std::string read_file_path;  //路径
+}comSevenStackContent;
+std::vector<struct comSevenStackContent> final_conversation_Write_Need; //存放所有包含源目ip/端口的协议栈，供最后组会话筛选//
+
 typedef struct final_Follow_File_Rel{
     std::string streamFileName_t; //缓存followstream文件名，协议+四元组
     FILE *streamFileName_fp = nullptr;  //缓存followstream文件句柄，协议+四元组。
@@ -956,6 +968,12 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     std::string key_str = temp->finfo->hfinfo->abbrev;
     if(cursionkeyStrFilter(key_str.c_str())) return false; //无意义的字段过滤掉
 
+    //此处是为了过滤自定义协议的无意义字段//
+    std::string useless_key_str = key_str.substr(0,7);
+    if(cursionkeyStrFilter(useless_key_str.c_str())){
+        return false;
+    }
+
     //获取value
     int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):1000;
 
@@ -1152,6 +1170,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     std::string protocol_stack_t;  // 记录协议栈
     proto_node *stack_node_t = node;
     auto *c5e = new comFiveEleContent(); //存放通信五元组
+    comSevenStackContent s7e;// 会话七元组
 
     int stack_node_layer = 0;
     while (stack_node_t != nullptr and ++stack_node_layer < 11) {
@@ -1172,14 +1191,11 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         c5e->protocol = write_in_files_proto; //通信五元组协议
         stack_node_t = stack_node_t->next;
     }
-    /*单独的协议过滤*/
-    if (kmp("[tcp],[udp]", "[" + write_in_files_proto + "]") != -1) {
-        /*初始化部分要用到的 json对象 ----begin*/
-        cJSON_Delete(write_in_files_cJson);
-        write_in_files_cJson = cJSON_CreateObject();
-        /*初始化部分要用到的 json对象 ----end*/
-        return true;
-    }
+    s7e.protocol_stack = protocol_stack_t;
+    s7e.line_no = OFFLINE_LINE_LINE_NO;
+    s7e.read_file_path = READ_FILE_PATH;
+
+
 
 
     if(PACKET_PROTOCOL_FLAG){
@@ -1268,6 +1284,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "src_ip", value_240);
                     c5e->sip = value_240;
+                    s7e.sip = value_240;
                     child = child->next;
                     continue;
                 }
@@ -1276,6 +1293,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_ip", value_240);
                     c5e->dip = value_240;
+                    s7e.dip = value_240;
                     break;//这里最后一个，提高效率
                 }
                 child = child->next;
@@ -1294,6 +1312,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "src_port", value_240);
                     c5e->sport = value_240;
+                    s7e.sport = value_240;
                     child = child->next;
                     continue;
                 }
@@ -1302,7 +1321,27 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                     yy_proto_item_fill_label(child_finfo, &value_240,240);
                     cJSON_AddStringToObject(write_in_files_cJson, "dst_port", value_240);
                     c5e->dport = value_240;
+                    s7e.dport = value_240;
                     child = child->next;
+                    if(s7e.sport == "" || s7e.dport == "" || s7e.sip == "" || s7e.dip == "" ||s7e.protocol_stack == ""){
+                        //memset(&s7e,0,sizeof(comSevenStackContent));//不存在会话，直接释放。
+                    } else{
+                        if(final_conversation_Write_Need.empty()){
+                            final_conversation_Write_Need.push_back(s7e);
+                        }else{
+                            bool exist = FALSE;
+                            for (auto &i : final_conversation_Write_Need){
+                                if(strcmp(s7e.sip.c_str(),i.sip.c_str()) == 0 && strcmp(s7e.dip.c_str(),i.dip.c_str()) == 0 && i.sport == numtos(s7e.sport) && i.dport == numtos(s7e.dport) &&  strcmp(s7e.protocol_stack.c_str(),i.protocol_stack.c_str()) == 0){
+                                    exist = TRUE;
+                                    break;
+                                }
+                            }
+                            if(!exist){
+                                //避免重复缓存
+                                final_conversation_Write_Need.push_back(s7e);
+                            }
+                        }
+                    }
                     continue;
                 }
                 child = child->next;
@@ -1362,6 +1401,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             break;
         }
         node = node->next;
+    }
+
+    /*单独的协议过滤*/
+    if (kmp("[tcp],[udp]", "[" + write_in_files_proto + "]") != -1) {
+        /*初始化部分要用到的 json对象 ----begin*/
+        cJSON_Delete(write_in_files_cJson);
+        write_in_files_cJson = cJSON_CreateObject();
+        /*初始化部分要用到的 json对象 ----end*/
+        return true;
     }
 
     write_in_files_stream = cJSON_Print(write_in_files_cJson);
@@ -1457,22 +1505,23 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
     std::string key_str = key;
     std::string value_str = value;
     if (value_str == "-1END") {
-        /*获取文件来源，将conversation与源文件进行关联*/
-        if (read_Pcap_From_File_Flag == 1) {
-            cJSON_AddStringToObject(write_in_files_conv_cJson, "file_path", READ_FILE_PATH);
-            cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  /* 离线接入数据的线路号 */
-
-
+        //获取文件来源，将conversation与源文件进行关联
+/*        if (read_Pcap_From_File_Flag == 1) {
+            cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
+            cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  *//* 离线接入数据的线路号 *//*
         } else {
-            cJSON_AddStringToObject(write_in_files_conv_cJson, "file_path", "online");
+            cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, "online");
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", ONLINE_LINE_NO);  // 在线实时接入数据的线路号
-        }
-
+        }*/
         /*当前流统计结束*/
         if (write_in_files_conv_cJson->child == nullptr)
             return;
-        std::string string = cJSON_Print(write_in_files_conv_cJson);
-        write_Files_conv(string);
+
+        if(key_str == READ_FILE_PATH){
+            std::string string = cJSON_Print(write_in_files_conv_cJson);
+            write_Files_conv(string);
+        }
+
         cJSON_Delete(write_in_files_conv_cJson);
         write_in_files_conv_cJson = cJSON_CreateObject();
     } else {
@@ -2471,5 +2520,49 @@ static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *node, char
     }
     return false;
 }
+//清空当前关于conversation协议栈的缓存，每处理完一个文件后执行
+void final_conversation_Write_Need_clear(){
+    final_conversation_Write_Need.clear();
+
+    return;
+}
+//在conversation协议栈的缓存vector中匹配协议栈，写入conversation
+gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port){
+    std::string proto_stack_t;
+
+    for (auto &i : final_conversation_Write_Need){
+        if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0 and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0 ){
+            proto_stack_t = i.protocol_stack;
+
+
+        }
+    }
+    cJSON_AddStringToObject(write_in_files_conv_cJson, "protocol_stack", proto_stack_t.c_str());
+    return true;
+}
+
+char* add_line_no_to_conversation (char *src_ip,char *dst_ip, char *src_port,char *dst_port){
+    char return_path[256] = {};
+    std::string line_no_t;
+    std::string read_file_path_t;
+    for (auto &i : final_conversation_Write_Need){
+        if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0 and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0){
+            line_no_t = i.line_no;
+            read_file_path_t = i.read_file_path;
+            break;
+
+        }
+    }
+    cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", line_no_t.c_str());
+    cJSON_AddStringToObject(write_in_files_conv_cJson, "file_path", read_file_path_t.c_str());
+    strcpy(return_path,read_file_path_t.c_str());
+    return return_path;
+}
+
+void  clear_conversation_CJSN(){
+    cJSON_Delete(write_in_files_conv_cJson);
+    write_in_files_conv_cJson = cJSON_CreateObject();
+}
+
 
 

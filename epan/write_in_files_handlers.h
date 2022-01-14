@@ -63,6 +63,16 @@ WS_DLL_PUBLIC char abbrev_t[40];
 //存储生成的export文件与源pcap文件的溯源result文件
 WS_DLL_PUBLIC gboolean write_Export_result(char* ex_name,char * pcap_name,char* result_path);
 
+//清空conversation中的缓存，在处理完一个文件后调用一次
+WS_DLL_PUBLIC void final_conversation_Write_Need_clear();
+//为conversation匹配协议栈字段//
+WS_DLL_PUBLIC gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
+
+ WS_DLL_PUBLIC void clear_conversation_CJSN();
+
+WS_DLL_PUBLIC char* add_line_no_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
+
+
 //是否允许新增协议相关
 WS_DLL_PUBLIC gboolean JSON_ADD_PROTO;
 WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[256];

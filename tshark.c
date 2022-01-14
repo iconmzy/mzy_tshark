@@ -2417,6 +2417,7 @@ int main(int argc, char *argv[]) {
                             draw_tap_listeners(TRUE);
                         }
                         cf_close(&cfile);  //关闭打开的pcap文件
+                        final_conversation_Write_Need_clear();
                     }
                 }
             }
@@ -2472,17 +2473,18 @@ int main(int argc, char *argv[]) {
 					g_free(pdu_export_arg);
 					g_free(exp_pdu_filename);
 				}
-				draw_taps = TRUE;
-				if (draw_taps){
-					draw_tap_listeners(TRUE);
-				}
+
 
                 clean_Temp_Files_All();
                 add_record_in_result_file();  /* 每处理完一个文件就往result文件里面添加记录 */
                 single_File_End_Init();
                 change_result_file_name();
-
-//                cf_close(&cfile);  //关闭打开的pcap文件
+                draw_taps = TRUE;
+                if (draw_taps){
+                    draw_tap_listeners(TRUE);
+                }
+                final_conversation_Write_Need_clear();
+                cf_close(&cfile);  //关闭打开的pcap文件
             }
         }
         g_print("解析完成");

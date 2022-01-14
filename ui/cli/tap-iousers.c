@@ -30,6 +30,7 @@ typedef struct _io_users_t {
 
 static void
 iousers_draw(void *arg) {
+    char file_path_match[256];
     conv_hash_t *hash = (conv_hash_t *) arg;
     io_users_t *iu = (io_users_t *) hash->user_data;
     conv_item_t *iui;
@@ -101,7 +102,9 @@ iousers_draw(void *arg) {
 //						total_bytes
 //					);
 
-                    if (WRITE_IN_CONVERSATIONS_FLAG) {
+                    gchar * file_path_match_t;
+                    if (WRITE_IN_CONVERSATIONS_FLAG ) {
+
                         do_write_in_conversation_handler("src_ip", src_addr);
                         do_write_in_conversation_handler("src_port", src_port);
                         do_write_in_conversation_handler("dst_ip", dst_addr);
@@ -112,13 +115,19 @@ iousers_draw(void *arg) {
                         do_write_in_conversation_handler("send_bytes", my_itoa(m_tx_bytes));
                         do_write_in_conversation_handler("total_frames", my_itoa(m_total_frames));
                         do_write_in_conversation_handler("total_bytes", my_itoa(m_total_bytes));
+                        file_path_match_t = add_line_no_to_conversation(src_addr,dst_addr,src_port,dst_port);
+                        strcpy(file_path_match,file_path_match_t);
+                        add_protocolStack_to_conversation(src_addr,dst_addr,src_port,dst_port);
+
                     }
 
                     wmem_free(NULL, src_port);
                     wmem_free(NULL, dst_port);
                     wmem_free(NULL, src);
                     wmem_free(NULL, dst);
+
                 } else {
+
                     printf("%-20s <-> %-20s  %6" G_GINT64_MODIFIER "u %-9s"
                            "  %6" G_GINT64_MODIFIER "u %-9s"
                            "  %6" G_GINT64_MODIFIER "u %-9s  ",
@@ -231,7 +240,8 @@ iousers_draw(void *arg) {
                 do_write_in_conversation_handler("duration", t);
                 memset(t, '\0', 32);
                 /*一个会话统计结束标志。*/
-                do_write_in_conversation_handler("1END", "-1END");
+                do_write_in_conversation_handler(file_path_match, "-1END");
+
             }
         }
         max_frames = last_frames;
