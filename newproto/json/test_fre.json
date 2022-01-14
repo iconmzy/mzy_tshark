@@ -1,0 +1,19 @@
+{
+  "protocolName": "test_ljw",
+  "shortName": "test_ljw",
+  "filterName": "test_ljw",
+  "ports":[5353],
+  "transportProtocol": "udp",
+
+  "feature": "NULL",
+  "feature_offset":0,
+  "next_potocol": "asterix",
+  "parts": [
+    {
+      "name": "descibe",
+      "abbName": "descibe",
+      "length": 4,
+      "type": -1
+    }
+  ]
+}

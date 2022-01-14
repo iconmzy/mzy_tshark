@@ -226,6 +226,18 @@ int ReadHead(JsonReader *reader, exProtocol *proto)
         json_reader_end_member(reader);
     }
 
+    //next_potocol
+    if (!json_reader_read_member(reader, "next_potocol"))
+    {
+        printf("Read next_potocol  fail!\n");
+        return 0;
+    }
+    else
+    {
+        strcpy(proto->next_potocol ,json_reader_get_string_value(reader)) ;
+        json_reader_end_member(reader);
+    }
+
 	return 1;
 }
 int ParseJson(char *filePath, struct exProtocol *proto)

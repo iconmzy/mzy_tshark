@@ -21,6 +21,7 @@ struct protoInfo
     char shortName[20];
     char filterName[20];
     char feature[100];
+    char next_potocol[100];
     int feature_offset;
     struct columnInfo *column;
 };

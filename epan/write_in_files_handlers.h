@@ -137,6 +137,9 @@ WS_DLL_PUBLIC void g722_decode_zhr(char filename1[],  char filename2[]);
 WS_DLL_PUBLIC void g729a_decode_zhr(char filename1[],  char filename2[]);
 //
 
+WS_DLL_PUBLIC void write_into_all_diy_proto(char* pre_proto,char* next_proto);
+WS_DLL_PUBLIC gboolean match_all_diy_proto(char* pre_proto,char* next_proto);
+
 
 gboolean is_special_not_leafNode(const char *fieldName);/*用于输出一些特殊的非叶子结点*/
 
