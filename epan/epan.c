@@ -581,7 +581,7 @@ void epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
 
     wmem_enter_packet_scope();
 
-    if (PACKET_PROTOCOL_FLAG || WRITE_IN_CONVERSATIONS_FLAG|| WRITE_IN_KAFKA_CONFIG) {
+    if (PACKET_PROTOCOL_FLAG || WRITE_IN_CONVERSATIONS_FLAG || WRITE_IN_KAFKA_CONFIG) {
         tap_queue_init(edt);
     }
 
