@@ -2106,8 +2106,6 @@ void g729a_decode_zhr(char filename1[],char filename2[])
 	unsigned char *in1, *in2, *out1, *out2, se[2];
 	unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x1f,0x40,0,0,0,0x01}; //0x803e0000, 0x401f0000; //16000 or 8000
 	
-	
-	
     fp= fopen(filename1,"rb");
 	fn= fopen(filename2,"rb");
 	if(fp==NULL && fn==NULL){printf("no file\n"); return;}
