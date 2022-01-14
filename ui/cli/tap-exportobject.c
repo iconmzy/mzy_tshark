@@ -159,9 +159,8 @@ eo_draw(void *tapdata)
             break;
         }
         eo_save_entry(save_as_fullpath, entry);  // 写入文件
-        //记录写入的文件与原始pcap文件//
-        write_Export_result(save_as_fullpath,cfile.filename,save_in_path);
-
+        //记录写入的文件与原始pcap文件以及相关的信息//
+        write_Export_result(save_as_fullpath, cfile.filename, save_in_path, entry);
         g_free(save_as_fullpath);
         save_as_fullpath = NULL;
         slist = slist->next;
