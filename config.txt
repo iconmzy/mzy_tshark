@@ -1,25 +1,25 @@
 #注册文件的路径
-REGISTRATION_FILE_PATH:/home/ymq/aurora/activate
+REGISTRATION_FILE_PATH:./
 
 #配置是否新增协议JSON
-JSON_ADD_PROTO:0
+JSON_ADD_PROTO:1
 #新增协议JSON路径 不超过255字符
 JSON_ADD_PROTO_PATH:../../newproto/json
 
 #配置是否写入解析文件
 WRITE_IN_FILES_CONFIG:1
 #配置协议解析输出文件的位置 不超过255字节
-EXPORT_PATH:/home/ymq/aurora/out
+EXPORT_PATH:/home/mzy/Documents/output/
 #每个文件大致最大行数
 PER_FILES_MAX_LINES:10000
 
 #配置是否统计会话信息
-WRITE_IN_CONVERSATIONS_FLAG:0
+WRITE_IN_CONVERSATIONS_FLAG:1
 
 #配置是否组包
 PACKET_PROTOCOL_FLAG:1
 #配置所需组包协议，英文逗号隔开
-PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp
+PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp,
 
 #配置是否写入数据库
 WRITE_IN_DATABASE_FLAG:0
@@ -46,13 +46,13 @@ EDIT_FILES_DISSECT_FLAG:0
 #拆分子文件大小
 EDIT_FILES_SIZES:100000
 #是否批量写入
-INSERT_MANY_PROTOCOL_STREAM_FLAG:0
+INSERT_MANY_PROTOCOL_STREAM_FLAG:1
 #每次每个协议批量写入行数
-INSERT_MANY_PROTOCOL_STREAM_NUM:1000
+INSERT_MANY_PROTOCOL_STREAM_NUM:10000
 
 
 #实时接入数据的线路号
 ONLINE_LINE_NO:123123
 #离线接入数据的识别线路号的正则表达式
-OFFLINE_LINE_NO_REGEX:{"lineno":"aa","signal_type":"aa","test":"modi"}
+OFFLINE_LINE_NO_REGEX:{"line_no":"[^_]*","signal_type":"(?<=_).*(?=_\\d{8}T\\d{6})","test":"modi"}
 

@@ -53,6 +53,22 @@ static cJSON *pro_cJson = cJSON_CreateObject();
 static cJSON *write_in_files_conv_cJson = cJSON_CreateObject();
 static std::string conv_path_t;
 
+std::list<std::string> special_not_leafNode = {
+        "isis_lsp_ip_reachability_ipv4_prefix"
+};
+
+typedef struct {
+    const char * field_name;
+    bool (*special_field_cb)(proto_node *node, char* ret);
+} special_field_value;
+
+static bool need_special_field(const char* ,proto_node *, char*);
+static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *, char*);
+static special_field_value regist_speical_filed[] = {
+        {"isis_lsp_ip_reachability_ipv4_prefix", &get_isis_lsp_ip_reachability_ipv4_prefix_mask}
+};
+
+
 static FILE *conversation_Handle_File = nullptr;
 std::queue< proto_node* > que; //全局node节点队列
 #define VALUE_240_LENGTH 256
@@ -930,10 +946,13 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     if(cursionkeyStrFilter(key_str.c_str())) return false; //无意义的字段过滤掉
 
     //获取value
-    int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):300;
+    int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):1000;
 
     auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
-    yy_proto_item_fill_label(temp->finfo,&value_t,bufferlen);
+    if(! need_special_field(temp->finfo->hfinfo->abbrev, temp, value_t)){
+        yy_proto_item_fill_label(temp->finfo,&value_t,bufferlen);
+    }
+
 
     //组包相关
     if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
@@ -1030,7 +1049,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
  */
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
     while(node != nullptr){
-        if(node->first_child == nullptr or node->last_child == nullptr){
+        if(node->first_child == nullptr or node->last_child == nullptr or (is_special_not_leafNode(node->finfo->hfinfo->abbrev))){
             dissect_Per_Node_No_Cursion(json_t,node,cookie);
             node = node->next;
         } else{
@@ -1042,7 +1061,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
         proto_node* temp = que.front();
         que.pop();
 
-        if(temp->first_child == nullptr or temp->last_child == nullptr){
+        if(temp->first_child == nullptr or temp->last_child == nullptr or (is_special_not_leafNode(temp->finfo->hfinfo->abbrev))){
             dissect_Per_Node_No_Cursion(json_t,temp,cookie);
         } else{
             temp = temp->first_child;
@@ -2348,3 +2367,44 @@ void followConnectFiveEleClear(){
 
     final_Follow_Write_Need.clear();
 }
+
+/**
+ *  用于输出一些特殊的非叶子结点
+ * @param fieldName 字段名称
+
+ * @return true/false
+ */
+
+gboolean is_special_not_leafNode(const char *fieldName){
+    for (auto &i :special_not_leafNode) {  //special_not_leafNode 列表在上面定义20211217 MZY
+        if(i == fieldName)
+            return true;
+    }
+    return false;
+}
+
+bool need_special_field(const char* field, proto_node *node, char* ret){
+    for(auto & i : regist_speical_filed){
+        if (strcmp(field, i.field_name) == 0){
+            i.special_field_cb(node, ret);
+            return true;
+        }
+    }
+    return false;
+}
+static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *node, char* ret){
+    /* field: isis_lsp_ip_reachability_ipv4_prefix
+     * example rep : IPv4 prefix: 10.0.10.0/30
+     * */
+
+    if (node->finfo && node->finfo->rep){
+        char *cc_ptr = strrchr(reinterpret_cast<char *>(node->finfo->rep->representation), ':');
+        if(strlen(cc_ptr)>1){
+            strcpy(ret, cc_ptr+2);
+            return true;
+        }
+    }
+    return false;
+}
+
+
