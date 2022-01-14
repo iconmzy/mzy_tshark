@@ -1,0 +1,19 @@
+{
+  "protocolName": "test_ljw",
+  "shortName": "test_ljw",
+  "filterName": "test_ljw",
+  "ports":[5353],
+  "transportProtocol": "udp",
+
+  "feature": "ADDPROB",
+  "feature_offset":1,
+  "next_potocol": "h264",
+  "parts": [
+    {
+      "name": "payload_feature",
+      "abbName": "pl_feature",
+      "length": 4,
+      "type": -1
+    }
+  ]
+}

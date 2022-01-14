@@ -70,7 +70,8 @@ void WS_DLL_PUBLIC clear_conversation_CJSN();
 
 WS_DLL_PUBLIC char* add_line_no_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
 
-
+WS_DLL_PUBLIC void write_into_all_diy_proto(char* pre_proto,char* next_proto);
+WS_DLL_PUBLIC gboolean match_all_diy_proto(char* pre_proto,char* next_proto);
 
 //存储当前label的字段名称
 WS_DLL_PUBLIC char abbrev_t[40];

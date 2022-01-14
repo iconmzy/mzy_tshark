@@ -9,6 +9,7 @@
 
 	"feature": "ADDPROA",
 	"feature_offset":0,
+	"next_potocol": "",
 	"parts": [
 		{
 

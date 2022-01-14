@@ -4,6 +4,7 @@
 #include "packet-scoreboard.h"
 #include "register_protocol.h"
 #include <stdlib.h>
+#include <epan/write_in_files_handlers.h>
 
 
 #define SupportJsonNum 10
@@ -27,6 +28,7 @@ static gint dissect_exproto0(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0; //偏移变量，记录偏移位置
     exFunIndex = 0;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -45,6 +47,15 @@ static gint dissect_exproto0(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
     }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
+    }
     return tvb_captured_length(tvb);
 }
 
@@ -52,6 +63,7 @@ static gint dissect_exproto1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 1;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -69,6 +81,15 @@ static gint dissect_exproto1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             proto_tree_add_item(tt, allProtoInfo[exFunIndex].column[i].id, tvb, offset, allProtoInfo[exFunIndex].column[i].length, FALSE);
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
+    }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
     }
     return tvb_captured_length(tvb);
 }
@@ -77,6 +98,7 @@ static gint dissect_exproto2(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 2;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -94,6 +116,15 @@ static gint dissect_exproto2(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             proto_tree_add_item(tt, allProtoInfo[exFunIndex].column[i].id, tvb, offset, allProtoInfo[exFunIndex].column[i].length, FALSE);
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
+    }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
     }
     return tvb_captured_length(tvb);
 }
@@ -102,6 +133,7 @@ static gint dissect_exproto3(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 3;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -119,6 +151,15 @@ static gint dissect_exproto3(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             proto_tree_add_item(tt, allProtoInfo[exFunIndex].column[i].id, tvb, offset, allProtoInfo[exFunIndex].column[i].length, FALSE);
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
+    }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
     }
     return tvb_captured_length(tvb);
 }
@@ -127,6 +168,7 @@ static gint dissect_exproto4(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 4;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -144,6 +186,15 @@ static gint dissect_exproto4(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             proto_tree_add_item(tt, allProtoInfo[exFunIndex].column[i].id, tvb, offset, allProtoInfo[exFunIndex].column[i].length, FALSE);
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
+    }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
     }
     return tvb_captured_length(tvb);
 }
@@ -152,6 +203,7 @@ static gint dissect_exproto5(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 5;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -169,6 +221,15 @@ static gint dissect_exproto5(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             proto_tree_add_item(tt, allProtoInfo[exFunIndex].column[i].id, tvb, offset, allProtoInfo[exFunIndex].column[i].length, FALSE);
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
+    }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
     }
     return tvb_captured_length(tvb);
 }
@@ -177,6 +238,7 @@ static gint dissect_exproto6(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 6;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -194,6 +256,15 @@ static gint dissect_exproto6(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             proto_tree_add_item(tt, allProtoInfo[exFunIndex].column[i].id, tvb, offset, allProtoInfo[exFunIndex].column[i].length, FALSE);
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
+    }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
     }
     return tvb_captured_length(tvb);
 }
@@ -202,6 +273,7 @@ static gint dissect_exproto7(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 7;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
     if (tree)
@@ -218,6 +290,15 @@ static gint dissect_exproto7(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             proto_tree_add_item(tt, allProtoInfo[exFunIndex].column[i].id, tvb, offset, allProtoInfo[exFunIndex].column[i].length, FALSE);
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
+    }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
     }
     return tvb_captured_length(tvb);
 }
@@ -226,6 +307,7 @@ static gint dissect_exproto8(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 8;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
     if (tree)
@@ -243,6 +325,15 @@ static gint dissect_exproto8(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
     }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
+    }
     return tvb_captured_length(tvb);
 }
 
@@ -250,6 +341,7 @@ static gint dissect_exproto9(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 9;
+    char *next_potocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
     if (tree)
@@ -266,6 +358,15 @@ static gint dissect_exproto9(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
             proto_tree_add_item(tt, allProtoInfo[exFunIndex].column[i].id, tvb, offset, allProtoInfo[exFunIndex].column[i].length, FALSE);
             offset += allProtoInfo[exFunIndex].column[i].length;
         }
+    }
+    static dissector_handle_t next_proto_handle;
+    next_potocol = allProtoInfo[exFunIndex].next_potocol;
+    if(next_potocol != ""){
+        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+        tvbuff_t* next_tvb;
+        next_tvb = tvb_new_subset_length(tvb,offset,-1);
+        call_dissector(next_proto_handle,next_tvb,pinfo,tree);
+        return tvb_captured_length(next_tvb);
     }
     return tvb_captured_length(tvb);
 }
@@ -527,6 +628,7 @@ int GetProtoInfos(struct allExProtocols *exprotocols)
         strcpy(allProtoInfo[i].transportProto, exprotocols->exProto[i].transportProtocol);
         strcpy(allProtoInfo[i].feature, exprotocols->exProto[i].feature);
         allProtoInfo[i].feature_offset = exprotocols->exProto[i].feature_offset;
+        strcpy(allProtoInfo[i].next_potocol, exprotocols->exProto[i].next_potocol);
 
         allProtoInfo[i].column = (struct columnInfo *)malloc(num * sizeof(struct columnInfo));
         for (int j = 0; j < num; j++)
@@ -650,6 +752,9 @@ void proto_reg_handoff_exprotocol(int index)
     transProto_t = allProtoInfo[index].transportProto;
     display_name_t = allProtoInfo[index].shortName;
     internal_name_t = allProtoInfo[index].filterName;
+
+    write_into_all_diy_proto(allProtoInfo[index].protoName,allProtoInfo[index].next_potocol);
+
     if(strcmp(transProto_t,"udp") == 0){
         strcat(display_name_t," over UDP");
 

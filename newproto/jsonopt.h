@@ -41,6 +41,7 @@ typedef struct exProtocol
     char transportProtocol[10];
     //int totalLength;
     char feature[100];
+    char next_potocol[100];
     int feature_offset;
     PartHead *partHead;
 } exProtocol;

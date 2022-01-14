@@ -140,6 +140,12 @@ struct insertManyProtocolStream {
 };
 static insertManyProtocolStream *insertmanystream_Head;
 
+typedef struct diy_proto_stack{
+    std::string pre_potocol;
+    std::string next_protocol;
+}diy_proto_stack;
+std::vector<struct diy_proto_stack> all_diy_protol;
+
 //strname的重复次数，头文件times为-1
 struct strNameSameLevel {
     std::string str_name;
@@ -907,6 +913,15 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             protocol_stack_t.append(",");
             protocol_stack_t.append(fi->hfinfo->abbrev);
             write_in_files_proto = fi->hfinfo->abbrev;
+        }
+        if(stack_node_t->next){
+            char pre_proto_t[40] = {};
+            char next_proto_t[40] = {};
+            strcpy(pre_proto_t,stack_node_t->finfo->hfinfo->abbrev);
+            strcpy(next_proto_t,stack_node_t->next->finfo->hfinfo->abbrev);
+            if(match_all_diy_proto(pre_proto_t,next_proto_t)){
+                dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,stack_node_t->first_child,nullptr);
+            }
         }
         stack_node_t = stack_node_t->next;
     }
@@ -1679,3 +1694,21 @@ void  clear_conversation_CJSN(){
     cJSON_Delete(write_in_files_conv_cJson);
     write_in_files_conv_cJson = cJSON_CreateObject();
 }
+
+void write_into_all_diy_proto(char* pre_proto,char* next_proto){
+    if(*next_proto){
+        diy_proto_stack diyproto_t;
+        diyproto_t.pre_potocol = pre_proto;
+        diyproto_t.next_protocol = next_proto;
+        all_diy_protol.push_back(diyproto_t);
+    }
+}
+
+gboolean match_all_diy_proto(char* pre_proto,char* next_proto){
+    for (auto &i:all_diy_protol){
+        if(strcmp(pre_proto,i.pre_potocol.c_str())==0 and strcmp(next_proto,i.next_protocol.c_str())==0){
+            return true;
+        }
+    }
+    return false;
+};
