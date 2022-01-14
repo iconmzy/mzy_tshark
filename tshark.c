@@ -2645,6 +2645,7 @@ int main(int argc, char *argv[]) {
     output_fields = NULL;
 
     clean_exit:
+	followConnectFiveEleClear();
     clean_Temp_Files_All();
     cf_close(&cfile);
     if ((cf_name != READ_PACKET_FROM_FILES_PATH) && EDIT_FILES_DISSECT_FLAG == 1) {
