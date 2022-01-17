@@ -64,11 +64,11 @@ WS_DLL_PUBLIC char abbrev_t[40];
 WS_DLL_PUBLIC gboolean write_Export_result(char* ex_name,char * pcap_name,char* result_path, export_object_entry_t *entry);
 
 //清空conversation中的缓存，在处理完一个文件后调用一次
-WS_DLL_PUBLIC void final_conversation_Write_Need_clear();
+WS_DLL_PUBLIC void final_conversation_Write_Need_clear(void);
 //为conversation匹配协议栈字段//
 WS_DLL_PUBLIC gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
 
- WS_DLL_PUBLIC void clear_conversation_CJSN();
+WS_DLL_PUBLIC void clear_conversation_CJSN(void);
 
 WS_DLL_PUBLIC char* add_line_no_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
 
