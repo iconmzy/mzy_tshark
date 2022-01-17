@@ -2548,7 +2548,7 @@ static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *node, char
     return false;
 }
 //清空当前关于conversation协议栈的缓存，每处理完一个文件后执行
-void final_conversation_Write_Need_clear(){
+void final_conversation_Write_Need_clear(void){
     final_conversation_Write_Need.clear();
 
     return;
