@@ -11,10 +11,13 @@
 #ifndef __TAP_EXPORT_OBJECT_H__
 #define __TAP_EXPORT_OBJECT_H__
 
+
 #ifdef __cplusplus
 extern "C" {
+
 #endif /* __cplusplus */
 extern capture_file cfile;
+
 void eo_list_object_types(void);
 
 /* will be called by main each time a --export-objects option is found */

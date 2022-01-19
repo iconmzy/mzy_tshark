@@ -13,18 +13,18 @@ extern "C" {
 #endif /* __cplusplus */
 
 typedef enum {
-    KAFKA_NO_RUN,
-    KAFKA_PRODUCER,
-    KAFKA_CONSUMER,
-    KAFKA_PRODUCER_CONSUMER,
+	KAFKA_NO_RUN,
+	KAFKA_PRODUCER,
+	KAFKA_CONSUMER,
+	KAFKA_PRODUCER_CONSUMER,
 } kafka_status_t;
 
 typedef struct kafka_pa{
-    char brokers[512];
-    char topic[512];
-    char groupid[256];
-    int topic_cnt;
-    kafka_status_t status;
+	char brokers[512];
+	char topic[512];
+	char groupid[256];
+	int topic_cnt;
+	kafka_status_t status;
 }kafka_params;
 
 

@@ -2,7 +2,7 @@
 	"protocolName": "E1 X1 P1",
 	"shortName": "expro",
 	"filterName": "exp",
-	"port": 1111,
+	"port": 1127,
 	"transportProtocol": "udp",
 	"totalLength": 25,
 	"parts": [

@@ -165,145 +165,19 @@ static void follow_draw(void *contextp)
 
   address_to_str_buf(&follow_info->client_ip, buf_c, sizeof buf_c);
   address_to_str_buf(&follow_info->server_ip, buf_s, sizeof buf_s);
-
-   if(!JudgeStreamPrint(buf_c, follow_info->client_port, buf_s, follow_info->server_port)){
-       return;
-   }
-
-  for (cur = g_list_last(follow_info->payload), chunk = 1; //TODO：将流数据内容写入文件。
-       cur != NULL;
-       cur = g_list_previous(cur), chunk++) {
-    follow_record = (follow_record_t *)cur->data;
-    streamFollowIntoFiles(follow_record->data->data,follow_record->data->len);
-  }
-    streamFollowIntoFiles("-1END",-1);
-}
-
-
-static void old_follow_draw(void *contextp)
-{
-	static const char     separator[] =
-			"===================================================================\n";
-
-	follow_info_t *follow_info = (follow_info_t*)contextp;
-	cli_follow_info_t* cli_follow_info = (cli_follow_info_t*)follow_info->gui_data;
-	gchar             buf[WS_INET6_ADDRSTRLEN];
-	guint32 global_client_pos = 0, global_server_pos = 0;
-	guint32 *global_pos;
-	guint32           ii, jj;
-	char              *buffer;
-	GList             *cur;
-	follow_record_t   *follow_record;
-	guint             chunk;
-
-	printf("\n%s", separator);
-	printf("Follow: %s,%s\n", proto_get_protocol_filter_name(get_follow_proto_id(cli_follow_info->follower)), follow_str_type(cli_follow_info));
-	printf("Filter: %s\n", follow_info->filter_out_filter);
-
-	address_to_str_buf(&follow_info->client_ip, buf, sizeof buf);
-	if (follow_info->client_ip.type == AT_IPv6)
-		printf("Node 0: [%s]:%u\n", buf, follow_info->client_port);
-	else
-		printf("Node 0: %s:%u\n", buf, follow_info->client_port);
-
-	address_to_str_buf(&follow_info->server_ip, buf, sizeof buf);
-	if (follow_info->client_ip.type == AT_IPv6)
-		printf("Node 1: [%s]:%u\n", buf, follow_info->server_port);
-	else
-		printf("Node 1: %s:%u\n", buf, follow_info->server_port);
-
-	for (cur = g_list_last(follow_info->payload), chunk = 1;
-		 cur != NULL;
-		 cur = g_list_previous(cur), chunk++)
-	{
-		follow_record = (follow_record_t *)cur->data;
-		if (!follow_record->is_server) {
-			global_pos = &global_client_pos;
-		} else {
-			global_pos = &global_server_pos;
-		}
-
-		/* ignore chunks not in range */
-		if ((chunk < cli_follow_info->chunkMin) || (chunk > cli_follow_info->chunkMax)) {
-			(*global_pos) += follow_record->data->len;
-			continue;
-		}
-
-		switch (cli_follow_info->show_type)
-		{
-			case SHOW_HEXDUMP:
-				break;
-
-			case SHOW_ASCII:
-			case SHOW_EBCDIC:
-				printf("%s%u\n", follow_record->is_server ? "\t" : "", follow_record->data->len);
-				break;
-
-			case SHOW_RAW:
-				if (follow_record->is_server)
-				{
-					putchar('\t');
-				}
-				break;
-			default:
-				g_assert_not_reached();
-		}
-
-		switch (cli_follow_info->show_type)
-		{
-			case SHOW_HEXDUMP:
-				follow_print_hex(follow_record->is_server ? "\t" : "", *global_pos, follow_record->data->data, follow_record->data->len);
-				(*global_pos) += follow_record->data->len;
-				break;
-
-			case SHOW_ASCII:
-			case SHOW_EBCDIC:
-				buffer = (char *)g_malloc(follow_record->data->len+2);
-
-				for (ii = 0; ii < follow_record->data->len; ii++)
-				{
-					switch (follow_record->data->data[ii])
-					{
-						case '\r':
-						case '\n':
-							buffer[ii] = follow_record->data->data[ii];
-							break;
-						default:
-							buffer[ii] = g_ascii_isprint(follow_record->data->data[ii]) ? follow_record->data->data[ii] : '.';
-							break;
-					}
-				}
-
-				buffer[ii++] = '\n';
-				buffer[ii] = 0;
-				if (cli_follow_info->show_type == SHOW_EBCDIC) {
-					EBCDIC_to_ASCII(buffer, ii);
-				}
-				printf("%s", buffer);
-				g_free(buffer);
-				break;
-
-			case SHOW_RAW:
-				buffer = (char *)g_malloc((follow_record->data->len*2)+2);
-
-				for (ii = 0, jj = 0; ii < follow_record->data->len; ii++)
-				{
-					buffer[jj++] = bin2hex[follow_record->data->data[ii] >> 4];
-					buffer[jj++] = bin2hex[follow_record->data->data[ii] & 0xf];
-				}
-
-				buffer[jj++] = '\n';
-				buffer[jj] = 0;
-				printf("%s", buffer);
-				g_free(buffer);
-				break;
-
-			default:
-				g_assert_not_reached();
-		}
-	}
-
-	printf("%s", separator);
+//
+//   if(!JudgeStreamPrint(buf_c,follow_info->client_port,buf_s,follow_info->server_port)){
+//       return;
+//   }
+//
+//  for (cur = g_list_last(follow_info->payload), chunk = 1; //TODO：将流数据内容写入文件。
+//       cur != NULL;
+//       cur = g_list_previous(cur), chunk++)
+//  {
+//    follow_record = (follow_record_t *)cur->data;
+//    streamFollowIntoFiles(follow_record->data->data,follow_record->data->len);
+//  }
+//    streamFollowIntoFiles("-1END",-1);
 }
 
 static gboolean follow_arg_strncmp(const char **opt_argp, const char *strp)
@@ -547,7 +421,8 @@ follow_register(const void *key _U_, void *value, void *userdata _U_)
 }
 
 void
-register_tap_listener_follow(void){
+register_tap_listener_follow(void)
+{
   follow_iterate_followers(follow_register, NULL);
 }
 

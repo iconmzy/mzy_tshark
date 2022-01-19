@@ -580,7 +580,7 @@ dissect_record(epan_dissect_t *edt, int file_type_subtype,
 		frame_dissector_data.pkt_comment = rec->opt_comment;
 	else
 		frame_dissector_data.pkt_comment = NULL;
- 	frame_dissector_data.file_type_subtype = file_type_subtype;
+	frame_dissector_data.file_type_subtype = file_type_subtype;
 	frame_dissector_data.color_edt = edt; /* Used strictly for "coloring rules" */
 
 	TRY {
@@ -1433,7 +1433,6 @@ int
 dissector_try_uint(dissector_table_t sub_dissectors, const guint32 uint_val,
 		   tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
 {
-
 	return dissector_try_uint_new(sub_dissectors, uint_val, tvb, pinfo, tree, TRUE, NULL);
 }
 

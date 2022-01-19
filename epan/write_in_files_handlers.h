@@ -5,14 +5,13 @@
 #ifndef WIRESHARK_WRITE_IN_FILES_HANDLERS_H
 #define WIRESHARK_WRITE_IN_FILES_HANDLERS_H
 
+#include <epan/export_object.h>
 #include <glib.h>
 #include "ws_symbol_export.h"
 #include <stdio.h>
 #include "epan.h"
 #include "proto.h"
-#include "decode_zhr.h"
 #include "kafka_aurora.h"
-#include <epan/export_object.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -21,22 +20,24 @@ struct ConfigInfo {
     char key[64];
     char val[128];
 };
+
 extern rd_kafka_t *rk;       //producer
 extern rd_kafka_t *rk_con;	 //consumer
-WS_DLL_PUBLIC kafka_params kafkaParams_ymq; //kafka parameters
-
+WS_DLL_PUBLIC kafka_params kafkaParams_ymq;       //kafka parameters
 
 WS_DLL_PUBLIC char CONFIG_FILES_PATH[128];
 
 WS_DLL_PUBLIC gboolean WRITE_IN_FILES_CONFIG;
 WS_DLL_PUBLIC gboolean WRITE_IN_KAFKA_CONFIG;
+
 WS_DLL_PUBLIC char EXPORT_PATH[256];
-
+WS_DLL_PUBLIC long int calculate_cost_time(char* end_time_t,char* begin_time_t);
 WS_DLL_PUBLIC gboolean WRITE_IN_CONVERSATIONS_FLAG;
-WS_DLL_PUBLIC char WRITE_IN_CONVERSATIONS_PATH[256];
-
 WS_DLL_PUBLIC gboolean PACKET_PROTOCOL_FLAG;
+WS_DLL_PUBLIC char WRITE_IN_CONVERSATIONS_PATH[256];
 WS_DLL_PUBLIC char PACKET_PROTOCOL_TYPES[256];
+
+WS_DLL_PUBLIC int check_special_extract(const char* special_extract_protocol);//判断希望特殊提取子段的协议
 WS_DLL_PUBLIC char PACKET_PROTOCOL_PATH[256];
 
 WS_DLL_PUBLIC gboolean INSERT_MANY_PROTOCOL_STREAM_FLAG;  // 是否批量写入
@@ -56,23 +57,25 @@ WS_DLL_PUBLIC char write_Json_Files_Init_Status;
 
 WS_DLL_PUBLIC char *my_itoa(long int n);
 
+WS_DLL_PUBLIC void mkdirs(const char *muldir);
 WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
-//存储当前label的字段名称
-WS_DLL_PUBLIC char abbrev_t[40];
 
 //存储生成的export文件与源pcap文件的溯源result文件
-WS_DLL_PUBLIC gboolean write_Export_result(char* ex_name,char * pcap_name,char* result_path, export_object_entry_t *entry);
-
+WS_DLL_PUBLIC gboolean write_Export_result(char *ex_name, char *pcap_name, char *result_path, export_object_entry_t *entry);
 //清空conversation中的缓存，在处理完一个文件后调用一次
 WS_DLL_PUBLIC void final_conversation_Write_Need_clear();
 //为conversation匹配协议栈字段//
 WS_DLL_PUBLIC gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
 
- WS_DLL_PUBLIC void clear_conversation_CJSN();
+void WS_DLL_PUBLIC clear_conversation_CJSN();
 
 WS_DLL_PUBLIC char* add_line_no_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
 
+WS_DLL_PUBLIC void write_into_all_diy_proto(char* pre_proto,char* next_proto);
+WS_DLL_PUBLIC gboolean match_all_diy_proto(char* pre_proto,char* next_proto);
 
+//存储当前label的字段名称
+WS_DLL_PUBLIC char abbrev_t[40];
 //是否允许新增协议相关
 WS_DLL_PUBLIC gboolean JSON_ADD_PROTO;
 WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[256];
@@ -89,8 +92,6 @@ WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则
 #define MAXFILELENGTH 50
 #define MAXWRITEFILELENGTH 128
 
-
-WS_DLL_PUBLIC  gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end);
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
 
 WS_DLL_PUBLIC gboolean beginInitOnce(char *);
@@ -100,15 +101,18 @@ WS_DLL_PUBLIC gboolean readConfigFilesStatus(void);
 WS_DLL_PUBLIC void clean_Temp_Files_All(void);
 
 WS_DLL_PUBLIC void add_record_in_result_file(void);
-WS_DLL_PUBLIC void mkdirs(const char *muldir);
+
 WS_DLL_PUBLIC void single_File_End_Init(void);
 
 WS_DLL_PUBLIC void change_result_file_name(void);
-WS_DLL_PUBLIC int calculate_cost_time(char* global_time_str, char* end_time_str);
-WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
 
+WS_DLL_PUBLIC gboolean dissect_edt_into_files(epan_dissect_t *);
+WS_DLL_PUBLIC  gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end);
 WS_DLL_PUBLIC void match_line_no(char *, char *, char *);  /* 匹配线路号 */
-WS_DLL_PUBLIC void parse_offline_regex_dict(void);
+WS_DLL_PUBLIC void parse_offline_regex_dict();
+
+
+gboolean is_special_not_leafNode(const char *fieldName);/*用于输出一些特殊的非叶子结点*/
 
 /**
  * 下面是读取配置文件相关函数
@@ -128,23 +132,17 @@ WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 //判断当前行是否有效
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 
-//g711 A/U
-WS_DLL_PUBLIC void g711a_decode_zhr(char filename1[],  char filename2[]);
-WS_DLL_PUBLIC void g711u_decode_zhr(char filename1[],  char filename2[]);
+
+//rtp 相关
+//WS_DLL_PUBLIC int yy_g711a(unsigned char in[], int inlen, unsigned char out[]);
+//WS_DLL_PUBLIC int yy_g711u(unsigned char in[], int inlen, unsigned char out[]);
 //g722 全文件解码器。
-WS_DLL_PUBLIC void g722_decode_zhr(char filename1[],  char filename2[]);
-//g729a 全文件解码器
-WS_DLL_PUBLIC void g729a_decode_zhr(char filename1[],  char filename2[]);
-//
+//WS_DLL_PUBLIC int g722decode(unsigned char *data,int len, unsigned char *out);
 
-WS_DLL_PUBLIC void write_into_all_diy_proto(char* pre_proto,char* next_proto);
-WS_DLL_PUBLIC gboolean match_all_diy_proto(char* pre_proto,char* next_proto);
-
-
-gboolean is_special_not_leafNode(const char *fieldName);/*用于输出一些特殊的非叶子结点*/
+// g722单帧解码器
+WS_DLL_PUBLIC int g722_single_frame_decode(unsigned char *data,int len, int mark, unsigned char *out);
 
 WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
-WS_DLL_PUBLIC void followConnectFiveEleClear(void);
 WS_DLL_PUBLIC gboolean streamFollowIntoFiles(guint8 *data,guint len);
 #ifdef __cplusplus
 }

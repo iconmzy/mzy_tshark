@@ -59,6 +59,7 @@ gboolean eo_tap_opt_add(const char *option_string)
         eo_opts = g_hash_table_new(g_str_hash,g_str_equal);
 
     splitted = g_strsplit(option_string, ",", 2);
+
     if ((splitted[0] == NULL) || (splitted[1] == NULL) || (get_eo_by_name(splitted[0]) == NULL))
     {
         fprintf(stderr, "tshark: \"--export-objects\" are specified as: <protocol>,<destdir>\n");
@@ -69,9 +70,11 @@ gboolean eo_tap_opt_add(const char *option_string)
     {
         gchar* dir = (gchar*)g_hash_table_lookup(eo_opts, splitted[0]);
 
-        /* Since we're saving all objects from a protocol, it can only be listed once */
+        /* Since we're saving all objects from a protocol,
+            it can only be listed once */
         if (dir == NULL) {
             g_hash_table_insert(eo_opts, splitted[0], splitted[1]);
+
             g_free(splitted);
             return TRUE;
         }
@@ -108,7 +111,6 @@ eo_draw(void *tapdata)
     export_object_list_gui_t *object_list = (export_object_list_gui_t*)tap_object->gui_data;
     GSList *slist = object_list->entries;
     export_object_entry_t *entry;
-
     gchar* save_in_path = (gchar*)g_hash_table_lookup(eo_opts, proto_get_protocol_filter_name(get_eo_proto_id(object_list->eo)));
     GString *safe_filename = NULL;
     gchar *save_as_fullpath = NULL;
@@ -136,30 +138,30 @@ eo_draw(void *tapdata)
                 ext = eo_ct2ext(entry->content_type);
                 g_snprintf(generic_name, sizeof(generic_name),
                     "object%u%s%s", entry->pkt_num, ext ? "." : "", ext ? ext : "");
-                safe_filename = eo_massage_str(generic_name, EXPORT_OBJECT_MAXFILELEN, count);
+                safe_filename = eo_massage_str(generic_name,
+                    EXPORT_OBJECT_MAXFILELEN, count);
             }
             save_as_fullpath = g_build_filename(save_in_path, safe_filename->str, NULL);
             g_string_free(safe_filename, TRUE);
         } while (g_file_test(save_as_fullpath, G_FILE_TEST_EXISTS) && ++count < prefs.gui_max_export_objects);
-		if(entry->filename == NULL) break;
         count = 0;
+		if(entry->filename == NULL) break;
         char filename_t[256]={};
-		strcpy(filename_t,entry->filename);
-		int filename_t_len = strlen(filename_t);
-		int count_t = 0;
-		//check export filename tempeorarily//
-		for(int i = 0;i < filename_t_len;i++){
-			if (filename_t[i] == '.'){
-				count_t++;
-			}
-		}
-		if(count_t != 1){
-			break;
-		}
-
-
+        strcpy(filename_t,entry->filename);
+        int filename_t_len = strlen(filename_t);
+        int count_t = 0;
+        //check export filename tempeorarily//
+        for(int i = 0;i < filename_t_len;i++){
+            if (filename_t[i] == '.'){
+                count_t++;
+            }
+        }
+        if(count_t != 1){
+            break;
+        }
         eo_save_entry(save_as_fullpath, entry);  // 写入文件
-        write_Export_result(save_as_fullpath, cfile.filename, save_in_path,entry);
+        //记录写入的文件与原始pcap文件以及相关的信息//
+        write_Export_result(save_as_fullpath, cfile.filename, save_in_path, entry);
         g_free(save_as_fullpath);
         save_as_fullpath = NULL;
         slist = slist->next;
@@ -181,7 +183,8 @@ exportobject_handler(gpointer key, gpointer value _U_, gpointer user_data _U_)
     register_eo_t* eo;
 
     eo = get_eo_by_name((const char*)key);
-    if (eo == NULL) {
+    if (eo == NULL)
+    {
         cmdarg_err("\"--export-objects\" INTERNAL ERROR '%s' protocol not found", (const char*)key);
         return;
     }

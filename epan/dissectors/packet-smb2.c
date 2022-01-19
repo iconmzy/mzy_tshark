@@ -1634,7 +1634,7 @@ feed_eo_smb2(tvbuff_t * tvb,packet_info *pinfo,smb2_info_t * si, guint16 dataoff
 
 	/* Try to get file id and filename */
 	file_id=policy_hnd_to_file_id(&si->saved->policy_hnd);
-	dcerpc_fetch_polhnd_data(&si->saved->policy_hnd, &fid_name, NULL, &open_frame, &close_frame, pinfo->num);
+	dcerpc_fetch_polhnd_data(&si->saved->policy_hnd, &fid_name, NULL, &open_frame, &close_frame, pinfo->num);  // TODO：中文文件名获取会出错
 	if (fid_name && g_strcmp0(fid_name,"File: ")!=0) {
 		auxstring=fid_name;
 		/* Remove "File: " from filename */

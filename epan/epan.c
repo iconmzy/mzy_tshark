@@ -95,7 +95,6 @@
 #ifndef _WIN32
 
 #include <signal.h>
-#include "write_in_files_handlers.h"
 
 #endif
 
@@ -586,11 +585,10 @@ void epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
         tap_queue_init(edt);
     }
 
-
     dissect_record(edt, file_type_subtype, rec, tvb, fd, cinfo);
 
     /* 直接将edt写入文件中 */
-    if (PACKET_PROTOCOL_FLAG || WRITE_IN_FILES_CONFIG || WRITE_IN_KAFKA_CONFIG){
+    if (PACKET_PROTOCOL_FLAG || WRITE_IN_FILES_CONFIG || WRITE_IN_KAFKA_CONFIG) {
         dissect_edt_into_files(edt);
     }
 
@@ -600,6 +598,7 @@ void epan_dissect_run_with_taps(epan_dissect_t *edt, int file_type_subtype,
     }
 
     /* free all memory allocated */
+
     wmem_leave_packet_scope();
 }
 

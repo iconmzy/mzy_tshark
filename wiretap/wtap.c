@@ -1801,7 +1801,6 @@ gint64 wtap_read_pos(wtap *wth)
     return file_tell_pos(wth->fh);
 }
 
-
 /*
  * Editor modelines  -  https://www.wireshark.org/tools/modelines.html
  *

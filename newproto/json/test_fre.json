@@ -1,18 +1,18 @@
 {
-  "protocolName": "test_ljw",
-  "shortName": "test_ljw",
-  "filterName": "test_ljw",
+  "protocolName": "test_",
+  "shortName": "test_",
+  "filterName": "test_",
   "ports":[5353],
   "transportProtocol": "udp",
 
-  "feature": "NULL",
-  "feature_offset":0,
-  "next_potocol": "asterix",
+  "feature": "ADDPROB",
+  "feature_offset":1,
+  "next_potocol": "h264",
   "parts": [
     {
-      "name": "descibe",
-      "abbName": "descibe",
-      "length": 4,
+      "name": "payload_feature",
+      "abbName": "pl_feature",
+      "length": 0,
       "type": -1
     }
   ]
