@@ -129,7 +129,7 @@ eo_massage_str(const gchar *in_str, gsize maxlen, int dupn)
     /* Find all disallowed characters/bytes and replace them with %xx */
     while ( (tmp_ptr = strpbrk(in_str, reject)) != NULL ) {
         out_str = g_string_append_len(out_str, in_str, tmp_ptr - in_str);
-        g_string_append_printf(out_str, "%%%02x", *tmp_ptr);
+        g_string_append_printf(out_str, "%%%02x", *tmp_ptr);  // %%表示输出一个百分号，%02x表示按照十六进制输出占两位，不足的补0
         in_str = tmp_ptr + 1;
     }
     out_str = g_string_append(out_str, in_str);

@@ -8640,7 +8640,7 @@ proto_register_field_init(header_field_info *hfinfo, const int parent) {
             same_name_hfinfo->same_name_next = hfinfo;
             hfinfo->same_name_prev_id = same_name_hfinfo->id;
 #ifdef ENABLE_CHECK_FILTER
-            while (same_name_hfinfo)
+                                                                                                                                    while (same_name_hfinfo)
 			{
 				if (_ftype_common(hfinfo->type) != _ftype_common(same_name_hfinfo->type))
 					g_warning("'%s' exists multiple times with incompatible types: %s and %s", hfinfo->abbrev, ftype_name(hfinfo->type), ftype_name(same_name_hfinfo->type));
@@ -8793,7 +8793,7 @@ gchar* yy_realloc(gchar **dst,int bufferlen){
  * @param fi
  * @param label_str
  */
-void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
+void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
     header_field_info *hfinfo;
     guint8 *bytes;
     guint32 integer;
@@ -8823,6 +8823,7 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
                 len_t = (int)strlen(fi->rep->representation);
                 if( len_t > bufferlen){
                     label_str = yy_realloc(label,len_t);
+                    *bufferlen = len_t;
                 }
                 //内存重新分配 --end
 
@@ -8846,6 +8847,7 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
             }
             //内存重新分配 --end
 
@@ -8899,7 +8901,6 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             } else {
 
                 strcpy(label_str, my_itoa(fvalue_get_uinteger64(&fi->value)));
-
             }
             break;
 
@@ -8971,6 +8972,7 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
             }
             //内存重新分配 --end
 
@@ -8985,6 +8987,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9000,6 +9004,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9018,6 +9024,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(addr_str);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9036,6 +9044,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(addr_str);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9056,6 +9066,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(addr_str);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9112,6 +9124,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9127,6 +9141,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9142,6 +9158,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9157,6 +9175,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 
@@ -9184,6 +9204,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int bufferlen) {
             len_t = (int)strlen(tmp);
             if( len_t > bufferlen){
                 label_str = yy_realloc(label,len_t);
+                *bufferlen = len_t;
+
             }
             //内存重新分配 --end
 

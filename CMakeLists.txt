@@ -11,7 +11,7 @@ if (WIN32)
     # Needed for add_custom_command() WORKING_DIRECTORY generator expressions
     cmake_minimum_required(VERSION 3.13)
 else ()
-    cmake_minimum_required(VERSION 3.15)
+    cmake_minimum_required(VERSION 3.5)
 endif ()
 
 if (POLICY CMP0069)
@@ -1688,11 +1688,11 @@ set_package_properties(SNAPPY PROPERTIES
         URL "https://google.github.io/snappy/"
         PURPOSE "Snappy decompression in CQL and Kafka dissectors"
         )
-set_package_properties(ZSTD PROPERTIES
+#[[set_package_properties(ZSTD PROPERTIES
         DESCRIPTION "A compressor/decompressor from Facebook providing better compression than Snappy at a cost of speed"
         URL "https://facebook.github.io/zstd/"
         PURPOSE "Zstd decompression in Kafka dissector"
-        )
+        )]]
 set_package_properties(NGHTTP2 PROPERTIES
         DESCRIPTION "HTTP/2 C library and tools"
         URL "https://nghttp2.org"
@@ -2510,16 +2510,17 @@ if (BUILD_tshark)
             $<TARGET_OBJECTS:cli_main>
             $<TARGET_OBJECTS:shark_common>
             $<TARGET_OBJECTS:version_info>
+
             kafka_producer.c
             kafka_consumer.c
+
             tshark-tap-register.c
             tshark.c
-            ${TSHARK_TAP_SRC}
             editcap_test.c
             newproto/jsonopt.c
             newproto/register_protocol.c
-            authorize.c
 
+            ${TSHARK_TAP_SRC}
             )
 
     set(ENV{PKG_CONFIG_PATH} /usr/share/pkgconfig)
@@ -2531,14 +2532,12 @@ if (BUILD_tshark)
     set_executable_resources(aurora "TShark" UNIQUE_RC)  # old name tshark
     add_executable(aurora ${tshark_FILES})  # old name tshark
     set_extra_executable_properties(aurora "Executables")  # old name tshark
-    target_link_libraries(aurora ${tshark_LIBS} ${JSON_LIBRARY_DIRS} ${JSON_LDFLAGS} curl)  # old name tshark
     target_link_libraries(aurora ${tshark_LIBS} ${JSON_LIBRARY_DIRS} ${JSON_LDFLAGS} rdkafka)  # old name tshark
     install(TARGETS aurora RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})  # old name tshark
 endif ()
 
 if (BUILD_tfshark)
     set(tfshark_LIBS
-            m
             ui
             wiretap
             epan
@@ -2552,6 +2551,7 @@ if (BUILD_tfshark)
             $<TARGET_OBJECTS:version_info>
             tfshark.c
             ${TSHARK_TAP_SRC}
+            authorize.c
             )
     set_executable_resources(tfshark "TFShark")
     add_executable(tfshark ${tfshark_FILES})

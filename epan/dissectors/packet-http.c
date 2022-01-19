@@ -357,7 +357,8 @@ http_eo_packet(void *tapdata, packet_info *pinfo, epan_dissect_t *edt _U_, const
 	export_object_entry_t *entry;
 
 	if(eo_info) { /* We have data waiting for us */
-		/* These values will be freed when the Export Object window is closed. */
+		/* These values will be freed when the Export Object window
+		 * is closed. */
 		entry = g_new(export_object_entry_t, 1);
 
 		entry->pkt_num = pinfo->num;

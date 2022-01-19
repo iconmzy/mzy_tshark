@@ -288,6 +288,7 @@ dissect_frame(tvbuff_t *tvb, packet_info *pinfo, proto_tree *parent_tree, void* 
 	tree=parent_tree;
 
 	DISSECTOR_ASSERT(fr_data);
+
 	switch (pinfo->rec->rec_type) {
 
 	case REC_TYPE_PACKET:

@@ -274,7 +274,8 @@ static stat_tap_ui wspstat_ui = {
 };
 
 void
-register_tap_listener_wspstat(void) {
+register_tap_listener_wspstat(void)
+{
 	register_stat_tap_ui(&wspstat_ui, NULL);
 }
 

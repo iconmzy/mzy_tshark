@@ -7,19 +7,18 @@
 #include <epan/write_in_files_handlers.h>
 
 
-
 #define SupportJsonNum 10
 static int intproto[SupportJsonNum];
 static heur_dissector_list_t heur_subdissector_list;
 gint ettprotos[SupportJsonNum];
 static const value_string names_cmd[] = {
-    {0x00, "request score"},
-    {0x01, "set score"},
-    {0x80, "response score"},
-    {0x10, "request color"},
-    {0x11, "set color"},
-    {0x90, "response color"},
-    {0, NULL}};
+        {0x00, "request score"},
+        {0x01, "set score"},
+        {0x80, "response score"},
+        {0x10, "request color"},
+        {0x11, "set color"},
+        {0x90, "response color"},
+        {0, NULL}};
 
 static dissector_handle_t exproto_handle;
 // static struct protoInfo proto[10];
@@ -127,7 +126,6 @@ static gint dissect_exproto2(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
         return tvb_captured_length(next_tvb);
     }
-
     return tvb_captured_length(tvb);
 }
 
@@ -374,16 +372,16 @@ static gint dissect_exproto9(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 }
 
 static gint (*functions[SupportJsonNum])(tvbuff_t *, packet_info *, proto_tree *) = {
-    dissect_exproto0,
-    dissect_exproto1,
-    dissect_exproto2,
-    dissect_exproto3,
-    dissect_exproto4,
-    dissect_exproto5,
-    dissect_exproto6,
-    dissect_exproto7,
-    dissect_exproto8,
-    dissect_exproto9};
+        dissect_exproto0,
+        dissect_exproto1,
+        dissect_exproto2,
+        dissect_exproto3,
+        dissect_exproto4,
+        dissect_exproto5,
+        dissect_exproto6,
+        dissect_exproto7,
+        dissect_exproto8,
+        dissect_exproto9};
 
 static gboolean
 heur_dissect_exproto0(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
@@ -421,14 +419,14 @@ heur_dissect_exproto1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
     if((linelen == -1)||(linelen == 8)){
         return FALSE;
     }*/
-if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
+    if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
+        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
 
-return TRUE;
-}
+        return TRUE;
+    }
 
-return FALSE;
+    return FALSE;
 }
 
 static gboolean
@@ -632,7 +630,6 @@ int GetProtoInfos(struct allExProtocols *exprotocols)
         allProtoInfo[i].feature_offset = exprotocols->exProto[i].feature_offset;
         strcpy(allProtoInfo[i].next_potocol, exprotocols->exProto[i].next_potocol);
 
-
         allProtoInfo[i].column = (struct columnInfo *)malloc(num * sizeof(struct columnInfo));
         for (int j = 0; j < num; j++)
         {
@@ -661,49 +658,49 @@ void proto_register_exprotocol(int j)
 
         switch (allProtoInfo[j].column[i].type)
         {
-        case (0):
-            hf[i].hfinfo.type = FT_BOOLEAN;
-            hf[i].hfinfo.display = BASE_NONE;
-            hf[i].hfinfo.strings = NULL;
-            hf[i].hfinfo.bitmask = 0x01;
-            hf[i].hfinfo.blurb = NULL;
-            break;
-        case (1):
-            hf[i].hfinfo.type = FT_IPv4;
-            hf[i].hfinfo.display = BASE_NONE;
-            hf[i].hfinfo.strings = NULL;
-            hf[i].hfinfo.bitmask = 0;
-            hf[i].hfinfo.blurb = NULL;
-            break;
-        case (2):
-            hf[i].hfinfo.type = FT_IPv6;
-            hf[i].hfinfo.display = BASE_NONE;
-            hf[i].hfinfo.strings = NULL;
-            hf[i].hfinfo.bitmask = 0;
-            hf[i].hfinfo.blurb = NULL;
-            break;
-        case (3):
-             hf[i].hfinfo.type = FT_ABSOLUTE_TIME;
-             hf[i].hfinfo.display = ABSOLUTE_TIME_LOCAL;
-             hf[i].hfinfo.strings = NULL;
-             hf[i].hfinfo.bitmask = 0;
-             hf[i].hfinfo.blurb = NULL;
-             break;
-        case (4):
+            case (0):
+                hf[i].hfinfo.type = FT_BOOLEAN;
+                hf[i].hfinfo.display = BASE_NONE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0x01;
+                hf[i].hfinfo.blurb = NULL;
+                break;
+            case (1):
+                hf[i].hfinfo.type = FT_IPv4;
+                hf[i].hfinfo.display = BASE_NONE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
+                break;
+            case (2):
+                hf[i].hfinfo.type = FT_IPv6;
+                hf[i].hfinfo.display = BASE_NONE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
+                break;
+            case (3):
+                hf[i].hfinfo.type = FT_ABSOLUTE_TIME;
+                hf[i].hfinfo.display = ABSOLUTE_TIME_LOCAL;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
+                break;
+            case (4):
                 hf[i].hfinfo.type = FT_INT64;
                 hf[i].hfinfo.display = BASE_CUSTOM ;
                 hf[i].hfinfo.strings = NULL;
                 hf[i].hfinfo.bitmask = 0;
                 hf[i].hfinfo.blurb = NULL;
                 break;
-        case (5):
+            case (5):
                 hf[i].hfinfo.type = FT_FLOAT;
                 hf[i].hfinfo.display = BASE_FLOAT;
                 hf[i].hfinfo.strings = NULL;
                 hf[i].hfinfo.bitmask = 0;
                 hf[i].hfinfo.blurb = NULL;
                 break;
-        case (6):
+            case (6):
                 hf[i].hfinfo.type = FT_STRING;
                 hf[i].hfinfo.display = STR_UNICODE;
                 hf[i].hfinfo.strings = NULL;
@@ -713,12 +710,12 @@ void proto_register_exprotocol(int j)
 /*        case (99):
                 proto_register_exprotocol(i);
                 break;*/
-        default:
-            hf[i].hfinfo.type = FT_BYTES;
-            hf[i].hfinfo.display = BASE_NONE;
-            hf[i].hfinfo.strings = NULL;
-            hf[i].hfinfo.bitmask = 0;
-            hf[i].hfinfo.blurb = NULL;
+            default:
+                hf[i].hfinfo.type = FT_BYTES;
+                hf[i].hfinfo.display = BASE_NONE;
+                hf[i].hfinfo.strings = NULL;
+                hf[i].hfinfo.bitmask = 0;
+                hf[i].hfinfo.blurb = NULL;
         }
 
         HFILL_INIT(hf[i]);
@@ -726,7 +723,7 @@ void proto_register_exprotocol(int j)
     }
 
     gint *ett[] = {
-        &ettprotos[j]}; //我们只需要一个子树，显示分值与颜色分量
+            &ettprotos[j]}; //我们只需要一个子树，显示分值与颜色分量
 
     intproto[j] = proto_register_protocol(allProtoInfo[j].protoName,
                                           allProtoInfo[j].shortName,
@@ -755,20 +752,21 @@ void proto_reg_handoff_exprotocol(int index)
     transProto_t = allProtoInfo[index].transportProto;
     display_name_t = allProtoInfo[index].shortName;
     internal_name_t = allProtoInfo[index].filterName;
+
     write_into_all_diy_proto(allProtoInfo[index].protoName,allProtoInfo[index].next_potocol);
 
     if(strcmp(transProto_t,"udp") == 0){
         strcat(display_name_t," over UDP");
 
-         while(allProtoInfo[index].port[port_i] != 0 && port_i < 10){
-             dissector_add_uint("udp.port", allProtoInfo[index].port[port_i], exprotocol_handle);
-             port_i++;
-         }
+        while(allProtoInfo[index].port[port_i] != 0 && port_i < 10){
+            dissector_add_uint("udp.port", allProtoInfo[index].port[port_i], exprotocol_handle);
+            port_i++;
+        }
         heur_dissector_add("udp", heur_functions[index], display_name_t, internal_name_t, intproto[index], HEURISTIC_ENABLE);
 
     } else if(strcmp(transProto_t,"tcp") == 0){
         strcat(display_name_t," over TCP");
-         heur_dissector_add("tcp", heur_functions[index], display_name_t, internal_name_t, intproto[index], HEURISTIC_ENABLE);
+        heur_dissector_add("tcp", heur_functions[index], display_name_t, internal_name_t, intproto[index], HEURISTIC_ENABLE);
         while(allProtoInfo[index].port[port_i] != 0 && port_i < 10){
             dissector_add_uint("tcp.port", allProtoInfo[index].port[port_i], exprotocol_handle);
             port_i++;

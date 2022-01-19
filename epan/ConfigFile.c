@@ -121,7 +121,8 @@ char* getInfo_ConfigFile(const char *key, struct ConfigInfo *info,int line)
 {
     for (int i = 0; i < line; ++i)
     {
-        if (strcmp(key,info[i].key) == 0) {
+        if (strcmp(key,info[i].key) == 0)
+        {
             return info[i].val;
         }
     }
