@@ -1,25 +1,14 @@
 {
-	"protocolName": "addprotocol2",
-	"shortName": "ADDPRO2",
-	"filterName": "addpro2",
-	"ports":[7777,3333],
+	"protocolName": "auto_udp",
+	"shortName": "auto_udp",
+	"filterName": "auto_udp",
+	"ports":[77777],
 	"transportProtocol": "udp",
 
-	"feature": "ADDPROB",
-	"feature_offset":1,
-	"next_potocol": "",
+	"feature": "€ ",
+	"feature_offset":0,
+	"next_potocol": "rtp",
 	"parts": [
-		{
 
-			"name": "payload_feature",
-			"abbName": "pl_feature",
-			"length": 8,
-			"type": 6
-		},  {
-			"name": "addprotocol_ip",
-			"abbName": "addpro_ip",
-			"length": 16,
-			"type": 1
-		}
 	]
 }

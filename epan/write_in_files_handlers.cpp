@@ -170,7 +170,7 @@ static int value_240_len = 0;
 
 
 //--------------------- 20211228 conversation协议栈缓存五元组 ---------------------------------//
-typedef struct comSevenStackContent{ //通信五元组内容及其他信息
+typedef struct comSevenStackContent{ //会话匹配提取文件七元组内容及其他信息
     std::string sip;
     std::string dip;
     std::string sport;
@@ -1174,7 +1174,7 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
     std::string key_str = key;
     std::string value_str = value;
     if (value_str == "-1END") {
-        /*获取文件来源，将conversation与源文件进行关联*/
+        //获取文件来源，将conversation与源文件进行关联
 /*        if (read_Pcap_From_File_Flag == 1) {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  *//* 离线接入数据的线路号 *//*
