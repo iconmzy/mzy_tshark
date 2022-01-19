@@ -2526,13 +2526,14 @@ if (BUILD_tshark)
     find_package(PkgConfig REQUIRED)
     pkg_search_module(JSON REQUIRED json-glib-1.0)
     include_directories(${JSON_INCLUDE_DIRS})
-    link_directories(${JSON_LIBRARY_DIRS})
+    link_directories(${JSON_LIBRARY_DIRS} "/usr/local/lib")
 
     set_executable_resources(aurora "TShark" UNIQUE_RC)  # old name tshark
     add_executable(aurora ${tshark_FILES})  # old name tshark
     set_extra_executable_properties(aurora "Executables")  # old name tshark
-    target_link_libraries(aurora ${tshark_LIBS} ${JSON_LIBRARY_DIRS} ${JSON_LDFLAGS} curl)  # old name tshark
-    target_link_libraries(aurora ${tshark_LIBS} ${JSON_LIBRARY_DIRS} ${JSON_LDFLAGS} rdkafka)  # old name tshark
+
+    target_link_libraries(aurora ${tshark_LIBS} ${JSON_LIBRARY_DIRS} ${JSON_LDFLAGS} curl mp3lame rdkafka)  # old name tshark
+    #target_link_libraries(aurora ${tshark_LIBS} ${JSON_LIBRARY_DIRS} ${JSON_LDFLAGS} )  # old name tshark
     install(TARGETS aurora RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})  # old name tshark
 endif ()
 

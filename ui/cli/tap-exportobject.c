@@ -100,9 +100,7 @@ object_list_get_entry(void *gui_data, int row) {
     return (export_object_entry_t *)g_slist_nth_data(object_list->entries, row);
 }
 
-/* This is just fo
- *
- * r writing Exported Objects to a file */
+/* This is just for writing Exported Objects to a file */
 static void
 eo_draw(void *tapdata)
 {
