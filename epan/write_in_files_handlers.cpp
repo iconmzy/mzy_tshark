@@ -35,7 +35,7 @@
 #include "curl/curl.h"
 #include "decode_zhr.h"
 #include <epan/export_object.h>
-
+#include <dissectors/packet-tls-utils.h>
 
 
 #define __U__ __attribute__((unused))
@@ -67,8 +67,10 @@ typedef struct {
 
 static bool need_special_field(const char* ,proto_node *, char*);
 static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *, char*);
+static bool get_tls_handshake_ciphersuite(proto_node *, char*);
 static special_field_value regist_speical_filed[] = {
-        {"isis_lsp_ip_reachability_ipv4_prefix", &get_isis_lsp_ip_reachability_ipv4_prefix_mask}
+        {"isis_lsp_ip_reachability_ipv4_prefix", &get_isis_lsp_ip_reachability_ipv4_prefix_mask},
+		{"tls.handshake.ciphersuite", &get_tls_handshake_ciphersuite}
 };
 
 
@@ -987,10 +989,10 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
 
     //获取value
     int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):1000;
+	auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
 
-    auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
     if(! need_special_field(temp->finfo->hfinfo->abbrev, temp, value_t)){
-        yy_proto_item_fill_label(temp->finfo,&value_t,bufferlen);
+        yy_proto_item_fill_label(temp->finfo,&value_t, bufferlen);
     }
 
 
@@ -2547,6 +2549,27 @@ static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *node, char
     }
     return false;
 }
+
+// get tls certification
+static bool get_tls_handshake_ciphersuite(proto_node *node, char* ret){
+	/* from int to value_string (tls.handshake.ciphersuite)
+	 * example: TLS_RSA_EXPORT_WITH_RC4_40_MD5
+	 * */
+	if (node->finfo){
+		int bufferlen = (node->finfo->length *3 +1)>100?(node->finfo->length *3 +1):1000;
+		yy_proto_item_fill_label(node->finfo, &ret, bufferlen);
+		/** Returns the Libgcrypt cipher identifier or 0 if unavailable. */
+		const ssl_code_name_pair_t *c;
+		for(c=cipher_suite_indexes; c->number!=-1;c++){
+			if(c->number== atoi(ret)){
+				strcpy(ret, c->cipher_suite);
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 //清空当前关于conversation协议栈的缓存，每处理完一个文件后执行
 void final_conversation_Write_Need_clear(void){
     final_conversation_Write_Need.clear();
