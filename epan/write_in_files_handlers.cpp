@@ -56,9 +56,6 @@ static cJSON *pro_cJson = cJSON_CreateObject();
 static cJSON *write_in_files_conv_cJson = cJSON_CreateObject();
 static std::string conv_path_t;
 
-std::list<std::string> special_not_leafNode = {
-        "isis_lsp_ip_reachability_ipv4_prefix"
-};
 
 typedef struct {
     const char * field_name;
@@ -68,11 +65,12 @@ typedef struct {
 static bool need_special_field(const char* ,proto_node *, char*);
 static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *, char*);
 static bool get_tls_handshake_ciphersuite(proto_node *, char*);
+
 static special_field_value regist_speical_filed[] = {
         {"isis_lsp_ip_reachability_ipv4_prefix", &get_isis_lsp_ip_reachability_ipv4_prefix_mask},
-		{"tls.handshake.ciphersuite", &get_tls_handshake_ciphersuite}
+		{"tls.handshake.ciphersuite", &get_tls_handshake_ciphersuite},
 };
-
+static bool get_tls_handshake_certificate(cJSON *&, proto_node *&);
 
 static FILE *conversation_Handle_File = nullptr;
 std::queue< proto_node* > que; //全局node节点队列
@@ -987,15 +985,16 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
         return false;
     }
 
+    std::string _key_str = gotStrNameByStrName(key_str);
+    if(_key_str == "-1") return false;
+
     //获取value
     int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):1000;
 	auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
 
-    if(! need_special_field(temp->finfo->hfinfo->abbrev, temp, value_t)){
+    if(!need_special_field(temp->finfo->hfinfo->abbrev, temp, value_t)){
         yy_proto_item_fill_label(temp->finfo,&value_t, bufferlen);
     }
-
-
     //组包相关
     if (PACKET_PROTOCOL_FLAG && packetProtoAlready) {
         //rtp content relative
@@ -1034,6 +1033,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
                 }
             }
         }
+        //tls
         else if((it = g_list_find_custom(tls_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
             if(!cookie->tls_content){
                 cookie->tls_content = g_new0(tls_Content,1);
@@ -1046,38 +1046,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
         }
     }
 
-    //将key_str 形式“x.ab.c.d” 转换成“x_ab_c_d”
-
-/*    while (key_str.find('.') != std::string::npos) {  *//* 返回string::npos表示未查找到匹配项 *//*
-        key_str.replace(key_str.find('.'), 1, "_");
-    }*/
-
-/*
-            //重复字段的数组处理
-            if(judgeDuplicateKeyStr(key_str)){
-                cJSON *item = cJSON_GetObjectItem(json_t,key_str.c_str());
-                if(cJSON_IsArray(item)){
-                    //已经是数组
-                    cJSON_AddItemToArray(item,cJSON_CreateString(value));
-                } else{
-                    //第一次重复
-                    std::string pre_value = cJSON_GetStringValue(item);
-                    cJSON_DeleteItemFromObject(json_t, key_str.c_str());
-                    cJSON * temp_array = cJSON_AddArrayToObject(json_t, key_str.c_str());
-                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(pre_value.c_str()));
-                    cJSON_AddItemToArray(temp_array,cJSON_CreateString(value_t));
-                }
-            } else{
-                cJSON_AddStringToObject(json_t,key_str.c_str(),value_t);
-            }
-*/
-
-    key_str = gotStrNameByStrName(key_str);
-    if(key_str == "-1"){
-        return false;
-    }
-    cJSON_AddStringToObject(json_t,key_str.c_str(),value_t);
-
+    cJSON_AddStringToObject(json_t,_key_str.c_str(),value_t);
     g_free(value_t);
     return true;
 }
@@ -1091,7 +1060,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
  */
 gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node, struct totalParam *cookie __U__){
     while(node != nullptr){
-        if(node->first_child == nullptr or node->last_child == nullptr or (is_special_not_leafNode(node->finfo->hfinfo->abbrev))){
+        if(node->first_child == nullptr or node->last_child == nullptr){
             dissect_Per_Node_No_Cursion(json_t,node,cookie);
             node = node->next;
         } else{
@@ -1103,7 +1072,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
         proto_node* temp = que.front();
         que.pop();
 
-        if(temp->first_child == nullptr or temp->last_child == nullptr or (is_special_not_leafNode(temp->finfo->hfinfo->abbrev))){
+        if(temp->first_child == nullptr or temp->last_child == nullptr){
             dissect_Per_Node_No_Cursion(json_t,temp,cookie);
         } else{
             temp = temp->first_child;
@@ -1216,9 +1185,6 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     s7e.protocol_stack = protocol_stack_t;
     s7e.line_no = OFFLINE_LINE_LINE_NO;
     s7e.read_file_path = READ_FILE_PATH;
-
-
-
 
     if(PACKET_PROTOCOL_FLAG){
         /*判断当前协议是否需要组包*/
@@ -1414,7 +1380,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                         c5e = nullptr;
                     }
                 }
-                catch (std::invalid_argument) {
+                catch (const char* emg) {
                     node = node->next;
                     continue;
                 }
@@ -2511,23 +2477,8 @@ void followConnectFiveEleClear(){
     final_Follow_Write_Need.clear();
 }
 
-/**
- *  用于输出一些特殊的非叶子结点
- * @param fieldName 字段名称
-
- * @return true/false
- */
-
-gboolean is_special_not_leafNode(const char *fieldName){
-    for (auto &i :special_not_leafNode) {  //special_not_leafNode 列表在上面定义20211217 MZY
-        if(i == fieldName)
-            return true;
-    }
-    return false;
-}
-
 bool need_special_field(const char* field, proto_node *node, char* ret){
-    for(auto & i : regist_speical_filed){
+    for (auto &i : regist_speical_filed){
         if (strcmp(field, i.field_name) == 0){
             i.special_field_cb(node, ret);
             return true;
@@ -2556,12 +2507,11 @@ static bool get_tls_handshake_ciphersuite(proto_node *node, char* ret){
 	 * example: TLS_RSA_EXPORT_WITH_RC4_40_MD5
 	 * */
 	if (node->finfo){
-		int bufferlen = (node->finfo->length *3 +1)>100?(node->finfo->length *3 +1):1000;
+        int bufferlen = (node->finfo->length *3 +1)>100?(node->finfo->length *3 +1):1000;
 		yy_proto_item_fill_label(node->finfo, &ret, bufferlen);
-		/** Returns the Libgcrypt cipher identifier or 0 if unavailable. */
 		const ssl_code_name_pair_t *c;
 		for(c=cipher_suite_indexes; c->number!=-1;c++){
-			if(c->number== atoi(ret)){
+			if(c->number== std::atoi(ret)){
 				strcpy(ret, c->cipher_suite);
 				return true;
 			}
@@ -2570,11 +2520,31 @@ static bool get_tls_handshake_ciphersuite(proto_node *node, char* ret){
 	return false;
 }
 
+static bool get_tls_handshake_certificate(cJSON *&json_t, proto_node *&rnode){
+    /*
+     * rnode: tls.handshake
+     * certificate field: if tls_handshake_type == 11
+     * */
+    if(rnode && rnode->first_child!= nullptr){
+        if(strcmp(rnode->finfo->hfinfo->abbrev, "tls_handshake")!=0) return false;
+        proto_node * node = rnode->first_child;    // judge tls_handshake_type
+        if (node->finfo &&
+                strcmp(node->finfo->hfinfo->abbrev, "tls_handshake_type")==0){
+            int bufferlen = (node->finfo->length *3 +1)>100?(node->finfo->length *3 +1):1000;
+            auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
+            yy_proto_item_fill_label(node->finfo, &value_t, bufferlen);
+            if(strcmp(value_t, "11")==0){
+                printf("==");
+            }
+        }
+        else return false;
+    }
+    return true;
+}
+
 //清空当前关于conversation协议栈的缓存，每处理完一个文件后执行
 void final_conversation_Write_Need_clear(void){
     final_conversation_Write_Need.clear();
-
-    return;
 }
 //在conversation协议栈的缓存vector中匹配协议栈，写入conversation
 gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port){
