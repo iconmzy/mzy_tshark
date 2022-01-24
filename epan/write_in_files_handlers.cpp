@@ -1078,6 +1078,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
             temp = temp->first_child;
             while (temp != nullptr){
                 que.push(temp);
+				get_tls_handshake_certificate(json_t, temp); //"tls.handshake.certificates"
                 temp = temp->next;
             }
         }
@@ -1153,6 +1154,10 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     proto_node *stack_node_t = node;
     auto *c5e = new comFiveEleContent(); //存放通信五元组
     comSevenStackContent s7e;// 会话七元组
+
+    if(edt->pi.num == 752){
+    	printf("==");
+    }
 
     int stack_node_layer = 0;
     while (stack_node_t != nullptr and ++stack_node_layer < 11) {
@@ -1319,7 +1324,10 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                         }else{
                             bool exist = FALSE;
                             for (auto &i : final_conversation_Write_Need){
-                                if(strcmp(s7e.sip.c_str(),i.sip.c_str()) == 0 && strcmp(s7e.dip.c_str(),i.dip.c_str()) == 0 && i.sport == numtos(s7e.sport) && i.dport == numtos(s7e.dport) &&  strcmp(s7e.protocol_stack.c_str(),i.protocol_stack.c_str()) == 0){
+                                if(strcmp(s7e.sip.c_str(),i.sip.c_str()) == 0 &&
+                                strcmp(s7e.dip.c_str(), i.dip.c_str()) == 0 &&
+                                i.sport == numtos(s7e.sport) && i.dport == numtos(s7e.dport) &&
+								strcmp(s7e.protocol_stack.c_str(),i.protocol_stack.c_str()) == 0){
                                     exist = TRUE;
                                     break;
                                 }
@@ -2522,23 +2530,25 @@ static bool get_tls_handshake_ciphersuite(proto_node *node, char* ret){
 
 static bool get_tls_handshake_certificate(cJSON *&json_t, proto_node *&rnode){
     /*
-     * rnode: tls.handshake
+     * rnode: tls.handshake.certificate
      * certificate field: if tls_handshake_type == 11
      * */
-    if(rnode && rnode->first_child!= nullptr){
-        if(strcmp(rnode->finfo->hfinfo->abbrev, "tls_handshake")!=0) return false;
-        proto_node * node = rnode->first_child;    // judge tls_handshake_type
-        if (node->finfo &&
-                strcmp(node->finfo->hfinfo->abbrev, "tls_handshake_type")==0){
-            int bufferlen = (node->finfo->length *3 +1)>100?(node->finfo->length *3 +1):1000;
-            auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
-            yy_proto_item_fill_label(node->finfo, &value_t, bufferlen);
-            if(strcmp(value_t, "11")==0){
-                printf("==");
-            }
+    if(rnode &&
+    	strcmp(rnode->finfo->hfinfo->abbrev, "tls.handshake.certificate")==0
+    	&& strcmp(rnode->parent->finfo->hfinfo->abbrev, "tls.handshake.certificates")==0){
+    		guint certificate_length = rnode->finfo->value.value.bytes->len;
+			if(certificate_length && certificate_length>10 && certificate_length<100000){
+
+				auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),certificate_length);
+				yy_proto_item_fill_label(rnode->finfo,&value_t, certificate_length);
+
+				std::string key_str = rnode->finfo->hfinfo->abbrev;
+				std::string _key_str = gotStrNameByStrName(key_str);
+				if(_key_str == "-1") return false;
+
+				cJSON_AddStringToObject(json_t, _key_str.c_str(), value_t);
+			}
         }
-        else return false;
-    }
     return true;
 }
 
