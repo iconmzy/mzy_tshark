@@ -296,7 +296,7 @@ static gboolean process_packet_single_pass(capture_file *cf,
 
 static void show_print_file_io_error(void);
 static gboolean write_preamble(capture_file *cf);
-static gboolean write_finale(void);
+
 static void failure_warning_message(const char *msg_format, va_list ap);
 static void open_failure_message(const char *filename, int err,
                                  gboolean for_writing);
@@ -3334,7 +3334,7 @@ process_new_idbs(wtap *wth, wtap_dumper *pdh, int *err, gchar **err_info) {
 }
 
 static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper *pdh,
-                                                  int unuse1, gint64 unuse2,
+                                                  int unuse1 _U_, gint64 unuse2 _U_,
                                                   int *err, gchar **err_info,
                                                   volatile guint32 *err_framenum) {
     wtap_rec 	rec;
@@ -3414,8 +3414,8 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
 }
 
 static process_file_status_t
-process_cap_file(capture_file *cf, char *unuse1, int unuse2,
-                 gboolean unuse3, int max_packet_count, gint64 max_byte_count) {
+process_cap_file(capture_file *cf, char *unuse1 _U_, int unuse2 _U_,
+                 gboolean unuse3 _U_, int max_packet_count, gint64 max_byte_count) {
 
     process_file_status_t status = PROCESS_FILE_SUCCEEDED;
     wtap_dumper *pdh = NULL;
@@ -3457,7 +3457,7 @@ int ALL_PACKET_COUNT = 0;  // 全局变量统计总共处理了多少个packet�
  */
 static gboolean
 process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
-                           wtap_rec *rec, Buffer *buf, guint unuse1) {
+                           wtap_rec *rec, Buffer *buf, guint unuse1 _U_) {
     frame_data fdata;
     column_info *cinfo = NULL;
     gboolean passed;
@@ -3554,37 +3554,6 @@ write_preamble(capture_file *cf) {
     }
 }
 
-static gboolean
-write_finale(void) {
-    switch (output_action) {
-
-        case WRITE_TEXT:
-            return print_finale(print_stream);
-
-        case WRITE_XML:
-            if (print_details)
-                write_pdml_finale(stdout);
-            else
-                write_psml_finale(stdout);
-            return !ferror(stdout);
-
-        case WRITE_FIELDS:
-            write_fields_finale(output_fields, stdout);
-            return !ferror(stdout);
-
-        case WRITE_JSON:
-        case WRITE_JSON_RAW:
-            write_json_finale(&jdumper);
-            return !ferror(stdout);
-
-        case WRITE_EK:
-            return TRUE;
-
-        default:
-            g_assert_not_reached();
-            return FALSE;
-    }
-}
 
 /**
  * 关闭打开的pcap文件

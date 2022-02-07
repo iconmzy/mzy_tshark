@@ -165,10 +165,11 @@ typedef struct pFile_Info{
 //协议名称与对应的文件打开的指针map
 std::map<std::string, pFILE_INFO *> pFile_map;
 std::list<std::string> lastLayerProtocolFilterList = { //最后层协议名称过滤
-        "communityid","ftp.current-working-directory","xml","json","_ws.malformed","smb2.fsctl.wait.name", "mswsp.msg"\
-        ,"tcp.segments","urlencoded-form","data-text-lines","media","_ws.short","_ws.unreassembled","_ws.short","_ws.unreassembled"\
-        ,"ftp-data.current-working-directory","dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","ftp-data.command-frame","dcerpc.cn_deseg_req"\
-        ,"dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str"
+        "communityid","ftp.current-working-directory","xml","json","_ws.malformed","smb2.fsctl.wait.name", "mswsp.msg",
+        "tcp.segments","urlencoded-form","data-text-lines","media","_ws.short","_ws.unreassembled","_ws.short","_ws.unreassembled",
+        "dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","dcerpc.cn_deseg_req",
+        "dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str",
+        "ftp-data.setup-frame","ftp-data.setup-method","ftp-data.command","ftp-data.command-frame","ftp-data.current-working-directory", "ftp_current-working-directory"
 };
 std::list<std::string> protoKeyFilterList = {"text","useless"}; //协议KEY过滤
 
@@ -281,6 +282,7 @@ struct comFiveEleContent{ //通信五元组内容及其他信息
     std::string dport;
     std::string protocol;//协议 如rtp
     std::string protocol_suffix;//子协议，如g722,g711
+    guint32 frame_id;
 	unsigned int frame_time; // 时间戳整数形式
     unsigned int protocol_suffix_type{}; //子协议号,[0-127]
     int status{};
@@ -358,7 +360,7 @@ typedef struct _rtpMatchingInfo{
     std::string fp_path{};
 }rtpMatchingInfo;
 std::vector<rtpMatchingInfo> rtpMachingVec{};
-std::mutex rtp_mtx;
+std::mutex rtp_mtx, ftp_mtx;
 struct rtpFileRel{ //RTP文件及解码器相关
     FILE * fp;
     struct _GHashTable *decoders_hash;
@@ -376,7 +378,7 @@ struct rtp_Content{
     gboolean bye = 0;
     char ssrc[24]{};
     guint8 payload[2*4000]{};
-    int payload_len{};
+    guint payload_len{};
     unsigned int payload_type{};
     char file_name[128]{};
 };
@@ -392,41 +394,85 @@ inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, con
 
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
 
-//tls stream---------------------- 20210909 yy ---------------------- tls stream begin |||
-GList *tls_fields = nullptr; //tls字段的双链表
-enum tls_Status{
-    CLIENT_HELLO = 0,
-    SERVER_HELLO,
-    SERVER_CERTIFICATE,
+//ftp ftp-data stream---------------------- 20220125 ymq ---------------------- ftp stream begin |||
+GList *ftp_fields = nullptr; //ftp字段的双链表
+enum ftp_Status{
+    FTP_NO,
+    FTP_PASV,                       // 获取数据传输端口
+    FTP_TRANS_METHOD,               // the method of transfer file, get file name
+    FTP_TRANSFER_START,
+    FTP_TRANSFERING,
+    FTP_TRANSFER_END
 };
-struct tls_Content{
-    char        sip[24];
-    char        dip[24];
-    uint16_t    sport;
-    uint16_t    dport;
-    uint16_t    handshake_ciphersuite;  //tls.handshake.ciphersuite
-    uint8_t     handshake_type; //tls.handshake.type
-    char      cer[8000];   //tls.handshake.certificates
-};//并发处理tls相关内容
 
-struct tls_Vec{
+enum ftp_request_command{ // not all
+    UNKNOWN,
+    USER,       //登录的用户名
+    PASS,       //密码
+    CWD,        //改变当前目录
+    PASV,       //获取数据传输端口
+    TYPE,       //设置数据交换的类型{A(SCII),E(BCDIC),I(mage),L(ocal byte size)}
+    STOR,       //用覆盖方式上传一个文件到服务器
+    APPE,       //用追加方式上传一个文件到服务器
+    DELE,       //在服务器上删除指定文件
+    RMD,        //在服务器上删除指定目录
+    LIST,       //列出当前目录下所有文件和子目录
+    PWD,        //显示当前目录
+    NLST,       //列出当前目录下所有文件和子目录的名字
+    QUIT,       //退出
+    REIN,       //重新登录
+};
+std::vector<std::string> trans_commnd = {"STOR"};
+struct ftp_Content{
+	char protocol[64];
+    char ftp_command[32];
+    bool is_file_name;
+    char file_name[256];
+    char passive_port[24];
+	ftp_Status status;
+	int res_code;
+	guint32 frame_id;
+};//并发处理ftp相关内容
+
+struct ftp_data_Content{
+	//"ftp-data.setup-frame","ftp-data.setup-method","ftp-data.command","ftp-data.command-frame"
+	char protocol[64];
+	char setup_frame[32];
+	char command_frame[32];
+	char setup_method[32];
+	char command[32];
+	guint ftp_data_length;
+	guint8 ftp_data[2000];
+	char filename[256];
+};
+
+typedef struct _ftpTotalBufferContent{ //
     std::string sip;
     std::string dip;
-    uint16_t    sport;
-    uint16_t    dport;
-    uint8_t     tls_Status;
-};//保存tls所有连接状态
-std::vector<struct tls_Vec> tls_Total;
-//tls stream---------------------- 20210909 yy ---------------------- tls stream end |||
+    std::string sport;
+    std::string dport;
+    std::string file_name;
+    unsigned int time_begin{};
+    unsigned int time_end{};
+    unsigned int last_record_time{0};
+
+	guint32 first_frame_id;
+	guint32 last_frame_id;
+
+    FILE *fp{};
+    std::string fp_path{};
+    gunit8Array data{};
+}ftpTotalBufferContent;
+std::map<std::string ,ftpTotalBufferContent> ftpTotalBuffer;
+//ftp ftp-data stream---------------------- 20220125 ymq ---------------------- ftp stream end |||
 
 struct totalParam{ //流组报相关全参数结构体
     struct comFiveEleContent *c5e = nullptr; //通信五元组
     struct rtp_Content *rtp_content = nullptr;
-    struct tls_Content *tls_content = nullptr;
+    struct ftp_data_Content *ftp_content = nullptr;
 };
 /*流处理函数线程池*/
 GThreadPool *handleStreamTpool;
-
 //当前数据包若为需要组的包则为TRUE，否则为FALSE
 gboolean packetProtoAlready = false;
 
@@ -973,7 +1019,7 @@ gboolean initial_All_para() {
  * @param cookie
  * @return
  */
-gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct totalParam *cookie __U__){
+gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t, proto_node *&temp, struct totalParam *cookie __U__){
     if(temp->finfo->length >= 1514 or temp->finfo->length <= 0) return false; //无意义的长值直接跳过
 
     std::string key_str = temp->finfo->hfinfo->abbrev;
@@ -1033,17 +1079,55 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
                 }
             }
         }
-        //tls
-        else if((it = g_list_find_custom(tls_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
-            if(!cookie->tls_content){
-                cookie->tls_content = g_new0(tls_Content,1);
-                if(!cookie->tls_content){
-                    g_print("tls content init error!\n");
-                    return false;
-                }
-            }
-            //赋值
-        }
+        //ftp
+//        else if((it = g_list_find_custom(ftp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
+//			if(!cookie->ftp_content){ // 首先初始化
+//				cookie->ftp_content = g_new0(ftp_Content,1);
+//				if(!cookie->ftp_content){
+//					g_print("ftp content init error!\n");
+//					return false;
+//				}
+//			}
+//
+//
+//            //赋值
+//            cookie->ftp_content->frame_id = cookie->c5e->frame_id;
+//            if(strcmp((char*)it->data,"ftp_request_command") == 0){
+//                strcpy(cookie->ftp_content->ftp_command, value_t);
+//                if(std::find(trans_commnd.begin(), trans_commnd.end(), value_t) != trans_commnd.end())
+//                    // temporary support "STOR",
+//                    cookie->ftp_content->status = FTP_TRANS_METHOD;
+//                	cookie->ftp_content->is_file_name=true;
+//            }
+//            if(strcmp((char*)it->data,"ftp_request_arg") == 0){
+//                strcpy(cookie->ftp_content->file_name, value_t);
+//            }
+//
+//            if(strcmp((char*)it->data,"ftp_response_code") == 0){
+//                cookie->ftp_content->res_code = std::stoi(value_t);
+//                if(strcmp(value_t, "125")==0){
+//                    cookie->ftp_content->status = FTP_TRANSFER_START;
+//                }
+//                else if(strcmp(value_t, "226")==0){
+//                    cookie->ftp_content->status = FTP_TRANSFER_END;
+//                }
+//            }
+//            //ftp_passive_port
+//            if(strcmp((char*)it->data,"ftp_passive_port") == 0){
+//                strcpy(cookie->ftp_content->passive_port, value_t);
+//                cookie->ftp_content->status = FTP_PASV;
+//            }
+//            strcpy(cookie->ftp_content->protocol,"ftp");
+//            //ftp-data
+//            if(strcmp((char*)it->data,"ftp-data") == 0){
+//                for (guint i = 0; i < temp->finfo->value.value.bytes->len ;++i) {
+//                    cookie->ftp_content->ftp_data[i] = temp->finfo->value.value.bytes->data[i];
+//                }
+//                cookie->ftp_content->ftp_data_length = temp->finfo->value.value.bytes->len;
+//                cookie->ftp_content->status = FTP_TRANSFERING;
+//                strcpy(cookie->ftp_content->protocol,"ftp-data");
+//            }
+//        }
     }
 
     cJSON_AddStringToObject(json_t,_key_str.c_str(),value_t);
@@ -1154,10 +1238,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     proto_node *stack_node_t = node;
     auto *c5e = new comFiveEleContent(); //存放通信五元组
     comSevenStackContent s7e;// 会话七元组
-
-    if(edt->pi.num == 752){
-    	printf("==");
-    }
+    c5e->frame_id = edt->pi.num;
 
     int stack_node_layer = 0;
     while (stack_node_t != nullptr and ++stack_node_layer < 11) {
@@ -1193,7 +1274,9 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 
     if(PACKET_PROTOCOL_FLAG){
         /*判断当前协议是否需要组包*/
-        if(g_list_find_custom(rtp_fields, write_in_files_proto.c_str(), (GCompareFunc)strcmp)){
+		packetProtoAlready = false;
+        if(g_list_find_custom(rtp_fields, write_in_files_proto.c_str(), (GCompareFunc)strcmp)
+            or g_list_find_custom(ftp_fields, write_in_files_proto.c_str(), (GCompareFunc)strcmp)){
             packetProtoAlready = true;
         }
     }
@@ -1363,8 +1446,67 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             break;
         }
 
+
+
         /*最后层协议的解析*/
         else if (strcmp(fi->hfinfo->abbrev, write_in_files_proto.c_str()) == 0) {
+        	// ftp-data   //要组报
+        	if(strcmp(fi->hfinfo->abbrev, "ftp-data" )==0  && (PACKET_PROTOCOL_FLAG && packetProtoAlready) ) {
+				struct totalParam *cookie_t = g_new0(totalParam, 1);
+				cookie_t->c5e = c5e;
+
+				struct ftp_data_Content *ftp_data_content = g_new0(ftp_data_Content,1);
+				proto_node * ftp_data = node;
+				gboolean DATA = true;
+				strcpy(ftp_data_content->protocol, "ftp-data");
+
+				int start = node->finfo->start;
+				int length = node->finfo->length;
+
+				while (ftp_data != nullptr){
+					//获取value
+					int bufferlen = (ftp_data->finfo->length *3 +1)>100?(ftp_data->finfo->length *3 +1):1000;
+					auto *value_tt = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
+					yy_proto_item_fill_label(ftp_data->finfo, &value_tt, bufferlen);
+					if(DATA){
+						tvb_memcpy(ftp_data->finfo->ds_tvb, ftp_data_content->ftp_data, start, length);
+						ftp_data_content->ftp_data_length = length;
+						DATA=false;
+					}
+					else{
+						// "ftp-data.setup-frame","ftp-data.setup-method","ftp-data.command","ftp-data.command-frame"
+						if(ftp_data->finfo != nullptr &&
+							strcmp(ftp_data->finfo->hfinfo->abbrev, "ftp-data.setup-frame")==0){
+							strcpy(ftp_data_content->setup_frame, value_tt);
+						}
+						else if(ftp_data->finfo != nullptr &&
+						   strcmp(ftp_data->finfo->hfinfo->abbrev, "ftp-data.setup-method")==0){
+							strcpy(ftp_data_content->setup_method, value_tt);
+						}
+						else if(ftp_data->finfo != nullptr &&
+						   strcmp(ftp_data->finfo->hfinfo->abbrev, "ftp-data.command")==0){
+							// example: "STOR 工作梳理.png" or "LIST"
+							char* filename = strchr(value_tt, ' ');
+							if(filename != nullptr) {
+							// find
+								strcpy(ftp_data_content->filename, filename+1);
+								strncpy(ftp_data_content->command, value_tt, filename-value_tt);
+							} else{
+								strcpy(ftp_data_content->command, value_tt);
+							}
+						}
+						else if(ftp_data->finfo != nullptr &&
+						   strcmp(ftp_data->finfo->hfinfo->abbrev, "ftp-data.command-frame")==0){
+							strcpy(ftp_data_content->command_frame, value_tt);
+						}
+					}
+					ftp_data = ftp_data->next;
+				}
+				cookie_t->ftp_content = ftp_data_content;
+				g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
+			}
+
+        	// the first_child of ftp-data protocol is null
             proto_node *child = node->first_child;
             if (child != nullptr) {
                 try {
@@ -1374,13 +1516,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
                         //通信五元组赋值
                         cookie_t->c5e = c5e; //这里释放在rtp流处理函数后释放
                         dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child, cookie_t);
-
-                        if(cookie_t->rtp_content != nullptr){
-                            auto rtp_index = rtp_payload_type_To_tail.find(cookie_t->rtp_content->payload_type);
-                            if(strcmp(cookie_t->rtp_content->protocol, "sip")==0 || rtp_index != rtp_payload_type_To_tail.end()){
-                                g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
-                            }
-                        }
+                        g_thread_pool_push(handleStreamTpool,(gpointer)cookie_t, nullptr);
                     }
                     else{
                         dissect_edt_Tree_Into_Json_No_Cursion(write_in_files_cJson,child,nullptr);
@@ -1751,91 +1887,6 @@ void do_handle_strem(gpointer str,gpointer data __U__){
         else{
             //不明格式的rtp数据包。
         }
-        /*char file_name_t[270] = {0};
-        //确定rtp 输出的文件名
-        strcat(file_name_t, PACKET_PROTOCOL_PATH);
-        sprintf(file_name_t, "%s%s", PACKET_PROTOCOL_PATH, "rtp/");
-        if (access(file_name_t, 0) != 0) {
-            mkdirs(file_name_t);
-        }
-        std::string fn_str_t = got_rtp_Stream_FileName(t->rtp_content->payload_type, global_time_str,
-                                                       t->rtp_content->ssrc);
-        strcat(file_name_t, fn_str_t.c_str());
-
-        FILE *fp = nullptr;
-        struct _GHashTable *decoders_hash = nullptr;
-        if (rtp_stream_pFile_map.empty()) {
-            //空map
-            fp = fopen(file_name_t, "a+");
-            if (!fp) {
-                g_print("%s open error", file_name_t);
-                return;
-            }
-            if(std::find(rtp_Head_au_8000_Rate_surport_List.begin(),rtp_Head_au_8000_Rate_surport_List.end(),t->rtp_content->payload_type) != rtp_Head_au_8000_Rate_surport_List.end()){
-                //按需写入头部
-                writeRTPstreamHead(fp);
-            }
-            struct rtpFileRel temprtpFIleRel{};
-            temprtpFIleRel.decoders_hash = rtp_decoder_hash_table_new();
-            decoders_hash = temprtpFIleRel.decoders_hash;
-            temprtpFIleRel.fp = fp;
-            std::string ssrc_t = t->rtp_content->ssrc;
-            ssrc_t += rtp_payload_type_to_str[t->rtp_content->payload_type];
-            rtp_stream_pFile_map.insert(std::pair<std::string, struct rtpFileRel>(ssrc_t, temprtpFIleRel));
-        }
-        else {
-            std::string ssrc_t = t->rtp_content->ssrc;
-            ssrc_t += rtp_payload_type_to_str[t->rtp_content->payload_type];
-            auto index = rtp_stream_pFile_map.find(ssrc_t);
-            if (index != rtp_stream_pFile_map.end()) {
-                fp = index->second.fp;
-                decoders_hash = index->second.decoders_hash;
-                //这里解码器初始化
-                if (t->rtp_content->marker) {
-                    if (decoders_hash) {
-                        g_hash_table_destroy(decoders_hash);//这里得释放掉。
-                    }
-                    index->second.decoders_hash = nullptr;
-                    decoders_hash = nullptr;
-                }
-            } else {
-                fp = fopen(file_name_t, "a+");
-                if (!fp) {
-                    g_print("%s open error", file_name_t);
-                    return;
-                }
-                if(std::find(rtp_Head_au_8000_Rate_surport_List.begin(),rtp_Head_au_8000_Rate_surport_List.end(),t->rtp_content->payload_type) != rtp_Head_au_8000_Rate_surport_List.end()){
-                    //按需写入头部
-                    writeRTPstreamHead(fp);
-                }
-                struct rtpFileRel temprtpFileRel{};
-                temprtpFileRel.decoders_hash = rtp_decoder_hash_table_new();
-                decoders_hash = temprtpFileRel.decoders_hash;
-                temprtpFileRel.fp = fp;
-                rtp_stream_pFile_map.insert(std::pair<std::string, struct rtpFileRel>(ssrc_t, temprtpFileRel));
-            }
-        }
-        g_assert(fp != nullptr);
-        size_t sample_count = 0;
-        uint8_t pd_out[2 * 4000];
-
-        if(strcmp(rtp_payload_type_to_str[t->rtp_content->payload_type],"g722") == 0){
-            //g722
-            sample_count = g722_single_frame_decode(t->rtp_content->payload,t->rtp_content->payload_len,t->rtp_content->marker,pd_out);
-        } else{
-            sample_count = convert_payload_to_samples(t->rtp_content->payload_type, t->rtp_content->payload,
-                                                      t->rtp_content->payload_len, pd_out, decoders_hash);
-            sample_count *=2; //8000采样率，写入数据内容乘2。
-        }
-
-        if (sample_count != 0) {
-            if (fwrite(pd_out, sizeof(uint8_t), sample_count, fp) != sample_count) {
-                g_print("%s sample_count write error !\n", __FUNCTION__);
-            }
-        } else {
-            g_print(" rtp %s decode error! ->payload len:%zu ->ssrc:%s\n ",rtp_payload_type_to_str[t->rtp_content->payload_type],t->rtp_content->payload_len,t->rtp_content->ssrc);
-        }
-//        }*/
 
         std::vector<std::string> tmp_keys{};
         for(auto &it: rtpTotalBuffer){
@@ -1847,9 +1898,82 @@ void do_handle_strem(gpointer str,gpointer data __U__){
         }
         if(t->rtp_content) g_free(t->rtp_content);
     }
-    if(t->tls_content != nullptr){
-        //tls
-    }
+
+    //===============================================================================
+    //ftp
+    if(t->ftp_content != nullptr){
+		std::string index_str = t->c5e->sip + ":" + t->c5e->sport + ":" + t->c5e->dip + ":" + t->c5e->dport;
+		auto it = ftpTotalBuffer.find(index_str);
+		if(it == ftpTotalBuffer.end()) {
+			//no find or null
+			ftpTotalBufferContent temp{};
+			temp.sip = t->c5e->sip;
+			temp.dip = t->c5e->dip;
+			temp.sport = t->c5e->sport;
+			temp.dport = t->c5e->dport;
+			temp.time_begin = t->c5e->frame_time; //开始时间戳
+			temp.first_frame_id = t->c5e->frame_id; // start frame id
+			temp.last_frame_id = t->c5e->frame_id;
+
+			if(strlen(t->ftp_content->command) == 0 || strlen(t->ftp_content->filename) == 0 ||
+					std::find(trans_commnd.begin(), trans_commnd.end(), t->ftp_content->command) == trans_commnd.end()
+			){
+				return;
+			}
+			//确定ftp 输出的文件名 begin
+			char file_name_t[512] = {0};
+			sprintf(file_name_t, "%s", PACKET_PROTOCOL_PATH);
+			strcat(file_name_t, t->ftp_content->filename);
+
+			if (access(file_name_t, 0) == 0) {      // exist
+				char new_file_name[512] = {0};
+				sprintf(new_file_name, ".%s.%s", global_time_str_tt.c_str(), t->ftp_content->filename);
+				strcat(file_name_t, new_file_name);
+			}
+
+			temp.fp = fopen(file_name_t, "a+");
+			if (!temp.fp) {
+				g_print("%s open error", file_name_t);
+				return;
+			}
+			temp.fp_path = file_name_t;
+			temp.last_record_time = time_now.tv_sec;
+			//确定ftp 输出的文件名 end
+
+			temp.data.push_back(t->ftp_content->ftp_data, t->ftp_content->ftp_data_length);
+			ftpTotalBuffer.insert(std::pair<std::string, ftpTotalBufferContent>(index_str, temp));
+		}
+		else {
+			// find ftp stream
+			it->second.time_end = t->c5e->frame_time;
+			it->second.last_record_time = time_now.tv_sec;
+			it->second.last_frame_id = t->c5e->frame_id;
+			it->second.data.push_back(t->ftp_content->ftp_data, t->ftp_content->ftp_data_length);
+		}
+
+		// ftp-data end
+		std::vector<std::string> tmp_keys{};
+		for(auto &it: ftpTotalBuffer){
+			if(std::abs(time_now.tv_sec - it.second.last_record_time) > 600 || //wait 600s
+				t->c5e->frame_id - it.second.last_frame_id > 100)   // interval 100 frames
+				tmp_keys.push_back(it.first);
+		}
+		for(auto &k: tmp_keys){
+			auto it = ftpTotalBuffer.find(k);
+			unsigned long len = it->second.data.get_len();
+			if (fwrite(it->second.data.get_data(), sizeof(guint8), len, it->second.fp) != len) {
+				g_print("ftp write error ! -> %s\n", it->second.file_name.c_str());
+			}
+			ftp_mtx.lock();
+			it->second.data.clear();
+			fclose(it->second.fp); // 写完就关闭掉
+			ftpTotalBuffer.erase(it);
+			ftp_mtx.unlock();
+		} //wait 600s
+
+
+		if(t->ftp_content) g_free(t->ftp_content);
+	}
     //最后才释放通信五元组内容。
     if(t->c5e) delete(t->c5e);
     //传入的参数空间释放。
@@ -1915,16 +2039,6 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
     if(len == 0) return true;
     if(strcmp((char *)data,"-1END") == 0){
         //一个流结束
-
-        /*if(pfinal_follow->cache_Flag){
-            //特殊的部分流处理交给指定的接口处理
-            if(pfinal_follow->protocol_suffix == "g722"){
-                guchar *out = g_new0(guchar, pfinal_follow->content_len * 4);
-                int t = g722decode(pfinal_follow->content.data(), pfinal_follow->content_len, out);
-                fwrite(out, sizeof(guchar), t, pfinal_follow->streamFileName_fp);
-            }
-        }*/
-
         fclose(pfinal_follow->streamFileName_fp);
         pfinal_follow->streamFileName_fp = nullptr;
         pfinal_follow->streamFileName_t.clear();
@@ -2037,11 +2151,13 @@ gboolean beginInitOnce(char *flag) {
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_payload");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_p_type");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "sip_Method");
-    //tls
-    tls_fields = g_list_append(tls_fields, (gpointer) "tls");
-    tls_fields = g_list_append(tls_fields, (gpointer) "tls_handshake_type");
-    tls_fields = g_list_append(tls_fields, (gpointer) "tls_handshake_ciphersuite");
-    tls_fields = g_list_append(tls_fields, (gpointer) "tls_handshake_certificates");
+    //ftp
+    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp");
+    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp-data");
+    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp_request_command");
+    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp_response_code");         // 125:starting, 226:complete
+    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp_passive_port");
+	ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp_request_arg");
     //存放240字节的value内存空间
     value_240 = (gchar *) g_malloc_n(sizeof(gchar), VALUE_240_LENGTH);
 
@@ -2482,6 +2598,16 @@ void followConnectFiveEleClear(){
     }
     rtpMachingVec.clear();
 
+    for (auto &it : ftpTotalBuffer) {
+        unsigned long len = it.second.data.get_len();
+		if (fwrite(it.second.data.get_data(), sizeof(guint8), len, it.second.fp) != len) {
+			g_print("ftp write error ! -> %s\n", it.second.fp_path.c_str());
+		}
+		it.second.data.clear();
+		if(it.second.fp) fclose(it.second.fp); // 写完就关闭掉
+    }
+    ftpTotalBuffer.clear();
+
     final_Follow_Write_Need.clear();
 }
 
@@ -2561,7 +2687,8 @@ gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_
     std::string proto_stack_t;
 
     for (auto &i : final_conversation_Write_Need){
-        if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0 and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0 ){
+        if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0
+        and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0 ){
             proto_stack_t = i.protocol_stack;
 
 
@@ -2576,11 +2703,11 @@ char* add_line_no_to_conversation (char *src_ip,char *dst_ip, char *src_port,cha
     std::string line_no_t;
     std::string read_file_path_t;
     for (auto &i : final_conversation_Write_Need){
-        if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0 and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0){
+        if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0
+            and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0){
             line_no_t = i.line_no;
             read_file_path_t = i.read_file_path;
             break;
-
         }
     }
     cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", line_no_t.c_str());

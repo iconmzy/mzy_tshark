@@ -18,8 +18,8 @@ extern "C" {
 #endif
 
 struct ConfigInfo {
-    char key[64];
-    char val[128];
+    char key[128];
+    char val[1024];
 };
 extern rd_kafka_t *rk;       //producer
 extern rd_kafka_t *rk_con;	 //consumer

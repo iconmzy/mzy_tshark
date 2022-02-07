@@ -21,7 +21,6 @@ static const value_string names_cmd[] = {
     {0x90, "response color"},
     {0, NULL}};
 
-static dissector_handle_t exproto_handle;
 // static struct protoInfo proto[10];
 static int exFunIndex = 0;
 static int heur_exFunIndex = 0;
@@ -576,16 +575,14 @@ heur_dissect_exproto8(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void 
 }
 
 static gboolean
-heur_dissect_exproto9(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data){
+heur_dissect_exproto9(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *data _U_){
     heur_exFunIndex = 9;
-    int payload_len = 0;
-    gint offset = 0, next_offset, linelen;
     char *payload_future_t = allProtoInfo[heur_exFunIndex].feature;
     int future_offset_t = allProtoInfo[heur_exFunIndex].feature_offset;
     int future_len_t = strlen(payload_future_t);
     if((tvb_strncaseeql(tvb, future_offset_t, payload_future_t, future_len_t) == 0)){
 
-        payload_len = functions[heur_exFunIndex](tvb,pinfo,tree);
+        functions[heur_exFunIndex](tvb,pinfo,tree);
 
         return TRUE;
     }
