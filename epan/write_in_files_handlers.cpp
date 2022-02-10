@@ -1179,7 +1179,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
 void match_line_no(char *pattern, char *source_str, char * target) {
     GRegex *regex;   //正则表达式对象
     GMatchInfo *match_info;   //匹配后的集合
-    GError *error = NULL;
+    GError *error = nullptr;
     regex = g_regex_new(pattern, static_cast<GRegexCompileFlags>(0), static_cast<GRegexMatchFlags>(0),
                         &error);  //创建正则表达式
     g_regex_match(regex, source_str, static_cast<GRegexMatchFlags>(0), &match_info);   //匹配
