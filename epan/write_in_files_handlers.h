@@ -54,6 +54,7 @@ WS_DLL_PUBLIC gboolean read_Pcap_From_File_Flag;
 WS_DLL_PUBLIC gboolean mutex_final_clean_flag;
 WS_DLL_PUBLIC char write_Json_Files_Init_Status;
 
+WS_DLL_PUBLIC void reg_packet_protocol(void);
 WS_DLL_PUBLIC char *my_itoa(long int n);
 
 WS_DLL_PUBLIC void float2char(float slope, char *buffer, int n);
@@ -69,7 +70,7 @@ WS_DLL_PUBLIC void final_conversation_Write_Need_clear(void);
 WS_DLL_PUBLIC gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
 WS_DLL_PUBLIC char* add_line_no_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
 
-
+WS_DLL_PUBLIC GHashTable  * reg_ext_packet_protocols;
 //是否允许新增协议相关
 WS_DLL_PUBLIC gboolean JSON_ADD_PROTO;
 WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[256];

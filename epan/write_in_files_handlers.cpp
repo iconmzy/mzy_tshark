@@ -36,7 +36,6 @@
 static std::string write_in_files_proto;
 /*内容缓存*/
 static std::string write_in_files_stream;
-
 /*export溯源内容缓存*/
 static std::string write_ex_origin_stream;
 
@@ -63,6 +62,7 @@ static special_field_value regist_speical_filed[] = {
 		{"tls.handshake.ciphersuite", &get_tls_handshake_ciphersuite},
 };
 static bool get_tls_handshake_certificate(cJSON *&, proto_node *&);
+GHashTable  * reg_ext_packet_protocols  =  g_hash_table_new(g_str_hash, g_str_equal);
 
 static FILE *conversation_Handle_File = nullptr;
 std::queue< proto_node* > que; //全局node节点队列
@@ -381,7 +381,6 @@ inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, con
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
 
 //ftp ftp-data stream---------------------- 20220125 ymq ---------------------- ftp stream begin |||
-GList *ftp_fields = nullptr; //ftp字段的双链表
 enum ftp_Status{
     FTP_NO,
     FTP_PASV,                       // 获取数据传输端口
@@ -1002,55 +1001,6 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t, proto_node *&temp, struct t
                 }
             }
         }
-        //ftp
-//        else if((it = g_list_find_custom(ftp_fields, (gpointer)key_str.c_str(),(GCompareFunc)strcmp))){
-//			if(!cookie->ftp_content){ // 首先初始化
-//				cookie->ftp_content = g_new0(ftp_Content,1);
-//				if(!cookie->ftp_content){
-//					g_print("ftp content init error!\n");
-//					return false;
-//				}
-//			}
-//
-//
-//            //赋值
-//            cookie->ftp_content->frame_id = cookie->c5e->frame_id;
-//            if(strcmp((char*)it->data,"ftp_request_command") == 0){
-//                strcpy(cookie->ftp_content->ftp_command, value_t);
-//                if(std::find(trans_commnd.begin(), trans_commnd.end(), value_t) != trans_commnd.end())
-//                    // temporary support "STOR",
-//                    cookie->ftp_content->status = FTP_TRANS_METHOD;
-//                	cookie->ftp_content->is_file_name=true;
-//            }
-//            if(strcmp((char*)it->data,"ftp_request_arg") == 0){
-//                strcpy(cookie->ftp_content->file_name, value_t);
-//            }
-//
-//            if(strcmp((char*)it->data,"ftp_response_code") == 0){
-//                cookie->ftp_content->res_code = std::stoi(value_t);
-//                if(strcmp(value_t, "125")==0){
-//                    cookie->ftp_content->status = FTP_TRANSFER_START;
-//                }
-//                else if(strcmp(value_t, "226")==0){
-//                    cookie->ftp_content->status = FTP_TRANSFER_END;
-//                }
-//            }
-//            //ftp_passive_port
-//            if(strcmp((char*)it->data,"ftp_passive_port") == 0){
-//                strcpy(cookie->ftp_content->passive_port, value_t);
-//                cookie->ftp_content->status = FTP_PASV;
-//            }
-//            strcpy(cookie->ftp_content->protocol,"ftp");
-//            //ftp-data
-//            if(strcmp((char*)it->data,"ftp-data") == 0){
-//                for (guint i = 0; i < temp->finfo->value.value.bytes->len ;++i) {
-//                    cookie->ftp_content->ftp_data[i] = temp->finfo->value.value.bytes->data[i];
-//                }
-//                cookie->ftp_content->ftp_data_length = temp->finfo->value.value.bytes->len;
-//                cookie->ftp_content->status = FTP_TRANSFERING;
-//                strcpy(cookie->ftp_content->protocol,"ftp-data");
-//            }
-//        }
     }
 
     cJSON_AddStringToObject(json_t,_key_str.c_str(),value_t);
@@ -1199,7 +1149,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
         /*判断当前协议是否需要组包*/
 		packetProtoAlready = false;
         if(g_list_find_custom(rtp_fields, write_in_files_proto.c_str(), (GCompareFunc)strcmp)
-            or g_list_find_custom(ftp_fields, write_in_files_proto.c_str(), (GCompareFunc)strcmp)){
+            or g_hash_table_lookup(reg_ext_packet_protocols,write_in_files_proto.c_str())){
             packetProtoAlready = true;
         }
     }
@@ -1369,12 +1319,11 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
             break;
         }
 
-
-
         /*最后层协议的解析*/
         else if (strcmp(fi->hfinfo->abbrev, write_in_files_proto.c_str()) == 0) {
         	// ftp-data   //要组报
-        	if(strcmp(fi->hfinfo->abbrev, "ftp-data" )==0  && (PACKET_PROTOCOL_FLAG && packetProtoAlready) ) {
+        	if(strcmp(fi->hfinfo->abbrev, "ftp-data" )==0  && (PACKET_PROTOCOL_FLAG && packetProtoAlready) &&
+					g_hash_table_lookup(reg_ext_packet_protocols,fi->hfinfo->abbrev)) {
 				struct totalParam *cookie_t = g_new0(totalParam, 1);
 				cookie_t->c5e = c5e;
 
@@ -1751,10 +1700,6 @@ void do_handle_strem(gpointer str,gpointer data __U__){
     std::string global_time_str_tt = numtos((u_long) global_time);
 
     if(t->rtp_content != nullptr){
-        auto index_type = rtp_payload_type_To_tail.find(t->rtp_content->payload_type);
-        if( index_type == rtp_payload_type_To_tail.end()) {
-            if(t) g_free(t); return;
-        }
 //        并发处理rtp流。目前仅支持g711A/U,g729a,g722。
         if (strcmp(t->rtp_content->protocol,"sip") == 0) {
             if (t->rtp_content->bye) {
@@ -1766,6 +1711,10 @@ void do_handle_strem(gpointer str,gpointer data __U__){
             }
         }
         else if(strlen(t->rtp_content->ssrc) != 0){
+			auto index_type = rtp_payload_type_To_tail.find(t->rtp_content->payload_type);
+			if( index_type == rtp_payload_type_To_tail.end()) {
+				if(t->rtp_content) g_free(t->rtp_content);return;
+			}
             std::string index_str = t->c5e->sip + ":" + t->c5e->sport + ":" + t->c5e->dip + ":" + t->c5e->dport + \
                 ":" + t->rtp_content->ssrc;
             auto it = rtpTotalBuffer.find(index_str);
@@ -2058,13 +2007,7 @@ gboolean beginInitOnce(char *flag) {
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_payload");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "rtp_p_type");
     rtp_fields = g_list_append(rtp_fields, (gpointer) "sip_Method");
-    //ftp
-    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp");
-    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp-data");
-    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp_request_command");
-    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp_response_code");         // 125:starting, 226:complete
-    ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp_passive_port");
-	ftp_fields = g_list_append(ftp_fields, (gpointer) "ftp_request_arg");
+
     //存放240字节的value内存空间
     value_240 = (gchar *) g_malloc_n(sizeof(gchar), VALUE_240_LENGTH);
 
