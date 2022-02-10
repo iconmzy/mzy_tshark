@@ -33,10 +33,7 @@ tar -zxvf aurora.tar.gz
 ## 其他
 初次运行可能会面临缺相关依赖的问题，暂时只能自己安装，例如
 ```
-yum install libpcap*
+yum install libpcap* curl mp3lame rdkafka...
+
 ```
 
-## Build GCC version
-```
-gcc g++ >= 8 
-because of the regular expression in std c++ 11 and higher version

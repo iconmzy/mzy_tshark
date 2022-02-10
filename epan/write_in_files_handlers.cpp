@@ -358,10 +358,8 @@ struct rtpFileRel{ //RTP文件及解码器相关
 };
 //rtp 流文件句柄map
 static std::map<std::string,struct rtpFileRel> rtp_stream_pFile_map;
-
 //rtp字段的双链表
 GList *rtp_fields = nullptr;
-
 //对应rtp字段双链表的存储
 struct rtp_Content{
     char protocol[32];
@@ -378,8 +376,6 @@ typedef struct _rtp_decoder_t{
     codec_handle_t handle;
     void *context;
 } rtp_decoder_t;
-//写rtp可播放流的头 仅支持8000采样率.
-void writeRTPstreamHead(FILE* fp);
 //给定rtp的类型，返回组报结果文件名
 inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, const std::string &);
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
@@ -767,39 +763,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
     fflush(fp_t->fp);
     return true;
 }
-/**
- * 给fp写入rtp可播放流的头部 仅支持8000采样率，目前测试仅支持g711A/U,g729a，采样率为8000的数据。
- * @param fp
- */
-void writeRTPstreamHead(FILE* fp){
-    uint8_t pd[5] = {0};
-    phton32(pd,0x2e736e64);
-    if(fwrite((const char*)pd, sizeof(uint8_t),4,fp) != 4){
-        g_print("%s error",__FUNCTION__);
-    }
-    phton32(pd,24);
-    if(fwrite((const char*)pd, sizeof(uint8_t),4,fp) != 4){
-        g_print("%s error",__FUNCTION__);
-    }
-    phton32(pd,0xffffffff);
-    if(fwrite((const char*)pd, sizeof(uint8_t),4,fp) != 4){
-        g_print("%s error",__FUNCTION__);
-    }
-    phton32(pd,3);
-    if(fwrite((const char*)pd, sizeof(uint8_t),4,fp) != 4){
-        g_print("%s error",__FUNCTION__);
-    }
-    phton32(pd,8000);
-    if(fwrite((const char*)pd, sizeof(uint8_t),4,fp) != 4){
-        g_print("%s error",__FUNCTION__);
-    }
-    //默认不同步的正向音频 或不同步的反转音频
-    phton32(pd,1);
-    if(fwrite((const char*)pd, sizeof(uint8_t),4,fp) != 4){
-        g_print("%s error",__FUNCTION__);
-    }
-    fflush(fp);
-}
+
 /**
  * 将会话统计信息写入文件中，文件名固定为conversation.txt
  * @param stream
@@ -1781,12 +1745,16 @@ void do_audio_paired(const std::string& index_str, unsigned int end_t, bool mute
 void do_handle_strem(gpointer str,gpointer data __U__){
     auto *t = (totalParam *) str;
 
-    timeval time_now;
+    struct timeval time_now;
     gettimeofday(&time_now, nullptr);
     std::time_t global_time = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
     std::string global_time_str_tt = numtos((u_long) global_time);
 
     if(t->rtp_content != nullptr){
+        auto index_type = rtp_payload_type_To_tail.find(t->rtp_content->payload_type);
+        if( index_type == rtp_payload_type_To_tail.end()) {
+            if(t) g_free(t); return;
+        }
 //        并发处理rtp流。目前仅支持g711A/U,g729a,g722。
         if (strcmp(t->rtp_content->protocol,"sip") == 0) {
             if (t->rtp_content->bye) {
@@ -2009,19 +1977,7 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
     } else {
         if (!pfinal_follow->streamFileName_fp) {
             std::string fpath_t = PACKET_PROTOCOL_PATH;
-
-            //获取尾名，文件格式名
-            /* std::string tail_t;
-             auto index_t = rtp_payload_type_To_tail.find(pfinal_follow->protocol_suffix_type);
-             if (index_t == rtp_payload_type_To_tail.end()) {
-                 tail_t = ".stream";
-             } else {
-                 tail_t = index_t->second;
-             }
-             fpath_t += pfinal_follow->streamFileName_t + tail_t;*/
-
             fpath_t += pfinal_follow->streamFileName_t + ".stream";
-
             assert(!pfinal_follow->streamFileName_t.empty());//名称肯定不能为空
             pfinal_follow->streamFileName_fp = fopen(fpath_t.c_str(), "a+");
             if (!pfinal_follow->streamFileName_fp) {
@@ -2053,18 +2009,10 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
  */
 std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const std::string &p){
     std::string file_t;
-//    std::string tail_t;
-//    auto index_t = rtp_payload_type_To_tail.find(type);
-//    if(index_t == rtp_payload_type_To_tail.end()){
-//        tail_t = "unknownType";
-//    } else{
-//        tail_t = index_t->second;
-//    }
-
     file_t += rtp_payload_type_to_str[type];
     stringReplaceByStr(file_t, "-", " ");
     stringReplaceByStr(file_t, "-", "/");
-//    return file_t += "_" + s +"_"+ p +"."+ tail_t;
+
     return file_t += "_" + s +"_"+ p;
 }
 
@@ -2466,7 +2414,6 @@ void change_result_file_name() {
     curl_global_cleanup();  //在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数
 }
 
-
 /**
  * 程序结束的最后操作。02 释放一些数据结构，仅释放一次。
  */
@@ -2612,7 +2559,6 @@ static bool get_tls_handshake_ciphersuite(proto_node *node, char* ret){
 	}
 	return false;
 }
-
 static bool get_tls_handshake_certificate(cJSON *&json_t, proto_node *&rnode){
     /*
      * rnode: tls.handshake.certificate
@@ -2654,7 +2600,6 @@ gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_
     cJSON_AddStringToObject(write_in_files_conv_cJson, "protocol_stack", proto_stack_t.c_str());
     return true;
 }
-
 char* add_line_no_to_conversation (char *src_ip,char *dst_ip, char *src_port,char *dst_port){
     char *return_path = (char *)malloc(256);
     std::string line_no_t;
@@ -2672,7 +2617,6 @@ char* add_line_no_to_conversation (char *src_ip,char *dst_ip, char *src_port,cha
     strcpy(return_path,read_file_path_t.c_str());
     return return_path;
 }
-
 void write_into_all_diy_proto(char* pre_proto,char* next_proto){
     if(*next_proto){
         diy_proto_stack diyproto_t;
@@ -2681,7 +2625,6 @@ void write_into_all_diy_proto(char* pre_proto,char* next_proto){
         all_diy_protol.push_back(diyproto_t);
     }
 }
-
 gboolean match_all_diy_proto(char* pre_proto,char* next_proto){
     for (auto &i:all_diy_protol){
         if(strcmp(pre_proto,i.pre_potocol.c_str())==0 and strcmp(next_proto,i.next_protocol.c_str())==0){

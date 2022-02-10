@@ -159,7 +159,6 @@ eo_draw(void *tapdata)
 			break;
 		}
 
-
         eo_save_entry(save_as_fullpath, entry);  // 写入文件
         write_Export_result(save_as_fullpath, cfile.filename, save_in_path,entry);
         g_free(save_as_fullpath);
