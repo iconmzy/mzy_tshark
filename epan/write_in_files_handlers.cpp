@@ -3,20 +3,16 @@
 //
 
 #include "write_in_files_handlers.h"
-#include <cstdio>
 #include <string>
 #include <vector>
 #include <queue>
 #include <list>
-#include <fstream>
-#include <sstream>
 #include <exceptions.h>
 #include "cJSON.h"
 #include "epan_dissect.h"
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <map>
-#include <ctime>
 #include <unistd.h>
 #include <cstdlib>
 #include <epan/ftypes/ftypes.h>
@@ -25,12 +21,8 @@
 #include "epan/rtp_media.h"
 #include "wsutil/codecs.h"
 #include <regex>   // c++   [ c use #include <regex.h> ]
-#include <stdlib.h>
-#include <string.h>
 #include <cstring>
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
+#include <cstdio>
 #include <mutex>
 #include "curl/curl.h"
 #include "decode_zhr.h"
@@ -331,7 +323,6 @@ const char *rtp_payload_type_to_str[128] = {
         "RTPType-118","RTPType-119","RTPType-120","RTPType-121","RTPType-122","RTPType-123","RTPType-124","RTPType-125","RTPType-126","RTPType-127"
         };
 std::map<std::uint8_t,std::string> rtp_payload_type_To_tail{{0,"au"},{2,"au"},{4,"au"},{8,"au"},{9,"au"},{18,"au"}};//,{32,"mpeg"} key 是rtp_payload_type_to_str的下标，value是该格式对应的输出文件名。
-std::array<unsigned int,3> rtp_Head_au_8000_Rate_surport_List{0,2,18};//写8000采样率头部au文件，支持类型列表
 typedef struct _rtpTotalBufferContent{ //
     std::string sip;
     std::string dip;
@@ -391,7 +382,6 @@ typedef struct _rtp_decoder_t{
 void writeRTPstreamHead(FILE* fp);
 //给定rtp的类型，返回组报结果文件名
 inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, const std::string &);
-
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
 
 //ftp ftp-data stream---------------------- 20220125 ymq ---------------------- ftp stream begin |||
@@ -531,37 +521,6 @@ std::string gotStrNameByStrName(std::string &strname) {
         temp_t->str_name = strname;
         strname_head->next = temp_t;
         return strname;
-    }
-}
-/**
- * 判断是否重复key_str  重复返回1，非重复返回0
- * @param key_str
- * @return
- */
-gboolean judgeDuplicateKeyStr(const std::string &key_str){
-    if(strname_head->next == nullptr){
-        auto *temp = new struct strNameSameLevel;
-        temp->next = strname_head->next;
-        temp->times = 0;
-        temp->str_name = key_str;
-        strname_head->next = temp;
-        return false;
-    } else{
-        struct strNameSameLevel *temp = strname_head->next;
-        while (temp != nullptr) {
-            if (temp->str_name == key_str) {
-                temp->times++;
-                return true;
-            }
-            temp = temp->next;
-        }
-        //头插法插入名称节点。
-        auto *temp_t = new struct strNameSameLevel;
-        temp_t->next = strname_head->next;
-        temp_t->times = 0;
-        temp_t->str_name = key_str;
-        strname_head->next = temp_t;
-        return false;
     }
 }
 
@@ -771,7 +730,7 @@ gboolean write_Files(std::string const &stream, std::string const &protocol,int 
             }
             fp_t = new pFile_Info;
             fp_t->fp = fopen(filepath_t, "a+");
-            if (fp_t->fp == NULL) {
+            if (fp_t->fp == nullptr) {
                 g_print("open filepath error!\n");
                 return false;
             }
@@ -942,7 +901,7 @@ gboolean write_All_Temps_Into_Files(std::string &stream, std::string &protocol) 
     if (INSERT_MANY_PROTOCOL_STREAM_FLAG) {
         /*批量插入标志*/
         insertManyProtocolStream *index_t = insertManyFindProtocol(insertmanystream_Head, protocol);
-        if (index_t != NULL) {
+        if (index_t != nullptr) {
             /*NOT null*/
             index_t->contents.append(stream);
             if (++index_t->times >= INSERT_MANY_PROTOCOL_STREAM_NUM) {
@@ -1193,7 +1152,7 @@ void match_line_no(char *pattern, char *source_str, char * target) {
             strcpy(target, word);
             g_free(word);
         }
-        g_match_info_next(match_info, NULL);
+        g_match_info_next(match_info, nullptr);
         if(strlen(target)>1) break;
     }
     g_match_info_free(match_info);  //释放空间
@@ -1585,7 +1544,7 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path, 
     pFILE_INFO *fp_t;
     fp_t = new pFile_Info;
     fp_t->fp = fopen(ex_resulty_filepath_t, "a+");
-    if (fp_t->fp == NULL) {
+    if (fp_t->fp == nullptr) {
         g_print("open filepath error!\n");
         return false;
     }
@@ -1822,7 +1781,7 @@ void do_audio_paired(const std::string& index_str, unsigned int end_t, bool mute
 void do_handle_strem(gpointer str,gpointer data __U__){
     auto *t = (totalParam *) str;
 
-    struct timeval time_now{};
+    timeval time_now;
     gettimeofday(&time_now, nullptr);
     std::time_t global_time = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
     std::string global_time_str_tt = numtos((u_long) global_time);
@@ -2201,7 +2160,7 @@ gboolean readConfigFilesStatus() {
                 /**
                  * 这里需要把当前运行的时间戳定下来
                  */
-                struct timeval time_now{};
+                struct timeval time_now;
                 gettimeofday(&time_now, nullptr);
                 std::time_t global_time = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
                 //std::time_t global_time = std::time(nullptr);
@@ -2232,7 +2191,7 @@ gboolean readConfigFilesStatus() {
                 if(write_in_kafka_config != nullptr){
                     WRITE_IN_KAFKA_CONFIG = *write_in_kafka_config - '0';
                 }else{
-                    WRITE_IN_KAFKA_CONFIG == 0;
+                    WRITE_IN_KAFKA_CONFIG = 0;
                 }
                 // for consumer
                 char * kafka_groupid = getInfo_ConfigFile("KAFKA_GROUPID", info, lines);
@@ -2384,7 +2343,7 @@ gboolean readConfigFilesStatus() {
                 read_packet_from_files_path = getInfo_ConfigFile("READ_PACKET_FROM_FILES_PATH", info, lines);
                 if (read_packet_from_files_path != nullptr) {
                     strcpy(READ_PACKET_FROM_FILES_PATH, read_packet_from_files_path);
-                    struct stat st{};
+                    struct stat st;
                     stat(READ_PACKET_FROM_FILES_PATH, &st);
                     if (S_ISDIR(st.st_mode)) {
                         int len = strlen(READ_PACKET_FROM_FILES_PATH);
@@ -2487,7 +2446,7 @@ void change_result_file_name() {
     rename(oldName_t.c_str(), newName_t.c_str());
 
     //std::time_t end_time = std::time(nullptr);
-    struct timeval time_now{};
+    struct timeval time_now;
     gettimeofday(&time_now, nullptr);
     std::time_t end_time = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
     std::string end_time_str = numtos((u_long) end_time);
@@ -2690,8 +2649,6 @@ gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_
         if(strcmp(src_ip,i.sip.c_str()) == 0 and strcmp(dst_ip,i.dip.c_str()) == 0
         and strcmp(src_port,i.sport.c_str()) == 0 and strcmp(dst_port,i.dport.c_str()) == 0 ){
             proto_stack_t = i.protocol_stack;
-
-
         }
     }
     cJSON_AddStringToObject(write_in_files_conv_cJson, "protocol_stack", proto_stack_t.c_str());
@@ -2699,7 +2656,7 @@ gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_
 }
 
 char* add_line_no_to_conversation (char *src_ip,char *dst_ip, char *src_port,char *dst_port){
-    char return_path[256] = {};
+    char *return_path = (char *)malloc(256);
     std::string line_no_t;
     std::string read_file_path_t;
     for (auto &i : final_conversation_Write_Need){
@@ -2714,11 +2671,6 @@ char* add_line_no_to_conversation (char *src_ip,char *dst_ip, char *src_port,cha
     cJSON_AddStringToObject(write_in_files_conv_cJson, "file_path", read_file_path_t.c_str());
     strcpy(return_path,read_file_path_t.c_str());
     return return_path;
-}
-
-void  clear_conversation_CJSN(){
-    cJSON_Delete(write_in_files_conv_cJson);
-    write_in_files_conv_cJson = cJSON_CreateObject();
 }
 
 void write_into_all_diy_proto(char* pre_proto,char* next_proto){

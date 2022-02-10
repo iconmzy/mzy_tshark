@@ -61,23 +61,23 @@ WS_NORETURN static void follow_exit(const char *strp)
   exit(1);
 }
 
-static const char * follow_str_type(cli_follow_info_t* cli_follow_info)
-{
-  switch (cli_follow_info->show_type)
-  {
-  case SHOW_HEXDUMP:    return "hex";
-  case SHOW_ASCII:      return "ascii";
-  case SHOW_EBCDIC:     return "ebcdic";
-  case SHOW_RAW:        return "raw";
-  default:
-    g_assert_not_reached();
-    break;
-  }
-
-  g_assert_not_reached();
-
-  return "<unknown-mode>";
-}
+//static const char * follow_str_type(cli_follow_info_t* cli_follow_info)
+//{
+//  switch (cli_follow_info->show_type)
+//  {
+//  case SHOW_HEXDUMP:    return "hex";
+//  case SHOW_ASCII:      return "ascii";
+//  case SHOW_EBCDIC:     return "ebcdic";
+//  case SHOW_RAW:        return "raw";
+//  default:
+//    g_assert_not_reached();
+//    break;
+//  }
+//
+//  g_assert_not_reached();
+//
+//  return "<unknown-mode>";
+//}
 
 static void
 follow_free(follow_info_t *follow_info)
@@ -101,58 +101,58 @@ follow_free(follow_info_t *follow_info)
 static const char       bin2hex[] = {'0', '1', '2', '3', '4', '5', '6', '7',
                                      '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-static void follow_print_hex(const char *prefixp, guint32 offset, void *datap, int len)
-{
-  int           ii;
-  int           jj;
-  int           kk;
-  guint8        val;
-  char          line[LINE_LEN + 1];
-
-  for (ii = 0, jj = 0, kk = 0; ii < len; )
-  {
-    if ((ii % BYTES_PER_LINE) == 0)
-    {
-      /* new line */
-      g_snprintf(line, LINE_LEN + 1, "%0*X", OFFSET_LEN, offset);
-      memset(line + HEX_START - OFFSET_SPACE, ' ',
-             HEX_LEN + OFFSET_SPACE + HEX_SPACE);
-
-      /* offset of hex */
-      jj = HEX_START;
-
-      /* offset of ascii */
-      kk = ASCII_START;
-    }
-
-    val = ((guint8 *)datap)[ii];
-
-    line[jj++] = bin2hex[val >> 4];
-    line[jj++] = bin2hex[val & 0xf];
-    jj++;
-
-    line[kk++] = val >= ' ' && val < 0x7f ? val : '.';
-
-    /* extra space at column 8 */
-    if (++ii % BYTES_PER_LINE == BYTES_PER_LINE/2)
-    {
-      line[jj++] = ' ';
-      line[kk++] = ' ';
-    }
-
-    if ((ii % BYTES_PER_LINE) == 0 || ii == len)
-    {
-      /* end of line or buffer */
-      if (line[kk - 1] == ' ')
-      {
-        kk--;
-      }
-      line[kk] = 0;
-      printf("%s%s\n", prefixp, line);
-      offset += BYTES_PER_LINE;
-    }
-  }
-}
+//static void follow_print_hex(const char *prefixp, guint32 offset, void *datap, int len)
+//{
+//  int           ii;
+//  int           jj;
+//  int           kk;
+//  guint8        val;
+//  char          line[LINE_LEN + 1];
+//
+//  for (ii = 0, jj = 0, kk = 0; ii < len; )
+//  {
+//    if ((ii % BYTES_PER_LINE) == 0)
+//    {
+//      /* new line */
+//      g_snprintf(line, LINE_LEN + 1, "%0*X", OFFSET_LEN, offset);
+//      memset(line + HEX_START - OFFSET_SPACE, ' ',
+//             HEX_LEN + OFFSET_SPACE + HEX_SPACE);
+//
+//      /* offset of hex */
+//      jj = HEX_START;
+//
+//      /* offset of ascii */
+//      kk = ASCII_START;
+//    }
+//
+//    val = ((guint8 *)datap)[ii];
+//
+//    line[jj++] = bin2hex[val >> 4];
+//    line[jj++] = bin2hex[val & 0xf];
+//    jj++;
+//
+//    line[kk++] = val >= ' ' && val < 0x7f ? val : '.';
+//
+//    /* extra space at column 8 */
+//    if (++ii % BYTES_PER_LINE == BYTES_PER_LINE/2)
+//    {
+//      line[jj++] = ' ';
+//      line[kk++] = ' ';
+//    }
+//
+//    if ((ii % BYTES_PER_LINE) == 0 || ii == len)
+//    {
+//      /* end of line or buffer */
+//      if (line[kk - 1] == ' ')
+//      {
+//        kk--;
+//      }
+//      line[kk] = 0;
+//      printf("%s%s\n", prefixp, line);
+//      offset += BYTES_PER_LINE;
+//    }
+//  }
+//}
 
 static void follow_draw(void *contextp)
 {
@@ -180,131 +180,131 @@ static void follow_draw(void *contextp)
 }
 
 
-static void old_follow_draw(void *contextp)
-{
-	static const char     separator[] =
-			"===================================================================\n";
-
-	follow_info_t *follow_info = (follow_info_t*)contextp;
-	cli_follow_info_t* cli_follow_info = (cli_follow_info_t*)follow_info->gui_data;
-	gchar             buf[WS_INET6_ADDRSTRLEN];
-	guint32 global_client_pos = 0, global_server_pos = 0;
-	guint32 *global_pos;
-	guint32           ii, jj;
-	char              *buffer;
-	GList             *cur;
-	follow_record_t   *follow_record;
-	guint             chunk;
-
-	printf("\n%s", separator);
-	printf("Follow: %s,%s\n", proto_get_protocol_filter_name(get_follow_proto_id(cli_follow_info->follower)), follow_str_type(cli_follow_info));
-	printf("Filter: %s\n", follow_info->filter_out_filter);
-
-	address_to_str_buf(&follow_info->client_ip, buf, sizeof buf);
-	if (follow_info->client_ip.type == AT_IPv6)
-		printf("Node 0: [%s]:%u\n", buf, follow_info->client_port);
-	else
-		printf("Node 0: %s:%u\n", buf, follow_info->client_port);
-
-	address_to_str_buf(&follow_info->server_ip, buf, sizeof buf);
-	if (follow_info->client_ip.type == AT_IPv6)
-		printf("Node 1: [%s]:%u\n", buf, follow_info->server_port);
-	else
-		printf("Node 1: %s:%u\n", buf, follow_info->server_port);
-
-	for (cur = g_list_last(follow_info->payload), chunk = 1;
-		 cur != NULL;
-		 cur = g_list_previous(cur), chunk++)
-	{
-		follow_record = (follow_record_t *)cur->data;
-		if (!follow_record->is_server) {
-			global_pos = &global_client_pos;
-		} else {
-			global_pos = &global_server_pos;
-		}
-
-		/* ignore chunks not in range */
-		if ((chunk < cli_follow_info->chunkMin) || (chunk > cli_follow_info->chunkMax)) {
-			(*global_pos) += follow_record->data->len;
-			continue;
-		}
-
-		switch (cli_follow_info->show_type)
-		{
-			case SHOW_HEXDUMP:
-				break;
-
-			case SHOW_ASCII:
-			case SHOW_EBCDIC:
-				printf("%s%u\n", follow_record->is_server ? "\t" : "", follow_record->data->len);
-				break;
-
-			case SHOW_RAW:
-				if (follow_record->is_server)
-				{
-					putchar('\t');
-				}
-				break;
-			default:
-				g_assert_not_reached();
-		}
-
-		switch (cli_follow_info->show_type)
-		{
-			case SHOW_HEXDUMP:
-				follow_print_hex(follow_record->is_server ? "\t" : "", *global_pos, follow_record->data->data, follow_record->data->len);
-				(*global_pos) += follow_record->data->len;
-				break;
-
-			case SHOW_ASCII:
-			case SHOW_EBCDIC:
-				buffer = (char *)g_malloc(follow_record->data->len+2);
-
-				for (ii = 0; ii < follow_record->data->len; ii++)
-				{
-					switch (follow_record->data->data[ii])
-					{
-						case '\r':
-						case '\n':
-							buffer[ii] = follow_record->data->data[ii];
-							break;
-						default:
-							buffer[ii] = g_ascii_isprint(follow_record->data->data[ii]) ? follow_record->data->data[ii] : '.';
-							break;
-					}
-				}
-
-				buffer[ii++] = '\n';
-				buffer[ii] = 0;
-				if (cli_follow_info->show_type == SHOW_EBCDIC) {
-					EBCDIC_to_ASCII(buffer, ii);
-				}
-				printf("%s", buffer);
-				g_free(buffer);
-				break;
-
-			case SHOW_RAW:
-				buffer = (char *)g_malloc((follow_record->data->len*2)+2);
-
-				for (ii = 0, jj = 0; ii < follow_record->data->len; ii++)
-				{
-					buffer[jj++] = bin2hex[follow_record->data->data[ii] >> 4];
-					buffer[jj++] = bin2hex[follow_record->data->data[ii] & 0xf];
-				}
-
-				buffer[jj++] = '\n';
-				buffer[jj] = 0;
-				printf("%s", buffer);
-				g_free(buffer);
-				break;
-
-			default:
-				g_assert_not_reached();
-		}
-	}
-
-	printf("%s", separator);
-}
+//static void old_follow_draw(void *contextp)
+//{
+//	static const char     separator[] =
+//			"===================================================================\n";
+//
+//	follow_info_t *follow_info = (follow_info_t*)contextp;
+//	cli_follow_info_t* cli_follow_info = (cli_follow_info_t*)follow_info->gui_data;
+//	gchar             buf[WS_INET6_ADDRSTRLEN];
+//	guint32 global_client_pos = 0, global_server_pos = 0;
+//	guint32 *global_pos;
+//	guint32           ii, jj;
+//	char              *buffer;
+//	GList             *cur;
+//	follow_record_t   *follow_record;
+//	guint             chunk;
+//
+//	printf("\n%s", separator);
+//	printf("Follow: %s,%s\n", proto_get_protocol_filter_name(get_follow_proto_id(cli_follow_info->follower)), follow_str_type(cli_follow_info));
+//	printf("Filter: %s\n", follow_info->filter_out_filter);
+//
+//	address_to_str_buf(&follow_info->client_ip, buf, sizeof buf);
+//	if (follow_info->client_ip.type == AT_IPv6)
+//		printf("Node 0: [%s]:%u\n", buf, follow_info->client_port);
+//	else
+//		printf("Node 0: %s:%u\n", buf, follow_info->client_port);
+//
+//	address_to_str_buf(&follow_info->server_ip, buf, sizeof buf);
+//	if (follow_info->client_ip.type == AT_IPv6)
+//		printf("Node 1: [%s]:%u\n", buf, follow_info->server_port);
+//	else
+//		printf("Node 1: %s:%u\n", buf, follow_info->server_port);
+//
+//	for (cur = g_list_last(follow_info->payload), chunk = 1;
+//		 cur != NULL;
+//		 cur = g_list_previous(cur), chunk++)
+//	{
+//		follow_record = (follow_record_t *)cur->data;
+//		if (!follow_record->is_server) {
+//			global_pos = &global_client_pos;
+//		} else {
+//			global_pos = &global_server_pos;
+//		}
+//
+//		/* ignore chunks not in range */
+//		if ((chunk < cli_follow_info->chunkMin) || (chunk > cli_follow_info->chunkMax)) {
+//			(*global_pos) += follow_record->data->len;
+//			continue;
+//		}
+//
+//		switch (cli_follow_info->show_type)
+//		{
+//			case SHOW_HEXDUMP:
+//				break;
+//
+//			case SHOW_ASCII:
+//			case SHOW_EBCDIC:
+//				printf("%s%u\n", follow_record->is_server ? "\t" : "", follow_record->data->len);
+//				break;
+//
+//			case SHOW_RAW:
+//				if (follow_record->is_server)
+//				{
+//					putchar('\t');
+//				}
+//				break;
+//			default:
+//				g_assert_not_reached();
+//		}
+//
+//		switch (cli_follow_info->show_type)
+//		{
+//			case SHOW_HEXDUMP:
+//				follow_print_hex(follow_record->is_server ? "\t" : "", *global_pos, follow_record->data->data, follow_record->data->len);
+//				(*global_pos) += follow_record->data->len;
+//				break;
+//
+//			case SHOW_ASCII:
+//			case SHOW_EBCDIC:
+//				buffer = (char *)g_malloc(follow_record->data->len+2);
+//
+//				for (ii = 0; ii < follow_record->data->len; ii++)
+//				{
+//					switch (follow_record->data->data[ii])
+//					{
+//						case '\r':
+//						case '\n':
+//							buffer[ii] = follow_record->data->data[ii];
+//							break;
+//						default:
+//							buffer[ii] = g_ascii_isprint(follow_record->data->data[ii]) ? follow_record->data->data[ii] : '.';
+//							break;
+//					}
+//				}
+//
+//				buffer[ii++] = '\n';
+//				buffer[ii] = 0;
+//				if (cli_follow_info->show_type == SHOW_EBCDIC) {
+//					EBCDIC_to_ASCII(buffer, ii);
+//				}
+//				printf("%s", buffer);
+//				g_free(buffer);
+//				break;
+//
+//			case SHOW_RAW:
+//				buffer = (char *)g_malloc((follow_record->data->len*2)+2);
+//
+//				for (ii = 0, jj = 0; ii < follow_record->data->len; ii++)
+//				{
+//					buffer[jj++] = bin2hex[follow_record->data->data[ii] >> 4];
+//					buffer[jj++] = bin2hex[follow_record->data->data[ii] & 0xf];
+//				}
+//
+//				buffer[jj++] = '\n';
+//				buffer[jj] = 0;
+//				printf("%s", buffer);
+//				g_free(buffer);
+//				break;
+//
+//			default:
+//				g_assert_not_reached();
+//		}
+//	}
+//
+//	printf("%s", separator);
+//}
 
 static gboolean follow_arg_strncmp(const char **opt_argp, const char *strp)
 {

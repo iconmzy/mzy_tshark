@@ -158,8 +158,8 @@ static int                    out_frame_type            = -2; /* Leave frame typ
 static gboolean               verbose                   = FALSE; /* Not so verbose         */
 static struct time_adjustment time_adj                  = {NSTIME_INIT_ZERO, 0}; /* no adjustment */
 static nstime_t               relative_time_window      = NSTIME_INIT_ZERO; /* de-dup time window */
-static nstime_t               starttime                 = NSTIME_INIT_ZERO;
-static nstime_t               stoptime                  = NSTIME_INIT_ZERO;
+//static nstime_t               starttime                 = NSTIME_INIT_ZERO;
+//static nstime_t               stoptime                  = NSTIME_INIT_ZERO;
 static gboolean               rem_vlan                  = FALSE;
 static gboolean               dup_detect                = FALSE;
 static gboolean               dup_detect_by_time        = FALSE;
@@ -305,7 +305,7 @@ remove_vlan_info(const wtap_packet_header *phdr, guint8* fd, guint32* len) {
 static gboolean
 is_duplicate(guint8* fd, guint32 len) {
     int i;
-    const struct ieee80211_radiotap_header* tap_header;
+//    const struct ieee80211_radiotap_header* tap_header;
 
     /*Hint to ignore some bytes at the start of the frame for the digest calculation(-I option) */
     guint32 offset = ignored_bytes;
@@ -529,19 +529,19 @@ process_new_idbs(wtap *wth, wtap_dumper *pdh, GArray *idbs_seen,
     return TRUE;
 }
 
+#define LONGOPT_NO_VLAN              (LONGOPT_BASE_APPLICATION+1)
+#define LONGOPT_SKIP_RADIOTAP_HEADER (LONGOPT_BASE_APPLICATION+2)
+#define LONGOPT_SEED                 (LONGOPT_BASE_APPLICATION+3)
+#define LONGOPT_INJECT_SECRETS       (LONGOPT_BASE_APPLICATION+4)
+#define LONGOPT_DISCARD_ALL_SECRETS  (LONGOPT_BASE_APPLICATION+5)
+#define LONGOPT_CAPTURE_COMMENT      (LONGOPT_BASE_APPLICATION+6)
+#define LONGOPT_DISCARD_CAPTURE_COMMENT (LONGOPT_BASE_APPLICATION+7)
+
 pfileNameNode editcapFileIntoSmalls(char * File_Names_In,char* FIle_Name_out, int num)
 {
     wtap         *wth = NULL;
-    int           i, j, read_err, write_err;
+    int           i, read_err, write_err;
     gchar        *read_err_info, *write_err_info;
-
-#define LONGOPT_NO_VLAN              LONGOPT_BASE_APPLICATION+1
-#define LONGOPT_SKIP_RADIOTAP_HEADER LONGOPT_BASE_APPLICATION+2
-#define LONGOPT_SEED                 LONGOPT_BASE_APPLICATION+3
-#define LONGOPT_INJECT_SECRETS       LONGOPT_BASE_APPLICATION+4
-#define LONGOPT_DISCARD_ALL_SECRETS  LONGOPT_BASE_APPLICATION+5
-#define LONGOPT_CAPTURE_COMMENT      LONGOPT_BASE_APPLICATION+6
-#define LONGOPT_DISCARD_CAPTURE_COMMENT LONGOPT_BASE_APPLICATION+7
 
     guint32       snaplen            = 0; /* No limit               */
     chop_t        chop               = {0, 0, 0, 0, 0, 0}; /* No chop */
@@ -584,6 +584,11 @@ pfileNameNode editcapFileIntoSmalls(char * File_Names_In,char* FIle_Name_out, in
     /*拿到读取文件句柄*/
     wth = wtap_open_offline(File_Names_In, WTAP_TYPE_AUTO, &read_err, &read_err_info, FALSE);
 
+	/*初始化名称头节点*/
+	pfileNameNode fileNameNode_Head = (pfileNameNode)malloc(sizeof(struct fileNameNode));
+	fileNameNode_Head->next = NULL;
+	strcpy(fileNameNode_Head->fileName,"");
+
     if (!wth) {
         cfile_open_failure_message("editcap", File_Names_In, read_err,
                                    read_err_info);
@@ -591,17 +596,11 @@ pfileNameNode editcapFileIntoSmalls(char * File_Names_In,char* FIle_Name_out, in
     }
 
     wtap_dump_params_init_no_idbs(&params, wth);
-
     if (!keep_em)
         max_packet_number = G_MAXUINT;
 
     /* Set up an array of all IDBs seen */
     idbs_seen = g_array_new(FALSE, FALSE, sizeof(wtap_block_t));
-
-    /*初始化名称头节点*/
-    pfileNameNode fileNameNode_Head = malloc(sizeof(struct fileNameNode));
-    fileNameNode_Head->next = NULL;
-    strcpy(fileNameNode_Head->fileName,"");
 
     /* Read all of the packets in turn */
     wtap_rec_init(&read_rec);
@@ -634,7 +633,7 @@ pfileNameNode editcapFileIntoSmalls(char * File_Names_In,char* FIle_Name_out, in
             g_assert(filename);
 
             /*插入名称节点*/
-            pfileNameNode temp = malloc(sizeof(struct fileNameNode));
+            pfileNameNode temp = (pfileNameNode)malloc(sizeof(struct fileNameNode));
             strcpy(temp->fileName, filename);
             temp->next = fileNameNode_Head->next;
             fileNameNode_Head->next = temp;
@@ -722,7 +721,7 @@ pfileNameNode editcapFileIntoSmalls(char * File_Names_In,char* FIle_Name_out, in
                 g_assert(filename);
 
                 /*插入名称节点*/
-                pfileNameNode temp = malloc(sizeof(struct fileNameNode));
+                pfileNameNode temp = (pfileNameNode)malloc(sizeof(struct fileNameNode));
                 strcpy(temp->fileName,filename);
                 temp->next = fileNameNode_Head->next;
                 fileNameNode_Head->next = temp;
@@ -1018,7 +1017,7 @@ pfileNameNode editcapFileIntoSmalls(char * File_Names_In,char* FIle_Name_out, in
     }
     g_free(filename);
 
-clean_exit:
+	clean_exit:
     if (dsb_filenames) {
         g_array_free(dsb_types, TRUE);
         g_ptr_array_free(dsb_filenames, TRUE);
@@ -1155,7 +1154,7 @@ int readFileList(char *basePath,pfileNameNode head){
                 continue;
             else if(ptr->d_type == 8)   ///file
             {
-                pfileNameNode temp = malloc(sizeof(struct fileNameNode));
+                pfileNameNode temp = (pfileNameNode)malloc(sizeof(struct fileNameNode));
                 char basePath_t[256] = {0};
                 strcpy(basePath_t,basePath);
                 memset(temp->fileName,'\0',256);
@@ -1172,7 +1171,7 @@ int readFileList(char *basePath,pfileNameNode head){
                 char basePath_t[256] = {0};
                 strcpy(basePath_t,basePath);
                 strcat(basePath_t,ptr->d_name);
-                pfileNameNode temp = malloc(sizeof(struct fileNameNode));
+                pfileNameNode temp = (pfileNameNode)malloc(sizeof(struct fileNameNode));
                 temp->next = head->next;
                 memset(temp->fileName_path,'\0',128);
                 strcpy(temp->fileName_path,basePath_t);
@@ -1183,8 +1182,8 @@ int readFileList(char *basePath,pfileNameNode head){
             {
                 memset(base,'\0',sizeof(base));
                 strcpy(base,basePath);
-                int len = strlen(base);
-                if (base[len - 1] != '/') {
+                int lenb = strlen(base);
+                if (base[lenb - 1] != '/') {
                     strcat(base, "/");
                 }
                 strcat(base,ptr->d_name);

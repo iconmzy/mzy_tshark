@@ -1025,12 +1025,12 @@ dissect_address_tlv(tvbuff_t *tvb, int offset, int length, proto_tree *tree)
 static void
 dissect_capabilities(tvbuff_t *tvb, int offset, int length, proto_tree *tree)
 {
-    proto_item *ti;
-    proto_tree *capabilities_tree;
+//    proto_item *ti;
+//    proto_tree *capabilities_tree;
 
     if (length < 4)
         return;
-    ti = proto_tree_add_item(tree, hf_cdp_capabilities, tvb, offset, 4, ENC_BIG_ENDIAN);
+    proto_tree_add_item(tree, hf_cdp_capabilities, tvb, offset, 4, ENC_BIG_ENDIAN);
 //    capabilities_tree = proto_item_add_subtree(ti, ett_cdp_capabilities);
 //    proto_tree_add_item(capabilities_tree, hf_cdp_capabilities_router, tvb, offset, 4, ENC_BIG_ENDIAN);
 //    proto_tree_add_item(capabilities_tree, hf_cdp_capabilities_trans_bridge, tvb, offset, 4, ENC_BIG_ENDIAN);

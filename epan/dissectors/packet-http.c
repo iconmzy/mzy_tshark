@@ -1064,7 +1064,7 @@ dissect_http_message(tvbuff_t *tvb, int offset, packet_info *pinfo,
 	int		reported_datalen = -1;
 	dissector_handle_t handle;
 	gboolean	dissected = FALSE;
-	gboolean	first_loop = TRUE;
+//	gboolean	first_loop = TRUE;
 	gboolean	have_seen_http = FALSE;
 	/*guint		i;*/
 	/*http_info_value_t *si;*/
@@ -1359,7 +1359,7 @@ dissect_http_message(tvbuff_t *tvb, int offset, packet_info *pinfo,
 //			expert_add_info(pinfo, ti, &ei_http_tls_port);
 //		}
 
-		first_loop = FALSE;
+//		first_loop = FALSE;
 
 		/*
 		 * Process this line.
@@ -2912,66 +2912,65 @@ header_fields_reset_cb(void)
  * Parses the transfer-coding, returning TRUE if everything was fully understood
  * or FALSE when unknown names were encountered.
  */
-static gboolean
-http_parse_transfer_coding(const char *value, headers_t *eh_ptr)
-{
-	gboolean is_fully_parsed = TRUE;
-
-	/* Mark header as set, but with unknown encoding. */
-	eh_ptr->transfer_encoding = HTTP_TE_UNKNOWN;
-
-	while (*value) {
-		/* skip OWS (SP / HTAB) and commas; stop at the end. */
-		while (*value == ' ' || *value == '\t' || *value == ',')
-			value++;
-		if (!*value)
-			break;
-
-		if (g_str_has_prefix(value, "chunked")) {
-			eh_ptr->transfer_encoding_chunked = TRUE;
-			value += sizeof("chunked") - 1;
-			continue;
-		}
-
-		/* For now assume that chunked can only combined with exactly
-		 * one other (compression) encoding. Anything else is
-		 * unsupported. */
-		if (eh_ptr->transfer_encoding != HTTP_TE_UNKNOWN) {
-			/* No more transfer codings are expected. */
-			is_fully_parsed = FALSE;
-			break;
-		}
-
-		if (g_str_has_prefix(value, "compress")) {
-			eh_ptr->transfer_encoding = HTTP_TE_COMPRESS;
-			value += sizeof("compress") - 1;
-		} else if (g_str_has_prefix(value, "deflate")) {
-			eh_ptr->transfer_encoding = HTTP_TE_DEFLATE;
-			value += sizeof("deflate") - 1;
-		} else if (g_str_has_prefix(value, "gzip")) {
-			eh_ptr->transfer_encoding = HTTP_TE_GZIP;
-			value += sizeof("gzip") - 1;
-		} else if (g_str_has_prefix(value, "identity")) {
-			eh_ptr->transfer_encoding = HTTP_TE_IDENTITY;
-			value += sizeof("identity") - 1;
-		} else if (g_str_has_prefix(value, "x-compress")) {
-			eh_ptr->transfer_encoding = HTTP_TE_COMPRESS;
-			value += sizeof("x-compress") - 1;
-		} else if (g_str_has_prefix(value, "x-gzip")) {
-			eh_ptr->transfer_encoding = HTTP_TE_GZIP;
-			value += sizeof("x-gzip") - 1;
-		} else {
-			/* Unknown transfer encoding, skip until next comma.
-			 * Stop when no more names are found. */
-			is_fully_parsed = FALSE;
-			value = strchr(value, ',');
-			if (!value)
-				break;
-		}
-	}
-
-	return is_fully_parsed;
-}
+//static gboolean http_parse_transfer_coding(const char *value, headers_t *eh_ptr)
+//{
+//	gboolean is_fully_parsed = TRUE;
+//
+//	/* Mark header as set, but with unknown encoding. */
+//	eh_ptr->transfer_encoding = HTTP_TE_UNKNOWN;
+//
+//	while (*value) {
+//		/* skip OWS (SP / HTAB) and commas; stop at the end. */
+//		while (*value == ' ' || *value == '\t' || *value == ',')
+//			value++;
+//		if (!*value)
+//			break;
+//
+//		if (g_str_has_prefix(value, "chunked")) {
+//			eh_ptr->transfer_encoding_chunked = TRUE;
+//			value += sizeof("chunked") - 1;
+//			continue;
+//		}
+//
+//		/* For now assume that chunked can only combined with exactly
+//		 * one other (compression) encoding. Anything else is
+//		 * unsupported. */
+//		if (eh_ptr->transfer_encoding != HTTP_TE_UNKNOWN) {
+//			/* No more transfer codings are expected. */
+//			is_fully_parsed = FALSE;
+//			break;
+//		}
+//
+//		if (g_str_has_prefix(value, "compress")) {
+//			eh_ptr->transfer_encoding = HTTP_TE_COMPRESS;
+//			value += sizeof("compress") - 1;
+//		} else if (g_str_has_prefix(value, "deflate")) {
+//			eh_ptr->transfer_encoding = HTTP_TE_DEFLATE;
+//			value += sizeof("deflate") - 1;
+//		} else if (g_str_has_prefix(value, "gzip")) {
+//			eh_ptr->transfer_encoding = HTTP_TE_GZIP;
+//			value += sizeof("gzip") - 1;
+//		} else if (g_str_has_prefix(value, "identity")) {
+//			eh_ptr->transfer_encoding = HTTP_TE_IDENTITY;
+//			value += sizeof("identity") - 1;
+//		} else if (g_str_has_prefix(value, "x-compress")) {
+//			eh_ptr->transfer_encoding = HTTP_TE_COMPRESS;
+//			value += sizeof("x-compress") - 1;
+//		} else if (g_str_has_prefix(value, "x-gzip")) {
+//			eh_ptr->transfer_encoding = HTTP_TE_GZIP;
+//			value += sizeof("x-gzip") - 1;
+//		} else {
+//			/* Unknown transfer encoding, skip until next comma.
+//			 * Stop when no more names are found. */
+//			is_fully_parsed = FALSE;
+//			value = strchr(value, ',');
+//			if (!value)
+//				break;
+//		}
+//	}
+//
+//	return is_fully_parsed;
+//}
 
 static gboolean
 is_token_char(char c)

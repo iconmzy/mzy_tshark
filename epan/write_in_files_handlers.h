@@ -67,9 +67,6 @@ WS_DLL_PUBLIC gboolean write_Export_result(char* ex_name,char * pcap_name,char* 
 WS_DLL_PUBLIC void final_conversation_Write_Need_clear(void);
 //为conversation匹配协议栈字段//
 WS_DLL_PUBLIC gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
-
-WS_DLL_PUBLIC void clear_conversation_CJSN(void);
-
 WS_DLL_PUBLIC char* add_line_no_to_conversation(char *src_ip,char *dst_ip, char *src_port,char *dst_port);
 
 
@@ -128,20 +125,8 @@ WS_DLL_PUBLIC void destroInfo_ConfigFile(struct ConfigInfo *info);
 //判断当前行是否有效
 WS_DLL_PUBLIC int isValid_ConfigFile(const char *buf);
 
-//g711 A/U
-WS_DLL_PUBLIC void g711a_decode_zhr(char filename1[],  char filename2[]);
-WS_DLL_PUBLIC void g711u_decode_zhr(char filename1[],  char filename2[]);
-//g722 全文件解码器。
-WS_DLL_PUBLIC void g722_decode_zhr(char filename1[],  char filename2[]);
-//g729a 全文件解码器
-WS_DLL_PUBLIC void g729a_decode_zhr(char filename1[],  char filename2[]);
-//
-
 WS_DLL_PUBLIC void write_into_all_diy_proto(char* pre_proto,char* next_proto);
 WS_DLL_PUBLIC gboolean match_all_diy_proto(char* pre_proto,char* next_proto);
-
-
-gboolean is_special_not_leafNode(const char *fieldName);/*用于输出一些特殊的非叶子结点*/
 
 WS_DLL_PUBLIC gboolean JudgeStreamPrint(gchar* sip,guint sport,char *dip,guint dport);
 WS_DLL_PUBLIC void followConnectFiveEleClear(void);
