@@ -18,7 +18,7 @@ void PrintDataParts(struct PartHead *partHead)
 void PrintExProtocol(struct exProtocol *exproto)
 {
     int i = 0;
-	printf("\nprotocolName:%s\n", exproto->protocolName);
+	printf("protocolName:%s\n", exproto->protocolName);
 	printf("shortName:%s\n", exproto->shortName);
 	printf("filterName:%s\n", exproto->filterName);
 	while (exproto->port[i] != 0 && i <10){
@@ -242,7 +242,8 @@ int ReadHead(JsonReader *reader, exProtocol *proto)
 }
 int ParseJson(char *filePath, struct exProtocol *proto)
 {
-	printf("start json\n");
+	printf("--------------------------------------------\n");
+	printf("start json: %s\n", filePath);
 	JsonParser *parser;
 	GError *error;
 	// char filename[] = "/home/xia/桌面/tcpsample/json/test2.json";
