@@ -37,7 +37,6 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 	FILE *fp, *fn, * outfile;
 	char file[256], outfilename[256];
 	unsigned char *in1, *in2, *out1, *out2, *out;
-	//unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x1f,0x40,0,0,0,0x01 };
 
 	fp = fopen(filename1 , "rb"); 	fn = fopen(filename2 , "rb");
 	if(fp==NULL && fn==NULL){printf("no file!\n"); return; }
@@ -53,7 +52,6 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 		sprintf(file, "%s.single.wav",filename2);
 		if((outfile= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 		pcm_to_wav(out2, n, outfile, 8000, 1);
-
 		fclose(outfile);
 		free(in2);
 		free(out2);
@@ -73,7 +71,6 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 		sprintf(file, "%s.single.wav",filename1);
 		if((outfile= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 		pcm_to_wav(out2, n, outfile, 8000, 1);
-
 		fclose(outfile);
 		free(in2);
 		free(out2);
@@ -82,11 +79,9 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 		return;
 	}
 
+
 	fseek(fp, 0,SEEK_END); ll=ftell(fp); in1=(unsigned char *)malloc(ll); rewind(fp); fread(in1,sizeof(char),ll,fp);fclose(fp); out1=(unsigned char *)malloc(ll*2); len=ll;
-	//printf("%d %d\n",i,len);
 	fseek(fn, 0,SEEK_END); ll=ftell(fn); in2=(unsigned char *)malloc(ll); rewind(fn); fread(in2,sizeof(char),ll,fn);fclose(fn); out2=(unsigned char *)malloc(ll*2);
-	//printf("%d %d \n",ll,i);
-	//AU_header[23]=2;
 	n=0; for(i=0; i<len;)
 	{
 		m=in1[i+8]+(in1[i+9]<<8)+(in1[i+10]<<16)+(in1[i+11]<<24); i+=12;
@@ -104,20 +99,17 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 
 	sprintf(file, "%s.paired.wav",filename1);
 	if((outfile= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
-	//AU_header[23]=2;
-	//fwrite(AU_header, 1, 24, fp);
-
 	if(len>=ll)
 	{
 		out=(unsigned char *)malloc(len*2);
 		for(i=0;i<ll;i+=2){	out[2*i]=out1[i]; out[2*i+1]=out1[i+1]; out[2*i+2]=out2[i]; out[2*i+3]=out2[i+1];}
-		for(i=ll;i<len;i+=2){	out[2*i]=out1[i]; out[2*i+1]=out1[i+1]; out[2*i+2]=out2[i]; out[2*i+3]=out2[i+1];}
+		for(i=ll;i<len;i+=2){	out[2*i]=out1[i]; out[2*i+1]=out1[i+1]; out[2*i+2]=0; out[2*i+3]=0;}
 		pcm_to_wav(out, len*2, outfile, 8000, 2);
 	}
 	if(len<ll) {
 		out = (unsigned char *) malloc(ll * 2);
-		for (i = 0; i < len; i += 2) {out[2 * i] = out1[i];	out[2 * i + 1] = out1[i + 1];out[2 * i + 2] = out2[i];out[2 * i + 3] = out2[i + 1];	}
-		for (i = len; i < ll; i += 2) {	out[2 * i] = out1[i];out[2 * i + 1] = out1[i + 1];out[2 * i + 2] = out2[i];	out[2 * i + 3] = out2[i + 1];}
+		for(i=0;  i<len;i+=2) {out[2*i]=out1[i];out[2*i+1]=out1[i+1];out[2*i+2]=out2[i];out[2*i+3]=out2[i+1];}
+		for(i=len;i<ll; i+=2) {out[2*i]=0;      out[2*i+1]=0;        out[2*i+2]=out2[i];out[2*i+3]=out2[i+1];}
 		pcm_to_wav(out, ll*2, outfile, 8000, 2);
 	}
 	fclose(outfile);
@@ -130,8 +122,6 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 	wav_to_mp3(file, outfilename,8000,2);
 
 }
-
-
 
 
 int  pcm_to_wav(unsigned char *buf,int ll, FILE *outfile, unsigned int sampleRate, unsigned int channels)
@@ -147,9 +137,9 @@ int  pcm_to_wav(unsigned char *buf,int ll, FILE *outfile, unsigned int sampleRat
 	wavhead[4]=ll>>0&0xff;  wavhead[5]=ll>>8&0xff; wavhead[6]=ll>>16&0xff; wavhead[7]=ll>>24&0xff;
 	wavhead[22]=channels;    //channels
 	wavhead[24]=sampleRate>>0&0xff; wavhead[25]=sampleRate>>8&0xff; wavhead[26]=sampleRate>>16&0xff; wavhead[27]=sampleRate>>24&0xff; //// 采样率
-	wavhead[28]=(sampleRate*16/8)>>0&0xff; wavhead[29]=(sampleRate*16/8)>>8&0xff; wavhead[30]=(sampleRate*16/8)>>16&0xff; wavhead[31]=(sampleRate*16/8)>>24&0xff; //比特率
-	wavhead[32]=(16/8)>>0&0xff; wavhead[33]=(16/8)>>8&0xff;// 块对齐
-	wavhead[34]=16; wavhead[35]=(16/8)>>8&0xff;// 采样精度
+	wavhead[28]=(sampleRate*channels*16/8)>>0&0xff; wavhead[29]=(sampleRate*channels*16/8)>>8&0xff; wavhead[30]=(sampleRate*channels*16/8)>>16&0xff; wavhead[31]=(sampleRate*channels*16/8)>>24&0xff; //比特率
+	wavhead[32]=(channels*16/8)>>0&0xff; wavhead[33]=(channels*16/8)>>8&0xff;// 块对齐
+	wavhead[34]=(16)>>0&0xff; wavhead[35]=(16)>>8&0xff;// 采样精度
 	ll = ll-36;
 	wavhead[40]=ll>>0&0xff; wavhead[41]=ll>>8&0xff; wavhead[42]=ll>>16&0xff; wavhead[43]=ll>>24&0xff;
 	for(i=0;i<ll;i+=2){se=buf[i];buf[i]=buf[i+1];buf[i+1]=se;}

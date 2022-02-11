@@ -2096,11 +2096,10 @@ int g729a_decode(unsigned char in[], int len, unsigned char out[])
 void g729a_decode_zhr(char filename1[],char filename2[])
 {	
 	int i,  n, ll, len;
-//	unsigned int t1,t2,t3,t4;
-	FILE *fp, *fn;
+	unsigned int t1,t2,t3,t4;
+	FILE *fp, *fn, *outfile ;
 	char file[256], outfilename[256];
-	unsigned char *in1, *in2,*out, *out1, *out2;
-	//unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x1f,0x40,0,0,0,0x01}; //0x803e0000, 0x401f0000; //16000 or 8000
+	unsigned char *in1, *in2,*out, *out1, *out2, se[2];
 	
     fp= fopen(filename1,"rb");
 	fn= fopen(filename2,"rb");
@@ -2111,13 +2110,9 @@ void g729a_decode_zhr(char filename1[],char filename2[])
 		out2  = (unsigned char*)malloc(ll*20);
 		n=g729a_decode(in2, ll,  out2);
 		sprintf(file,"%s.single.wav",filename2);
-		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE2 FAIL\n");   return ; }
-
-		//fwrite(AU_header, 1, 24, fp);
-		//fwrite(out2, 1, n, fp);
-		pcm_to_wav(out2, n, fp, 8000, 1);
-
-		fclose(fp);
+		if((outfile = fopen(file,"wb"))==NULL){  printf("OPEN FILE2 FAIL\n");   return ; }
+		pcm_to_wav(out2, n, outfile , 8000, 1);
+		fclose(outfile );
 		free(in2);
 		free(out2);
 
@@ -2132,11 +2127,9 @@ void g729a_decode_zhr(char filename1[],char filename2[])
 		out1  = (unsigned char*)malloc(ll*20);
 		n=g729a_decode(in1, ll,  out1);
 		sprintf(file,"%s.single.wav",filename1);
-		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE1 FAIL\n");   return ; }
-		//fwrite(AU_header, 1, 24, fp);
-		//fwrite(out1, 1, n, fp);
-		pcm_to_wav(out1, n, fp, 8000, 1);
-		fclose(fp);
+		if((outfile = fopen(file,"wb"))==NULL){  printf("OPEN FILE1 FAIL\n");   return ; }
+		pcm_to_wav(out1, n, outfile , 8000, 1);
+		fclose(outfile );
 		free(in1);
 		free(out1);
 		sprintf(outfilename, "%s.single.mp3",filename1);
@@ -2153,39 +2146,21 @@ void g729a_decode_zhr(char filename1[],char filename2[])
 	//printf("%d %d\n%d %d\n",t1,t2,t3,t4);
 
 	sprintf(file,"%s.paired.wav",filename1);
-	if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE FAIL\n");   return ; }
-
-	/*
-	AU_header[23]=2;
-	fwrite(AU_header, 1, 24, fp);
-	if(len>=ll)
-	{
-		for(i=0;i<ll;i+=2)	{ fwrite(out1+i,1,2,fp); fwrite(out2+i,1,2,fp);	}
-		se[0]=0; se[1]=0; 
-		for(i=ll;i<len;i+=2){ fwrite(out1+i,1,2,fp);	fwrite(se,1,2,fp);	}
-	}
-	if(len<ll)
-	{
-		for(i=0;i<len;i+=2)	{ fwrite(out1+i,1,2,fp); fwrite(out2+i,1,2,fp);	}
-		se[0]=0; se[1]=0; 
-		for(i=len;i<ll;i+=2){ fwrite(se,1,2,fp);	fwrite(out2+i,1,2,fp);	}
-	}
-	*/
+	if((outfile = fopen(file,"wb"))==NULL){  printf("OPEN FILE FAIL\n");   return ; }
 	if(len>=ll)
 	{
 		out=(unsigned char *)malloc(len*2);
 		for(i=0;i<ll;i+=2){	out[2*i]=out1[i]; out[2*i+1]=out1[i+1]; out[2*i+2]=out2[i]; out[2*i+3]=out2[i+1];}
 		for(i=ll;i<len;i+=2){	out[2*i]=out1[i]; out[2*i+1]=out1[i+1]; out[2*i+2]=out2[i]; out[2*i+3]=out2[i+1];}
-		pcm_to_wav(out, len*2, fp, 8000, 2);
+		pcm_to_wav(out, len*2, outfile , 8000, 2);
 	}
 	if(len<ll) {
 		out = (unsigned char *) malloc(ll * 2);
 		for (i = 0; i < len; i += 2) {out[2 * i] = out1[i];	out[2 * i + 1] = out1[i + 1];out[2 * i + 2] = out2[i];out[2 * i + 3] = out2[i + 1];	}
 		for (i = len; i < ll; i += 2) {	out[2 * i] = out1[i];out[2 * i + 1] = out1[i + 1];out[2 * i + 2] = out2[i];	out[2 * i + 3] = out2[i + 1];}
-		pcm_to_wav(out, ll*2, fp, 8000, 2);
+		pcm_to_wav(out, ll*2, outfile , 8000, 2);
 	}
-
-	fclose(fp);
+	fclose(outfile );
 	free(in1); free(in2); free(out1); free(out2);
 	free(out);
 

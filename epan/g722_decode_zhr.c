@@ -288,10 +288,10 @@ void main()
 void g722_decode_zhr(char filename1[],  char filename2[])
 {
 	int i, j , ll ,len, m, n ;
-	FILE *fp, *fn;
+	FILE *fp, *fn, *outfile;
 	char file[256], outfilename[256];
 	unsigned char *in1, *in2, *out, *out1, *out2, sf[2];
-	//unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x3e,0x80,0,0,0,0x01 };
+
 	g722_decode_state_t *m_pG722Decode = NULL;
 	g722_decode_state_t *n_pG722Decode = NULL;    
 
@@ -299,8 +299,6 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 	n_pG722Decode= (g722_decode_state_t *) malloc(sizeof(g722_decode_state_t));	
 	WebRtc_g722_decode_init((g722_decode_state_t *)m_pG722Decode, 16000, 2);
 	WebRtc_g722_decode_init((g722_decode_state_t *)n_pG722Decode, 16000, 2);
-
-
 
 	fp = fopen(filename1 , "rb"); 	fn = fopen(filename2 , "rb");
 	if(fp==NULL && fn==NULL){printf("no file!\n"); return; }
@@ -319,13 +317,9 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 		//printf("%d %d %d\n",j,n,ll*4);
 		sprintf(file, "%s.single.wav",filename2);
 		//printf("%s\n",file);
-		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
-
-		//fwrite(AU_header, 1, 24, fp);
-		//fwrite(out2, 1, n, fp);
-		pcm_to_wav(out2, n, fp, 16000, 1);
-
-		fclose(fp);	
+		if((outfile= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
+		pcm_to_wav(out2, n, outfile, 16000, 1);
+		fclose(outfile);
 		free(in2);
 		free(out2);
 		free(m_pG722Decode);
@@ -349,11 +343,9 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 		}
 		for(j=0;j<n;j+=2){sf[0] = out1[j]; out1[j] = out1[j+1]; out1[j+1] = sf[0];}
 		sprintf(file, "%s.single.wav",filename1);
-		if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
-		//fwrite(AU_header, 1, 24, fp);
-		//fwrite(out1, 1, n, fp);
-		pcm_to_wav(out1, n, fp, 16000, 1);
-		fclose(fp);	
+		if((outfile= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
+		pcm_to_wav(out1, n, outfile, 16000, 1);
+		fclose(outfile);
 		free(in1);
 		free(out1);
 		free(m_pG722Decode);
@@ -387,37 +379,21 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 	for(j=0;j<n;j+=2){sf[0] = out2[j]; out2[j] = out2[j+1]; out2[j+1] = sf[0];}
 	ll=n;
 	sprintf(file, "%s.paired.wav",filename1);
-	if((fp= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
-
-	/*
-	AU_header[23]=2;
-	fwrite(AU_header, 1, 24, fp);
-	if(len>=ll)
-	{
-		for(i=0;i<ll;i+=2){	fwrite(out1+i,1,2,fp);	fwrite(out2+i,1,2,fp);	}
-		for(i=ll;i<len;i+=2){ sf[0]=0; sf[1]=0;		fwrite(out1+i,1,2,fp);	fwrite(sf,1,2,fp);}
-	}
-	if(len<ll)
-	{
-		for(i=0;  i<len;i+=2){ fwrite(out1+i,1,2,fp);	fwrite(out2+i,1,2,fp);}		
-		for(i=len;i<ll; i+=2){ sf[0]=0; sf[1]=0;		fwrite(sf,1,2,fp);	fwrite(out2+i,1,2,fp);}		
-	}
-	 */
+	if((outfile= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 	if(len>=ll)
 	{
 		out=(unsigned char *)malloc(len*2);
 		for(i=0;i<ll;i+=2){	out[2*i]=out1[i]; out[2*i+1]=out1[i+1]; out[2*i+2]=out2[i]; out[2*i+3]=out2[i+1];}
 		for(i=ll;i<len;i+=2){	out[2*i]=out1[i]; out[2*i+1]=out1[i+1]; out[2*i+2]=out2[i]; out[2*i+3]=out2[i+1];}
-		pcm_to_wav(out, len*2, fp, 16000, 2);
+		pcm_to_wav(out, len*2, outfile, 16000, 2);
 	}
 	if(len<ll) {
 		out = (unsigned char *) malloc(ll * 2);
 		for (i = 0; i < len; i += 2) {out[2 * i] = out1[i];	out[2 * i + 1] = out1[i + 1];out[2 * i + 2] = out2[i];out[2 * i + 3] = out2[i + 1];	}
 		for (i = len; i < ll; i += 2) {	out[2 * i] = out1[i];out[2 * i + 1] = out1[i + 1];out[2 * i + 2] = out2[i];	out[2 * i + 3] = out2[i + 1];}
-		pcm_to_wav(out, ll*2, fp, 16000, 2);
+		pcm_to_wav(out, ll*2, outfile, 16000, 2);
 	}
-
-	fclose(fp);			
+	fclose(outfile);
 	free(in1);
 	free(out1);
 	free(out);
