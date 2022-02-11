@@ -157,7 +157,7 @@ short b100[3] = {7699, -15398, 7699};      /* Q13 */
 short a100[3] = {8192, 15836, -7667};      /* Q13 */
 short b140[3] = {1899, -3798, 1899};      /* 1/2 in Q12 */
 short a140[3] = {4096, 7807, -3733};      /* Q12 */
-short bitsno[11] = {1+7,    5*2,  8, 1, 13, 4, 7,  5,    13, 4, 7};/* MA + 1st stage /* 2nd stage //* first subframe  /* second subframe  */
+short bitsno[11] = {1+7,    5*2,  8, 1, 13, 4, 7,  5,    13, 4, 7};/* MA + 1st stage  2nd stage  first subframe   second subframe  */
 short tabpow[33] = { 16384, 16743, 17109, 17484, 17867, 18258, 18658, 19066, 19484, 19911, 20347, 20792, 21247, 21713, 22188, 22674,
               23170, 23678, 24196, 24726, 25268, 25821, 26386, 26964, 27554, 28158, 28774, 29405, 30048, 30706, 31379, 32066, 32767 };
 short tablog[33] = { 0,  1455,  2866,  4236,  5568,  6863,  8124,  9352, 10549, 11716, 12855, 13967, 15054, 16117, 17156, 18172, 19167, 
@@ -174,8 +174,8 @@ static short *res2;
 static short scal_res2_buf[143+40];
 static short *scal_res2; 
 static short mem_syn_pst[10];
-extern short Overflow=0;
-extern short Carry=0;
+static short Overflow;
+//static short Carry;
 static short old_exc[80+143+11];
 static short *exc;    
 static short lsp_old[10]={  30000, 26000, 21000, 15000, 8000, 0, -8000,-15000,-21000,-26000};        
@@ -198,7 +198,7 @@ void Decod_ld8a( short  parm[], short  synth[], short  A_t[],  short  *T2);
 void Lsp_Az(  short lsp[],    short a[]     );
 void Lsf_lsp(  short lsf[],    short lsp[],    short m       );
 void Lsp_lsf(  short lsp[],   short lsf[],     short m       );
-void Int_qlpc( short lsp_old[],  short lsp_new[],  short Az[] );
+void Int_qlpc( short lsp_oldd[],  short lsp_new[],  short Az[] );
 void Weight_Az(  short a[],    short gamma,  short m,      short ap[]  );
 void Residu(  short a[],   short x[],   short y[],   short lg   );
 void Syn_filt(  short a[],   short x[],   short y[],   short lg,    short mem[],  short update );
@@ -209,14 +209,14 @@ short Check_Parity_Pitch(   short pitch_index,    short parity        );
 void Decod_ACELP(  short sign,    short index,   short cod[]  );
 void Lsf_lsp2(  short lsf[],  short lsp[],  short m  );
 void Lsp_expand_1_2(  short buf[],   short gap );
-void Lsp_get_quant(  short lspcb1[][10],   short lspcb2[][10],   short code0,  short code1,  short code2,  short fg[][10],   short freq_prev[][10],  short lspq[],    short fg_sum[] );
+void Lsp_get_quant(  short lspcb11[][10],   short lspcb22[][10],   short code0,  short code1,  short code2,  short fgg[][10],   short freq_prev[][10],  short lspq[],    short fg_summ[] );
 void Lsp_stability(  short buf[] );
 void D_lsp(  short prm[],   short lsp_q[],   short erase );
 void Lsp_decw_reset(  void);
 void Lsp_iqua_cs( short prm[],  short lsp_q[], short erase  );
-void Lsp_prev_compose(  short lsp_ele[],   short lsp[],   short fg[][10],   short freq_prev[][10],   short fg_sum[] );
-void Lsp_prev_extract(  short lsp[10],   short lsp_ele[10],   short fg[4][10],   short freq_prev[4][10],   short fg_sum_inv[10] );
-void Lsp_prev_update(  short lsp_ele[10],   short freq_prev[4][10] );
+void Lsp_prev_compose(  short lsp_ele[],   short lsp[],   short fgg[][10],   short freq_prevv[][10],   short fg_summ[] );
+void Lsp_prev_extract(  short lsp[10],   short lsp_ele[10],   short fg[4][10],   short freq_prevv[4][10],   short fg_sum_invv[10] );
+void Lsp_prev_update(  short lsp_ele[10],   short freq_prevv[4][10] );
 void Dec_gain(  short index,   short code[],  short L_subfr,  short bfi,      short *gain_pit,  short *gain_cod );
 void Gain_predict( short past_qua_en[], short code[], short L_subfr, short *gcode0, short *exp_gcode0);
 void Gain_update( short past_qua_en[], int L_gbk12  );
@@ -228,7 +228,7 @@ void Post_Filter(  short *syn,      short *Az_4,     short *T       );
 void pit_pst_filt(  short *signal,   short *scal_sig,  short t0_min,    short t0_max,   short L_subfr,  short *signal_pst);
 void preemphasis(  short *signal,   short g,         short L        );
 void agc( short *sig_in, short *sig_out, short l_trm); 
-void Copy(short x[], short y[], short L );
+void Copy(const short x[], short y[], short L );
 void Set_zero( short x[], short L);  
 short Random(void);
 short sature(int L_var1);
@@ -242,7 +242,7 @@ int L_mult(short var1, short var2);
 short negate(short var1);    
 short extract_h(int L_var1); 
 short extract_l(int L_var1); 
-short round(int L_var1);     
+short roundd(int L_var1);
 int L_mac(int L_var3, short var1, short var2); 
 int L_msu(int L_var3, short var1, short var2); 
 
@@ -270,55 +270,52 @@ void Set_zero(  short x[], short L )
 {
    short i;
    for (i = 0; i < L; i++)     x[i] = 0;
-   return;
+
 }
-void Copy(  short x[],   short y[],   short L    )
+void Copy(  const short xxx[],   short y[],   short L    )
 {
    short i;
-   for (i = 0; i < L; i++)     y[i] = x[i];
-   return;
+   for (i = 0; i < L; i++)     y[i] = xxx[i];
 }
 
-short Random()
-{
+short Random(void) {
   static short seed = 21845;  /* seed = seed*31821 + 13849; */
   seed = extract_l(L_add(L_shr(L_mult(seed, 31821), 1), 13849L));
   return(seed);
 }
 
-void Pred_lt_3(  short   exc[],  short   T0,     short   frac,   short   L_subfr )
+void Pred_lt_3(  short   excc[],  short   T0,     short   frac,   short   L_subfr )
 {
   short   i, j, k;
-  short   *x0, *x1, *x2, *c1, *c2;
+  short   *x00, *x11, *x2, *c1, *c2;
   int  s;
 
-  x0 = &exc[-T0];
+  x00 = &excc[-T0];
 
   frac = negate(frac);
   if (frac < 0)
   {
     frac = add(frac, 3);
-    x0--;
+    x00--;
   }
 
   for (j=0; j<L_subfr; j++)
   {
-    x1 = x0++;
-    x2 = x0;
+    x11 = x00++;
+    x2 = x00;
     c1 = &inter_3l[frac];
     c2 = &inter_3l[sub(3,frac)];
 
     s = 0;
     for(i=0, k=0; i< 10; i++, k+=3)
     {
-      s = L_mac(s, x1[-i], c1[k]);
+      s = L_mac(s, x11[-i], c1[k]);
       s = L_mac(s, x2[i],  c2[k]);
     }
 
-    exc[j] = round(s);
+    excc[j] = roundd(s);
   }
 
-  return;
 }
 
 void Init_Post_Filter(void)
@@ -330,7 +327,6 @@ void Init_Post_Filter(void)
   Set_zero(res2_buf, 143+40);
   Set_zero(scal_res2_buf, 143+40);
 
-  return;
 }
 
 
@@ -381,7 +377,7 @@ void Post_Filter(  short *syn,    short *Az_4,   short *T     )
     }
     Copy(&syn[80-10], &syn[-10], 10);
     Copy(syn_pst, syn, 80);
-    return;
+
 }
 
 void pit_pst_filt(  short *signal,   short *scal_sig,   short t0_min,    short t0_max,    short L_subfr,   short *signal_pst)
@@ -425,9 +421,9 @@ void pit_pst_filt(  short *signal,   short *scal_sig,   short t0_min,    short t
   if (ener > temp)  {    temp = ener;  }
   if (ener0 > temp)  {    temp = ener0;  }
   j = norm_l(temp);
-  cmax = round(L_shl(cor_max, j));
-  en = round(L_shl(ener, j));
-  en0 = round(L_shl(ener0, j));
+  cmax = roundd(L_shl(cor_max, j));
+  en = roundd(L_shl(ener, j));
+  en0 = roundd(L_shl(ener0, j));
 
   temp = L_mult(cmax, cmax);
   temp = L_sub(temp, L_shr(L_mult(en, en0), 1));
@@ -469,14 +465,14 @@ void pit_pst_filt(  short *signal,   short *scal_sig,   short t0_min,    short t
 
   }
 
-  return;
+
 }
 
 
 void preemphasis(  short *signal,    short g,      short L  )
 {
   static short mem_pre = 0;
-  short *p1, *p2, temp, i;
+  short *p1, *p2, temp, i, tpp;
 
   p1 = signal + L - 1;
   p2 = p1 - 1;
@@ -484,14 +480,14 @@ void preemphasis(  short *signal,    short g,      short L  )
 
   for (i = 0; i <= L-2; i++)
   {
-    *p1-- = sub(*p1, mult(g, *p2--));
+  	tpp = *p1;
+    *p1-- = sub(tpp, mult(g, *p2--));
   }
 
   *p1 = sub(*p1, mult(g, mem_pre));
 
   mem_pre = temp;
 
-  return;
 }
 
 
@@ -518,7 +514,7 @@ void agc(  short *sig_in,    short *sig_out,   short l_trm  )
     return;
   }
   exp = sub(norm_l(s), 1);
-  gain_out = round(L_shl(s, exp));
+  gain_out = roundd(L_shl(s, exp));
 
   /* calculate gain_in with exponent */
 
@@ -534,7 +530,7 @@ void agc(  short *sig_in,    short *sig_out,   short l_trm  )
   }
   else {
     i = norm_l(s);
-    gain_in = round(L_shl(s, i));
+    gain_in = roundd(L_shl(s, i));
     exp = sub(exp, i);
 
     s = L_deposit_l(div_s(gain_out,gain_in));   /* Q15 */
@@ -543,7 +539,7 @@ void agc(  short *sig_in,    short *sig_out,   short l_trm  )
 
     /* i(Q12) = s(Q19) = 1 / sqrt(s(Q22)) */
     s = Inv_sqrt(s);           /* Q19 */
-    i = round(L_shl(s,9));     /* Q12 */
+    i = roundd(L_shl(s,9));     /* Q12 */
 
     /* g0(Q12) = i(Q12) * (1-AGC_FAC)(Q15) */
     g0 = mult(i, (short)3276);       /* Q12 */
@@ -557,7 +553,7 @@ void agc(  short *sig_in,    short *sig_out,   short l_trm  )
   }
   past_gain = gain;
 
-  return;
+
 }
 
 
@@ -588,13 +584,13 @@ void Post_Process(  short signal[],   short lg)
      L_tmp     = L_mac(L_tmp, x1, b100[1]);
      L_tmp     = L_mac(L_tmp, x2, b100[2]);
      L_tmp     = L_shl(L_tmp, 2); 
-     signal[i] = round(L_shl(L_tmp, 1));
+     signal[i] = roundd(L_shl(L_tmp, 1));
 
      y2_hi = y1_hi;
      y2_lo = y1_lo;
      L_Extract(L_tmp, &y1_hi, &y1_lo);
   }
-  return;
+
 }
 
 
@@ -643,7 +639,7 @@ void L_Extract(int L_32, short *hi, short *lo)
 {
   *hi  = extract_h(L_32);
   *lo  = extract_l( L_msu( L_shr(L_32, 1) , *hi, 16384));  /* lo = L_32>>1   */
-  return;
+
 }
 
 
@@ -685,18 +681,18 @@ int Mpy_32_16(short hi, short lo, short n)
 
 
 
-void Lsp_get_quant(  short lspcb1[][10],   short lspcb2[][10],   short code0,    short code1,    short code2,    short fg[][10],   short freq_prev[][10],   short lspq[],   short fg_sum[])
+void Lsp_get_quant(  short lspcb11[][10],   short lspcb22[][10],   short code0,    short code1,    short code2,    short fgg[][10],   short freq_prevv[][10],   short lspq[],   short fg_summ[])
 {
   short j;
   short buf[10]; 
-  for ( j = 0 ; j < 5 ; j++ ) buf[j] = add( lspcb1[code0][j], lspcb2[code1][j] );
-  for ( j = 5 ; j < 10 ; j++ ) buf[j] = add( lspcb1[code0][j], lspcb2[code2][j] );
+  for ( j = 0 ; j < 5 ; j++ ) buf[j] = add( lspcb11[code0][j], lspcb22[code1][j] );
+  for ( j = 5 ; j < 10 ; j++ ) buf[j] = add( lspcb11[code0][j], lspcb22[code2][j] );
   Lsp_expand_1_2(buf, 10);
   Lsp_expand_1_2(buf, 5);
-  Lsp_prev_compose(buf, lspq, fg, freq_prev, fg_sum);
-  Lsp_prev_update(buf, freq_prev);
+  Lsp_prev_compose(buf, lspq, fgg, freq_prevv, fg_summ);
+  Lsp_prev_update(buf, freq_prevv);
   Lsp_stability( lspq );
-  return;
+
 }
 
 
@@ -714,31 +710,31 @@ void Lsp_expand_1_2(  short buf[],   short gap  )
       buf[j]   = add( buf[j], tmp );
     }
   }
-  return;
+
 }
 
 
 
-void Lsp_prev_compose(  short lsp_ele[],   short lsp[],    short fg[][10],   short freq_prev[][10],    short fg_sum[] )
+void Lsp_prev_compose(  short lsp_ele[],   short lsp[],    short fgg[][10],   short freq_prevv[][10],    short fg_summ[] )
 {
   short j, k;
   int L_acc;                 /* Q29 */
 
   for ( j = 0 ; j < 10 ; j++ ) {
-    L_acc = L_mult( lsp_ele[j], fg_sum[j] );
+    L_acc = L_mult( lsp_ele[j], fg_summ[j] );
     for ( k = 0 ; k < 4 ; k++ )
-      L_acc = L_mac( L_acc, freq_prev[k][j], fg[k][j] );
+      L_acc = L_mac( L_acc, freq_prevv[k][j], fgg[k][j] );
 
     lsp[j] = extract_h(L_acc);
   }
-  return;
+
 }
 
 
 
 ////  extract elementary LSP from composed LSP with previous LSP
 
-void Lsp_prev_extract(  short lsp[10],    short lsp_ele[10],   short fg[4][10],    short freq_prev[4][10],   short fg_sum_inv[10] )
+void Lsp_prev_extract(  short lsp[10],    short lsp_ele[10],   short fgg[4][10],    short freq_prevv[4][10],   short fg_sum_invv[10] )
 {
   short j, k;
   int L_temp;                /* Q19 */
@@ -748,28 +744,28 @@ void Lsp_prev_extract(  short lsp[10],    short lsp_ele[10],   short fg[4][10], 
   for ( j = 0 ; j < 10 ; j++ ) {
     L_temp = L_deposit_h(lsp[j]);
     for ( k = 0 ; k < 4 ; k++ )
-      L_temp = L_msu( L_temp, freq_prev[k][j], fg[k][j] );
+      L_temp = L_msu( L_temp, freq_prevv[k][j], fgg[k][j] );
 
     temp = extract_h(L_temp);
-    L_temp = L_mult( temp, fg_sum_inv[j] );
+    L_temp = L_mult( temp, fg_sum_invv[j] );
     lsp_ele[j] = extract_h( L_shl( L_temp, 3 ) );
 
   }
-  return;
+
 }
 
 
 ////  update previous LSP parameter
 
-void Lsp_prev_update(  short lsp_ele[10],   short freq_prev[4][10] )
+void Lsp_prev_update(  short lsp_ele[10],   short freq_prevv[4][10] )
 {
   short k;
 
   for ( k = 4-1 ; k > 0 ; k-- )
-    Copy(freq_prev[k-1], freq_prev[k], 10);
+    Copy(freq_prevv[k-1], freq_prevv[k], 10);
 
-  Copy(lsp_ele, freq_prev[0], 10);
-  return;
+  Copy(lsp_ele, freq_prevv[0], 10);
+
 }
 
 void Lsp_stability(  short buf[]  )
@@ -811,7 +807,7 @@ void Lsp_stability(  short buf[]  )
     buf[10-1] = 25681;
     printf("lsp_stability warning High \n");
   }
-  return;
+
 }
 
 void Lsp_decw_reset(  void)
@@ -933,7 +929,7 @@ static void Get_lsp_pol(short *lsp, int *f)
      lsp += 2;                               /* Advance lsp pointer */
    }
 
-   return;
+
 }
 
 void Lsf_lsp(  short lsf[],   short lsp[],   short m  )
@@ -973,7 +969,7 @@ void Lsp_lsf(  short lsp[],   short lsf[],   short m  )
     /* acos(lsp[i])= ind*256 + ( ( lsp[i]-table[ind] ) * slope[ind] )/4096 */
 
     L_tmp  = L_mult( sub(lsp[i], table[ind]) , slope[ind] );
-    tmp = round(L_shl(L_tmp, 3));     /*(lsp[i]-table[ind])*slope[ind])>>12*/
+    tmp = roundd(L_shl(L_tmp, 3));     /*(lsp[i]-table[ind])*slope[ind])>>12*/
     lsf[i] = add(tmp, shl(ind, 8));
   }
   return;
@@ -1015,28 +1011,28 @@ void Weight_Az(  short a[],    short gamma,   short m,     short ap[] )
   fac   = gamma;
   for(i=1; i<m; i++)
   {
-    ap[i] = round( L_mult(a[i], fac) );
-    fac   = round( L_mult(fac, gamma) );
+    ap[i] = roundd( L_mult(a[i], fac) );
+    fac   = roundd( L_mult(fac, gamma) );
   }
-  ap[m] = round( L_mult(a[m], fac) );
+  ap[m] = roundd( L_mult(a[m], fac) );
 
-  return;
+
 }
 
-void Int_qlpc( short lsp_old[],  short lsp_new[],  short Az[]  )
+void Int_qlpc( short lsp_oldd[],  short lsp_new[],  short Az[]  )
 {
   short i;
   short lsp[10];  
 
   for (i = 0; i < 10; i++) {
-    lsp[i] = add(shr(lsp_new[i], 1), shr(lsp_old[i], 1));
+    lsp[i] = add(shr(lsp_new[i], 1), shr(lsp_oldd[i], 1));
   }
 
   Lsp_Az(lsp, Az);              /* Subframe 1 */
 
   Lsp_Az(lsp_new, &Az[11]);    /* Subframe 2 */
 
-  return;
+
 }
 
 void Gain_predict(   short past_qua_en[],    short code[],    short L_subfr,    short *gcode0,    short *exp_gcode0 )
@@ -1124,7 +1120,7 @@ void Syn_filt(  short a[],  short x[],   short y[],   short lg,    short mem[], 
       s = L_msu(s, a[j], yy[-j]);
 
     s = L_shl(s, 3);
-    *yy++ = round(s);
+    *yy++ = roundd(s);
   }
 
   for(i=0; i<lg; i++)
@@ -1155,7 +1151,7 @@ void Residu(  short a[],   short x[],   short y[],   short lg )
       s = L_mac(s, a[j], x[i-j]);
 
     s = L_shl(s, 3);
-    y[i] = round(s);
+    y[i] = roundd(s);
   }
   return;
 }
@@ -1266,7 +1262,7 @@ void Init_Decod_ld8a(void)
   gain_pitch = 0;
 
   Lsp_decw_reset();
- return;
+
 }
 
 
@@ -1371,7 +1367,7 @@ void Decod_ld8a(  short  parm[],   short  synth[],   short  A_t[],    short  *T2
        L_temp = L_mult(exc[i+i_subfr], gain_pitch);
        L_temp = L_mac(L_temp, code[i], gain_code);
        L_temp = L_shl(L_temp, 1);
-       exc[i+i_subfr] = round(L_temp);
+       exc[i+i_subfr] = roundd(L_temp);
     }
 
     Overflow = 0;
@@ -1385,7 +1381,7 @@ void Decod_ld8a(  short  parm[],   short  synth[],   short  A_t[],    short  *T2
     Az += 11;   
   }
   Copy(&old_exc[80], &old_exc[0], 143+11);
-  return;
+
 }
 
 void Decod_ACELP(  short sign,  short index,  short cod[])
@@ -1781,7 +1777,7 @@ short extract_l(int L_var1)
 
 
 
-short round(int L_var1)
+short roundd(int L_var1)
   {
    short var_out;
    int L_arrondi;
@@ -2100,10 +2096,10 @@ int g729a_decode(unsigned char in[], int len, unsigned char out[])
 void g729a_decode_zhr(char filename1[],char filename2[])
 {	
 	int i,  n, ll, len;
-	unsigned int t1,t2,t3,t4;
+//	unsigned int t1,t2,t3,t4;
 	FILE *fp, *fn;
 	char file[256], outfilename[256];
-	unsigned char *in1, *in2,*out, *out1, *out2, se[2];
+	unsigned char *in1, *in2,*out, *out1, *out2;
 	//unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x1f,0x40,0,0,0,0x01}; //0x803e0000, 0x401f0000; //16000 or 8000
 	
     fp= fopen(filename1,"rb");
@@ -2152,8 +2148,8 @@ void g729a_decode_zhr(char filename1[],char filename2[])
 	out1  = (unsigned char*)malloc(ll*20);	 n=g729a_decode(in1, ll,  out1); len = n;
 	fseek(fn, 0,SEEK_END);  ll = ftell(fn);  in2 = (unsigned char *)malloc(ll);   rewind(fn);   i = fread(in2,sizeof(char),ll,fn);fclose(fn);
 	out2  = (unsigned char*)malloc(ll*20);	 n=g729a_decode(in2, ll,  out2); ll=n;	
-	t1=in1[0]+ (in1[1]<<8)+ (in1[2]<<16)+ (in1[3]<<24);  	t2=in1[4]+ (in1[5]<<8)+ (in1[6]<<16)+ (in1[7]<<24);
-	t3=in2[0]+ (in2[1]<<8)+ (in2[2]<<16)+ (in2[3]<<24);	    t4=in2[0]+ (in2[1]<<8)+ (in2[2]<<16)+ (in2[3]<<24);
+//	t1=in1[0]+ (in1[1]<<8)+ (in1[2]<<16)+ (in1[3]<<24);  	t2=in1[4]+ (in1[5]<<8)+ (in1[6]<<16)+ (in1[7]<<24);
+//	t3=in2[0]+ (in2[1]<<8)+ (in2[2]<<16)+ (in2[3]<<24);	    t4=in2[0]+ (in2[1]<<8)+ (in2[2]<<16)+ (in2[3]<<24);
 	//printf("%d %d\n%d %d\n",t1,t2,t3,t4);
 
 	sprintf(file,"%s.paired.wav",filename1);

@@ -38,8 +38,8 @@ void g711a_decode_zhr(char filename1[],  char filename2[])
 	int i , ll ,len, m, n ;
 	FILE *fp, *fn, *outfile;
 	char file[256], outfilename[256];
-	unsigned char *in1, *in2, *out, *out1, *out2, sf[2];
-	unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x1f,0x40,0,0,0,0x01 }; 
+	unsigned char *in1, *in2, *out, *out1, *out2;
+//	unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x1f,0x40,0,0,0,0x01 };
 
 	fp = fopen(filename1 , "rb"); 	fn = fopen(filename2 , "rb");
 	if(fp==NULL && fn==NULL){printf("no file!\n"); return; }
@@ -95,7 +95,7 @@ void g711a_decode_zhr(char filename1[],  char filename2[])
 	//printf("%d %d %d\n",i,len,ll*2);
 	fseek(fn, 0,SEEK_END); ll=ftell(fn); in2=(unsigned char *)malloc(ll); rewind(fn); fread(in2,sizeof(char),ll,fn);fclose(fn); out2=(unsigned char *)malloc(ll*2);
 	//printf("%d %d %d\n",ll,i,ll*2);
-	AU_header[23]=2;	
+//	AU_header[23]=2;
 	n=0; for(i=0; i<len;)
 	{
 		m=in1[i+8]+(in1[i+9]<<8)+(in1[i+10]<<16)+(in1[i+11]<<24); i+=12;

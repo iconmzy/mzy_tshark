@@ -36,7 +36,7 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 	long int ll,len;
 	FILE *fp, *fn, * outfile;
 	char file[256], outfilename[256];
-	unsigned char *in1, *in2, *out1, *out2, *out, sf[2];
+	unsigned char *in1, *in2, *out1, *out2, *out;
 	//unsigned char AU_header[24] = {'.','s','n','d',0,0,0,0x18,0xff,0xff,0xff,0xff,0,0,0,0x03,0,0,0x1f,0x40,0,0,0,0x01 };
 
 	fp = fopen(filename1 , "rb"); 	fn = fopen(filename2 , "rb");
@@ -163,7 +163,7 @@ void wav_to_mp3(char *in_file, char *outfile, int sampleRate, unsigned int chann
 	int i, write;
 	size_t read;
 	short int     pcm_buffer[8192*2], aaa[8192];
-	unsigned char mp3_buffer[8192], se;
+	unsigned char mp3_buffer[8192];
 	FILE *wav = fopen(in_file, "rb");
 	FILE *mp3 = fopen(outfile, "wb");
 
