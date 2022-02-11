@@ -2,14 +2,14 @@
 REGISTRATION_FILE_PATH:/home/ymq/aurora/activate/
 
 #配置是否新增协议JSON
-JSON_ADD_PROTO:0
+JSON_ADD_PROTO:1
 #新增协议JSON路径 不超过255字符
 JSON_ADD_PROTO_PATH:../../newproto/json
 
 #配置是否写入解析文件
 WRITE_IN_FILES_CONFIG:1
 #配置协议解析输出文件的位置 不超过255字节
-EXPORT_PATH:/home/zhr/Desktop/out/
+EXPORT_PATH:/home/ymq/aurora/out/
 #每个文件大致最大行数
 PER_FILES_MAX_LINES:10000
 
@@ -38,8 +38,8 @@ ONLINE_CAPTURE_DATA_DEVICE_NAME:ens33
 #是否读取文件获得捕获数据  注意要和在线捕获互斥  /home/yy/Desktop/Packets/h263-over-rtp.pcap
 READ_PACKET_FROM_FILES_FLAG:1
 #读取文件获取捕获数据路径 推荐绝对路径 不超过255字符 tftp_xlsx_pdf_png.pcap  sip-rtp-g729a.pcap sip-rtp-g722.pcap
-#若选择解析文件夹，建议末尾添加“/”，进行标识             iphttps.cap
-READ_PACKET_FROM_FILES_PATH:/home/zhr/Desktop/g729a.pcap
+#若选择解析文件夹，建议末尾添加“/”，进行标识             iphttps.cap  aaa-smb.pcapng
+READ_PACKET_FROM_FILES_PATH:/home/ymq/aurora/data/xj_test/tls-test.pcap
 
 
 #是否拆分文件解析

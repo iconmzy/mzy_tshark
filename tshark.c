@@ -920,7 +920,7 @@ int main(int argc, char *argv[]) {
                 }
 
                 /*添加注册码功能*/
-                //verify_identity_one(REGISTRATION_FILE_PATH);
+                verify_identity_one(REGISTRATION_FILE_PATH);
                 /*注册码功能结束*/
 
                 /**
@@ -2157,7 +2157,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (cf_name) {
-//        verify_identity_two(REGISTRATION_FILE_PATH);
+        verify_identity_two(REGISTRATION_FILE_PATH);
         if (EDIT_FILES_DISSECT_FLAG) {
             /*这里开始调用edit拆分大型pcap包*/
             g_print("split packet begin\n");
@@ -2290,7 +2290,7 @@ int main(int argc, char *argv[]) {
         else {
             struct stat st;
             stat(cf_name, &st);
-//            verify_identity_two(REGISTRATION_FILE_PATH);
+            verify_identity_two(REGISTRATION_FILE_PATH);
             if (S_ISDIR(st.st_mode)) {
                 /*文件夹*/
                 if (access(cf_name, R_OK) == -1) {
@@ -2303,7 +2303,7 @@ int main(int argc, char *argv[]) {
                     readFileList(cf_name, headOfDirPath);
                     pfileNameNode temp = headOfDirPath->next;
                     gboolean mutex = TRUE;
-//                    verify_identity_two(REGISTRATION_FILE_PATH);
+                    verify_identity_two(REGISTRATION_FILE_PATH);
                     /* 若缺少该判断会导致在输出文件夹不存在时不会自动创建*/
                     if (access(EXPORT_PATH, 0) != 0) {  // type为0表示判断该路径是否存在
                         /*当前协议对应文件夹不存在*/
@@ -2386,7 +2386,7 @@ int main(int argc, char *argv[]) {
             else {
                 //只有一个文件 /*文件名*/
                 /*将缓存的文件名字初始化*/
-//                verify_identity_two(REGISTRATION_FILE_PATH);
+                verify_identity_two(REGISTRATION_FILE_PATH);
                 memset(READ_FILE_PATH, '\0', 256);
                 strcpy(READ_FILE_PATH, cf_name); //文件名含路径
 				char *file_name_t = g_path_get_basename(cf_name); //获取文件名
@@ -2642,7 +2642,7 @@ int main(int argc, char *argv[]) {
     wtap_cleanup();
     free_progdirs();
     dfilter_free(dfcode);
-//    verify_identity_two(REGISTRATION_FILE_PATH);
+    verify_identity_two(REGISTRATION_FILE_PATH);
     return exit_status;
 }
 
