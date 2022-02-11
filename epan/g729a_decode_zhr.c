@@ -2096,10 +2096,10 @@ int g729a_decode(unsigned char in[], int len, unsigned char out[])
 void g729a_decode_zhr(char filename1[],char filename2[])
 {	
 	int i,  n, ll, len;
-	unsigned int t1,t2,t3,t4;
+	//unsigned int t1,t2,t3,t4;
 	FILE *fp, *fn, *outfile ;
 	char file[256], outfilename[256];
-	unsigned char *in1, *in2,*out, *out1, *out2, se[2];
+	unsigned char *in1, *in2,*out, *out1, *out2;
 	
     fp= fopen(filename1,"rb");
 	fn= fopen(filename2,"rb");

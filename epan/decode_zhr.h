@@ -4,7 +4,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#include "lame.h"
+#include "lame/lame.h"
 
 #ifdef __cplusplus
 extern "C" {
