@@ -144,7 +144,7 @@ gint dissect_user_defined(proto_tree *tree, tvbuff_t * tvb, gint offset, guint e
 
     guint64 member_kind;
     dissection_info * info = NULL;
-    guint32 member_id, member_length;
+    guint32 member_id, member_length=0;
 
     if (_info)  { /* first call enters here */
       info = _info;

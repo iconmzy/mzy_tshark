@@ -33,7 +33,7 @@ void g711u_decode(unsigned char out[], unsigned char in[], int len)
 void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 {
 	int i, m, n ;
-	long int ll, ii ,len;
+	long int ll,len;
 	FILE *fp, *fn, * outfile;
 	char file[256], outfilename[256];
 	unsigned char *in1, *in2, *out1, *out2, *out, sf[2];
@@ -54,7 +54,6 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 		if((outfile= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 		pcm_to_wav(out2, n, outfile, 8000, 1);
 
-		fclose(fn);
 		fclose(outfile);
 		free(in2);
 		free(out2);
@@ -75,7 +74,6 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 		if((outfile= fopen(file,"wb"))==NULL){  printf("OPEN FILE %s FAIL\n",file);   return ; }
 		pcm_to_wav(out2, n, outfile, 8000, 1);
 
-		fclose(fp);
 		fclose(outfile);
 		free(in2);
 		free(out2);
