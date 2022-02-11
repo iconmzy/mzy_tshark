@@ -307,7 +307,7 @@ pfinal_Follow_File_Rel pfinal_follow = nullptr; //存放最后统计流的文件
 //h263 stream---------------------- 20210909 yy -----------------------------------end h263|||
 //rtp stream---------------------- 20210909 yy ----------------------rtp stream begin |||
 
-#define MIN_AUDIO_SIZE 4096  //4kb
+#define MIN_AUDIO_SIZE 12288 //12kb
 const char *rtp_payload_type_to_str[128] = {
         "g711U","fs-1016","g721","GSM","g723","DVI4 8k","DVI4 16k","Exp. from Xerox PARC","g711A","g722","16-bit audio, stereo",\
         "16-bit audio, monaural","Qualcomm","CN","MPEG-I/II Audio","g728","DVI4 11k","DVI4 22k","g729","CN(old)","Unassigned","Unassigned","Unassigned",\
