@@ -5,7 +5,7 @@
   "transportProtocol":"udp",
   "filterName":"addpro1-ymq",
 
-  "next_potocol": "",
+
 
   "parts":[
     {
@@ -63,6 +63,7 @@
       "abbName":"time_stamp"
     }
   ],
+  "auto_jump_next_protocol":"",
   "shortName":"ADDPRO1-y",
   "ports":[
     1111,

@@ -7,7 +7,7 @@
 
   "feature": "NULL",
   "feature_offset":0,
-  "next_potocol": "asterix",
+  "auto_jump_next_protocol": "asterix",
   "parts": [
     {
       "name": "descibe",

@@ -7,7 +7,7 @@
 
 	"feature": "ADDPROB",
 	"feature_offset":1,
-	"next_potocol": "",
+	"auto_jump_next_protocol":"",
 
 	"parts": [
 

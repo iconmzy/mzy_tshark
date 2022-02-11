@@ -28,7 +28,7 @@ static gint dissect_exproto0(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0; //偏移变量，记录偏移位置
     exFunIndex = 0;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -48,9 +48,9 @@ static gint dissect_exproto0(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -63,7 +63,7 @@ static gint dissect_exproto1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 1;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -83,9 +83,9 @@ static gint dissect_exproto1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -98,7 +98,7 @@ static gint dissect_exproto2(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 2;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -118,9 +118,9 @@ static gint dissect_exproto2(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -134,7 +134,7 @@ static gint dissect_exproto3(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 3;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -154,9 +154,9 @@ static gint dissect_exproto3(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -169,7 +169,7 @@ static gint dissect_exproto4(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 4;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -189,9 +189,9 @@ static gint dissect_exproto4(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -204,7 +204,7 @@ static gint dissect_exproto5(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 5;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -224,9 +224,9 @@ static gint dissect_exproto5(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -239,7 +239,7 @@ static gint dissect_exproto6(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 6;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
 
@@ -259,9 +259,9 @@ static gint dissect_exproto6(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -274,7 +274,7 @@ static gint dissect_exproto7(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 7;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
     if (tree)
@@ -293,9 +293,9 @@ static gint dissect_exproto7(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -308,7 +308,7 @@ static gint dissect_exproto8(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 8;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
     if (tree)
@@ -327,9 +327,9 @@ static gint dissect_exproto8(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -342,7 +342,7 @@ static gint dissect_exproto9(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
 {
     int offset = 0;
     exFunIndex = 9;
-    char *next_potocol;
+    char *auto_jump_next_protocol;
     col_set_str(pinfo->cinfo, COL_PROTOCOL, allProtoInfo[exFunIndex].protoName); //显示协议
     col_clear(pinfo->cinfo, COL_INFO);
     if (tree)
@@ -361,9 +361,9 @@ static gint dissect_exproto9(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree
         }
     }
     static dissector_handle_t next_proto_handle;
-    next_potocol = allProtoInfo[exFunIndex].next_potocol;
-    if(strcmp(next_potocol, "") != 0){
-        next_proto_handle = find_dissector_add_dependency(next_potocol,intproto[exFunIndex]);
+    auto_jump_next_protocol = allProtoInfo[exFunIndex].auto_jump_next_protocol;
+    if(strcmp(auto_jump_next_protocol, "") != 0){
+        next_proto_handle = find_dissector_add_dependency(auto_jump_next_protocol,intproto[exFunIndex]);
         tvbuff_t* next_tvb;
         next_tvb = tvb_new_subset_length(tvb,offset,-1);
         call_dissector(next_proto_handle,next_tvb,pinfo,tree);
@@ -571,7 +571,7 @@ int GetProtoInfos(struct allExProtocols *exprotocols)
         strcpy(allProtoInfo[i].transportProto, exprotocols->exProto[i].transportProtocol);
         strcpy(allProtoInfo[i].feature, exprotocols->exProto[i].feature);
         allProtoInfo[i].feature_offset = exprotocols->exProto[i].feature_offset;
-        strcpy(allProtoInfo[i].next_potocol, exprotocols->exProto[i].next_potocol);
+        strcpy(allProtoInfo[i].auto_jump_next_protocol, exprotocols->exProto[i].auto_jump_next_protocol);
 
 
         allProtoInfo[i].column = (struct columnInfo *)malloc(num * sizeof(struct columnInfo));
@@ -696,7 +696,7 @@ void proto_reg_handoff_exprotocol(int index)
     transProto_t = allProtoInfo[index].transportProto;
     display_name_t = allProtoInfo[index].shortName;
     internal_name_t = allProtoInfo[index].filterName;
-    write_into_all_diy_proto(allProtoInfo[index].protoName,allProtoInfo[index].next_potocol);
+    write_into_all_diy_proto(allProtoInfo[index].protoName,allProtoInfo[index].auto_jump_next_protocol);
 
     if(strcmp(transProto_t,"udp") == 0){
         strcat(display_name_t," over UDP");

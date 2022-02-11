@@ -9,7 +9,7 @@
 	"totalLength": 100,
 	"feature": "ADDPROA",
 	"feature_offset":0,
-	"next_potocol": "",
+	"auto_jump_next_protocol": "",
 
 	"parts": [
 		{

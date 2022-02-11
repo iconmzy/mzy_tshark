@@ -226,15 +226,15 @@ int ReadHead(JsonReader *reader, exProtocol *proto)
         json_reader_end_member(reader);
     }
 
-    //next_potocol
-    if (!json_reader_read_member(reader, "next_potocol"))
+    //auto_jump_next_protocol
+    if (!json_reader_read_member(reader, "auto_jump_next_protocol"))
     {
-        printf("Read next_potocol  fail!\n");
+        printf("Read auto_jump_next_protocol  fail!\n");
         return 0;
     }
     else
     {
-        strcpy(proto->next_potocol ,json_reader_get_string_value(reader)) ;
+        strcpy(proto->auto_jump_next_protocol ,json_reader_get_string_value(reader)) ;
         json_reader_end_member(reader);
     }
 
