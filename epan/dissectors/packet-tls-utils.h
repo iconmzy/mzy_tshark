@@ -536,6 +536,12 @@ typedef struct {
 
 gint ssl_get_keyex_alg(gint cipher);
 
+typedef struct ssl_code_name_pair{
+	gint number;
+	const gchar *cipher_suite;
+} ssl_code_name_pair_t;
+extern const ssl_code_name_pair_t cipher_suite_indexes[];
+
 void quic_transport_parameter_id_base_custom(gchar *result, guint64 parameter_id);
 
 gboolean ssldecrypt_uat_fld_ip_chk_cb(void*, const char*, unsigned, const void*, const void*, char** err);

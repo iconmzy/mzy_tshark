@@ -188,6 +188,7 @@ void wav_to_mp3(char *in_file, char *outfile, int sampleRate, unsigned int chann
 				for(i=0;i<8192;i++)pcm_buffer[i+8192]=aaa[i];//channel=2;
 			 }
 			write = lame_encode_buffer_interleaved(lame, pcm_buffer, (int)read, mp3_buffer, 8192);
+			if(write == -1) return;
 		}
 		fwrite(mp3_buffer, write, 1, mp3);
 	} while (read != 0);

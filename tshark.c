@@ -296,7 +296,7 @@ static gboolean process_packet_single_pass(capture_file *cf,
 
 static void show_print_file_io_error(void);
 static gboolean write_preamble(capture_file *cf);
-static gboolean write_finale(void);
+
 static void failure_warning_message(const char *msg_format, va_list ap);
 static void open_failure_message(const char *filename, int err,
                                  gboolean for_writing);
@@ -313,21 +313,16 @@ struct string_elem {
     const char *lstr; /* The long string */
 };
 
-static gint
-string_compare(gconstpointer a, gconstpointer b) {
+static gint string_compare(gconstpointer a, gconstpointer b) {
     return strcmp(((const struct string_elem *) a)->sstr,
                   ((const struct string_elem *) b)->sstr);
 }
-
-static void
-string_elem_print(gpointer data) {
+static void string_elem_print(gpointer data) {
     fprintf(stderr, "    %s - %s\n",
             ((struct string_elem *) data)->sstr,
             ((struct string_elem *) data)->lstr);
 }
-
-static void
-list_capture_types(void) {
+static void list_capture_types(void) {
     int i;
     struct string_elem *captypes;
     GSList *list = NULL;
@@ -345,9 +340,7 @@ list_capture_types(void) {
     g_slist_free_full(list, string_elem_print);
     g_free(captypes);
 }
-
-static void
-list_read_capture_types(void) {
+static void list_read_capture_types(void) {
     int i;
     struct string_elem *captypes;
     GSList *list = NULL;
@@ -366,9 +359,7 @@ list_read_capture_types(void) {
     g_slist_free_full(list, string_elem_print);
     g_free(captypes);
 }
-
-static void
-list_export_pdu_taps(void) {
+static void list_export_pdu_taps(void) {
     fprintf(stderr, "Aurora: The available export tap names for the \"-U tap_name\" option are:\n");
     for (GSList *export_pdu_tap_name_list = get_export_pdu_tap_list();
          export_pdu_tap_name_list != NULL;
@@ -376,9 +367,7 @@ list_export_pdu_taps(void) {
         fprintf(stderr, "    %s\n", (const char *) (export_pdu_tap_name_list->data));
     }
 }
-
-static void
-print_usage(FILE *output) {
+static void print_usage(FILE *output) {
     fprintf(output, "\n");
     fprintf(output, "Usage: tshark [options] ...\n");
     fprintf(output, "\n");
@@ -538,9 +527,7 @@ print_usage(FILE *output) {
     fprintf(output, "Note that this can make your system less secure!\n");
 #endif
 }
-
-static void
-glossary_option_help(void) {
+static void glossary_option_help(void) {
     FILE *output;
 
     output = stdout;
@@ -593,8 +580,7 @@ tshark_log_handler(const gchar *log_domain, GLogLevelFlags log_level,
     g_log_default_handler(log_domain, log_level, message, user_data);
 }
 
-static void
-print_current_user(void) {
+static void print_current_user(void) {
     gchar *cur_user, *cur_group;
 
     if (started_with_special_privs()) {
@@ -610,15 +596,11 @@ print_current_user(void) {
         fprintf(stderr, "\n");
     }
 }
-
-static void
-get_tshark_compiled_version_info(GString *str) {
+static void get_tshark_compiled_version_info(GString *str) {
     /* Capture libraries */
     get_compiled_caplibs_version(str);
 }
-
-static void
-get_tshark_runtime_version_info(GString *str) {
+static void get_tshark_runtime_version_info(GString *str) {
 #ifdef HAVE_LIBPCAP
     /* Capture libraries */
     g_string_append(str, ", ");
@@ -628,9 +610,7 @@ get_tshark_runtime_version_info(GString *str) {
     /* stuff used by libwireshark */
     epan_get_runtime_version_info(str);
 }
-
-static void
-about_folders(void) {
+static void about_folders(void) {
     const char *constpath;
     char *path;
     gint i;
@@ -734,7 +714,6 @@ must_do_dissection(dfilter_t *rfcode, dfilter_t *dfcode, gchar *volatile pdu_exp
 }
 
 struct protoInfo *allProtoInfo;
-
 
 int main(int argc, char *argv[]) {
 
@@ -1622,24 +1601,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (PACKET_PROTOCOL_FLAG) {  // 是否组包
-        char t[256] = {0};
-        int len = strlen(PACKET_PROTOCOL_TYPES);
-        int j = 0;
-        for (int i = 0; i < len; ++i) {
-            if (PACKET_PROTOCOL_TYPES[i] == ',') {
-                continue;
-            }
-            t[j++] = PACKET_PROTOCOL_TYPES[i];
-            if (i + 1 == len || PACKET_PROTOCOL_TYPES[i + 1] == ',') {
-                strcat(t, ",");
-                strcat(t, PACKET_PROTOCOL_PATH);
-                if (!eo_tap_opt_add(t)) {
-                    g_print("somthing error in PACKET_PROTOCOL_TYPES and PACKET_PROTOCOL_PATH !\n but go on \n");
-                }
-                memset(t, '\0', 256);
-                j = 0;
-            }
-        }
+		reg_packet_protocol();
     }
     if (WRITE_IN_CONVERSATIONS_FLAG) {  // 是否统计会话信息
         char *arg_t = "conv,tcp";
@@ -2684,8 +2646,6 @@ int main(int argc, char *argv[]) {
     return exit_status;
 }
 
-/*#define USE_BROKEN_G_MAIN_LOOP*/
-
 #ifdef USE_BROKEN_G_MAIN_LOOP
 GMainLoop *loop;
 #else
@@ -3334,7 +3294,7 @@ process_new_idbs(wtap *wth, wtap_dumper *pdh, int *err, gchar **err_info) {
 }
 
 static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper *pdh,
-                                                  int unuse1, gint64 unuse2,
+                                                  int unuse1 _U_, gint64 unuse2 _U_,
                                                   int *err, gchar **err_info,
                                                   volatile guint32 *err_framenum) {
     wtap_rec 	rec;
@@ -3414,8 +3374,8 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
 }
 
 static process_file_status_t
-process_cap_file(capture_file *cf, char *unuse1, int unuse2,
-                 gboolean unuse3, int max_packet_count, gint64 max_byte_count) {
+process_cap_file(capture_file *cf, char *unuse1 _U_, int unuse2 _U_,
+                 gboolean unuse3 _U_, int max_packet_count, gint64 max_byte_count) {
 
     process_file_status_t status = PROCESS_FILE_SUCCEEDED;
     wtap_dumper *pdh = NULL;
@@ -3424,17 +3384,8 @@ process_cap_file(capture_file *cf, char *unuse1, int unuse2,
     gchar *err_info = NULL;
     volatile guint32 err_framenum;
     wtap_dump_params params = WTAP_DUMP_PARAMS_INIT;
-    pass_status_t second_pass_status;
-
-    second_pass_status = process_cap_file_single_pass(cf, pdh,
-                                                      max_packet_count,
-                                                      max_byte_count,
-                                                      &err, &err_info,
-                                                      &err_framenum);
-
-    if (second_pass_status != PASS_SUCCEEDED) {
-        g_print("process_cap_file_single_pass error!\n,current fileName is :%s\n", cf->filename);
-    }
+    process_cap_file_single_pass(cf, pdh, max_packet_count, max_byte_count,
+								 &err, &err_info, &err_framenum);
 
     wtap_close(cf->provider.wth);
     cf->provider.wth = NULL;
@@ -3457,7 +3408,7 @@ int ALL_PACKET_COUNT = 0;  // 全局变量统计总共处理了多少个packet�
  */
 static gboolean
 process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
-                           wtap_rec *rec, Buffer *buf, guint unuse1) {
+                           wtap_rec *rec, Buffer *buf, guint unuse1 _U_) {
     frame_data fdata;
     column_info *cinfo = NULL;
     gboolean passed;
@@ -3554,37 +3505,6 @@ write_preamble(capture_file *cf) {
     }
 }
 
-static gboolean
-write_finale(void) {
-    switch (output_action) {
-
-        case WRITE_TEXT:
-            return print_finale(print_stream);
-
-        case WRITE_XML:
-            if (print_details)
-                write_pdml_finale(stdout);
-            else
-                write_psml_finale(stdout);
-            return !ferror(stdout);
-
-        case WRITE_FIELDS:
-            write_fields_finale(output_fields, stdout);
-            return !ferror(stdout);
-
-        case WRITE_JSON:
-        case WRITE_JSON_RAW:
-            write_json_finale(&jdumper);
-            return !ferror(stdout);
-
-        case WRITE_EK:
-            return TRUE;
-
-        default:
-            g_assert_not_reached();
-            return FALSE;
-    }
-}
 
 /**
  * 关闭打开的pcap文件
@@ -3815,3 +3735,33 @@ failure_message_cont(const char *msg_format, va_list ap) {
  * vi: set shiftwidth=2 tabstop=8 expandtab:
  * :indentSize=2:tabSize=8:noTabs=true:
  */
+void reg_packet_protocol(void){
+	const char * origin_types[]={"imf", "dicom", "http", "smb", "tftp"};
+	gchar ** splitted;
+	splitted = g_strsplit(PACKET_PROTOCOL_TYPES, ",", 20);
+	for(int i=0; splitted[i] != NULL; i++){
+		gboolean is_tap_opt = FALSE;
+		for(int j=0; j<5; j++){
+			if(strcmp(splitted[i], origin_types[j])==0){
+				is_tap_opt = TRUE;
+				break;
+			}
+		}
+		// reg origin_types
+		if(is_tap_opt){
+			char t[1024] = {0};
+			strcpy(t, splitted[i]);
+			strcat(t, ",");
+			strcat(t, PACKET_PROTOCOL_PATH);
+			if (!eo_tap_opt_add(t)) {
+				g_print("somthing error in PACKET_PROTOCOL_TYPES and PACKET_PROTOCOL_PATH !\n but go on \n");
+			}
+		}
+		else{
+			if(strcmp(splitted[i], "ftp")==0){
+				g_hash_table_insert(reg_ext_packet_protocols, "ftp-data", (gpointer) TRUE);
+			}
+			g_hash_table_insert(reg_ext_packet_protocols, splitted[i], (gpointer) TRUE);
+		}
+	}
+}

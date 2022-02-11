@@ -562,10 +562,8 @@ WS_DLL_PUBLIC dissector_handle_t find_dissector_add_dependency(const char *name,
 WS_DLL_PUBLIC const char *dissector_handle_get_dissector_name(const dissector_handle_t handle);
 
 /** Create an anonymous handle for a dissector. */
-WS_DLL_PUBLIC dissector_handle_t create_dissector_handle(dissector_t dissector,
-    const int proto);
-WS_DLL_PUBLIC dissector_handle_t create_dissector_handle_with_name(dissector_t dissector,
-    const int proto, const char* name);
+WS_DLL_PUBLIC dissector_handle_t create_dissector_handle(dissector_t dissector, const int proto);
+WS_DLL_PUBLIC dissector_handle_t create_dissector_handle_with_name(dissector_t dissector, const int proto, const char* name);
 
 /** Call a dissector through a handle and if no dissector was found
  * pass it over to the "data" dissector instead.

@@ -177,6 +177,13 @@ dissect_pop(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void* data _U_)
   } else {
     is_request = FALSE;
     is_continuation = response_is_continuation(line);
+    if (data_val->msg_request && tvb_reported_length_remaining(tvb, linelen) > 0) {
+      // 对 RETR 或 TOP 指令响应的第一帧
+      is_continuation = TRUE;
+      data_val->msg_read_len = 0;
+      data_val->msg_tot_len = 0;
+      sscanf(line, "%*s %u %*s", &data_val->msg_tot_len);
+    }
   }
 
   /*
@@ -186,9 +193,17 @@ dissect_pop(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void* data _U_)
    * Otherwise, just call it a continuation.
    */
   if (is_continuation) {
-    length_remaining = tvb_reported_length_remaining(tvb, offset);
-    col_add_fstr(pinfo->cinfo, COL_INFO, "S: DATA fragment, %d byte%s",
-                   length_remaining, plurality (length_remaining, "", "s"));
+      if (data_val->msg_request) {
+          length_remaining = tvb_reported_length_remaining(tvb, linelen);
+          col_add_fstr(pinfo->cinfo, COL_INFO, "S: %s, DATA fragment, %d byte%s",
+                       format_text(wmem_packet_scope(), line, linelen),
+                       length_remaining, plurality (length_remaining, "", "s"));
+      }
+      else {
+          length_remaining = tvb_reported_length_remaining(tvb, offset);
+          col_add_fstr(pinfo->cinfo, COL_INFO, "S: DATA fragment, %d byte%s",
+                       length_remaining, plurality (length_remaining, "", "s"));
+      }
   }
   else
     col_add_fstr(pinfo->cinfo, COL_INFO, "%s: %s", is_request ? "C" : "S",
@@ -202,8 +217,10 @@ dissect_pop(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void* data _U_)
     if (pop_data_desegment) {
 
       if (!frame_data_p) {
-
-        data_val->msg_read_len += tvb_reported_length(tvb);
+          if (data_val->msg_request)
+              data_val->msg_read_len += tvb_reported_length_remaining(tvb, linelen);
+          else
+              data_val->msg_read_len += tvb_reported_length(tvb);
 
         frame_data_p = wmem_new(wmem_file_scope(), struct pop_proto_data);
 
@@ -213,17 +230,32 @@ dissect_pop(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void* data _U_)
         p_add_proto_data(wmem_file_scope(), pinfo, proto_pop, 0, frame_data_p);
       }
 
-      frag_msg = fragment_add_seq_next(&pop_data_reassembly_table, tvb, 0,
-                                       pinfo,
-                                       frame_data_p->conversation_id,
-                                       NULL,
-                                       tvb_reported_length(tvb),
-                                       frame_data_p->more_frags);
+        if (data_val->msg_request) {
+            frag_msg = fragment_add_seq_next(&pop_data_reassembly_table, tvb, linelen,
+                                             pinfo,
+                                             frame_data_p->conversation_id,
+                                             NULL,
+                                             tvb_reported_length_remaining(tvb, linelen),
+                                             frame_data_p->more_frags);
+            offset = linelen;
+            next_tvb = process_reassembled_data(tvb, offset, pinfo,
+                                                "Reassembled DATA",
+                                                frag_msg, &pop_data_frag_items,
+                                                NULL, pop_tree);
+            data_val->msg_request = FALSE;
+        } else {
+            frag_msg = fragment_add_seq_next(&pop_data_reassembly_table, tvb, 0,
+                                             pinfo,
+                                             frame_data_p->conversation_id,
+                                             NULL,
+                                             tvb_reported_length(tvb),
+                                             frame_data_p->more_frags);
 
-      next_tvb = process_reassembled_data(tvb, offset, pinfo,
-                                          "Reassembled DATA",
-                                          frag_msg, &pop_data_frag_items,
-                                          NULL, pop_tree);
+            next_tvb = process_reassembled_data(tvb, offset, pinfo,
+                                                "Reassembled DATA",
+                                                frag_msg, &pop_data_frag_items,
+                                                NULL, pop_tree);
+        }
 
       if (next_tvb) {
 
