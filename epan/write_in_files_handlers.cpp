@@ -25,7 +25,6 @@
 #include <cstdio>
 #include <mutex>
 #include "curl/curl.h"
-#include "decode_zhr.h"
 #include <epan/export_object.h>
 #include <dissectors/packet-tls-utils.h>
 
@@ -63,6 +62,8 @@ static special_field_value regist_speical_filed[] = {
 };
 static bool get_tls_handshake_certificate(cJSON *&, proto_node *&);
 GHashTable  * reg_ext_packet_protocols  =  g_hash_table_new(g_str_hash, g_str_equal);
+static void export_result_txt(const char * protocol, void * data);
+
 
 static FILE *conversation_Handle_File = nullptr;
 std::queue< proto_node* > que; //全局node节点队列
@@ -278,6 +279,7 @@ struct comFiveEleContent{ //通信五元组内容及其他信息
 	unsigned int frame_time; // 时间戳整数形式
     unsigned int protocol_suffix_type{}; //子协议号,[0-127]
     int status{};
+    char pcap_name[1024];
 };
 std::vector<struct comFiveEleContent> final_Follow_Write_Need; //存放所有最后需要输出流的通信五元组及其他信息,
 
@@ -333,9 +335,13 @@ typedef struct _rtpTotalBufferContent{ //
     unsigned int time_begin{};
     unsigned int time_end{};
     unsigned int last_record_time{0};
+	guint32 frame_id;
     FILE *fp{};
     std::string fp_path{};
+	std::string filename{};
     gunit8Array data{};
+    char pcap_name[1024];
+    rtp_voice_match_e *ve;
 }rtpTotalBufferContent;
 
 std::map<std::string ,rtpTotalBufferContent> rtpTotalBuffer;
@@ -349,6 +355,10 @@ typedef struct _rtpMatchingInfo{
     unsigned int time_end{};
     unsigned int last_record_time{0};
     std::string fp_path{};
+	guint32 frame_id;
+	char pcap_name[1024];
+    rtp_voice_match_e *ve;
+	guint32 payloadlen;
 }rtpMatchingInfo;
 std::vector<rtpMatchingInfo> rtpMachingVec{};
 std::mutex rtp_mtx, ftp_mtx;
@@ -447,6 +457,8 @@ typedef struct _ftpTotalBufferContent{ //
     FILE *fp{};
     std::string fp_path{};
     gunit8Array data{};
+
+    char pcap_name[512];
 }ftpTotalBufferContent;
 std::map<std::string ,ftpTotalBufferContent> ftpTotalBuffer;
 //ftp ftp-data stream---------------------- 20220125 ymq ---------------------- ftp stream end |||
@@ -463,7 +475,7 @@ gboolean packetProtoAlready = false;
 
 
 //根据payloadType调用解码器//
-void call_decode_by_i(int payloadType_i,char* it_fp_path_t,char* info_fp_path_t);
+void call_decode_by_i(int payloadType_i,char* it_fp_path_t,char* info_fp_path_t, rtp_voice_match_e* ve);
 
 //并发处理流数据的函数入口。
 void do_handle_strem(gpointer str,gpointer data);
@@ -1112,6 +1124,7 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
     auto *c5e = new comFiveEleContent(); //存放通信五元组
     comSevenStackContent s7e;// 会话七元组
     c5e->frame_id = edt->pi.num;
+	strcpy(c5e->pcap_name, READ_FILE_PATH);
 
     int stack_node_layer = 0;
     while (stack_node_t != nullptr and ++stack_node_layer < 11) {
@@ -1448,13 +1461,14 @@ gboolean dissect_edt_into_files(epan_dissect_t *edt) {
 
  * @return
  */
-gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path, export_object_entry_t *entry){
+gboolean write_Export_result(const char* ex_name,char * pcap_name , export_object_entry_t *entry){
 
     char ex_resulty_filepath_t[MAXWRITEFILELENGTH] = {0};
-    std::string export_path_t = result_path;
-
+    //std::string export_path_t = RESULT_PATH;
     //此处截断后七个字符在去除/export，在上一级输出//
-    std::string export_result_path_t = export_path_t.substr(0,export_path_t.length()-7);
+    //std::string export_result_path_t = export_path_t.substr(0,export_path_t.length()-7);
+
+	std::string export_result_path_t = RESULT_PATH;
     std::string filepath_t_str =  export_result_path_t + "export-result_" + global_time_str +".txt";
 
     //global_time_str
@@ -1475,9 +1489,7 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path, 
     cJSON_AddStringToObject(write_export_origin_cJson, "filename", entry->filename);
     cJSON_AddNumberToObject(write_export_origin_cJson, "filesize", entry->payload_len);
 
-
     write_ex_origin_stream = cJSON_Print(write_export_origin_cJson);
-
     if((kafkaParams_ymq.status == KAFKA_PRODUCER || kafkaParams_ymq.status == KAFKA_PRODUCER_CONSUMER) && WRITE_IN_KAFKA_CONFIG == 1){
         const char * data = cJSON_Print(write_export_origin_cJson);
         const char * key = "export_result";
@@ -1494,8 +1506,6 @@ gboolean write_Export_result(char* ex_name,char * pcap_name ,char* result_path, 
     write_export_origin_cJson = cJSON_CreateObject();
     /*初始化部分要用到的 json对象 ----end*/
 
-/*    fprintf(fp_t->fp,"%s\t",ex_name);
-    fprintf(fp_t->fp,"%s\n",pcap_name);*/
     fclose(fp_t->fp);
     return true;
 }
@@ -1614,9 +1624,14 @@ void rtpVoiceMatching(rtpTotalBufferContent &info){
             }
             char info_fp_path_t[256];
             char it_fp_path_t[256];
-            strcpy(it_fp_path_t,it->fp_path.c_str());
-            strcpy(info_fp_path_t,info.fp_path.c_str());
-            call_decode_by_i(payloadType_i,it_fp_path_t,info_fp_path_t);
+
+			rtp_voice_match_e ve = {0, {0}, {0}, {0}, {0}};
+            strcpy(it_fp_path_t, it->fp_path.c_str());
+            strcpy(info_fp_path_t, info.fp_path.c_str());
+            call_decode_by_i(payloadType_i, it_fp_path_t, info_fp_path_t, &ve);
+            info.ve = &ve;
+
+			export_result_txt("rtp", &info);
             //找到对家的两个文件进行合并解码后，在vector缓存区中删除该对家//
             rtpMachingVec.erase(it);
             return;
@@ -1633,6 +1648,10 @@ void rtpVoiceMatching(rtpTotalBufferContent &info){
     temp.sip = info.sip;
     temp.dip = info.dip;
     temp.rtpPayloadType = info.rtpPayloadType;
+    temp.frame_id = info.frame_id;
+	strcpy(temp.pcap_name, info.pcap_name);
+	temp.payloadlen = info.data.get_len();
+
     rtpMachingVec.push_back(temp);
 }
 
@@ -1641,21 +1660,21 @@ void rtpVoiceMatching(rtpTotalBufferContent &info){
  * @param i
  * @param it_fp_path_t info_fp_path_t
  */
-void call_decode_by_i(int payloadType_i,char* it_fp_path_t,char* info_fp_path_t){
+void call_decode_by_i(int payloadType_i,char* it_fp_path_t,char* info_fp_path_t, rtp_voice_match_e* voice_e){
     switch (payloadType_i){
         //根据patloadType调用相应call_zhr_handler//
         case 0:
-            g711u_decode_zhr(it_fp_path_t,info_fp_path_t);
+            g711u_decode_zhr(it_fp_path_t,info_fp_path_t, voice_e);
             break;
 
         case 8:
-            g711a_decode_zhr(it_fp_path_t,info_fp_path_t);
+            g711a_decode_zhr(it_fp_path_t,info_fp_path_t, voice_e);
             break;
         case 9:
-            g722_decode_zhr(it_fp_path_t,info_fp_path_t);
+            g722_decode_zhr(it_fp_path_t,info_fp_path_t, voice_e);
             break;
         case 18:
-            g729a_decode_zhr(it_fp_path_t,info_fp_path_t);
+            g729a_decode_zhr(it_fp_path_t,info_fp_path_t,voice_e);
             break;
         default:
             break;
@@ -1673,10 +1692,10 @@ void do_audio_paired(const std::string& index_str, unsigned int end_t, bool mute
             if (fwrite(it->second.data.get_data(), sizeof(guint8), len, it->second.fp) != len) {
                 g_print("rtp write error ! -> %s\n", index_str.c_str());
             }
-            it->second.data.clear();
-            fclose(it->second.fp); // 写完就关闭掉
             //判断话音是否要配对
             rtpVoiceMatching(it->second);
+			it->second.data.clear();
+			fclose(it->second.fp); // 写完就关闭掉
         } else{
             if (mutex){
                 fclose(it->second.fp);
@@ -1749,6 +1768,9 @@ void do_handle_strem(gpointer str,gpointer data __U__){
                     return;
                 }
                 temp.fp_path = file_name_t;
+                temp.filename = fn_str_t;
+				strcpy(temp.pcap_name, t->c5e->pcap_name);
+				temp.frame_id = t->c5e->frame_id;
                 temp.last_record_time = time_now.tv_sec;
                 //确定rtp 输出的文件名 end
                 temp.data.push_back((guint8 *)&t->c5e->frame_time,8);
@@ -1797,10 +1819,13 @@ void do_handle_strem(gpointer str,gpointer data __U__){
 			temp.last_frame_id = t->c5e->frame_id;
 
 			if(strlen(t->ftp_content->command) == 0 || strlen(t->ftp_content->filename) == 0 ||
-					std::find(trans_commnd.begin(), trans_commnd.end(), t->ftp_content->command) == trans_commnd.end()
+					std::find(trans_commnd.begin(),
+							  trans_commnd.end(), t->ftp_content->command) == trans_commnd.end()
 			){
 				return;
 			}
+			temp.file_name = t->ftp_content->filename;
+			strcpy(temp.pcap_name, t->c5e->pcap_name);
 			//确定ftp 输出的文件名 begin
 			char file_name_t[512] = {0};
 			sprintf(file_name_t, "%s", PACKET_PROTOCOL_PATH);
@@ -1834,31 +1859,75 @@ void do_handle_strem(gpointer str,gpointer data __U__){
 
 		// ftp-data end
 		std::vector<std::string> tmp_keys{};
-		for(auto &it: ftpTotalBuffer){
-			if(std::abs(time_now.tv_sec - it.second.last_record_time) > 600 || //wait 600s
-				t->c5e->frame_id - it.second.last_frame_id > 100)   // interval 100 frames
-				tmp_keys.push_back(it.first);
+		for(auto &itt: ftpTotalBuffer){
+			if(std::abs(time_now.tv_sec - itt.second.last_record_time) > 600 || //wait 600s
+				t->c5e->frame_id - itt.second.last_frame_id > 100)   // interval 100 frames
+				tmp_keys.push_back(itt.first);
 		}
 		for(auto &k: tmp_keys){
-			auto it = ftpTotalBuffer.find(k);
-			unsigned long len = it->second.data.get_len();
-			if (fwrite(it->second.data.get_data(), sizeof(guint8), len, it->second.fp) != len) {
-				g_print("ftp write error ! -> %s\n", it->second.file_name.c_str());
+			auto itk = ftpTotalBuffer.find(k);
+			unsigned long len = itk->second.data.get_len();
+			if (fwrite(itk->second.data.get_data(), sizeof(guint8), len, itk->second.fp) != len) {
+				g_print("ftp write error ! -> %s\n", itk->second.file_name.c_str());
 			}
+
+			// export result txt
+			export_result_txt("ftp", &itk->second);
 			ftp_mtx.lock();
-			it->second.data.clear();
-			fclose(it->second.fp); // 写完就关闭掉
-			ftpTotalBuffer.erase(it);
+			itk->second.data.clear();
+			fclose(itk->second.fp); // 写完就关闭掉
+			ftpTotalBuffer.erase(itk);
 			ftp_mtx.unlock();
+
 		} //wait 600s
-
-
 		if(t->ftp_content) g_free(t->ftp_content);
 	}
     //最后才释放通信五元组内容。
     if(t->c5e) delete(t->c5e);
     //传入的参数空间释放。
     if(t) g_free(t);
+
+}
+
+static void export_result_txt(const char * protocol, void * data){
+	if(strcmp(protocol, "ftp")==0){
+		auto * it= (ftpTotalBufferContent *)data;
+		// export result txt
+		auto *entry_ex = (export_object_entry_t *)g_malloc0(sizeof(export_object_entry_t));
+		//(export_object_entry_t *) malloc(sizeof(export_object_entry_t));
+		entry_ex->pkt_num = it->first_frame_id;
+		entry_ex->filename = (gchar*) malloc(512);
+		strcpy(entry_ex->filename, it->file_name.c_str());
+		entry_ex->payload_len = it->data.get_len();
+
+		write_Export_result(it->fp_path.c_str(), it->pcap_name, entry_ex);
+		free(entry_ex->filename);
+		free(entry_ex);
+	}
+
+	if(strcmp(protocol, "rtp")==0){
+		auto * it= (rtpTotalBufferContent*)data;
+
+		// export result txt
+		auto *entry_ex = (export_object_entry_t *)g_malloc0(sizeof(export_object_entry_t));
+		//(export_object_entry_t *) malloc(sizeof(export_object_entry_t));
+		entry_ex->pkt_num = it->frame_id;
+		entry_ex->filename = (gchar*) malloc(512);
+		strcpy(entry_ex->filename, it->fp_path.c_str());
+		entry_ex->payload_len = it->data.get_len();
+
+		if(it->ve){
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_one_part", strlen(it->ve->one_part)>0 ? it->ve->one_part : "");
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_opposite_part", strlen(it->ve->opposite_part)>0 ? it->ve->opposite_part : "");
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_paired", my_itoa(it->ve->paired));
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_mp3_name", strlen(it->ve->mp3_name)>0 ? it->ve->mp3_name : "");
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_wav_name", strlen(it->ve->wav_name) ? it->ve->wav_name : "");
+		}
+
+		write_Export_result(it->fp_path.c_str(), it->pcap_name, entry_ex);
+		free(entry_ex->filename);
+		free(entry_ex);
+	}
 
 }
 /**
@@ -2426,9 +2495,10 @@ void followConnectFiveEleClear(){
             if (fwrite(it.second.data.get_data(), sizeof(guint8), len, it.second.fp) != len) {
                 g_print("rtp write error ! -> %s\n", it.second.fp_path.c_str());
             }
-            it.second.data.clear();
-            fclose(it.second.fp); // 写完就关闭掉
+
             rtpVoiceMatching(it.second);//判断话音是否要配对
+			it.second.data.clear();
+			fclose(it.second.fp); // 写完就关闭掉
         }
         else{
             fclose(it.second.fp);
@@ -2448,7 +2518,30 @@ void followConnectFiveEleClear(){
         }
         char single_fp_path_t[256];
         strcpy(single_fp_path_t,it->fp_path.c_str());
-        call_decode_by_i(payloadType_i,single_fp_path_t,nullptr);//对没有对家的文件进行解码//
+
+        rtp_voice_match_e ve = {0, {0}, {0}, {0}, {0}};
+        call_decode_by_i(payloadType_i,single_fp_path_t,nullptr,&ve);//对没有对家的文件进行解码//
+		it->ve = &ve;
+
+		// export result txt
+		auto *entry_ex = (export_object_entry_t *)g_malloc0(sizeof(export_object_entry_t));
+		//(export_object_entry_t *) malloc(sizeof(export_object_entry_t));
+		entry_ex->pkt_num = it->frame_id;
+		entry_ex->filename = (gchar*) malloc(512);
+		strcpy(entry_ex->filename, it->fp_path.c_str());
+		entry_ex->payload_len = it->payloadlen;
+
+		if(it->ve){
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_one_part", strlen(it->ve->one_part)>0 ? it->ve->one_part : "");
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_opposite_part", strlen(it->ve->opposite_part)>0 ? it->ve->opposite_part : "");
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_paired", my_itoa(it->ve->paired));
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_mp3_name", strlen(it->ve->mp3_name)>0 ? it->ve->mp3_name : "");
+			cJSON_AddStringToObject(write_export_origin_cJson, "audio_wav_name", strlen(it->ve->wav_name) ? it->ve->wav_name : "");
+		}
+
+		write_Export_result(it->fp_path.c_str(), it->pcap_name, entry_ex);
+		free(entry_ex->filename);
+		free(entry_ex);
     }
     rtpMachingVec.clear();
 
@@ -2457,6 +2550,9 @@ void followConnectFiveEleClear(){
 		if (fwrite(it.second.data.get_data(), sizeof(guint8), len, it.second.fp) != len) {
 			g_print("ftp write error ! -> %s\n", it.second.fp_path.c_str());
 		}
+
+		// export result txt
+		export_result_txt("ftp", &it.second);
 		it.second.data.clear();
 		if(it.second.fp) fclose(it.second.fp); // 写完就关闭掉
     }

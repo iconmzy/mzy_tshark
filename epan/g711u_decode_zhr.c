@@ -30,7 +30,7 @@ void g711u_decode(unsigned char out[], unsigned char in[], int len)
 	for(i=0;i<len;i++){ j=uuu_g711u(in[i]); out[2*i]=j>>8&0xff; out[2*i+1]=j&0xff;}
 }
 
-void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
+void g711u_decode_zhr(char filename1[],  char filename2[], rtp_voice_match_e* voice_e)   // 8000  1
 {
 	int i, m, n ;
 	long int ll,len;
@@ -57,6 +57,12 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 		free(out2);
 		sprintf(outfilename, "%s.single.mp3",filename2);
 		wav_to_mp3(file, outfilename,8000,1);
+
+		voice_e->paired = 0;
+		strcpy(voice_e->one_part, filename2);
+		strcpy(voice_e->mp3_name, outfilename);
+		strcpy(voice_e->wav_name, file);
+
 		return;
 	}
 	if(fn==NULL)
@@ -76,6 +82,12 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 		free(out2);
 		sprintf(outfilename, "%s.single.mp3",filename1);
 		wav_to_mp3(file, outfilename,8000,1);
+
+		voice_e->paired = 0;
+		strcpy(voice_e->one_part, filename1);
+		strcpy(voice_e->mp3_name, outfilename);
+		strcpy(voice_e->wav_name, file);
+
 		return;
 	}
 
@@ -120,6 +132,12 @@ void g711u_decode_zhr(char filename1[],  char filename2[])   // 8000  1
 	free(out2);
 	sprintf(outfilename, "%s.paired.mp3",filename1);
 	wav_to_mp3(file, outfilename,8000,2);
+
+	voice_e->paired = 1;
+	strcpy(voice_e->one_part, filename1);
+	strcpy(voice_e->opposite_part, filename2);
+	strcpy(voice_e->mp3_name, outfilename);
+	strcpy(voice_e->wav_name, file);
 
 }
 

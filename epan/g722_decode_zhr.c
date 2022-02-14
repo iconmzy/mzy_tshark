@@ -285,7 +285,7 @@ void main()
 
 */
 
-void g722_decode_zhr(char filename1[],  char filename2[])
+void g722_decode_zhr(char filename1[],  char filename2[],rtp_voice_match_e* voice_e)
 {
 	int i, j , ll ,len, m, n ;
 	FILE *fp, *fn, *outfile;
@@ -328,6 +328,11 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 		sprintf(outfilename, "%s.single.mp3",filename2);
 		wav_to_mp3(file, outfilename,16000,1);
 
+		voice_e->paired = 0;
+		strcpy(voice_e->one_part, filename2);
+		strcpy(voice_e->mp3_name, outfilename);
+		strcpy(voice_e->wav_name, file);
+
 		return;
 	}
 	if(fn==NULL)
@@ -353,6 +358,12 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 
 		sprintf(outfilename, "%s.single.mp3", filename1);
 		wav_to_mp3(file, outfilename,16000,1);
+
+		voice_e->paired = 0;
+		strcpy(voice_e->one_part, filename1);
+		strcpy(voice_e->mp3_name, outfilename);
+		strcpy(voice_e->wav_name, file);
+
 		return;		
 	}
 
@@ -404,6 +415,12 @@ void g722_decode_zhr(char filename1[],  char filename2[])
 
 	sprintf(outfilename, "%s.paired.mp3",filename1);
 	wav_to_mp3(file, outfilename,16000,2);
+
+	voice_e->paired = 1;
+	strcpy(voice_e->one_part, filename1);
+	strcpy(voice_e->opposite_part, filename2);
+	strcpy(voice_e->mp3_name, outfilename);
+	strcpy(voice_e->wav_name, file);
 
 }
 
