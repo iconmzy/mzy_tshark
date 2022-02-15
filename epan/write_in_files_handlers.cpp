@@ -39,10 +39,11 @@
 /*即将写进文件的协议*/
 static std::string write_in_files_proto;
 std::list<std::string> lastLayerProtocolFilterList = {
-        "communityid","ftp.current-working-directory","xml","json","_ws.malformed","smb2.fsctl.wait.name", "mswsp.msg"\
-        ,"tcp.segments","urlencoded-form","data-text-lines","media","_ws.short","_ws.unreassembled","_ws.short","_ws.unreassembled"\
-        ,"ftp-data.current-working-directory","dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","ftp-data.command-frame","dcerpc.cn_deseg_req"\
-        ,"dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str"
+		"communityid","ftp.current-working-directory","xml","json","_ws.malformed","smb2.fsctl.wait.name", "mswsp.msg",
+		"tcp.segments","urlencoded-form","data-text-lines","media","_ws.short","_ws.unreassembled","_ws.short","_ws.unreassembled",
+		"dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","dcerpc.cn_deseg_req",
+		"dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str",
+		"ftp-data.setup-frame","ftp-data.setup-method","ftp-data.command","ftp-data.command-frame","ftp-data.current-working-directory", "ftp_current-working-directory"
 };
 
 std::list<std::string> special_not_leafNode = {
