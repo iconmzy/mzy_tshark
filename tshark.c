@@ -3349,7 +3349,7 @@ static pass_status_t process_cap_file_single_pass(capture_file *cf, wtap_dumper 
         reset_epan_mem(cf, edt, create_proto_tree, print_packet_info && print_details);
         // edt = epan_dissect_new(cf->epan, create_proto_tree, print_packet_info && print_details);
         if (process_packet_single_pass(cf, edt, data_offset, &rec, &buf, tap_flags)) {
-            /* Either there's no read filtering or this packet passed the filter, so,
+        	/* Either there's no read filtering or this packet passed the filter, so,
              * if we're writing to a capture file, write this packet out. */
             if (pdh != NULL) {
                 if (!wtap_dump(pdh, &rec, ws_buffer_start_ptr(&buf), err, err_info)) {
@@ -3435,9 +3435,8 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
 
         /* This is the first and only pass, so prime the epan_dissect_t with the hfids postdissectors want on the first pass. */
         prime_epan_dissect_with_postdissector_wanted_hfids(edt);
+        frame_data_set_before_dissect(&fdata, &cf->elapsed_time, &cf->provider.ref, cf->provider.prev_dis);
 
-        frame_data_set_before_dissect(&fdata, &cf->elapsed_time,
-                                      &cf->provider.ref, cf->provider.prev_dis);
         if (cf->provider.ref == &fdata) {
             ref_frame = fdata;
             cf->provider.ref = &ref_frame;

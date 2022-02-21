@@ -28,7 +28,6 @@
 #include <epan/export_object.h>
 #include <dissectors/packet-tls-utils.h>
 
-
 #define __U__ __attribute__((unused))
 
 /*即将写进文件的协议*/
@@ -52,7 +51,7 @@ typedef struct {
     bool (*special_field_cb)(proto_node *node, char* ret);
 } special_field_value;
 
-static bool need_special_field(const char* ,proto_node *, char*);
+static bool need_special_field(const char* ,proto_node *, char*, std::string &);
 static bool get_isis_lsp_ip_reachability_ipv4_prefix_mask(proto_node *, char*);
 static bool get_tls_handshake_ciphersuite(proto_node *, char*);
 
@@ -635,6 +634,24 @@ inline void stringReplaceByStr(std::string &dstr,std::string const &rs,std::stri
         n_t = kmp(dstr,rs);
     }
 }
+
+/* 编写函数：
+ * string& replace_all (string& src, const string& old_value, const string& new_value);
+ * 参数：源字符串src    被替换的子串old_value    替换的子串new_value
+ *
+ * 功能：将 源串src 中 子串old_value 全部被替换为 new_value
+ */
+std::string& replace_all(std::string& src, const std::string& old_value, const std::string& new_value) {
+	// 每次重新定位起始位置，防止上轮替换后的字符串形成新的old_value
+	for (std::string::size_type pos(0); pos != std::string::npos; pos += new_value.length()) {
+		if ((pos = src.find(old_value, pos)) != std::string::npos) {
+			src.replace(pos, old_value.length(), new_value);
+		}
+		else break;
+	}
+	return src;
+}
+
 /**
  * 返回指向对应协议名的结构体指针 为找到返回NULL
  * @param head  头结点
@@ -965,14 +982,14 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t, proto_node *&temp, struct t
         return false;
     }
 
-    std::string _key_str = gotStrNameByStrName(key_str);
-    if(_key_str == "-1") return false;
+	std::string _key_str = gotStrNameByStrName(key_str);
+	if(_key_str == "-1") return false;
 
     //获取value
     int bufferlen = (temp->finfo->length *3 +1)>100?(temp->finfo->length *3 +1):1000;
 	auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
 
-    if(!need_special_field(temp->finfo->hfinfo->abbrev, temp, value_t)){
+    if(!need_special_field(temp->finfo->hfinfo->abbrev, temp, value_t, _key_str)){
         yy_proto_item_fill_label(temp->finfo,&value_t, bufferlen);
     }
     //组包相关
@@ -1929,6 +1946,8 @@ static void export_result_txt(const char * protocol, void * data){
 		free(entry_ex);
 	}
 
+
+
 }
 /**
  * 根据final_Follow_Write_Need内容，判断tap-follow.c中的统计流是否输出
@@ -2033,8 +2052,8 @@ gboolean streamFollowIntoFiles(guint8 *data,guint len){
 std::string got_rtp_Stream_FileName(unsigned int type,const std::string &s,const std::string &p){
     std::string file_t;
     file_t += rtp_payload_type_to_str[type];
-    stringReplaceByStr(file_t, "-", " ");
-    stringReplaceByStr(file_t, "-", "/");
+    replace_all(file_t, " ", "-");
+    replace_all(file_t, "/", "-");
 
     return file_t += "_" + s +"_"+ p;
 }
@@ -2561,10 +2580,11 @@ void followConnectFiveEleClear(){
     final_Follow_Write_Need.clear();
 }
 
-bool need_special_field(const char* field, proto_node *node, char* ret){
+bool need_special_field(const char* field, proto_node *node, char* ret, std::string &key_str){
     for (auto &i : regist_speical_filed){
         if (strcmp(field, i.field_name) == 0){
             i.special_field_cb(node, ret);
+			replace_all(key_str, ".", "_");
             return true;
         }
     }
@@ -2621,6 +2641,7 @@ static bool get_tls_handshake_certificate(cJSON *&json_t, proto_node *&rnode){
 				std::string _key_str = gotStrNameByStrName(key_str);
 				if(_key_str == "-1") return false;
 
+				replace_all(_key_str, ".", "_");
 				cJSON_AddStringToObject(json_t, _key_str.c_str(), value_t);
 			}
         }
