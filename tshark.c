@@ -3443,7 +3443,8 @@ process_packet_single_pass(capture_file *cf, epan_dissect_t *edt, gint64 offset,
         }
         gint64 current = 0;
         current = wtap_read_pos(cf->provider.wth);
-        write_range_into_write_in_files_cJson(current - fdata.pkt_len, current, wtap_file_type_subtype(cf->provider.wth));
+        write_range_into_write_in_files_cJson(current - fdata.pkt_len,
+											  current, wtap_file_type_subtype(cf->provider.wth));
 
         epan_dissect_run_with_taps(edt, cf->cd_t, rec,
                                    frame_tvbuff_new_buffer(&cf->provider, &fdata, buf),
