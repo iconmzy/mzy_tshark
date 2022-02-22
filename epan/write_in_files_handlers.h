@@ -88,7 +88,7 @@ WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则
 #define MAXWRITEFILELENGTH 128
 
 
-WS_DLL_PUBLIC  gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end);
+WS_DLL_PUBLIC  gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end, int sub_type);
 WS_DLL_PUBLIC void do_write_in_conversation_handler(gchar *key, gchar *value);
 
 WS_DLL_PUBLIC gboolean beginInitOnce(char *);
