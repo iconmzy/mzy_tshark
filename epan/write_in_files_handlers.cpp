@@ -1532,10 +1532,18 @@ gboolean write_Export_result(const char* ex_name,char * pcap_name , export_objec
  * @param
  * @return
  */
-gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end){
+gboolean write_range_into_write_in_files_cJson(gint64 begin, gint64 end, int sub_type){
 
-    cJSON_AddStringToObject(write_in_files_cJson, "start_position", numtos(begin).c_str());
-    cJSON_AddStringToObject(write_in_files_cJson, "end_position", numtos(end).c_str());
+	switch (sub_type) {
+		case WTAP_FILE_TYPE_SUBTYPE_PCAPNG:
+			cJSON_AddStringToObject(write_in_files_cJson, "start_position", numtos(begin-4).c_str());
+			cJSON_AddStringToObject(write_in_files_cJson, "end_position", numtos(end-4).c_str());
+			break;
+		default:
+			cJSON_AddStringToObject(write_in_files_cJson, "start_position", numtos(begin).c_str());
+			cJSON_AddStringToObject(write_in_files_cJson, "end_position", numtos(end).c_str());
+			break;
+	}
     return true;
 }
 
