@@ -19,7 +19,7 @@ WRITE_IN_CONVERSATIONS_FLAG:1
 #配置是否组包
 PACKET_PROTOCOL_FLAG:1
 #配置所需组包协议，英文逗号隔开 imf,dicom,http,smb,tftp,ftp
-PACKET_PROTOCOL_TYPES:imf,dicom,http,smb,tftp,ftp
+PACKET_PROTOCOL_TYPES:imf,dicom,smb,tftp,ftp,http,tls
 
 #配置是否写入数据库
 WRITE_IN_DATABASE_FLAG:0
