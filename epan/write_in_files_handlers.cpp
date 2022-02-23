@@ -59,7 +59,7 @@ static special_field_value regist_speical_filed[] = {
         {"isis_lsp_ip_reachability_ipv4_prefix", &get_isis_lsp_ip_reachability_ipv4_prefix_mask},
 		{"tls.handshake.ciphersuite", &get_tls_handshake_ciphersuite},
 };
-static bool get_tls_handshake_certificate(cJSON *&, proto_node *&);
+static bool get_tls_handshake_certificate(cJSON *&, proto_node *&, struct totalParam *);
 GHashTable  * reg_ext_packet_protocols  =  g_hash_table_new(g_str_hash, g_str_equal);
 static void export_result_txt(const char * protocol, void * data);
 
@@ -388,6 +388,13 @@ typedef struct _rtp_decoder_t{
 //给定rtp的类型，返回组报结果文件名
 inline std::string got_rtp_Stream_FileName(unsigned int,const std::string &, const std::string &);
 //rtp stream---------------------- 20210909 yy ---------------------- rtp stream end |||
+
+struct tls_certificates{
+	char cetificate_name[1024];
+	comFiveEleContent *c5e;
+	char export_path[1024];
+	guint filesize;
+};
 
 //ftp ftp-data stream---------------------- 20220125 ymq ---------------------- ftp stream begin |||
 enum ftp_Status{
@@ -1064,7 +1071,7 @@ gboolean dissect_edt_Tree_Into_Json_No_Cursion(cJSON *&json_t,proto_node *&node,
             temp = temp->first_child;
             while (temp != nullptr){
                 que.push(temp);
-				get_tls_handshake_certificate(json_t, temp); //"tls.handshake.certificates"
+				if (packetProtoAlready) get_tls_handshake_certificate(json_t, temp, cookie); //"tls.handshake.certificates"
                 temp = temp->next;
             }
         }
@@ -1956,7 +1963,21 @@ static void export_result_txt(const char * protocol, void * data){
 		free(entry_ex);
 	}
 
+	if(strcmp(protocol, "tls")==0){
+		auto * it= (tls_certificates *)data;
+		// export result txt
+		auto *entry_ex = (export_object_entry_t *)g_malloc0(sizeof(export_object_entry_t));
+		//(export_object_entry_t *) malloc(sizeof(export_object_entry_t));
+		entry_ex->pkt_num = it->c5e->frame_id;
+		entry_ex->filename = (gchar*) malloc(512);
+		strcpy(entry_ex->filename, it->cetificate_name);
+		entry_ex->payload_len = it->filesize;
 
+		write_Export_result(it->export_path, it->c5e->pcap_name, entry_ex);
+		free(entry_ex->filename);
+		free(entry_ex);
+
+	}
 
 }
 /**
@@ -2633,7 +2654,29 @@ static bool get_tls_handshake_ciphersuite(proto_node *node, char* ret){
 	}
 	return false;
 }
-static bool get_tls_handshake_certificate(cJSON *&json_t, proto_node *&rnode){
+
+static int save_certificate(const char *value_t, char filename[], int certificate_length) {
+	FILE * fp = fopen(filename, "w");
+	if(!fp){
+		return false;
+	}
+
+	unsigned char code[256]={0};
+	int i;
+	for(i=0;i<10;i++)code[i+'0']=i;
+	for(i=0;i<6; i++)code[i+'a']=10+i;
+	for(i=0;i<6; i++)code[i+'A']=10+i;
+	auto * tt = (unsigned char*) malloc(certificate_length);
+	for(i=0;i<certificate_length;i++)
+		tt[i]=(code[value_t[2*i]]<<4)+code[value_t[2*i+1]];
+	//for(i=0;i<certificate_length;i++)printf("%02x",tt[i]);printf("\n");
+	fwrite(tt,1,certificate_length,fp);
+
+	if (fp) fclose(fp);
+	return 0;
+}
+
+static bool get_tls_handshake_certificate(cJSON *&json_t __U__, proto_node *&rnode, struct totalParam *cookie ){
     /*
      * rnode: tls.handshake.certificate
      * certificate field: if tls_handshake_type == 11
@@ -2650,9 +2693,25 @@ static bool get_tls_handshake_certificate(cJSON *&json_t, proto_node *&rnode){
 				std::string key_str = rnode->finfo->hfinfo->abbrev;
 				std::string _key_str = gotStrNameByStrName(key_str);
 				if(_key_str == "-1") return false;
-
 				replace_all(_key_str, ".", "_");
-				cJSON_AddStringToObject(json_t, _key_str.c_str(), value_t);
+
+				tls_certificates tlscont{{0}, nullptr, {0}, 0};
+				tlscont.c5e = cookie->c5e;
+				tlscont.filesize = certificate_length;
+
+				struct timespec ltimestamp;
+				clock_gettime(CLOCK_REALTIME, &ltimestamp);
+				//printf("当前时间： %d 秒，%d 纳秒", ltimestamp.tv_sec, ltimestamp.tv_nsec);
+				std::time_t global_time = (ltimestamp.tv_sec * 1000000000) + (ltimestamp.tv_nsec);
+				std::string global_time_str_tls = numtos((u_long) global_time);
+
+				std::string cert_name = _key_str+"_"+global_time_str_tls+".crt";
+				strcpy(tlscont.cetificate_name, cert_name.c_str());
+				strcat(tlscont.export_path, PACKET_PROTOCOL_PATH);
+				strcat(tlscont.export_path, cert_name.c_str());
+				//cJSON_AddStringToObject(json_t, _key_str.c_str(), value_t);
+				save_certificate(value_t, tlscont.export_path, certificate_length);
+				export_result_txt("tls", &tlscont);
 			}
         }
     return true;
