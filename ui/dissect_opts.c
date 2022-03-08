@@ -2680,46 +2680,46 @@ setup_enabled_and_disabled_protocols(void) {
 	global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "btgatt_uuid0xfffd");
 	global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "btgatt_uuid0xfffe");
 
-	if (global_dissect_options.disable_protocol_slist) {
-		GSList *proto_disable;
+    if (global_dissect_options.disable_protocol_slist) {
+        GSList *proto_disable;
 
-		for (proto_disable = global_dissect_options.disable_protocol_slist;
-			 proto_disable != NULL; proto_disable = g_slist_next(proto_disable))
-			proto_disable_proto_by_name((char *) proto_disable->data);
-	}
+        for (proto_disable = global_dissect_options.disable_protocol_slist;
+             proto_disable != NULL; proto_disable = g_slist_next(proto_disable))
+            proto_disable_proto_by_name((char *) proto_disable->data);
+    }
 
-	if (global_dissect_options.enable_protocol_slist) {
-		GSList *proto_enable;
+    if (global_dissect_options.enable_protocol_slist) {
+        GSList *proto_enable;
 
-		for (proto_enable = global_dissect_options.enable_protocol_slist;
-			 proto_enable != NULL; proto_enable = g_slist_next(proto_enable))
-			proto_enable_proto_by_name((char *) proto_enable->data);
-	}
+        for (proto_enable = global_dissect_options.enable_protocol_slist;
+             proto_enable != NULL; proto_enable = g_slist_next(proto_enable))
+            proto_enable_proto_by_name((char *) proto_enable->data);
+    }
 
-	if (global_dissect_options.enable_heur_slist) {
-		GSList *heur_enable;
+    if (global_dissect_options.enable_heur_slist) {
+        GSList *heur_enable;
 
-		for (heur_enable = global_dissect_options.enable_heur_slist;
-			 heur_enable != NULL; heur_enable = g_slist_next(heur_enable)) {
-			if (!proto_enable_heuristic_by_name((char *) heur_enable->data, TRUE)) {
-				cmdarg_err("No such protocol %s, can't enable", (char *) heur_enable->data);
-				success = FALSE;
-			}
-		}
-	}
+        for (heur_enable = global_dissect_options.enable_heur_slist;
+             heur_enable != NULL; heur_enable = g_slist_next(heur_enable)) {
+            if (!proto_enable_heuristic_by_name((char *) heur_enable->data, TRUE)) {
+                cmdarg_err("No such protocol %s, can't enable", (char *) heur_enable->data);
+                success = FALSE;
+            }
+        }
+    }
 
-	if (global_dissect_options.disable_heur_slist) {
-		GSList *heur_disable;
+    if (global_dissect_options.disable_heur_slist) {
+        GSList *heur_disable;
 
-		for (heur_disable = global_dissect_options.disable_heur_slist;
-			 heur_disable != NULL; heur_disable = g_slist_next(heur_disable)) {
-			if (!proto_enable_heuristic_by_name((char *) heur_disable->data, FALSE)) {
-				cmdarg_err("No such protocol %s, can't disable", (char *) heur_disable->data);
-				success = FALSE;
-			}
-		}
-	}
-	return success;
+        for (heur_disable = global_dissect_options.disable_heur_slist;
+             heur_disable != NULL; heur_disable = g_slist_next(heur_disable)) {
+            if (!proto_enable_heuristic_by_name((char *) heur_disable->data, FALSE)) {
+                cmdarg_err("No such protocol %s, can't disable", (char *) heur_disable->data);
+                success = FALSE;
+            }
+        }
+    }
+    return success;
 }
 
 /*
