@@ -481,7 +481,6 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "telnet");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "tcpcl");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "srvsvc");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "smb2");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sll");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sita");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtpevent");
@@ -994,7 +993,7 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cpha");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cprpc_server");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "cql");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "credssp");
+//    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "credssp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "crmf");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "csm_encaps");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "csn1");
@@ -1304,7 +1303,7 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gsm_um");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gsmtap");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gsmtap_log");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gss-api");
+//    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gss-api");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gsup");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gtpprime");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nrup");
@@ -1788,7 +1787,7 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nsh");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "gprs-ns");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nsrp");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ntlmssp");
+//    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "ntlmssp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nvme");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nvme-rdma");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "nvme-tcp");
@@ -2045,8 +2044,8 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "soupbintcp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "spdy");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "spice");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "spnego");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "spnego-krb5");
+//    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "spnego");
+//    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "spnego-krb5");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "spp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "spray");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "sprt");
@@ -2175,7 +2174,7 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vines_ipc");
 //    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vines_llc");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vines_rtp");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vines_spp");
+//    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vines_spp");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vmlab");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vntag");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vp8");
