@@ -514,7 +514,9 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "dis");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "osi");    //20211208MZY isis协议的解析依赖于osi协议 //
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "x509af");  //解析TLS1.2协议的证书时需要用到x509系列协议，否则证书内容无法解析
-
+    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "x509ce");
+    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "x509if");
+    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "x509sat");
     */
     //    fhs end protocols code
 
@@ -674,9 +676,6 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "u3v");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "uma");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "vnc");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "x509ce");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "x509if");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "x509sat");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xml");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xnap");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "xot");
@@ -1201,7 +1200,7 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "exablaze");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "exported_pdu");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f5ethtrailer_provider_noise");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f5ethtrailer_tls");
+//    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f5ethtrailer_tls");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "f5fileinfo");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "fb_zero");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "fcsof");
@@ -1981,7 +1980,7 @@ ftp-data.setup-method
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtcdc");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtcfg");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtitcp");
-    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtls");
+//    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtls");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtmac");
 //    global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtmpt");
     global_dissect_options.disable_protocol_slist = g_slist_append(global_dissect_options.disable_protocol_slist, "rtp_ext_ed137");
