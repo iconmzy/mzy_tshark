@@ -8835,7 +8835,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
             break;
 
         case FT_BOOLEAN:
-            strcpy(label_str, my_itoa(fvalue_get_uinteger64(&fi->value)));
+            fill_label_boolean(fi, label_str);
+            //strcpy(label_str, my_itoa(fvalue_get_uinteger64(&fi->value)));
             break;
 
         case FT_BYTES:
@@ -8850,8 +8851,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
                 *bufferlen = len_t;
             }
             //内存重新分配 --end
-
-            strcpy(label_str, tmp);
+            label_fill(label_str, 0, hfinfo, tmp);
+            //strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
@@ -8877,15 +8878,19 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
                 if (fi->flags & FI_VARINT) {
                     fill_label_bitfield_varint(fi, label_str, FALSE);
                 } else {
-                    strcpy(label_str, my_itoa(fvalue_get_uinteger(&fi->value)));
+                    fill_label_bitfield(fi, label_str, FALSE);
+                    //strcpy(label_str, my_itoa(fvalue_get_uinteger(&fi->value)));
+
                 }
             } else {
-                strcpy(label_str, my_itoa(fvalue_get_uinteger(&fi->value)));
+                fill_label_number(fi, label_str, FALSE);
+                //strcpy(label_str, my_itoa(fvalue_get_uinteger(&fi->value)));
             }
             break;
 
         case FT_FRAMENUM:
-            strcpy(label_str, my_itoa(fvalue_get_uinteger(&fi->value)));
+            fill_label_number(fi, label_str, FALSE);
+            //strcpy(label_str, my_itoa(fvalue_get_uinteger(&fi->value)));
             break;
 
         case FT_UINT40:
@@ -8899,8 +8904,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
                     fill_label_bitfield64(fi, label_str, FALSE);
                 }
             } else {
-
-                strcpy(label_str, my_itoa(fvalue_get_uinteger64(&fi->value)));
+                fill_label_number64(fi, label_str, FALSE);
+                //strcpy(label_str, my_itoa(fvalue_get_uinteger64(&fi->value)));
             }
             break;
 
@@ -8915,7 +8920,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
                     fill_label_bitfield(fi, label_str, TRUE);
                 }
             } else {
-                strcpy(label_str, my_itoa(fvalue_get_sinteger(&fi->value)));
+                fill_label_number(fi, label_str, TRUE);
+                //strcpy(label_str, my_itoa(fvalue_get_sinteger(&fi->value)));
             }
             break;
 
@@ -8930,7 +8936,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
                     fill_label_bitfield64(fi, label_str, TRUE);
                 }
             } else {
-                strcpy(label_str, my_itoa(fvalue_get_sinteger64(&fi->value)));
+                fill_label_number64(fi, label_str, TRUE);
+                //strcpy(label_str, my_itoa(fvalue_get_sinteger64(&fi->value)));
             }
             break;
 
@@ -8975,8 +8982,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
                 *bufferlen = len_t;
             }
             //内存重新分配 --end
-
-            strcpy(label_str, tmp);
+            label_fill(label_str, 0, hfinfo, tmp);
+            //strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
@@ -9128,8 +9135,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
 
             }
             //内存重新分配 --end
-
-            strcpy(label_str, tmp);
+            label_fill(label_str, 0, hfinfo, tmp);
+            //strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
@@ -9145,8 +9152,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
 
             }
             //内存重新分配 --end
-
-            strcpy(label_str, tmp);
+            label_fill(label_str, 0, hfinfo, tmp);
+            //strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
@@ -9162,8 +9169,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
 
             }
             //内存重新分配 --end
-
-            strcpy(label_str, tmp);
+            label_fill(label_str, 0, hfinfo, tmp);
+            //strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
@@ -9179,8 +9186,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
 
             }
             //内存重新分配 --end
-
-            strcpy(label_str, tmp);
+            label_fill(label_str, 0, hfinfo, tmp);
+            //strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
@@ -9208,8 +9215,8 @@ void yy_proto_item_fill_label(field_info *fi, gchar **label,int *bufferlen) {
 
             }
             //内存重新分配 --end
-
-            strcpy(label_str, tmp);
+            label_fill(label_str, 0, hfinfo, tmp);
+            //strcpy(label_str, tmp);
             wmem_free(NULL, tmp);
             break;
 
@@ -9254,6 +9261,7 @@ void proto_item_fill_label(field_info *fi, gchar *label_str) {
 //    strcpy(abbrev_t,hfinfo->abbrev);
     switch (hfinfo->type) {
         case FT_NONE:
+
         case FT_PROTOCOL:
             g_strlcpy(label_str, hfinfo->name, ITEM_LABEL_LENGTH);
             break;

@@ -737,6 +737,7 @@ gboolean dissect_Per_Node_No_Cursion(cJSON *&json_t,proto_node *&temp, struct to
     auto *value_t = (gchar*)g_malloc_n(sizeof(gchar),bufferlen);
     //获取 special rep value
     if(! need_special_field(temp->finfo->hfinfo->abbrev, temp, value_t)){
+        //proto_item_fill_label(temp->finfo, value_t);
         yy_proto_item_fill_label(temp->finfo, &value_t, &bufferlen);
     }
 

@@ -2402,6 +2402,8 @@ proto_item_fill_label(field_info *fi, gchar *label_str);
 WS_DLL_PUBLIC void
 yy_proto_item_fill_label(field_info *fi, gchar **label_str,int *len);
 
+WS_DLL_PUBLIC void proto_item_fill_label(field_info *fi, gchar *label_str);
+
 /** Register a new protocol.
 @param name the full name of the new protocol
 @param short_name abbreviated name of the new protocol
