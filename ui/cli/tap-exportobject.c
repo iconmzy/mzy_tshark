@@ -145,6 +145,7 @@ eo_draw(void *tapdata)
             g_string_free(safe_filename, TRUE);
         } while (g_file_test(save_as_fullpath, G_FILE_TEST_EXISTS) && ++count < prefs.gui_max_export_objects);
         count = 0;
+		if(entry->filename == NULL) break;
         char filename_t[256]={};
         strcpy(filename_t,entry->filename);
         int filename_t_len = strlen(filename_t);

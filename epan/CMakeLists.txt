@@ -290,7 +290,7 @@ set(LIBWIRESHARK_NONGENERATED_FILES
 	rtp_media.c
 #	yy_g711.c
 #	g722decode_yy.cpp
-	g722decode_yy_single_frame_decode.cpp
+	#g722decode_yy_single_frame_decode.cpp
 	authorize.c
 	xdlc.c
 

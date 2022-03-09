@@ -18,7 +18,7 @@ extern "C" {
 
 struct ConfigInfo {
     char key[64];
-    char val[128];
+    char val[1024];
 };
 
 extern rd_kafka_t *rk;       //producer
@@ -30,15 +30,15 @@ WS_DLL_PUBLIC char CONFIG_FILES_PATH[128];
 WS_DLL_PUBLIC gboolean WRITE_IN_FILES_CONFIG;
 WS_DLL_PUBLIC gboolean WRITE_IN_KAFKA_CONFIG;
 
-WS_DLL_PUBLIC char EXPORT_PATH[256];
+WS_DLL_PUBLIC char EXPORT_PATH[1024];
 WS_DLL_PUBLIC long int calculate_cost_time(char* end_time_t,char* begin_time_t);
 WS_DLL_PUBLIC gboolean WRITE_IN_CONVERSATIONS_FLAG;
 WS_DLL_PUBLIC gboolean PACKET_PROTOCOL_FLAG;
-WS_DLL_PUBLIC char WRITE_IN_CONVERSATIONS_PATH[256];
+WS_DLL_PUBLIC char WRITE_IN_CONVERSATIONS_PATH[1024];
 WS_DLL_PUBLIC char PACKET_PROTOCOL_TYPES[256];
 
 WS_DLL_PUBLIC int check_special_extract(const char* special_extract_protocol);//判断希望特殊提取子段的协议
-WS_DLL_PUBLIC char PACKET_PROTOCOL_PATH[256];
+WS_DLL_PUBLIC char PACKET_PROTOCOL_PATH[1024];
 
 WS_DLL_PUBLIC gboolean INSERT_MANY_PROTOCOL_STREAM_FLAG;  // 是否批量写入
 WS_DLL_PUBLIC int EDIT_FILES_SIZES;
@@ -47,7 +47,7 @@ WS_DLL_PUBLIC int INSERT_MANY_PROTOCOL_STREAM_NUM;  // 每次每个协议批量�
 WS_DLL_PUBLIC gboolean DISPLAY_PACKET_INFO_FLAG;
 WS_DLL_PUBLIC gboolean EDIT_FILES_DISSECT_FLAG;
 
-WS_DLL_PUBLIC char READ_FILE_PATH[256];//文件名含路径
+WS_DLL_PUBLIC char READ_FILE_PATH[1024];//文件名含路径
 WS_DLL_PUBLIC char FILE_NAME_T[256];//文件名
 
 WS_DLL_PUBLIC gboolean file_Name_From_Dir_Flag;
@@ -78,15 +78,15 @@ WS_DLL_PUBLIC gboolean match_all_diy_proto(char* pre_proto,char* next_proto);
 WS_DLL_PUBLIC char abbrev_t[40];
 //是否允许新增协议相关
 WS_DLL_PUBLIC gboolean JSON_ADD_PROTO;
-WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[256];
+WS_DLL_PUBLIC char JSON_ADD_PROTO_PATH[1024];
 //数据来源相关配置
 WS_DLL_PUBLIC gboolean ONLINE_CAPTURE_DATA_FLAG;
 WS_DLL_PUBLIC char ONLINE_CAPTURE_DATA_DEVICE_NAME[32];
 WS_DLL_PUBLIC gboolean READ_PACKET_FROM_FILES_FLAG;
-WS_DLL_PUBLIC char READ_PACKET_FROM_FILES_PATH[256];
+WS_DLL_PUBLIC char READ_PACKET_FROM_FILES_PATH[1024];
 //线路号相关配置
 WS_DLL_PUBLIC char ONLINE_LINE_NO[32];  /* 实时接入数据的线路号 */
-WS_DLL_PUBLIC char REGISTRATION_FILE_PATH[256];  /* 注册文件的路径 */
+WS_DLL_PUBLIC char REGISTRATION_FILE_PATH[1024];  /* 注册文件的路径 */
 WS_DLL_PUBLIC char OFFLINE_LINE_LINE_NO[256];  /* 离线接入数据通过正则表达式提取出来的线路号 */
 
 #define MAXFILELENGTH 50

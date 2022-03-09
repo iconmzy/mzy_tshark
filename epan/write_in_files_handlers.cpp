@@ -39,10 +39,11 @@
 /*即将写进文件的协议*/
 static std::string write_in_files_proto;
 std::list<std::string> lastLayerProtocolFilterList = {
-        "communityid","ftp.current-working-directory","xml","json","_ws.malformed","smb2.fsctl.wait.name", "mswsp.msg"\
-        ,"tcp.segments","urlencoded-form","data-text-lines","media","_ws.short","_ws.unreassembled","_ws.short","_ws.unreassembled"\
-        ,"ftp-data.current-working-directory","dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","ftp-data.command-frame","dcerpc.cn_deseg_req"\
-        ,"dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str"
+		"communityid","ftp.current-working-directory","xml","json","_ws.malformed","smb2.fsctl.wait.name", "mswsp.msg",
+		"tcp.segments","urlencoded-form","data-text-lines","media","_ws.short","_ws.unreassembled","_ws.short","_ws.unreassembled",
+		"dof.dpp.v2s","dof.oap","wlan.mgt","image-gif","image","dcerpc.cn_deseg_req",
+		"dcerpc.stub_data","db-lsp-disc","dcerpc.encrypted_stub_data","dcerpc.fragments","snmp.var-bind_str",
+		"ftp-data.setup-frame","ftp-data.setup-method","ftp-data.command","ftp-data.command-frame","ftp-data.current-working-directory", "ftp_current-working-directory"
 };
 
 std::list<std::string> special_not_leafNode = {
@@ -90,8 +91,8 @@ static std::string global_time_str;  // long int types
 FILE *fp_result_timestampe = nullptr;
 
 //begin--------------------------------配置文件变量定义--------------------------------begin//
-char EXPORT_PATH[256] = {0};
-char RESULT_PATH[256] = {0};
+char EXPORT_PATH[1024] = {0};
+char RESULT_PATH[1024] = {0};
 gboolean WRITE_IN_FILES_CONFIG = 1;
 gboolean DISPLAY_PACKET_INFO_FLAG = 0;
 gboolean WRITE_IN_CONVERSATIONS_FLAG = 1;
@@ -99,8 +100,8 @@ gboolean PACKET_PROTOCOL_FLAG = 0;
 char PACKET_PROTOCOL_TYPES[256] = {};
 gboolean file_Name_From_Dir_Flag = 0;
 gboolean EDIT_FILES_DISSECT_FLAG = 0;
-char WRITE_IN_CONVERSATIONS_PATH[256] = {0};
-char PACKET_PROTOCOL_PATH[256] = {0};
+char WRITE_IN_CONVERSATIONS_PATH[1024] = {0};
+char PACKET_PROTOCOL_PATH[1024] = {0};
 int EDIT_FILES_SIZES = 1000;
 int PER_FILES_MAX_LINES = 10000;
 gboolean INSERT_MANY_PROTOCOL_STREAM_FLAG = 1;
@@ -109,14 +110,14 @@ int INSERT_MANY_PROTOCOL_STREAM_NUM = 1000;
 gboolean ONLINE_CAPTURE_DATA_FLAG = 0;
 char ONLINE_CAPTURE_DATA_DEVICE_NAME[32] = {0};
 gboolean READ_PACKET_FROM_FILES_FLAG = 0;
-char READ_PACKET_FROM_FILES_PATH[256] = {0};
+char READ_PACKET_FROM_FILES_PATH[1024] = {0};
 //是否允许新增协议相关
 gboolean JSON_ADD_PROTO = 0;
-char JSON_ADD_PROTO_PATH[256] = {0};
+char JSON_ADD_PROTO_PATH[1024] = {0};
 //线路号相关配置
 char ONLINE_LINE_NO[32] = {0};  /* 实时接入数据的线路号 */
 static char OFFLINE_LINE_NO_REGEX[512] = {0};  /* 离线接入数据的识别线路号的正则表达式 */
-char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
+char REGISTRATION_FILE_PATH[1024] = {0};  /* 注册文件的路径 */
 char OFFLINE_LINE_LINE_NO[256] = {0};
 //写入ES数据库相关配置
 gboolean WRITE_IN_ES_FLAG = 0;  /* 配置是否写入ElasticSearch数据库 */
@@ -170,7 +171,7 @@ static int value_240_len = 0;
 
 
 //--------------------- 20211228 conversation协议栈缓存五元组 ---------------------------------//
-typedef struct comSevenStackContent{ //会话匹配提取文件七元组内容及其他信息
+typedef struct comSevenStackContent{ //通信五元组内容及其他信息
     std::string sip;
     std::string dip;
     std::string sport;
@@ -1174,7 +1175,7 @@ void do_write_in_conversation_handler(gchar *key, gchar *value) {
     std::string key_str = key;
     std::string value_str = value;
     if (value_str == "-1END") {
-        //获取文件来源，将conversation与源文件进行关联
+        /*获取文件来源，将conversation与源文件进行关联*/
 /*        if (read_Pcap_From_File_Flag == 1) {
             cJSON_AddStringToObject(write_in_files_conv_cJson, str_FILES_RESOURCE, READ_FILE_PATH);
             cJSON_AddStringToObject(write_in_files_conv_cJson, "line_no", OFFLINE_LINE_LINE_NO);  *//* 离线接入数据的线路号 *//*
@@ -1674,7 +1675,7 @@ gboolean add_protocolStack_to_conversation(char *src_ip,char *dst_ip, char *src_
 }
 
 char* add_line_no_to_conversation (char *src_ip,char *dst_ip, char *src_port,char *dst_port){
-    char return_path[256] = {};
+    char return_path[1024] = {};
     std::string line_no_t;
     std::string read_file_path_t;
     for (auto &i : final_conversation_Write_Need){

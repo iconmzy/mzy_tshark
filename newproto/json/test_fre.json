@@ -1,7 +1,7 @@
 {
-  "protocolName": "test_ljw",
-  "shortName": "test_ljw",
-  "filterName": "test_ljw",
+  "protocolName": "test_",
+  "shortName": "test_",
+  "filterName": "test_",
   "ports":[5353],
   "transportProtocol": "udp",
 
@@ -12,7 +12,7 @@
     {
       "name": "payload_feature",
       "abbName": "pl_feature",
-      "length": 4,
+      "length": 0,
       "type": -1
     }
   ]

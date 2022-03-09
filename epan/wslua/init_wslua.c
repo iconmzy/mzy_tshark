@@ -790,7 +790,7 @@ void wslua_init(register_cb cb, gpointer client_data) {
     gchar* filename;
     const funnel_ops_t* ops = funnel_get_funnel_ops();
     gboolean enable_lua = TRUE;
-    gboolean run_anyway = FALSE;
+    gboolean run_anyway = TRUE;
     expert_module_t* expert_lua;
     int file_count = 1;
     static gboolean first_time = TRUE;

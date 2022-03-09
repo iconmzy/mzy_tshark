@@ -208,8 +208,8 @@ dissect_imap_fetch(tvbuff_t *tvb, packet_info *pinfo,
   int first_parenthesis = tvb_find_guint8(tvb, fetch_offset, -1, '(');
   if (first_parenthesis >= 0)
   {
-    int remaining_size = tvb_reported_length_remaining(tvb, first_parenthesis + 1);
-    if (remaining_size > 0)
+    int remaining_size = tvb_reported_length_remaining(tvb, first_parenthesis + 1);  // 从左括号开始剩余的payload长度
+    if (remaining_size > 0)  // 左括号之后还有数据
     {
       //look for the size field
       int size_start = tvb_find_guint8(tvb, first_parenthesis, remaining_size, '{');

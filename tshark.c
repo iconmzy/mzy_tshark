@@ -173,12 +173,12 @@
 #define LONGOPT_ELASTIC_MAPPING_FILTER LONGOPT_BASE_APPLICATION + 4
 
 capture_file cfile;
-char READ_FILE_PATH[256] = {0}; //存放文件名——含路径。
+char READ_FILE_PATH[1024] = {0}; //存放文件名——含路径。
 char FILE_NAME_T[256] = {0};//存放文件名。
 
 gboolean read_Pcap_From_File_Flag = 0;
 char CONFIG_FILES_PATH[128] = {0};
-char REGISTRATION_FILE_PATH[256] = {0};  /* 注册文件的路径 */
+char REGISTRATION_FILE_PATH[1024] = {0};  /* 注册文件的路径 */
 
 static guint32 cum_bytes;
 static frame_data ref_frame;
