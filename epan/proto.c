@@ -8742,9 +8742,11 @@ label_fill(char *label_str, gsize pos, const header_field_info *hfinfo, const ch
     gsize name_pos;
 
     /* "%s: %s", hfinfo->name, text */
-    name_pos = pos = label_concat(label_str, pos, hfinfo->name);
+    //20220310在拼接前对对用户无意义的部分清空//
+    strcpy(label_str,"");
+    name_pos = pos = label_concat(label_str, strlen(label_str), "");
     if (!(hfinfo->display & BASE_NO_DISPLAY_VALUE)) {
-        pos = label_concat(label_str, pos, ": ");
+        //pos = label_concat(label_str, pos, ": ");
         pos = label_concat(label_str, pos, text ? text : "(null)");
     }
 
@@ -8761,9 +8763,9 @@ label_fill_descr(char *label_str, gsize pos, const header_field_info *hfinfo, co
     gsize name_pos;
 
     /* "%s: %s (%s)", hfinfo->name, text, descr */
-    name_pos = pos = label_concat(label_str, pos, hfinfo->name);
+    name_pos = pos = label_concat(label_str, pos, "");
     if (!(hfinfo->display & BASE_NO_DISPLAY_VALUE)) {
-        pos = label_concat(label_str, pos, ": ");
+        //pos = label_concat(label_str, pos, ": ");
         if (hfinfo->display & BASE_UNIT_STRING) {
             pos = label_concat(label_str, pos, descr ? descr : "(null)");
             pos = label_concat(label_str, pos, text ? text : "(null)");
@@ -9739,6 +9741,8 @@ fill_label_bitfield(field_info *fi, gchar *label_str, gboolean is_signed) {
     p = decode_bitfield_value(label_str, unshifted_value, hfinfo->bitmask, bitwidth);
     bitfield_byte_length = (int) (p - label_str);
 
+
+
     /* Fill in the textual info using stored (shifted) value */
     if (hfinfo->display == BASE_CUSTOM) {
         gchar tmp[ITEM_LABEL_LENGTH];
@@ -9748,13 +9752,25 @@ fill_label_bitfield(field_info *fi, gchar *label_str, gboolean is_signed) {
         fmtfunc(tmp, value);
         label_fill(label_str, bitfield_byte_length, hfinfo, tmp);
     } else if (hfinfo->strings) {
+
         const char *val_str = hf_try_val_to_str_const(value, hfinfo, "Unknown");
 
         out = hfinfo_number_vals_format(hfinfo, buf, value);
-        if (out == NULL) /* BASE_NONE so don't put integer in descr */
+        //20220309MZY消除对用户无意义字段//
+        strcpy(label_str,"");
+        strcpy(label_str,val_str);
+
+        if(out != NULL){
+            label_concat(label_str, strlen(label_str), " (");
+            label_concat(label_str, strlen(label_str), out ? out : "(null)");
+            label_concat(label_str, strlen(label_str), " )");
+
+        }
+
+/*        if (out == NULL) *//* BASE_NONE so don't put integer in descr *//*
             label_fill(label_str, bitfield_byte_length, hfinfo, val_str);
         else
-            label_fill_descr(label_str, bitfield_byte_length, hfinfo, val_str, out);
+            label_fill_descr(label_str, bitfield_byte_length, hfinfo, val_str, out);*/
     } else {
         out = hfinfo_number_value_format(hfinfo, buf, value);
 

@@ -878,7 +878,8 @@ void parse_offline_regex_dict(){
         while (temp!=nullptr){
             char value[250] = {0};
             match_line_no(temp->valuestring, FILE_NAME_T, value);
-            cJSON_AddStringToObject(write_in_files_cJson, temp->string, value);
+            //20220310MZY此初添加CJSON會導致第一幀重複寫//
+            //cJSON_AddStringToObject(write_in_files_cJson, temp->string, value);
             regex_dict_map.insert(std::pair<std::string,std::string>(temp->string,value));
             temp = temp->next;
         }
