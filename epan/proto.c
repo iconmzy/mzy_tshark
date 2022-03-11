@@ -9763,7 +9763,7 @@ fill_label_bitfield(field_info *fi, gchar *label_str, gboolean is_signed) {
         if(out != NULL){
             label_concat(label_str, strlen(label_str), " (");
             label_concat(label_str, strlen(label_str), out ? out : "(null)");
-            label_concat(label_str, strlen(label_str), " )");
+            label_concat(label_str, strlen(label_str), ")");
 
         }
 
