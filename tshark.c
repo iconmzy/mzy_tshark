@@ -2520,8 +2520,6 @@ int main(int argc, char *argv[]) {
                 single_File_End_Init();
                 change_result_file_name();
 
-
-
                 if (pdu_export_arg) {
                     if (!exp_pdu_close(&exp_pdu_tap_data, &err, &err_info)) {
                         cfile_close_failure_message(exp_pdu_filename, err, err_info);
@@ -2617,7 +2615,6 @@ int main(int argc, char *argv[]) {
          *
          * Otherwise, if the user specified -q, don't print packet counts.
          *
-         * Otherwise, print packet counts.
          *
          * XXX - what if the user wants to do a live capture, doesn't want
          * to save it to a file, doesn't want information printed for each
